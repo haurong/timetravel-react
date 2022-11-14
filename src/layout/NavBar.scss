@@ -43,3 +43,22 @@
         margin: 6px auto;
     }
 }
+.cart{
+    position: relative;
+    .cart-count{
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        top: -3px;
+        right: -3px;
+        background-color: #59D8A1;
+        border: 1px solid #59D8A1;
+        color:#FFF;
+        border-radius: 50% 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+
+    }
+}

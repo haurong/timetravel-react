@@ -74,7 +74,9 @@ function NavBar() {
             <div className="cart icon">
               <Link className="nav-link" to="/cart">
                 <img src={CartIcon} alt="" />
-                <span></span>
+                <div className="cart-count">
+                  <span>1</span>
+                </div>
               </Link>
             </div>
           </div>
