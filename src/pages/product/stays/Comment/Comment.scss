@@ -1,0 +1,54 @@
+/* Comment */
+.Comment_Top {
+	display: flex;
+	span {
+		font-size: '40px';
+		color: '#59d8a1';
+		margin-right: '50px';
+	}
+	.RateAndNumber {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 30px;
+		p {
+			color: #8a8a8a;
+		}
+	}
+}
+.Comment_Bottom {
+	padding: 30px 0px;
+	/* background-color: #ccc; */
+	height: 225px;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	.Comment_Card {
+		margin-bottom: 30px;
+		.Comment_userPic {
+			border-radius: 50%;
+			background-color: #ccc;
+			width: 50px;
+			height: 50px;
+			margin-right: 50px;
+		}
+		.Comment_userName {
+			margin-right: auto;
+			p {
+				margin-bottom: -8px;
+				font-size: 18px;
+				color: #8a8a8a;
+			}
+		}
+	}
+	.Comment_text {
+		font-size: 14px;
+		line-height: 28px;
+		color: #4d4d4d;
+	}
+}
+
+/* CommentSelector */
+.CommentSelector {
+	display: flex;
+	justify-content: flex-end;
+	/* margin-right: -16px; */
+}

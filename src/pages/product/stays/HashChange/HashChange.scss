@@ -1,0 +1,54 @@
+::-webkit-scrollbar {
+	display: none;
+}
+.HashChange {
+	width: 100%;
+	height: 60px;
+	background-color: #f9f9f9;
+	position: fixed;
+	top: 0;
+	color: #ffffff;
+	transform: translateY(-60px);
+	overflow: scroll;
+
+	.hashChange_slider {
+		display: inline-flex;
+		width: auto;
+		height: 100%;
+		div {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			width: 100px;
+			height: 60px;
+			text-align: center;
+			margin: 0px 15px;
+			font-size: 18px;
+		}
+	}
+	hr {
+		opacity: 1;
+		width: 80%;
+		margin: 10px auto 0px;
+		background-color: transparent;
+		border: 1px solid transparent;
+	}
+	.HashChange_active {
+		background-color: green !important;
+		border: 3px solid green !important;
+	}
+	a {
+		align-items: center;
+		color: #8a8a8a;
+		:active {
+			color: #8a8a8a;
+		}
+		:hover {
+			color: #8a8a8a;
+		}
+	}
+}
+.hash_slideOut {
+	transform: translateY(0px);
+	transition: 0.3s ease-in-out;
+}
