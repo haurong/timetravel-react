@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './BuyButton.scss';
 function BuyButton() {
 	return (
 		<>

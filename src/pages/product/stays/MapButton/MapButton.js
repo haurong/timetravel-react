@@ -1,4 +1,5 @@
 import React from 'react';
+import './MapButton.scss';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 function MapButton() {
 	return (

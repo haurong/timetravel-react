@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './TimeTravel_Hotel.css';
+import './TimeTravel_Hotel.scss';
 import Navbar from './NavBar/NavBar';
 import Carousel from './Carousel/Carousel';
 import Breadcrumb from './Breadcrumb/Breadcrumb';

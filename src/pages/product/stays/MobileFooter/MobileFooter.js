@@ -1,4 +1,5 @@
 import React from 'react';
+import './MobileFooter.scss';
 // import './../../../public/img/icon/logo/logo_white.svg';
 function MobileFooter() {
 	return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import './BottomBar.scss';
 import moment from 'moment/moment';
 import { useState } from 'react';
 import { BsHeart, BsHeartFill } from 'react-icons/bs';

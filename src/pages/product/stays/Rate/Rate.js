@@ -1,3 +1,4 @@
+import './Rate.scss';
 import { Rate } from 'antd';
 import React from 'react';
 const rate = () => {

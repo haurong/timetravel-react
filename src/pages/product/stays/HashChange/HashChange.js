@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './HashChange.scss';
 function HashChange(props) {
 	const hash_title = ['房型介紹', '注意事項', '商品說明', '旅客評價'];
 	const [slideOut, setSlideOut] = useState(false);
@@ -29,7 +30,7 @@ function HashChange(props) {
 		}
 	});
 	window.addEventListener('hashchange', () => {
-		window.history.pushState({}, '', window.location.origin);
+		window.history.pushState(0, 0, window.location.origin);
 	});
 	return (
 		<>
