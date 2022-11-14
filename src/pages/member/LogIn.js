@@ -8,14 +8,13 @@ import Form from 'react-bootstrap/Form';
 function logIn() {
   return (
     <>
-      <div className="member-BG">
-        <div className="container">
-          <div className="row">
-            <div className="logo m-auto">
+      <div className="container">
+        <div className="row m-auto">
+          <div className="m-flex">
+            <div className="logo m-auto col-6">
               <img src={Logo} alt="logo" />
             </div>
-
-            <Form className="form-bg col-6 m-auto padding-form">
+            <Form className="form col-6 m-auto padding-form">
               <h1 className="login-text text-center pb-5">登入</h1>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
@@ -36,10 +35,11 @@ function logIn() {
                 <Form.Check type="checkbox" label="Check me out" />
               </Form.Group>
               <Button className="mx-auto" variant="primary" type="submit">
-                Submit
+                登入
               </Button>
             </Form>
           </div>
+          <div className="form-bg"></div>
         </div>
       </div>
     </>
