@@ -1,15 +1,23 @@
 import React from 'react';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
+<<<<<<< Updated upstream
 import Carousel from '../../../Component/Carousel/Carousel';
 import Pagination from '../../../Component/Pagination/Pagination';
 
 //breadcrumb還沒導入component
+=======
+import FoodList from './FoodList';
+import BasicPagination from '../../../Component/Pagination';
+import Carousel from '../../../Component/Carousel';
+
+>>>>>>> Stashed changes
 function Food() {
   return (
     <>
       <NavBar />
 
+<<<<<<< Updated upstream
       <div className="container" style={{ marginTop: '80px' }}>
         <nav aria-label="breadcrumb">
           <div class="container breadcrumb">
@@ -68,6 +76,14 @@ function Food() {
         </div>
       </div>
       
+=======
+      <div className="container" style={{ height: '500px' }}>
+       
+        <Carousel />
+        <BasicPagination />
+      </div>
+      {/* <FoodList /> */}
+>>>>>>> Stashed changes
       <Footer />
     </>
   );

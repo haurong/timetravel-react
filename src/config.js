@@ -15,6 +15,5 @@ export const appConfig = {
 
 export const imgUrl = appConfig.debug ? appConfig.devUrl : appConfig.prodUrl;
 
-export const imgServerUrl = appConfig.debug
-  ? appConfig.devServerUrl
-  : appConfig.prodUrl;
+export const FOOD_IMG = `${MY_HOST}/public/imgs/food`;
+export const FOOD_LIST = `${MY_HOST}/food/api/list`;
