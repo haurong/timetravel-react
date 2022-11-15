@@ -13,8 +13,12 @@ export default function SiteCardList({ rows }) {
               >
                 <img src="..." class="card-img-top" alt="..." />
                 <div class="card-body">
-                  <h5 class="card-title">{el.name}</h5>
-                  <p class="card-text">{el.area_sid}</p>
+                  <h4 class="card-title">{el.name}</h4>
+                  <h5>{el.site_category_name}</h5>
+                  <p class="card-text">
+                    {el.city_name}
+                    {el.area_name}
+                  </p>
                 </div>
               </div>
             );
