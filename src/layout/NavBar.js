@@ -2,6 +2,7 @@ import React from 'react';
 import '../global.scss';
 import './NavBar.scss';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 import Logo from '../icon/logo/logo.svg';
 import SearchIcon from '../icon/search.svg';
 import CartIcon from '../icon/cart.svg';
@@ -61,16 +62,16 @@ function NavBar() {
                 />
               </div>
             </form>
-            <button type="button" className="btn">
-              <Link className="nav-link" to="/logIn">
+            <button type="button" className="btn ">
+              <Link className="nav-link login-btn-text" to="/logIn">
                 登入
               </Link>
             </button>
-            <button type="button" className="btn">
-              <Link className="nav-link" to="/signIn">
+            <Link className='signin-m' to="/signIn">
+              <Button className="signin-btn" variant="primary" type="button">
                 註冊
-              </Link>
-            </button>
+              </Button>
+            </Link>
             <div className="cart icon">
               <Link className="nav-link" to="/cart">
                 <img src={CartIcon} alt="" />

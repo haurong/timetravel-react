@@ -12,9 +12,10 @@ function logIn() {
       <div className="container ">
         <div className="row m-auto">
           <div className="m-flex">
-            <div className="logo m-auto">
+            <Link className="logo m-auto" to="/">
               <img src={Logo} alt="logo" />
-            </div>
+            </Link>
+
             <Form className="form col-5 m-auto">
               <h1 className="login-text text-center pb-5">登入</h1>
               <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -28,16 +29,23 @@ function logIn() {
                   type="password"
                   placeholder="8位以上英數密碼，請區分大小寫"
                 />
-                <Link className="forget-password text-end">忘記密碼？</Link>
+                <Link className="forget-password-text" to="/forget_password">
+                  忘記密碼？
+                </Link>
               </Form.Group>
-
-              <Button
-                className="login-button d-flex"
-                variant="primary"
-                type="submit"
-              >
-                登入
-              </Button>
+              <div className="mx-auto">
+                <Button
+                  className="login-button d-flex"
+                  variant="primary"
+                  type="submit"
+                >
+                  登入
+                </Button>
+                <Form.Text className="nosigning-text">還沒註冊? </Form.Text>
+                <Link className="signin-text" to="/signin">
+                  立即註冊
+                </Link>
+              </div>
             </Form>
           </div>
           <div className="form-bg"></div>
