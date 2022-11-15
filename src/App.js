@@ -5,6 +5,7 @@ import React from 'react';
 import Home from './pages/Home';
 import ProductList from './pages/product/ProductList';
 import Itinerary from './pages/product/itinerary/Itinerary';
+import Site from './pages/product/itinerary/Site';
 import Food from './pages/product/food/Food';
 import Stays from './pages/product/stays/Stays';
 import Ticket from './pages/product/ticket/Ticket';
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="productList" element={<ProductList />} />
         <Route path="itinerary" element={<Itinerary />} />
+        <Route path="site" element={<Site />} />
         <Route path="food" element={<Food />} />
         <Route path="stays" element={<Stays />} />
         <Route path="ticket" element={<Ticket />} />
