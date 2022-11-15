@@ -54,7 +54,7 @@ function NavBar() {
                   <img src={SearchIcon} alt="" />
                 </span>
                 <input
-                  className="form-control me-4"
+                  className="form-control search-border me-4"
                   type="search"
                   placeholder="搜尋"
                   aria-label="Search"
