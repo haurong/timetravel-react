@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import 'antd/dist/antd.css';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import './TimeTravel_Hotel.scss';
@@ -68,6 +69,7 @@ function Stays() {
   return (
     <>
       <NavBar />
+      <div style={{ width: '100%', height: '79px' }}></div>
       <BottomBar />
       <Carousel />
       <div style={{ width: '100%', height: '79px' }}></div>

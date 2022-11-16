@@ -18,7 +18,7 @@ const CarouselPic = {
   justifyContent: 'center',
 };
 const App = () => (
-  <Carousel autoplay>
+  <Carousel autoplay style={{ zIndex: '-1' }}>
     <div>
       <img style={CarouselPic} src={pic1}></img>
     </div>

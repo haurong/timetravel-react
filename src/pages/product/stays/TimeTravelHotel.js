@@ -16,6 +16,7 @@ import MobileFooter from './MobileFooter/MobileFooter';
 import HashChange from './HashChange/HashChange';
 import ComputerLikeAdd from './ComputerLikeAdd/ComputerLikeAdd';
 
+
 function TimeTravelHotel() {
   const Hotel_part1 = useRef();
   const Hotel_part2 = useRef();
