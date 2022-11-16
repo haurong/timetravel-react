@@ -1,0 +1,40 @@
+.ComDatePicker {
+  width: 100%;
+  height: 300px;
+  margin-top: 40px;
+}
+.ComDatePicker_Left {
+  position: relative;
+	.ComDatePicker_Left_text{
+		width: 550px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+	}
+  // background-color: red;
+}
+.ComDatePicker_Right {
+  background-color: #fff;
+}
+
+.hiddenBox {
+  // .ant-space-item {
+  // 	display: none;
+  // }
+  .ant-picker-panel-container {
+    box-shadow: none;
+  }
+  .ant-picker {
+    visibility: hidden;
+    transition: none;
+    transition-duration: 0s;
+  }
+}
+
+.popupDatePicker {
+  transform: translateY(-80px);
+  top: 0px;
+  left: 0px;
+  z-index: 20;
+  position: absolute;
+}

@@ -1,9 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import 'antd/dist/antd.css';
-import NavBar from '../../../layout/NavBar';
-import Footer from '../../../layout/Footer';
 import './TimeTravel_Hotel.scss';
-
 import Navbar from './NavBar/NavBar';
 import Carousel from './Carousel/Carousel';
 import Breadcrumb from './Breadcrumb/Breadcrumb';
@@ -19,9 +15,9 @@ import BottomBar from './BottomBar/BottomBar';
 import MobileFooter from './MobileFooter/MobileFooter';
 import HashChange from './HashChange/HashChange';
 import ComputerLikeAdd from './ComputerLikeAdd/ComputerLikeAdd';
-import ComDatePicker from './ComDatePicker/ComDatePicker';
 
-function Stays() {
+
+function TimeTravelHotel() {
   const Hotel_part1 = useRef();
   const Hotel_part2 = useRef();
   const Hotel_part3 = useRef();
@@ -67,14 +63,13 @@ function Stays() {
     // 	bodyOffsetY: document.body.offsetHeight,
     // });
   }, [isScroll]);
+
   return (
     <>
-      <NavBar />
-      <div style={{ width: '100%', height: '79px' }}></div>
+      {/* <Navbar /> */}
       <BottomBar />
       <Carousel />
       <HashChange allPart={allPart} />
-      <div style={{ width: '100%', height: '79px' }}></div>
       <div className="container">
         <div className="d-flex">
           <div className="Hotel_part0 Hotel_part0_left">
@@ -85,7 +80,6 @@ function Stays() {
             <Rate />
             <IconBar />
             <h4
-              className="ComputerHidden"
               style={{
                 color: '#59d8a1',
                 fontSize: '22px',
@@ -95,14 +89,11 @@ function Stays() {
               {/* TODO:拿到真實價格 */}TWD$599
             </h4>
           </div>
-          <div className="Hotel_part0_right MobileHidden">
-            <div className="Hotel_part0_right_icon d-flex ">
+          <div className="Hotel_part0_right">
+            <div className="Hotel_part0_right_icon d-flex">
               <ComputerLikeAdd />
             </div>
           </div>
-        </div>
-        <div className="MobileHidden givePadding">
-          <ComDatePicker />
         </div>
         <div
           id="Hotel_part1"
@@ -149,9 +140,10 @@ function Stays() {
           <Comment />
         </div>
       </div>
-      <Footer />
+      <MobileFooter />
+      <div style={{ height: '120px', backgroundColor: '#aeaeae' }}></div>
     </>
   );
 }
 
-export default Stays;
+export default TimeTravelHotel;

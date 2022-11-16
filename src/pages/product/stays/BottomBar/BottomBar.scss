@@ -29,6 +29,11 @@
 		}
 	}
 }
+@media (min-width: 992px) {
+	.BottomBar {
+		display: none;
+	}
+}
 
 .BottomBar_Buy {
 	/* outline: 1px solid green; */
@@ -37,4 +42,3 @@
 	align-items: center;
 	justify-content: space-around;
 }
-
