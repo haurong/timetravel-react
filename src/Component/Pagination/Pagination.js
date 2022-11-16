@@ -15,8 +15,9 @@ export default function BasicPagination() {
   return (
     <ThemeProvider theme={theme}>
       <Stack spacing={0}>
-        <Pagination count={7} variant="outlined" color="secondary" />
+        <Pagination count={5}  color="secondary" />
       </Stack>
     </ThemeProvider>
   );
 }
+// variant="outlined"

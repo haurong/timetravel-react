@@ -27,7 +27,7 @@ export default function Card_Carousel() {
       <SwiperSlide>
         <Card className="Card">
           <Card.Img variant="top" src={`${imgUrl}/uploads/Food/F116-1.jpg`} />
-          <button>
+          <button className="Heart_Btn">
             <Card.Img src={Heart} className="Card_Heart" />
           </button>
           <Card.Body>
@@ -47,7 +47,7 @@ export default function Card_Carousel() {
       <SwiperSlide>
         <Card className="Card">
           <Card.Img variant="top" src={`${imgUrl}/uploads/Food/F116-2.jpg`} />
-          <button>
+          <button className="Heart_Btn">
             <Card.Img src={Heart} className="Card_Heart" />
           </button>
           <Card.Body>
@@ -67,7 +67,7 @@ export default function Card_Carousel() {
       <SwiperSlide>
         <Card className="Card">
           <Card.Img variant="top" src={`${imgUrl}/uploads/Food/F116-3.jpg`} />
-          <button>
+          <button className="Heart_Btn">
             <Card.Img src={Heart} className="Card_Heart" />
           </button>
           <Card.Body>
@@ -87,7 +87,7 @@ export default function Card_Carousel() {
       <SwiperSlide>
         <Card className="Card">
           <Card.Img variant="top" src={`${imgUrl}/uploads/Food/F116-4.jpg`} />
-          <button>
+          <button className="Heart_Btn">
             <Card.Img src={Heart} className="Card_Heart" />
           </button>
           <Card.Body>
