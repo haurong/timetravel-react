@@ -3,7 +3,7 @@ import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import Carousel from '../../../Component/Carousel/Carousel';
 import Pagination from '../../../Component/Pagination/Pagination';
-
+import Card_Carousel from '../../../Component/Carousel/Card_Carousel';
 //breadcrumb還沒導入component
 function Food() {
   return (
@@ -67,7 +67,9 @@ function Food() {
           </div>
         </div>
       </div>
-      
+      <div className="container">
+      <Card_Carousel />
+      </div>
       <Footer />
     </>
   );

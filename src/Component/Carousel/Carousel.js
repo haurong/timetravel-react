@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { imgServerUrl } from '../../config';
+import { imgUrl } from '../../config';
 // Import Swiper styles
 import 'swiper/scss';
 import 'swiper/scss/pagination';
@@ -22,31 +22,31 @@ export default function Carousel() {
     >
       <SwiperSlide>
         <img
-          src={`${imgServerUrl}/uploads/Food/F116-1.jpg`}
+          src={`${imgUrl}/uploads/Food/F116-1.jpg`}
           className="carousel_img"
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
-          src={`${imgServerUrl}/uploads/Food/F116-2.jpg`}
+          src={`${imgUrl}/uploads/Food/F116-2.jpg`}
           className="carousel_img"
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
-          src={`${imgServerUrl}/uploads/Food/F116-3.jpg`}
+          src={`${imgUrl}/uploads/Food/F116-3.jpg`}
           className="carousel_img"
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
-          src={`${imgServerUrl}/uploads/Food/F116-4.jpg`}
+          src={`${imgUrl}/uploads/Food/F116-4.jpg`}
           className="carousel_img"
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
-          src={`${imgServerUrl}/uploads/Food/F116-5.jpg`}
+          src={`${imgUrl}/uploads/Food/F116-5.jpg`}
           className="carousel_img"
         />
       </SwiperSlide>

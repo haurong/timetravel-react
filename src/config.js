@@ -7,10 +7,11 @@
 //從node抓照片資料
 export const appConfig = {
   debug: true,
-  devUrl: 'http://localhost:3000',
+  devUrl: 'http://localhost:3001',
   devServerUrl: 'http://localhost:3001',
   prodUrl: 'https://www.timetravel.com',
 };
 
-export const imgUrl = appConfig.debug ? appConfig.devUrl : appConfig.prodUrl;
-
+export const imgUrl = appConfig.debug
+  ? appConfig.devServerUrl
+  : appConfig.prodUrl;

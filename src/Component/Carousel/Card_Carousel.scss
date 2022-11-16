@@ -1,0 +1,51 @@
+
+.swiper{
+    width: 100%;
+    position: relative;
+    .Card{
+        max-width: 250px;
+        max-height: 320px;
+    }
+    .Card_Title{
+        font-size: 18px;
+        color:#4D4D4D;   
+    }
+    button{
+        width: 40px;
+        height: 40px;
+        border: none;
+        background-color:rgba(255, 255, 255, 0.004);
+        position: absolute;
+        top: 0;
+        right:0;
+    }
+    .Card_Heart{
+        width: 100%;
+        height: 100%;
+        background-color: none; 
+    }
+    .card-img-top{
+        max-width: 250px;
+        max-height: 180px;
+    }
+    .Star_icon{
+        width: 30px;
+        height: 30px;
+    }
+    .Card_Score{
+        margin-left: 10px;
+        padding-top: 10px;
+        text-align: center;
+        font-size: 14px;
+    }
+    .Card_Price{
+        text-align: end;
+        color: #59D8A1;
+    }
+    // @media (max-width: 768px){
+        
+    // }
+}
+
+
+
