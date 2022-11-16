@@ -19,6 +19,7 @@ import BottomBar from './BottomBar/BottomBar';
 import MobileFooter from './MobileFooter/MobileFooter';
 import HashChange from './HashChange/HashChange';
 import ComputerLikeAdd from './ComputerLikeAdd/ComputerLikeAdd';
+import ComDatePicker from './ComDatePicker/ComDatePicker';
 
 function Stays() {
   const Hotel_part1 = useRef();
@@ -72,6 +73,7 @@ function Stays() {
       <div style={{ width: '100%', height: '79px' }}></div>
       <BottomBar />
       <Carousel />
+      <HashChange allPart={allPart} />
       <div style={{ width: '100%', height: '79px' }}></div>
       <div className="container">
         <div className="d-flex">
@@ -83,6 +85,7 @@ function Stays() {
             <Rate />
             <IconBar />
             <h4
+              className="ComputerHidden"
               style={{
                 color: '#59d8a1',
                 fontSize: '22px',
@@ -92,11 +95,14 @@ function Stays() {
               {/* TODO:拿到真實價格 */}TWD$599
             </h4>
           </div>
-          <div className="Hotel_part0_right">
-            <div className="Hotel_part0_right_icon d-flex">
+          <div className="Hotel_part0_right MobileHidden">
+            <div className="Hotel_part0_right_icon d-flex ">
               <ComputerLikeAdd />
             </div>
           </div>
+        </div>
+        <div className="MobileHidden givePadding">
+          <ComDatePicker />
         </div>
         <div
           id="Hotel_part1"
