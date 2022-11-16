@@ -20,16 +20,16 @@ const CarouselPic = {
 const App = () => (
   <Carousel autoplay style={{ zIndex: '-1' }}>
     <div>
-      <img style={CarouselPic} src={pic1}></img>
+      <img style={CarouselPic} src={pic1} alt=""></img>
     </div>
     <div>
-      <img style={CarouselPic} src={pic2}></img>
+      <img style={CarouselPic} src={pic2} alt=""></img>
     </div>
     <div>
-      <img style={CarouselPic} src={pic3}></img>
+      <img style={CarouselPic} src={pic3} alt=""></img>
     </div>
     <div>
-      <img style={CarouselPic} src={pic4}></img>
+      <img style={CarouselPic} src={pic4} alt=""></img>
     </div>
   </Carousel>
 );
