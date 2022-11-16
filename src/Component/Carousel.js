@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 // import required modules
 import { Pagination, Navigation } from 'swiper';
 
-export default function App() {
+export default function Carousel() {
   return (
     <>
       <Swiper
