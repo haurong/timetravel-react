@@ -1,0 +1,36 @@
+#icontainer {
+    display: flex;
+    margin: 100px 0;
+    justify-content:center;
+    #iList {
+        background-color: #ccc;
+        width: 480px;
+        height: 600px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+    #iDay{
+        // display: flex;
+        // align-items: center;
+        width: 100%;
+        outline: 1px solid blue;
+    }
+    
+    #iItem{
+        width: 100%;
+        height: 110px;
+        outline: 1px solid red;
+        display: flex;
+        align-items: center;
+        .iItem-img{
+            width: 100px;
+            height: 70px;
+        }
+    }
+    .leaflet-container {
+        width: 720px;
+        height: 600px;
+      }
+}
+
+

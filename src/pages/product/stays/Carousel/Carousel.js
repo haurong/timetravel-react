@@ -12,25 +12,25 @@ import pic4 from './pic/1-4.jpg';
 // 	background: '#364d79',
 // };
 const CarouselPic = {
-	width: '100%',
-	height: '360px',
-	display: 'flex',
-	justifyContent: 'center',
+  width: '100%',
+  height: '360px',
+  display: 'flex',
+  justifyContent: 'center',
 };
 const App = () => (
-	<Carousel autoplay>
-		<div>
-			<img style={CarouselPic} src={pic1}></img>
-		</div>
-		<div>
-			<img style={CarouselPic} src={pic2}></img>
-		</div>
-		<div>
-			<img style={CarouselPic} src={pic3}></img>
-		</div>
-		<div>
-			<img style={CarouselPic} src={pic4}></img>
-		</div>
-	</Carousel>
+  <Carousel autoplay style={{ zIndex: '-1' }}>
+    <div>
+      <img style={CarouselPic} src={pic1} alt=""></img>
+    </div>
+    <div>
+      <img style={CarouselPic} src={pic2} alt=""></img>
+    </div>
+    <div>
+      <img style={CarouselPic} src={pic3} alt=""></img>
+    </div>
+    <div>
+      <img style={CarouselPic} src={pic4} alt=""></img>
+    </div>
+  </Carousel>
 );
 export default App;
