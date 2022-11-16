@@ -7,7 +7,7 @@ function Comment() {
 	return (
 		<div>
 			<div className="Comment_Top">
-				<span>4.3</span>
+				<span className="Comment_top_span">4.3</span>
 				<div className="RateAndNumber">
 					<Rate disabled defaultValue={4} className="TimeTravel_Rate" />
 					<p>437條評論</p>

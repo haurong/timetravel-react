@@ -1,8 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import NavBar from '../../../layout/NavBar';
-import Footer from '../../../layout/Footer';
 import './TimeTravel_Hotel.scss';
-
 import Navbar from './NavBar/NavBar';
 import Carousel from './Carousel/Carousel';
 import Breadcrumb from './Breadcrumb/Breadcrumb';
@@ -19,7 +16,7 @@ import MobileFooter from './MobileFooter/MobileFooter';
 import HashChange from './HashChange/HashChange';
 import ComputerLikeAdd from './ComputerLikeAdd/ComputerLikeAdd';
 
-function Stays() {
+function TimeTravelHotel() {
   const Hotel_part1 = useRef();
   const Hotel_part2 = useRef();
   const Hotel_part3 = useRef();
@@ -65,12 +62,13 @@ function Stays() {
     // 	bodyOffsetY: document.body.offsetHeight,
     // });
   }, [isScroll]);
+
   return (
     <>
-      <NavBar />
+      {/* <Navbar /> */}
       <BottomBar />
       <Carousel />
-      <div style={{ width: '100%', height: '79px' }}></div>
+      <HashChange allPart={allPart} />
       <div className="container">
         <div className="d-flex">
           <div className="Hotel_part0 Hotel_part0_left">
@@ -141,9 +139,10 @@ function Stays() {
           <Comment />
         </div>
       </div>
-      <Footer />
+      <MobileFooter />
+      <div style={{ height: '120px', backgroundColor: '#aeaeae' }}></div>
     </>
   );
 }
 
-export default Stays;
+export default TimeTravelHotel;

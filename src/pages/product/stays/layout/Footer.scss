@@ -1,0 +1,35 @@
+.footer{
+    background-color: #AEAEAE;
+    .logo-icon{
+        padding-bottom: 50px;
+    }
+    .icon{
+        float:right;
+        img{
+            width: 30px;
+        }
+    }
+    .footer-line{
+        background-color: #fff;
+        height: 2px;
+    }
+    .footer-text{
+        padding-top: 50px;
+        justify-content: space-between;
+        p{
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+}
+@media (min-width: 992px) {
+    .footer-text{
+        padding-top: 50px;
+        p{
+            color: #fff;
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+}
