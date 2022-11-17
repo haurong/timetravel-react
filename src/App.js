@@ -5,6 +5,7 @@ import React from 'react';
 import Home from './pages/Home';
 import ProductList from './pages/product/ProductList';
 import Itinerary from './pages/product/itinerary/Itinerary';
+import Site from './pages/product/itinerary/Site';
 import Food from './pages/product/food/Food';
 import Stays from './pages/product/stays/Stays';
 import Ticket from './pages/product/ticket/Ticket';
@@ -12,6 +13,8 @@ import LogIn from './pages/member/LogIn';
 import ForgetPassword from './pages/member/ForgetPassword';
 import SignIn from './pages/member/SignIn';
 import Cart from './pages/cart/Cart';
+import ItineraryDetail from './pages/product/itinerary/Itinerary-detail';
+
 
 function App() {
   return (
@@ -21,6 +24,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="productList" element={<ProductList />} />
         <Route path="itinerary" element={<Itinerary />} />
+        <Route path="itinerary_detail" element={<ItineraryDetail />} />
+        <Route path="site" element={<Site />} />
         <Route path="food" element={<Food />} />
         <Route path="stays" element={<Stays />} />
         <Route path="ticket" element={<Ticket />} />

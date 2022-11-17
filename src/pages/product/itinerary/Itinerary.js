@@ -6,6 +6,7 @@ function Itinerary() {
   return (
     <>
       <NavBar />
+
       <Footer />
     </>
   );
