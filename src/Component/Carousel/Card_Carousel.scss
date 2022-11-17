@@ -3,8 +3,9 @@
     width: 100%;
     position: relative;
     .Card{
-        max-width: 250px;
-        max-height: 320px;
+        padding: auto 0;
+       max-width:320px;
+       height: 380px;
     }
     .Card_Title{
         font-size: 18px;
@@ -25,13 +26,14 @@
         background-color: none; 
     }
     .card-img-top{
-        max-width: 250px;
-        max-height: 180px;
+        max-width: 100%;
+        height: 80%;
     }
     .Star_icon{
         width: 30px;
         height: 30px;
     }
+   
     .Card_Score{
         margin-left: 10px;
         padding-top: 10px;
@@ -41,10 +43,9 @@
     .Card_Price{
         text-align: end;
         color: #59D8A1;
+        margin: 0;
     }
-    // @media (max-width: 768px){
-        
-    // }
+    
 }
 
 

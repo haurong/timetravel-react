@@ -38,9 +38,9 @@ export default function Card_Carousel() {
               <Card.Img src={Star} className="Star_icon" />
               <span class="Card_Score">4.5/5</span>
             </Card.Text>
-            <h5 variant="primary" class="Card_Price">
+            <h2 variant="primary" className="Card_Price">
               NT100
-            </h5>
+            </h2>
           </Card.Body>
         </Card>
       </SwiperSlide>
@@ -58,9 +58,9 @@ export default function Card_Carousel() {
               <Card.Img src={Star} className="Star_icon" />
               <span class="Card_Score">4.5/5</span>
             </Card.Text>
-            <h5 variant="primary" class="Card_Price">
+            <h2 variant="primary" className="Card_Price">
               NT100
-            </h5>
+            </h2>
           </Card.Body>
         </Card>
       </SwiperSlide>
@@ -78,19 +78,19 @@ export default function Card_Carousel() {
               <Card.Img src={Star} className="Star_icon" />
               <span class="Card_Score">4.5/5</span>
             </Card.Text>
-            <h5 variant="primary" class="Card_Price">
+            <h2 variant="primary" className="Card_Price">
               NT100
-            </h5>
+            </h2>
           </Card.Body>
         </Card>
       </SwiperSlide>
       <SwiperSlide>
         <Card className="Card">
-          <Card.Img variant="top" src={`${imgUrl}/uploads/Food/F116-4.jpg`} />
+          <Card.Img variant="top" src={`${imgUrl}/uploads/Food/F116-3.jpg`} />
           <button className="Heart_Btn">
             <Card.Img src={Heart} className="Card_Heart" />
           </button>
-          <Card.Body>
+          <Card.Body >
             <Card.Title className="Card_Title">
               時間之旅 | 現金抵用券
             </Card.Title>
@@ -98,9 +98,9 @@ export default function Card_Carousel() {
               <Card.Img src={Star} className="Star_icon" />
               <span class="Card_Score">4.5/5</span>
             </Card.Text>
-            <h5 variant="primary" class="Card_Price">
+            <h2 variant="primary" className="Card_Price">
               NT100
-            </h5>
+            </h2>
           </Card.Body>
         </Card>
       </SwiperSlide>

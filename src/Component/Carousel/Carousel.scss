@@ -4,8 +4,7 @@
   overflow: hidden;
   .swiper-button-prev,
   .swiper-rtl .swiper-button-next {
-    width: calc(var(--swiper-navigation-size) / 44 * 20);
-    height: calc(var(--swiper-navigation-size)/44 * 20);
+ 
     &:after {
       color:#FFFFFF;
       content: 'prev';

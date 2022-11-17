@@ -2,17 +2,20 @@ import React from 'react';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import Carousel from '../../../Component/Carousel/Carousel';
-import Pagination from '../../../Component/Pagination/Pagination';
+// import Pagination from '../../../Component/Pagination/Pagination';
 import Card_Carousel from '../../../Component/Carousel/Card_Carousel';
 import Heart_icon from '../../../icon/heart_gray.svg';
 import Calendar_icon from '../../../icon/calendar.svg';
 import Map_icon from '../../../icon/map_blue.svg';
+import Map_Green_icon from '../../../icon/map.svg';
 import Food_icon from '../../../icon/food_blue.svg';
 import Phone_icon from '../../../icon/iphone.svg';
 import Star_icon from '../../../icon/star.svg';
 import Minus_icon from '../../../icon/minus.svg';
 import Add_icon from '../../../icon/add.svg';
-import Card_List from '../../../Component/Card_List/Card_List';
+import House_icon from '../../../icon/house.svg';
+import { imgUrl } from '../../../config.js';
+//import Card_List from '../../../Component/Card_List/Card_List';
 import './Food.scss';
 //breadcrumb還沒導入component
 function Food() {
@@ -43,7 +46,7 @@ function Food() {
         <div className="container">
           <div className="product_name d-flex">
             <div className="product_name_title">
-              <h4>萬祝號</h4>
+              <h1>萬祝號</h1>
             </div>
             <div className="Heart_Calendar_icon">
               <img src={Heart_icon} className="Heart_icon" alt="" />
@@ -107,10 +110,128 @@ function Food() {
           </div>
         </div>
       </div>
-      {/* <div className="container">
+      <div className="container product_information d-flex ">
+        <div className="col-lg-9">
+          <h2>商品介紹</h2>
+          <div className=" product_information_img">
+            <img src={`${imgUrl}/uploads/Food/F116-4.jpg`} alt="" />
+            <p>吧台區</p>
+            <img src={`${imgUrl}/uploads/Food/F116-3.jpg`} alt="" />
+            <p>巴斯克乳酪蛋糕</p>
+            <img src={`${imgUrl}/uploads/Food/F116-2.jpg`} alt="" />
+            <p>咖啡拿鐵</p>
+          </div>
+        </div>
+        <div className="col-lg-3 hashchange">
+          <div className="hashchange_slider"></div>
+          <div className="hashchange_text">
+            <div>
+              <p>商品介紹</p>
+            </div>
+            <div>
+              <p>如何使用</p>
+            </div>
+            <div>
+              <p>適用店家</p>
+            </div>
+            <div>
+              <p>旅客評價</p>
+            </div>
+            <div>
+              <p>推薦美食</p>
+            </div>
+            <div>
+              <p>回到最上層</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container use_and_store col-lg-10 p-0">
+        <div className="how_to_use col-lg-10">
+          <div className="use_title_img d-flex align-items-center">
+            <img
+              src={Phone_icon}
+              style={{ width: '30px', height: '30px' }}
+              alt=""
+            />
+            <h2>如何使用</h2>
+          </div>
+          <ul>
+            <li>現場請出示QRCODE</li>
+          </ul>
+        </div>
+        <div className="store col-lg-10">
+          <div className="store_title_img d-flex align-items-center">
+            <img
+              src={House_icon}
+              style={{ width: '30px', height: '30px' }}
+              alt=""
+            />
+            <h2>適用店家</h2>
+          </div>
+          <p>萬祝號</p>
+          <p>地址：基隆市中正區中正路560號</p>
+          <p>營業時間：1100-1900</p>
+          <button type="button" className="btn btn-outline-success map_btn">
+            <img src={Map_Green_icon} alt="" width="25" height="25" />
+            <span>查看地圖</span>
+          </button>
+        </div>
+      </div>
+      <div className="container commit col-lg-10 ">
+        <div>
+          <h1>旅客評價</h1>
+        </div>
+        <div className="commit_title d-flex align-items-center ">
+          <h2>4.3</h2>
+          <div className="member_star_group star_group d-flex">
+            <img src={Star_icon} alt="" />
+            <img src={Star_icon} alt="" />
+            <img src={Star_icon} alt="" />
+            <img src={Star_icon} alt="" />
+            <img src={Star_icon} alt="" />
+            <span>15篇評論</span>
+            <div className="commit_hot">
+              <span>熱門程度</span>
+              <img
+                src="./images/icon/icon/sort.svg"
+                width="35"
+                height="35"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <hr style={{ maxWidth: '700px' }} />
+        <div className="member_commit  col-lg-10">
+          <div className="member_commit_notext d-flex align-items-center">
+            <img
+              src="https://picsum.photos/id/1020/50/50"
+              alt=""
+              className="member_img_commit"
+            />
+            <h2 className="member">小杜</h2>
+          </div>
+          <div className="member_star_group star_group">
+            <img src={Star_icon} alt="" />
+            <img src={Star_icon} alt="" />
+            <img src={Star_icon} alt="" />
+            <img src={Star_icon} alt="" />
+            <img src={Star_icon} alt="" />
+          </div>
+          <div className="commit_text">
+            <p>
+              位在馬路旁很低調的一個空間，內部復古的工業風點綴上些許綠意，店內舒適，空間寬敞舒服，
+              <br />
+              但位置不多～平日中午去人潮陸陸續續湧入，飲品、甜點都還不錯，去基隆可以去！推推！
+            </p>
+          </div>
+        </div>
+        <hr style={{ maxWidth: '700px' }} />
+      </div>
+      <div className="container ">
         <Card_Carousel />
-      </div> */}
-      {/* <Card_List /> */}
+      </div>
       <Footer />
     </>
   );

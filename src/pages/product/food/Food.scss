@@ -1,8 +1,13 @@
 .container{
- 
+    padding: 0;
+    font-family: 'Noto Sans TC', sans-serif;
     .product_name{
+        
         margin-top: 25px;
         justify-content:space-between;
+        .product_name_title h1{
+            color:#4D4D4D;
+        }
             .Calender_icon{
                 margin-left: 20px;
             }
@@ -39,7 +44,14 @@
         }
     }
     .product_text{
+        font-family: 'Noto Sans TC', sans-serif;
+        
+        color:#4D4D4D;
         margin-top: 50px;
+        p{
+            line-height: 1.8rem;
+            font-size: 18px;
+        }
     }
     .choose{
         .quantity_title{
@@ -85,11 +97,52 @@
             background-color: #59D8A1;
         }
     }
-   
-    .Heart_icon, .Calender_icon, .Phone_icon,.Map_icon,.Food_icon,.star_group img{
+    .product_information_img 
+        img{
+            max-width: 700px;
+            max-height: 700px;
+        }
+        p{
+            margin: 20px 0;
+        }
+    .hashchange{
+        margin-top: 30px;
+    }
+    .hashchange_slider{
+        width: 8px;
+        height: 30px;
+        background-color:#59d8a1;
+        position:absolute;
+        margin-top: 20px;
+        
+    }
+    .hashchange_text{
+        margin-left: 10px;
+        position: relative;
+    }
+    .Heart_icon, .Calender_icon, .Phone_icon,.Map_icon,.Food_icon{
         width: 40px;
         height: 40px;
     }
-    //
+    .star_group img{
+        width: 30px;
+        height: 30px;
+    }
+    .use_and_store{
+        margin-top: 30px;
+    }
+    .use_title_img,.store_title_img{
+        margin: 30px 0 ; 
+    }
+    .use_title_img > h2 ,.store_title_img > h2{
+        margin:0 0 0 20px
+    }
+    .map_btn{
+        color:#59D8A1;
+    }
+   
+    .commit{
+        margin: 100px 0;
+    }
 }
  
