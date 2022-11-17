@@ -57,6 +57,9 @@
         border-radius: 20px;
         padding: 0;
     }
+    .search-border:focus{
+        box-shadow:none;
+    }
     img{
         width: 26px;
         height: 26px;

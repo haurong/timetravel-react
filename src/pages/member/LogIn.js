@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext, useState } from 'react';
 import axios from 'axios';
-import { LOGIN_API } from '../my-config';
+//import { LOGIN_API } from '../../config';
 import AuthContext from './context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import '../member/style/LogIn.scss';
@@ -27,21 +27,21 @@ function LogIn() {
     setFormData({ ...formData, [id]: val });
   };
 
-  const mySubmit = async (e) => {
-    e.preventDefault();
-    const { data } = await axios.post(LOGIN_API, formData);
-    console.log(data);
-    if (data.success) {
-      localStorage.setItem('auth', JSON.stringify(data.auth));
-      alert('登入成功');
-      console.log(JSON.stringify(data));
-      setMyAuth({ ...data.auth, authorised: true });
-      navigate('/');
-    } else {
-      localStorage.removeItem('auth'); // 移除
-      alert('登入失敗');
-    }
-  };
+  // const mySubmit = async (e) => {
+  //   e.preventDefault();
+  //   const { data } = await axios.post(LOGIN_API, formData);
+  //   console.log(data);
+  //   if (data.success) {
+  //     localStorage.setItem('auth', JSON.stringify(data.auth));
+  //     alert('登入成功');
+  //     console.log(JSON.stringify(data));
+  //     setMyAuth({ ...data.auth, authorised: true });
+  //     navigate('/');
+  //   } else {
+  //     localStorage.removeItem('auth'); // 移除
+  //     alert('登入失敗');
+  //   }
+  // };
   return (
     <>
       <div className="container ">
@@ -51,7 +51,7 @@ function LogIn() {
               <img src={Logo} alt="logo" />
             </Link>
 
-            <Form className="form col-5 m-auto" onSubmit={mySubmit}>
+            <Form className="form col-5 m-auto">
               <h1 className="login-text text-center pb-5">登入</h1>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
