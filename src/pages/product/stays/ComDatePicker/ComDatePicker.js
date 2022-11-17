@@ -5,6 +5,7 @@ import moment from 'moment/moment';
 import locale from 'antd/es/date-picker/locale/zh_TW';
 import RoomChoose from '../RoomChoose/RoomChoose';
 import RoomCounts from '../RoomCounts/RoomCounts';
+import BuyButton from '../BuyButton/BuyButton';
 const { RangePicker } = DatePicker;
 
 function ComDatePicker() {
@@ -71,6 +72,18 @@ function ComDatePicker() {
           <RoomChoose />
           <h5 style={{ marginTop: '50px' }}>房數</h5>
           <RoomCounts />
+          <h4
+            style={{
+              color: '#59d8a1',
+              fontSize: '22px',
+              marginBottom: '30px',
+            }}
+          >
+            TWD$599
+          </h4>
+          <div className="d-flex ComDatePicker_Right_BuyButton ">
+            <BuyButton />
+          </div>
         </div>
       </div>
     </>
