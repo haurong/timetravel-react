@@ -1,20 +1,53 @@
 .ComDatePicker {
   width: 100%;
-  height: 300px;
+  height: 500px;
   margin-top: 40px;
 }
 .ComDatePicker_Left {
-  position: relative;
-	.ComDatePicker_Left_text{
-		width: 550px;
-		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
-	}
+  .ComDatePicker_Left_text {
+    width: 540px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h5 {
+			margin: 0px;
+      span {
+        color: #59d8a1;
+        margin-left: 10px;
+      }
+    }
+    .ComDatePicker_Left_text_tag {
+      width: 84px;
+      height: 36px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #59d8a1;
+      color: white;
+      border-radius: 36px;
+      h5 {
+        margin: 0px;
+        color: #fff;
+        span {
+          margin: 0px;
+          color: #fff;
+        }
+      }
+    }
+  }
   // background-color: red;
 }
 .ComDatePicker_Right {
   background-color: #fff;
+	.ComDatePicker_Right_text{
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		height: 36px;
+		h5{
+			margin: 0px;
+		}
+	}
 }
 
 .hiddenBox {
@@ -26,6 +59,7 @@
   }
   .ant-picker {
     visibility: hidden;
+    transform: translateX(-10px);
     transition: none;
     transition-duration: 0s;
   }
@@ -33,8 +67,11 @@
 
 .popupDatePicker {
   transform: translateY(-80px);
-  top: 0px;
-  left: 0px;
   z-index: 20;
-  position: absolute;
+  @media (max-width: 992px) {
+    display: none;
+  }
+}
+.RangePicker_relative {
+  position: relative;
 }

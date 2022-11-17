@@ -149,7 +149,15 @@ function Stays() {
           <Comment />
         </div>
       </div>
-      <Footer />
+      <div className="ComputerHidden">
+        <MobileFooter />
+        <div
+          style={{ height: '120px', width: '100%', backgroundColor: '#aeaeae' }}
+        ></div>
+      </div>
+      <div className="MobileHidden">
+        <Footer />
+      </div>
     </>
   );
 }
