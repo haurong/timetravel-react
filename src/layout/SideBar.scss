@@ -1,10 +1,15 @@
-.sideBar-list{
-    padding: 7px 14px;
+.sideBar-list-group{
+    .sideBar-list{
+        margin: 10px 30px;
+        padding: 7px 14px;
+        list-style-type:none;
+    }
+    .sideBar-link{
+        color: #4D4D4D;
+        
+    }
 }
-.sideBar-link{
-    color: #4D4D4D;
-    
-}
+
 .sideBar-link:hover{
     color: #59D8A1;
 }

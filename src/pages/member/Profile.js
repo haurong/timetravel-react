@@ -8,7 +8,11 @@ function Profile() {
   return (
     <>
       <NavBar />
-      <SideBar />
+      <div className="container">
+        <div className="givePadding">
+          <SideBar />
+        </div>
+      </div>
       <Footer />
     </>
   );
