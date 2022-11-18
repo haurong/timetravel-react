@@ -18,7 +18,7 @@
   }
 }
 .Hotel_partHidden {
-  height: 0px;
+  height: 80px;
   @media (max-width: 992px) {
     height: 80px;
   }
@@ -28,4 +28,10 @@ div {
   -moz-user-select: none;
   -o-user-select: none;
   user-select: none;
+}
+#Hotel_part4{
+  height: 0px;
+}
+.noPadding{
+  padding-top: 80px;
 }

@@ -153,12 +153,8 @@ function Stays() {
               <HotelDetail />
               <MapButton />
             </div>
-            <div
-              className="Hotel_partHidden"
-              id="Hotel_part4"
-              ref={Hotel_part4}
-            ></div>
-            <div className="givePadding col-lg-8">
+            <div className="" id="Hotel_part4" ref={Hotel_part4}></div>
+            <div className="givePadding col-lg-8 noPadding">
               <div className="d-flex" style={{ alignItems: 'center' }}>
                 <h2
                   style={{
