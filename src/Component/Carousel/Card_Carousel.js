@@ -26,7 +26,7 @@ export default function Card_Carousel() {
     >
       <SwiperSlide>
         <Card className="Card">
-          <Card.Img variant="top" src={`${imgUrl}/uploads/Food/F116-1.jpg`} />
+          <Card.Img variant="top" className="Food_Card_Img1" />
           <button className="Heart_Btn">
             <Card.Img src={Heart} className="Card_Heart" />
           </button>
@@ -46,7 +46,7 @@ export default function Card_Carousel() {
       </SwiperSlide>
       <SwiperSlide>
         <Card className="Card">
-          <Card.Img variant="top" src={`${imgUrl}/uploads/Food/F116-2.jpg`} />
+          <Card.Img variant="top" className="Food_Card_Img2" />
           <button className="Heart_Btn">
             <Card.Img src={Heart} className="Card_Heart" />
           </button>
@@ -66,7 +66,7 @@ export default function Card_Carousel() {
       </SwiperSlide>
       <SwiperSlide>
         <Card className="Card">
-          <Card.Img variant="top" src={`${imgUrl}/uploads/Food/F116-3.jpg`} />
+          <Card.Img variant="top" className="Food_Card_Img3" />
           <button className="Heart_Btn">
             <Card.Img src={Heart} className="Card_Heart" />
           </button>
@@ -86,11 +86,11 @@ export default function Card_Carousel() {
       </SwiperSlide>
       <SwiperSlide>
         <Card className="Card">
-          <Card.Img variant="top" src={`${imgUrl}/uploads/Food/F116-3.jpg`} />
+          <Card.Img variant="top" className="Food_Card_Img4" />
           <button className="Heart_Btn">
             <Card.Img src={Heart} className="Card_Heart" />
           </button>
-          <Card.Body >
+          <Card.Body>
             <Card.Title className="Card_Title">
               時間之旅 | 現金抵用券
             </Card.Title>

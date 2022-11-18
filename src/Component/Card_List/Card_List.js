@@ -5,7 +5,7 @@ import { imgUrl } from '../../config';
 import Star from '../../icon/star.svg';
 import Heart from '../../icon/heart_white.svg';
 import './Card_List.scss';
-function GridExample() {
+function Card_List() {
   return (
     <Row xs={1} md={2} lg={3} className="g-4">
       {Array.from({ length: 12 }).map((_, idx) => (
@@ -33,4 +33,4 @@ function GridExample() {
   );
 }
 
-export default GridExample;
+export default Card_List;

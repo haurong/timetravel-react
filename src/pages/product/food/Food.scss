@@ -1,148 +1,15 @@
-.container{
-    padding: 0;
-    font-family: 'Noto Sans TC', sans-serif;
-    .product_name{
-        
-        margin-top: 25px;
-        justify-content:space-between;
-        .product_name_title h1{
-            color:#4D4D4D;
-        }
-            .Calender_icon{
-                margin-left: 20px;
-            }
+.FoodListGrooup{
+    .card{
+        margin-top: 60px;
     }
-    .star_group{
-        display: flex;
-        align-items: center;
-        margin-top: 25px;
-        p{
-            margin:0 0 0 10px;
-            color:#8A8A8A;
-            font-size: 18px;
-        }
+    .Accordion{
+        margin-top: 100px;
     }
-    .location{
-        position: relative;
-        display: flex;
-        align-items: center;
-        padding: 0;
-        margin-top: 25px;
-        .map_cate{
-            display: flex;
-            .cate{
-                margin-left: 25px;
-            }
-        }
-        .tickets_group{
-            margin-left: 100px;
-        }
-        p{
-            font-size: 18px;
-            padding-top: 10px;
-            margin:0 0 0 10px
-        }
-    }
-    .product_text{
-        font-family: 'Noto Sans TC', sans-serif;
-        
-        color:#4D4D4D;
-        margin-top: 50px;
-        p{
-            line-height: 1.8rem;
-            font-size: 18px;
-        }
-    }
-    .choose{
-        .quantity_title{
-            position: relative;
-            bottom:32px;
-            margin-bottom: 0;
-            font-size: 18px;
-            
-        }
-        .quantity{
-            p{
-                padding-top: 3px;
-                font-size: 18px;
-                margin: 0 20px;
-                color:#4D4D4D;
-            }
-            
-            .Minus_icon,.Add_icon{
-                width: 30px;
-                height: 30px;
-            }
-        }
-        .price{
-            margin-top: 20px;
-            .price1{
-                text-decoration: line-through;
-                color:#D9D9D9;
-            }
-            .price2{
-                color:#59D8A1;
-            }
-        }
-    }
-    .btnGroup{
-        margin-top: 20px;
-        .add_cart{
-            background-color:#63D2FF;
-            color:#FFFFFF;
-            margin-right: 30px;
-        }
-        .buy_now{
-            color:#FFFFFF;
-            background-color: #59D8A1;
-        }
-    }
-    .product_information_img 
-        img{
-            max-width: 700px;
-            max-height: 700px;
-        }
-        p{
-            margin: 20px 0;
-        }
-    .hashchange{
-        margin-top: 30px;
-    }
-    .hashchange_slider{
-        width: 8px;
-        height: 30px;
-        background-color:#59d8a1;
-        position:absolute;
-        margin-top: 20px;
-        
-    }
-    .hashchange_text{
-        margin-left: 10px;
-        position: relative;
-    }
-    .Heart_icon, .Calender_icon, .Phone_icon,.Map_icon,.Food_icon{
-        width: 40px;
-        height: 40px;
-    }
-    .star_group img{
-        width: 30px;
-        height: 30px;
-    }
-    .use_and_store{
-        margin-top: 30px;
-    }
-    .use_title_img,.store_title_img{
-        margin: 30px 0 ; 
-    }
-    .use_title_img > h2 ,.store_title_img > h2{
-        margin:0 0 0 20px
-    }
-    .map_btn{
-        color:#59D8A1;
+    .Food_pagination {
+        margin-bottom: 30px;
+        justify-content:center;
+        align-content: center;
+    
     }
    
-    .commit{
-        margin: 100px 0;
-    }
 }
- 

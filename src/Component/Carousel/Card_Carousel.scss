@@ -1,14 +1,18 @@
-
-.swiper{
+.swiper-slide{
     width: 100%;
+}
+.swiper{
     position: relative;
+  
     .Card{
-        padding: auto 0;
-       max-width:320px;
+      margin:0 10px;
+       width:350px;
        height: 380px;
+       box-shadow: 0 0 18px 0 rgba(0,0,0,0.1);
     }
     .Card_Title{
-        font-size: 18px;
+
+        font-size: 21px;
         color:#4D4D4D;   
     }
     .Heart_Btn{
@@ -26,26 +30,64 @@
         background-color: none; 
     }
     .card-img-top{
-        max-width: 100%;
+        width: 100%;
         height: 80%;
     }
     .Star_icon{
         width: 30px;
         height: 30px;
     }
-   
-    .Card_Score{
-        margin-left: 10px;
-        padding-top: 10px;
-        text-align: center;
-        font-size: 14px;
+    .Card_Text{
+        align-content: flex-end;
+        .Card_Score{
+            margin-left: 10px;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
     }
+  
     .Card_Price{
         text-align: end;
         color: #59D8A1;
         margin: 0;
     }
-    
+    .Food_Card_Img1{
+        object-fit: cover;  
+        width: 100%;
+        height: 100%;
+        background-image: url('http://localhost:3001/uploads/Food/F116-1.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .Food_Card_Img2{
+        object-fit: cover;  
+        width: 100%;
+        height: 100%;
+        background-image: url('http://localhost:3001/uploads/Food/F116-1.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .Food_Card_Img3{
+        object-fit: cover;  
+        width: 100%;
+        height: 100%;
+        background-image: url('http://localhost:3001/uploads/Food/F116-1.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .Food_Card_Img4{
+        object-fit: cover;  
+        width: 100%;
+        height: 100%;
+        background-image: url('http://localhost:3001/uploads/Food/F116-1.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
 }
 
 

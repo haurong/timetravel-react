@@ -14,7 +14,7 @@ import ForgetPassword from './pages/member/ForgetPassword';
 import SignIn from './pages/member/SignIn';
 import Cart from './pages/cart/Cart';
 import ItineraryDetail from './pages/product/itinerary/Itinerary-detail';
-
+import FoodDetail from './pages/product/food/FoodDetail';
 
 function App() {
   return (
@@ -27,6 +27,7 @@ function App() {
         <Route path="itinerary_detail" element={<ItineraryDetail />} />
         <Route path="site" element={<Site />} />
         <Route path="food" element={<Food />} />
+        <Route path="food/detail" element={<FoodDetail />} />
         <Route path="stays" element={<Stays />} />
         <Route path="ticket" element={<Ticket />} />
         <Route path="logIn" element={<LogIn />} />
