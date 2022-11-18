@@ -11,11 +11,11 @@ export default function SiteCardList({ rows }) {
                 key={el.sid}
                 style={{ width: '285px' }}
               >
-                <img src="..." class="card-img-top" alt="..." />
-                <div class="card-body">
-                  <h4 class="card-title">{el.name}</h4>
+                <img src="..." className="card-img-top" alt="..." />
+                <div className="card-body">
+                  <h4 className="card-title">{el.name}</h4>
                   <h5>{el.site_category_name}</h5>
-                  <p class="card-text">
+                  <p className="card-text">
                     {el.city_name}
                     {el.area_name}
                   </p>
