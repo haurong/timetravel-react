@@ -4,7 +4,6 @@ import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import './TimeTravel_Hotel.scss';
 
-import Navbar from './NavBar/NavBar';
 import Carousel from './Carousel/Carousel';
 import Breadcrumb from './Breadcrumb/Breadcrumb';
 import Rate from './Rate/Rate';
@@ -22,16 +21,12 @@ import ComputerLikeAdd from './ComputerLikeAdd/ComputerLikeAdd';
 import ComDatePicker from './ComDatePicker/ComDatePicker';
 
 function Stays() {
+  const Hotel_part0 = useRef();
   const Hotel_part1 = useRef();
   const Hotel_part2 = useRef();
   const Hotel_part3 = useRef();
   const Hotel_part4 = useRef();
-  const [allPart, setAllPart] = useState({
-    part1: 0,
-    part2: 0,
-    part3: 0,
-    par4: 0,
-  });
+  const [allPart, setAllPart] = useState({});
   const [isScroll, setIsScroll] = useState(false);
   window.addEventListener('scroll', () => {
     if (isScroll === false) {
@@ -40,12 +35,14 @@ function Stays() {
   });
   useEffect(() => {
     if (isScroll) {
+      let part0 = Hotel_part0.current.offsetTop;
       let part1 = Hotel_part1.current.offsetTop;
       let part2 = Hotel_part2.current.offsetTop;
       let part3 = Hotel_part3.current.offsetTop;
       let part4 = Hotel_part4.current.offsetTop;
-      console.log(part1, part2, part3, part4);
+      console.log(part0, part1, part2, part3, part4);
       setAllPart({
+        part0: part0,
         part1: part1,
         part2: part2,
         part3: part3,
@@ -73,6 +70,7 @@ function Stays() {
       <div style={{ width: '100%', height: '79px' }}></div>
       <BottomBar />
       <div className="MobileHidden container">
+        <div ref={Hotel_part0} id="Hotel_part0"></div>
         <Breadcrumb />
       </div>
       <Carousel />

@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import './HashChange.scss';
 function HashChange(props) {
-  const hash_title = ['房型介紹', '注意事項', '商品說明', '旅客評價'];
+  const hash_title = [
+    '房型介紹',
+    '注意事項',
+    '商品說明',
+    '旅客評價',
+    '回到頂部',
+  ];
   const [slideOut, setSlideOut] = useState(false);
   // const [computerHashChangeFixed, setComputerHashChangeFixed] = useState(false);
   let part1 = props.allPart.part1 - 50;
@@ -10,7 +16,7 @@ function HashChange(props) {
   let part4 = props.allPart.part4 - 50;
   const [whichPart, setWhichPart] = useState('房型介紹');
   window.addEventListener('scroll', () => {
-    // console.log(window.scrollY);
+    console.log(window.scrollY);
     let nowScroll = window.scrollY;
     // console.log(part1, part2, part3, part4);
     // 787 2478 4260 4761
@@ -50,10 +56,11 @@ function HashChange(props) {
       >
         <div className="hashChange_slider">
           {hash_title.map((v, i) => {
+            let backToTop = '#Hotel_part0';
             let str = `#Hotel_part${i + 1}`;
             return (
               <div key={i} className="Computer_HashChange">
-                <a href={str}>{v}</a>
+                <a href={v === '回到頂部' ? backToTop : str}>{v}</a>
                 <hr className={whichPart === v ? 'HashChange_active' : ''} />
               </div>
             );
