@@ -11,6 +11,7 @@
     align-items: center;
     h5 {
       margin: 0px;
+      color: #4d4d4d;
       span {
         color: #59d8a1;
         margin-left: 10px;
@@ -39,18 +40,24 @@
 }
 .ComDatePicker_Right {
   background-color: #fff;
+  h5 {
+    color: #4d4d4d;
+  }
   .ComDatePicker_Right_text {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     height: 36px;
     h5 {
+      color: #4d4d4d;
       margin: 0px;
     }
   }
   .ComDatePicker_Right_BuyButton {
     width: 100%;
-    justify-content: space-around;
+    div {
+      margin-right: 30px;
+    }
   }
 }
 
@@ -64,7 +71,6 @@
   .ant-picker {
     margin-top: auto;
     visibility: hidden;
-    transform: translateX(-10px);
     transition: none;
     transition-duration: 0s;
   }

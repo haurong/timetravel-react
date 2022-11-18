@@ -3,6 +3,7 @@ import 'antd/dist/antd.css';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import './TimeTravel_Hotel.scss';
+import AuthContext from './Context/AuthContext';
 
 import Carousel from './Carousel/Carousel';
 import Breadcrumb from './Breadcrumb/Breadcrumb';
@@ -19,6 +20,7 @@ import MobileFooter from './MobileFooter/MobileFooter';
 import HashChange from './HashChange/HashChange';
 import ComputerLikeAdd from './ComputerLikeAdd/ComputerLikeAdd';
 import ComDatePicker from './ComDatePicker/ComDatePicker';
+import BookingBar from './BookingBar/BookingBar';
 
 function Stays() {
   const Hotel_part0 = useRef();
@@ -66,114 +68,124 @@ function Stays() {
   }, [isScroll]);
   return (
     <>
-      <NavBar />
-      <div style={{ width: '100%', height: '79px' }}></div>
-      <BottomBar />
-      <div className="MobileHidden container">
-        <div ref={Hotel_part0} id="Hotel_part0"></div>
-        <Breadcrumb />
-      </div>
-      <Carousel />
-      <div className="ComputerHidden">
-        <HashChange allPart={allPart} />
-      </div>
-      <div style={{ width: '100%', height: '79px' }}></div>
-      <div className="container">
-        <div className="d-flex">
-          <div className="Hotel_part0 Hotel_partHidden"></div>
-          <div className="Hotel_part0_left">
-            <div className="ComputerHidden">
-              <Breadcrumb />
-            </div>
+      <AuthContext.Provider>
+        <NavBar />
+        <BookingBar />
+        <div style={{ width: '100%', height: '79px' }}></div>
+        <BottomBar />
+        <div className="MobileHidden container">
+          <div ref={Hotel_part0} id="Hotel_part0"></div>
+          <Breadcrumb />
+        </div>
+        <Carousel />
+        <div className="ComputerHidden">
+          <HashChange allPart={allPart} />
+        </div>
+        <div style={{ width: '100%', height: '79px' }}></div>
+        <div className="container">
+          <div className="d-flex">
+            <div className="Hotel_part0 Hotel_partHidden"></div>
+            <div className="Hotel_part0_left">
+              <div className="ComputerHidden">
+                <Breadcrumb />
+              </div>
 
-            <h2 style={{ color: '#4D4D4D', marginBottom: '20px' }}>
-              {/* TODO:拿到真實名稱 */}路境行旅(Finders Hotel)
-            </h2>
-            <Rate />
-            <IconBar />
-            <h4
-              className="ComputerHidden"
-              style={{
-                color: '#59d8a1',
-                fontSize: '22px',
-                marginBottom: '30px',
-              }}
-            >
-              {/* TODO:拿到真實價格 */}TWD$599
-            </h4>
-          </div>
-          <div className="Hotel_part0_right MobileHidden">
-            <div className="Hotel_part0_right_icon d-flex ">
-              <ComputerLikeAdd />
+              <h2 style={{ color: '#4D4D4D', marginBottom: '20px' }}>
+                {/* TODO:拿到真實名稱 */}路境行旅(Finders Hotel)
+              </h2>
+              <Rate />
+              <IconBar />
+              <h4
+                className="ComputerHidden"
+                style={{
+                  color: '#59d8a1',
+                  fontSize: '22px',
+                  marginBottom: '30px',
+                }}
+              >
+                {/* TODO:拿到真實價格 */}TWD$599
+              </h4>
+            </div>
+            <div className="Hotel_part0_right MobileHidden">
+              <div className="Hotel_part0_right_icon d-flex ">
+                <ComputerLikeAdd />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="MobileHidden givePadding">
-          <ComDatePicker />
-        </div>
-        <div
-          className="Hotel_partHidden"
-          id="Hotel_part1"
-          ref={Hotel_part1}
-        ></div>
-        <div className="row">
-          <div className="givePadding col-lg-8" style={{ marginRight: 'auto' }}>
-            <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>房型介紹</h2>
-            <ShowPic />
+          <div className="MobileHidden givePadding">
+            <ComDatePicker />
           </div>
-          <div className="col-lg-3 givePadding MobileHidden ">
-            <HashChange allPart={allPart} />
-          </div>
-        </div>
-        <div
-          className="Hotel_partHidden"
-          id="Hotel_part2"
-          ref={Hotel_part2}
-        ></div>
-        <div className="givePadding col-lg-8">
-          <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>注意事項</h2>
-          <HotelNotice />
-        </div>
-        <div
-          className="Hotel_partHidden"
-          id="Hotel_part3"
-          ref={Hotel_part3}
-        ></div>
-        <div className="givePadding col-lg-8">
-          <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>商品說明</h2>
-          <HotelDetail />
-          <MapButton />
-        </div>
-        <div
-          className="Hotel_partHidden"
-          id="Hotel_part4"
-          ref={Hotel_part4}
-        ></div>
-        <div className="givePadding col-lg-8">
-          <div className="d-flex" style={{ alignItems: 'center' }}>
-            <h2
-              style={{
-                color: '#4D4D4D',
-                margin: '40px 0px',
-                marginRight: 'auto',
-              }}
+          <div
+            className="Hotel_partHidden"
+            id="Hotel_part1"
+            ref={Hotel_part1}
+          ></div>
+          <div className="row">
+            <div
+              className="givePadding col-lg-8"
+              style={{ marginRight: 'auto' }}
             >
-              旅客評價
-            </h2>
-            <CommentSelector />
+              <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>房型介紹</h2>
+              <ShowPic />
+            </div>
+            <div className="col-lg-3 givePadding MobileHidden ">
+              <HashChange allPart={allPart} />
+            </div>
           </div>
-          <Comment />
+          <div
+            className="Hotel_partHidden"
+            id="Hotel_part2"
+            ref={Hotel_part2}
+          ></div>
+          <div className="givePadding col-lg-8">
+            <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>注意事項</h2>
+            <HotelNotice />
+          </div>
+          <div
+            className="Hotel_partHidden"
+            id="Hotel_part3"
+            ref={Hotel_part3}
+          ></div>
+          <div className="givePadding col-lg-8">
+            <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>商品說明</h2>
+            <HotelDetail />
+            <MapButton />
+          </div>
+          <div
+            className="Hotel_partHidden"
+            id="Hotel_part4"
+            ref={Hotel_part4}
+          ></div>
+          <div className="givePadding col-lg-8">
+            <div className="d-flex" style={{ alignItems: 'center' }}>
+              <h2
+                style={{
+                  color: '#4D4D4D',
+                  margin: '40px 0px',
+                  marginRight: 'auto',
+                }}
+              >
+                旅客評價
+              </h2>
+              <CommentSelector />
+            </div>
+            <Comment />
+          </div>
         </div>
-      </div>
-      <div className="ComputerHidden">
-        <MobileFooter />
-        <div
-          style={{ height: '120px', width: '100%', backgroundColor: '#aeaeae' }}
-        ></div>
-      </div>
-      <div className="MobileHidden">
-        <Footer />
-      </div>
+        <div className="ComputerHidden">
+          <MobileFooter />
+          <div
+            style={{
+              height: '120px',
+              width: '100%',
+              backgroundColor: '#aeaeae',
+            }}
+          ></div>
+        </div>
+        <div className="MobileHidden">
+          <Footer />
+        </div>
+      </AuthContext.Provider>
     </>
   );
 }

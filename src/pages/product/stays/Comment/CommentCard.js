@@ -8,7 +8,7 @@ function CommentCard() {
         <div className="d-flex Comment_Card">
           <div className="Comment_userPic"></div>
           <div className="Comment_userName">
-            <p>花花</p>
+            <h2>花花</h2>
             <Rate
               disabled
               defaultValue={4}
