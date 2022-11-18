@@ -70,6 +70,16 @@ body {
   background-color: #fff;
   border-color: #59D8A1;
 }
+.btn-secondary{
+  color: #fff;
+}
+.btn-secondary:hover, 
+.btn-secondary:focus, 
+.btn-secondary:active:hover{
+  color: #63D2FF;
+  background-color: #fff;
+  border-color: #63D2FF;
+}
 //icon外框 40x40
 .icon{
   height: 40px;
