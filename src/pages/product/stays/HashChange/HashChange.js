@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
 import './HashChange.scss';
+import { useSlideOut } from '../Context/SlideOutContext';
+// import { slideOut, setSlideOut } from '../Context/SlideOutContext';
+
 function HashChange(props) {
-  const hash_title = ['房型介紹', '注意事項', '商品說明', '旅客評價'];
-  const [slideOut, setSlideOut] = useState(false);
+  const hash_title = [
+    '房型介紹',
+    '注意事項',
+    '商品說明',
+    '旅客評價',
+    '回到頂部',
+  ];
+  const { slideOut, setSlideOut } = useSlideOut();
+  // const [slideOut, setSlideOut] = useState(false);
+  // const [computerHashChangeFixed, setComputerHashChangeFixed] = useState(false);
   let part1 = props.allPart.part1 - 50;
   let part2 = props.allPart.part2 - 50;
   let part3 = props.allPart.part3 - 50;
@@ -16,15 +27,19 @@ function HashChange(props) {
     if (nowScroll < part1) {
       setSlideOut(false);
     } else if (nowScroll >= part1 && nowScroll < part2) {
+      // setComputerHashChangeFixed(true);
       setSlideOut(true);
       setWhichPart('房型介紹');
     } else if (nowScroll >= part2 && nowScroll < part3) {
+      // setComputerHashChangeFixed(true);
       setSlideOut(true);
       setWhichPart('注意事項');
     } else if (nowScroll >= part3 && nowScroll < part4) {
+      // setComputerHashChangeFixed(true);
       setSlideOut(true);
       setWhichPart('商品說明');
     } else if (nowScroll >= part4) {
+      // setComputerHashChangeFixed(true);
       setSlideOut(true);
       setWhichPart('旅客評價');
     }
@@ -45,10 +60,11 @@ function HashChange(props) {
       >
         <div className="hashChange_slider">
           {hash_title.map((v, i) => {
+            let backToTop = '#Hotel_part0';
             let str = `#Hotel_part${i + 1}`;
             return (
-              <div key={i}>
-                <a href={str}>{v}</a>
+              <div key={i} className="Computer_HashChange">
+                <a href={v === '回到頂部' ? backToTop : str}>{v}</a>
                 <hr className={whichPart === v ? 'HashChange_active' : ''} />
               </div>
             );

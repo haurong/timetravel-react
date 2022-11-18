@@ -1,6 +1,7 @@
 /* Comment */
 .Comment_Top {
   display: flex;
+  // border-bottom: 1px solid #ccc;
   .Comment_top_span {
     font-size: 40px;
     color: #59d8a1;
@@ -20,21 +21,22 @@
   /* background-color: #ccc; */
   height: 225px;
   border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  // border-bottom: 1px solid #ccc;
   .Comment_Card {
     margin-bottom: 30px;
     .Comment_userPic {
       border-radius: 50%;
       background-color: #ccc;
+      display: flex;
+      align-items: center;
       width: 50px;
       height: 50px;
-      margin-right: 50px;
+      margin: auto 30px auto 0px;
     }
     .Comment_userName {
       margin-right: auto;
-      p {
+      h2 {
         margin-bottom: -8px;
-        font-size: 18px;
         color: #8a8a8a;
       }
     }
@@ -50,5 +52,39 @@
 .CommentSelector {
   display: flex;
   justify-content: flex-end;
+  position: relative;
+  .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    border: 0;
+  }
+  .CommentSelector_Select {
+    color: #4d4d4d;
+  }
   /* margin-right: -16px; */
+  .CommentSelector_svg {
+    cursor: pointer;
+    position: absolute;
+    // z-index: -1;
+    width: 30px;
+    height: 30px;
+    path {
+    }
+  }
+}
+.CommentSelector_Select {
+  .ant-select-item-option-content {
+    color: #4d4d4d;
+  }
+
+  .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    background-color: #59d8a13b;
+  }
+}
+.CommentSelector_Select:focus-visible {
+  outline: 0;
+}
+.ant-select-focused {
+  outline: 0;
+  border: 0;
+  box-shadow: none;
+  color: white;
 }
