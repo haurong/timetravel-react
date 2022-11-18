@@ -1,5 +1,5 @@
 import React from 'react';
-import IDay from './I-Day';
+import IDay from './IDay';
 
 export default function IList() {
   return (

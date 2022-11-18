@@ -1,13 +1,14 @@
 import React from 'react';
-import IItem from './I-Item';
+import IItem from './IItem';
+import IDayText from './IDayText';
 
 export default function IDay() {
   return (
-    <div id="iDay">
-      <p>day</p>
+    <>
+      <IDayText />
       <IItem />
       <IItem />
       <IItem />
-    </div>
+    </>
   );
 }

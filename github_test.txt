@@ -1,6 +1,0 @@
-目的:把做完的branch (site) 併入main
-
-1. "git checkout main" 切到自己本地main
-2. "git pull origin main" 確認main是最新的進度
-3. "git merge site" 合併
-4. "git push origin main" 合併好的main再推上去
