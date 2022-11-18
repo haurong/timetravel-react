@@ -8,6 +8,7 @@ import Itinerary from './pages/product/itinerary/Itinerary';
 import Site from './pages/product/itinerary/Site';
 import SiteDetail from './pages/product/itinerary/Site-detail';
 import Food from './pages/product/food/Food';
+import FoodDetail from './pages/product/food/FoodDetail';
 import Stays from './pages/product/stays/Stays';
 import Ticket from './pages/product/ticket/Ticket';
 import LogIn from './pages/member/LogIn';
