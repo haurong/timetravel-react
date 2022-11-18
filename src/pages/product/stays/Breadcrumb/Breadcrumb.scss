@@ -1,5 +1,8 @@
 /* Breadcrumb */
 .TimeTravel_Breadcrumb {
-	margin-top: 30px;
-	margin-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  @media (min-width: 992px) {
+    margin: 20px 0px;
+  }
 }

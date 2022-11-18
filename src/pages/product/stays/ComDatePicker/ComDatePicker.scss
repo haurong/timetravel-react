@@ -86,6 +86,10 @@
   .ant-picker-cell-in-view.ant-picker-cell-in-range::before {
     background: #59d8a148;
   }
+  .ant-picker-cell-in-view.ant-picker-cell-today
+    .ant-picker-cell-inner::before {
+    border: 0;
+  }
   @media (max-width: 992px) {
     display: none;
   }

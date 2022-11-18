@@ -72,13 +72,22 @@ function Stays() {
       <NavBar />
       <div style={{ width: '100%', height: '79px' }}></div>
       <BottomBar />
+      <div className="MobileHidden container">
+        <Breadcrumb />
+      </div>
       <Carousel />
-      <HashChange allPart={allPart} />
+      <div className="ComputerHidden">
+        <HashChange allPart={allPart} />
+      </div>
       <div style={{ width: '100%', height: '79px' }}></div>
       <div className="container">
         <div className="d-flex">
-          <div className="Hotel_part0 Hotel_part0_left">
-            <Breadcrumb />
+          <div className="Hotel_part0 Hotel_partHidden"></div>
+          <div className="Hotel_part0_left">
+            <div className="ComputerHidden">
+              <Breadcrumb />
+            </div>
+
             <h2 style={{ color: '#4D4D4D', marginBottom: '20px' }}>
               {/* TODO:拿到真實名稱 */}路境行旅(Finders Hotel)
             </h2>
@@ -105,35 +114,44 @@ function Stays() {
           <ComDatePicker />
         </div>
         <div
+          className="Hotel_partHidden"
           id="Hotel_part1"
           ref={Hotel_part1}
-          className="givePadding col-lg-8"
-        >
-          <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>房型介紹</h2>
-          <ShowPic />
+        ></div>
+        <div className="row">
+          <div className="givePadding col-lg-8" style={{ marginRight: 'auto' }}>
+            <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>房型介紹</h2>
+            <ShowPic />
+          </div>
+          <div className="col-lg-3 givePadding MobileHidden ">
+            <HashChange allPart={allPart} />
+          </div>
         </div>
         <div
+          className="Hotel_partHidden"
           id="Hotel_part2"
           ref={Hotel_part2}
-          className="givePadding col-lg-8"
-        >
+        ></div>
+        <div className="givePadding col-lg-8">
           <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>注意事項</h2>
           <HotelNotice />
         </div>
         <div
+          className="Hotel_partHidden"
           id="Hotel_part3"
           ref={Hotel_part3}
-          className="givePadding col-lg-8"
-        >
+        ></div>
+        <div className="givePadding col-lg-8">
           <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>商品說明</h2>
           <HotelDetail />
           <MapButton />
         </div>
         <div
+          className="Hotel_partHidden"
           id="Hotel_part4"
           ref={Hotel_part4}
-          className="givePadding col-lg-8"
-        >
+        ></div>
+        <div className="givePadding col-lg-8">
           <div className="d-flex" style={{ alignItems: 'center' }}>
             <h2
               style={{
