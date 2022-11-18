@@ -2,13 +2,13 @@
     display: flex;
     justify-content: center; 
     align-items: center;
-    height: 51vw;
+    height: 55vw;
     .logo img{
         width: 17vw;
     }
     .form{
         display: flex;
-        height: 600px;
+        height: 700px;
         background-color: #fff;
         padding: 0 50px;
         flex-direction:column;
@@ -27,6 +27,7 @@
         }
         .signin-text{
             color: #59D8A1;
+            margin-left: 5px;
         }
     }
 }

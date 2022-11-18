@@ -2,22 +2,21 @@
     display: flex;
     justify-content: center; 
     align-items: center;
-    height: 51vw;
+    height: 55vw;
     .logo img{
         width: 17vw;
     }
+    h1{
+        margin-bottom: 5px;
+    }
     .form{
         display: flex;
-        height: 600px;
+        height: 700px;
         background-color: #fff;
         padding: 0 50px;
         flex-direction:column;
         justify-content:center;
-        .forget-password-text{
-            color: #59D8A1;
-            float: right;
-            padding-top: 10px;
-        }
+        
         
         .login-button{
             margin: 10px auto;

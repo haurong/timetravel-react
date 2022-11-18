@@ -24,6 +24,7 @@ $container-max-widths: (
 );
 // 導入bootstrap所有的樣式與預設變數
 @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap.scss';
 
 // 其它要導入覆蓋掉原本的預設bootstrap樣式要放在這下面
 // 全站都會使用的共同樣式
@@ -41,19 +42,19 @@ body {
     font-weight: 500!important;
     font-size: 2rem!important;
     line-height: 3rem!important;
-    color: #4D4D4D!important;
+    color: #4D4D4D;
   }
   h2{
     font-weight: 400!important;
     font-size: 1.5rem!important;
     line-height: 2.5rem!important;
-    color: #4D4D4D!important;
+    color: #4D4D4D;
   }
   p{
     font-weight: 300!important;
     font-size: 1.1rem!important;
     line-height: 1.8rem!important;
-    color: #4D4D4D!important;
+    color: #4D4D4D;
   }
 }
 //btn
@@ -73,6 +74,16 @@ body {
   background-color: #fff!important;
   border-color: #59D8A1!important;
 }
+.btn-secondary{
+  color: #fff;
+}
+.btn-secondary:hover, 
+.btn-secondary:focus, 
+.btn-secondary:active:hover{
+  color: #63D2FF;
+  background-color: #fff;
+  border-color: #63D2FF;
+}
 //icon外框 40x40
 .icon{
   height: 40px;
@@ -83,7 +94,11 @@ body {
   }
 }
 //input樣式設定
-
+.form-control::placeholder {
+  color: #D9D9D9;
+  font-weight: 300;
+  letter-spacing:1px;
+  }
 //區域給padding
 .givePadding{
   padding: 100px 0;
