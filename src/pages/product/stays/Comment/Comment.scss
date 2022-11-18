@@ -1,7 +1,7 @@
 /* Comment */
 .Comment_Top {
   display: flex;
-  border-bottom: 1px solid #ccc;
+  // border-bottom: 1px solid #ccc;
   .Comment_top_span {
     font-size: 40px;
     color: #59d8a1;
@@ -20,8 +20,8 @@
   padding: 30px 0px;
   /* background-color: #ccc; */
   height: 225px;
-  // border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  // border-bottom: 1px solid #ccc;
   .Comment_Card {
     margin-bottom: 30px;
     .Comment_userPic {

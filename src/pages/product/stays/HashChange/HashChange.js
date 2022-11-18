@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './HashChange.scss';
+import { useSlideOut } from '../Context/SlideOutContext';
+// import { slideOut, setSlideOut } from '../Context/SlideOutContext';
+
 function HashChange(props) {
   const hash_title = [
     '房型介紹',
@@ -8,7 +11,8 @@ function HashChange(props) {
     '旅客評價',
     '回到頂部',
   ];
-  const [slideOut, setSlideOut] = useState(false);
+  const { slideOut, setSlideOut } = useSlideOut();
+  // const [slideOut, setSlideOut] = useState(false);
   // const [computerHashChangeFixed, setComputerHashChangeFixed] = useState(false);
   let part1 = props.allPart.part1 - 50;
   let part2 = props.allPart.part2 - 50;
@@ -16,7 +20,7 @@ function HashChange(props) {
   let part4 = props.allPart.part4 - 50;
   const [whichPart, setWhichPart] = useState('房型介紹');
   window.addEventListener('scroll', () => {
-    console.log(window.scrollY);
+    // console.log(window.scrollY);
     let nowScroll = window.scrollY;
     // console.log(part1, part2, part3, part4);
     // 787 2478 4260 4761

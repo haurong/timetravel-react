@@ -79,7 +79,7 @@ function ComDatePicker() {
               marginBottom: '30px',
             }}
           >
-            TWD$599
+            TWD$25990
           </h4>
           <div className="d-flex ComDatePicker_Right_BuyButton ">
             <BuyButton />
