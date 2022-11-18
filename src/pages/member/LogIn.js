@@ -6,21 +6,24 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 
-function logIn() {
+function LogIn() {
   return (
     <>
-      <div className="container ">
+      <div className="container">
         <div className="row m-auto">
           <div className="m-flex">
             <Link className="logo m-auto" to="/">
               <img src={Logo} alt="logo" />
             </Link>
-
             <Form className="form col-5 m-auto">
               <h1 className="login-text text-center pb-5">登入</h1>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="example@mail.com" />
+                <Form.Control
+                  type="email"
+                  placeholder="example@mail.com"
+                  id="account"
+                />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -28,6 +31,7 @@ function logIn() {
                 <Form.Control
                   type="password"
                   placeholder="8位以上英數密碼，請區分大小寫"
+                  id="password"
                 />
                 <Link className="forget-password-text" to="/forget_password">
                   忘記密碼？
@@ -55,4 +59,4 @@ function logIn() {
   );
 }
 
-export default logIn;
+export default LogIn;

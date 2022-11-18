@@ -62,7 +62,7 @@ function NavBar() {
                 />
               </div>
             </form>
-            <button type="button" className="btn ">
+            <button type="button" className="btn">
               <Link className="nav-link login-btn-text" to="/logIn">
                 登入
               </Link>

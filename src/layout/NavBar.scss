@@ -23,6 +23,9 @@
     .signin-btn:hover{
         color: #59D8A1;
     }
+    p{
+        color: #FFF;
+    }
     
 }
 .nav-link{
@@ -56,6 +59,9 @@
         border-bottom:1px solid #4D4D4D ;
         border-radius: 20px;
         padding: 0;
+    }
+    .search-border:focus{
+        box-shadow:none;
     }
     img{
         width: 26px;

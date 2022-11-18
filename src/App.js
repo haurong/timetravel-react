@@ -14,7 +14,7 @@ import ForgetPassword from './pages/member/ForgetPassword';
 import SignIn from './pages/member/SignIn';
 import Cart from './pages/cart/Cart';
 import ItineraryDetail from './pages/product/itinerary/Itinerary-detail';
-import FoodDetail from './pages/product/food/FoodDetail';
+
 
 function App() {
   return (

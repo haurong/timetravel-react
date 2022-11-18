@@ -6,6 +6,9 @@
     .logo img{
         width: 17vw;
     }
+    h1{
+        margin-bottom: 5px;
+    }
     .form{
         display: flex;
         height: 700px;
@@ -13,11 +16,7 @@
         padding: 0 50px;
         flex-direction:column;
         justify-content:center;
-        .forget-password-text{
-            color: #59D8A1;
-            float: right;
-            padding-top: 10px;
-        }
+        
         
         .login-button{
             margin: 10px auto;
@@ -27,11 +26,9 @@
         }
         .signin-text{
             color: #59D8A1;
-            margin-left: 5px;
         }
     }
 }
-
 .form-bg{
     background-image: url('../../../img/member/BG_member.jpg');
     background-repeat: no-repeat;
@@ -44,5 +41,3 @@
     left: 0;
     z-index: -10;
 }
-
-
