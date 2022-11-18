@@ -8,14 +8,15 @@ import Itinerary from './pages/product/itinerary/Itinerary';
 import Site from './pages/product/itinerary/Site';
 import SiteDetail from './pages/product/itinerary/Site-detail';
 import Food from './pages/product/food/Food';
+import FoodDetail from './pages/product/food/FoodDetail';
 import Stays from './pages/product/stays/Stays';
 import Ticket from './pages/product/ticket/Ticket';
 import LogIn from './pages/member/LogIn';
+import Profile from './pages/member/Profile';
 import ForgetPassword from './pages/member/ForgetPassword';
 import SignIn from './pages/member/SignIn';
 import Cart from './pages/cart/Cart';
 import ItineraryDetail from './pages/product/itinerary/Itinerary-detail';
-
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="ticket" element={<Ticket />} />
         <Route path="logIn" element={<LogIn />} />
         <Route path="forget_password" element={<ForgetPassword />} />
+        <Route path="profile" element={<Profile />} />
         <Route path="signIn" element={<SignIn />} />
         <Route path="cart" element={<Cart />} />
       </Routes>

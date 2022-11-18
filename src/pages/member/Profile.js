@@ -1,7 +1,17 @@
 import React from 'react';
+import '../../global.scss';
+import NavBar from '../../layout/NavBar';
+import Footer from '../../layout/Footer';
+import SideBar from '../../layout/SideBar';
 
 function Profile() {
-  return <div></div>;
+  return (
+    <>
+      <NavBar />
+      <SideBar />
+      <Footer />
+    </>
+  );
 }
 
 export default Profile;
