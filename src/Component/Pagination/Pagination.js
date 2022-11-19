@@ -11,11 +11,17 @@ const theme = createTheme({
   },
 });
 
+
 export default function BasicPagination() {
+
   return (
     <ThemeProvider theme={theme}>
-      <Stack spacing={0}>
-        <Pagination count={5}  color="secondary" />
+      <Stack spacing={0} variant="text">
+        <Pagination
+          count={5}
+          color="secondary"
+          variant="text"
+        />
       </Stack>
     </ThemeProvider>
   );
