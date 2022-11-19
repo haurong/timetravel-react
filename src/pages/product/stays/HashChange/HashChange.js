@@ -14,7 +14,7 @@ function HashChange(props) {
   const { slideOut, setSlideOut } = useSlideOut();
   // const [slideOut, setSlideOut] = useState(false);
   // const [computerHashChangeFixed, setComputerHashChangeFixed] = useState(false);
-  let part1 = props.allPart.part1 - 50;
+  let part1 = props.allPart.part1;
   let part2 = props.allPart.part2 - 50;
   let part3 = props.allPart.part3 - 50;
   let part4 = props.allPart.part4 - 50;

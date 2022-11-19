@@ -70,7 +70,9 @@ function Stays() {
     <>
       <SlideOutProvider>
         <NavBar />
-        <BookingBar />
+        <div className="MobileHidden">
+          <BookingBar />
+        </div>
         <div style={{ width: '100%', height: '79px' }}></div>
         <BottomBar />
         <div ref={Hotel_part0} id="Hotel_part0"></div>
@@ -130,7 +132,7 @@ function Stays() {
                 </h2>
                 <ShowPic />
               </div>
-              <div className="col-lg-3 givePadding MobileHidden ">
+              <div className="col-lg-3  MobileHidden ">
                 <HashChange allPart={allPart} />
               </div>
             </div>
@@ -153,7 +155,11 @@ function Stays() {
               <HotelDetail />
               <MapButton />
             </div>
-            <div className="" id="Hotel_part4" ref={Hotel_part4}></div>
+            <div
+              className="Hotel_partHidden"
+              id="Hotel_part4"
+              ref={Hotel_part4}
+            ></div>
             <div className="givePadding col-lg-8 noPadding">
               <div className="d-flex" style={{ alignItems: 'center' }}>
                 <h2

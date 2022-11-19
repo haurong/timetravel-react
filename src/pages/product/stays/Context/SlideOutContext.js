@@ -4,7 +4,6 @@ const SlideOutContext = createContext(null);
 
 export const SlideOutProvider = ({ children }) => {
   const [slideOut, setSlideOut] = useState(false);
-
   return (
     <SlideOutContext.Provider
       value={{
