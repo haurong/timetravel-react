@@ -1,8 +1,10 @@
 import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './SideBar.scss';
 
 function SideBar() {
+  const [activeText, setActiveText] = useState('');
   return (
     <>
       <div className="sideBar_card col-3">
