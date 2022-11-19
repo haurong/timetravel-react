@@ -7,9 +7,7 @@ import 'swiper/scss/navigation';
 // import './Carousel.scss';
 // import required modules
 import { Pagination, Navigation } from 'swiper';
-import Card from 'react-bootstrap/Card';
-import Star from '../../icon/star.svg';
-import Heart from '../../icon/heart_white.svg';
+import Card1 from '../Card/Card';
 import './Card_Carousel.scss';
 
 export default function Card_Carousel() {
@@ -25,84 +23,16 @@ export default function Card_Carousel() {
       className="mySwiper"
     >
       <SwiperSlide>
-        <Card className="Card">
-          <Card.Img variant="top" className="Food_Card_Img1" />
-          <button className="Heart_Btn">
-            <Card.Img src={Heart} className="Card_Heart" />
-          </button>
-          <Card.Body>
-            <Card.Title className="Card_Title">
-              時間之旅 | 現金抵用券
-            </Card.Title>
-            <Card.Text className="Card_Text">
-              <Card.Img src={Star} className="Star_icon" />
-              <span class="Card_Score">4.5/5</span>
-            </Card.Text>
-            <h2 variant="primary" className="Card_Price">
-              NT100
-            </h2>
-          </Card.Body>
-        </Card>
+        <Card1 />
       </SwiperSlide>
       <SwiperSlide>
-        <Card className="Card">
-          <Card.Img variant="top" className="Food_Card_Img2" />
-          <button className="Heart_Btn">
-            <Card.Img src={Heart} className="Card_Heart" />
-          </button>
-          <Card.Body>
-            <Card.Title className="Card_Title">
-              時間之旅 | 現金抵用券
-            </Card.Title>
-            <Card.Text className="Card_Text">
-              <Card.Img src={Star} className="Star_icon" />
-              <span class="Card_Score">4.5/5</span>
-            </Card.Text>
-            <h2 variant="primary" className="Card_Price">
-              NT100
-            </h2>
-          </Card.Body>
-        </Card>
+        <Card1 />
       </SwiperSlide>
       <SwiperSlide>
-        <Card className="Card">
-          <Card.Img variant="top" className="Food_Card_Img3" />
-          <button className="Heart_Btn">
-            <Card.Img src={Heart} className="Card_Heart" />
-          </button>
-          <Card.Body>
-            <Card.Title className="Card_Title">
-              時間之旅 | 現金抵用券
-            </Card.Title>
-            <Card.Text className="Card_Text">
-              <Card.Img src={Star} className="Star_icon" />
-              <span class="Card_Score">4.5/5</span>
-            </Card.Text>
-            <h2 variant="primary" className="Card_Price">
-              NT100
-            </h2>
-          </Card.Body>
-        </Card>
+        <Card1 />
       </SwiperSlide>
       <SwiperSlide>
-        <Card className="Card">
-          <Card.Img variant="top" className="Food_Card_Img4" />
-          <button className="Heart_Btn">
-            <Card.Img src={Heart} className="Card_Heart" />
-          </button>
-          <Card.Body>
-            <Card.Title className="Card_Title">
-              時間之旅 | 現金抵用券
-            </Card.Title>
-            <Card.Text className="Card_Text">
-              <Card.Img src={Star} className="Star_icon" />
-              <span class="Card_Score">4.5/5</span>
-            </Card.Text>
-            <h2 variant="primary" className="Card_Price">
-              NT100
-            </h2>
-          </Card.Body>
-        </Card>
+        <Card1 />
       </SwiperSlide>
     </Swiper>
   );

@@ -1,6 +1,8 @@
 import React from 'react';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
+import BreadCrumb from '../stays/Breadcrumb/Breadcrumb';
+import Commit from '../stays/Comment/Comment';
 import Carousel from '../../../Component/Carousel/Carousel';
 import Card_Carousel from '../../../Component/Carousel/Card_Carousel';
 import Heart_icon from '../../../icon/heart_gray.svg';
@@ -14,7 +16,7 @@ import Minus_icon from '../../../icon/minus.svg';
 import Add_icon from '../../../icon/add.svg';
 import House_icon from '../../../icon/house.svg';
 import { imgUrl } from '../../../config.js';
-import './Food.scss';
+import './FoodDetail.scss';
 //breadcrumb還沒導入component
 function Food() {
   return (
@@ -23,21 +25,8 @@ function Food() {
 
       <div className="container" style={{ marginTop: '80px' }}>
         <nav aria-label="breadcrumb">
-          <div className="container breadcrumb">
-            <ol className="breadcrumb" style={{ marginTop: '30px' }}>
-              <li className="breadcrumb-item">
-                <a href="#">首頁</a>
-              </li>
-              <li className="breadcrumb-item">
-                <a href="#">美食列表</a>
-              </li>
-              <li className="breadcrumb-item">
-                <a href="#">咖啡</a>
-              </li>
-              <li className="breadcrumb-item active" aria-current="page">
-                萬祝號
-              </li>
-            </ol>
+          <div className="container breadcrumb mt-5">
+            <BreadCrumb />
           </div>
         </nav>
         <div className="container">
@@ -178,56 +167,8 @@ function Food() {
           </button>
         </div>
       </div>
-      <div className="container commit col-lg-10 ">
-        <div>
-          <h1>旅客評價</h1>
-        </div>
-        <div className="commit_title d-flex align-items-center ">
-          <h2>4.3</h2>
-          <div className="member_star_group star_group d-flex">
-            <img src={Star_icon} alt="" />
-            <img src={Star_icon} alt="" />
-            <img src={Star_icon} alt="" />
-            <img src={Star_icon} alt="" />
-            <img src={Star_icon} alt="" />
-            <span>15篇評論</span>
-            <div className="commit_hot">
-              <span>熱門程度</span>
-              <img
-                src="./images/icon/icon/sort.svg"
-                width="35"
-                height="35"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-        <hr style={{ maxWidth: '700px' }} />
-        <div className="member_commit  col-lg-10">
-          <div className="member_commit_notext d-flex align-items-center">
-            <img
-              src="https://picsum.photos/id/1020/50/50"
-              alt=""
-              className="member_img_commit"
-            />
-            <h2 className="member">小杜</h2>
-          </div>
-          <div className="member_star_group star_group">
-            <img src={Star_icon} alt="" />
-            <img src={Star_icon} alt="" />
-            <img src={Star_icon} alt="" />
-            <img src={Star_icon} alt="" />
-            <img src={Star_icon} alt="" />
-          </div>
-          <div className="commit_text">
-            <p>
-              位在馬路旁很低調的一個空間，內部復古的工業風點綴上些許綠意，店內舒適，空間寬敞舒服，
-              <br />
-              但位置不多～平日中午去人潮陸陸續續湧入，飲品、甜點都還不錯，去基隆可以去！推推！
-            </p>
-          </div>
-        </div>
-        <hr style={{ maxWidth: '700px' }} />
+      <div className="container givePadding col-lg-10 ">
+        <Commit className="mt-5" />
       </div>
       <div className="container ">
         <Card_Carousel />

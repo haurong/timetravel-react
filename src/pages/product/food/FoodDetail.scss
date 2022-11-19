@@ -1,8 +1,11 @@
 .container{
     padding: 0;
     font-family: 'Noto Sans TC', sans-serif;
-    .product_name{
+    .breadcrumb{
         
+        padding:60px 0 20px 0
+    }
+    .product_name{
         margin-top: 25px;
         justify-content:space-between;
         .product_name_title h1{
@@ -142,8 +145,6 @@
         color:#59D8A1;
     }
    
-    .commit{
-        margin: 100px 0;
-    }
+  
 }
  
