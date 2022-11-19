@@ -3,10 +3,9 @@ import './BookingBar.scss';
 import { useSlideOut } from '../Context/SlideOutContext';
 import { ReactComponent as Sort } from '../../../../icon/sort.svg';
 import BuyButton from '../BuyButton/BuyButton';
-import BookingBarOpen from './BookingBarOpen';
 function BookingBar() {
-  const { slideOut } = useSlideOut();
-  const [bookingBarOpen, setBookingBarOpen] = useState(false);
+  const { slideOut, bookingBarOpen, setBookingBarOpen } = useSlideOut();
+  // const [bookingBarOpen, setBookingBarOpen] = useState(false);
 
   useEffect(() => {
     if (!slideOut) {
@@ -34,9 +33,7 @@ function BookingBar() {
               onClick={(e) => {
                 e.stopPropagation();
               }}
-            >
-              <BookingBarOpen />
-            </div>
+            ></div>
           </div>
           <div className="BookingBarRight d-flex align-items-center justify-content-center">
             <h4
