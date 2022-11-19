@@ -1,15 +1,21 @@
 import Button from 'react-bootstrap/Button';
-import { useState } from 'react';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Star from '../../icon/star.svg';
 import Heart from '../../icon/heart_gray.svg';
 import PinkHeart from '../../icon/heart.svg';
+import { FOOD_ITEM } from '../../config.js';
 
 import './Card.scss';
 
 function Card1() {
+ 
   const [like, setLike] = useState(false);
   const toggleLike = () => setLike(!like);
+
+
   return (
     <>
       <Card className="Card" style={{ width: '20rem' }}>
