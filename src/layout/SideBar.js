@@ -13,20 +13,13 @@ function SideBar() {
           <h2 className="sideBar_h2">朴吉米</h2>
         </div>
         <ul className="list-group list-group-flush sideBar-list-group">
-          <li
-            className={({ isActive }) =>
-              [
-                'sideBar-list p-3 hover:bg-indigo-600 duration-500',
-                isActive ? 'router-link-active sideBar-list' : null,
-              ].join(' ')
-            }
-          >
+          <li className="sideBar-list">
             <NavLink className="sideBar-link" to="/profile">
               修改個人資料
             </NavLink>
           </li>
           <li className="sideBar-list ">
-            <NavLink className="sideBar-link" to="/profile">
+            <NavLink className="sideBar-link" to="/reset_password">
               重設密碼
             </NavLink>
           </li>
@@ -36,22 +29,22 @@ function SideBar() {
             </NavLink>
           </li>
           <li className="sideBar-list">
-            <NavLink className="sideBar-link" to="/profile">
+            <NavLink className="sideBar-link" to="/site">
               我的行程規劃
             </NavLink>
           </li>
           <li className="sideBar-list">
-            <NavLink className="sideBar-link" to="/profile">
+            <NavLink className="sideBar-link" to="/ticket_qrcode">
               我的票夾
             </NavLink>
           </li>
           <li className="sideBar-list">
-            <NavLink className="sideBar-link" to="/profile">
+            <NavLink className="sideBar-link" to="/comment">
               我的評論
             </NavLink>
           </li>
           <li className="sideBar-list">
-            <NavLink className="sideBar-link" to="/profile">
+            <NavLink className="sideBar-link" to="/collect">
               我的收藏
             </NavLink>
           </li>

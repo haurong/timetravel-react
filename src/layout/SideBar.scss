@@ -19,6 +19,9 @@
     
 }
 .sideBar-list-group{
+    li{
+        list-style-type:none;
+    }
     .sideBar-list{
         margin: 7px 10px;
         padding: 7px 14px;
@@ -27,6 +30,9 @@
     .sideBar-link{
         color: #4D4D4D;
         
+    }
+    .active{
+        color: #59D8A1;
     }
 }
 .sideBar-link:hover{

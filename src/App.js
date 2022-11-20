@@ -13,8 +13,12 @@ import Stays from './pages/product/stays/Stays';
 import Ticket from './pages/product/ticket/Ticket';
 import LogIn from './pages/member/LogIn';
 import Profile from './pages/member/Profile';
-import ForgetPassword from './pages/member/ForgetPassword';
 import SignIn from './pages/member/SignIn';
+import ForgetPassword from './pages/member/ForgetPassword';
+import ResetPassword from './pages/member/ResetPassword';
+import TicketQRcode from './pages/member/TicketQRcode';
+import Comment from './pages/member/Comment';
+import Collect from './pages/member/Collect';
 import Cart from './pages/cart/Cart';
 import ItineraryDetail from './pages/product/itinerary/Itinerary-detail';
 
@@ -36,6 +40,10 @@ function App() {
         <Route path="logIn" element={<LogIn />} />
         <Route path="forget_password" element={<ForgetPassword />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="reset_password" element={<ResetPassword />} />
+        <Route path="ticket_qrcode" element={<TicketQRcode />} />
+        <Route path="comment" element={<Comment />} />
+        <Route path="collect" element={<Collect />} />
         <Route path="signIn" element={<SignIn />} />
         <Route path="cart" element={<Cart />} />
       </Routes>
