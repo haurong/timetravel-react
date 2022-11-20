@@ -1,22 +1,48 @@
-import useState from 'react';
-//import CheckIcon from '@material-ui/icons/Check';
-//import ToggleButton from '@material-ui/lab/ToggleButton';
+import { useState } from 'react';
 import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-// import Button from 'react-bootstrap/button'
-// import {useState} from 'react'
-import './Card_List.scss';
-import Card1 from '../Card/Card';
+import { FOOD_IMG } from '../../config';
+import Star from '../../icon/star.svg';
+import Heart from '../../icon/heart_gray.svg';
+import PinkHeart from '../../icon/heart.svg';
 
-function Card_List() {
+import './Card_List.scss';
+
+function Card_List({ rows }) {
+  //console.log({ rows });
+  const [like1, setLike1] = useState(false);
+  const toggleLike1 = () => setLike1(!like1);
+
   return (
     <Row xs={1} md={2} lg={3} className="g-4">
-      {Array.from({ length: 12 }).map((_, idx) => (
-        <Col>
-          <Card1 />
-        </Col>
-      ))}
+      {rows.map((el, i) => {
+        return (
+          <Card className="Card" style={{ width: '20rem' }} key={i}>
+            <Card.Img
+              variant="top"
+              className="foodCardImg1"
+              src={`${FOOD_IMG}${el.product_photo}`}
+            />
+            <button className="Heart_Btn" onClick={toggleLike1}>
+              <img
+                src={like1 ? PinkHeart : Heart}
+                className="Card_Heart"
+                alt=""
+              />
+            </button>
+            <Card.Body>
+              <Card.Title className="Card_Title">{el.product_name}</Card.Title>
+              <Card.Text className="Card_Text">
+                <Card.Img src={Star} className="Star_icon" />
+                <span class="Card_Score">4.5/5</span>
+              </Card.Text>
+              <h2 variant="primary" className="Card_Price">
+                NT$ {el.p_selling_price}
+              </h2>
+            </Card.Body>
+          </Card>
+        );
+      })}
     </Row>
   );
 }
