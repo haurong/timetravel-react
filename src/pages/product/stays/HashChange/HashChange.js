@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './HashChange.scss';
-import { useSlideOut } from '../Context/SlideOutContext';
+import { useHotelContext } from '../Context/HotelContext';
 // import { slideOut, setSlideOut } from '../Context/SlideOutContext';
 
 function HashChange(props) {
@@ -11,7 +11,7 @@ function HashChange(props) {
     '旅客評價',
     '回到頂部',
   ];
-  const { slideOut, setSlideOut } = useSlideOut();
+  const { slideOut, setSlideOut } = useHotelContext();
   // const [slideOut, setSlideOut] = useState(false);
   // const [computerHashChangeFixed, setComputerHashChangeFixed] = useState(false);
   let part1 = props.allPart.part1;

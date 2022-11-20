@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './BookingBar.scss';
-import { useSlideOut } from '../Context/SlideOutContext';
+import { useHotelContext } from '../Context/HotelContext';
 import { ReactComponent as Sort } from '../../../../icon/sort.svg';
 import BuyButton from '../BuyButton/BuyButton';
 function BookingBar() {
-  const { slideOut, bookingBarOpen, setBookingBarOpen } = useSlideOut();
+  const { slideOut, bookingBarOpen, setBookingBarOpen } = useHotelContext();
   // const [bookingBarOpen, setBookingBarOpen] = useState(false);
 
   useEffect(() => {

@@ -1,13 +1,13 @@
 import React, { useState, useContext, createContext } from 'react';
 
-const SlideOutContext = createContext(null);
+const HotelContext = createContext(null);
 
-export const SlideOutProvider = ({ children }) => {
+export const HotelContextProvider = ({ children }) => {
   const [slideOut, setSlideOut] = useState(false);
   const [bookingBarOpen, setBookingBarOpen] = useState(false);
 
   return (
-    <SlideOutContext.Provider
+    <HotelContext.Provider
       value={{
         slideOut,
         setSlideOut,
@@ -16,8 +16,8 @@ export const SlideOutProvider = ({ children }) => {
       }}
     >
       {children}
-    </SlideOutContext.Provider>
+    </HotelContext.Provider>
   );
 };
 
-export const useSlideOut = () => useContext(SlideOutContext);
+export const useHotelContext = () => useContext(HotelContext);

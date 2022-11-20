@@ -3,7 +3,7 @@ import 'antd/dist/antd.css';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import './TimeTravel_Hotel.scss';
-import { SlideOutProvider } from './Context/SlideOutContext';
+import { HotelContextProvider } from './Context/HotelContext';
 
 import Carousel from './Carousel/Carousel';
 import Breadcrumb from './Breadcrumb/Breadcrumb';
@@ -68,7 +68,7 @@ function Stays() {
   }, [isScroll]);
   return (
     <>
-      <SlideOutProvider>
+      <HotelContextProvider>
         <NavBar />
         <div className="MobileHidden">
           <BookingBar />
@@ -190,7 +190,7 @@ function Stays() {
         <div className="MobileHidden">
           <Footer />
         </div>
-      </SlideOutProvider>
+      </HotelContextProvider>
     </>
   );
 }
