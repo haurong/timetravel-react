@@ -15,8 +15,10 @@ function Profile() {
           <div className="profile col-5">
             <h1>修改個人資訊</h1>
             <div className="profile_img">
-              <div class="profile-hovor">
-                <div class="profile-hovor-text text-center">編輯</div>
+              <div className="profile-hovor">
+                //TODO增加上傳檔案按鈕
+                <div className="profile-hovor-text text-center">編輯</div>
+                <div className="profile-hovor-bg text-center"></div>
               </div>
             </div>
             {/* <img className="profile_img" src="" /> */}

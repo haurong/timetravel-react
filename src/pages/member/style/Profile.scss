@@ -1,22 +1,41 @@
 .profile_padding{
-    padding-top: 200px;
-    padding-bottom: 150px;
+    padding-top: 210px;
+    padding-bottom: 210px;
     .profile{
         padding-left:120px;
         h1{
             padding-bottom: 20px;
         }
         .profile_img{
+            display: block;
             width: 180px;
             height: 180px;
             background: #4D4D4D;
-            border-radius: 102px;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
         }
-        .profile-hovor-text{
-            color: #fff;
-            background-color: #000000;
-            padding: 20px 0;
-            border-radius: 102px;
+        .profile-hovor{
+            opacity: 0;
+            .profile-hovor-bg{
+                position: absolute;
+                bottom: 0;
+                background-color: #000000;
+                opacity: 50%;
+                width: 100%;
+                padding: 40px 0;
+            }
+            .profile-hovor-text{
+                position: absolute;
+                bottom: 0;
+                color: #fff;
+                width: 100%;
+                padding: 34px 0;
+                z-index: 1;
+            }
+        }
+        .profile-hovor:hover{
+            opacity: 1;
         }
     
         .profile-input{

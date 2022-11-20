@@ -52,38 +52,57 @@
         color: #59D8A1;
         margin: 0;
     }
-    .Food_Card_Img1{
+    .foodCardData1Img{
         object-fit: cover;  
         width: 100%;
         height: 100%;
-        background-image: url('http://localhost:3001/uploads/Food/F116-1.jpg');
+        background-image: url('http://localhost:3001/uploads/Food/F117-1.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
     }
-    .Food_Card_Img2{
-        object-fit: cover;  
+    .foodCardData2Img{
+        object-fit: hidden;  
         width: 100%;
         height: 100%;
-        background-image: url('http://localhost:3001/uploads/Food/F116-1.jpg');
+        border: none;
+        background-image: url('http://localhost:3001/uploads/Food/F125-1.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
     }
-    .Food_Card_Img3{
+    .foodCardData3Img{
         object-fit: cover;  
         width: 100%;
         height: 100%;
-        background-image: url('http://localhost:3001/uploads/Food/F116-1.jpg');
+        background-image: url('http://localhost:3001/uploads/Food/F119-1.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
     }
-    .Food_Card_Img4{
+    .foodCardData4Img{
         object-fit: cover;  
         width: 100%;
         height: 100%;
-        background-image: url('http://localhost:3001/uploads/Food/F116-1.jpg');
+        background-image: url('http://localhost:3001/uploads/Food/F120-1.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .foodCardData5Img{
+        object-fit: cover;  
+        width: 100%;
+        height: 100%;
+        background-image: url('http://localhost:3001/uploads/Food/F129-1.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .foodCardData6Img{
+        object-fit: cover;  
+        width: 100%;
+        height: 100%;
+        background-image: url('http://localhost:3001/uploads/Food/F128-1.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;

@@ -11,9 +11,26 @@
         .product_name_title h1{
             color:#4D4D4D;
         }
-            .Calender_icon{
-                margin-left: 20px;
+        .Heart_Calendar_icon{
+            .HeartBtn,.CalendarBtn{
+                width: 40px;
+                height: 40px;
+                border: none;
+                  background-color:rgba(255, 255, 255, 0.004);
             }
+        }
+        // .Calender_icon{
+        //     margin-left: 20px;
+        // }
+          
+            .Heart_icon,.Calendar_icon{
+                width: 100%;
+                height: 100%;
+                background-color: none; 
+                z-index: 100;
+            }
+        }
+           
     }
     .star_group{
         display: flex;
@@ -71,7 +88,12 @@
                 margin: 0 20px;
                 color:#4D4D4D;
             }
-            
+            .countBtn{
+                width: 40px;
+                height: 40px;
+                border: none;
+                background-color:rgba(255, 255, 255, 0.004);
+            }
             .Minus_icon,.Add_icon{
                 width: 40px;
                 height: 40px;
@@ -142,9 +164,15 @@
         margin:0 0 0 20px
     }
     .map_btn{
+        &:hover{
+            background-color: #FFFFFF;
+        }
         color:#59D8A1;
+        span{
+            color:#59D8A1
+        }
     }
    
   
-}
+
  
