@@ -1,10 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './SideBar.scss';
 
 function SideBar() {
-  const [activeText, setActiveText] = useState('');
   return (
     <>
       <div className="sideBar_card col-3">
@@ -14,40 +13,47 @@ function SideBar() {
           <h2 className="sideBar_h2">朴吉米</h2>
         </div>
         <ul className="list-group list-group-flush sideBar-list-group">
-          <li className="sideBar-list ">
-            <Link className="sideBar-link" to="/profile">
+          <li
+            className={({ isActive }) =>
+              [
+                'sideBar-list p-3 hover:bg-indigo-600 duration-500',
+                isActive ? 'router-link-active sideBar-list' : null,
+              ].join(' ')
+            }
+          >
+            <NavLink className="sideBar-link" to="/profile">
               修改個人資料
-            </Link>
+            </NavLink>
           </li>
           <li className="sideBar-list ">
-            <Link className="sideBar-link" to="/profile">
+            <NavLink className="sideBar-link" to="/profile">
               重設密碼
-            </Link>
+            </NavLink>
           </li>
           <li className="sideBar-list ">
-            <Link className="sideBar-link" to="/cart">
+            <NavLink className="sideBar-link" to="/cart">
               訂單記錄
-            </Link>
+            </NavLink>
           </li>
           <li className="sideBar-list">
-            <Link className="sideBar-link" to="/profile">
+            <NavLink className="sideBar-link" to="/profile">
               我的行程規劃
-            </Link>
+            </NavLink>
           </li>
           <li className="sideBar-list">
-            <Link className="sideBar-link" to="/profile">
+            <NavLink className="sideBar-link" to="/profile">
               我的票夾
-            </Link>
+            </NavLink>
           </li>
           <li className="sideBar-list">
-            <Link className="sideBar-link" to="/profile">
+            <NavLink className="sideBar-link" to="/profile">
               我的評論
-            </Link>
+            </NavLink>
           </li>
           <li className="sideBar-list">
-            <Link className="sideBar-link" to="/profile">
+            <NavLink className="sideBar-link" to="/profile">
               我的收藏
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>
