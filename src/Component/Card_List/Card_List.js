@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import { FOOD_IMG } from '../../config';
-import Star from '../../icon/star.svg';
+import Map from '../../icon/map.svg';
 import Heart from '../../icon/heart_gray.svg';
 import PinkHeart from '../../icon/heart.svg';
 
@@ -17,7 +17,7 @@ function Card_List({ rows }) {
     <Row xs={1} md={2} lg={3} className="g-4">
       {rows.map((el, i) => {
         return (
-          <Card className="Card" style={{ width: '20rem' }} key={i}>
+          <Card className="Card col-3" style={{ width: '20rem' }} key={i}>
             <Card.Img
               variant="top"
               className="foodCardImg1"
@@ -33,8 +33,10 @@ function Card_List({ rows }) {
             <Card.Body>
               <Card.Title className="Card_Title">{el.product_name}</Card.Title>
               <Card.Text className="Card_Text">
-                <Card.Img src={Star} className="Star_icon" />
-                <span class="Card_Score">4.5/5</span>
+                <Card.Img src={Map} className="Map_icon" />
+                <span class="Card_Score">
+                  {el.city_name} | {el.area_name}
+                </span>
               </Card.Text>
               <h2 variant="primary" className="Card_Price">
                 NT$ {el.p_selling_price}
