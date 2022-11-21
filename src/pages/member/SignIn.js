@@ -13,58 +13,57 @@ function SignIn() {
             <Link className="logo m-auto" to="/">
               <img src={Logo} alt="logo" />
             </Link>
-            <form class="form col-5 m-auto">
+            <form className="form col-5 m-auto">
               <h1 className="login-text text-center">創建帳戶</h1>
               <p className="text-center">使用email註冊</p>
-              <div class="mb-3">
-                <label for="inputName" class="form-label">
+              <div className="mb-3">
+                <label htmlFor="inputName" className="form-label">
                   姓名
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="inputName"
                   placeholder="王小明"
-                  //placeholder文字顏色修改
                 />
               </div>
-              <div class="mb-3">
-                <label for="inputEmail4" class="form-label">
+              <div className="mb-3">
+                <label htmlFor="inputEmail4" className="form-label">
                   Email
                 </label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   id="inputEmail4"
                   placeholder="example@mail.com"
                 />
               </div>
-              <div class="mb-3">
-                <label for="inputPassword4" class="form-label">
+              <div className="mb-3">
+                <label htmlFor="inputPassword4" className="form-label">
                   密碼
                 </label>
                 <input
                   type="password"
-                  class="form-control"
+                  className="form-control"
                   id="inputPassword4"
                   placeholder="8位以上英數密碼，請區分大小寫"
                 />
               </div>
-              <div class="mb-3">
-                <label for="inputPassword4" class="form-label">
+              <div className="mb-3">
+                <label htmlFor="inputPassword4" className="form-label">
                   再次輸入密碼
                 </label>
                 <input
                   type="password"
-                  class="form-control"
+                  className="form-control"
                   id="inputPassword4"
                   placeholder="請輸入相同密碼"
                 />
               </div>
-              <div class="mb-3 mx-auto">
+              <div className="mb-3 mx-auto">
                 <button
                   type="submit"
-                  class="btn btn-primary login-button d-flex"
+                  className="btn btn-primary login-button d-flex"
                 >
                   註冊
                 </button>

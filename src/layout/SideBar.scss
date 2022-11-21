@@ -1,0 +1,40 @@
+.sideBar_card{
+    box-shadow: 0 0 18px 0 rgba(0,0,0,0.1);
+    padding: 30px 30px;
+    height: 100%;
+    .sideBar_member{
+        margin-top: 10px;
+        margin-left: 10px;
+        .sideBar_h2{
+            color: #59D8A1;
+            font-weight: 500 !important;
+        }
+        .sideBar_img{
+            width: 50px;
+            height: 50px;
+            background: #4D4D4D;
+            border-radius: 50px;
+        }
+    }
+    
+}
+.sideBar-list-group{
+    li{
+        list-style-type:none;
+    }
+    .sideBar-list{
+        margin: 7px 10px;
+        padding: 7px 14px;
+        list-style-type:none;
+    }
+    .sideBar-link{
+        color: #4D4D4D;
+        
+    }
+    .active{
+        color: #59D8A1;
+    }
+}
+.sideBar-link:hover{
+    color: #59D8A1;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../global.scss';
 import './NavBar.scss';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Logo from '../icon/logo/logo.svg';
 import SearchIcon from '../icon/search.svg';
@@ -12,9 +12,9 @@ function NavBar() {
     <>
       <nav className="navbar navbar-expand-lg">
         <div className="container">
-          <Link className="navbar-brand" to="/">
+          <NavLink className="navbar-brand" to="/">
             <img src={Logo} alt="logo" width="160" height="33" />
-          </Link>
+          </NavLink>
           <button
             className="navbar-toggler"
             type="button"
@@ -29,24 +29,24 @@ function NavBar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link" to="/site">
+                <NavLink className="nav-link" to="/site">
                   行程
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/food">
+                <NavLink className="nav-link" to="/food">
                   美食
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/stays">
+                <NavLink className="nav-link" to="/stays">
                   住宿
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/ticket">
+                <NavLink className="nav-link" to="/ticket">
                   票卷
-                </Link>
+                </NavLink>
               </li>
             </ul>
             <form className="d-flex" role="search">
@@ -63,22 +63,22 @@ function NavBar() {
               </div>
             </form>
             <button type="button" className="btn">
-              <Link className="nav-link login-btn-text" to="/logIn">
+              <NavLink className="nav-link login-btn-text" to="/logIn">
                 登入
-              </Link>
+              </NavLink>
             </button>
-            <Link className="signin-m" to="/signIn">
+            <Link className='signin-m' to="/signIn">
               <Button className="signin-btn" variant="primary" type="button">
                 註冊
               </Button>
-            </Link>
+            </NavLink>
             <div className="cart icon">
-              <Link className="nav-link" to="/cart">
+              <NavLink className="nav-link" to="/cart">
                 <img src={CartIcon} alt="" />
                 <div className="cart-count">
                   <span>1</span>
                 </div>
-              </Link>
+              </NavLink>
             </div>
           </div>
         </div>
