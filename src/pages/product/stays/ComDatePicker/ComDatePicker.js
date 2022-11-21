@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './ComDatePicker.scss';
 import { DatePicker } from 'antd';
 import moment from 'moment/moment';
