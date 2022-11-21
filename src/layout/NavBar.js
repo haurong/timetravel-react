@@ -30,7 +30,7 @@ function NavBar() {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <NavLink className="nav-link" to="/site">
-                  行程
+                  景點
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -67,7 +67,7 @@ function NavBar() {
                 登入
               </NavLink>
             </button>
-            <Link className='signin-m' to="/signIn">
+            <NavLink className="signin-m" to="/signIn">
               <Button className="signin-btn" variant="primary" type="button">
                 註冊
               </Button>

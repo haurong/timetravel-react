@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-
 import { ITINERARY_LIST } from './site-config';
 
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
+import SideBar from '../../../layout/SideBar';
+import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import Card from 'react-bootstrap/Card';
 import Itinerary_Card_List from './Itinerary_Card_List';
+import './Itinerary.scss';
 
 function Itinerary() {
   const [iData, setIData] = useState([]);
@@ -25,20 +26,25 @@ function Itinerary() {
 
   return (
     <>
-      <Itinerary_Card_List rows={iData} />
-
-      {/* <NavBar />
-      <Row className="container d-flex ">
-        <Col className="Accordion col-3 g-4">
-          <Card style={{ width: '18rem' }}>
-            <Accordions className="col-2 " />
-          </Card>
-        </Col>
-        <Col className="col-9">
-          <Itinerary_Card_List rows={iData.rows} />
-        </Col>
-      </Row>
-      <Footer /> */}
+      <NavBar />
+      <Container className="space">
+        <Row className="rowmb">
+          <SideBar />
+          <Col className="col-9 g-4">
+            <div className="d-flex justify-content-between">
+              <div className="ititlerow">
+                <h1 className="titlespace-x">我的行程規劃</h1>
+                <p>三個規劃</p>
+              </div>
+              <button type="button" className="btn btn-primary btnstyle">
+                新增規劃
+              </button>
+            </div>
+            <Itinerary_Card_List rows={iData} />
+          </Col>
+        </Row>
+      </Container>
+      <Footer />
     </>
   );
 }
