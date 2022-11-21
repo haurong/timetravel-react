@@ -64,13 +64,15 @@
         }
     }
     .product_text{
-        font-family: 'Noto Sans TC', sans-serif;
         
+        font-family: 'Noto Sans TC', sans-serif;
         color:#4D4D4D;
         margin-top: 50px;
         p{
+            max-width:900px;
             line-height: 1.8rem;
             font-size: 18px;
+            margin:0;
         }
     }
     .choose{
@@ -122,14 +124,47 @@
             background-color: #59D8A1;
         }
     }
-    .product_information_img 
-        img{
-            width: 900px;
-            max-height: 600px;
+    .product_information{
+        height: 100%;
+    }
+    .product_information_img {
+        z-index:999;
+       
+        .product_information_img_div1,.product_information_img_div2,.product_information_img_div3{
+            max-width:900px;
+            height:500px;
         }
+       .product_information_img1{
+        object-fit: cover;  
+        width: 100%;
+        height: 100%;
+        background-image: url('http://localhost:3001/uploads/Food/F116-6.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+       }
+       .product_information_img2{
+        object-fit: cover;  
+        width: 100%;
+        height: 100%;
+        background-image: url('http://localhost:3001/uploads/Food/F116-7.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+       }
+       .product_information_img3{
+        object-fit: cover;  
+        width: 100%;
+        height: 100%;
+        background-image: url('http://localhost:3001/uploads/Food/F116-8.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+       }
         p{
             margin: 20px 0;
         }
+}
     .hashchange{
         margin-top: 30px;
     }
@@ -172,7 +207,3 @@
             color:#59D8A1
         }
     }
-   
-  
-
- 

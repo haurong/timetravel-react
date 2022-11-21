@@ -9,23 +9,46 @@ import PinkHeart from '../../icon/heart.svg';
 import './Card_List.scss';
 
 function Card_List({ rows }) {
-  //console.log({ rows });
-  const [like1, setLike1] = useState(false);
-  const toggleLike1 = () => setLike1(!like1);
+  console.log({ rows });
+  const [like, setLike] = useState(false);
 
+  const [likeList, setLikeList] = useState([]);
+  const toggleLike1 = () => setLike(!like);
+  // console.log(fakedata[0].favorite)
+  const addLikeListHandler = (id) => {
+    if (likeList.includes(id)) {
+      return;
+    } else {
+      setLikeList([...likeList, id]);
+      return;
+    }
+  };
+  
   return (
     <Row xs={1} md={2} lg={3} className="g-4">
-      {rows.map((el, i) => {
+      {rows.map((el) => {
         return (
-          <Card className="Card col-3" style={{ width: '20rem' }} key={i}>
+          <Card
+            className="Card col-3"
+            style={{ width: '20rem' }}
+            key={el.product_number}
+          >
             <Card.Img
               variant="top"
               className="foodCardImg1"
               src={`${FOOD_IMG}${el.product_photo}`}
             />
-            <button className="Heart_Btn" onClick={toggleLike1}>
+            <button
+              data-product-number={el.product_number}
+              className="Heart_Btn"
+              onClick={() => {
+                addLikeListHandler(el.product_number);
+
+                toggleLike1();
+              }}
+            >
               <img
-                src={like1 ? PinkHeart : Heart}
+                src={like ? PinkHeart : Heart}
                 className="Card_Heart"
                 alt=""
               />
