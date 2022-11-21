@@ -4,6 +4,8 @@ import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import './TimeTravel_Hotel.scss';
 import { HotelContextProvider } from './Context/HotelContext';
+import axios from 'axios';
+import { HOTEL_DETAIL } from './hotel-config';
 
 import Carousel from './Carousel/Carousel';
 import Breadcrumb from './Breadcrumb/Breadcrumb';
@@ -23,6 +25,18 @@ import ComDatePicker from './ComDatePicker/ComDatePicker';
 import BookingBar from './BookingBar/BookingBar';
 
 function Stays() {
+  const [hotelListData, setHotelListData] = useState({});
+  const [hotelRoomData, setHotelRoomData] = useState([]);
+  async function getHotelDetail() {
+    const res_hotelListData = await axios.get(HOTEL_DETAIL + '1');
+    setHotelListData(res_hotelListData.data);
+    const res_hotelRoomData = await axios.get(HOTEL_DETAIL + '1' + '/room');
+    // console.log(res_hotelRoomData.data);
+    const toArray = res_hotelRoomData.data;
+    // console.log(toArray);
+    setHotelRoomData(toArray.map((v) => v.room_type));
+    // console.log(toArray.map((v) => v.room_type));
+  }
   const Hotel_part0 = useRef();
   const Hotel_part1 = useRef();
   const Hotel_part2 = useRef();
@@ -36,6 +50,7 @@ function Stays() {
     }
   });
   useEffect(() => {
+    getHotelDetail();
     if (isScroll) {
       let part0 = Hotel_part0.current.offsetTop;
       let part1 = Hotel_part1.current.offsetTop;
@@ -94,10 +109,13 @@ function Stays() {
                 </div>
 
                 <h2 style={{ color: '#4D4D4D', marginBottom: '20px' }}>
-                  {/* TODO:拿到真實名稱 */}路境行旅(Finders Hotel)
+                  {hotelListData.hotel_name}
                 </h2>
                 <Rate />
-                <IconBar />
+                <IconBar
+                  hotelListDataArea={hotelListData.area_name}
+                  hotelListDataCategories={hotelListData.hotel_categories}
+                />
                 <h4
                   className="ComputerHidden"
                   style={{
