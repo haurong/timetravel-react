@@ -9,7 +9,7 @@ import BuyButton from '../BuyButton/BuyButton';
 import { useHotelContext } from '../Context/HotelContext';
 const { RangePicker } = DatePicker;
 
-function ComDatePicker() {
+function ComDatePicker(props) {
   const { pickDate, setPickDate } = useHotelContext();
   return (
     <>
@@ -59,7 +59,7 @@ function ComDatePicker() {
           <div className="ComDatePicker_Right_text">
             <h5>房型選擇</h5>
           </div>
-          <RoomChoose />
+          <RoomChoose hotelRoomData={props.hotelRoomData} />
           <h5 style={{ marginTop: '50px' }}>房數</h5>
           <RoomCounts />
           <h4

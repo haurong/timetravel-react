@@ -3,7 +3,7 @@ import 'antd/dist/antd.css';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import './TimeTravel_Hotel.scss';
-import { HotelContextProvider } from './Context/HotelContext';
+import { HotelContextProvider, useHotelContext } from './Context/HotelContext';
 import axios from 'axios';
 import { HOTEL_DETAIL } from './hotel-config';
 
@@ -135,7 +135,7 @@ function Stays() {
             </div>
             <div className="">
               <div className="MobileHidden givePadding">
-                <ComDatePicker />
+                <ComDatePicker hotelRoomData={hotelRoomData} />
               </div>
             </div>
             <div

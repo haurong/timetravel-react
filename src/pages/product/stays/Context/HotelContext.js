@@ -17,7 +17,6 @@ export const HotelContextProvider = ({ children }) => {
     endTime: tomorrow,
     days: 1,
   });
-
   //  點下去換顏色＆加入我的最愛
   const addToMyFavorite = () => {};
 
