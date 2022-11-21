@@ -29,7 +29,7 @@ function SideBar() {
             </NavLink>
           </li>
           <li className="sideBar-list">
-            <NavLink className="sideBar-link" to="/site">
+            <NavLink className="sideBar-link" to="/itinerary">
               我的行程規劃
             </NavLink>
           </li>
