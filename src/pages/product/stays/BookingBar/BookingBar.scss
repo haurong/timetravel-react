@@ -6,9 +6,12 @@
     height: 80px;
     overflow: visible;
     position: fixed;
+    z-index: 500;
     transform: translateY(80px);
     transition: 0.1s ease-in-out;
-    background-color: rgb(255, 255, 255);
+    // background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.582);
+    backdrop-filter: blur(5px);
     .BookingBarContent {
       height: 100%;
       h2 {
@@ -33,13 +36,16 @@
         }
         .bookingBarOpen {
           position: absolute;
-          width: 720px;
-          height: 685px;
+          width: 800px;
+          height: 200px;
           background-color: rgba(255, 255, 255, 0.406);
           backdrop-filter: blur(5px);
           top: 80px;
-          left: 10px;
-          padding: 50px;
+          left: 0px;
+          padding: 20px;
+          div {
+            height: auto;
+          }
         }
       }
       .BookingBarPriceAndButton {
@@ -50,4 +56,7 @@
       }
     }
   }
+}
+.BookingBarOpen_popupDatePicker {
+  border: 0;
 }

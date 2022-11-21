@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { DatePicker } from 'antd';
+import moment from 'moment/moment';
+import locale from 'antd/es/date-picker/locale/zh_TW';
 import './BookingBar.scss';
 import { useHotelContext } from '../Context/HotelContext';
 import { ReactComponent as Sort } from '../../../../icon/sort.svg';
 import BuyButton from '../BuyButton/BuyButton';
+const { RangePicker } = DatePicker;
+// import BookingBarOpen from './BookingBarOpen';
 function BookingBar() {
   const { slideOut, bookingBarOpen, setBookingBarOpen } = useHotelContext();
   // const [bookingBarOpen, setBookingBarOpen] = useState(false);
@@ -25,15 +30,17 @@ function BookingBar() {
             <h2 style={{ color: '#4D4D4D' }}>
               {/* TODO:拿到真實名稱 */}路境行旅(Finders Hotel)
             </h2>
-            <div className="icon d-flex align-items-center">
+            {/* <div className="icon d-flex align-items-center">
               <Sort />
-            </div>
-            <div
+            </div> */}
+            {/* <div
               className={bookingBarOpen ? 'bookingBarOpen' : 'bookingBarOff'}
               onClick={(e) => {
                 e.stopPropagation();
               }}
-            ></div>
+            >
+              <BookingBarOpen />
+            </div> */}
           </div>
           <div className="BookingBarRight d-flex align-items-center justify-content-center">
             <h4

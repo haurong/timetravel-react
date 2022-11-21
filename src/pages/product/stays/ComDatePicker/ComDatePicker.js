@@ -6,21 +6,11 @@ import locale from 'antd/es/date-picker/locale/zh_TW';
 import RoomChoose from '../RoomChoose/RoomChoose';
 import RoomCounts from '../RoomCounts/RoomCounts';
 import BuyButton from '../BuyButton/BuyButton';
+import { useHotelContext } from '../Context/HotelContext';
 const { RangePicker } = DatePicker;
 
 function ComDatePicker() {
-  let today = moment(new Date()).format('YYYY-MM-DD');
-  let tomorrow = new Date(today);
-  tomorrow = moment(tomorrow.setDate(tomorrow.getDate() + 1)).format(
-    'YYYY-MM-DD'
-  );
-  // console.log(today);
-  // console.log(tomorrow);
-  const [pickDate, setPickDate] = useState({
-    startTime: today,
-    endTime: tomorrow,
-    days: 1,
-  });
+  const { pickDate, setPickDate } = useHotelContext();
   return (
     <>
       <div className="ComDatePicker d-flex">
