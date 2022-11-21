@@ -46,8 +46,7 @@ const App = () => (
     <h2>篩選日期</h2>
     <RangePicker
       disabledDate={disabledDate}
-      popupClassName={'popupDatePicker hiddenBox'}
-      oonOk={onOk}
+      onOk={onOk}
     />
   </>
 );
