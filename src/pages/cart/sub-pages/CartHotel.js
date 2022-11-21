@@ -2,7 +2,7 @@ import React from 'react';
 import CardHeader from './components/CardHeader';
 import HotelCard from './components/HotelCard';
 import PriceDetail from './PriceDetail';
-function CartHotel() {
+function CartHotel({ prev, next, step, maxSteps }) {
   return (
     <div className="container">
       <div className="row">
@@ -12,7 +12,12 @@ function CartHotel() {
             <HotelCard />
           </div>
           <div className="col-lg-4">
-            <PriceDetail />
+            <PriceDetail
+              prev={prev}
+              next={next}
+              step={step}
+              maxSteps={maxSteps}
+            />
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PriceDetailCard from './PriceDetailCard';
 import ProgressButton from './ProgressButton';
-function PriceDetail() {
+function PriceDetail({ prev, next, step, maxSteps }) {
   return (
     <div className="price-detail-wrap mb-5">
       <div className="card-body">
@@ -15,7 +15,12 @@ function PriceDetail() {
         <h1 className="total">TWD $5999</h1>
       </div>
       <div>
-        <ProgressButton />
+        <ProgressButton
+          prev={prev}
+          next={next}
+          step={step}
+          maxSteps={maxSteps}
+        />
       </div>
     </div>
   );

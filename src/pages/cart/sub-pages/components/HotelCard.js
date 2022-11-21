@@ -10,7 +10,7 @@ function HotelCard() {
       <div className="card-wrap">
         <div className="card-body">
           <CardTitle text={'訂房預定資訊'} />
-          <CardBodyTop />
+          <CardBodyTop productName={'台北 S HOTEL'} />
           <StateButton text={'雅致家庭房 | 二大床'} />
           <div className="d-flex">
             <DateInput text={'入住時間'} />
