@@ -29,7 +29,7 @@ function NavBar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link" to="/itinerary">
+                <Link className="nav-link" to="/site">
                   行程
                 </Link>
               </li>
@@ -67,7 +67,7 @@ function NavBar() {
                 登入
               </Link>
             </button>
-            <Link className='signin-m' to="/signIn">
+            <Link className="signin-m" to="/signIn">
               <Button className="signin-btn" variant="primary" type="button">
                 註冊
               </Button>
