@@ -24,7 +24,7 @@ function SideBar() {
             </NavLink>
           </li>
           <li className="sideBar-list ">
-            <NavLink className="sideBar-link" to="/cart">
+            <NavLink className="sideBar-link" to="/orders">
               訂單記錄
             </NavLink>
           </li>
