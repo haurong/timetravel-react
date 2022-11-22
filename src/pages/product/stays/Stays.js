@@ -3,7 +3,7 @@ import 'antd/dist/antd.css';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import './TimeTravel_Hotel.scss';
-import { HotelContextProvider, useHotelContext } from './Context/HotelContext';
+
 import axios from 'axios';
 import { HOTEL_DETAIL } from './hotel-config';
 
@@ -84,7 +84,7 @@ function Stays() {
   }, [isScroll]);
   return (
     <>
-      <HotelContextProvider>
+ 
         <NavBar />
         <div className="MobileHidden">
           <BookingBar />
@@ -209,7 +209,6 @@ function Stays() {
         <div className="MobileHidden">
           <Footer />
         </div>
-      </HotelContextProvider>
     </>
   );
 }

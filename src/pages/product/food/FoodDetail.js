@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useLocation, Link } from 'react-router-dom';
-import { SlideOutProvider } from '../stays/Context/SlideOutContext';
+import { SlideOutProvider } from '../stays/Context/HotelContext';
 import { FOOD_ITEM } from '../../../config.js';
 import { FOOD_COMMIT } from '../../../config.js';
 import Commit from './Commit';
@@ -92,7 +92,7 @@ function FoodDetail() {
   }, []);
 
   return (
-    <SlideOutProvider>
+    <>
       <NavBar />
       <div className="container" style={{ marginTop: '80px' }}>
         <div ref={Food_part0} id="Food_part0"></div>
@@ -285,7 +285,7 @@ function FoodDetail() {
       </div>
 
       <Footer />
-    </SlideOutProvider>
+    </>
   );
 }
 
