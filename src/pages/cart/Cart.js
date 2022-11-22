@@ -1,5 +1,4 @@
-import React, { useState, useContext } from 'react';
-import StepContext, { Provider } from './context/ProgressContext';
+import React, { useState } from 'react';
 //導入CSS
 import './Cart.scss';
 //導入排版

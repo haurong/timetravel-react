@@ -1,5 +1,4 @@
-import { StepContext } from '@mui/material';
-import React, { useContext } from 'react';
+import React from 'react';
 import { Button } from 'react-bootstrap';
 function ProgressButton({ prev, next, step, maxSteps }) {
   return (

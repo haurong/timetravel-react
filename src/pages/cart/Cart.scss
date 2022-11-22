@@ -54,6 +54,15 @@ p {
   margin-right: 20px;
   border: 1px solid #4d4d4d;
 }
+.credit-input-wrap {
+  .credit-input {
+    padding: 5px 20px;
+    border: 1px solid #4d4d4d;
+  }
+  p {
+    margin: 0px 10px;
+  }
+}
 input::-webkit-input-placeholder {
   color: #d9d9d9;
 }
@@ -67,16 +76,15 @@ input::-webkit-input-placeholder {
     padding: 5px 30px;
   }
 }
-.price-detail-wrap{
-    border: 1px solid #d9d9d9;
-    box-shadow: 1px 1px 5px #d9d9d9;
+.price-detail-wrap {
+  border: 1px solid #d9d9d9;
+  box-shadow: 1px 1px 5px #d9d9d9;
 }
 
-.btn-wrap{
-    display: flex;
-    justify-content: space-evenly;
-    
+.btn-wrap {
+  display: flex;
+  justify-content: space-evenly;
 }
-.total{
-    color: #59d8a1;
+.total {
+  color: #59d8a1;
 }
