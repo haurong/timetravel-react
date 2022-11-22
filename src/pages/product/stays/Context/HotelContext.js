@@ -17,6 +17,12 @@ export const HotelContextProvider = ({ children }) => {
     endTime: tomorrow,
     days: 1,
   });
+
+  // 價格
+  const [hotelRoomPrice, setHotelRoomPrice] = useState(1);
+  const [roomCounts, setRoomCounts] = useState(1);
+  const [roomTotals, setRoomTotals] = useState(hotelRoomPrice * roomCounts);
+
   //  點下去換顏色＆加入我的最愛
   const addToMyFavorite = () => {};
 
@@ -36,6 +42,12 @@ export const HotelContextProvider = ({ children }) => {
         tomorrow,
         addToMyFavorite,
         addToMySchedule,
+        hotelRoomPrice,
+        setHotelRoomPrice,
+        roomCounts,
+        setRoomCounts,
+        roomTotals,
+        setRoomTotals,
       }}
     >
       {children}

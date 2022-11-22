@@ -26,16 +26,16 @@ import BookingBar from './BookingBar/BookingBar';
 
 function Stays() {
   const [hotelListData, setHotelListData] = useState({});
-  const [hotelRoomData, setHotelRoomData] = useState([]);
+  const [hotelRoomChoose, setHotelRoomChoose] = useState([]);
+
   async function getHotelDetail() {
     const res_hotelListData = await axios.get(HOTEL_DETAIL + '1');
+
     setHotelListData(res_hotelListData.data);
     const res_hotelRoomData = await axios.get(HOTEL_DETAIL + '1' + '/room');
-    // console.log(res_hotelRoomData.data);
     const toArray = res_hotelRoomData.data;
-    // console.log(toArray);
-    setHotelRoomData(toArray.map((v) => v.room_type));
-    // console.log(toArray.map((v) => v.room_type));
+    // console.log(toArray[0].room_price);
+    setHotelRoomChoose(toArray);
   }
   const Hotel_part0 = useRef();
   const Hotel_part1 = useRef();
@@ -51,6 +51,7 @@ function Stays() {
   });
   useEffect(() => {
     getHotelDetail();
+
     if (isScroll) {
       let part0 = Hotel_part0.current.offsetTop;
       let part1 = Hotel_part1.current.offsetTop;
@@ -135,7 +136,7 @@ function Stays() {
             </div>
             <div className="">
               <div className="MobileHidden givePadding">
-                <ComDatePicker hotelRoomData={hotelRoomData} />
+                <ComDatePicker hotelRoomData={hotelRoomChoose} />
               </div>
             </div>
             <div

@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './RoomChoose.scss';
+import { useHotelContext } from '../Context/HotelContext';
 function RoomChoose(props) {
-  const Rooms = props.hotelRoomData;
+  const { setHotelRoomPrice } = useHotelContext();
+
+  useEffect(() => {
+    if (props.hotelRoomData.length !== 0) {
+      setHotelRoomPrice(props.hotelRoomData[0].room_price);
+    }
+  }, [props.hotelRoomData]);
+
   const [roomChoose, setRoomChoose] = useState(0);
   return (
     <div className="RoomChoose">
-      {Rooms.map((v, i) => {
+      {props.hotelRoomData.map((v, i) => {
         return (
           <div
             className="RoomChoose_button"
@@ -14,8 +22,15 @@ function RoomChoose(props) {
               setRoomChoose(i);
             }}
           >
-            <button className={roomChoose === i ? 'roomChooseActive' : ''}>
-              {v}
+            <button
+              data-hotel_price={v.room_price}
+              className={roomChoose === i ? 'roomChooseActive' : ''}
+              onClick={(e) => {
+                // console.log(e.target.getAttribute('data-hotel_price'));
+                setHotelRoomPrice(e.target.getAttribute('data-hotel_price'));
+              }}
+            >
+              {v.room_type}
             </button>
           </div>
         );
