@@ -1,0 +1,23 @@
+ul {
+  list-style: none;
+  display: flex;
+}
+.orders-links-ul {
+  li {
+    padding: 10px 80px;
+  }
+  .active {
+    border-bottom: 5px solid #59d8a1;
+    a {
+      color: #59d8a1;
+    }
+  }
+}
+.orders-links:hover {
+  color: #59d8a1;
+}
+.orders-details-ul {
+  li {
+    padding: 10px 20px;
+  }
+}
