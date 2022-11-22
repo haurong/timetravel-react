@@ -1,7 +1,7 @@
 import React from 'react';
 import './Slider.scss';
 import { Slider, InputNumber } from 'antd';
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
 class App extends React.Component {
   state = {
     min: 100,

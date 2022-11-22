@@ -3,7 +3,7 @@ import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
 import './Ticket.scss';
 import Breadcrumb from './Breadcrumb/Breadcrumb.js';
 // import Carousel from './Carousel/Carousel.js';
