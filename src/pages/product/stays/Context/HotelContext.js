@@ -22,11 +22,9 @@ export const HotelContextProvider = ({ children }) => {
   const [hotelRoomPrice, setHotelRoomPrice] = useState(1);
   const [roomCounts, setRoomCounts] = useState(1);
 
-  //  點下去換顏色＆加入我的最愛
-  const addToMyFavorite = () => {};
-
-  //  點下去換顏色＆加入我的行程
-  const addToMySchedule = () => {};
+  //要到住宿資料
+  const [hotelListData, setHotelListData] = useState({});
+  const [hotelRoomChoose, setHotelRoomChoose] = useState([]);
 
   return (
     <HotelContext.Provider
@@ -39,12 +37,14 @@ export const HotelContextProvider = ({ children }) => {
         setPickDate,
         today,
         tomorrow,
-        addToMyFavorite,
-        addToMySchedule,
         hotelRoomPrice,
         setHotelRoomPrice,
         roomCounts,
         setRoomCounts,
+        hotelListData,
+        setHotelListData,
+        hotelRoomChoose,
+        setHotelRoomChoose,
       }}
     >
       {children}

@@ -4,11 +4,11 @@ import { useHotelContext } from '../Context/HotelContext';
 function RoomChoose(props) {
   const { setHotelRoomPrice } = useHotelContext();
 
-  useEffect(() => {
-    if (props.hotelRoomData.length !== 0) {
-      setHotelRoomPrice(props.hotelRoomData[0].room_price);
-    }
-  }, [props.hotelRoomData]);
+  // useEffect(() => {
+  //   if (props.hotelRoomData.length !== 0) {
+  //     setHotelRoomPrice(props.hotelRoomData[0].room_price);
+  //   }
+  // }, [props.hotelRoomData]);
 
   const [roomChoose, setRoomChoose] = useState(0);
   return (

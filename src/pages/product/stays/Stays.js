@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useHotelContext } from './Context/HotelContext';
 import { HOTEL_DETAIL } from './hotel-config';
 
-import Carousel from './Carousel/Carousel';
+import HotelCarousel from './Carousel/Carousel';
 import Breadcrumb from './Breadcrumb/Breadcrumb';
 import Rate from './Rate/Rate';
 import IconBar from './IconBar/IconBar';
@@ -26,18 +26,24 @@ import ComDatePicker from './ComDatePicker/ComDatePicker';
 import BookingBar from './BookingBar/BookingBar';
 
 function Stays() {
-  const [hotelListData, setHotelListData] = useState({});
-  const [hotelRoomChoose, setHotelRoomChoose] = useState([]);
-  const { roomCounts, hotelRoomPrice } = useHotelContext();
+  const {
+    roomCounts,
+    hotelRoomPrice,
+    hotelListData,
+    setHotelListData,
+    hotelRoomChoose,
+    setHotelRoomChoose,
+    setHotelRoomPrice,
+  } = useHotelContext();
 
   async function getHotelDetail() {
-    const res_hotelListData = await axios.get(HOTEL_DETAIL + '1');
+    const res_hotelListData = await axios.get(HOTEL_DETAIL + '10');
 
     setHotelListData(res_hotelListData.data);
-    const res_hotelRoomData = await axios.get(HOTEL_DETAIL + '1' + '/room');
+    const res_hotelRoomData = await axios.get(HOTEL_DETAIL + '10' + '/room');
     const toArray = res_hotelRoomData.data;
-    // console.log(toArray[0].room_price);
     setHotelRoomChoose(toArray);
+    setHotelRoomPrice(toArray[0].room_price);
   }
   const Hotel_part0 = useRef();
   const Hotel_part1 = useRef();
@@ -96,7 +102,7 @@ function Stays() {
       <div className="MobileHidden container">
         <Breadcrumb />
       </div>
-      <Carousel />
+      <HotelCarousel />
       <div className="ComputerHidden">
         <HashChange allPart={allPart} />
       </div>
@@ -195,6 +201,10 @@ function Stays() {
           </div>
         </div>
       </div>
+      {/* <div
+        className="HashChangeStop"
+        style={{ width: '100%', outline: 'red 1px solid' }}
+      ></div> */}
       <div className="ComputerHidden">
         <MobileFooter />
         <div
