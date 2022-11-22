@@ -3,7 +3,7 @@ import './BuyButton.scss';
 function BuyButton() {
   return (
     <>
-      <div>
+      <div className="BookingBarPriceAndButton">
         <button
           className="BottomBar_Buy_Right "
           style={{ backgroundColor: '#63D2FF' }}
@@ -11,7 +11,7 @@ function BuyButton() {
           加入購物車
         </button>
       </div>
-      <div className="noMarginRight">
+      <div className="noMarginRight BookingBarPriceAndButton">
         <button
           className="BottomBar_Buy_Right "
           style={{ backgroundColor: '#59d8a1' }}

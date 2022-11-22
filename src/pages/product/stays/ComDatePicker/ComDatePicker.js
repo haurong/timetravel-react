@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './ComDatePicker.scss';
 import { DatePicker } from 'antd';
 import moment from 'moment/moment';
@@ -6,21 +6,11 @@ import locale from 'antd/es/date-picker/locale/zh_TW';
 import RoomChoose from '../RoomChoose/RoomChoose';
 import RoomCounts from '../RoomCounts/RoomCounts';
 import BuyButton from '../BuyButton/BuyButton';
+import { useHotelContext } from '../Context/HotelContext';
 const { RangePicker } = DatePicker;
 
-function ComDatePicker() {
-  let today = moment(new Date()).format('YYYY-MM-DD');
-  let tomorrow = new Date(today);
-  tomorrow = moment(tomorrow.setDate(tomorrow.getDate() + 1)).format(
-    'YYYY-MM-DD'
-  );
-  // console.log(today);
-  // console.log(tomorrow);
-  const [pickDate, setPickDate] = useState({
-    startTime: today,
-    endTime: tomorrow,
-    days: 1,
-  });
+function ComDatePicker(props) {
+  const { pickDate, setPickDate, hotelRoomPrice } = useHotelContext();
   return (
     <>
       <div className="ComDatePicker d-flex">
@@ -69,7 +59,7 @@ function ComDatePicker() {
           <div className="ComDatePicker_Right_text">
             <h5>房型選擇</h5>
           </div>
-          <RoomChoose />
+          <RoomChoose hotelRoomData={props.hotelRoomData} />
           <h5 style={{ marginTop: '50px' }}>房數</h5>
           <RoomCounts />
           <h4
@@ -79,7 +69,7 @@ function ComDatePicker() {
               marginBottom: '30px',
             }}
           >
-            TWD$25990
+            TWD${hotelRoomPrice}
           </h4>
           <div className="d-flex ComDatePicker_Right_BuyButton ">
             <BuyButton />

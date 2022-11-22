@@ -3,7 +3,9 @@ import 'antd/dist/antd.css';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import './TimeTravel_Hotel.scss';
-import { SlideOutProvider } from './Context/SlideOutContext';
+import { HotelContextProvider, useHotelContext } from './Context/HotelContext';
+import axios from 'axios';
+import { HOTEL_DETAIL } from './hotel-config';
 
 import Carousel from './Carousel/Carousel';
 import Breadcrumb from './Breadcrumb/Breadcrumb';
@@ -23,6 +25,18 @@ import ComDatePicker from './ComDatePicker/ComDatePicker';
 import BookingBar from './BookingBar/BookingBar';
 
 function Stays() {
+  const [hotelListData, setHotelListData] = useState({});
+  const [hotelRoomChoose, setHotelRoomChoose] = useState([]);
+
+  async function getHotelDetail() {
+    const res_hotelListData = await axios.get(HOTEL_DETAIL + '1');
+
+    setHotelListData(res_hotelListData.data);
+    const res_hotelRoomData = await axios.get(HOTEL_DETAIL + '1' + '/room');
+    const toArray = res_hotelRoomData.data;
+    // console.log(toArray[0].room_price);
+    setHotelRoomChoose(toArray);
+  }
   const Hotel_part0 = useRef();
   const Hotel_part1 = useRef();
   const Hotel_part2 = useRef();
@@ -36,6 +50,8 @@ function Stays() {
     }
   });
   useEffect(() => {
+    getHotelDetail();
+
     if (isScroll) {
       let part0 = Hotel_part0.current.offsetTop;
       let part1 = Hotel_part1.current.offsetTop;
@@ -68,9 +84,11 @@ function Stays() {
   }, [isScroll]);
   return (
     <>
-      <SlideOutProvider>
+      <HotelContextProvider>
         <NavBar />
-        <BookingBar />
+        <div className="MobileHidden">
+          <BookingBar />
+        </div>
         <div style={{ width: '100%', height: '79px' }}></div>
         <BottomBar />
         <div ref={Hotel_part0} id="Hotel_part0"></div>
@@ -92,10 +110,13 @@ function Stays() {
                 </div>
 
                 <h2 style={{ color: '#4D4D4D', marginBottom: '20px' }}>
-                  {/* TODO:拿到真實名稱 */}路境行旅(Finders Hotel)
+                  {hotelListData.hotel_name}
                 </h2>
                 <Rate />
-                <IconBar />
+                <IconBar
+                  hotelListDataArea={hotelListData.area_name}
+                  hotelListDataCategories={hotelListData.hotel_categories}
+                />
                 <h4
                   className="ComputerHidden"
                   style={{
@@ -115,7 +136,7 @@ function Stays() {
             </div>
             <div className="">
               <div className="MobileHidden givePadding">
-                <ComDatePicker />
+                <ComDatePicker hotelRoomData={hotelRoomChoose} />
               </div>
             </div>
             <div
@@ -130,7 +151,7 @@ function Stays() {
                 </h2>
                 <ShowPic />
               </div>
-              <div className="col-lg-3 givePadding MobileHidden ">
+              <div className="col-lg-3  MobileHidden ">
                 <HashChange allPart={allPart} />
               </div>
             </div>
@@ -158,7 +179,7 @@ function Stays() {
               id="Hotel_part4"
               ref={Hotel_part4}
             ></div>
-            <div className="givePadding col-lg-8">
+            <div className="givePadding col-lg-8 noPadding">
               <div className="d-flex" style={{ alignItems: 'center' }}>
                 <h2
                   style={{
@@ -188,7 +209,7 @@ function Stays() {
         <div className="MobileHidden">
           <Footer />
         </div>
-      </SlideOutProvider>
+      </HotelContextProvider>
     </>
   );
 }

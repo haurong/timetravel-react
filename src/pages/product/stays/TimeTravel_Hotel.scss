@@ -18,7 +18,8 @@
   }
 }
 .Hotel_partHidden {
-  height: 0px;
+  height: 160px;
+  // background-color: rgba(255, 0, 0, 0.674);
   @media (max-width: 992px) {
     height: 80px;
   }
@@ -28,4 +29,7 @@ div {
   -moz-user-select: none;
   -o-user-select: none;
   user-select: none;
+}
+.noPadding{
+  padding-top: 0px;
 }

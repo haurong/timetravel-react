@@ -6,19 +6,9 @@ import { BsHeart, BsHeartFill } from 'react-icons/bs';
 import { FaCalendarAlt } from 'react-icons/fa';
 import BuyButton from '../BuyButton/BuyButton';
 import ComputerLikeAdd from '../ComputerLikeAdd/ComputerLikeAdd';
+import { useHotelContext } from '../Context/HotelContext';
 function BottomBar() {
-  let today = moment(new Date()).format('YYYY-MM-DD');
-  let tomorrow = new Date(today);
-  tomorrow = moment(tomorrow.setDate(tomorrow.getDate() + 1)).format(
-    'YYYY-MM-DD'
-  );
-  // console.log(today);
-  // console.log(tomorrow);
-  const [pickDate, setPickDate] = useState({
-    startTime: today,
-    endTime: tomorrow,
-    days: 1,
-  });
+  const { pickDate, setPickDate, today, tomorrow } = useHotelContext();
   return (
     <div className="BottomBar">
       <div className="BottomBar_BtnGroup">

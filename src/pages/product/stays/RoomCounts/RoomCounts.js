@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import './RoomCounts.scss';
 import { ReactComponent as Add } from '../../../../icon/add.svg';
 import { ReactComponent as Minus } from '../../../../icon/minus.svg';
+import { useHotelContext } from '../Context/HotelContext';
 // import Minus from '../../../../icon/minus.svg';
 
 function RoomCounts() {
-  const [roomCounts, setRoomCounts] = useState(1);
+  const { roomCounts, setRoomCounts } = useHotelContext();
+
   return (
     <div className="d-flex RoomCounts">
       <div
@@ -17,7 +19,7 @@ function RoomCounts() {
           }
         }}
       >
-        <Minus className="RoomCounts_SVG"  />
+        <Minus className="RoomCounts_SVG" />
       </div>
       <div className="RoomCounts_Number icon">
         <p>{roomCounts}</p>
