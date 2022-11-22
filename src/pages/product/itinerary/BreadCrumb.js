@@ -15,7 +15,7 @@ function BreadCrumb({ siteData }) {
           </li>
           <li className="breadcrumb-item">
             <Link href="#/" style={{ textDecoration: 'none' }}>
-              行程
+              景點
             </Link>
           </li>
           <li className="breadcrumb-item">

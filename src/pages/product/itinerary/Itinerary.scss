@@ -1,0 +1,38 @@
+.space{
+    margin-top: 180px;
+}
+.CardList{
+    padding: 10px;
+}
+.Card{
+     margin: 0;
+     padding:0;
+     height: 400px;
+     box-shadow: 0 0 18px 0 rgba(0,0,0,0.1);
+  }
+
+.ititlerow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.titlespace-x{
+    margin-right: 10px;
+}
+.card-img{
+    height: 200px;
+}
+.card-margin0{
+    h2, p{
+        margin-bottom: 0;
+    }
+}
+.btnstyle{
+    width: 100px;
+    height: 36px;
+    padding: 0;
+}
+.rowmb{
+    margin-bottom: 100px;
+}
