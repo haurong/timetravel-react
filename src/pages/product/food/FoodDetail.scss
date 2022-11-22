@@ -85,14 +85,17 @@
         }
         .quantity{
             p{
-                padding-top: 5px;
+                text-align: center;
+             
                 font-size: 18px;
-                margin: 0 20px;
+                 margin: 0 20px;
                 color:#4D4D4D;
+                padding: 6px;
             }
             .countBtn{
                 width: 40px;
                 height: 40px;
+                padding: 0;
                 border: none;
                 background-color:rgba(255, 255, 255, 0.004);
             }
@@ -116,11 +119,11 @@
         margin-top: 20px;
         .add_cart{
             background-color:#63D2FF;
-            color:#FFFFFF;
+            color:#FFFFFF!important;
             margin-right: 30px;
         }
         .buy_now{
-            color:#FFFFFF;
+            color:#FFFFFF !important;
             background-color: #59D8A1;
         }
     }
@@ -165,22 +168,7 @@
             margin: 20px 0;
         }
 }
-    .hashchange{
-        margin-top: 30px;
-    }
-    .hashchange_slider{
-        width: 8px;
-        height: 30px;
-        background-color:#59d8a1;
-        position:absolute;
-        margin-top: 20px;
-        
-    }
-    .hashchange_text{
-        justify-content: center;
-        margin-left: 10px;
-        position: relative;
-    }
+
     .Heart_icon, .Calender_icon, .Phone_icon,.Map_icon,.Food_icon{
         width: 40px;
         height: 40px;
@@ -189,8 +177,8 @@
         width: 30px;
         height: 30px;
     }
-    .use_and_store{
-        margin-top: 30px;
+    .use{
+        padding:100px;
     }
     .use_title_img,.store_title_img{
         margin: 30px 0 ; 
@@ -207,3 +195,16 @@
             color:#59D8A1
         }
     }
+    .commitTitle{
+        max-width:900px
+    }
+ .cardCarouselTitle{
+    position: relative;
+    .cardCarousel{
+       
+        position:absolute;
+        top: 0;
+        left: 50px;
+
+    }
+ }
