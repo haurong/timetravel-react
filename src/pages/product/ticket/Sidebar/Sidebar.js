@@ -61,10 +61,10 @@ const items = [
     'sub5',
     <Ticket className="sidebarIcon" style={{ width: '40px' }} />,
     [
-      getItem('Option 9', '9'),
-      getItem('Option 10', '10'),
-      getItem('Option 11', '11'),
-      getItem('Option 12', '12'),
+      getItem('Option 13', '13'),
+      getItem('Option 14', '14'),
+      getItem('Option 15', '15'),
+      getItem('Option 16', '16'),
     ]
   ),
 ];
@@ -82,7 +82,7 @@ const App = () => {
     }
   };
   return (
-    <div className="col-3">
+    <>
       <h2 className="sidebarMarginTop">所有商品類別</h2>
       <Menu
         mode="inline"
@@ -90,7 +90,7 @@ const App = () => {
         onOpenChange={onOpenChange}
         items={items}
       />
-    </div>
+    </>
   );
 };
 export default App;

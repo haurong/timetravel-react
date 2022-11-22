@@ -1,0 +1,78 @@
+.home_bg{
+    background-image: url('../../img/ticket_home.jpg');
+    background-repeat: no-repeat;
+    // background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: -10;
+}
+
+
+.home-why-us{
+    justify-content: center; 
+    // margin-top: 105px;
+    
+    h1 {
+        text-align: center;
+        // border: 1px solid red;
+    }
+    p{
+        text-align: center;
+        margin-top: 30px;
+        // border: 1px solid red;
+    }
+
+}
+
+.home-part{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 51vw;
+    border: 1px solid rgb(60, 56, 255);
+}
+
+.home-part2{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 214px;
+    border: 1px solid rgb(60, 56, 255);
+}
+
+.home-part3{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 500px;
+    border: 1px solid rgb(60, 56, 255);
+}
+
+.home-part4{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 243px;
+    border: 1px solid rgb(60, 56, 255);
+}
+
+.home-part5{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 400px;
+    border: 1px solid rgb(60, 56, 255);
+    .home-why-us-bg{
+        // background-image: url('../../img/ticket_home.jpg');
+        background-color: aqua;
+    }
+}
+
+
+
+
+

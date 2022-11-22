@@ -5,7 +5,7 @@ import './Breadcrumb.scss';
 function breadcrumb() {
   return (
     <>
-      <Breadcrumb className="ticketBreadcrumb">
+      <Breadcrumb>
         <Breadcrumb.Item>
           <a href="/">Home</a>
         </Breadcrumb.Item>
