@@ -15,7 +15,7 @@ function BreadCrumbList() {
           </li>
           <li className="breadcrumb-item active">
             <Link href="#/" style={{ textDecoration: 'none' }}>
-              行程
+              景點
             </Link>
           </li>
         </ol>

@@ -8,9 +8,11 @@
     #iTitleText{
         width: 450px;
         display: flex;
+        align-items: center;
         justify-content: space-between;
-        h2{
-            line-height: 3rem;
+        h1, h2{
+            margin: 0;
+            // line-height: 3rem;
         }
     }
     #iTitleBtns{
@@ -20,6 +22,7 @@
         button{
             height: 46px;
             width: 132px;
+            color: #fff;
         }
     }
 }
@@ -41,25 +44,28 @@
     ::-webkit-scrollbar {
         width: 0px;
       }
-    #iDay{
-        position: sticky;
-        top:0;
+    .day{
         width: 100%;
-        color: #fff;
-        background-color: #59D8A1;
         margin: 0;
         height: 50px;
         line-height: 50px;
         display: flex;
+        align-items: center;
         justify-content: space-between;
         h2{
             line-height: 50px;
             padding-left: 40px;
+            margin: 0;
+            color: #fff;
+
         }
         h3{
             font-size: 14px;
             line-height: 50px;
             padding-right: 40px;
+            margin: 0;
+            color: #fff;
+
         }
     }
     .day1{
@@ -68,7 +74,7 @@
     .day2{
         background-color: #63D2FF;
     }    
-    .day2{
+    .day3{
         background-color: #2081C3;
     }    
     #iItem{
@@ -98,9 +104,16 @@
 
 
         }
-        .svg{
+        .icon{
             height: 40px;
             width: 40px;
+            img{
+                width: 40px;
+                height: 30px;
+                margin: 0;
+                display: block;
+                margin: 5px auto;
+            }
         }
     }
     .leaflet-container {
@@ -109,5 +122,19 @@
         z-index: 0;
       }
 }
-
-
+.red{
+    color: red;
+}
+.stickyt0{
+    position: sticky;
+    top:0
+}
+.stickyt50{
+    position: sticky;
+    top:50px
+}
+.stickyt100{
+    position: sticky;
+    // top:100px
+    bottom: 0;
+}
