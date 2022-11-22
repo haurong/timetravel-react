@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './../styles/OrdersDetails.scss';
-
+import SortIcon from './../../../icon/sort.svg';
 function OrdersDetail() {
   return (
     <div className="container">
@@ -45,7 +45,7 @@ function OrdersDetail() {
                 aria-expanded="true"
                 aria-controls="collapseOne"
               >
-                Accordion Item #1
+                <img alt="sort-img" className="sort-img" src={SortIcon} />
               </button>
             </h2>
             <div
