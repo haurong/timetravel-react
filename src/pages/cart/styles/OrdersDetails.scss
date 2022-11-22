@@ -24,7 +24,15 @@ ul {
 .accordion-button::after {
   content: none;
 }
-.sort-img{
-    width: 30px;
-    height: 30px;
+.sort-img {
+  width: 30px;
+  height: 30px;
+}
+
+span {
+  padding: 5px 0px;
+  font-weight: 300 !important;
+  font-size: 1.1rem !important;
+  line-height: 1.8rem !important;
+  color: #4d4d4d;
 }
