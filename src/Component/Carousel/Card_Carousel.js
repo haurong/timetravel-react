@@ -82,7 +82,7 @@ export default function Card_Carousel() {
       className="mySwiper"
     >
       <SwiperSlide>
-        <Card className="Card" style={{ width: '20rem' }}>
+        <Card  className="Card " style={{ width: '20rem' }}>
           <Card.Img variant="top" className="foodCardData1Img" />
           <button className="Heart_Btn" onClick={toggleLike1}>
             <img

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-//import { FOOD_COMMIT } from '../../../config';
-import { useLocation } from 'react-router-dom';
-import axios from 'axios';
 import { Rate } from 'antd';
 import CommitCard from './CommitCard';
 import './Commit.scss';
 
+
+//從FoodDetail拿到commit資料
 function Commit({ rows }) {
-  console.log({rows})
+  console.log({ rows });
   return (
     <div>
       <div className="Comment_Top">
@@ -19,10 +18,9 @@ function Commit({ rows }) {
             className="TimeTravel_Rate"
             style={{ zIndex: -1 }}
           />
-          <p>5555555555</p>
+          <p>221則評論</p>
         </div>
       </div>
-
       <CommitCard rows={rows} />
     </div>
   );
