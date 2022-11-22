@@ -28,11 +28,18 @@ function Cart() {
   const BlockComponent = components[step - 1];
   return (
     <>
-      <NavBar />
-      <div className="space"></div>
-      <ProgressBar step={step} maxSteps={maxSteps} pageNames={pageNames} />
-      <BlockComponent prev={prev} next={next} step={step} maxSteps={maxSteps} />
-      <Footer />
+      <div className="cart-total-wrap">
+        <NavBar />
+        <div className="space"></div>
+        <ProgressBar step={step} maxSteps={maxSteps} pageNames={pageNames} />
+        <BlockComponent
+          prev={prev}
+          next={next}
+          step={step}
+          maxSteps={maxSteps}
+        />
+        <Footer />
+      </div>
     </>
   );
 }

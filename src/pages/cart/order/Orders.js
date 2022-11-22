@@ -5,7 +5,7 @@ import SideBar from '../../../layout/SideBar';
 import OrdersDetail from './OrdersDetail';
 function orders() {
   return (
-    <>
+    <div className="orders-total-wrap">
       <NavBar />
       <div className="container">
         <div className="givePadding profile_padding d-flex">
@@ -16,7 +16,7 @@ function orders() {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 
