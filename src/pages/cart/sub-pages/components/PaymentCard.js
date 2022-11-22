@@ -32,13 +32,6 @@ function PaymentCard() {
       </div>
       <CardHeader text={'信用卡資料'} />
       <div className="pb-5">
-        <TextInput
-          text={'持卡人姓名'}
-          placehoder={'需與信用卡上姓名相同'}
-          style={{ width: '300px' }}
-        />
-      </div>
-      <div className="pb-5">
         <CreditCardInput />
       </div>
     </div>
