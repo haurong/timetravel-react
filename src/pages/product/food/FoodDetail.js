@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { useLocation,Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { FOOD_ITEM } from '../../../config.js';
+import { FOOD_COMMIT } from '../../../config.js';
+import Commit from './Commit';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import BreadCrumb from '../stays/Breadcrumb/Breadcrumb';
-import Commit from '../stays/Comment/Comment';
 import Carousel from '../../../Component/Carousel/Carousel';
 import Card_Carousel from '../../../Component/Carousel/Card_Carousel';
 import Heart from '../../../icon/heart_gray.svg';
@@ -37,12 +38,23 @@ function FoodDetail() {
     const response = await axios.get(FOOD_ITEM + sid);
     // const response = await axios.get(SITE_DETAIL);
     setFoodData(response.data);
-    //console.log(foodData);
+    console.log(foodData);
   }
-  useEffect(() => {}, [count]);
+  const [commitData, setCommitData] = useState([]);
+
+  const usp = new URLSearchParams(location.search);
+
+  async function getList() {
+    const response = await axios.get(FOOD_COMMIT);
+    setCommitData(response.data);
+  }
+  console.log(commitData);
+  useEffect(() => {
+    getList();
+  }, [location]);
   useEffect(() => {
     getData();
-  }, [location]);
+  }, []);
 
   return (
     <>
@@ -60,7 +72,7 @@ function FoodDetail() {
           <div className="container">
             <div className="product_name d-flex">
               <div className="product_name_title">
-                <h1>{foodData.product_name}</h1>
+                <h1>{foodData.product_name} WANCHUHAO</h1>
               </div>
 
               <div className="Heart_Calendar_icon">
@@ -89,7 +101,6 @@ function FoodDetail() {
               <img src={Star_icon} alt="" />
               <img src={Star_icon} alt="" />
               <img src={Star_icon} alt="" />
-              <img src={Star_icon} alt="" />
               <p>4.3顆星</p>
             </div>
             <div className="container location d-flex ">
@@ -113,7 +124,7 @@ function FoodDetail() {
           </div>
         </div>
         <div className="container d-flex">
-          <div className="col-lg-9">
+          <div className="col-lg-9  product_text">
             <div className="container product_text">
               <p>{foodData.product_introdution}</p>
             </div>
@@ -140,8 +151,8 @@ function FoodDetail() {
               </button>
             </div>
             <div className="price">
-              <h2 className="price1">TWD$100</h2>
-              <h1 className="price2">TWD$79</h1>
+              <h2 className="price1">TWD{foodData.p_discounted_price}</h2>
+              <h1 className="price2">TWD{foodData.p_selling_price}</h1>
             </div>
             <div className="btnGroup">
               <button type="button" className="btn add_cart">
@@ -157,12 +168,18 @@ function FoodDetail() {
           <div className="col-lg-9">
             <h2>商品介紹</h2>
             <div className=" product_information_img">
-              <img src={`${imgUrl}/uploads/Food/F116-4.jpg`} alt="" />
-              <p>吧台區</p>
-              <img src={`${imgUrl}/uploads/Food/F116-3.jpg`} alt="" />
-              <p>巴斯克乳酪蛋糕</p>
-              <img src={`${imgUrl}/uploads/Food/F116-2.jpg`} alt="" />
-              <p>咖啡拿鐵</p>
+              <div className="product_information_img_div1">
+                <div className="product_information_img1"></div>
+              </div>
+              <p>衣索比亞谷吉(冰)</p>
+              <div className="product_information_img_div2">
+                <div className="product_information_img2"></div>
+              </div>
+              <p>巴斯克乳酪</p>
+              <div className="product_information_img_div3">
+                <div className="product_information_img3"></div>
+              </div>
+              <p>鳳梨冰美式</p>
             </div>
           </div>
           <div className="col-lg-3 hashchange justify-content-center">
@@ -224,7 +241,7 @@ function FoodDetail() {
           </div>
         </div>
         <div className="container givePadding col-lg-10 ">
-          <Commit className="mt-5" />
+          <Commit rows={commitData} />
         </div>
         <div className="container ">
           <Card_Carousel />

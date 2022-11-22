@@ -2,7 +2,8 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
-import Star from '../../icon/star.svg';
+//import Star from '../../icon/star.svg';
+import Map from '../../icon/map.svg';
 import Heart from '../../icon/heart_gray.svg';
 import PinkHeart from '../../icon/heart.svg';
 //引入卡片輪播資料
@@ -34,7 +35,7 @@ export default function Card1() {
           {foodCardData.product_name}
         </Card.Title>
         <Card.Text className="Card_Text">
-          <Card.Img src={Star} className="Star_icon" />
+          <Card.Img src={Map} className="Star_icon" />
           <span class="Card_Score">4.5/5</span>
         </Card.Text>
         <h2 variant="primary" className="Card_Price">

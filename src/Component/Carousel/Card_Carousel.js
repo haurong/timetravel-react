@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
-import Star from '../../icon/star.svg';
+import Map from '../../icon/map.svg';
 import Heart from '../../icon/heart_gray.svg';
 import PinkHeart from '../../icon/heart.svg';
 //引入卡片輪播資料
@@ -96,8 +96,10 @@ export default function Card_Carousel() {
               {foodCardData1.product_name}
             </Card.Title>
             <Card.Text className="Card_Text">
-              <Card.Img src={Star} className="Star_icon" />
-              <span class="Card_Score">4.5/5</span>
+              <Card.Img src={Map} className="Map_icon" />
+              <span class="Card_Score">
+                {foodCardData1.city_name} | {foodCardData1.area_name}
+              </span>
             </Card.Text>
             <h2 variant="primary" className="Card_Price">
               NT${foodCardData1.p_selling_price}
@@ -121,8 +123,10 @@ export default function Card_Carousel() {
               {foodCardData2.product_name}
             </Card.Title>
             <Card.Text className="Card_Text">
-              <Card.Img src={Star} className="Star_icon" />
-              <span class="Card_Score">4.5/5</span>
+              <Card.Img src={Map} className="Map_icon" />
+              <span class="Card_Score">
+                {foodCardData2.city_name} | {foodCardData2.area_name}
+              </span>
             </Card.Text>
             <h2 variant="primary" className="Card_Price">
               NT${foodCardData2.p_selling_price}
@@ -146,8 +150,10 @@ export default function Card_Carousel() {
               {foodCardData3.product_name}
             </Card.Title>
             <Card.Text className="Card_Text">
-              <Card.Img src={Star} className="Star_icon" />
-              <span class="Card_Score">4.5/5</span>
+              <Card.Img src={Map} className="Map_icon" />
+              <span class="Card_Score">
+                {foodCardData3.city_name} | {foodCardData3.area_name}
+              </span>
             </Card.Text>
             <h2 variant="primary" className="Card_Price">
               NT${foodCardData3.p_selling_price}
@@ -171,8 +177,10 @@ export default function Card_Carousel() {
               {foodCardData4.product_name}
             </Card.Title>
             <Card.Text className="Card_Text">
-              <Card.Img src={Star} className="Star_icon" />
-              <span class="Card_Score">4.5/5</span>
+              <Card.Img src={Map} className="Map_icon" />
+              <span class="Card_Score">
+                {foodCardData4.city_name} | {foodCardData4.area_name}
+              </span>
             </Card.Text>
             <h2 variant="primary" className="Card_Price">
               NT${foodCardData4.p_selling_price}
@@ -195,8 +203,10 @@ export default function Card_Carousel() {
               {foodCardData5.product_name}
             </Card.Title>
             <Card.Text className="Card_Text">
-              <Card.Img src={Star} className="Star_icon" />
-              <span class="Card_Score">4.5/5</span>
+              <Card.Img src={Map} className="Map_icon" />
+              <span class="Card_Score">
+                {foodCardData5.city_name} | {foodCardData5.area_name}
+              </span>
             </Card.Text>
             <h2 variant="primary" className="Card_Price">
               NT${foodCardData5.p_selling_price}
@@ -220,8 +230,10 @@ export default function Card_Carousel() {
               {foodCardData6.product_name}
             </Card.Title>
             <Card.Text className="Card_Text">
-              <Card.Img src={Star} className="Star_icon" />
-              <span class="Card_Score">4.5/5</span>
+              <Card.Img src={Map} className="Map_icon" />
+              <span class="Card_Score">
+                {foodCardData6.city_name} | {foodCardData6.area_name}
+              </span>
             </Card.Text>
             <h2 variant="primary" className="Card_Price">
               NT${foodCardData6.p_selling_price}
