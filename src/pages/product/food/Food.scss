@@ -1,11 +1,25 @@
+.space{
+    padding:60px
+}
 .FoodListGrooup{
     .card{
-        margin-top: 60px;
+        margin-top: 80px;
+    }
+    .cardList{
+        padding:0 30px
     }
     .Accordion{
-        margin-top: 100px;
+        padding-top: 200px;
+        margin:0;
+    }
+    .row{
+        margin: 0 20px ;
     }
     .Food_pagination {
+        .pagination{
+            justify-content:center;
+            align-content: center;
+        }
         margin-bottom: 30px;
         justify-content:center;
         align-content: center;

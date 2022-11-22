@@ -1,0 +1,46 @@
+.comment-card{
+    height: 100%;
+    margin: 10px;
+    .body-comment-padding{
+        padding: 30px;
+    }
+    .comment_img{
+        margin: auto 0;
+        width: 50px;
+        height: 50px;
+        background: #4D4D4D;
+        border-radius: 50%;
+    }
+    .comment_title{
+        margin-left: 30px;
+        h2{
+            margin: 0;
+        }
+        .comment-time{
+            margin-left: 8px;
+        }
+        .star-comment-margin{
+            margin: 0;
+        }
+        
+    }
+    .comment-icon-dlex{
+        position: absolute;
+        right: 30px;
+        
+        .comment-icon{
+            margin: 6px 10px;
+            img{
+                margin: 10px auto;
+                width: 32px;
+            }
+        }
+        .comment-icon img:hover{
+            fill: red;
+            
+        }
+    }
+    .comment-body-text{
+        margin-top: 20px;
+    }
+}
