@@ -8,7 +8,7 @@ import './Commit.scss';
 function Commit({ rows }) {
   console.log({ rows });
   return (
-    <div>
+    <div className="col-8">
       <div className="Comment_Top">
         <span className="Comment_top_span">4.3</span>
         <div className="RateAndNumber">

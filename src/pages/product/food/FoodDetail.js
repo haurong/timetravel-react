@@ -104,7 +104,7 @@ function FoodDetail() {
         <div className="container">
           <Carousel />
         </div>
-        <div className="container">
+        <div className="container ">
           <div className="product_name d-flex">
             <div className="product_name_title">
               <h1>{foodData.product_name} WANCHUHAO</h1>
@@ -159,7 +159,7 @@ function FoodDetail() {
         </div>
       </div>
       <div className="container d-flex">
-        <div className="col-lg-9  product_text">
+        <div className="col-lg-8  product_text">
           <div className="container product_text">
             <p>{foodData.product_introdution}</p>
           </div>
@@ -201,7 +201,7 @@ function FoodDetail() {
       </div>
       <div className="Hotel_partHidden" id="Food_part1" ref={Food_part1}></div>
       <div className="container product_information d-flex ">
-        <div className="col-lg-9">
+        <div className="col-lg-8">
           <h2>商品介紹</h2>
           <div className=" product_information_img">
             <div className="product_information_img_div1">
@@ -218,12 +218,12 @@ function FoodDetail() {
             <p>鳳梨冰美式</p>
           </div>
         </div>
-        <div className="col-lg-3  ">
+        <div className="col-lg-3 foodHashChange">
           <HashChange allPart={allPart} />
         </div>
       </div>
       <div className="Food_partHidden" id="Food_part2" ref={Food_part2}></div>
-      <div className="container use col-lg-9 p-0 ">
+      <div className="container use col-lg-8 p-0 ">
         <div className="how_to_use ">
           <div className="use_title_img d-flex align-items-center">
             <img
@@ -239,8 +239,8 @@ function FoodDetail() {
         </div>
       </div>
       <div className="Food_partHidden" id="Food_part3" ref={Food_part3}></div>
-      <div className="container store col-lg-9 p-0">
-        <div className="store col-lg-9">
+      <div className="container store col-lg-8 ">
+        <div className="store">
           <div className="store_title_img d-flex align-items-center">
             <img
               src={House_icon}
@@ -261,9 +261,9 @@ function FoodDetail() {
         </div>
       </div>
       <div className="Food_partHidden" id="Food_part4" ref={Food_part4}></div>
-      <div className="container col-lg-9 ">
+      <div className="container col-lg-8 ">
         <div
-          className="d-flex col-lg-10 commitTitle"
+          className="d-flex col-lg-8 commitTitle"
           style={{ alignItems: 'center' }}
         >
           <h2
@@ -277,8 +277,9 @@ function FoodDetail() {
           </h2>
           <CommitSelect />
         </div>
-        <Commit rows={commitData} className="col-lg-9 commit" />
+        <Commit rows={commitData} className="commit" />
       </div>
+     
       <div className="container ">
         <h2 className="cardCarouselTitle">更多美食推薦</h2>
         <Card_Carousel className="cardCarousel" />

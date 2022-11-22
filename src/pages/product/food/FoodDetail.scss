@@ -76,6 +76,7 @@
         }
     }
     .choose{
+        margin-left: 120px;
         .quantity_title{
             position: relative;
             bottom:32px;
@@ -168,7 +169,9 @@
             margin: 20px 0;
         }
 }
-
+.foodHashChange{
+    margin-left: 120px;
+}
     .Heart_icon, .Calender_icon, .Phone_icon,.Map_icon,.Food_icon{
         width: 40px;
         height: 40px;
@@ -178,7 +181,7 @@
         height: 30px;
     }
     .use{
-        padding:100px;
+       padding:50px 0
     }
     .use_title_img,.store_title_img{
         margin: 30px 0 ; 
@@ -195,16 +198,11 @@
             color:#59D8A1
         }
     }
-    .commitTitle{
-        max-width:900px
+ 
+    .store{
+        p{
+            margin:20px 0;
+        }
     }
- .cardCarouselTitle{
-    position: relative;
-    .cardCarousel{
-       
-        position:absolute;
-        top: 0;
-        left: 50px;
 
-    }
- }
+ 
