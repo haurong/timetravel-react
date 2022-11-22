@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from 'react';
+import React, { useState, useContext, createContext, useEffect } from 'react';
 import moment from 'moment/moment';
 
 const HotelContext = createContext(null);
@@ -21,7 +21,6 @@ export const HotelContextProvider = ({ children }) => {
   // 價格
   const [hotelRoomPrice, setHotelRoomPrice] = useState(1);
   const [roomCounts, setRoomCounts] = useState(1);
-  const [roomTotals, setRoomTotals] = useState(hotelRoomPrice * roomCounts);
 
   //  點下去換顏色＆加入我的最愛
   const addToMyFavorite = () => {};
@@ -46,8 +45,6 @@ export const HotelContextProvider = ({ children }) => {
         setHotelRoomPrice,
         roomCounts,
         setRoomCounts,
-        roomTotals,
-        setRoomTotals,
       }}
     >
       {children}
