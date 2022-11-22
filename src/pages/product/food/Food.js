@@ -38,7 +38,7 @@ function Food() {
     <>
       <NavBar />
       <div className="space "></div>
-      <div className="container col-8 givePadding">
+      <div className="container col-12 givePadding">
         <BreadCrumb />
       </div>
       <div className="container FoodListGroup givePadding">
@@ -78,11 +78,11 @@ function Food() {
             <Card_List rows={foodData.rows} />
           </Col>
         </Row>
-        <Col className="col-12">
-        <div className="Food_pagination givePadding ">
-          <MyPagination page={foodData.page} totalPages={foodData.totalPages} />
-        </div>
-        </Col>
+        
+          <div className=" col-12 givePadding">
+            <MyPagination page={foodData.page} totalPages={foodData.totalPages} />
+          </div>
+      
         {/* <Qrcode /> */}
       </div>
       <Footer />
