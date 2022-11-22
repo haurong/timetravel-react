@@ -46,7 +46,7 @@ function App() {
           <Route path="site" element={<Site />} />
           <Route path="site/:sid" element={<SiteDetail />} />
           <Route path="food" element={<Food />} />
-          {/* <Route path="food/detail" element={<FoodDetail />} /> */}
+          <Route path="food/detail" element={<FoodDetail />} />
           <Route path="stays" element={<Stays />} />
           <Route path="ticket" element={<Ticket />} />
           <Route path="logIn" element={<LogIn />} />

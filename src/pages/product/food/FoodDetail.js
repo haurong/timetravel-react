@@ -224,7 +224,7 @@ function FoodDetail() {
       </div>
       <div className="Food_partHidden" id="Food_part2" ref={Food_part2}></div>
       <div className="container use col-lg-9 p-0 ">
-        <div className="how_to_use col-lg-9">
+        <div className="how_to_use ">
           <div className="use_title_img d-flex align-items-center">
             <img
               src={Phone_icon}
