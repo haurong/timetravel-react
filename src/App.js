@@ -24,6 +24,9 @@ import Comment from './pages/member/Comment';
 import Collect from './pages/member/Collect';
 import Cart from './pages/cart/Cart';
 import ItineraryDetail from './pages/product/itinerary/Itinerary-detail';
+import Orders from './pages/cart/order/Orders';
+import OrderSuccess from './pages/cart/OrderSuccess';
+import OrderFail from './pages/cart/OrderFail';
 
 function App() {
   return (
@@ -51,7 +54,10 @@ function App() {
         <Route path="comment" element={<Comment />} />
         <Route path="collect" element={<Collect />} />
         <Route path="signIn" element={<SignIn />} />
+        <Route path="cart/success" element={<OrderSuccess />} />
+        <Route path="cart/fail" element={<OrderFail />} />
         <Route path="cart" element={<Cart />} />
+        <Route path="orders" element={<Orders />} />
       </Routes>
     </BrowserRouter>
   );

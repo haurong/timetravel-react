@@ -1,0 +1,17 @@
+.count-btn-wrap {
+  display: flex;
+  align-items: center;
+  .count-num {
+    display: flex;
+    width: 70px;
+    justify-content: center;
+    align-items: center;
+    p {
+      color: #4d4d4d;
+      font-weight: 600;
+      padding-top: 0px;
+      font-size: 20px;
+      margin: 0px;
+    }
+  }
+}
