@@ -1,7 +1,7 @@
 import React from 'react';
 import PlusIcon from './../../../../icon/add.svg';
 import MinusIcon from './../../../../icon/minus.svg';
-import './CountButton.scss';
+import './../../styles/CountButton.scss';
 function CountButton() {
   return (
     <div className="count-btn-wrap">
