@@ -27,10 +27,10 @@ function Itinerary() {
   return (
     <>
       <NavBar />
-      <Container className="space">
+      <Container className="ispace">
         <Row className="rowmb">
           <SideBar />
-          <Col className="col-9 g-4">
+          <Col className="col-9 g-4 m-0">
             <div className="d-flex justify-content-between">
               <div className="ititlerow">
                 <h1 className="titlespace-x">我的行程規劃</h1>

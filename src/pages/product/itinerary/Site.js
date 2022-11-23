@@ -5,7 +5,7 @@ import { Container } from 'react-bootstrap';
 import Footer from '../../../layout/Footer';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import BreadCrumbList from './BreadCrumbList';
+import BreadCrumbList from '../../../Component/BreadCrumb/BreadCrumbList';
 import Site_Card_List from './Site_Card_List';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';

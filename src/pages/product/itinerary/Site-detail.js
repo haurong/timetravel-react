@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
-import BreadCrumb from './BreadCrumb';
-import './Itinerary-detail.scss';
+import { Container } from 'react-bootstrap';
+import Carousel from '../../../Component/Carousel/Carousel';
+import BreadCrumb from '../../../Component/BreadCrumb/BreadCrumb';
+import './Site-detail.scss';
 import { SITE_DETAIL } from './site-config';
 
 function SiteDetail() {
@@ -25,8 +27,11 @@ function SiteDetail() {
 
   return (
     <>
-      {/* <NavBar /> */}
-      <BreadCrumb siteData={siteData} />
+      <NavBar />
+      <Container className="spaceSite">
+        <BreadCrumb siteData={siteData} />
+        <Carousel />
+      </Container>
       <Footer />
     </>
   );
