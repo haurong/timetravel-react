@@ -1,28 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Rate } from 'antd';
 import CommentCard from './CommentCard';
 import './Comment.scss';
+import { useHotelContext } from '../Context/HotelContext';
 
 function Comment() {
+  const { hotelCommentData, setAllStar, allStar } = useHotelContext();
+
+  if (hotelCommentData !== 0) {
+    let sum = 0;
+    hotelCommentData.map((v, i) => {
+      sum = sum + v.score;
+    });
+    let totalStar = (
+      Math.round((sum / hotelCommentData.length) * 10) / 10
+    ).toString();
+    setAllStar(totalStar);
+  }
   return (
     <div>
       <div className="Comment_Top">
-        <span className="Comment_top_span">4.3</span>
+        <span className="Comment_top_span">{allStar}</span>
         <div className="RateAndNumber">
           <Rate
             disabled
-            defaultValue={4}
+            value={allStar}
             className="TimeTravel_Rate"
             style={{ zIndex: -1 }}
           />
-          <p>437條評論</p>
+          <p>{hotelCommentData.length}條評論</p>
         </div>
       </div>
-
-      <CommentCard />
-      <CommentCard />
-      <CommentCard />
-      <CommentCard />
       <CommentCard />
     </div>
   );

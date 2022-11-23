@@ -26,6 +26,7 @@ import ComDatePicker from './ComDatePicker/ComDatePicker';
 import BookingBar from './BookingBar/BookingBar';
 
 function Stays() {
+  const dataFrom = '1';
   const {
     roomCounts,
     hotelRoomPrice,
@@ -34,16 +35,28 @@ function Stays() {
     hotelRoomChoose,
     setHotelRoomChoose,
     setHotelRoomPrice,
+    setHotelCommentData,
   } = useHotelContext();
 
   async function getHotelDetail() {
-    const res_hotelListData = await axios.get(HOTEL_DETAIL + '2');
-
+    //  拿到飯店所有資料
+    const res_hotelListData = await axios.get(HOTEL_DETAIL + dataFrom);
     setHotelListData(res_hotelListData.data);
-    const res_hotelRoomData = await axios.get(HOTEL_DETAIL + '2' + '/room');
+
+    //  拿到房型所有資料
+    const res_hotelRoomData = await axios.get(
+      HOTEL_DETAIL + dataFrom + '/room'
+    );
     const toArray = res_hotelRoomData.data;
     setHotelRoomChoose(toArray);
+    //  設定最便宜的價格
     setHotelRoomPrice(toArray[0].room_price);
+    //  拿到所有評論的資料
+    const res_hotelCommentData = await axios.get(
+      HOTEL_DETAIL + dataFrom + '/hotelComment'
+    );
+    setHotelCommentData(res_hotelCommentData.data);
+    // console.log(res_hotelCommentData.data);
   }
   const Hotel_part0 = useRef();
   const Hotel_part1 = useRef();
@@ -132,7 +145,7 @@ function Stays() {
                   marginBottom: '30px',
                 }}
               >
-                {/* TODO:拿到真實價格 */}TWD${roomCounts * hotelRoomPrice}
+                TWD${roomCounts * hotelRoomPrice}
               </h4>
             </div>
             <div className="Hotel_part0_right MobileHidden">

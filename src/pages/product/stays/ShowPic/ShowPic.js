@@ -6,22 +6,21 @@ import { useHotelContext } from '../Context/HotelContext';
 
 function ShowPic() {
   const { hotelRoomChoose } = useHotelContext();
-  console.log(hotelRoomChoose);
+  // console.log(hotelRoomChoose);
   return (
     <>
       {hotelRoomChoose.map((v, i) => {
         return (
-          <>
-            <div className="Hotel_showPic">
-              <img
-                src={`${HOTEL_IMG}/${v.room_picture}`}
-                alt={`pic${i + 1}`}
-              ></img>
-              <h5>{v.room_type}</h5>
-            </div>
-          </>
+          <div className="Hotel_showPic" key={i}>
+            <img
+              src={`${HOTEL_IMG}/${v.room_picture}`}
+              alt={`pic${i + 1}`}
+            ></img>
+            <h5>{v.room_type}</h5>
+          </div>
         );
       })}
+
       {/* <div className="Hotel_showPic">
         <img src={pic1} alt="pic1"></img>
         <h5>行政雙人房</h5>

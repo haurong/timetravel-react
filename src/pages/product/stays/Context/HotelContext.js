@@ -26,6 +26,12 @@ export const HotelContextProvider = ({ children }) => {
   const [hotelListData, setHotelListData] = useState({});
   const [hotelRoomChoose, setHotelRoomChoose] = useState([]);
 
+  //要到評論資料
+  const [hotelCommentData, setHotelCommentData] = useState([]);
+
+  //取得總星星平均
+  const [allStar, setAllStar] = useState();
+  
   return (
     <HotelContext.Provider
       value={{
@@ -45,6 +51,10 @@ export const HotelContextProvider = ({ children }) => {
         setHotelListData,
         hotelRoomChoose,
         setHotelRoomChoose,
+        hotelCommentData,
+        setHotelCommentData,
+        allStar,
+        setAllStar,
       }}
     >
       {children}

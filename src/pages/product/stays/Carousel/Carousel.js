@@ -21,16 +21,14 @@ function HotelCarousel() {
       <Carousel autoplay style={{ zIndex: '-1' }}>
         {hotelRoomChoose.map((v, i) => {
           return (
-            <>
-              <div>
-                <img
-                  style={CarouselPic}
-                  src={`${HOTEL_IMG}/${v.room_picture}`}
-                  alt=""
-                ></img>
-              </div>
-              ;
-            </>
+            <div key={i}>
+              <img
+                style={CarouselPic}
+                key={i}
+                src={`${HOTEL_IMG}/${v.room_picture}`}
+                alt=""
+              ></img>
+            </div>
           );
         })}
       </Carousel>
