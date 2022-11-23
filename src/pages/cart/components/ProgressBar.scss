@@ -20,9 +20,9 @@
 .progressbar li:after {
   content: url(./../../../icon/arrow_small.svg);
   position: absolute;
-  width: 20px;
-  top: 0px;
-  left: -5%;
+  width: 30px;
+  top: 10%;
+  left: -10%;
 }
 
 .progressbar li:first-child:after {
@@ -30,7 +30,9 @@
 }
 
 .progressbar li.active {
-  color: #59d8a1;
+  h2{
+    color: #59d8a1;
+  }
 }
 
 .progressbar li.active:before {

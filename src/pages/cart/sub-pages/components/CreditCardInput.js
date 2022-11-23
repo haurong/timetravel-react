@@ -28,7 +28,7 @@ export default class CreditCardInput extends React.Component {
             <div className="card-input-wrap">
               <p>持卡人姓名</p>
               <input
-                className="input"
+                className="input form-control"
                 type="tel"
                 name="name"
                 placeholder="需與信用卡上姓名相同"
@@ -39,7 +39,7 @@ export default class CreditCardInput extends React.Component {
             <div className="card-input-wrap">
               <p>持卡人卡號</p>
               <input
-                className="input"
+                className="input form-control"
                 type="tel"
                 name="number"
                 placeholder="請輸入12碼卡號"
@@ -48,10 +48,10 @@ export default class CreditCardInput extends React.Component {
               />
             </div>
             <div className="d-flex">
-              <div className="card-input-wrap">
+              <div className="card-input-wrap  me-3">
                 <p>有效期限</p>
                 <input
-                  className="input"
+                  className="input form-control"
                   type="tel"
                   name="expiry"
                   placeholder="西元年/月"
@@ -62,7 +62,7 @@ export default class CreditCardInput extends React.Component {
               <div className="card-input-wrap">
                 <p>安全碼CVC</p>
                 <input
-                  className="input"
+                  className="input form-control"
                   type="tel"
                   name="cvc"
                   placeholder="XXX"
