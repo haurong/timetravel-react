@@ -1,5 +1,6 @@
 import React from 'react';
 import './ShowPic.scss';
+import { HOTEL_IMG } from '../hotel-config';
 
 import { useHotelContext } from '../Context/HotelContext';
 
@@ -13,7 +14,7 @@ function ShowPic() {
           <>
             <div className="Hotel_showPic">
               <img
-                src={`http://192.168.0.74:3001/uploads/hotel/${v.room_picture}`}
+                src={`${HOTEL_IMG}/${v.room_picture}`}
                 alt={`pic${i + 1}`}
               ></img>
               <h5>{v.room_type}</h5>

@@ -37,10 +37,10 @@ function Stays() {
   } = useHotelContext();
 
   async function getHotelDetail() {
-    const res_hotelListData = await axios.get(HOTEL_DETAIL + '10');
+    const res_hotelListData = await axios.get(HOTEL_DETAIL + '2');
 
     setHotelListData(res_hotelListData.data);
-    const res_hotelRoomData = await axios.get(HOTEL_DETAIL + '10' + '/room');
+    const res_hotelRoomData = await axios.get(HOTEL_DETAIL + '2' + '/room');
     const toArray = res_hotelRoomData.data;
     setHotelRoomChoose(toArray);
     setHotelRoomPrice(toArray[0].room_price);

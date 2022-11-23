@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel } from 'antd';
 import { useHotelContext } from '../Context/HotelContext';
+import { HOTEL_IMG } from '../hotel-config';
 
 import pic1 from './pic/1-1.jpg';
 import pic2 from './pic/1-2.jpg';
@@ -24,7 +25,7 @@ function HotelCarousel() {
               <div>
                 <img
                   style={CarouselPic}
-                  src={`http://192.168.0.74:3001/uploads/hotel/${v.room_picture}`}
+                  src={`${HOTEL_IMG}/${v.room_picture}`}
                   alt=""
                 ></img>
               </div>
