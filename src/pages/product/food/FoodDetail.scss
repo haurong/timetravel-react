@@ -135,8 +135,10 @@
         z-index:999;
        
         .product_information_img_div1,.product_information_img_div2,.product_information_img_div3{
-            max-width:900px;
-            height:500px;
+            width: 900px;
+            height:600px;
+
+           
         }
        .product_information_img1{
         object-fit: cover;  
@@ -180,9 +182,10 @@
         width: 30px;
         height: 30px;
     }
-    .use{
-       padding:50px 0
+    .how_to_use{
+       margin: 50px 0;
     }
+
     .use_title_img,.store_title_img{
         margin: 30px 0 ; 
     }
@@ -204,5 +207,7 @@
             margin:20px 0;
         }
     }
+    // .commitGroup{
+    //     margin-top:100px    }
 
  

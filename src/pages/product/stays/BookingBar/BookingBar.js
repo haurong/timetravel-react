@@ -9,7 +9,13 @@ import BuyButton from '../BuyButton/BuyButton';
 const { RangePicker } = DatePicker;
 // import BookingBarOpen from './BookingBarOpen';
 function BookingBar() {
-  const { slideOut, bookingBarOpen, setBookingBarOpen } = useHotelContext();
+  const {
+    slideOut,
+    bookingBarOpen,
+    setBookingBarOpen,
+    roomCounts,
+    hotelRoomPrice,
+  } = useHotelContext();
   // const [bookingBarOpen, setBookingBarOpen] = useState(false);
 
   useEffect(() => {
@@ -49,7 +55,7 @@ function BookingBar() {
                 fontSize: '22px',
               }}
             >
-              {/* TODO:拿到真實價格 */}TWD$2599
+              {/* TODO:拿到真實價格 */}TWD${roomCounts * hotelRoomPrice}
             </h4>
             <div className="d-flex">
               <BuyButton />

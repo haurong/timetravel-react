@@ -204,15 +204,15 @@ function FoodDetail() {
         <div className="col-lg-8">
           <h2>商品介紹</h2>
           <div className=" product_information_img">
-            <div className="product_information_img_div1">
+            <div className="product_information_img_div1 col-lg-8">
               <div className="product_information_img1"></div>
             </div>
             <p>衣索比亞谷吉(冰)</p>
-            <div className="product_information_img_div2">
+            <div className="product_information_img_div2 col-lg-8">
               <div className="product_information_img2"></div>
             </div>
             <p>巴斯克乳酪</p>
-            <div className="product_information_img_div3">
+            <div className="product_information_img_div3 col-lg-8">
               <div className="product_information_img3"></div>
             </div>
             <p>鳳梨冰美式</p>
@@ -223,8 +223,8 @@ function FoodDetail() {
         </div>
       </div>
       <div className="Food_partHidden" id="Food_part2" ref={Food_part2}></div>
-      <div className="container use col-lg-8 p-0 ">
-        <div className="how_to_use ">
+      <div className="container use p-0 ">
+        <div className="how_to_use  col-lg-8">
           <div className="use_title_img d-flex align-items-center">
             <img
               src={Phone_icon}
@@ -238,9 +238,10 @@ function FoodDetail() {
           </ul>
         </div>
       </div>
+    
+      <div className="container storeGroup  ">
       <div className="Food_partHidden" id="Food_part3" ref={Food_part3}></div>
-      <div className="container store col-lg-8 ">
-        <div className="store">
+        <div className="store  col-lg-8">
           <div className="store_title_img d-flex align-items-center">
             <img
               src={House_icon}
@@ -261,23 +262,25 @@ function FoodDetail() {
         </div>
       </div>
       <div className="Food_partHidden" id="Food_part4" ref={Food_part4}></div>
-      <div className="container col-lg-8 ">
-        <div
-          className="d-flex col-lg-8 commitTitle"
-          style={{ alignItems: 'center' }}
-        >
-          <h2
-            style={{
-              color: '#4D4D4D',
-              margin: '40px 0px',
-              marginRight: 'auto',
-            }}
+      <div className="container commitGroup givePadding">
+        <div className="col-lg-8">
+          <div
+            className="d-flex col-lg-8 commitTitle"
+            style={{ alignItems: 'center' }}
           >
-            旅客評價
-          </h2>
-          <CommitSelect />
+            <h2
+              style={{
+                color: '#4D4D4D',
+                margin: '40px 0px',
+                marginRight: 'auto',
+              }}
+            >
+              旅客評價
+            </h2>
+            <CommitSelect />
+          </div>
+          <Commit rows={commitData} className="commit" />
         </div>
-        <Commit rows={commitData} className="commit" />
       </div>
      
       <div className="container ">
