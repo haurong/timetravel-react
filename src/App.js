@@ -13,6 +13,7 @@ import Food from './pages/product/food/Food';
 import FoodDetail from './pages/product/food/FoodDetail';
 import Stays from './pages/product/stays/Stays';
 import Ticket from './pages/product/ticket/Ticket';
+import TicketDeatil from './pages/product/ticket/TicketDeatil';
 import LogIn from './pages/member/LogIn';
 import Profile from './pages/member/Profile';
 import SignIn from './pages/member/SignIn';
@@ -46,9 +47,10 @@ function App() {
           <Route path="site" element={<Site />} />
           <Route path="site/:sid" element={<SiteDetail />} />
           <Route path="food" element={<Food />} />
-          {/* <Route path="food/detail" element={<FoodDetail />} /> */}
+          <Route path="food/detail" element={<FoodDetail />} />
           <Route path="stays" element={<Stays />} />
           <Route path="ticket" element={<Ticket />} />
+          <Route path="TicketDeatil" element={<TicketDeatil />} />
           <Route path="logIn" element={<LogIn />} />
           <Route path="forget_password" element={<ForgetPassword />} />
           <Route path="profile" element={<Profile />} />

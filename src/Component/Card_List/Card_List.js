@@ -23,13 +23,13 @@ function Card_List({ rows }) {
       return;
     }
   };
-  
+
   return (
     <Row xs={1} md={2} lg={3} className="g-4">
       {rows.map((el) => {
         return (
           <Card
-            className="Card col-3"
+            className="MyCard col-3"
             style={{ width: '20rem' }}
             key={el.product_number}
           >

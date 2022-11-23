@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from 'react';
+import React, { useState, useContext, createContext, useEffect } from 'react';
 import moment from 'moment/moment';
 
 const HotelContext = createContext(null);
@@ -21,14 +21,17 @@ export const HotelContextProvider = ({ children }) => {
   // 價格
   const [hotelRoomPrice, setHotelRoomPrice] = useState(1);
   const [roomCounts, setRoomCounts] = useState(1);
-  const [roomTotals, setRoomTotals] = useState(hotelRoomPrice * roomCounts);
 
-  //  點下去換顏色＆加入我的最愛
-  const addToMyFavorite = () => {};
+  //要到住宿資料
+  const [hotelListData, setHotelListData] = useState({});
+  const [hotelRoomChoose, setHotelRoomChoose] = useState([]);
 
-  //  點下去換顏色＆加入我的行程
-  const addToMySchedule = () => {};
+  //要到評論資料
+  const [hotelCommentData, setHotelCommentData] = useState([]);
 
+  //取得總星星平均
+  const [allStar, setAllStar] = useState();
+  
   return (
     <HotelContext.Provider
       value={{
@@ -40,14 +43,18 @@ export const HotelContextProvider = ({ children }) => {
         setPickDate,
         today,
         tomorrow,
-        addToMyFavorite,
-        addToMySchedule,
         hotelRoomPrice,
         setHotelRoomPrice,
         roomCounts,
         setRoomCounts,
-        roomTotals,
-        setRoomTotals,
+        hotelListData,
+        setHotelListData,
+        hotelRoomChoose,
+        setHotelRoomChoose,
+        hotelCommentData,
+        setHotelCommentData,
+        allStar,
+        setAllStar,
       }}
     >
       {children}

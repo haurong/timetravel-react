@@ -14,7 +14,6 @@ function Ticket() {
     <>
       <NavBar />
       <div className="container">
-        <Sidebar />
 
         <div className="container marginTop">
           <Breadcrumb />

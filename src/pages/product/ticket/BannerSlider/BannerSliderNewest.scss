@@ -1,0 +1,32 @@
+.banner-slider{
+    // border: 1px solid red;
+   
+
+    .slick-arrow.slick-prev:before,
+    .slick-arrow.slick-next:before {
+        color:rgb(0, 0, 0);
+    //  border: 1px solid rgb(109, 255, 72);
+    }
+}
+
+.banner-card-newest{
+    height: 141px;
+    width: 387px;
+    border: 0.5px solid black;
+    // padding-right:9.5px;
+    // padding-left:9.5px;
+    // margin-left: 9.5px;
+    
+}
+
+.slick-slider {
+    margin:0 -15px;
+}
+
+.slick-slide {
+    text-align:center;
+    padding-right:9.5px;
+    padding-left:9.5px;
+    
+    // margin-left:15px;
+}

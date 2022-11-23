@@ -1,23 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BsHeart, BsHeartFill } from 'react-icons/bs';
 import { ReactComponent as Heart } from '../../../../icon/heart_gray.svg';
 import { ReactComponent as FillHeart } from '../../../../icon/heart.svg';
 import { ReactComponent as CalendarAdd } from '../../../../icon/calendar+add.svg';
-import { FaCalendarAlt } from 'react-icons/fa';
+import { FaCalendarAlt, FaLeaf } from 'react-icons/fa';
 import './ComputerLikeAdd.scss';
 
 function ComputerLikeAdd() {
+  const [likeAndCalendar, setLikeAndCalendar] = useState({
+    like: true,
+    calendar: true,
+  });
   return (
     <>
-      <div className="LikeAddOnCom icon" onClick={() => {}}>
+      <div
+        className="LikeAddOnCom icon ComputerLikeAdd_canTouch"
+        onClick={() => {
+          setLikeAndCalendar({
+            like: !likeAndCalendar.like,
+            calendar: likeAndCalendar.calendar,
+          });
+        }}
+      >
         {/* TODO:點下去變色 加入收藏 */}
-        <Heart className="noActiveHotelHeart" />
+        {likeAndCalendar.like ? (
+          <FillHeart className="HotelHeart" />
+        ) : (
+          <Heart className="noActiveHotelHeart" />
+        )}
+        {/* <Heart className="noActiveHotelHeart" /> */}
         {/* <FillHeart className="HotelHeart" /> */}
       </div>
-      <div className="icon " onClick={() => {}}>
+      <div
+        className="icon ComputerLikeAdd_canTouch "
+        onClick={() => {
+          setLikeAndCalendar({
+            like: likeAndCalendar.like,
+            calendar: !likeAndCalendar.calendar,
+          });
+        }}
+      >
         {/* TODO:點下去變色 加入行成 */}
-        {/* <FaCalendarAlt style={{ width: '100%', height: '100%', color: '#aeaeae' }} /> */}
-        <CalendarAdd className="noActiveHotelCalendarAdd" />
+        {likeAndCalendar.calendar ? (
+          <CalendarAdd className="HotelCalendarAdd" />
+        ) : (
+          <CalendarAdd className="noActiveHotelCalendarAdd" />
+        )}
+        {/* <CalendarAdd className="noActiveHotelCalendarAdd" /> */}
         {/* <CalendarAdd className="HotelCalendarAdd" /> */}
       </div>
     </>
