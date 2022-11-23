@@ -9,12 +9,12 @@ function OrdersTypesList() {
         </Link>
       </li>
       <li className="">
-        <Link className="orders-links" to="/#">
+        <Link className="orders-links" to="/orders">
           交易中訂單
         </Link>
       </li>
       <li className="">
-        <Link className="orders-links" to="/#">
+        <Link className="orders-links" to="/orders">
           歷史訂單
         </Link>
       </li>

@@ -1,0 +1,33 @@
+[
+  {
+    "producttype": "hotel",
+    "id": "1",
+    "quantity": 1,
+    "img": "",
+    "rate": 5,
+    "name": "台北 S HOTEL",
+    "price": 2499,
+    "type": "雅致家庭房|二大床",
+    "checkin": "2022-09-29",
+    "checkout": "2022-09-30"
+  },
+  {
+    "producttype": "food",
+    "id": "1",
+    "name": "可不可紅茶",
+    "img": "",
+    "quantity": 1,
+    "price": 25000
+  },
+  {
+    "producttype": "ticket",
+    "id": "1",
+    "quantity": 1,
+    "img": "",
+    "rate": 4.3,
+    "name": "台北兒童新樂園|一日票(無限暢玩13項指定設施)",
+    "price": 999,
+    "type": "成人票",
+    "usedate": "2022/10/04"
+  }
+]
