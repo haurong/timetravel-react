@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
 import './BannerSlider.scss';
+import Card from 'react-bootstrap/Card';
 
 export default class MultipleItems extends Component {
   render() {
