@@ -29,7 +29,7 @@ function Card_List({ rows }) {
       {rows.map((el) => {
         return (
           <Card
-            className="Card col-3"
+            className="MyCard col-3"
             style={{ width: '20rem' }}
             key={el.product_number}
           >

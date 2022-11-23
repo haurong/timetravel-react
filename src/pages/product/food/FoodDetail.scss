@@ -76,6 +76,7 @@
         }
     }
     .choose{
+        margin-left: 120px;
         .quantity_title{
             position: relative;
             bottom:32px;
@@ -134,8 +135,10 @@
         z-index:999;
        
         .product_information_img_div1,.product_information_img_div2,.product_information_img_div3{
-            max-width:900px;
-            height:500px;
+            width: 900px;
+            height:600px;
+
+           
         }
        .product_information_img1{
         object-fit: cover;  
@@ -168,7 +171,9 @@
             margin: 20px 0;
         }
 }
-
+.foodHashChange{
+    margin-left: 120px;
+}
     .Heart_icon, .Calender_icon, .Phone_icon,.Map_icon,.Food_icon{
         width: 40px;
         height: 40px;
@@ -177,9 +182,10 @@
         width: 30px;
         height: 30px;
     }
-    .use{
-        padding:100px;
+    .how_to_use{
+       margin: 50px 0;
     }
+
     .use_title_img,.store_title_img{
         margin: 30px 0 ; 
     }
@@ -195,16 +201,13 @@
             color:#59D8A1
         }
     }
-    .commitTitle{
-        max-width:900px
+ 
+    .store{
+        p{
+            margin:20px 0;
+        }
     }
- .cardCarouselTitle{
-    position: relative;
-    .cardCarousel{
-       
-        position:absolute;
-        top: 0;
-        left: 50px;
+    // .commitGroup{
+    //     margin-top:100px    }
 
-    }
- }
+ 

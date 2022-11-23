@@ -37,6 +37,7 @@ function Stays() {
     setHotelRoomPrice,
     setHotelCommentData,
   } = useHotelContext();
+  // const { roomCounts, hotelRoomPrice } = useHotelContext();
 
   async function getHotelDetail() {
     //  拿到飯店所有資料
