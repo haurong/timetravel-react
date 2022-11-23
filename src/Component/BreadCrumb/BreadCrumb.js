@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, NavLink } from 'react-router-dom';
+import { useLocation, NavLink } from 'react-router-dom';
 import './BreadCrumb.scss';
 
 function BreadCrumb({ siteData }) {
@@ -28,7 +28,7 @@ function BreadCrumb({ siteData }) {
   return (
     <>
       <nav aria-label="breadcrumb">
-        <ol className="breadcrumb">
+        <ol id="breadcrumb" className="breadcrumb">
           <li className="breadcrumb-item">
             <NavLink id="bcindex" to="/">
               首頁
