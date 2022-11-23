@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 //導入CSS
-import './Cart.scss';
+import './styles/Cart.scss';
 //導入排版
 import NavBar from '../../layout/NavBar';
 import Footer from '../../layout/Footer';
@@ -28,11 +28,18 @@ function Cart() {
   const BlockComponent = components[step - 1];
   return (
     <>
-      <NavBar />
-      <div className="space"></div>
-      <ProgressBar step={step} maxSteps={maxSteps} pageNames={pageNames} />
-      <BlockComponent prev={prev} next={next} step={step} maxSteps={maxSteps} />
-      <Footer />
+      <div className="cart-total-wrap">
+        <NavBar />
+        <div className="space"></div>
+        <ProgressBar step={step} maxSteps={maxSteps} pageNames={pageNames} />
+        <BlockComponent
+          prev={prev}
+          next={next}
+          step={step}
+          maxSteps={maxSteps}
+        />
+        <Footer />
+      </div>
     </>
   );
 }
