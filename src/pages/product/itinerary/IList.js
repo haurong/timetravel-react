@@ -1,24 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import IDay from './IDay';
 import Trash from './../../../icon/Trash.svg';
 import { SITE_IMG } from './site-config';
 import { Link } from 'react-router-dom';
 
-export default function IList() {
-  const [CN, setCN] = useState('');
-  function move() {
-    const iList = document.querySelector('#iList');
-    window.scrollTop = 100;
-    // window.scrollTop = iList.offsetTop();
-  }
+export default function IList({ iData }) {
+  // const [CN, setCN] = useState('');
 
   return (
     <div id="iList">
-      <div className="day day1 stickyt0" onClick={move()}>
+      <div>
+        test
+        {iData.map((el, i) => {
+          return <p>{el.sid}</p>;
+        })}
+        {/* {iData} */}
+        {/* {iData[0]} */}
+        {/* {iData[0]} */}
+      </div>
+      <div
+        id="d1"
+        className="day day1 stickyt0"
+        onClick={() => {
+          document.querySelector('#iList').scrollTo({
+            top: document.querySelector('#iItem1-1').offsetTop - 120,
+            behavior: 'smooth',
+          });
+        }}
+      >
         <h2>Day 1</h2>
         <h3>3個行程</h3>
       </div>
-      <div id="iItem">
+      <div className="iItem" id="iItem1-1">
         <img className="iItem-img" src={SITE_IMG + '/6.jpg'} alt="" />
         <div className="iItemText ">
           <h2>台北兒童樂園</h2>
@@ -28,7 +41,7 @@ export default function IList() {
           <img src={Trash} alt="" />
         </span>
       </div>
-      <div id="iItem">
+      <div className="iItem" id="iItem">
         <img className="iItem-img" src={SITE_IMG + '/6.jpg'} alt="" />
         <div className="iItemText">
           <h2>台北兒童樂園</h2>
@@ -38,7 +51,7 @@ export default function IList() {
           <img src={Trash} alt="" />
         </span>
       </div>
-      <div id="iItem">
+      <div className="iItem" id="iItem">
         <img className="iItem-img" src={SITE_IMG + '/6.jpg'} alt="" />
         <div className="iItemText">
           <h2>台北兒童樂園</h2>
@@ -49,11 +62,20 @@ export default function IList() {
         </span>
       </div>
 
-      <div className="day day2 stickyt50">
+      <div
+        id="d2"
+        className="day day2 stickyt50"
+        onClick={() => {
+          document.querySelector('#iList').scrollTo({
+            top: document.querySelector('#iItem2-1').offsetTop - 120,
+            behavior: 'smooth',
+          });
+        }}
+      >
         <h2>Day 2</h2>
         <h3>3個行程</h3>
       </div>
-      <div id="iItem">
+      <div className="iItem" id="iItem2-1">
         <img className="iItem-img" src={SITE_IMG + '/6.jpg'} alt="" />
         <div className="iItemText ">
           <h2>台北兒童樂園</h2>
@@ -63,7 +85,7 @@ export default function IList() {
           <img src={Trash} alt="" />
         </span>
       </div>
-      <div id="iItem">
+      <div className="iItem" id="iItem">
         <img className="iItem-img" src={SITE_IMG + '/6.jpg'} alt="" />
         <div className="iItemText">
           <h2>台北兒童樂園</h2>
@@ -73,7 +95,7 @@ export default function IList() {
           <img src={Trash} alt="" />
         </span>
       </div>
-      <div id="iItem">
+      <div className="iItem" id="iItem">
         <img className="iItem-img" src={SITE_IMG + '/6.jpg'} alt="" />
         <div className="iItemText">
           <h2>台北兒童樂園</h2>
@@ -84,11 +106,20 @@ export default function IList() {
         </span>
       </div>
 
-      <div className="day day3 stickyt100">
+      <div
+        id="d3"
+        className="day day3 stickyt100"
+        onClick={() => {
+          document.querySelector('#iList').scrollTo({
+            top: document.querySelector('#iItem3-1').offsetTop - 120,
+            behavior: 'smooth',
+          });
+        }}
+      >
         <h2>Day 3</h2>
         <h3>3個行程</h3>
       </div>
-      <div id="iItem">
+      <div className="iItem" id="iItem3-1">
         <img className="iItem-img" src={SITE_IMG + '/6.jpg'} alt="" />
         <div className="iItemText ">
           <h2>台北兒童樂園</h2>
@@ -98,7 +129,7 @@ export default function IList() {
           <img src={Trash} alt="" />
         </span>
       </div>
-      <div id="iItem">
+      <div className="iItem" id="iItem">
         <img className="iItem-img" src={SITE_IMG + '/6.jpg'} alt="" />
         <div className="iItemText">
           <h2>台北兒童樂園</h2>
@@ -108,7 +139,7 @@ export default function IList() {
           <img src={Trash} alt="" />
         </span>
       </div>
-      <div id="iItem">
+      <div className="iItem" id="iItem">
         <img className="iItem-img" src={SITE_IMG + '/6.jpg'} alt="" />
         <div className="iItemText">
           <h2>台北兒童樂園</h2>

@@ -27,7 +27,7 @@ function Itinerary() {
   return (
     <>
       <NavBar />
-      <Container className="space">
+      <Container className="ispace">
         <Row className="rowmb">
           <SideBar />
           <Col className="col-9 g-4">

@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
-import BreadCrumb from './BreadCrumb';
-import './Itinerary-detail.scss';
+import BreadCrumb from '../../../Component/BreadCrumb/BreadCrumb';
+import './Site-detail.scss';
 import { SITE_DETAIL } from './site-config';
 
 function SiteDetail() {
