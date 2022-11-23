@@ -7,16 +7,18 @@ import { useHotelContext } from '../Context/HotelContext';
 function Comment() {
   const { hotelCommentData, setAllStar, allStar } = useHotelContext();
 
-  if (hotelCommentData !== 0) {
-    let sum = 0;
-    hotelCommentData.map((v, i) => {
-      sum = sum + v.score;
-    });
-    let totalStar = (
-      Math.round((sum / hotelCommentData.length) * 10) / 10
-    ).toString();
-    setAllStar(totalStar);
-  }
+  useEffect(() => {
+    if (hotelCommentData !== 0) {
+      let sum = 0;
+      hotelCommentData.map((v, i) => {
+        sum = sum + v.score;
+      });
+      let totalStar = (
+        Math.round((sum / hotelCommentData.length) * 10) / 10
+      ).toString();
+      setAllStar(totalStar);
+    }
+  });
   return (
     <div>
       <div className="Comment_Top">
