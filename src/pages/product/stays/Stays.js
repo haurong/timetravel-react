@@ -64,6 +64,7 @@ function Stays() {
   const Hotel_part2 = useRef();
   const Hotel_part3 = useRef();
   const Hotel_part4 = useRef();
+  const Hotel_part5 = useRef();
   const [allPart, setAllPart] = useState({});
   const [isScroll, setIsScroll] = useState(false);
   window.addEventListener('scroll', () => {
@@ -80,13 +81,15 @@ function Stays() {
       let part2 = Hotel_part2.current.offsetTop;
       let part3 = Hotel_part3.current.offsetTop;
       let part4 = Hotel_part4.current.offsetTop;
-      console.log(part0, part1, part2, part3, part4);
+      let part5 = Hotel_part5.current.offsetTop;
+      // console.log(part0, part1, part2, part3, part4);
       setAllPart({
         part0: part0,
         part1: part1,
         part2: part2,
         part3: part3,
         part4: part4,
+        part5: part5,
         bodyOffsetY: document.body.offsetHeight,
       });
     }
@@ -172,7 +175,7 @@ function Stays() {
               <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>房型介紹</h2>
               <ShowPic />
             </div>
-            <div className="col-lg-3  MobileHidden ">
+            <div className="col-lg-3  MobileHidden " style={{}}>
               <HashChange allPart={allPart} />
             </div>
           </div>
@@ -215,6 +218,11 @@ function Stays() {
             </div>
             <Comment />
           </div>
+          <div
+            className="Hotel_partHidden"
+            id="Hotel_part5"
+            ref={Hotel_part5}
+          ></div>
         </div>
       </div>
       {/* <div
