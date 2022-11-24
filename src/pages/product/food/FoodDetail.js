@@ -36,17 +36,19 @@ function FoodDetail() {
   const toggleLike = () => setLike(!like);
 
   const [count, setCount] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(79);
+  const [totalPrice, setTotalPrice] = useState(foodData.p_selling_price);
+  const a = foodData.p_selling_price;
+  console.log(a);
   const location = useLocation();
   const path = window.location.pathname.split('/');
   const sid = path[2];
+
   async function getData() {
     const response = await axios.get(FOOD_ITEM + sid);
     // const response = await axios.get(SITE_DETAIL);
     setFoodData(response.data);
-    //console.log(foodData);
+    setTotalPrice(response.data.p_selling_price);
   }
- 
 
   const [commitData, setCommitData] = useState([]);
 
@@ -175,12 +177,19 @@ function FoodDetail() {
             <button
               className="countBtn"
               onClick={() => {
+                const newMinusCount = count - 1;
                 if (count === 1) {
                   return count;
-                }else{
-                  setCount(count - 1);
+                } else {
+                  setCount(newMinusCount);
                 }
-                setTotalPrice(totalPrice - foodData.p_selling_price);
+                const newMinusTotalPrice =
+                  totalPrice - foodData.p_selling_price;
+                if (totalPrice === foodData.p_selling_price) {
+                  return totalPrice;
+                } else {
+                  setTotalPrice(newMinusTotalPrice);
+                }
               }}
             >
               <img src={Minus_icon} alt="" className="Minus_icon" />
@@ -189,8 +198,10 @@ function FoodDetail() {
             <button
               className="countBtn"
               onClick={() => {
-                setCount(count + 1);
-                setTotalPrice(foodData.p_selling_price * count);
+                const newAddCount = count + 1;
+                setCount(newAddCount);
+                const newAddTotalPrice = foodData.p_selling_price * newAddCount;
+                setTotalPrice(newAddTotalPrice);
               }}
             >
               <img src={Add_icon} alt="" className="Add_icon" />
@@ -199,7 +210,8 @@ function FoodDetail() {
           <div className="price">
             <h2 className="price1">TWD{foodData.p_discounted_price}</h2>
             <h1 className="price2">
-              TWD{totalPrice}
+              TWD
+              {foodData.p_selling_price ? totalPrice : foodData.p_selling_price}
             </h1>
           </div>
           <div className="btnGroup">
@@ -212,9 +224,9 @@ function FoodDetail() {
           </div>
         </div>
       </div>
-      <div className="Hotel_partHidden" id="Food_part1" ref={Food_part1}></div>
+      <div className="Food_partHidden" id="Food_part1" ref={Food_part1}></div>
       <div className="container product_information d-flex ">
-        <div className="col-lg-8">
+        <div className="col-lg-8" style={{ marginRight: 'auto' }}>
           <h2>商品介紹</h2>
           <div className=" product_information_img">
             <div className="product_information_img_div1 col-lg-8">
@@ -230,12 +242,17 @@ function FoodDetail() {
             </div>
             <p>鳳梨冰美式</p>
           </div>
+          <div
+            className="Food_partHidden"
+            id="Food_part2"
+            ref={Food_part2}
+          ></div>
         </div>
         <div className="col-lg-3 foodHashChange">
           <HashChange allPart={allPart} />
         </div>
       </div>
-     
+
       <div className="container use  ">
         <div className="how_to_use  col-lg-8">
           <div className="use_title_img d-flex align-items-center">
@@ -244,7 +261,7 @@ function FoodDetail() {
               style={{ width: '30px', height: '30px' }}
               alt=""
             />
-             <div className="Food_partHidden" id="Food_part2" ref={Food_part2}></div>
+
             <h2>如何使用</h2>
           </div>
           <ul>
@@ -252,7 +269,12 @@ function FoodDetail() {
           </ul>
         </div>
       </div>
-      <div className="Food_partHidden" id="Food_part3" ref={Food_part3}></div>
+      <div
+        className="Food_partHidden"
+        id="Food_part3"
+        ref={Food_part3}
+        // style={{ backgroundColor: 'red', height: '5px' }}
+      ></div>
       <div className="container storeGroup  ">
         <div className="store  col-lg-8">
           <div className="store_title_img d-flex align-items-center">
@@ -296,7 +318,7 @@ function FoodDetail() {
           <Commit rows={commitData} className="commit" />
         </div>
       </div>
-      <div className="givePadding"></div>
+      {/* <div className="givePadding"></div> */}
       <div className="container ">
         <h2 className="cardCarouselTitle">更多美食推薦</h2>
         <Card_Carousel className="cardCarousel" />
