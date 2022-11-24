@@ -5,6 +5,8 @@ import Logo from '../../icon/logo/logo_white.svg';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { LOGIN_API } from '../../config';
 
 function LogIn() {
   return (
