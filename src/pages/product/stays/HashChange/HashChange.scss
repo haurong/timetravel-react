@@ -58,8 +58,9 @@
 
 @media (min-width: 992px) {
   .HashChange {
-    outline: 1px solid red;
+    // outline: 1px solid red;
     margin-top: 60px;
+    // padding-top: 20px;
     .hashChange_slider {
       .Computer_HashChange {
         height: 46px;
@@ -98,8 +99,8 @@
     }
   }
   .hash_slideOut {
-    position: fixed;
-    top: 140px;
+    position: sticky;
+    top: 180px;
   }
   // .hash_static{
   //   position: absolute;

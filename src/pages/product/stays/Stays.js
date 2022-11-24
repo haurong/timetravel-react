@@ -174,49 +174,43 @@ function Stays() {
             <div className=" col-lg-8" style={{ marginRight: 'auto' }}>
               <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>房型介紹</h2>
               <ShowPic />
+              <div
+                className="Hotel_partHidden"
+                id="Hotel_part2"
+                ref={Hotel_part2}
+              ></div>
+              <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>注意事項</h2>
+              <HotelNotice />
+              <div
+                className="Hotel_partHidden"
+                id="Hotel_part3"
+                ref={Hotel_part3}
+              ></div>
+              <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>商品說明</h2>
+              <HotelDetail />
+              <MapButton />
+              <div
+                className="Hotel_partHidden"
+                id="Hotel_part4"
+                ref={Hotel_part4}
+              ></div>
+              <div className="d-flex" style={{ alignItems: 'center' }}>
+                <h2
+                  style={{
+                    color: '#4D4D4D',
+                    margin: '40px 0px',
+                    marginRight: 'auto',
+                  }}
+                >
+                  旅客評價
+                </h2>
+                <CommentSelector />
+              </div>
+              <Comment />
             </div>
-            <div className="col-lg-3  MobileHidden " style={{}}>
+            <div className="col-lg-3  MobileHidden ">
               <HashChange allPart={allPart} />
             </div>
-          </div>
-          <div
-            className="Hotel_partHidden"
-            id="Hotel_part2"
-            ref={Hotel_part2}
-          ></div>
-          <div className=" col-lg-8">
-            <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>注意事項</h2>
-            <HotelNotice />
-          </div>
-          <div
-            className="Hotel_partHidden"
-            id="Hotel_part3"
-            ref={Hotel_part3}
-          ></div>
-          <div className=" col-lg-8">
-            <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>商品說明</h2>
-            <HotelDetail />
-            <MapButton />
-          </div>
-          <div
-            className="Hotel_partHidden"
-            id="Hotel_part4"
-            ref={Hotel_part4}
-          ></div>
-          <div className="givePadding col-lg-8 noPadding">
-            <div className="d-flex" style={{ alignItems: 'center' }}>
-              <h2
-                style={{
-                  color: '#4D4D4D',
-                  margin: '40px 0px',
-                  marginRight: 'auto',
-                }}
-              >
-                旅客評價
-              </h2>
-              <CommentSelector />
-            </div>
-            <Comment />
           </div>
           <div
             className="Hotel_partHidden"
