@@ -247,77 +247,81 @@ function FoodDetail() {
             id="Food_part2"
             ref={Food_part2}
           ></div>
+          <div className="how_to_use ">
+            <div className="use_title_img d-flex align-items-center">
+              <img
+                src={Phone_icon}
+                style={{ width: '30px', height: '30px' }}
+                alt=""
+              />
+
+              <h2>如何使用</h2>
+            </div>
+            <ul>
+              <li>現場請出示QRCODE</li>
+            </ul>
+          </div>
+          <div
+            className="Food_partHidden"
+            id="Food_part3"
+            ref={Food_part3}
+            // style={{ backgroundColor: 'red', height: '5px' }}
+          ></div>
+          <div className="store ">
+            <div className="store_title_img d-flex align-items-center">
+              <img
+                src={House_icon}
+                style={{ width: '30px', height: '30px' }}
+                alt=""
+              />
+              <h2>適用店家</h2>
+            </div>
+            <p>{foodData.product_name}</p>
+            <p>地址：{foodData.product_address}</p>
+            <p>營業時間：{foodData.p_business_hours}</p>
+            <button type="button" className="btn btn-outline-success map_btn">
+              <img src={Map_Green_icon} alt="" width="25" height="25" />
+              <Link to="https://www.google.com.tw/maps/place/%E8%90%AC%E7%A5%9D%E8%99%9F/@25.149916,121.7628087,17z/data=!3m1!4b1!4m6!3m5!1s0x345d4f3a60e8ed39:0x2cea92012e8aa39!8m2!3d25.149916!4d121.7649974!16s%2Fg%2F11qsnxyj_c?hl=zh-TW">
+                <span>查看地圖</span>
+              </Link>
+            </button>
+          </div>
+          <div
+            className="Food_partHidden"
+            id="Food_part4"
+            ref={Food_part4}
+          ></div>
+          <div className="container commitGroup ">
+            <div className="">
+              <div
+                className="d-flex  commitTitle"
+                style={{ alignItems: 'center' }}
+              >
+                <h2
+                  style={{
+                    color: '#4D4D4D',
+                    margin: '40px 0px',
+                    marginRight: 'auto',
+                  }}
+                >
+                  旅客評價
+                </h2>
+                <CommitSelect />
+              </div>
+              <Commit rows={commitData} className="commit" />
+            </div>
+          </div>
         </div>
         <div className="col-lg-3 foodHashChange">
           <HashChange allPart={allPart} />
         </div>
       </div>
 
-      <div className="container use  ">
-        <div className="how_to_use  col-lg-8">
-          <div className="use_title_img d-flex align-items-center">
-            <img
-              src={Phone_icon}
-              style={{ width: '30px', height: '30px' }}
-              alt=""
-            />
+      <div className="container use  "></div>
 
-            <h2>如何使用</h2>
-          </div>
-          <ul>
-            <li>現場請出示QRCODE</li>
-          </ul>
-        </div>
-      </div>
-      <div
-        className="Food_partHidden"
-        id="Food_part3"
-        ref={Food_part3}
-        // style={{ backgroundColor: 'red', height: '5px' }}
-      ></div>
-      <div className="container storeGroup  ">
-        <div className="store  col-lg-8">
-          <div className="store_title_img d-flex align-items-center">
-            <img
-              src={House_icon}
-              style={{ width: '30px', height: '30px' }}
-              alt=""
-            />
-            <h2>適用店家</h2>
-          </div>
-          <p>{foodData.product_name}</p>
-          <p>地址：{foodData.product_address}</p>
-          <p>營業時間：{foodData.p_business_hours}</p>
-          <button type="button" className="btn btn-outline-success map_btn">
-            <img src={Map_Green_icon} alt="" width="25" height="25" />
-            <Link to="https://www.google.com.tw/maps/place/%E8%90%AC%E7%A5%9D%E8%99%9F/@25.149916,121.7628087,17z/data=!3m1!4b1!4m6!3m5!1s0x345d4f3a60e8ed39:0x2cea92012e8aa39!8m2!3d25.149916!4d121.7649974!16s%2Fg%2F11qsnxyj_c?hl=zh-TW">
-              <span>查看地圖</span>
-            </Link>
-          </button>
-        </div>
-      </div>
+      <div className="container storeGroup  "></div>
       <div className="givePadding"></div>
-      <div className="Food_partHidden" id="Food_part4" ref={Food_part4}></div>
-      <div className="container commitGroup ">
-        <div className="col-lg-8">
-          <div
-            className="d-flex col-lg-8 commitTitle"
-            style={{ alignItems: 'center' }}
-          >
-            <h2
-              style={{
-                color: '#4D4D4D',
-                margin: '40px 0px',
-                marginRight: 'auto',
-              }}
-            >
-              旅客評價
-            </h2>
-            <CommitSelect />
-          </div>
-          <Commit rows={commitData} className="commit" />
-        </div>
-      </div>
+
       {/* <div className="givePadding"></div> */}
       <div className="container ">
         <h2 className="cardCarouselTitle">更多美食推薦</h2>
