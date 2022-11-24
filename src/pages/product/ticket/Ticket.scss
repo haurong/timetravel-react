@@ -1,3 +1,44 @@
 .marginTop {
-	margin-top: 80px;
+	margin-top: 130px;
+
+	.ticket-Breadcrumb {
+		margin-bottom: 53px;
+		// border: 1px solid black;
+	}
+	.ticket-CitySelection {
+		margin-bottom: 43px;
+		
+	}
+	.ticket-Sidebar {
+		margin-bottom: 44px;
+	}
+	.ticket-DatePicker {
+		margin-bottom: 20px;
+		height: 66px;
+	}
+	.ticket-Slider {
+		margin-bottom: 20px;
+		height: 156px;
+		// border: 1px solid black;
+	}
+	.ticket-RankChoose {
+		margin-bottom: 126px;
+	}
 }
+
+// .ticket-Breadcrumb {
+// 	margin-bottom: 53px;
+// 	// border: 1px solid black
+// }
+
+
+
+.shadow {
+	box-shadow: 0 0 18px 0 rgba(0,0,0,0.1);
+	// border: 1px solid black
+}
+
+
+// .ticket-list-test {
+// 	border: 1px solid black;
+// }

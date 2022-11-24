@@ -37,12 +37,15 @@ const items = [
     'sub2',
     <Food className="sidebarIcon" style={{ width: '40px' }} />,
     [
-      getItem('Option 5', '5'),
-      getItem('Option 6', '6'),
-      getItem('Submenu', 'sub3', null, [
-        getItem('Option 7', '7'),
-        getItem('Option 8', '8'),
-      ]),
+      getItem('全部', '5'),
+      getItem('特色小吃', '6'),
+      getItem('飲品', '7'),
+      getItem('火鍋', '8'),
+      getItem('台式', '9'),
+      getItem('日式', '10'),
+      getItem('甜點', '11'),
+      getItem('咖啡', '12'),
+      getItem('泰式', '13'),
     ]
   ),
   getItem(
@@ -50,10 +53,9 @@ const items = [
     'sub4',
     <Stay className="sidebarIcon" style={{ width: '40px' }} />,
     [
-      getItem('Option 9', '9'),
-      getItem('Option 10', '10'),
-      getItem('Option 11', '11'),
-      getItem('Option 12', '12'),
+      getItem('Option 11', '14'),
+      getItem('Option 12', '15'),
+      getItem('Option 13', '16'),
     ]
   ),
   getItem(
@@ -61,10 +63,11 @@ const items = [
     'sub5',
     <Ticket className="sidebarIcon" style={{ width: '40px' }} />,
     [
-      getItem('Option 13', '13'),
-      getItem('Option 14', '14'),
-      getItem('Option 15', '15'),
-      getItem('Option 16', '16'),
+      getItem('Option 14', '17'),
+      getItem('Option 15', '18'),
+      getItem('Option 16', '19'),
+      getItem('Option 17', '20'),
+      getItem('Option 18', '21'),
     ]
   ),
 ];

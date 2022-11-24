@@ -1,16 +1,33 @@
 import React, { useState } from 'react';
 import '../global.scss';
-import './NavBar.scss';
+// import './NavBar.scss';
+import './NavBarIndex2.scss';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Logo from '../icon/logo/logo.svg';
 import SearchIcon from '../icon/search.svg';
 import CartIcon from '../icon/cart.svg';
+import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 
-function NavBar() {
+
+function  MyNavbar(props) {
+
+  const [show, setShow] = useState(true)
+
+  useScrollPosition(({ prevPos, currPos }) => {
+    // 這裡可以監視目前的捲軸狀態
+    console.log(currPos.x)
+    console.log(currPos.y)
+    if (currPos.y < -200) {
+      setShow(false)
+    } else {
+      setShow(true)
+    }
+  })
+
   return (
     <>
-      <nav className="navbar navbar-expand-lg nav-bg-color">
+      <nav className="navbar navbar-expand-lg nav-bg-color .nav-normal  .nav-hide">
         <div className="container">
           <Link className="navbar-brand" to="/">
             <img src={Logo} alt="logo" width="160" height="33" />
@@ -87,4 +104,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default MyNavbar;

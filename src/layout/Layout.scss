@@ -3,3 +3,14 @@
     background-color: rgba(255, 255, 255, 0);
 }
 
+.nav-normal {
+    visibility: visible;
+    transition: all 200ms ease-in;
+    transform: none;
+  }
+  
+  .nav-hide {
+    visibility: hidden;
+    transition: all 200ms ease-out;
+    transform: translate(0, -100%);
+  }
