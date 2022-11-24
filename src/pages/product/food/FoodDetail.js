@@ -31,18 +31,25 @@ import './FoodDetail.scss';
 function FoodDetail() {
   //拿到單筆資料
   const [foodData, setFoodData] = useState({});
+
   const [like, setLike] = useState(false);
   const toggleLike = () => setLike(!like);
+
   const [count, setCount] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(foodData.p_selling_price);
+  const a = foodData.p_selling_price;
+  console.log(a);
   const location = useLocation();
   const path = window.location.pathname.split('/');
   const sid = path[2];
+
   async function getData() {
     const response = await axios.get(FOOD_ITEM + sid);
     // const response = await axios.get(SITE_DETAIL);
     setFoodData(response.data);
-    console.log(foodData);
+    setTotalPrice(response.data.p_selling_price);
   }
+
   const [commitData, setCommitData] = useState([]);
 
   const usp = new URLSearchParams(location.search);
@@ -66,7 +73,7 @@ function FoodDetail() {
       let part2 = Food_part2.current.offsetTop;
       let part3 = Food_part3.current.offsetTop;
       let part4 = Food_part4.current.offsetTop;
-      console.log(part0, part1, part2, part3, part4);
+      // console.log(part0, part1, part2, part3, part4);
       setAllPart({
         part0: part0,
         part1: part1,
@@ -170,7 +177,19 @@ function FoodDetail() {
             <button
               className="countBtn"
               onClick={() => {
-                setCount(count - 1);
+                const newMinusCount = count - 1;
+                if (count === 1) {
+                  return count;
+                } else {
+                  setCount(newMinusCount);
+                }
+                const newMinusTotalPrice =
+                  totalPrice - foodData.p_selling_price;
+                if (totalPrice === foodData.p_selling_price) {
+                  return totalPrice;
+                } else {
+                  setTotalPrice(newMinusTotalPrice);
+                }
               }}
             >
               <img src={Minus_icon} alt="" className="Minus_icon" />
@@ -179,7 +198,10 @@ function FoodDetail() {
             <button
               className="countBtn"
               onClick={() => {
-                setCount(count + 1);
+                const newAddCount = count + 1;
+                setCount(newAddCount);
+                const newAddTotalPrice = foodData.p_selling_price * newAddCount;
+                setTotalPrice(newAddTotalPrice);
               }}
             >
               <img src={Add_icon} alt="" className="Add_icon" />
@@ -187,7 +209,10 @@ function FoodDetail() {
           </div>
           <div className="price">
             <h2 className="price1">TWD{foodData.p_discounted_price}</h2>
-            <h1 className="price2">TWD{foodData.p_selling_price}</h1>
+            <h1 className="price2">
+              TWD
+              {foodData.p_selling_price ? totalPrice : foodData.p_selling_price}
+            </h1>
           </div>
           <div className="btnGroup">
             <button type="button" className="btn add_cart">
@@ -199,9 +224,9 @@ function FoodDetail() {
           </div>
         </div>
       </div>
-      <div className="Hotel_partHidden" id="Food_part1" ref={Food_part1}></div>
+      <div className="Food_partHidden" id="Food_part1" ref={Food_part1}></div>
       <div className="container product_information d-flex ">
-        <div className="col-lg-8">
+        <div className="col-lg-8" style={{ marginRight: 'auto' }}>
           <h2>商品介紹</h2>
           <div className=" product_information_img">
             <div className="product_information_img_div1 col-lg-8">
@@ -217,13 +242,18 @@ function FoodDetail() {
             </div>
             <p>鳳梨冰美式</p>
           </div>
+          <div
+            className="Food_partHidden"
+            id="Food_part2"
+            ref={Food_part2}
+          ></div>
         </div>
         <div className="col-lg-3 foodHashChange">
           <HashChange allPart={allPart} />
         </div>
       </div>
-      <div className="Food_partHidden" id="Food_part2" ref={Food_part2}></div>
-      <div className="container use p-0 ">
+
+      <div className="container use  ">
         <div className="how_to_use  col-lg-8">
           <div className="use_title_img d-flex align-items-center">
             <img
@@ -231,6 +261,7 @@ function FoodDetail() {
               style={{ width: '30px', height: '30px' }}
               alt=""
             />
+
             <h2>如何使用</h2>
           </div>
           <ul>
@@ -238,9 +269,13 @@ function FoodDetail() {
           </ul>
         </div>
       </div>
-    
+      <div
+        className="Food_partHidden"
+        id="Food_part3"
+        ref={Food_part3}
+        // style={{ backgroundColor: 'red', height: '5px' }}
+      ></div>
       <div className="container storeGroup  ">
-      <div className="Food_partHidden" id="Food_part3" ref={Food_part3}></div>
         <div className="store  col-lg-8">
           <div className="store_title_img d-flex align-items-center">
             <img
@@ -261,8 +296,9 @@ function FoodDetail() {
           </button>
         </div>
       </div>
+      <div className="givePadding"></div>
       <div className="Food_partHidden" id="Food_part4" ref={Food_part4}></div>
-      <div className="container commitGroup givePadding">
+      <div className="container commitGroup ">
         <div className="col-lg-8">
           <div
             className="d-flex col-lg-8 commitTitle"
@@ -282,12 +318,12 @@ function FoodDetail() {
           <Commit rows={commitData} className="commit" />
         </div>
       </div>
-     
+      {/* <div className="givePadding"></div> */}
       <div className="container ">
         <h2 className="cardCarouselTitle">更多美食推薦</h2>
         <Card_Carousel className="cardCarousel" />
       </div>
-
+      <div className="givePadding"></div>
       <Footer />
     </>
   );

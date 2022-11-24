@@ -7,9 +7,9 @@ function CommitCard({ rows }) {
     <>
       {rows?.map((el) => {
         const dataTime = el.create_time;
-        console.log(dataTime);
+        //console.log(dataTime);
         let day = moment(dataTime).format('YYYY/MM/DD');
-        console.log(day);
+        //console.log(day);
         return (
           <div className="Comment_Bottom" key={el.sid}>
             <div>

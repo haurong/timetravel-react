@@ -76,7 +76,7 @@
         }
     }
     .choose{
-        margin-left: 120px;
+        margin-left: auto;
         .quantity_title{
             position: relative;
             bottom:32px;
@@ -135,7 +135,7 @@
         z-index:999;
        
         .product_information_img_div1,.product_information_img_div2,.product_information_img_div3{
-            width: 900px;
+            width: 100%;
             height:600px;
 
            
@@ -172,7 +172,7 @@
         }
 }
 .foodHashChange{
-    margin-left: 120px;
+    margin-left: auto;
 }
     .Heart_icon, .Calender_icon, .Phone_icon,.Map_icon,.Food_icon{
         width: 40px;
@@ -211,3 +211,10 @@
     //     margin-top:100px    }
 
  
+.Food_partHidden{
+    height: 80px;
+    // background-color: red;
+}
+div{
+    outline: 1px solid red;
+}
