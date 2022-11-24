@@ -2,16 +2,18 @@
   .City_button {
     margin: 20px 0px;
     button {
-      border: 1px solid #4d4d4d;
       color: #4d4d4d;
       background-color: transparent;
       outline: none;
+      border: none;
       padding: 6px 24px; 
+      text-align: center;
     }
     .cityChooseActive {
       border: none;
-      background-color: #59d8a1;
-      color: white;
+      background-color: #ffffff00;
+      color: #59d8a1;
+      
     }
   }
 }

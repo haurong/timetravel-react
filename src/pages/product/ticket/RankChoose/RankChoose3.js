@@ -21,7 +21,7 @@ function RankChoose() {
           aria-hidden="true"
         />
         <span>
-          五星
+          三星
         </span>
 
         {/* {Rank.map((v, i) => {
@@ -40,7 +40,14 @@ function RankChoose() {
           </div>
         );
       })} */}
+
       </label>
+
+      
+
+
+
+
     </div>
   );
 }
