@@ -18,7 +18,9 @@ function HashChange(props) {
   let part2 = props.allPart.part2 - 50;
   let part3 = props.allPart.part3 - 50;
   let part4 = props.allPart.part4 - 50;
+  // let part5 = props.allPart.part4 - 500;
   const [whichPart, setWhichPart] = useState('房型介紹');
+  // console.log(part5);
   window.addEventListener('scroll', () => {
     // console.log(window.scrollY);
     let nowScroll = window.scrollY;
@@ -27,19 +29,15 @@ function HashChange(props) {
     if (nowScroll < part1) {
       setSlideOut(false);
     } else if (nowScroll >= part1 && nowScroll < part2) {
-      // setComputerHashChangeFixed(true);
       setSlideOut(true);
       setWhichPart('房型介紹');
     } else if (nowScroll >= part2 && nowScroll < part3) {
-      // setComputerHashChangeFixed(true);
       setSlideOut(true);
       setWhichPart('注意事項');
     } else if (nowScroll >= part3 && nowScroll < part4) {
-      // setComputerHashChangeFixed(true);
       setSlideOut(true);
       setWhichPart('商品說明');
     } else if (nowScroll >= part4) {
-      // setComputerHashChangeFixed(true);
       setSlideOut(true);
       setWhichPart('旅客評價');
     }

@@ -18,20 +18,24 @@ export const HotelContextProvider = ({ children }) => {
     days: 1,
   });
 
-  // 價格
+  //  房間價格
   const [hotelRoomPrice, setHotelRoomPrice] = useState(1);
+
+  //  房間數量
   const [roomCounts, setRoomCounts] = useState(1);
 
-  //要到住宿資料
+  //  要到住宿資料
   const [hotelListData, setHotelListData] = useState({});
+
+  //  要到房型資料
   const [hotelRoomChoose, setHotelRoomChoose] = useState([]);
 
-  //要到評論資料
+  //  要到評論資料
   const [hotelCommentData, setHotelCommentData] = useState([]);
 
-  //取得總星星平均
+  //  取得總星星平均
   const [allStar, setAllStar] = useState();
-  
+
   return (
     <HotelContext.Provider
       value={{

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Rate } from 'antd';
 import './Comment.scss';
+import moment from 'moment/moment';
 import { useHotelContext } from '../Context/HotelContext';
 function CommentCard() {
   const { hotelCommentData } = useHotelContext();
+  console.log(hotelCommentData);
   return (
     <>
       {hotelCommentData.map((v, i) => {
@@ -22,7 +24,9 @@ function CommentCard() {
                   />
                 </div>
                 <div className="d-flex justify-content-center align-items-center">
-                  <div style={{ color: '#8A8A8A' }}>2022/11/24</div>
+                  <div style={{ color: '#8A8A8A' }}>
+                    {moment(v.create_time).format('YYYY-MM-DD')}
+                  </div>
                 </div>
               </div>
               <div className="Comment_text">{v.commit_text}</div>

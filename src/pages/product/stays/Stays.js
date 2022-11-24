@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useHotelContext } from './Context/HotelContext';
 import { HOTEL_DETAIL } from './hotel-config';
 
-import HotelCarousel from './Carousel/Carousel';
+import HotelCarousel from './Carousel/Carousel_hotel';
 import Breadcrumb from './Breadcrumb/Breadcrumb';
 import Rate from './Rate/Rate';
 import IconBar from './IconBar/IconBar';
@@ -116,7 +116,9 @@ function Stays() {
       <div className="MobileHidden container">
         <Breadcrumb />
       </div>
-      <HotelCarousel />
+      <div className="container">
+        <HotelCarousel />
+      </div>
       <div className="ComputerHidden">
         <HashChange allPart={allPart} />
       </div>
