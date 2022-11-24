@@ -46,8 +46,8 @@ function App() {
           <Route path="itinerary/:sid" element={<ItineraryDetail />} />
           <Route path="site" element={<Site />} />
           <Route path="site/:sid" element={<SiteDetail />} />
-          <Route path="food" element={<Food />} />
-          <Route path="food/detail" element={<FoodDetail />} />
+          <Route path="food1" element={<Food />} />
+          <Route path="food" element={<FoodDetail />} />
           <Route path="stays" element={<Stays />} />
           <Route path="ticket" element={<Ticket />} />
           <Route path="TicketDeatil" element={<TicketDeatil />} />

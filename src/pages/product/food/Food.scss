@@ -1,29 +1,47 @@
 .space{
     padding:60px
 }
-.FoodListGrooup{
-    .card{
-        margin-top: 80px;
-    }
-    .cardList{
-        padding:0 30px
-    }
-    .Accordion{
-        padding-top: 200px;
-        margin:0;
-    }
-    .row{
-        margin: 0 20px ;
-    }
-    .Food_pagination {
-        .pagination{
-            display:flex;
-            justify-content:center;
-            align-content: center;
-        }
-        margin-bottom: 30px;
-        justify-content:center;
-        align-content: center;
-    }
-   
+.foodMap{
+    z-index: 0;
+  
+    display: flex;
+    // flex-direction: column;
+    margin: 20px auto ;
+    justify-content:center;
+    border: 1px solid #D9D9D9;
 }
+.leaflet-container{
+    width: 600px;
+    height: 600px;
+}
+#foodmap{
+ width: 500px;
+    height: 500px;
+    background-color: none;
+}
+// .FoodListGrooup{
+//     .card{
+//         margin-top: 80px;
+//     }
+//     .cardList{
+//         padding:0 30px
+//     }
+//     .Accordion{
+//         padding-top: 200px;
+//         margin:0;
+//     }
+//     .row{
+//         margin: 0 20px ;
+//     }
+//     .Food_pagination {
+//         .pagination{
+//             display:flex;
+//             justify-content:center;
+//             align-content: center;
+//         }
+//         margin-bottom: 30px;
+//         justify-content:center;
+//         align-content: center;
+//     }
+   
+// }

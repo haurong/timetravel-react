@@ -5,6 +5,8 @@ import { useLocation, Link } from 'react-router-dom';
 import { SlideOutProvider } from '../stays/Context/HotelContext';
 import { FOOD_ITEM } from '../../../config.js';
 import { FOOD_COMMIT } from '../../../config.js';
+import FoodMap from './FoodMap';
+import Qrcode from '../../../Component/QRcode/Qrcode';
 import Commit from './Commit';
 import CommitSelect from './CommitSelect';
 import NavBar from '../../../layout/NavBar';
@@ -108,7 +110,7 @@ function FoodDetail() {
             <BreadCrumb />
           </div>
         </nav>
-        <div className="container">
+        <div className="container carousel">
           <Carousel />
         </div>
         <div className="container ">
@@ -279,11 +281,9 @@ function FoodDetail() {
             <p>{foodData.product_name}</p>
             <p>地址：{foodData.product_address}</p>
             <p>營業時間：{foodData.p_business_hours}</p>
-            <button type="button" className="btn btn-outline-success map_btn">
+            <button type="button" className="btn btn-outline-success map_btn ">
               <img src={Map_Green_icon} alt="" width="25" height="25" />
-              <Link to="https://www.google.com.tw/maps/place/%E8%90%AC%E7%A5%9D%E8%99%9F/@25.149916,121.7628087,17z/data=!3m1!4b1!4m6!3m5!1s0x345d4f3a60e8ed39:0x2cea92012e8aa39!8m2!3d25.149916!4d121.7649974!16s%2Fg%2F11qsnxyj_c?hl=zh-TW">
-                <span>查看地圖</span>
-              </Link>
+              <span>查看地圖</span>
             </button>
           </div>
           <div
@@ -317,9 +317,11 @@ function FoodDetail() {
         </div>
       </div>
 
+    {/* <Qrcode /> */}
+      {/* 
       <div className="container use  "></div>
 
-      <div className="container storeGroup  "></div>
+      <div className="container storeGroup  "></div> */}
       <div className="givePadding"></div>
 
       {/* <div className="givePadding"></div> */}

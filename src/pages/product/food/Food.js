@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { FOOD_LIST } from '../../../config.js';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
+import FoodMap from './FoodMap';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Accordion from 'react-bootstrap/Accordion';
@@ -15,25 +16,25 @@ import './Food.scss';
 //import Card1 from '../../../Component/Card/Card';
 
 function Food() {
-  const [foodData, setFoodData] = useState({
-    totalRows: 0,
-    totalPages: 0,
-    perPage: 0,
-    page: 1,
-    rows: [],
-  });
+  // const [foodData, setFoodData] = useState({
+  //   totalRows: 0,
+  //   totalPages: 0,
+  //   perPage: 0,
+  //   page: 1,
+  //   rows: [],
+  // });
 
-  const location = useLocation();
-  const usp = new URLSearchParams(location.search);
+  // const location = useLocation();
+  // const usp = new URLSearchParams(location.search);
 
-  async function getList() {
-    const response = await axios.get(FOOD_LIST + `?` + usp.toString());
-    setFoodData(response.data);
-  }
-  console.log(foodData);
-  useEffect(() => {
-    getList();
-  }, [location]);
+  // async function getList() {
+  //   const response = await axios.get(FOOD_LIST + `?` + usp.toString());
+  //   setFoodData(response.data);
+  // }
+  // console.log(foodData);
+  // useEffect(() => {
+  //   getList();
+  // }, [location]);
   return (
     <>
       <NavBar />
@@ -41,7 +42,11 @@ function Food() {
       <div className="container col-12 givePadding">
         <BreadCrumb />
       </div>
-      <div className="container FoodListGroup givePadding">
+     
+      <div className="foodMap">
+         <FoodMap className="foodmap"/>
+      </div>
+      {/* <div className="container FoodListGroup givePadding">
         <Row className="container d-flex content">
           <Col className="Accordion col-2 g-4">
             <Accordion defaultActiveKey="0" className="Accordion" flush>
@@ -77,14 +82,14 @@ function Food() {
           <Col className=" col-9 g-4 mt-4 cardList">
             <Card_List rows={foodData.rows} />
           </Col>
-        </Row>
-        
+        </Row> */}
+      {/*         
           <div className=" col-12 givePadding">
             <MyPagination page={foodData.page} totalPages={foodData.totalPages} />
           </div>
       
         {/* <Qrcode /> */}
-      </div>
+      {/* </div>  */}
       <Footer />
     </>
   );
