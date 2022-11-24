@@ -17,9 +17,7 @@ function SignIn() {
               <h1 className="login-text text-center">創建帳戶</h1>
               <p className="text-center">使用email註冊</p>
               <div className="mb-3">
-                <label htmlFor="inputName" className="form-label">
-                  姓名
-                </label>
+                <label className="form-label">姓名</label>
                 <input
                   type="text"
                   className="form-control"
@@ -67,7 +65,7 @@ function SignIn() {
                 >
                   註冊
                 </button>
-                <p id="" className="nosigning-text text-center">
+                <p className="nosigning-text text-center">
                   或是已有帳戶?
                   <Link className="signin-text" to="/logIn">
                     登入
