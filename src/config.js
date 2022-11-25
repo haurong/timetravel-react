@@ -3,6 +3,8 @@ export const MY_HOST = 'http://localhost:3001';
 // export const AB_LIST_AUTH = `${MY_HOST}/ab/api/list-auth`;
 // 假登入
 export const LOGIN_API = `${MY_HOST}/member/api/login-api`;
+export const SIGNIN_API = `${MY_HOST}/member/api/signin-api`;
+
 export const HOTEL_LIST = `${MY_HOST}/hotel/api`;
 
 export const FOOD_LIST = `${MY_HOST}/food/api`;

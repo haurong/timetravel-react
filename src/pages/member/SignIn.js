@@ -1,10 +1,47 @@
 import React from 'react';
+import { useContext, useState } from 'react';
 import '../member/style/SignIn.scss';
 import '../../global.scss';
 import Logo from '../../icon/logo/logo_white.svg';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { SIGNIN_API } from '../../config';
+import { useNavigate } from 'react-router-dom';
+//import AuthContext from './context/AuthContext';
 
 function SignIn() {
+  //const { setMyAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    againPassword: '',
+  });
+
+  const handler = (e) => {
+    const id = e.currentTarget.id;
+    const val = e.currentTarget.value;
+
+    setFormData({ ...formData, [id]: val });
+  };
+
+  const mySubmit = async (e) => {
+    e.preventDefault();
+    const { data } = await axios.post(SIGNIN_API, formData);
+    //console.log(data);
+    if (data.success) {
+      //localStorage.setItem('auth', JSON.stringify(data.auth));
+      alert('註冊成功');
+      //console.log(JSON.stringify(data));
+      //setMyAuth({ ...data.auth, authorised: true });
+      navigate('/');
+    } else {
+      //localStorage.removeItem('auth'); // 移除
+      alert('註冊失敗');
+    }
+  };
+
   return (
     <>
       <div className="container">
@@ -13,7 +50,7 @@ function SignIn() {
             <Link className="logo m-auto" to="/">
               <img src={Logo} alt="logo" />
             </Link>
-            <form className="form col-5 m-auto">
+            <form className="form col-5 m-auto" onSubmit={mySubmit}>
               <h1 className="login-text text-center">創建帳戶</h1>
               <p className="text-center">使用email註冊</p>
               <div className="mb-3">
@@ -21,41 +58,43 @@ function SignIn() {
                 <input
                   type="text"
                   className="form-control"
-                  id="inputName"
+                  id="username"
                   placeholder="王小明"
+                  onChange={handler}
+                  value={formData.name}
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="inputEmail4" className="form-label">
-                  Email
-                </label>
+                <label className="form-label">Email</label>
                 <input
                   type="email"
                   className="form-control"
-                  id="inputEmail4"
+                  id="email"
                   placeholder="example@mail.com"
+                  onChange={handler}
+                  value={formData.email}
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="inputPassword4" className="form-label">
-                  密碼
-                </label>
+                <label className="form-label">密碼</label>
                 <input
                   type="password"
                   className="form-control"
-                  id="inputPassword4"
+                  id="password"
                   placeholder="8位以上英數密碼，請區分大小寫"
+                  onChange={handler}
+                  value={formData.password}
                 />
               </div>
               <div className="mb-3">
-                <label htmlFor="inputPassword4" className="form-label">
-                  再次輸入密碼
-                </label>
+                <label className="form-label">再次輸入密碼</label>
                 <input
                   type="password"
                   className="form-control"
-                  id="inputPassword4"
+                  id="againPassword"
                   placeholder="請輸入相同密碼"
+                  onChange={handler}
+                  value={formData.againPassword}
                 />
               </div>
               <div className="mb-3 mx-auto">
