@@ -13,7 +13,7 @@ function ProgressBar({ maxSteps, step, pageNames }) {
                   .map((v, i) => {
                     return (
                       <li key={i} className={i + 1 <= step ? 'active' : ''}>
-                        {pageNames[i]}
+                        <h2> {pageNames[i]}</h2>
                       </li>
                     );
                   })}

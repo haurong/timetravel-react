@@ -6,12 +6,20 @@ function HotelCardInfo() {
       <div className="card-body">
         <h2>入住資訊</h2>
         <div className="d-flex align-items-end ">
-          <div>
+          <div className="me-3">
             <p>入住代表人</p>
-            <input className="input" type={'text'} placeholder={'中文姓'} />
+            <input
+              className="input form-control"
+              type={'text'}
+              placeholder={'中文姓'}
+            />
           </div>
           <div>
-            <input className="input" type={'text'} placeholder={'中文名'} />
+            <input
+              className="input form-control"
+              type={'text'}
+              placeholder={'中文名'}
+            />
           </div>
         </div>
         <div className="my-4">
@@ -22,7 +30,7 @@ function HotelCardInfo() {
           <div>
             <p>手機號碼</p>
             <input
-              className="input"
+              className="input form-control"
               type={'tel'}
               placeholder={'請輸入正確的手機號碼'}
             />
