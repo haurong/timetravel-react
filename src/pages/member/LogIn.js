@@ -1,12 +1,46 @@
 import React from 'react';
+import { useContext, useState } from 'react';
 import '../member/style/LogIn.scss';
 import '../../global.scss';
 import Logo from '../../icon/logo/logo_white.svg';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { LOGIN_API } from '../../config';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from './context/AuthContext';
 
 function LogIn() {
+  const { setMyAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handler = (e) => {
+    const id = e.currentTarget.id;
+    const val = e.currentTarget.value;
+    // console.log({id, val});
+
+    setFormData({ ...formData, [id]: val });
+  };
+
+  const mySubmit = async (e) => {
+    e.preventDefault();
+    const { data } = await axios.post(LOGIN_API, formData);
+    //console.log(data);
+    if (data.success) {
+      localStorage.setItem('auth', JSON.stringify(data.auth));
+      alert('登入成功');
+      console.log(JSON.stringify(data));
+      setMyAuth({ ...data.auth, authorised: true });
+      navigate('/');
+    } else {
+      localStorage.removeItem('auth'); // 移除
+      alert('登入失敗');
+    }
+  };
+
   return (
     <>
       <div className="container">
@@ -15,42 +49,47 @@ function LogIn() {
             <Link className="logo m-auto" to="/">
               <img src={Logo} alt="logo" />
             </Link>
-            <Form className="form col-5 m-auto">
+            <form className="form col-5 m-auto" onSubmit={mySubmit}>
               <h1 className="login-text text-center pb-5">登入</h1>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
+              <div className="mb-3">
+                <label className="form-label">Email</label>
+                <input
                   type="email"
+                  className="form-control"
                   placeholder="example@mail.com"
-                  id="account"
+                  id="email"
+                  onChange={handler}
+                  value={formData.email}
                 />
-              </Form.Group>
+              </div>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>密碼</Form.Label>
-                <Form.Control
+              <div className="mb-3">
+                <label className="form-label">密碼</label>
+                <input
                   type="password"
+                  className="form-control"
                   placeholder="8位以上英數密碼，請區分大小寫"
                   id="password"
+                  onChange={handler}
+                  value={formData.password}
                 />
                 <Link className="forget-password-text" to="/forget_password">
                   忘記密碼？
                 </Link>
-              </Form.Group>
+              </div>
               <div className="mx-auto">
-                <Button
-                  className="login-button d-flex"
-                  variant="primary"
+                <button
+                  className="btn btn-primary login-button d-flex"
                   type="submit"
                 >
                   登入
-                </Button>
-                <Form.Text className="nosigning-text">還沒註冊? </Form.Text>
+                </button>
+                <p className="nosigning-text text-center">還沒註冊? </p>
                 <Link className="signin-text" to="/signin">
                   立即註冊
                 </Link>
               </div>
-            </Form>
+            </form>
           </div>
           <div className="form-bg"></div>
         </div>

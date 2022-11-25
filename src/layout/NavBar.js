@@ -1,13 +1,17 @@
 import React from 'react';
+import { useContext } from 'react';
 import '../global.scss';
 import './NavBar.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Logo from '../icon/logo/logo.svg';
 import SearchIcon from '../icon/search.svg';
 import CartIcon from '../icon/cart.svg';
+import AuthContext from '../pages/member/context/AuthContext';
 
 function NavBar() {
+  const location = useLocation();
+  const { myAuth, logout } = useContext(AuthContext);
   return (
     <>
       <nav className="navbar navbar-expand-lg">
@@ -62,16 +66,46 @@ function NavBar() {
                 />
               </div>
             </form>
-            <button type="button" className="btn">
-              <NavLink className="nav-link login-btn-text" to="/logIn">
-                登入
-              </NavLink>
-            </button>
-            <NavLink className="signin-m" to="/signIn">
-              <Button className="signin-btn" variant="primary" type="button">
-                註冊
-              </Button>
-            </NavLink>
+            <div>
+              {myAuth.authorised ? (
+                <>
+                  <button type="button" className="btn">
+                    <NavLink className="nav-link login-btn-text" to="/logIn">
+                      {myAuth.email}
+                    </NavLink>
+                  </button>
+                  <li className="nav-item">
+                    <a
+                      className="nav-link"
+                      href="#/"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        logout();
+                      }}
+                    >
+                      登出
+                    </a>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <button type="button" className="btn">
+                    <NavLink className="nav-link login-btn-text" to="/logIn">
+                      登入
+                    </NavLink>
+                  </button>
+                  <NavLink className="signin-m" to="/signIn">
+                    <Button
+                      className="signin-btn"
+                      variant="primary"
+                      type="button"
+                    >
+                      註冊
+                    </Button>
+                  </NavLink>
+                </>
+              )}
+            </div>
             <div className="cart icon">
               <NavLink className="nav-link" to="/cart">
                 <img src={CartIcon} alt="" />
