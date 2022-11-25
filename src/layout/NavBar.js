@@ -69,23 +69,41 @@ function NavBar() {
             <div>
               {myAuth.authorised ? (
                 <>
-                  <button type="button" className="btn">
-                    <NavLink className="nav-link login-btn-text" to="/logIn">
-                      {myAuth.email}
-                    </NavLink>
-                  </button>
-                  <li className="nav-item">
+                  <div className="dropdown">
                     <a
-                      className="nav-link"
-                      href="#/"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        logout();
-                      }}
+                      className="nav-link login-btn-text dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
                     >
-                      登出
+                      {myAuth.email}
                     </a>
-                  </li>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="/#">
+                          Action
+                        </a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="/#">
+                          Another action
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          class="dropdown-item"
+                          href="#/"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            logout();
+                          }}
+                        >
+                          登出
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </>
               ) : (
                 <>

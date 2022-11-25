@@ -52,7 +52,7 @@ function App() {
             <Route path="food/detail" element={<FoodDetail />} />
             <Route path="stays" element={<Stays />} />
             <Route path="ticket" element={<Ticket />} />
-            <Route path="TicketDeatil" element={<TicketDeatil />} />
+            <Route path="TicketDeatil" element={<TicketDetail />} />
             <Route path="logIn" element={<LogIn />} />
             <Route path="forget_password" element={<ForgetPassword />} />
             <Route path="profile" element={<Profile />} />
