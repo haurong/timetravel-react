@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, NavLink } from 'react-router-dom';
 import { SlideOutProvider } from '../stays/Context/HotelContext';
 import { FOOD_ITEM } from '../../../config.js';
 import { FOOD_COMMIT } from '../../../config.js';
@@ -157,7 +157,7 @@ function FoodDetail() {
               </div>
               <div className="cate d-flex">
                 <img src={Food_icon} alt="" className="Food_icon" />
-                <p>{foodData.categorise_name}</p>
+                <p>{foodData.categories_name}</p>
               </div>
             </div>
             <div className="tickets_group d-flex ">
@@ -281,10 +281,28 @@ function FoodDetail() {
             <p>{foodData.product_name}</p>
             <p>地址：{foodData.product_address}</p>
             <p>營業時間：{foodData.p_business_hours}</p>
-            <button type="button" className="btn btn-outline-success map_btn ">
+            {/* <button
+              type="button"
+              className="btn btn-outline-success map_btn 
+            "
+              onClick={() => {
+                // const name = foodData.product_name;
+                // Swal.fire({
+                //   title: '萬祝號',
+                //   target: <FoodMap />,
+                //   targetWidth: 400,
+                //   targetHeight: 200,
+                //   imageAlt: 'Custom image',
+                // });
+                // <FoodMap />;
+              }}
+            >
               <img src={Map_Green_icon} alt="" width="25" height="25" />
               <span>查看地圖</span>
-            </button>
+            </button> */}
+            <div className="foodmap">
+              <FoodMap />
+            </div>
           </div>
           <div
             className="Food_partHidden"
@@ -316,15 +334,7 @@ function FoodDetail() {
           <HashChange allPart={allPart} />
         </div>
       </div>
-
-    {/* <Qrcode /> */}
-      {/* 
-      <div className="container use  "></div>
-
-      <div className="container storeGroup  "></div> */}
       <div className="givePadding"></div>
-
-      {/* <div className="givePadding"></div> */}
       <div className="container ">
         <h2 className="cardCarouselTitle">更多美食推薦</h2>
         <Card_Carousel className="cardCarousel" />

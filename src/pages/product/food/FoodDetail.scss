@@ -183,7 +183,7 @@
     }
 
     .use_title_img,.store_title_img{
-        margin: 30px 0 ; 
+        margin: 0 0 30px 0 ; 
     }
     .use_title_img > h2 ,.store_title_img > h2{
         margin:0 0 0 20px
@@ -201,6 +201,14 @@
     .store{
         p{
             margin:20px 0;
+        }
+    }
+    .foodmap{
+        
+        margin: 50px 0 0 0 ;
+        .leaflet-container {
+            width: 450px;
+            height: 450px;
         }
     }
     // .commitGroup{

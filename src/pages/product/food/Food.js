@@ -5,16 +5,14 @@ import { FOOD_LIST } from '../../../config.js';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import FoodMap from './FoodMap';
+import Qrcode from '../../../Component/QRcode/Qrcode';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Accordion from 'react-bootstrap/Accordion';
 import Card_List from '../../../Component/Card_List/Card_List';
-import MyPagination from '../../../Component/Pagination/Pagination';
+//import MyPagination from '../../../Component/Pagination/Pagination';
 import BreadCrumb from '../../../pages/product/stays/Breadcrumb/Breadcrumb';
 import './Food.scss';
-//import Qrcode from '../../../Component/QRcode/Qrcode';
-//import Card1 from '../../../Component/Card/Card';
-
 function Food() {
   // const [foodData, setFoodData] = useState({
   //   totalRows: 0,
@@ -42,10 +40,14 @@ function Food() {
       <div className="container col-12 givePadding">
         <BreadCrumb />
       </div>
-     
-      <div className="foodMap">
+
+      {/* <div className="foodMap">
          <FoodMap className="foodmap"/>
+      </div> */}
+      <div className="qrcode">
+        <Qrcode />
       </div>
+      <div className="givePadding"></div>
       {/* <div className="container FoodListGroup givePadding">
         <Row className="container d-flex content">
           <Col className="Accordion col-2 g-4">

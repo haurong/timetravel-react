@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { useState,useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import './Qrcode.scss';
 import React from 'react';
@@ -19,14 +19,11 @@ export default function Qrcode() {
   useEffect(() => {
     getData();
   }, [location]);
+
+
   return (
     <div>
-      <QRCodeSVG
-        value="http://127.0.0.1:3000/food/detail"
-        size="216"
-        level="M"
-        className="qrcode"
-      />
+      <QRCodeSVG value="F116" size="216" level="M" className="qrcode" />
     </div>
   );
 }
