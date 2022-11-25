@@ -10,7 +10,6 @@ import IRecSite from './iRecSite';
 import IRecFood from './iRecFood';
 import './Itinerary-detail.scss';
 import { ITINERARY_ITEM } from './site-config';
-import { DragDropContext } from 'react-beautiful-dnd';
 
 function ItineraryDetail() {
   const [iData, setIData] = useState({});
@@ -34,9 +33,7 @@ function ItineraryDetail() {
       <ITitle />
       <div id="iContainer">
         <div id="iList">
-          <DragDropContext>
-            <IList iData={iData} />
-          </DragDropContext>
+          <IList iData={iData} />
         </div>
         <Map />
       </div>
