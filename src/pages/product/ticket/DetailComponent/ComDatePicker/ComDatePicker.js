@@ -10,7 +10,7 @@ import { useHotelContext } from '../../../stays/Context/HotelContext';
 const { RangePicker } = DatePicker;
 
 function ComDatePicker(props) {
-  const { pickDate, setPickDate, hotelRoomPrice, roomCounts } =
+  const { pickDate, setPickDate, roomCounts } =
     useHotelContext();
   return (
     <>
@@ -70,7 +70,7 @@ function ComDatePicker(props) {
               marginBottom: '30px',
             }}
           >
-            TWD${hotelRoomPrice * roomCounts}
+            TWD${123}
           </h4>
           <div className="d-flex ComDatePicker_Right_BuyButton ">
             <BuyButton />

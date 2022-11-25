@@ -6,12 +6,12 @@ import '../stays/TimeTravel_Hotel.scss';
 
 import axios from 'axios';
 import { useHotelContext } from '../stays/Context/HotelContext';
-import { HOTEL_DETAIL } from './hotel-config';
+import { TICKET_DETAIL } from './ticket-config';
 
 import HotelCarousel from '../stays/Carousel/Carousel_hotel';
 import Breadcrumb from '../ticket/DetailComponent/Breadcrumb/Breadcrumb';
 import Rate from '../stays/Rate/Rate';
-import IconBar from '../stays/IconBar/IconBar';
+import IconBar from './DetailComponent/IconBar/IconBar';
 import ShowPic from '../ticket/DetailComponent/ShowPic/ShowPic';
 import HotelNotice from '../../product/ticket/DetailComponent/HotelNotice/HotelNotice';
 import HotelDetail from '../ticket/DetailComponent/HotelDetail/HotelDetail';
@@ -21,7 +21,7 @@ import CommentSelector from '../stays/Comment/CommentSelector';
 import BottomBar from '../stays/BottomBar/BottomBar';
 import MobileFooter from '../stays/MobileFooter/MobileFooter';
 import HashChange from './DetailComponent/HashChange/HashChange';
-import ComputerLikeAdd from '../stays/ComputerLikeAdd/ComputerLikeAdd';
+import ComputerLikeAdd from './DetailComponent/ComDatePicker/ComDatePicker';
 import ComDatePicker from '../stays/ComDatePicker/ComDatePicker';
 import BookingBar from '../stays/BookingBar/BookingBar';
 
@@ -41,22 +41,23 @@ function Stays() {
 
   async function getHotelDetail() {
     //  拿到飯店所有資料
-    const res_hotelListData = await axios.get(HOTEL_DETAIL + dataFrom);
+    const res_hotelListData = await axios.get(TICKET_DETAIL + dataFrom);
+    console.log(res_hotelListData);
     setHotelListData(res_hotelListData.data);
 
     //  拿到房型所有資料
-    const res_hotelRoomData = await axios.get(
-      HOTEL_DETAIL + dataFrom + '/room'
-    );
-    const toArray = res_hotelRoomData.data;
-    setHotelRoomChoose(toArray);
+    // const res_hotelRoomData = await axios.get(
+    //   TICKET_DETAIL + dataFrom + '/room'
+    // );
+    // const toArray = res_hotelRoomData.data;
+    // setHotelRoomChoose(toArray);
     //  設定最便宜的價格
-    setHotelRoomPrice(toArray[0].room_price);
+    // setHotelRoomPrice(toArray[0].room_price);
     //  拿到所有評論的資料
-    const res_hotelCommentData = await axios.get(
-      HOTEL_DETAIL + dataFrom + '/hotelComment'
-    );
-    setHotelCommentData(res_hotelCommentData.data);
+    // const res_hotelCommentData = await axios.get(
+    //   TICKET_DETAIL + dataFrom + '/hotelComment'
+    // );
+    // setHotelCommentData(res_hotelCommentData.data);
     // console.log(res_hotelCommentData.data);
   }
   const Hotel_part0 = useRef();
@@ -136,12 +137,12 @@ function Stays() {
               </div>
 
               <h2 style={{ color: '#4D4D4D', marginBottom: '20px' }}>
-                {hotelListData.hotel_name}
+                {hotelListData.product_name}
               </h2>
               <Rate />
               <IconBar
                 hotelListDataArea={hotelListData.area_name}
-                hotelListDataCategories={hotelListData.hotel_categories}
+                hotelListDataCategories={hotelListData.classname}
               />
               <h4
                 className="ComputerHidden"
