@@ -1,29 +1,17 @@
 .space{
     padding:60px
 }
-.FoodListGrooup{
-    .card{
-        margin-top: 80px;
-    }
-    .cardList{
-        padding:0 30px
-    }
-    .Accordion{
-        padding-top: 200px;
-        margin:0;
-    }
-    .row{
-        margin: 0 20px ;
-    }
-    .Food_pagination {
-        .pagination{
-            display:flex;
-            justify-content:center;
-            align-content: center;
-        }
-        margin-bottom: 30px;
-        justify-content:center;
-        align-content: center;
-    }
-   
+ .foodMap{
+    width: 100%;
+  height: 450px;
+
+ }
+.leaflet-container{
+    width: 450px;
+    height: 450px;
+}
+#foodmap{
+    width: 450px;
+    height: 450px;
+
 }
