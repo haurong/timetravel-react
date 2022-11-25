@@ -15,6 +15,7 @@ function BookingBar() {
     setBookingBarOpen,
     roomCounts,
     hotelRoomPrice,
+    hotelListData,
   } = useHotelContext();
   // const [bookingBarOpen, setBookingBarOpen] = useState(false);
 
@@ -33,9 +34,7 @@ function BookingBar() {
               setBookingBarOpen(!bookingBarOpen);
             }}
           >
-            <h2 style={{ color: '#4D4D4D' }}>
-              {/* TODO:拿到真實名稱 */}路境行旅(Finders Hotel)
-            </h2>
+            <h2 style={{ color: '#4D4D4D' }}>{hotelListData.hotel_name}</h2>
             {/* <div className="icon d-flex align-items-center">
               <Sort />
             </div> */}

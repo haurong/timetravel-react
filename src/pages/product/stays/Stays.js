@@ -26,7 +26,7 @@ import ComDatePicker from './ComDatePicker/ComDatePicker';
 import BookingBar from './BookingBar/BookingBar';
 
 function Stays() {
-  const dataFrom = '1';
+  const dataFrom = '38';
   const {
     roomCounts,
     hotelRoomPrice,
@@ -125,7 +125,7 @@ function Stays() {
       <div className="ComputerHidden">
         <HashChange allPart={allPart} />
       </div>
-      <div style={{ width: '100%', height: '79px' }}></div>
+      <div style={{ width: '100%', height: '30px' }}></div>
       <div className="container">
         <div className="">
           <div className="d-flex">
