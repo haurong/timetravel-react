@@ -1,35 +1,87 @@
 import React, { useState } from 'react';
 import '../../global.scss';
 import './Home.scss';
-// import Col from 'react-bootstrap/Col';
-// import Row from 'react-bootstrap/Row';
-// import Tags from '../../pages/product/ticket/Tags/Tags';
-import BannerSliderHot from '../../pages/product/ticket/BannerSlider/BannerSliderHot';
-import BannerSliderNewest from '../../pages/product/ticket/BannerSlider/BannerSliderNewest';
+
 import '../../../node_modules/slick-carousel/slick/slick.css';
 import '../../../node_modules/slick-carousel/slick/slick-theme.css';
+
+import BannerSliderHot from '../../pages/product/ticket/BannerSlider/BannerSliderHot';
+import BannerSliderNewest from '../../pages/product/ticket/BannerSlider/BannerSliderNewest';
 import ButtonSign from '../../pages/product/ticket/ButtonSign/ButtonSign';
+import TagSiteButton from './TagButton/TagSiteButton';
+import TagFoodButton from './TagButton/TagFoodButton';
+import TagStayButton from './TagButton/TagStayButton';
+import TagTicketButton from './TagButton/TagTicketButton';
+import TagStayInput from './TagInput/TagInput';
+import TagStayDatePickerIn from './TagStayDatePicker/TagStayDatePicker';
+import TagStayDatePickerOut from './TagStayDatePicker/TagStayDatePicker';
+import TagSelectDays from './TagSelect/TagSelectDays';
+import TagSelectRooms from './TagSelect/TagSelectRooms';
+
+// import Col from 'react-bootstrap/Col';
+// import Row from 'react-bootstrap/Row';
 
 function Home() {
   return (
     <>
-      <div className="home_bg flex"></div>
-      <div className="home_bg_text_wrap">
-        <div className="home_bg_text_time">Time</div>
-        <div className="home_bg_text_travel">Travel</div>
-        {/* <div className="home_bg_text_travel_opacity">Travel</div> */}
-      </div>
       <div className="container">
         <div className="row">
           <div className="home-part1">
-            {/* <div><Tags /></div> */}
-            <div className="tags">
-              <div className="tag_icons">
-                <div className="tag_icon_site"></div>
-                <div className="tag_icon_food"></div>
-                <div className="tag_icon_stay"></div>
-                <div className="tag_icon_ticket"></div>
+            <div className="home_bg_absolute">
+              <div className="home_bg_text_wrap">
+                <div className="home_bg_text_time">Time</div>
+                <div className="home_bg_text_travel">Travel</div>
               </div>
+            </div>
+            {/* 標籤icons部分 */}
+            <div className="home_tags">
+              <div className="tag_unit">
+                <TagSiteButton className="tag_text" />
+              </div>
+              <div className="tag_unit">
+                <TagFoodButton className="tag_text" />
+              </div>
+              <div className="tag_unit">
+                <TagStayButton className="tag_text" />
+              </div>
+              <div className="tag_unit">
+                <TagTicketButton className="tag_text" />
+              </div>
+            </div>
+
+            {/* 填選區 */}
+            <div className="home_tags_input">
+              {/* <div> */}
+              <div className="tag_input_unit1">
+                <div className="home_tag_input_tittle1">目的地</div>
+                <TagStayInput />
+              </div>
+              <div className="tag_input_unit2">
+                <div className="home_tag_input_tittle2">入住時間</div>
+                <div className="home_tag_input2">
+                  <TagStayDatePickerIn />
+                </div>
+              </div>
+              <div className="tag_input_unit3">
+                <div className="home_tag_input_tittle3">退房時間</div>
+                <div className="home_tag_input3">
+                  <TagStayDatePickerOut />
+                </div>
+              </div>
+              <div className="tag_input_unit4">
+                <div className="home_tag_input_tittle4">天數</div>
+                <div className="home_tag_input4">
+                  <TagSelectDays className="TagSelectDays"/>
+                </div>
+              </div>
+              <div className="tag_input_unit5">
+                <div className="home_tag_input_tittle5">房數</div>
+                <div className="home_tag_input5">
+                  <TagSelectRooms />
+                </div>
+              </div>
+              <div className="tag_input_unit6"></div>
+              {/* </div> */}
             </div>
           </div>
 

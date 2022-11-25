@@ -1,0 +1,16 @@
+/* Rate */
+.TimeTravel_Rate {
+  color: #59d8a1;
+  .ant-rate-star:not(:last-child) {
+    margin-right: 2px;
+  }
+}
+.rate_text {
+  margin-left: 10px;
+  align-items: center;
+  p {
+    margin-bottom: 0px;
+    padding-top: 5px;
+    color: #8a8a8a;
+  }
+}
