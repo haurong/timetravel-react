@@ -28,7 +28,7 @@ function LogIn() {
   const mySubmit = async (e) => {
     e.preventDefault();
     const { data } = await axios.post(LOGIN_API, formData);
-    console.log(data);
+    //console.log(data);
     if (data.success) {
       localStorage.setItem('auth', JSON.stringify(data.auth));
       alert('登入成功');
