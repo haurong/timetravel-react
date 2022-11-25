@@ -8,6 +8,7 @@ import Logo from '../icon/logo/logo.svg';
 import SearchIcon from '../icon/search.svg';
 import CartIcon from '../icon/cart.svg';
 import AuthContext from '../pages/member/context/AuthContext';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 function NavBar() {
   const location = useLocation();
@@ -69,41 +70,70 @@ function NavBar() {
             <div>
               {myAuth.authorised ? (
                 <>
-                  <div className="dropdown">
-                    <a
-                      className="nav-link login-btn-text dropdown-toggle"
-                      href="#"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
+                  <Dropdown>
+                    <Dropdown.Toggle
+                      className="nav-link login-user-text"
+                      variant="success"
+                      id="dropdown-basic"
                     >
                       {myAuth.email}
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li>
-                        <a class="dropdown-item" href="/#">
-                          Action
-                        </a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="/#">
-                          Another action
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          class="dropdown-item"
-                          href="#/"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            logout();
-                          }}
-                        >
-                          登出
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item
+                        className="dropdown-user-item"
+                        href="/profile"
+                      >
+                        修改個人資料
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        className="dropdown-user-item"
+                        href="/reset_password"
+                      >
+                        重設密碼
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        className="dropdown-user-item"
+                        href="/orders"
+                      >
+                        訂單記錄
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        className="dropdown-user-item"
+                        href="/itinerary"
+                      >
+                        我的行程規劃
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        className="dropdown-user-item"
+                        href="/ticket_qrcode"
+                      >
+                        我的票夾
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        className="dropdown-user-item"
+                        href="/comment"
+                      >
+                        我的評論
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        className="dropdown-user-item"
+                        href="/collect"
+                      >
+                        我的收藏
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        className="dropdown-user-item"
+                        href="#/"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          logout();
+                        }}
+                      >
+                        登出
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
                 </>
               ) : (
                 <>
