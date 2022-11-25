@@ -16,8 +16,8 @@ function  MyNavbar(props) {
 
   useScrollPosition(({ prevPos, currPos }) => {
     // 這裡可以監視目前的捲軸狀態
-    console.log(currPos.x)
-    console.log(currPos.y)
+    console.log(currPos.x);
+    console.log(currPos.y);
     if (currPos.y < -200) {
       setShow(false)
     } else {
@@ -27,7 +27,7 @@ function  MyNavbar(props) {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg nav-bg-color .nav-normal  .nav-hide">
+      <nav className="navbar navbar-expand-lg nav-bg-color nav-normal nav-hide">
         <div className="container">
           <Link className="navbar-brand" to="/">
             <img src={Logo} alt="logo" width="160" height="33" />

@@ -13,7 +13,7 @@ import Food from './pages/product/food/Food';
 import FoodDetail from './pages/product/food/FoodDetail';
 import Stays from './pages/product/stays/Stays';
 import Ticket from './pages/product/ticket/Ticket';
-import TicketDeatil from './pages/product/ticket/TicketDeatil';
+import TicketDetail from './pages/product/ticket/TicketDetail';
 import LogIn from './pages/member/LogIn';
 import Profile from './pages/member/Profile';
 import SignIn from './pages/member/SignIn';
@@ -38,7 +38,6 @@ function App() {
       <HotelContextProvider>
         <Routes>
           <Route path="/" element={<Layout />}>
-            {/* index代表此路由中的預設子頁 */}
             <Route index element={<Home />} />
           </Route>
           <Route path="productList" element={<ProductList />} />
@@ -50,7 +49,7 @@ function App() {
           <Route path="food/detail" element={<FoodDetail />} />
           <Route path="stays" element={<Stays />} />
           <Route path="ticket" element={<Ticket />} />
-          <Route path="TicketDeatil" element={<TicketDeatil />} />
+          <Route path="ticket/detail" element={<TicketDetail />} />
           <Route path="logIn" element={<LogIn />} />
           <Route path="forget_password" element={<ForgetPassword />} />
           <Route path="profile" element={<Profile />} />

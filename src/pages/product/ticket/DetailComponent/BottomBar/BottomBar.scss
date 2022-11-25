@@ -1,0 +1,44 @@
+/* BottomBar */
+.BottomBar {
+	height: 120px;
+	position: fixed;
+	bottom: 0;
+	background-color: #ffffff;
+	width: 100%;
+	z-index: 999;
+	padding: 18px 0px;
+	.BottomBar_BtnGroup {
+		display: flex;
+		/* outline: 1px red solid; */
+		height: 30px;
+		justify-content: space-around;
+		align-items: center;
+		margin-bottom: 10px;
+		.BottomBar_inputDate {
+			border-radius: 25px;
+			border: 1px solid #aeaeae;
+			color: #aeaeae;
+			background-color: transparent;
+			white-space: nowrap;
+			overflow: hidden;
+			height: 30px;
+			justify-content: center;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+		}
+	}
+}
+@media (min-width: 992px) {
+	.BottomBar {
+		display: none;
+	}
+}
+
+.BottomBar_Buy {
+	/* outline: 1px solid green; */
+	height: 45px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}

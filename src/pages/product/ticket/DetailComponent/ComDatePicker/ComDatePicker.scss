@@ -1,0 +1,108 @@
+.ComDatePicker {
+  width: 100%;
+  height: auto;
+  margin-top: 40px;
+}
+.ComDatePicker_Left {
+  .ComDatePicker_Left_text {
+    width: 540px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h5 {
+      margin: 0px;
+      color: #4d4d4d;
+      span {
+        color: #59d8a1;
+        margin-left: 10px;
+      }
+    }
+    .ComDatePicker_Left_text_tag {
+      width: 84px;
+      height: 36px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #59d8a1;
+      color: white;
+      border-radius: 36px;
+      h5 {
+        margin: 0px;
+        color: #fff;
+        span {
+          margin: 0px;
+          color: #fff;
+        }
+      }
+    }
+  }
+  // background-color: red;
+}
+.ComDatePicker_Right {
+  background-color: #fff;
+  h5 {
+    color: #4d4d4d;
+  }
+  .ComDatePicker_Right_text {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 36px;
+    h5 {
+      color: #4d4d4d;
+      margin: 0px;
+    }
+  }
+  .ComDatePicker_Right_BuyButton {
+    width: 100%;
+    div {
+      margin-right: 30px;
+    }
+    .noMarginRight{
+      margin-right: 0px;
+    }
+  }
+}
+
+.hiddenBox {
+  // .ant-space-item {
+  // 	display: none;
+  // }
+  .ant-picker-panel-container {
+    box-shadow: none;
+  }
+  .ant-picker {
+    margin-top: auto;
+    visibility: hidden;
+    transition: none;
+    transition-duration: 0s;
+  }
+}
+
+.popupDatePicker {
+  transform: translateY(-80px);
+  z-index: 20;
+  border: 1px solid #aeaeae;
+  .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner,
+  .ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner,
+  .ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner {
+    background: #59d8a1;
+  }
+  .ant-picker-cell-in-view.ant-picker-cell-range-start:not(.ant-picker-cell-range-start-single)::before,
+  .ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-range-end-single)::before {
+    background: #59d8a148;
+  }
+  .ant-picker-cell-in-view.ant-picker-cell-in-range::before {
+    background: #59d8a148;
+  }
+  .ant-picker-cell-in-view.ant-picker-cell-today
+    .ant-picker-cell-inner::before {
+    border: 0;
+  }
+  @media (max-width: 992px) {
+    display: none;
+  }
+}
+.RangePicker_relative {
+  position: relative;
+}

@@ -1,97 +1,207 @@
-// 首頁封面圖片
-.home_bg{
+// 首頁背圖
+.home_bg_absolute {
     background-image: url('../../img/ticket_home.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     height: 900px;
     width: 1440px;
-    // background-attachment: fixed;
+    // border: 5px solid rgb(255, 0, 0);
     position: absolute;
-    top:0;
-    left: 0;
     z-index: -10;
-    // border: 2px solid rgb(253, 35, 235);
 }
 
 
-// timetravel文字
+// timetravel文字區
 .home_bg_text_wrap {
     height: 900px;
     width: 1440px;
-    // border: 2px solid rgb(253, 35, 235);
     position: absolute;
     top:0;
     left: 0;
-    z-index: -10;
-    // display: flex;
+    // border: 2px solid rgb(49, 248, 255);
+    // z-index: -5;
     .home_bg_text_time {
-        
         font-size: 150px;
         color: #ffffff;
-        // margin-left: 321px;
-        // margin-top: 241px;
-        // border: 1px solid black;
         position: relative;
         top: 241px;
-        left: 321px;
-        
+        left: 345px;
+        // border: 1px solid black;
     }
     .home_bg_text_travel {
         font-size: 160px;
-        color: #ffffff;
+        color: #ffffff00;
         position: relative;
-        left: 610px;
         top: 113px;
-        
+        left: 615px;
+        -webkit-text-stroke: 3px #ffffff;
         // border: 1px solid black;
-        
     }
-    // .home_bg_text_travel_opacity {
-    //     font-size: 150px;
-    //     color: #dc2828;
-    //     position: relative;
-    //     margin-left: 615px;
-    //     margin-top: -200px;
-    //     border: 1px solid black;
-        
-    // }
 }
 
 // 首頁start
+
+
 .home-part1{
     display: flex;
     justify-content: center; 
     align-items: center;
     height: 900px;
-    // border: 1px solid rgb(60, 56, 255);
-}
-
-.tags_icons{
-    border: 1px solid rgb(60, 56, 255);
-    width: 336px;
-    height: 36px;
-
+    // border: 1px solid rgb(255, 132, 56);
+    // z-index: -10;
     
 }
-// .tag_icon_food {
-//     background-image: url("../../icon/food.svg");
-//     // border: 1px solid rgb(60, 56, 255);
-//     width: 40px;
-//     height: 40px;
-// }
-// .tag_icon_site {
-//     background-image: url("../../icon/stay_white.svg");
-//     // border: 1px solid rgb(60, 56, 255);
-//     width: 40px;
-//     height: 40px;
-// }
-// .tag_icon_stay {
-//     // background-image: url("../../icon/stay_");
-//     // border: 1px solid rgb(60, 56, 255);
-//     width: 40px;
-//     height: 40px;
-// }
+
+.home_tags{
+    display: flex;
+    width: 336px;
+    height: 36px;
+    margin-top: 559px;
+    margin-left: 532px;
+    position: relative;
+    // align-items: center;
+    // border: 1px solid black;
+    
+    .tag_unit{
+        width: 84px;
+        height: 36px;
+        display: flex;
+        border-bottom: 1px solid #ffffff;
+        // border: 1px solid rgb(224, 18, 211);
+
+        .tag_icon_site {
+            display: flex;
+            background-image: url("../../icon/itinerary_white.svg");
+        .tag_icon_food {
+            background-image: url("../../icon/food_white.svg");
+}
+
+
+        }
+    }
+    
+}
+
+
+// 填選區
+.home_tags_input{
+    display: flex;
+    width: 1084px;
+    height: 71px;
+    position:absolute;
+    justify-content: space-between;
+    margin: 0;
+    border: 1px solid black;
+    
+    // input1
+    .tag_input_unit1 {
+        width: 183px;
+        height: 71px;
+        // border: 1px solid black;
+
+        .home_tag_input_tittle1{
+            width: 183px;
+            height: 25px;
+            color:#ffffff;
+            // border: 1px solid black;
+        }
+
+        .home_tag_input1 {
+            width: 183px;
+            height: 46px;
+            // border: 1px solid black;
+        }
+    }
+
+    // input2
+    .tag_input_unit2 {
+        width: 183px;
+        height: 71px;
+        .home_tag_input_tittle2{
+            width: 183px;
+            height: 25px;
+            color:#ffffff;
+            // border: 1px solid black;
+        }
+
+        .home_tag_input2 {
+            width: 183px;
+            height: 46px;
+            // border: 1px solid black;
+        }
+    }
+
+    // input3
+    .tag_input_unit3 {
+        width: 183px;
+        height: 71px;
+        .home_tag_input_tittle3{
+            width: 183px;
+            height: 25px;
+            color:#ffffff;
+            // border: 1px solid black;
+        }
+
+        .home_tag_input3 {
+            width: 183px;
+            height: 46px;
+            // border: 1px solid black;
+        }
+    }
+
+    // input4
+    .tag_input_unit4 {
+        width: 120px;
+        height: 71px;
+        .home_tag_input_tittle4 {
+            width: 120px;
+            height: 25px;
+            color:#ffffff;
+            // border: 1px solid black;
+        }
+
+        .home_tag_input4 {
+            width: 120px;
+            height: 46px;
+            // border: 1px solid black;
+        }
+
+        .TagSelectDays {
+            
+        }
+
+    }
+
+    // input5
+    .tag_input_unit5 {
+        width: 200px;
+        height: 71px;
+        .home_tag_input_tittle5 {
+            width: 200px;
+            height: 25px;
+            color:#ffffff;
+            // border: 1px solid black;
+        }
+
+        .home_tag_input5 {
+            width: 200px;
+            height: 46px;
+            // border: 1px solid black;
+        }
+
+    }
+
+    // input6
+    .tag_input_unit6 {
+        width: 114px;
+        height: 71px;
+        // border: 1px solid black;
+    }
+}
+
+
+
 
 
 
