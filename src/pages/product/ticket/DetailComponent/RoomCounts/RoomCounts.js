@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './RoomCounts.scss';
 import { ReactComponent as Add } from '../../../../../icon/add.svg';
 import { ReactComponent as Minus } from '../../../../../icon/minus.svg';
-import { useHotelContext } from '../Context/HotelContext';
+import { useHotelContext } from '../../../stays/Context/HotelContext';
 // import Minus from '../../../../icon/minus.svg';
 
 function RoomCounts() {

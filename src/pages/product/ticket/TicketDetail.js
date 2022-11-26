@@ -21,8 +21,8 @@ import CommentSelector from '../stays/Comment/CommentSelector';
 import BottomBar from '../stays/BottomBar/BottomBar';
 import MobileFooter from '../stays/MobileFooter/MobileFooter';
 import HashChange from './DetailComponent/HashChange/HashChange';
-import ComputerLikeAdd from './DetailComponent/ComDatePicker/ComDatePicker';
-import ComDatePicker from '../stays/ComDatePicker/ComDatePicker';
+import ComputerLikeAdd from './DetailComponent/ComputerLikeAdd/ComputerLikeAdd';
+import ComDatePicker from '../../product/ticket/DetailComponent/ComDatePicker/ComDatePicker';
 import BookingBar from '../stays/BookingBar/BookingBar';
 
 function Stays() {

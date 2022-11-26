@@ -60,8 +60,8 @@ function ComDatePicker(props) {
           <div className="ComDatePicker_Right_text">
             <h5>票種選擇</h5>
           </div>
-          <RoomChoose hotelRoomData={props.hotelRoomData} />
-          <h5 style={{ marginTop: '50px' }}>房數</h5>
+          <RoomChoose />
+          <h5 style={{ marginTop: '50px' }}>票券張數</h5>
           <RoomCounts />
           <h4
             style={{

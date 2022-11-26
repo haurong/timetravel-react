@@ -17,13 +17,18 @@ import TagStayDatePickerIn from './TagStayDatePicker/TagStayDatePicker';
 import TagStayDatePickerOut from './TagStayDatePicker/TagStayDatePicker';
 import TagSelectDays from './TagSelect/TagSelectDays';
 import TagSelectRooms from './TagSelect/TagSelectRooms';
+import TagStaySearchBtn from './ButtonSearch/ButtonSearch';
+
 
 // import Col from 'react-bootstrap/Col';
 // import Row from 'react-bootstrap/Row';
 
 function Home() {
+  const [backgroundStay, setBackgroundStay] = useState('')
+
   return (
     <>
+    <TagStayButton setBackgroundStay={setBackgroundStay}/>
       <div className="container">
         <div className="row">
           <div className="home-part1">
@@ -54,7 +59,9 @@ function Home() {
               {/* <div> */}
               <div className="tag_input_unit1">
                 <div className="home_tag_input_tittle1">目的地</div>
-                <TagStayInput />
+                <div className="home_tag_input1">
+                  <TagStayInput />
+                </div>
               </div>
               <div className="tag_input_unit2">
                 <div className="home_tag_input_tittle2">入住時間</div>
@@ -71,7 +78,7 @@ function Home() {
               <div className="tag_input_unit4">
                 <div className="home_tag_input_tittle4">天數</div>
                 <div className="home_tag_input4">
-                  <TagSelectDays className="TagSelectDays"/>
+                  <TagSelectDays className="TagSelectDays" />
                 </div>
               </div>
               <div className="tag_input_unit5">
@@ -80,7 +87,12 @@ function Home() {
                   <TagSelectRooms />
                 </div>
               </div>
-              <div className="tag_input_unit6"></div>
+              <div className="tag_input_unit6">
+                <div className="home_tag_input_tittle6"></div>
+                <div className="home_tag_input6">
+                  <TagStaySearchBtn />
+                </div>
+              </div>
               {/* </div> */}
             </div>
           </div>

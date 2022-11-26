@@ -5,7 +5,7 @@
     background-position: center;
     background-size: cover;
     height: 900px;
-    width: 1440px;
+    width: 100%;
     // border: 5px solid rgb(255, 0, 0);
     position: absolute;
     z-index: -10;
@@ -92,12 +92,13 @@
     position:absolute;
     justify-content: space-between;
     margin: 0;
-    border: 1px solid black;
+    // border: 1px solid black;
     
     // input1
     .tag_input_unit1 {
         width: 183px;
         height: 71px;
+        position: relative;
         // border: 1px solid black;
 
         .home_tag_input_tittle1{
@@ -197,6 +198,17 @@
         width: 114px;
         height: 71px;
         // border: 1px solid black;
+        
+        .home_tag_input_tittle6 {
+            width: 114px;
+            height: 25px;
+        }
+
+        .home_tag_input6 {
+            width: 114px;
+            height: 46px;
+            // border: 1px solid black;
+        }
     }
 }
 
@@ -323,7 +335,7 @@
     background-position: center;
     background-size: cover;
     height: 400px;
-    width: 1440px;
+    width: 100%;
     position: absolute;
     z-index: -10;
     // border: 2px solid rgb(253, 35, 235);
@@ -332,7 +344,7 @@
 .home-why-us-bg-opacity {
     background-color: #424242;
     height: 400px;
-    width: 1440px;
+    width: 100%;
     opacity: 40%;
 }
 
