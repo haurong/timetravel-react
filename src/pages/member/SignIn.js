@@ -1,5 +1,5 @@
 import React from 'react';
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import '../member/style/SignIn.scss';
 import '../../global.scss';
 import Logo from '../../icon/logo/logo_white.svg';
@@ -7,10 +7,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { SIGNIN_API } from '../../config';
 import { useNavigate } from 'react-router-dom';
-//import AuthContext from './context/AuthContext';
 
 function SignIn() {
-  //const { setMyAuth } = useContext(AuthContext);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
@@ -29,15 +27,10 @@ function SignIn() {
   const mySubmit = async (e) => {
     e.preventDefault();
     const { data } = await axios.post(SIGNIN_API, formData);
-    //console.log(data);
     if (data.success) {
-      //localStorage.setItem('auth', JSON.stringify(data.auth));
       alert('註冊成功');
-      //console.log(JSON.stringify(data));
-      //setMyAuth({ ...data.auth, authorised: true });
       navigate('/');
     } else {
-      //localStorage.removeItem('auth'); // 移除
       alert('註冊失敗');
     }
   };

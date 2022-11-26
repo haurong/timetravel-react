@@ -4,6 +4,7 @@ export const MY_HOST = 'http://localhost:3001';
 // 假登入
 export const LOGIN_API = `${MY_HOST}/member/api/login-api`;
 export const SIGNIN_API = `${MY_HOST}/member/api/signin-api`;
+export const PROFILE_API = `${MY_HOST}/member/api/edit-member-api`;
 
 export const HOTEL_LIST = `${MY_HOST}/hotel/api`;
 
