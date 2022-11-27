@@ -1,11 +1,11 @@
 
 .mySwiper .swiper-slide .swiper-wrapper{
   width: 100%;
-  height: 650px;
+  // height: 650px;
   overflow: hidden;
 .SwiperSlide{
   width: 100%;
-  height: 650px;
+  // height: 650px;
 }
   .swiper-button-prev,
   .swiper-rtl .swiper-button-next {
@@ -45,11 +45,11 @@
       -webkit-align-items: center;
       align-items: center;   
       //  background-position 依照你的照片內容調整
-      .Food_Img1{
+      .home_newest_banner_1{
         object-fit: cover;  
         width: 100%;
         height: 100%;
-        background-image: url('http://localhost:3001/uploads/Food/F116-1.jpg');
+        background-image: url('../../../img/banner/banner01.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;

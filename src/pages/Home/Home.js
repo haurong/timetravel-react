@@ -7,7 +7,8 @@ import '../../../node_modules/slick-carousel/slick/slick-theme.css';
 
 // import BannerSliderHot from '../../pages/product/ticket/BannerSlider/BannerSliderHot';
 import BannerSliderHot from './Carousel/Card_Carousel';
-import BannerSliderNewest from '../../pages/product/ticket/BannerSlider/BannerSliderNewest';
+import BannerSliderNewest from '../../pages/Home/BannerSlider/BannerSliderNewest';
+// import BannerSliderNewest from './Carousel/Carousel';
 import ButtonSign from '../../pages/product/ticket/ButtonSign/ButtonSign';
 import TagSiteButton from './TagButton/TagSiteButton';
 import TagFoodButton from './TagButton/TagFoodButton';
@@ -20,6 +21,7 @@ import TagStayDatePickerOut from './TagStayDatePicker/TagStayDatePicker';
 import TagSelectDays from './TagSelect/TagSelectDays';
 import TagSelectRooms from './TagSelect/TagSelectRooms';
 import TagStaySearchBtn from './ButtonSearch/ButtonSearch';
+import TagSearchBtn from './ButtonSearch/ButtonSearch';
 
 
 
@@ -58,7 +60,7 @@ function Home() {
             </div>
 
             {/* 填選區1 */}
-            {/* <div className="home_tags_input1">
+            <div className="home_tags_input1">
              
               <div className="tag_input_unit1">
                 <div className="home_tag_input_tittle1">目的地</div>
@@ -97,12 +99,12 @@ function Home() {
                 </div>
               </div>
               
-            </div> */}
+            </div>
 
 
 
             {/* 填選區2 */}
-            <div className="home_tags_input2">
+            {/* <div className="home_tags_input2">
               
               <div className="tag_input_unit1">
                 <div className="home_tag_input_tittle1"></div>
@@ -114,11 +116,11 @@ function Home() {
               <div className="tag_input_unit6">
                 <div className="home_tag_input_tittle6"></div>
                 <div className="home_tag_input6">
-                  <TagStaySearchBtn />
+                  <TagSearchBtn />
                 </div>
               </div>
               
-            </div>
+            </div> */}
 
 
           </div>

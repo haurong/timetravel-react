@@ -11,7 +11,7 @@ import { Pagination, Navigation } from 'swiper';
 export default function Carousel() {
   return (
     <Swiper
-      slidesPerView={1}
+      slidesPerView={3}
       spaceBetween={10}
       slidesPerGroup={1}
       loop={true}
