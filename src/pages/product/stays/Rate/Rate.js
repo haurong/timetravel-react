@@ -17,7 +17,7 @@ function RateHotel() {
         <div className="rate_text">
           <p>
             {/* TODO:拿到評分數值 */}
-            {allStar}顆星
+            {isNaN(allStar) ? '目前沒有評價' : `${allStar}顆星` }
           </p>
         </div>
       </div>

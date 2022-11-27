@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
-import './BannerSlider.scss';
-import Card from 'react-bootstrap/Card';
+import './BannerSliderHot.scss';
+import Card from '../../../../../src/Component/Card_List/Card.js';
 
 export default class MultipleItems extends Component {
   render() {
@@ -17,40 +17,40 @@ export default class MultipleItems extends Component {
       <div>
         <Slider {...settings} className="banner-slider">
           <div className="banner-card">
-            <h4>1</h4>
+            <Card />
           </div>
           <div className="banner-card">
-            <h4>2</h4>
+            <Card />
           </div>
           <div className="banner-card">
-            <h4>3</h4>
+            <Card />
           </div>
           <div className="banner-card">
-            <h4>4</h4>
+          <Card />
           </div>
           <div className="banner-card">
-            <h4>5</h4>
+          <Card />
           </div>
           <div className="banner-card">
-            <h4>6</h4>
+            <Card />
           </div>
           <div className="banner-card">
-            <h4>7</h4>
+            <Card />
           </div>
           <div className="banner-card">
-            <h4>8</h4>
+            <Card />
           </div>
           <div className="banner-card">
-            <h4>9</h4>
+            <Card />
           </div>
           <div className="banner-card">
-            <h4>10</h4>
+            <Card />
           </div>
           <div className="banner-card">
-            <h4>11</h4>
+            <Card />
           </div>
           <div className="banner-card">
-            <h4>12</h4>
+            <Card />
           </div>
         </Slider>
       </div>

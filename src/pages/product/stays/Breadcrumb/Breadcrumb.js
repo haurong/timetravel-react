@@ -1,7 +1,10 @@
 import './Breadcrumb.scss';
 import { Breadcrumb } from 'antd';
 import React from 'react';
-function breadcrumb() {
+import { useHotelContext } from '../Context/HotelContext';
+function BreadcrumbHotel() {
+  const { hotelListData } = useHotelContext();
+  console.log(hotelListData);
   return (
     <>
       <Breadcrumb className="TimeTravel_Breadcrumb">
@@ -12,11 +15,13 @@ function breadcrumb() {
           <a href="#/">住宿</a>
         </Breadcrumb.Item>
         <Breadcrumb.Item className="Breadcrumb">
-          <a href="#/">飯店</a>
+          <a href="#/">{hotelListData.hotel_categories}</a>
         </Breadcrumb.Item>
-        <Breadcrumb.Item className="Breadcrumb_Here">路徑行旅</Breadcrumb.Item>
+        <Breadcrumb.Item className="Breadcrumb_Here">
+          <a href="#/">{hotelListData.hotel_name}</a>
+        </Breadcrumb.Item>
       </Breadcrumb>
     </>
   );
 }
-export default breadcrumb;
+export default BreadcrumbHotel;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../global.scss';
 import './NavBar.scss';
 import { Link } from 'react-router-dom';
@@ -29,8 +29,8 @@ function NavBar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link" to="/itinerary">
-                  行程
+                <Link className="nav-link" to="/site">
+                  景點
                 </Link>
               </li>
               <li className="nav-item">

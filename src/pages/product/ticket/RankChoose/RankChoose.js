@@ -7,9 +7,6 @@ function RankChoose() {
 
   return (
     <div className="RankChoose">
-      <h2>評分</h2>
-
-
       <label>
         <input
           type="checkbox"
@@ -23,10 +20,11 @@ function RankChoose() {
           // we hide it for screen readers
           aria-hidden="true"
         />
-        五星
-        
+        <span>
+          五星
+        </span>
 
-        {Rank.map((v, i) => {
+        {/* {Rank.map((v, i) => {
         return (
           <div
             className="Rank_button"
@@ -41,13 +39,8 @@ function RankChoose() {
 
           </div>
         );
-      })}
-
+      })} */}
       </label>
-
-
-
-
     </div>
   );
 }

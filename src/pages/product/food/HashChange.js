@@ -1,3 +1,6 @@
+
+
+
 import React, { useState } from 'react';
 import './HashChange.scss';
 import { useHotelContext } from '../stays/Context/HotelContext';
@@ -50,7 +53,7 @@ function HashChange(props) {
   //   window.history.pushState(0, 0, window.location.origin + '/stays');
   // });
   window.onhashchange = function () {
-    window.history.pushState(0, 0, window.location.origin + '/food/detail');
+    window.history.pushState(0, 0, window.location.origin + '/food');
   };
   return (
     <>

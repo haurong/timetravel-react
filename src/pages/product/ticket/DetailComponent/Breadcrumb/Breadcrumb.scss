@@ -1,0 +1,17 @@
+/* Breadcrumb */
+.TimeTravel_Breadcrumb {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  .Breadcrumb {
+    color: #59d8a1;
+    a {
+      color: #59d8a1;
+    }
+  }
+  .Breadcrumb_Here {
+    color: #4d4d4d;
+  }
+  @media (min-width: 992px) {
+    margin: 20px 0px !important; 
+  }
+}

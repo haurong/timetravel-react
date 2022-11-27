@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useHotelContext } from './Context/HotelContext';
 import { HOTEL_DETAIL } from './hotel-config';
 
-import HotelCarousel from './Carousel/Carousel';
+import HotelCarousel from './Carousel/Carousel_hotel';
 import Breadcrumb from './Breadcrumb/Breadcrumb';
 import Rate from './Rate/Rate';
 import IconBar from './IconBar/IconBar';
@@ -26,7 +26,7 @@ import ComDatePicker from './ComDatePicker/ComDatePicker';
 import BookingBar from './BookingBar/BookingBar';
 
 function Stays() {
-  const dataFrom = '1';
+  const dataFrom = '38';
   const {
     roomCounts,
     hotelRoomPrice,
@@ -64,6 +64,7 @@ function Stays() {
   const Hotel_part2 = useRef();
   const Hotel_part3 = useRef();
   const Hotel_part4 = useRef();
+  const Hotel_part5 = useRef();
   const [allPart, setAllPart] = useState({});
   const [isScroll, setIsScroll] = useState(false);
   window.addEventListener('scroll', () => {
@@ -80,13 +81,15 @@ function Stays() {
       let part2 = Hotel_part2.current.offsetTop;
       let part3 = Hotel_part3.current.offsetTop;
       let part4 = Hotel_part4.current.offsetTop;
-      console.log(part0, part1, part2, part3, part4);
+      let part5 = Hotel_part5.current.offsetTop;
+      // console.log(part0, part1, part2, part3, part4);
       setAllPart({
         part0: part0,
         part1: part1,
         part2: part2,
         part3: part3,
         part4: part4,
+        part5: part5,
         bodyOffsetY: document.body.offsetHeight,
       });
     }
@@ -116,11 +119,13 @@ function Stays() {
       <div className="MobileHidden container">
         <Breadcrumb />
       </div>
-      <HotelCarousel />
+      <div className="container">
+        <HotelCarousel />
+      </div>
       <div className="ComputerHidden">
         <HashChange allPart={allPart} />
       </div>
-      <div style={{ width: '100%', height: '79px' }}></div>
+      <div style={{ width: '100%', height: '30px' }}></div>
       <div className="container">
         <div className="">
           <div className="d-flex">
@@ -169,6 +174,39 @@ function Stays() {
             <div className=" col-lg-8" style={{ marginRight: 'auto' }}>
               <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>房型介紹</h2>
               <ShowPic />
+              <div
+                className="Hotel_partHidden"
+                id="Hotel_part2"
+                ref={Hotel_part2}
+              ></div>
+              <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>注意事項</h2>
+              <HotelNotice />
+              <div
+                className="Hotel_partHidden"
+                id="Hotel_part3"
+                ref={Hotel_part3}
+              ></div>
+              <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>商品說明</h2>
+              <HotelDetail />
+              <MapButton />
+              <div
+                className="Hotel_partHidden"
+                id="Hotel_part4"
+                ref={Hotel_part4}
+              ></div>
+              <div className="d-flex" style={{ alignItems: 'center' }}>
+                <h2
+                  style={{
+                    color: '#4D4D4D',
+                    margin: '40px 0px',
+                    marginRight: 'auto',
+                  }}
+                >
+                  旅客評價
+                </h2>
+                <CommentSelector />
+              </div>
+              <Comment />
             </div>
             <div className="col-lg-3  MobileHidden ">
               <HashChange allPart={allPart} />
@@ -176,43 +214,9 @@ function Stays() {
           </div>
           <div
             className="Hotel_partHidden"
-            id="Hotel_part2"
-            ref={Hotel_part2}
+            id="Hotel_part5"
+            ref={Hotel_part5}
           ></div>
-          <div className=" col-lg-8">
-            <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>注意事項</h2>
-            <HotelNotice />
-          </div>
-          <div
-            className="Hotel_partHidden"
-            id="Hotel_part3"
-            ref={Hotel_part3}
-          ></div>
-          <div className=" col-lg-8">
-            <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>商品說明</h2>
-            <HotelDetail />
-            <MapButton />
-          </div>
-          <div
-            className="Hotel_partHidden"
-            id="Hotel_part4"
-            ref={Hotel_part4}
-          ></div>
-          <div className="givePadding col-lg-8 noPadding">
-            <div className="d-flex" style={{ alignItems: 'center' }}>
-              <h2
-                style={{
-                  color: '#4D4D4D',
-                  margin: '40px 0px',
-                  marginRight: 'auto',
-                }}
-              >
-                旅客評價
-              </h2>
-              <CommentSelector />
-            </div>
-            <Comment />
-          </div>
         </div>
       </div>
       {/* <div

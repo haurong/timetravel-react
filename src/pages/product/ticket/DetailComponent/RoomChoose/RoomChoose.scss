@@ -1,0 +1,17 @@
+.RoomChoose {
+  .RoomChoose_button {
+    margin: 20px 0px;
+    button {
+      border: 1px solid #4d4d4d;
+      color: #4d4d4d;
+      background-color: transparent;
+      outline: none;
+      padding: 6px 24px;
+    }
+    .roomChooseActive {
+      border: none;
+      background-color: #59d8a1;
+      color: white;
+    }
+  }
+}

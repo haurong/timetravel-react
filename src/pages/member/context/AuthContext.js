@@ -2,7 +2,6 @@ import { createContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext({});
-
 export default AuthContext;
 
 export const AuthContextProvider = function ({ children }) {
@@ -10,7 +9,7 @@ export const AuthContextProvider = function ({ children }) {
   const unAuth = {
     authorised: false, // 有沒有登入
     sid: 0,
-    account: '',
+    email: '',
     token: '',
   };
 
@@ -31,9 +30,6 @@ export const AuthContextProvider = function ({ children }) {
     setMyAuth(unAuth);
     navigate('/login');
   };
-
-  // 2. 登入: 成功, 失敗
-  // TODO: 登出
 
   return (
     <AuthContext.Provider value={{ myAuth, setMyAuth, logout }}>

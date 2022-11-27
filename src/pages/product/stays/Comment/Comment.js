@@ -22,7 +22,9 @@ function Comment() {
   return (
     <div>
       <div className="Comment_Top">
-        <span className="Comment_top_span">{allStar}</span>
+        <span className="Comment_top_span">
+          {isNaN(allStar) ? '目前沒有評價' : allStar}
+        </span>
         <div className="RateAndNumber">
           <Rate
             disabled
@@ -30,7 +32,10 @@ function Comment() {
             className="TimeTravel_Rate"
             style={{ zIndex: -1 }}
           />
-          <p>{hotelCommentData.length}條評論</p>
+          <p>
+            {hotelCommentData.length}
+            條評論
+          </p>
         </div>
       </div>
       <CommentCard />
