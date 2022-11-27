@@ -5,7 +5,8 @@ import './Home.scss';
 import '../../../node_modules/slick-carousel/slick/slick.css';
 import '../../../node_modules/slick-carousel/slick/slick-theme.css';
 
-import BannerSliderHot from '../../pages/product/ticket/BannerSlider/BannerSliderHot';
+// import BannerSliderHot from '../../pages/product/ticket/BannerSlider/BannerSliderHot';
+import BannerSliderHot from './Carousel/Card_Carousel';
 import BannerSliderNewest from '../../pages/product/ticket/BannerSlider/BannerSliderNewest';
 import ButtonSign from '../../pages/product/ticket/ButtonSign/ButtonSign';
 import TagSiteButton from './TagButton/TagSiteButton';
@@ -13,11 +14,13 @@ import TagFoodButton from './TagButton/TagFoodButton';
 import TagStayButton from './TagButton/TagStayButton';
 import TagTicketButton from './TagButton/TagTicketButton';
 import TagStayInput from './TagInput/TagInput';
+import TagInput from './TagInput/TagInput2';
 import TagStayDatePickerIn from './TagStayDatePicker/TagStayDatePicker';
 import TagStayDatePickerOut from './TagStayDatePicker/TagStayDatePicker';
 import TagSelectDays from './TagSelect/TagSelectDays';
 import TagSelectRooms from './TagSelect/TagSelectRooms';
 import TagStaySearchBtn from './ButtonSearch/ButtonSearch';
+
 
 
 // import Col from 'react-bootstrap/Col';
@@ -54,9 +57,9 @@ function Home() {
               </div>
             </div>
 
-            {/* 填選區 */}
-            <div className="home_tags_input">
-              {/* <div> */}
+            {/* 填選區1 */}
+            {/* <div className="home_tags_input1">
+             
               <div className="tag_input_unit1">
                 <div className="home_tag_input_tittle1">目的地</div>
                 <div className="home_tag_input1">
@@ -93,8 +96,31 @@ function Home() {
                   <TagStaySearchBtn />
                 </div>
               </div>
-              {/* </div> */}
+              
+            </div> */}
+
+
+
+            {/* 填選區2 */}
+            <div className="home_tags_input2">
+              
+              <div className="tag_input_unit1">
+                <div className="home_tag_input_tittle1"></div>
+                <div className="home_tag2_input1">
+                  <TagInput />
+                </div>
+              </div>
+              
+              <div className="tag_input_unit6">
+                <div className="home_tag_input_tittle6"></div>
+                <div className="home_tag_input6">
+                  <TagStaySearchBtn />
+                </div>
+              </div>
+              
             </div>
+
+
           </div>
 
           <div className="home-part2">

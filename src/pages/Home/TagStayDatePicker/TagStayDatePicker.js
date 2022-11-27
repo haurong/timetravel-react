@@ -12,6 +12,7 @@ const App = () => (
       onChange={onChange}
       style={{ width: '100%', height: '46px' }}
       className={'noShow'}
+      showToday={false}
       popupClassName={'popupDatePicker '}
     />
   </Space>

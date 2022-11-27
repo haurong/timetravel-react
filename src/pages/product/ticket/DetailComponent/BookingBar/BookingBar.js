@@ -3,7 +3,7 @@ import { DatePicker } from 'antd';
 import moment from 'moment/moment';
 import locale from 'antd/es/date-picker/locale/zh_TW';
 import './BookingBar.scss';
-import { useHotelContext } from '../Context/HotelContext';
+import { useHotelContext } from '../../../stays/Context/HotelContext';
 import { ReactComponent as Sort } from '../../../../../icon/sort.svg';
 import BuyButton from '../BuyButton/BuyButton';
 const { RangePicker } = DatePicker;
@@ -34,7 +34,7 @@ function BookingBar() {
             }}
           >
             <h2 style={{ color: '#4D4D4D' }}>
-              {/* TODO:拿到真實名稱 */}路境行旅(Finders Hotel)
+              {/* TODO:拿到真實名稱 */}台北兒童新樂園｜一日票（無限暢玩13項指定設施）
             </h2>
             {/* <div className="icon d-flex align-items-center">
               <Sort />
@@ -55,7 +55,10 @@ function BookingBar() {
                 fontSize: '22px',
               }}
             >
-              {/* TODO:拿到真實價格 */}TWD${roomCounts * hotelRoomPrice}
+              {/* TODO:拿到真實價格 */}
+              TWD$123
+              
+              {/* TWD${roomCounts * hotelRoomPrice} */}
             </h4>
             <div className="d-flex">
               <BuyButton />

@@ -2,7 +2,7 @@ import React from 'react';
 import { Rate } from 'antd';
 import './Comment.scss';
 import moment from 'moment/moment';
-import { useHotelContext } from '../Context/HotelContext';
+import { useHotelContext } from '../../../stays/Context/HotelContext';
 function CommentCard() {
   const { hotelCommentData } = useHotelContext();
   console.log(hotelCommentData);

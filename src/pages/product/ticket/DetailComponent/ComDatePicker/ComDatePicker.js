@@ -22,23 +22,24 @@ function ComDatePicker(props) {
               <span>{pickDate.startTime}</span>
             </h5>
             <h5>
-              結束日:<span>{pickDate.endTime}</span>
+              {/* 結束日:<span>{pickDate.endTime}</span> */}
             </h5>
-            <div className="ComDatePicker_Left_text_tag">
+            <div className="ComDatePicker_Left_text_tag_no">
               <div>
                 <h5>
-                  共<span>{pickDate.days}</span>日
+                  {/* 共<span>{pickDate.days}</span>日 */}
                 </h5>
               </div>
             </div>
           </div>
           <div className="hiddenBox RangePicker_relative">
-            <RangePicker
+            <DatePicker
               open={true}
               className={'noShow'}
               locale={locale}
               bordered
               format="YYYY-MM-DD"
+              showToday={false}
               onChange={(e) => {
                 moment.locale('zh-tw');
                 let start = moment(e[0]._d).format('YYYY-MM-DD');
@@ -51,7 +52,8 @@ function ComDatePicker(props) {
                   days: howLong,
                 });
               }}
-              value={[moment(pickDate.startTime), moment(pickDate.endTime)]}
+              value={moment(pickDate.startTime)}
+              // value={[moment(pickDate.startTime), moment(pickDate.endTime)]}
               popupClassName={'popupDatePicker hiddenBox'}
             />
           </div>
