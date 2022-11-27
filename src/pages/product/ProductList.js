@@ -14,8 +14,7 @@ import PinkHeart from '../../icon/heart.svg';
 import NavBar from '../../layout/NavBar';
 import Footer from '../../layout/Footer';
 import MyPagination from '../../Component/Pagination/Pagination';
-//import GridExample from '../.././Component/Card_List/Card_List';
-//import BasicPagination from '../.././Component/Pagination/Pagination';
+import Sidebar1 from '../../Component/Sidebar1/Sidebar1';
 function ProductList({ foodRows, siteRows }) {
   // console.log({ foodRows, siteRows });
   const [foodData, setFoodData] = useState({
@@ -71,7 +70,6 @@ function ProductList({ foodRows, siteRows }) {
     }
   };
 
-
   useEffect(() => {
     // getSiteList();
 
@@ -82,143 +80,149 @@ function ProductList({ foodRows, siteRows }) {
     <>
       <NavBar />
       <div className="givePadding"></div>
-      <div className="container givePadding ">
-        <Row xs={1} md={2} lg={3} className="g-4 col-9">
-          {foodData.rows.map((el) => {
-            return (
-              <Card
-                className="MyCard col-3"
-                style={{ width: '20rem' }}
-                key={el.product_number}
-              >
-                <Card.Img
-                  variant="top"
-                  className="foodCardImg1"
-                  src={`${FOOD_IMG}${el.product_photo}`}
-                />
-                <button
-                  data-product-number={el.product_number}
-                  className="Heart_Btn"
-                  onClick={() => {
-                    addLikeListHandler(el.product_number);
 
-                    toggleLike1();
-                  }}
+      <div className="container givePadding col12 d-flex">
+        <div className="col-3">
+          <Sidebar1 />
+        </div>
+        <div className="col-lg-9 ">
+          <Row xs={1} md={2} lg={3} className="g-4 ">
+            {foodData.rows.map((el) => {
+              return (
+                <Card
+                  className="MyCard col-3"
+                  style={{ width: '20rem' }}
+                  key={el.product_number}
                 >
-                  <img
-                    src={like ? PinkHeart : Heart}
-                    className="Card_Heart"
-                    alt=""
+                  <Card.Img
+                    variant="top"
+                    className="foodCardImg1"
+                    src={`${FOOD_IMG}${el.product_photo}`}
                   />
-                </button>
-                <Card.Body>
-                  <Card.Title className="Card_Title">
-                    {el.product_name}
-                  </Card.Title>
-                  <Card.Text className="Card_Text">
-                    <Card.Img src={Map} className="Map_icon" />
-                    <span class="Card_Score">
-                      {el.city_name} | {el.area_name}
-                    </span>
-                  </Card.Text>
-                  <h2 variant="primary" className="Card_Price">
-                    NT$ {el.p_selling_price}
-                  </h2>
-                </Card.Body>
-              </Card>
-            );
-          })}
-        </Row>
-        <Row xs={1} md={2} lg={3} className="g-4 col-9">
-          {siteData.rows.map((el) => {
-            return (
-              <Card
-                className="MyCard col-3"
-                style={{ width: '20rem' }}
-                key={el.product_number}
-              >
-                <Card.Img
-                  variant="top"
-                  className="foodCardImg1"
-                  // src={`${FOOD_IMG}${el.product_photo}`}
-                />
-                <button
-                  data-product-number={el.product_number}
-                  className="Heart_Btn"
-                  // onClick={() => {
-                  //   addLikeListHandler(el.product_number);
+                  <button
+                    data-product-number={el.product_number}
+                    className="Heart_Btn"
+                    onClick={() => {
+                      addLikeListHandler(el.product_number);
 
-                  //   toggleLike1();
-                  // }}
+                      toggleLike1();
+                    }}
+                  >
+                    <img
+                      src={like ? PinkHeart : Heart}
+                      className="Card_Heart"
+                      alt=""
+                    />
+                  </button>
+                  <Card.Body>
+                    <Card.Title className="Card_Title">
+                      {el.product_name}
+                    </Card.Title>
+                    <Card.Text className="Card_Text">
+                      <Card.Img src={Map} className="Map_icon" />
+                      <span class="Card_Score">
+                        {el.city_name} | {el.area_name}
+                      </span>
+                    </Card.Text>
+                    <h2 variant="primary" className="Card_Price">
+                      NT$ {el.p_selling_price}
+                    </h2>
+                  </Card.Body>
+                </Card>
+              );
+            })}
+          </Row>
+          <Row xs={1} md={2} lg={3} className="g-4 ">
+            {siteData.rows.map((el) => {
+              return (
+                <Card
+                  className="MyCard col-3"
+                  style={{ width: '20rem' }}
+                  key={el.product_number}
                 >
-                  <img
-                    src={like ? PinkHeart : Heart}
-                    className="Card_Heart"
-                    alt=""
+                  <Card.Img
+                    variant="top"
+                    className="foodCardImg1"
+                    // src={`${FOOD_IMG}${el.product_photo}`}
                   />
-                </button>
-                <Card.Body>
-                  <Card.Title className="Card_Title">
-                    {el.product_name}
-                  </Card.Title>
-                  <Card.Text className="Card_Text">
-                    <Card.Img src={Map} className="Map_icon" />
-                    <span class="Card_Score">
-                      {el.city_name} | {el.area_name}
-                    </span>
-                  </Card.Text>
-                  <h2 variant="primary" className="Card_Price"></h2>
-                </Card.Body>
-              </Card>
-            );
-          })}
-        </Row>
-        <Row xs={1} md={2} lg={3} className="g-4 col-9">
-          {hotelData.rows.map((el) => {
-            return (
-              <Card
-                className="MyCard col-3"
-                style={{ width: '20rem' }}
-                key={el.product_number}
-              >
-                <Card.Img
-                  variant="top"
-                  className="foodCardImg1"
-                  // src={`${FOOD_IMG}${el.product_photo}`}
-                />
-                <button
-                  data-product-number={el.product_number}
-                  className="Heart_Btn"
-                  // onClick={() => {
-                  //   addLikeListHandler(el.product_number);
+                  <button
+                    data-product-number={el.product_number}
+                    className="Heart_Btn"
+                    // onClick={() => {
+                    //   addLikeListHandler(el.product_number);
 
-                  //   toggleLike1();
-                  // }}
+                    //   toggleLike1();
+                    // }}
+                  >
+                    <img
+                      src={like ? PinkHeart : Heart}
+                      className="Card_Heart"
+                      alt=""
+                    />
+                  </button>
+                  <Card.Body>
+                    <Card.Title className="Card_Title">
+                      {el.product_name}
+                    </Card.Title>
+                    <Card.Text className="Card_Text">
+                      <Card.Img src={Map} className="Map_icon" />
+                      <span class="Card_Score">
+                        {el.city_name} | {el.area_name}
+                      </span>
+                    </Card.Text>
+                    <h2 variant="primary" className="Card_Price"></h2>
+                  </Card.Body>
+                </Card>
+              );
+            })}
+          </Row>
+          <Row xs={1} md={2} lg={3} className="g-4 ">
+            {hotelData.rows.map((el) => {
+              return (
+                <Card
+                  className="MyCard col-3"
+                  style={{ width: '20rem' }}
+                  key={el.product_number}
                 >
-                  <img
-                    src={like ? PinkHeart : Heart}
-                    className="Card_Heart"
-                    alt=""
+                  <Card.Img
+                    variant="top"
+                    className="foodCardImg1"
+                    // src={`${FOOD_IMG}${el.product_photo}`}
                   />
-                </button>
-                <Card.Body>
-                  <Card.Title className="Card_Title">
-                    {el.hotel_name}
-                  </Card.Title>
-                  <Card.Text className="Card_Text">
-                    <Card.Img src={Map} className="Map_icon" />
-                    <span class="Card_Score">
-                      {el.city_name} | {el.area_name}
-                    </span>
-                  </Card.Text>
-                  <h2 variant="primary" className="Card_Price">
-                    NT$
-                  </h2>
-                </Card.Body>
-              </Card>
-            );
-          })}
-        </Row>
+                  <button
+                    data-product-number={el.product_number}
+                    className="Heart_Btn"
+                    // onClick={() => {
+                    //   addLikeListHandler(el.product_number);
+
+                    //   toggleLike1();
+                    // }}
+                  >
+                    <img
+                      src={like ? PinkHeart : Heart}
+                      className="Card_Heart"
+                      alt=""
+                    />
+                  </button>
+                  <Card.Body>
+                    <Card.Title className="Card_Title">
+                      {el.hotel_name}
+                    </Card.Title>
+                    <Card.Text className="Card_Text">
+                      <Card.Img src={Map} className="Map_icon" />
+                      <span class="Card_Score">
+                        {el.city_name} | {el.area_name}
+                      </span>
+                    </Card.Text>
+                    <h2 variant="primary" className="Card_Price">
+                      NT$
+                    </h2>
+                  </Card.Body>
+                </Card>
+              );
+            })}
+          </Row>
+        </div>
       </div>
       <div className=" col-12 givePadding">
         <MyPagination page={allProductPage} totalPages={allProductTotalPage} />

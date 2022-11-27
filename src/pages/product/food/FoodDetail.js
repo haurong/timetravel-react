@@ -1,26 +1,27 @@
 import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { useLocation, NavLink } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { SlideOutProvider } from '../stays/Context/HotelContext';
 import { FOOD_ITEM } from '../../../config.js';
 import { FOOD_COMMIT } from '../../../config.js';
 import FoodMap from './FoodMap';
-import Qrcode from '../../../Component/QRcode/Qrcode';
+// import Qrcode from '../../../Component/QRcode/Qrcode';
 import Commit from './Commit';
 import CommitSelect from './CommitSelect';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
-import BreadCrumb from '../stays/Breadcrumb/Breadcrumb';
+import BreadCrumb from './BreadCrumb';
 import Carousel from '../../../Component/Carousel/Carousel';
 import Card_Carousel from '../../../Component/Carousel/Card_Carousel';
 import HashChange from './HashChange';
 import Heart from '../../../icon/heart_gray.svg';
 import PinkHeart from '../../../icon/heart.svg';
 import Calendar from '../../../icon/calendar+add.svg';
+import ActiveCalendar from '../../../icon/calendar+greenadd.svg';
 
 import Map_icon from '../../../icon/map_blue.svg';
-import Map_Green_icon from '../../../icon/map.svg';
+// import Map_Green_icon from '../../../icon/map.svg';
 import Food_icon from '../../../icon/food_blue.svg';
 import Phone_icon from '../../../icon/iphone.svg';
 import Star_icon from '../../../icon/star.svg';
@@ -36,6 +37,8 @@ function FoodDetail() {
 
   const [like, setLike] = useState(false);
   const toggleLike = () => setLike(!like);
+  const [add, setAdd] = useState(false);
+  const toggleAdd = () => setAdd(!add);
 
   const [count, setCount] = useState(1);
   const [totalPrice, setTotalPrice] = useState(foodData.p_selling_price);
@@ -107,7 +110,7 @@ function FoodDetail() {
         <div ref={Food_part0} id="Food_part0"></div>
         <nav aria-label="breadcrumb">
           <div className="container breadcrumb mt-5">
-            <BreadCrumb />
+            <BreadCrumb foodData={foodData} />
           </div>
         </nav>
         <div className="container carousel">
@@ -134,9 +137,14 @@ function FoodDetail() {
                     icon: 'success',
                     title: '新增至我的行程',
                   });
+                  toggleAdd();
                 }}
               >
-                <img src={Calendar} className="Calendar_icon" alt="" />
+                <img
+                  src={add ? ActiveCalendar : Calendar}
+                  className="Calendar_icon"
+                  alt=""
+                />
               </button>
             </div>
           </div>
@@ -339,7 +347,6 @@ function FoodDetail() {
         <h2 className="cardCarouselTitle">更多美食推薦</h2>
         <Card_Carousel className="cardCarousel" />
       </div>
-      <div className="givePadding"></div>
       <Footer />
     </>
   );

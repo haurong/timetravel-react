@@ -15,3 +15,21 @@
     height: 450px;
 
 }
+.foodSort{
+    padding-top: 20px;
+    justify-content: flex-end;
+}
+.foodPagination{
+    margin-top: 80px;
+}
+@media (max-width:768px) {
+.foodContent{
+    display: block;
+    flex-direction: column;
+}
+    .CardListStyle{
+        width: 100%;
+        display: block;
+        flex-wrap: nowrap;
+    }
+}
