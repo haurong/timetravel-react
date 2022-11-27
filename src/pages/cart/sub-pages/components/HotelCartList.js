@@ -1,8 +1,8 @@
-import { useCart } from 'utils/useCart'
+import { useHotelCart } from '../../utils/useHotelCart';
 
-function ListItemsWithHook() {
+function HotelCartList() {
   // 使用hooks 解出所需的狀態與函式(自context)
-  const { cart, items, plusOne, minusOne, removeItem } = useCart()
+  const { cart, items, plusOne, minusOne, removeItem } = useHotelCart();
 
   return (
     <div>
@@ -36,7 +36,7 @@ function ListItemsWithHook() {
                       type="button"
                       className="btn btn-light"
                       onClick={() => {
-                        minusOne(v.id)
+                        minusOne(v.id);
                       }}
                     >
                       -
@@ -48,7 +48,7 @@ function ListItemsWithHook() {
                       type="button"
                       className="btn btn-light"
                       onClick={() => {
-                        plusOne(v.id)
+                        plusOne(v.id);
                       }}
                     >
                       +
@@ -61,14 +61,14 @@ function ListItemsWithHook() {
                     type="button"
                     className="btn btn-light"
                     onClick={() => {
-                      removeItem(v.id)
+                      removeItem(v.id);
                     }}
                   >
                     x
                   </button>
                 </td>
               </tr>
-            )
+            );
           })}
         </tbody>
       </table>
@@ -79,7 +79,7 @@ function ListItemsWithHook() {
         <hr />
       </div>
     </div>
-  )
+  );
 }
 
-export default ListItemsWithHook
+export default HotelCartList;
