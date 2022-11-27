@@ -7,6 +7,7 @@ import Footer from '../../layout/Footer';
 import SideBar from '../../layout/SideBar';
 import axios from 'axios';
 import { PROFILE_API } from '../../config';
+import { UPLOAD_AVATAR_API } from '../../config';
 
 function Profile() {
   const [formData, setFormData] = useState({
@@ -14,18 +15,28 @@ function Profile() {
     telephone: '',
     sid: JSON.parse(localStorage.getItem('auth')).sid,
   });
+  // const [avatar, setAvatar] = useState({
+  //   sid: JSON.parse(localStorage.getItem('auth')).sid,
+  // });
   //console.log(formData);
   const handler = (e) => {
     const id = e.currentTarget.id;
     const val = e.currentTarget.value;
     setFormData({ ...formData, [id]: val });
   };
+  const handleOnClickUpload = (e) => {
+    const id = e.currentTarget.id;
+    const file = e.currentTarget.files;
+    setFormData({ ...formData, [id]: file });
+  };
+  console.log(handleOnClickUpload);
 
   const mySubmit = async (e) => {
     e.preventDefault();
+    const { image } = await axios.post(UPLOAD_AVATAR_API);
     const { data } = await axios.put(PROFILE_API, formData);
 
-    if (data.success) {
+    if (data.success && image) {
       alert('儲存成功');
     } else {
       alert('儲存失敗');
@@ -39,17 +50,25 @@ function Profile() {
           <SideBar />
           <div className="profile col-5">
             <h1>修改個人資訊</h1>
-            <div className="profile_img">
-              <div className="profile-hovor">
-                //TODO增加上傳檔案按鈕
-                <div></div>
-                <div className="profile-hovor-text text-center">編輯</div>
-                <div className="profile-hovor-bg text-center"></div>
-              </div>
-            </div>
-            {/* <img className="profile_img" src="" /> */}
 
             <form className="form" onSubmit={mySubmit}>
+              <div className="profile_img">
+                <img src="" />
+                <div className="profile-hovor">
+                  <label>
+                    <input
+                      type="file"
+                      className="profile-input-text text-center"
+                      id="avatar"
+                      onChange={handleOnClickUpload}
+                      files={formData.avatar}
+                    />
+                    <div className="profile-hovor-text text-center">編輯</div>
+                  </label>
+
+                  <div className="profile-hovor-bg text-center"></div>
+                </div>
+              </div>
               <div className="mb-3 profile-input">
                 <label className="form-label ">姓名</label>
                 <input
@@ -61,7 +80,7 @@ function Profile() {
                   value={formData.name}
                 />
               </div>
-              {/* pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" */}
+              {/*  */}
               <div className="mb-3 profile-input">
                 <label className="form-label">手機號碼</label>
                 <input
@@ -69,7 +88,8 @@ function Profile() {
                   className="form-control"
                   id="telephone"
                   required
-                  placeholder="09xx-xxx-xxx"
+                  pattern="[0-9]{9}"
+                  placeholder="09xxxxxxxx"
                   onChange={handler}
                   value={formData.telephone}
                 />
