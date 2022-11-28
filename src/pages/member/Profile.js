@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import '../../global.scss';
 import './style/Profile.scss';
 import NavBar from '../../layout/NavBar';
@@ -69,26 +70,23 @@ function Profile() {
                 </div>
               </div>
               <div className="mb-3 profile-input">
-                <label htmlFor="inputName" className="form-label ">
-                  姓名
-                </label>
+                <label className="form-label ">姓名</label>
                 <input
                   type="text"
                   className="form-control"
-                  id="inputName"
+                  id="username"
                   placeholder="王小明"
+                  onChange={handler}
+                  value={formData.name}
                 />
               </div>
               {/*  */}
               <div className="mb-3 profile-input">
-                <label htmlFor="inputEmail4" className="form-label">
-                  手機號碼
-                </label>
+                <label className="form-label">手機號碼</label>
                 <input
                   type="tel"
                   className="form-control"
-                  id="phone"
-                  name="phone"
+                  id="telephone"
                   required
                   pattern="[0-9]{9}"
                   placeholder="09xxxxxxxx"
