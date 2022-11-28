@@ -20,7 +20,7 @@ function HashChange(props) {
   let part5 = props.allPart.part5;
   // let part5 = props.allPart.part4 - 500;
   const [whichPart, setWhichPart] = useState('房型介紹');
-  console.log(window.screen.height);
+  // console.log(window.screen.height);
   window.addEventListener('scroll', () => {
     // console.log(window.scrollY);
     let nowScroll = window.scrollY;
