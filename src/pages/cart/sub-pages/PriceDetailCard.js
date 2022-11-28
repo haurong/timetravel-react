@@ -15,11 +15,11 @@ function PriceDetailCard({ title, items, total }) {
             <>
               <div className="d-flex justify-content-evenly">
                 <p>{v.name}</p>
-                <div></div>
-                <p>{v.price}</p>
+                <p>{`$${v.price}`}</p>
+                <p>{`X${v.quantity}`}</p>
               </div>
               <div className="btn-wrap">
-                <StateButton text={v.roomtype} />
+                <StateButton text={v.type} />
               </div>
             </>
           );

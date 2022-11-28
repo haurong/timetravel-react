@@ -3,7 +3,7 @@ import HotelCardInfo from './HotelCardInfo';
 import HotelCardDetail from './HotelCardDetail';
 import { useHotelCart } from '../../utils/useCart';
 function HotelCard() {
-  const { cart, items, plusOne, minusOne, removeItem } = useHotelCart();
+  const { items } = useHotelCart();
 
   return (
     <>
