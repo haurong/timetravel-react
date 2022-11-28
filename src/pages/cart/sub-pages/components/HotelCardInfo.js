@@ -2,7 +2,7 @@ import React from 'react';
 
 function HotelCardInfo() {
   return (
-    <div className="card-wrap mt-5">
+    <div className="card-wrap">
       <div className="card-body">
         <h2>入住資訊</h2>
         <div className="d-flex align-items-end ">

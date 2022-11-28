@@ -1,4 +1,19 @@
 .cart-total-wrap {
+  .canClick {
+    cursor: pointer;
+    .Counts_SVG {
+      path {
+        fill: #59d8a1;
+      }
+    }
+  }
+  .not_canClick {
+    .Counts_SVG {
+      path {
+        fill: #aeaeae;
+      }
+    }
+  }
   .space {
     margin-top: 0px;
   }
@@ -47,6 +62,12 @@
       color: white;
     }
   }
+  .state-button-wrap-none {
+    background-color: none;
+    width: fit-content;
+    text-align: center;
+    margin: 30px 0px;
+  }
   p {
     margin: 0;
   }
@@ -75,6 +96,14 @@
   .price-detail-wrap {
     border: 1px solid #d9d9d9;
     box-shadow: 1px 1px 5px #d9d9d9;
+    .card-wrap {
+      border: none;
+      .card-body {
+        padding: 0px;
+        border-top: 1px solid black;
+        margin: 0px 50px;
+      }
+    }
   }
 
   .btn-wrap {
@@ -84,8 +113,8 @@
   .total {
     color: #59d8a1;
   }
-  #PaymentForm{
-    .card-input-wrap{
+  #PaymentForm {
+    .card-input-wrap {
       margin-bottom: 50px;
     }
   }

@@ -1,15 +1,23 @@
 import React from 'react';
 import HotelCardInfo from './HotelCardInfo';
 import HotelCardDetail from './HotelCardDetail';
-import PutInCartButton from '../../PutInCartButton';
+import { useHotelCart } from '../../utils/useCart';
 function HotelCard() {
+  const { items } = useHotelCart();
+
   return (
     <>
-      <div className="card-wrap">
-        <div className="card-body">
-          <HotelCardDetail />
-        </div>
-      </div>
+      {items.map((v, i) => {
+        return (
+          <>
+            <div className="card-wrap">
+              <div className="card-body">
+                <HotelCardDetail name={v.name} id={v.id} type={v.roomtype} />
+              </div>
+            </div>
+          </>
+        );
+      })}
       <HotelCardInfo />
       {/* <PutInCartButton /> */}
       <div className="space"></div>
