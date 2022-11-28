@@ -29,8 +29,8 @@ function Home() {
     'home_bg_absolute home_bg_ticket'
   );
 
-  const [searchBar, setSearchBar] = useState(
-    'home_tags_input2 view_search_ticket '
+  const [logoClassName, setLogoClassName] = useState(
+    'home_bg_text_wrap logo_when_food'
   );
 
   const changeItinerary = function () {
@@ -41,7 +41,7 @@ function Home() {
     setBgClassName('home_bg_absolute home_bg_food');
   };
   
-  const changeBgStay = function () {
+  const changeStay = function () {
     setBgClassName('home_bg_absolute home_bg_stay');
   };
 
@@ -49,15 +49,14 @@ function Home() {
     setBgClassName('home_bg_absolute home_bg_ticket');
   };
 
-  const searchStay = function () {
-    setSearchBar('home_tags_input1 home_tags_input2 view_search_stay');
+  const changeFoodColor = function () {
+    setLogoClassName('home_bg_text_wrap logo_when_food');
   };
 
-  const stayChange = function () {
-    changeBgStay();
-    searchStay();
+  const homeFoodFunction = function () {
+    changeFood();
+    changeFoodColor();
   };
-
 
   // const changeFoodColor = function () {
   //   setLogoColor('home_bg_text_wrap home_logo_color');
@@ -68,7 +67,7 @@ function Home() {
         <div className="row">
           <div className="home-part1">
             <div className={bgClassName}>
-              <div className="home_bg_text_wrap">
+              <div className={logoClassName}>
                 <div className="home_bg_text_time">Time</div>
                 <div className="home_bg_text_travel">Travel</div>
               </div>
@@ -78,20 +77,19 @@ function Home() {
               <div onClick={changeItinerary} className="tag_unit">
                 <TagSiteButton />
               </div>
-              <div onClick={changeFood} className="tag_unit">
+              <div onClick={homeFoodFunction} className="tag_unit">
                 <TagFoodButton />
               </div>
-              <div onClick={stayChange} className="tag_unit">
+              <div onClick={changeStay} className="tag_unit">
                 <TagStayButton />
               </div>
               <div onClick={changeTicket} className="tag_unit">
                 <TagTicketButton />
               </div>
             </div>
-            {/* 2個搜尋的框框 */}
-              {/* <div className="searchBar"> */}
+
             {/* 填選區1 */}
-            <div className="home_tags_input1 view_search_stay">
+            <div className="home_tags_input1">
               <div className="tag_input_unit1">
                 <div className="home_tag_input_tittle1">目的地</div>
                 <div className="home_tag_input1">
@@ -131,7 +129,7 @@ function Home() {
             </div>
 
             {/* 填選區2 */}
-            <div className="home_tags_input2 home_tags_search_other">
+            {/* <div className="home_tags_input2">
               
               <div className="tag_input_unit1">
                 <div className="home_tag_input_tittle1"></div>
@@ -146,9 +144,8 @@ function Home() {
                   <TagSearchBtn />
                 </div>
               </div>
-              {/* </div> */}
-
-            </div>
+              
+            </div> */}
           </div>
 
           <div className="home-part2">

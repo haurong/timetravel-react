@@ -1,0 +1,42 @@
+.TagStayDatePicker {
+    display: block;
+    width: 100%;
+    height: 100%;
+    outline-style: none ;
+    border: 0px;
+    background-clip: padding-box; 
+}
+
+
+.popupDatePicker {
+    transform: translateY(-80px);
+    z-index: 20;
+    border: 1px solid #aeaeae;
+    .ant-picker-cell-in-view.ant-picker-cell-selected .ant-picker-cell-inner,
+    .ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner,
+    .ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner {
+      background: #59d8a1;
+}
+
+.ant-picker-cell-in-view.ant-picker-cell-range-start:not(.ant-picker-cell-range-start-single)::before,
+.ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-range-end-single)::before {
+  background: #59d8a148;
+}
+.ant-picker-cell-in-view.ant-picker-cell-in-range::before {
+  background: #59d8a148;
+}
+.ant-picker-cell-in-view.ant-picker-cell-today
+  .ant-picker-cell-inner::before {
+  border: 0;
+}
+
+.ant-picker-panel-container {
+    box-shadow: none;
+  }
+  .ant-picker {
+    margin-top: auto;
+    visibility: hidden;
+    transition: none;
+    transition-duration: 0s;
+  }
+}

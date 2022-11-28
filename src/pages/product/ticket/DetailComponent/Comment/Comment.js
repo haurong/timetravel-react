@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Rate } from 'antd';
 import CommentCard from './CommentCard';
 import './Comment.scss';
-import { useHotelContext } from '../Context/HotelContext';
+import { useHotelContext } from '../../../stays/Context/HotelContext';
 
 function Comment() {
   const { hotelCommentData, setAllStar, allStar } = useHotelContext();

@@ -1,0 +1,111 @@
+.banner-slider{
+    // border: 1px solid red;
+   
+
+    .slick-arrow.slick-prev:before,
+    .slick-arrow.slick-next:before {
+        color:rgb(0, 0, 0);
+    //  border: 1px solid rgb(109, 255, 72);
+    }
+}
+
+
+.banner_card_item {
+    height: 141px;
+    width: 387px;
+    // border: 0.5px solid black;
+    .banner_card_newest1{
+        background-image: url('../../../img/banner/banner01.jpg');
+        object-fit: cover;  
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        
+    }
+    .banner_card_newest2{
+        background-image: url('../../../img/banner/banner02.jpg');
+        object-fit: cover;  
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .banner_card_newest3{
+        background-image: url('../../../img/banner/banner03.jpg');
+        object-fit: cover;  
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .banner_card_newest4{
+        background-image: url('../../../img/banner/banner04.jpg');
+        object-fit: cover;  
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .banner_card_newest5{
+        background-image: url('../../../img/banner/banner05.jpg');
+        object-fit: cover;  
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+    .banner_card_newest6{
+        background-image: url('../../../img/banner/banner06.jpg');
+        object-fit: cover;  
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+}
+.banner_card_newest1{
+    background-image: url('../../../img/banner/banner01.jpg');
+    object-fit: cover;  
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+
+
+
+.slick-slider {
+    margin:0 -15px;
+}
+
+.slick-slide {
+    text-align:center;
+    padding-right:9.5px;
+    padding-left:9.5px;
+    
+    // margin-left:15px;
+}
+
+
+// 箭頭圖案
+// .slick-next {
+//     width: 42px;
+//     height: 42px;
+//     right: 24px;
+//     background-image: url('../../../img/itinerary_home.jpg');
+//     &::before {
+//       content: '';
+//     }
+//     &:hover {
+//       background-image:     url('../../../img/itinerary_home.jpg');
+//     }
+//   }

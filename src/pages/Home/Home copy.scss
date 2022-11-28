@@ -53,10 +53,15 @@
         -webkit-text-stroke: 3px #ffffff;
         // border: 1px solid black;
     }
-   
+    .logo_when_food {
+        color: black;
+        // border: 1px solid black;
+    }
 }
-
-
+.logo_when_food {
+    color: black;
+    border: 1px solid black;
+}
 
 // 首頁start
 
@@ -104,9 +109,8 @@
 }
 
 
-// 填選區1 stay
+// 填選區1
 .home_tags_input1{
-    visibility: hidden;
     display: flex;
     width: 1084px;
     height: 71px;
@@ -233,9 +237,9 @@
     }
 }
 
-// 填選區2 others
+
+// 填選區2
 .home_tags_input2{
-    visibility: hidden;
     display: flex;
     width: 794px;
     height: 46px;
@@ -284,19 +288,6 @@
             // border: 1px solid black;
         }
     }
-}
-
-.view_search_stay {
-    visibility: visible;
-}
-.view_search_food {
-    visibility: visible;
-}
-.view_search_itinerary {
-    visibility: visible;
-}
-.view_search_ticket {
-    visibility: visible;
 }
 
 

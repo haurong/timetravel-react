@@ -1,6 +1,6 @@
 import React from 'react';
 import './ShowPic.scss';
-import { HOTEL_IMG } from '../../hotel-config';
+import { HOTEL_IMG } from '../../ticket-config';
 
 import pic1 from '../pic/14-3.jpg';
 import pic2 from '../pic/14-4.jpg';
