@@ -2,9 +2,32 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
 import { ITINERARY_ITEM, GOOGLE_ADDRESS } from './site-config';
 import Geocode from 'react-geocode';
 import { Key } from './Key';
+import map1 from './../../../icon/map.svg';
+import map2 from './../../../icon/map_blue.svg';
+import map3 from './../../../icon/map.svg';
+
+const customMarker1 = new L.Icon({
+  iconUrl: map1,
+  iconSize: [40, 40],
+  iconAnchor: [10, 41],
+  popupAnchor: [2, -40],
+});
+const customMarker2 = new L.Icon({
+  iconUrl: map2,
+  iconSize: [40, 41],
+  iconAnchor: [10, 41],
+  popupAnchor: [2, -40],
+});
+const customMarker3 = new L.Icon({
+  iconUrl: map3,
+  iconSize: [40, 41],
+  iconAnchor: [10, 41],
+  popupAnchor: [2, -40],
+});
 
 export default function Map() {
   Geocode.setApiKey(Key);
@@ -13,6 +36,7 @@ export default function Map() {
   const [position, setPosition] = useState([
     { lat: 25.03418, lng: 121.564517 },
   ]);
+  const [newArr, setNewArr] = useState([]);
 
   const location = useLocation();
 
@@ -45,39 +69,29 @@ export default function Map() {
         }
       );
     }
+
+    let merged = [];
+
+    for (let i = 0; i < newData.length; i++) {
+      merged.push({
+        ...newData[i],
+        ...position[i],
+      });
+    }
+    setNewArr(merged);
+    console.log(merged);
   }
 
-  // function getPosition() {
-  //   const newPosition = [];
-  //   for (let i = 0; i < address.length; i++) {
-  //     Geocode.fromAddress(address[i]).then(
-  //       (response) => {
-  //         const { lat, lng } = response.results[0].geometry.location;
-  //         console.log({ lat, lng });
-
-  //         newPosition.push({ lat, lng });
-  //         console.log(newPosition);
-  //         console.log(position.concat(newPosition));
-  //         setPosition(position.concat(newPosition));
-  //       },
-  //       (error) => {
-  //         console.error(error);
-  //       }
-  //     );
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   // getPosition();
-  //   console.log(location);
-  //   getList();
-  // }, [location]);
+  useEffect(() => {
+    console.log(location);
+    getList();
+  }, [location]);
 
   return (
     <div id="map">
       <MapContainer
         center={[position[0].lat, position[0].lng]}
-        zoom={16}
+        zoom={14}
         scrollWheelZoom={true}
       >
         <TileLayer
@@ -86,11 +100,17 @@ export default function Map() {
         />
 
         {position.map((el, i) => {
-          <Marker position={[el.lat, el.lng]}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-          </Marker>;
+          return (
+            <>
+              <Marker position={[el.lat, el.lng]} icon={customMarker2}>
+                <Popup>
+                  QAQ
+                  <br /> test
+                </Popup>
+              </Marker>
+              ;
+            </>
+          );
         })}
 
         {/* <Marker position={position}>
@@ -101,7 +121,7 @@ export default function Map() {
         {/* <Marker position={[25.0393607, 121.5026982]}>
           <Popup>
             龍山寺
-            <br /> Easily customizable.
+            <br /> test
           </Popup>
         </Marker> */}
       </MapContainer>
