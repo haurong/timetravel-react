@@ -166,7 +166,7 @@ function FoodDetail() {
               </div>
               <div className="cate d-flex">
                 <img src={Food_icon} alt="" className="Food_icon" />
-                <p>{foodData.categories_name}</p>
+                <p>{foodData.categorise_name}</p>
               </div>
             </div>
             <div className="tickets_group d-flex ">
