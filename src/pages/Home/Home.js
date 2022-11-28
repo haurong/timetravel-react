@@ -29,35 +29,58 @@ function Home() {
     'home_bg_absolute home_bg_ticket'
   );
 
-  const [searchBar, setSearchBar] = useState(
-    'home_tags_input2 view_search_ticket '
+  const [searchStayClassname, setSearchStayClassname] = useState(
+    'home_tags_input1_hidden'
   );
 
-  const changeItinerary = function () {
-    setBgClassName('home_bg_absolute home_bg_itinerary');
-  };  
+  const [searchOtherClassname, setSearchOtherClassname] =
+    useState('home_tags_input2');
 
-  const changeFood = function () {
+  const changeBgItinerary = function () {
+    setBgClassName('home_bg_absolute home_bg_itinerary');
+  };
+
+  const changeBgFood = function () {
     setBgClassName('home_bg_absolute home_bg_food');
   };
-  
+
   const changeBgStay = function () {
     setBgClassName('home_bg_absolute home_bg_stay');
   };
 
-  const changeTicket = function () {
+  const changeBgTicket = function () {
     setBgClassName('home_bg_absolute home_bg_ticket');
   };
 
   const searchStay = function () {
-    setSearchBar('home_tags_input1 home_tags_input2 view_search_stay');
+    setSearchStayClassname('home_tags_input1 ');
+    setSearchOtherClassname('home_tags_input2_hidden');
   };
+
+  const searchOthers = function () {
+    setSearchStayClassname('home_tags_input1_hidden ');
+    setSearchOtherClassname('home_tags_input2');
+  }
 
   const stayChange = function () {
     changeBgStay();
     searchStay();
   };
 
+  const ItineraryChange = function () {
+    changeBgItinerary();
+    searchOthers();
+  };
+
+  const FoodChange = function () {
+    changeBgFood();
+    searchOthers();
+  };
+
+  const TicketChange = function () {
+    changeBgTicket();
+    searchOthers();
+  };
 
   // const changeFoodColor = function () {
   //   setLogoColor('home_bg_text_wrap home_logo_color');
@@ -75,23 +98,23 @@ function Home() {
             </div>
             {/* 標籤icons部分 */}
             <div className="home_tags">
-              <div onClick={changeItinerary} className="tag_unit">
+              <div onClick={ItineraryChange} className="tag_unit">
                 <TagSiteButton />
               </div>
-              <div onClick={changeFood} className="tag_unit">
+              <div onClick={FoodChange} className="tag_unit">
                 <TagFoodButton />
               </div>
               <div onClick={stayChange} className="tag_unit">
                 <TagStayButton />
               </div>
-              <div onClick={changeTicket} className="tag_unit">
+              <div onClick={TicketChange} className="tag_unit">
                 <TagTicketButton />
               </div>
             </div>
             {/* 2個搜尋的框框 */}
-              {/* <div className="searchBar"> */}
+            {/* <div className="searchBar"> */}
             {/* 填選區1 */}
-            <div className="home_tags_input1 view_search_stay">
+            <div className={searchStayClassname}>
               <div className="tag_input_unit1">
                 <div className="home_tag_input_tittle1">目的地</div>
                 <div className="home_tag_input1">
@@ -131,15 +154,14 @@ function Home() {
             </div>
 
             {/* 填選區2 */}
-            <div className="home_tags_input2 home_tags_search_other">
-              
+            <div className={searchOtherClassname}>
               <div className="tag_input_unit1">
                 <div className="home_tag_input_tittle1"></div>
                 <div className="home_tag2_input1">
                   <TagInput />
                 </div>
               </div>
-              
+
               <div className="tag_input_unit6">
                 <div className="home_tag_input_tittle6"></div>
                 <div className="home_tag_input6">
@@ -147,7 +169,6 @@ function Home() {
                 </div>
               </div>
               {/* </div> */}
-
             </div>
           </div>
 
