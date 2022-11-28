@@ -26,7 +26,25 @@
     p{
         color: #FFF;
     }
-    
+    .login-user-text{
+        color: #59D8A1;
+        background: none;
+        border: none;
+    }
+    .login-user-text:active{
+        color: #59D8A1;
+        background: none;
+        border: none;
+    }
+    .dropdown-user-item{
+        padding: 10px 20px;
+    }
+    .dropdown-user-item:hover{
+        color: #59D8A1;
+    }
+    .dropdown-user-item:active{
+        color: #59D8A1;
+    }
 }
 .nav-link{
     padding: 0;

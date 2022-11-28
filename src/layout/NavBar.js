@@ -6,10 +6,11 @@ import { NavLink, useLocation } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Logo from '../icon/logo/logo.svg';
 import SearchIcon from '../icon/search.svg';
-import CartIcon from '../icon/cart.svg';
+
 import AuthContext from '../pages/member/context/AuthContext';
 import Dropdown from 'react-bootstrap/Dropdown';
 
+import CartIcon from './CartIcon';
 function NavBar() {
   const location = useLocation();
   const { myAuth, logout } = useContext(AuthContext);
@@ -155,12 +156,7 @@ function NavBar() {
               )}
             </div>
             <div className="cart icon">
-              <NavLink className="nav-link" to="/cart">
-                <img src={CartIcon} alt="" />
-                <div className="cart-count">
-                  <span>1</span>
-                </div>
-              </NavLink>
+              <CartIcon />
             </div>
           </div>
         </div>

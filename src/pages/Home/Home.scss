@@ -1,44 +1,62 @@
 // 首頁背圖
+
 .home_bg_absolute {
-    background-image: url('../../img/ticket_home.jpg');
+    // background-image: url('../../img/ticket_home.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     height: 900px;
-    width: 1440px;
+    width: 100%;
     // border: 5px solid rgb(255, 0, 0);
     position: absolute;
     z-index: -10;
 }
 
+.home_bg_ticket{
+    background-image: url('../../img/ticket_home.jpg');
+}
+.home_bg_stay{
+    background-image: url('../../img/stay_home.jpg');
+}
+.home_bg_food{
+    background-image: url('../../img/food-banner.jpg');
 
+}
+.home_bg_itinerary{
+    background-image: url('../../img/itinerary_home.jpg');
+}
 // timetravel文字區
 .home_bg_text_wrap {
     height: 900px;
     width: 1440px;
     position: absolute;
-    top:0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
     // border: 2px solid rgb(49, 248, 255);
     // z-index: -5;
     .home_bg_text_time {
         font-size: 150px;
         color: #ffffff;
-        position: relative;
-        top: 241px;
+        position: absolute;
+        top: 244px;
         left: 345px;
         // border: 1px solid black;
     }
     .home_bg_text_travel {
         font-size: 160px;
         color: #ffffff00;
-        position: relative;
-        top: 113px;
-        left: 615px;
+        position: absolute;
+        top: 352px;
+        left: 620px;
         -webkit-text-stroke: 3px #ffffff;
         // border: 1px solid black;
     }
+   
 }
+
+
 
 // 首頁start
 
@@ -53,13 +71,15 @@
     
 }
 
+// icon tags
 .home_tags{
     display: flex;
     width: 336px;
     height: 36px;
-    margin-top: 559px;
-    margin-left: 532px;
-    position: relative;
+    margin-top: 459px;
+    // margin-left: px;
+    position: absolute;
+    // top: 100px;
     // align-items: center;
     // border: 1px solid black;
     
@@ -84,20 +104,22 @@
 }
 
 
-// 填選區
-.home_tags_input{
+// 填選區1 stay
+.home_tags_input1{
+    visibility: hidden;
     display: flex;
     width: 1084px;
     height: 71px;
     position:absolute;
     justify-content: space-between;
     margin: 0;
-    border: 1px solid black;
-    
+    // border: 1px solid black;
+    top: 750px;
     // input1
     .tag_input_unit1 {
         width: 183px;
         height: 71px;
+        position: relative;
         // border: 1px solid black;
 
         .home_tag_input_tittle1{
@@ -197,7 +219,84 @@
         width: 114px;
         height: 71px;
         // border: 1px solid black;
+        
+        .home_tag_input_tittle6 {
+            width: 114px;
+            height: 25px;
+        }
+
+        .home_tag_input6 {
+            width: 114px;
+            height: 46px;
+            // border: 1px solid black;
+        }
     }
+}
+
+// 填選區2 others
+.home_tags_input2{
+    visibility: hidden;
+    display: flex;
+    width: 794px;
+    height: 46px;
+    position:absolute;
+    justify-content: space-between;
+    margin: 0;
+    // border: 3px solid rgb(196, 0, 0);
+    top: 750px;
+    // input1
+    .tag_input_unit1 {
+        width: 680px;
+        height: 46px;
+        position: relative;
+        // border: 1px solid black;
+
+        .home_tag_input_tittle1{
+            width: 183px;
+            height: 25px;
+            color:#ffffff;
+            // border: 1px solid black;
+        }
+
+        .home_tag2_input1 {
+            width: 680px;
+            height: 46px;
+            // border: 1px solid black;
+        }
+    }
+
+   
+
+    // input6
+    .tag_input_unit6 {
+        width: 114px;
+        height: 71px;
+        // border: 1px solid black;
+        
+        .home_tag_input_tittle6 {
+            width: 114px;
+            height: 25px;
+        }
+
+        .home_tag_input6 {
+            width: 114px;
+            height: 46px;
+            // border: 1px solid black;
+        }
+    }
+}
+
+.view_search_stay {
+    visibility: visible;
+}
+.view_search_food {
+    visibility: visible;
+}
+.view_search_itinerary {
+    visibility: visible;
+}
+.view_search_ticket {
+    visibility: visible;
 }
 
 
@@ -323,7 +422,7 @@
     background-position: center;
     background-size: cover;
     height: 400px;
-    width: 1440px;
+    width: 100%;
     position: absolute;
     z-index: -10;
     // border: 2px solid rgb(253, 35, 235);
@@ -332,7 +431,7 @@
 .home-why-us-bg-opacity {
     background-color: #424242;
     height: 400px;
-    width: 1440px;
+    width: 100%;
     opacity: 40%;
 }
 

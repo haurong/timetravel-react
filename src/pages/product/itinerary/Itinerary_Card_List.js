@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -16,7 +17,10 @@ function Itinerary_Card_List({ rows }) {
               <Card.Body className="d-flex flex-column justify-content-between">
                 <div className=" card-margin0">
                   <Card.Title>{el.name}</Card.Title>
-                  <h2>{el.list_name}</h2>
+                  <Link to="/itinerary/1">
+                    <h2>{el.list_name}</h2>
+                  </Link>
+
                   <p>
                     {moment(el.date).format('YYYY-MM-DD')}~
                     {moment(el.date).add(el.day, 'd').format('YYYY-MM-DD')}

@@ -4,21 +4,40 @@ import CardBodyTop from './CardBodyTop';
 import StateButton from './StateButton';
 import DateInput from './DateInput';
 import CountButton from './CountButton';
+import { useTicketCart } from '../../utils/useCart';
 function TicketCard() {
+  const { cart, items, plusOne, minusOne, removeItem } = useTicketCart();
   return (
-    <div className="card-wrap">
-      <div className="card-body">
-        <CardTitle text={'票券預定資訊'} />
-        <CardBodyTop
-          productName={'台北 兒童新樂園 | 一日票(無限暢玩13項指定設施)'}
-        />
-        <StateButton text={'成人票'} />
-        <div className="d-flex justify-content-between">
-          <DateInput text={'使用日期'} />
-          <CountButton />
-        </div>
-      </div>
-    </div>
+    <>
+      {items.map((v, i) => {
+        return (
+          <div className="card-wrap pb-5">
+            <div className="card-body">
+              <CardTitle
+                text={'票券預定資訊'}
+                deleteFun={() => {
+                  removeItem(v.id);
+                }}
+              />
+              <CardBodyTop productName={v.name} />
+              <StateButton text={v.tickettype} />
+              <div className="d-flex justify-content-between">
+                <DateInput text={'使用日期'} />
+                <CountButton
+                  quantity={v.quantity}
+                  plusOne={() => {
+                    plusOne(v.id);
+                  }}
+                  minusOne={() => {
+                    minusOne(v.id);
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </>
   );
 }
 
