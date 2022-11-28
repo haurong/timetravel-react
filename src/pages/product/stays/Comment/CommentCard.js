@@ -4,8 +4,13 @@ import './Comment.scss';
 import moment from 'moment/moment';
 import { useHotelContext } from '../Context/HotelContext';
 function CommentCard() {
-  const { hotelCommentData } = useHotelContext();
-  console.log(hotelCommentData);
+  const { hotelCommentData, commentSort } = useHotelContext();
+  if(commentSort === 'time_ASC'){
+    
+  }
+    // hotelCommentData.sort((a, b) => {
+    //   return a.score - b.score;
+    // })
   return (
     <>
       {hotelCommentData.map((v, i) => {

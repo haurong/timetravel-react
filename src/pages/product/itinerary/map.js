@@ -4,10 +4,10 @@ import { useLocation } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { ITINERARY_ITEM, GOOGLE_ADDRESS } from './site-config';
 import Geocode from 'react-geocode';
-import { Key } from './Key';
+// import { Key } from './Key';
 
 export default function Map() {
-  Geocode.setApiKey(Key);
+  // Geocode.setApiKey(Key);
   const [iData, setIData] = useState({});
   const [address, setAddress] = useState([]);
   const [position, setPosition] = useState([

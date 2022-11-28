@@ -36,6 +36,7 @@ function Stays() {
     setHotelRoomChoose,
     setHotelRoomPrice,
     setHotelCommentData,
+    commentSort,
   } = useHotelContext();
   // const { roomCounts, hotelRoomPrice } = useHotelContext();
 
@@ -107,6 +108,7 @@ function Stays() {
     // 	bodyOffsetY: document.body.offsetHeight,
     // });
   }, [isScroll]);
+
   return (
     <>
       <NavBar />
