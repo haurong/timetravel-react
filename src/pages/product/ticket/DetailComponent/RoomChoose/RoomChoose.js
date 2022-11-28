@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './RoomChoose.scss';
-import { useHotelContext } from '../Context/HotelContext';
+import { useHotelContext } from '../../../stays/Context/HotelContext';
 function RoomChoose(props) {
   const { setHotelRoomPrice } = useHotelContext();
-
+  const ticketChoose = ['成人票', '老人票', '優待票'];
   // useEffect(() => {
   //   if (props.hotelRoomData.length !== 0) {
   //     setHotelRoomPrice(props.hotelRoomData[0].room_price);
@@ -13,7 +13,7 @@ function RoomChoose(props) {
   const [roomChoose, setRoomChoose] = useState(0);
   return (
     <div className="RoomChoose">
-      {props.hotelRoomData.map((v, i) => {
+      {ticketChoose.map((v, i) => {
         return (
           <div
             className="RoomChoose_button"
@@ -30,7 +30,7 @@ function RoomChoose(props) {
                 setHotelRoomPrice(e.target.getAttribute('data-hotel_price'));
               }}
             >
-              {v.room_type}
+              {v}
             </button>
           </div>
         );

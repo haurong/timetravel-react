@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './HashChange.scss';
+import '../../../stays/HashChange/HashChange.scss';
 import { useHotelContext } from '../../../stays/Context/HotelContext';
 // import { slideOut, setSlideOut } from '../Context/SlideOutContext';
 

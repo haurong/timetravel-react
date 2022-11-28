@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-import { FOOD_LIST } from '../../../config.js';
 
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
@@ -22,7 +21,6 @@ import RankChoose2 from './RankChoose/RankChoose2.js';
 import RankChoose1 from './RankChoose/RankChoose1.js';
 
 import CitySelection from './CitySelection/CitySelection.js';
-// import CardList from '../../../Component/Card_List/Card_List.js';
 
 function Ticket() {
   // const [foodData, setFoodData] = useState({
@@ -78,7 +76,7 @@ function Ticket() {
             </div>
           </Col>
           <Col className="col-9 ticket-list-test">
-            {/* <CardList rows={foodData.rows} /> */}
+           
           </Col>
         </Row>
       </div>

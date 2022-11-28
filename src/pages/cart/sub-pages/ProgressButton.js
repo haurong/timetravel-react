@@ -6,17 +6,17 @@ function ProgressButton({ prev, next, step, maxSteps }) {
       {step === 1 ? (
         ''
       ) : (
-        <button type="button" class="btn btn-primary" onClick={prev}>
+        <button type="button" className="btn btn-primary" onClick={prev}>
           上一步
         </button>
       )}
 
       {step !== maxSteps ? (
-        <button type="button" class="btn btn-primary" onClick={next}>
+        <button type="button" className="btn btn-primary" onClick={next}>
           下一步
         </button>
       ) : (
-        <button type="button" class="btn btn-primary" onClick={prev}>
+        <button type="button" className="btn btn-primary" onClick={prev}>
           確認結帳
         </button>
       )}

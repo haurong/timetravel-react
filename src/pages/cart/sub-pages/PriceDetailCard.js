@@ -1,25 +1,34 @@
 import React from 'react';
 import StateButton from './components/StateButton';
-function PriceDetailCard({ title }) {
+function PriceDetailCard({ title, items, total }) {
   return (
     <>
-      <div className="card-body pt-0 pb-3 px-5">
-        <p>{title}</p>
-      </div>
       <div className="p-d-c-body">
-        <div className="d-flex justify-content-evenly">
-          <p>台北 S HOTEL</p>
-          <div></div>
-          <p>TWD 2499</p>
+        <div className="card-body">
+          <h2>價格明細</h2>
         </div>
-        <div className="btn-wrap">
-          <StateButton text={'雅致家庭房|二大床'} />
+        <div className="card-body pt-0 pb-3 px-5">
+          <p>{title}</p>
         </div>
+        {items.map((v, i) => {
+          return (
+            <>
+              <div className="d-flex justify-content-evenly">
+                <p>{v.name}</p>
+                <p>{`$${v.price}`}</p>
+                <p>{`X${v.quantity}`}</p>
+              </div>
+              <div className="btn-wrap">
+                <StateButton text={v.type} />
+              </div>
+            </>
+          );
+        })}
       </div>
       <div className="card-wrap">
-        <div className="card-body pt-1 pb-5 px-5 d-flex justify-content-between">
+        <div className="card-body pt-1 pb-5 d-flex justify-content-between">
           <p>小記</p>
-          <p className="total">TWD $2499</p>
+          <p className="total">{total}</p>
         </div>
       </div>
     </>

@@ -1,0 +1,117 @@
+div {
+  // outline: 1px solid red;
+}
+.HomePage {
+  height: 900px;
+  background: url('../../img/ticket_home.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .HomePage_slogan {
+    margin-top: 220px;
+    margin-bottom: 60px;
+    position: relative;
+    height: 350px;
+    width: 800px;
+    .HomePage_slogan_Time {
+      position: absolute;
+      color: #fff;
+      font-weight: 900;
+      left: 0;
+      top: 0;
+      font-size: 150px;
+    }
+    .HomePage_slogan_Travel {
+      position: absolute;
+      font-weight: 900;
+      right: 20px;
+      top: 110px;
+      font-size: 160px;
+      color: transparent;
+      -webkit-text-stroke: 3px #fff;
+    }
+  }
+  .HomePage_Selector {
+    width: auto;
+    height: 150px;
+    font-size: 14px;
+    .HomePage_Selector_Class {
+      display: flex;
+      justify-content: center;
+      width: auto;
+      margin-bottom: 25px;
+      .HomePage_Selector_Class_Btn {
+        padding: 0px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        p {
+          color: rgba(255, 255, 255, 0.3);
+          margin: auto 12px;
+        }
+        .st0 {
+          fill: rgba(255, 255, 255, 0.3);
+        }
+      }
+    }
+    .HomePage_Selector_Input_Group {
+      display: flex;
+      div {
+        width: 184px;
+        margin: 0px 20px;
+        p {
+          margin: 0px;
+          color: white;
+        }
+        input {
+          height: 46px;
+          border: 0;
+        }
+        input[type='text'] {
+          width: 100%;
+        }
+        input[type='Date'] {
+          width: 100%;
+        }
+        select {
+          width: 100%;
+          height: 46px;
+          border: 0;
+        }
+      }
+      .ForFood {
+        width: auto;
+        margin: 0px;
+        margin-top: 25px;
+      }
+      .HomePage_Selector_Input_Group_Btn {
+        display: flex;
+        align-items: flex-end;
+        button {
+          background-color: #59d8a1;
+          color: #fff;
+          border: 0;
+          width: 120px;
+          height: 46px;
+        }
+      }
+    }
+    .GroupForFood{
+      div{
+        margin: 0px;
+      }
+    }
+  }
+}
+.HomePage_Selector_Class_Btn_active {
+  padding: 0px 12px;
+  border-bottom: 1px solid white;
+  .st0 {
+    fill: rgba(255, 255, 255);
+  }
+  p {
+    color: rgba(255, 255, 255);
+    margin: auto 12px;
+  }
+}

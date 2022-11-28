@@ -26,7 +26,7 @@ import ComDatePicker from './ComDatePicker/ComDatePicker';
 import BookingBar from './BookingBar/BookingBar';
 
 function Stays() {
-  const dataFrom = '38';
+  const dataFrom = '1';
   const {
     roomCounts,
     hotelRoomPrice,
@@ -36,6 +36,7 @@ function Stays() {
     setHotelRoomChoose,
     setHotelRoomPrice,
     setHotelCommentData,
+    commentSort,
   } = useHotelContext();
   // const { roomCounts, hotelRoomPrice } = useHotelContext();
 
@@ -107,6 +108,7 @@ function Stays() {
     // 	bodyOffsetY: document.body.offsetHeight,
     // });
   }, [isScroll]);
+
   return (
     <>
       <NavBar />

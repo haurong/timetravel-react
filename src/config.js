@@ -3,10 +3,15 @@ export const MY_HOST = 'http://localhost:3001';
 // export const AB_LIST_AUTH = `${MY_HOST}/ab/api/list-auth`;
 // 假登入
 export const LOGIN_API = `${MY_HOST}/member/api/login-api`;
+export const SIGNIN_API = `${MY_HOST}/member/api/signin-api`;
+export const PROFILE_API = `${MY_HOST}/member/api/edit-member-api`;
+export const RESET_PASSWORD_API = `${MY_HOST}/member/api/reset-password-member-api`;
+export const UPLOAD_AVATAR_API = `${MY_HOST}/member/upload-avatar`;
+
 export const HOTEL_LIST = `${MY_HOST}/hotel/api`;
 
 export const FOOD_LIST = `${MY_HOST}/food/api`;
-export const FOOD_ITEM = `${MY_HOST}/food/item/116`;
+export const FOOD_ITEM = `${MY_HOST}/food/item/`;
 export const FOOD_CARD_ITEM1 = `${MY_HOST}/food/item/117`;
 export const FOOD_CARD_ITEM2 = `${MY_HOST}/food/item/125`;
 export const FOOD_CARD_ITEM3 = `${MY_HOST}/food/item/119`;

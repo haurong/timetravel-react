@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, NavLink } from 'react-router-dom';
 import './BreadCrumb.scss';
 
-function BreadCrumb({ siteData }) {
+function BreadCrumb({ siteData}) {
   const [typeName, setTypeName] = useState('');
   const location = useLocation();
   const path = window.location.pathname.split('/');

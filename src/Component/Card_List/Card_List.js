@@ -23,9 +23,9 @@ function Card_List({ rows }) {
       return;
     }
   };
-
+  //TODO:收藏人數按鈕樣式待定
   return (
-    <Row xs={1} md={2} lg={3} className="g-4">
+    <Row xs={1} lg={4} className="d-flex justify-content-center flex-wrap">
       {rows.map((el) => {
         return (
           <Card
@@ -43,7 +43,6 @@ function Card_List({ rows }) {
               className="Heart_Btn"
               onClick={() => {
                 addLikeListHandler(el.product_number);
-
                 toggleLike1();
               }}
             >
@@ -60,10 +59,25 @@ function Card_List({ rows }) {
                 <span class="Card_Score">
                   {el.city_name} | {el.area_name}
                 </span>
+
+                <div className="d-flex PriceAndCollect">
+                  <div>
+                    <button className="Heart_btn">
+                      <img
+                        src={PinkHeart}
+                        style={{ width: '25px', height: '25px' }}
+                        alt=""
+                      />
+                      <span>999</span>
+                    </button>
+                  </div>
+                  <div>
+                    <h2 variant="primary" className="Card_Price">
+                      NT$ {el.p_selling_price}
+                    </h2>
+                  </div>
+                </div>
               </Card.Text>
-              <h2 variant="primary" className="Card_Price">
-                NT$ {el.p_selling_price}
-              </h2>
             </Card.Body>
           </Card>
         );

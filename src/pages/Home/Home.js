@@ -1,33 +1,73 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../global.scss';
 import './Home.scss';
 
 import '../../../node_modules/slick-carousel/slick/slick.css';
 import '../../../node_modules/slick-carousel/slick/slick-theme.css';
 
-import BannerSliderHot from '../../pages/product/ticket/BannerSlider/BannerSliderHot';
-import BannerSliderNewest from '../../pages/product/ticket/BannerSlider/BannerSliderNewest';
+// import BannerSliderHot from '../../pages/product/ticket/BannerSlider/BannerSliderHot';
+import BannerSliderHot from './Carousel/Card_Carousel';
+import BannerSliderNewest from '../../pages/Home/BannerSlider/BannerSliderNewest';
+// import BannerSliderNewest from './Carousel/Carousel';
 import ButtonSign from '../../pages/product/ticket/ButtonSign/ButtonSign';
 import TagSiteButton from './TagButton/TagSiteButton';
 import TagFoodButton from './TagButton/TagFoodButton';
 import TagStayButton from './TagButton/TagStayButton';
 import TagTicketButton from './TagButton/TagTicketButton';
 import TagStayInput from './TagInput/TagInput';
+import TagInput from './TagInput/TagInput2';
 import TagStayDatePickerIn from './TagStayDatePicker/TagStayDatePicker';
 import TagStayDatePickerOut from './TagStayDatePicker/TagStayDatePicker';
 import TagSelectDays from './TagSelect/TagSelectDays';
 import TagSelectRooms from './TagSelect/TagSelectRooms';
-
-// import Col from 'react-bootstrap/Col';
-// import Row from 'react-bootstrap/Row';
+import TagStaySearchBtn from './ButtonSearch/ButtonSearch';
+import TagSearchBtn from './ButtonSearch/ButtonSearch';
+import { useLocation } from 'react-router-dom';
 
 function Home() {
+  const [bgClassName, setBgClassName] = useState(
+    'home_bg_absolute home_bg_ticket'
+  );
+
+  const [searchBar, setSearchBar] = useState(
+    'home_tags_input2 view_search_ticket '
+  );
+
+  const changeItinerary = function () {
+    setBgClassName('home_bg_absolute home_bg_itinerary');
+  };  
+
+  const changeFood = function () {
+    setBgClassName('home_bg_absolute home_bg_food');
+  };
+  
+  const changeBgStay = function () {
+    setBgClassName('home_bg_absolute home_bg_stay');
+  };
+
+  const changeTicket = function () {
+    setBgClassName('home_bg_absolute home_bg_ticket');
+  };
+
+  const searchStay = function () {
+    setSearchBar('home_tags_input1 home_tags_input2 view_search_stay');
+  };
+
+  const stayChange = function () {
+    changeBgStay();
+    searchStay();
+  };
+
+
+  // const changeFoodColor = function () {
+  //   setLogoColor('home_bg_text_wrap home_logo_color');
+  // }
   return (
     <>
       <div className="container">
         <div className="row">
           <div className="home-part1">
-            <div className="home_bg_absolute">
+            <div className={bgClassName}>
               <div className="home_bg_text_wrap">
                 <div className="home_bg_text_time">Time</div>
                 <div className="home_bg_text_travel">Travel</div>
@@ -35,26 +75,28 @@ function Home() {
             </div>
             {/* 標籤icons部分 */}
             <div className="home_tags">
-              <div className="tag_unit">
-                <TagSiteButton className="tag_text" />
+              <div onClick={changeItinerary} className="tag_unit">
+                <TagSiteButton />
               </div>
-              <div className="tag_unit">
-                <TagFoodButton className="tag_text" />
+              <div onClick={changeFood} className="tag_unit">
+                <TagFoodButton />
               </div>
-              <div className="tag_unit">
-                <TagStayButton className="tag_text" />
+              <div onClick={stayChange} className="tag_unit">
+                <TagStayButton />
               </div>
-              <div className="tag_unit">
-                <TagTicketButton className="tag_text" />
+              <div onClick={changeTicket} className="tag_unit">
+                <TagTicketButton />
               </div>
             </div>
-
-            {/* 填選區 */}
-            <div className="home_tags_input">
-              {/* <div> */}
+            {/* 2個搜尋的框框 */}
+              {/* <div className="searchBar"> */}
+            {/* 填選區1 */}
+            <div className="home_tags_input1 view_search_stay">
               <div className="tag_input_unit1">
                 <div className="home_tag_input_tittle1">目的地</div>
-                <TagStayInput />
+                <div className="home_tag_input1">
+                  <TagStayInput />
+                </div>
               </div>
               <div className="tag_input_unit2">
                 <div className="home_tag_input_tittle2">入住時間</div>
@@ -71,7 +113,7 @@ function Home() {
               <div className="tag_input_unit4">
                 <div className="home_tag_input_tittle4">天數</div>
                 <div className="home_tag_input4">
-                  <TagSelectDays className="TagSelectDays"/>
+                  <TagSelectDays className="TagSelectDays" />
                 </div>
               </div>
               <div className="tag_input_unit5">
@@ -80,8 +122,32 @@ function Home() {
                   <TagSelectRooms />
                 </div>
               </div>
-              <div className="tag_input_unit6"></div>
+              <div className="tag_input_unit6">
+                <div className="home_tag_input_tittle6"></div>
+                <div className="home_tag_input6">
+                  <TagStaySearchBtn />
+                </div>
+              </div>
+            </div>
+
+            {/* 填選區2 */}
+            <div className="home_tags_input2 home_tags_search_other">
+              
+              <div className="tag_input_unit1">
+                <div className="home_tag_input_tittle1"></div>
+                <div className="home_tag2_input1">
+                  <TagInput />
+                </div>
+              </div>
+              
+              <div className="tag_input_unit6">
+                <div className="home_tag_input_tittle6"></div>
+                <div className="home_tag_input6">
+                  <TagSearchBtn />
+                </div>
+              </div>
               {/* </div> */}
+
             </div>
           </div>
 

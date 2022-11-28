@@ -30,7 +30,7 @@ const customMarker3 = new L.Icon({
 });
 
 export default function Map() {
-  Geocode.setApiKey(Key);
+  // Geocode.setApiKey(Key);
   const [iData, setIData] = useState({});
   const [address, setAddress] = useState([]);
   const [position, setPosition] = useState([
