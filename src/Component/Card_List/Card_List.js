@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import { FOOD_IMG } from '../../config';
@@ -53,7 +54,11 @@ function Card_List({ rows }) {
               />
             </button>
             <Card.Body>
-              <Card.Title className="Card_Title">{el.product_name}</Card.Title>
+              <Link to="/food/detail">
+                <Card.Title className="Card_Title">
+                  {el.product_name}
+                </Card.Title>
+              </Link>
               <Card.Text className="Card_Text">
                 <Card.Img src={Map} className="Map_icon" />
                 <span class="Card_Score">

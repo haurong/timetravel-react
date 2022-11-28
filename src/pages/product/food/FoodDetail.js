@@ -43,8 +43,8 @@ function FoodDetail() {
   const a = foodData.p_selling_price;
   console.log(a);
   const location = useLocation();
-  const path = window.location.pathname.split('/');
-  const sid = path[2];
+  //const path = window.location.pathname.split('/');
+  const sid = 116;
 
   async function getData() {
     const response = await axios.get(FOOD_ITEM + sid);
@@ -104,6 +104,9 @@ function FoodDetail() {
   return (
     <>
       <NavBar />
+      <div className="ComputerHidden">
+        <HashChange allPart={allPart} />
+      </div>
       <div className="container" style={{ marginTop: '80px' }}>
         <div ref={Food_part0} id="Food_part0"></div>
         <nav aria-label="breadcrumb">
@@ -111,9 +114,7 @@ function FoodDetail() {
             <BreadCrumb foodData={foodData} />
           </div>
         </nav>
-        <div className="ComputerHidden">
-          <HashChange allPart={allPart} />
-        </div>
+
         <div className="container carousel">
           <Carousel />
         </div>
@@ -265,7 +266,6 @@ function FoodDetail() {
                 style={{ width: '30px', height: '30px' }}
                 alt=""
               />
-
               <h2>如何使用</h2>
             </div>
             <ul>
@@ -290,26 +290,7 @@ function FoodDetail() {
             <p>{foodData.product_name}</p>
             <p>地址：{foodData.product_address}</p>
             <p>營業時間：{foodData.p_business_hours}</p>
-            {/* <button
-              type="button"
-              className="btn btn-outline-success map_btn 
-            "
-              onClick={() => {
-                // const name = foodData.product_name;
-                // Swal.fire({
-                //   title: '萬祝號',
-                //   target: <FoodMap />,
-                //   targetWidth: 400,
-                //   targetHeight: 200,
-                //   imageAlt: 'Custom image',
-                // });
-                // <FoodMap />;
-              }}
-            >
-              <img src={Map_Green_icon} alt="" width="25" height="25" />
-              <span>查看地圖</span>
-            </button> */}
-            <div className="foodmap">
+            <div className="foodmap" style={{ zIndex: '-1' }}>
               <FoodMap />
             </div>
           </div>
@@ -339,7 +320,7 @@ function FoodDetail() {
             </div>
           </div>
         </div>
-        <div className="col-lg-3 foodHashChange">
+        <div className="col-lg-3 foodHashChange MobileHidden">
           <HashChange allPart={allPart} />
         </div>
       </div>

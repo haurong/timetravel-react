@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useLocation, NavLink } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { FOOD_LIST } from '../../../config.js';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
@@ -40,13 +40,13 @@ function Food() {
       <div className="container col-lg-12 d-flex foodContent">
         <div
           className="col-lg-3  px-3 "
-          style={{ border: '1px solid green' }}
+          // style={{ border: '1px solid green' }}
         >
           <Sidebar />
         </div>
         <div
           className="col-lg-9 col-md-12 px-3 mx-0 CardListStyle"
-          style={{ border: '1px solid orange' }}
+          // style={{ border: '1px solid orange' }}
         >
           <div className="d-flex foodSort">
             <CommitSelector />
