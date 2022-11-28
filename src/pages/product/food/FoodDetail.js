@@ -2,11 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useLocation } from 'react-router-dom';
-import { SlideOutProvider } from '../stays/Context/HotelContext';
+
 import { FOOD_ITEM } from '../../../config.js';
 import { FOOD_COMMIT } from '../../../config.js';
 import FoodMap from './FoodMap';
-// import Qrcode from '../../../Component/QRcode/Qrcode';
 import Commit from './Commit';
 import CommitSelect from './CommitSelect';
 import NavBar from '../../../layout/NavBar';
@@ -21,14 +20,13 @@ import Calendar from '../../../icon/calendar+add.svg';
 import ActiveCalendar from '../../../icon/calendar+greenadd.svg';
 
 import Map_icon from '../../../icon/map_blue.svg';
-// import Map_Green_icon from '../../../icon/map.svg';
 import Food_icon from '../../../icon/food_blue.svg';
 import Phone_icon from '../../../icon/iphone.svg';
 import Star_icon from '../../../icon/star.svg';
 import Minus_icon from '../../../icon/minus.svg';
 import Add_icon from '../../../icon/add.svg';
 import House_icon from '../../../icon/house.svg';
-import { imgUrl } from '../../../config.js';
+
 import './FoodDetail.scss';
 //breadcrumb還沒導入component
 function FoodDetail() {
@@ -113,6 +111,9 @@ function FoodDetail() {
             <BreadCrumb foodData={foodData} />
           </div>
         </nav>
+        <div className="ComputerHidden">
+          <HashChange allPart={allPart} />
+        </div>
         <div className="container carousel">
           <Carousel />
         </div>
