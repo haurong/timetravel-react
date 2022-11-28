@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, NavLink } from 'react-router-dom';
-import './BreadCrumb.scss';
+import '../../../Component/BreadCrumb/BreadCrumb.scss';
 
-function BreadCrumb({ siteData}) {
+function BreadCrumb({ foodData }) {
+  console.log({foodData})
   const [typeName, setTypeName] = useState('');
   const location = useLocation();
   const path = window.location.pathname.split('/');
@@ -41,7 +42,7 @@ function BreadCrumb({ siteData}) {
           </li>
           <li className="breadcrumb-item">
             <NavLink id="bccatename" href="#/">
-              {siteData.site_category_name}
+              {foodData.categorise_name}
             </NavLink>
           </li>
           <li
@@ -49,7 +50,7 @@ function BreadCrumb({ siteData}) {
             className="breadcrumb-item active"
             aria-current="page"
           >
-            <p>{siteData.name}</p>
+            <p>{foodData.product_name}</p>
           </li>
         </ol>
       </nav>

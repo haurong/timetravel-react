@@ -46,22 +46,22 @@ export default function Card_Carousel() {
   const sid = path[2];
 
   async function getData() {
-    const foodCardItem1 = await axios.get(FOOD_CARD_ITEM1 + sid);
+    const foodCardItem1 = await axios.get(FOOD_CARD_ITEM1 );
     setFoodCardData1(foodCardItem1.data);
     //console.log(foodCardData1);
-    const foodCardItem2 = await axios.get(FOOD_CARD_ITEM2 + sid);
+    const foodCardItem2 = await axios.get(FOOD_CARD_ITEM2 );
     setFoodCardData2(foodCardItem2.data);
     //console.log(foodCardData2);
-    const foodCardItem3 = await axios.get(FOOD_CARD_ITEM3 + sid);
+    const foodCardItem3 = await axios.get(FOOD_CARD_ITEM3 );
     setFoodCardData3(foodCardItem3.data);
     //console.log(foodCardData3);
-    const foodCardItem4 = await axios.get(FOOD_CARD_ITEM4 + sid);
+    const foodCardItem4 = await axios.get(FOOD_CARD_ITEM4 );
     setFoodCardData4(foodCardItem4.data);
     //console.log(foodCardData4);
-    const foodCardItem5 = await axios.get(FOOD_CARD_ITEM5 + sid);
+    const foodCardItem5 = await axios.get(FOOD_CARD_ITEM5 );
     setFoodCardData5(foodCardItem5.data);
     //console.log(foodCardData5);
-    const foodCardItem6 = await axios.get(FOOD_CARD_ITEM6 + sid);
+    const foodCardItem6 = await axios.get(FOOD_CARD_ITEM6 );
     setFoodCardData6(foodCardItem6.data);
     //console.log(foodCardData6);
   }
