@@ -29,12 +29,12 @@ export default function Carousel() {
       <SwiperSlide className="SwiperSlide">
         <div className="Ticket_14_Img3" style={{ height: '650px ' }}></div>
       </SwiperSlide>
-      <SwiperSlide className="SwiperSlide">
+      {/* <SwiperSlide className="SwiperSlide">
         <div className="Ticket_14_Img4" style={{ height: '650px ' }}></div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlide">
         <div className="Ticket_14_Img5" style={{ height: '650px ' }}></div>
-      </SwiperSlide>
+      </SwiperSlide> */}
     </Swiper>
   );
 }

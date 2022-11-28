@@ -8,7 +8,7 @@ import axios from 'axios';
 import { useHotelContext } from '../stays/Context/HotelContext';
 import { TICKET_DETAIL } from './ticket-config';
 
-import Carousel from '../ticket/DetailComponent/CarouselDo/Carousel';
+import Carousel from './DetailComponent/CarouselDu/Carousel';
 import Breadcrumb from '../ticket/DetailComponent/Breadcrumb/Breadcrumb';
 import Rate from './Rate/Rate';
 import IconBar from './DetailComponent/IconBar/IconBar';

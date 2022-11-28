@@ -45,15 +45,15 @@
       -webkit-align-items: center;
       align-items: center;   
       //  background-position 依照你的照片內容調整
-      .Ticket_14_Img1{
-        object-fit: cover;  
-        width: 100%;
-        height: 100%;
-        background-image: url('http://localhost:3001/uploads/Ticket/14-1.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-       }
+      // .Ticket_14_Img1{
+      //   object-fit: cover;  
+      //   width: 100%;
+      //   height: 100%;
+      //   background-image: url('../../../ticket/Carousel/pic/14-3.jpg');
+      //   background-size: cover;
+      //   background-repeat: no-repeat;
+      //   background-position: center center;
+      //  }
       .Ticket_14_Img2{
         object-fit: cover;  
         width: 100%;
@@ -96,3 +96,31 @@
   
 } 
 
+.Ticket_14_Img1{
+  object-fit: cover;  
+  width: 100%;
+  height: 100%;
+  background-image: url('../../../ticket/Carousel/pic/14-4.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+ }
+
+ .Ticket_14_Img2{
+  object-fit: cover;  
+  width: 100%;
+  height: 100%;
+  background-image: url('../../../ticket/Carousel/pic/14-3.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+ }
+.Ticket_14_Img3{
+  object-fit: cover;  
+  width: 100%;
+  height: 100%;
+  background-image: url('../../../ticket/Carousel/pic/14-2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+ }
