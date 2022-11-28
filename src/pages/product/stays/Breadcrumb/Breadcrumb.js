@@ -4,7 +4,7 @@ import React from 'react';
 import { useHotelContext } from '../Context/HotelContext';
 function BreadcrumbHotel() {
   const { hotelListData } = useHotelContext();
-  console.log(hotelListData);
+  // console.log(hotelListData);
   return (
     <>
       <Breadcrumb className="TimeTravel_Breadcrumb">

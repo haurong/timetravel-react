@@ -3,6 +3,11 @@ export const MY_HOST = 'http://localhost:3001';
 // export const AB_LIST_AUTH = `${MY_HOST}/ab/api/list-auth`;
 // 假登入
 export const LOGIN_API = `${MY_HOST}/member/api/login-api`;
+export const SIGNIN_API = `${MY_HOST}/member/api/signin-api`;
+export const PROFILE_API = `${MY_HOST}/member/api/edit-member-api`;
+export const RESET_PASSWORD_API = `${MY_HOST}/member/api/reset-password-member-api`;
+export const UPLOAD_AVATAR_API = `${MY_HOST}/member/upload-avatar`;
+
 export const HOTEL_LIST = `${MY_HOST}/hotel/api`;
 
 export const FOOD_LIST = `${MY_HOST}/food/api`;

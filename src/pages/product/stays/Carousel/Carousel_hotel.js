@@ -13,7 +13,7 @@ import { Pagination, Navigation } from 'swiper';
 
 export default function Carousel() {
   const { hotelRoomChoose, hotelListData } = useHotelContext();
-  console.log(hotelListData);
+  // console.log(hotelListData);
   return (
     <Swiper
       slidesPerView={1}
