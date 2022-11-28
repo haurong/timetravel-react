@@ -12,7 +12,13 @@ function HotelCard() {
           <>
             <div className="card-wrap">
               <div className="card-body">
-                <HotelCardDetail name={v.name} id={v.id} type={v.roomtype} />
+                <HotelCardDetail
+                  name={v.name}
+                  id={v.id}
+                  type={v.roomtype}
+                  quantity={v.quantity}
+                  rate={v.rate}
+                />
               </div>
             </div>
           </>

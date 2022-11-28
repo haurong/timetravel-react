@@ -24,7 +24,7 @@ import HashChange from './HashChange/HashChange';
 import ComputerLikeAdd from './ComputerLikeAdd/ComputerLikeAdd';
 import ComDatePicker from './ComDatePicker/ComDatePicker';
 import BookingBar from './BookingBar/BookingBar';
-
+import SideBar from '../../../layout/SideBar';
 function Stays() {
   const dataFrom = '1';
   const {
