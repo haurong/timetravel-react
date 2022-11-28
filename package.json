@@ -30,6 +30,7 @@
     "react-bootstrap": "^2.6.0",
     "react-credit-cards": "^0.8.3",
     "react-dom": "^18.2.0",
+    "react-geocode": "^0.2.3",
     "react-icons": "^4.6.0",
     "react-leaflet": "^4.1.0",
     "react-leaflet-markercluster": "^3.0.0-rc1",

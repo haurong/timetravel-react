@@ -7,9 +7,10 @@ import { useHotelContext } from '../Context/HotelContext';
 
 function CommentSelector() {
   const [openSelector, setOpenSelector] = useState(false);
-  const { commentSort, setCommentSortom } = useHotelContext();
+  const { commentSort, setCommentSort } = useHotelContext();
   const handleChange = (e) => {
-    console.log(`selected ${e}`);
+    // console.log(`selected ${e}`);
+    setCommentSort(e);
   };
   return (
     <div className="CommentSelector">
