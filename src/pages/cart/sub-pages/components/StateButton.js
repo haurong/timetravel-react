@@ -1,8 +1,12 @@
 import React from 'react';
 
-function StateButton({ text, cursor }) {
+function StateButton({ text }) {
   return (
-    <div className="state-button-wrap">
+    <div
+      className={
+        text !== undefined ? 'state-button-wrap' : 'state-button-wrap-none'
+      }
+    >
       <p>{text}</p>
     </div>
   );

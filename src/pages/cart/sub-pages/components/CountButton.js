@@ -1,18 +1,26 @@
-import React from 'react';
-import PlusIcon from './../../../../icon/add.svg';
-import MinusIcon from './../../../../icon/minus.svg';
+import React, { useEffect, useState } from 'react';
+import { ReactComponent as Add } from './../../../../icon/add.svg';
+import { ReactComponent as Minus } from './../../../../icon/minus.svg';
 import './../../styles/CountButton.scss';
-function CountButton() {
+function CountButton({ quantity, plusOne, minusOne }) {
   return (
     <div className="count-btn-wrap">
-      <span className="count-btn icon">
-        <img alt="MinusIcon" src={MinusIcon} />
+      <span
+        className={
+          quantity === 1
+            ? 'count-btn icon not_canClick'
+            : 'count-btn icon canClick'
+        }
+        role="button"
+        onClick={minusOne}
+      >
+        <Minus className="Counts_SVG" />
       </span>
       <div className="count-num">
-        <p>1</p>
+        <p>{quantity}</p>
       </div>
-      <span className="count-btn icon">
-        <img alt="PlusIcon" src={PlusIcon} />
+      <span className="count-btn icon" role="button" onClick={plusOne}>
+        <Add className="Counts_SVG" />
       </span>
     </div>
   );

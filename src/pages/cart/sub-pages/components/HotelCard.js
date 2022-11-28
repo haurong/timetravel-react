@@ -1,7 +1,7 @@
 import React from 'react';
 import HotelCardInfo from './HotelCardInfo';
 import HotelCardDetail from './HotelCardDetail';
-import { useHotelCart } from '../../utils/useHotelCart';
+import { useHotelCart } from '../../utils/useCart';
 function HotelCard() {
   const { cart, items, plusOne, minusOne, removeItem } = useHotelCart();
 
@@ -12,7 +12,7 @@ function HotelCard() {
           <>
             <div className="card-wrap">
               <div className="card-body">
-                <HotelCardDetail name={v.name} />
+                <HotelCardDetail name={v.name} id={v.id} type={v.roomtype} />
               </div>
             </div>
           </>

@@ -3,17 +3,19 @@ import CardTitle from './CardTitle';
 import CardBodyTop from './CardBodyTop';
 import StateButton from './StateButton';
 import DateInput from './DateInput';
-function HotelCardDetail({ name }) {
+import { useHotelCart } from '../../utils/useCart';
+function HotelCardDetail({ name, id, type }) {
+  const { removeItem } = useHotelCart();
   return (
     <div className="pb-5">
       <CardTitle
         text="訂房預定資訊"
         deleteFun={() => {
-          console.log('delete');
+          removeItem(id);
         }}
       />
       <CardBodyTop productName={name} />
-      <StateButton text={'雅致家庭房 | 二大床'} />
+      <StateButton text={type} />
       <div className="d-flex">
         <DateInput text={'入住時間'} />
         <DateInput text={'退房時間'} />

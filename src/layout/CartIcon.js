@@ -1,9 +1,11 @@
 import React from 'react';
 import CartImg from '../icon/cart.svg';
 import { NavLink } from 'react-router-dom';
-import { useFoodCart } from '../pages/cart/utils/useFoodCart';
-import { useHotelCart } from '../pages/cart/utils/useHotelCart';
-import { useTicketCart } from '../pages/cart/utils/useTicketCart';
+import {
+  useHotelCart,
+  useTicketCart,
+  useFoodCart,
+} from '../pages/cart/utils/useCart';
 function CartIcon() {
   const foodcart = useFoodCart().cart;
   const hotelcart = useHotelCart().cart;

@@ -31,9 +31,11 @@ import OrderFail from './pages/cart/OrderFail';
 //context
 import { HotelContextProvider } from './pages/product/stays/Context/HotelContext';
 import { AuthContextProvider } from './pages/member/context/AuthContext';
-import { HotelCartProvider } from './pages/cart/utils/useHotelCart';
-import { FoodCartProvider } from './pages/cart/utils/useFoodCart';
-import { TicketCartProvider } from './pages/cart/utils/useTicketCart';
+import {
+  HotelCartProvider,
+  FoodCartProvider,
+  TicketCartProvider,
+} from './pages/cart/utils/useCart';
 function App() {
   return (
     <HotelCartProvider localStorageKey="hotelcart">
