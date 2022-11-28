@@ -36,6 +36,9 @@ export const HotelContextProvider = ({ children }) => {
   //  取得總星星平均
   const [allStar, setAllStar] = useState();
 
+  //  評價排序
+  const [commentSort, setCommentSort] = useState('time_ASC');
+
   return (
     <HotelContext.Provider
       value={{
@@ -59,6 +62,8 @@ export const HotelContextProvider = ({ children }) => {
         setHotelCommentData,
         allStar,
         setAllStar,
+        commentSort,
+        setCommentSort,
       }}
     >
       {children}
