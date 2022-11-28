@@ -15,7 +15,7 @@ export default function MyPagination({ page, totalPages }) {
           <MdOutlineChevronLeft />
         </Link>
       </li>
-      {Array(11)
+      {Array(13)
         .fill(1)
         .map((el, i) => {
           const classNames = ['page-item'];

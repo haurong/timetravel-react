@@ -42,7 +42,7 @@ function BreadCrumb({ foodData }) {
           </li>
           <li className="breadcrumb-item">
             <NavLink id="bccatename" href="#/">
-              {foodData.categorise_name}
+              {foodData.categories_name}
             </NavLink>
           </li>
           <li

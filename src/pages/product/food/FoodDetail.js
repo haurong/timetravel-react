@@ -2,12 +2,13 @@ import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useLocation } from 'react-router-dom';
-
+import { useFoodContext } from './FoodContext/FoodContext.js';
 import { FOOD_ITEM } from '../../../config.js';
 import { FOOD_COMMIT } from '../../../config.js';
 import FoodMap from './FoodMap';
 import Commit from './Commit';
 import CommitSelect from './CommitSelect';
+import FoodBookingBar from './FoodBookingBar';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import BreadCrumb from './BreadCrumb';
@@ -28,33 +29,36 @@ import Add_icon from '../../../icon/add.svg';
 import House_icon from '../../../icon/house.svg';
 
 import './FoodDetail.scss';
-//breadcrumb還沒導入component
-function FoodDetail() {
-  //拿到單筆資料
-  const [foodData, setFoodData] = useState({});
 
-  const [like, setLike] = useState(false);
+function FoodDetail() {
+  const {
+    foodData,
+    setFoodData,
+    count,
+    setCount,
+    totalPrice,
+    setTotalPrice,
+    commitData,
+    setCommitData,
+    like,
+    setLike,
+    add,
+    setAdd,
+  } = useFoodContext();
   const toggleLike = () => setLike(!like);
-  const [add, setAdd] = useState(false);
   const toggleAdd = () => setAdd(!add);
 
-  const [count, setCount] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(foodData.p_selling_price);
-  const a = foodData.p_selling_price;
-  console.log(a);
   const location = useLocation();
   //const path = window.location.pathname.split('/');
   const sid = 116;
 
   async function getData() {
+    //拿到資料設定回foodData
     const response = await axios.get(FOOD_ITEM + sid);
-    // const response = await axios.get(SITE_DETAIL);
     setFoodData(response.data);
     setTotalPrice(response.data.p_selling_price);
   }
-
-  const [commitData, setCommitData] = useState([]);
-
+  //用於queryString
   const usp = new URLSearchParams(location.search);
 
   const Food_part0 = useRef();
@@ -64,6 +68,7 @@ function FoodDetail() {
   const Food_part4 = useRef();
   const [allPart, setAllPart] = useState({});
   const [isScroll, setIsScroll] = useState(false);
+
   window.addEventListener('scroll', () => {
     if (isScroll === false) {
       setIsScroll(true);
@@ -100,10 +105,14 @@ function FoodDetail() {
   useEffect(() => {
     getData();
   }, []);
-
+  //TODO:包了context後bookingbar無法render
   return (
     <>
       <NavBar />
+      <div className="MobileHidden">
+        <FoodBookingBar foodData={foodData} />
+      </div>
+      <div style={{ width: '100%', height: '79px' }}></div>
       <div className="ComputerHidden">
         <HashChange allPart={allPart} />
       </div>
@@ -167,7 +176,7 @@ function FoodDetail() {
               </div>
               <div className="cate d-flex">
                 <img src={Food_icon} alt="" className="Food_icon" />
-                <p>{foodData.categorise_name}</p>
+                <p>{foodData.categories_name}</p>
               </div>
             </div>
             <div className="tickets_group d-flex ">
