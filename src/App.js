@@ -5,6 +5,7 @@ import React from 'react';
 import Layout from './layout/Layout';
 // 以下為各頁面元件
 import Home from './pages/Home/Home';
+import HomeJie from './pages/HomeJie/HomeJie';
 import ProductList from './pages/product/ProductList';
 import Itinerary from './pages/product/itinerary/Itinerary';
 import Site from './pages/product/itinerary/Site';
@@ -42,6 +43,7 @@ function App() {
             <Route path="/" element={<Layout />}>
               {/* index代表此路由中的預設子頁 */}
               <Route index element={<Home />} />
+              {/* <Route index element={<HomeJie />} /> */}
             </Route>
             <Route path="productList" element={<ProductList />} />
             <Route path="itinerary" element={<Itinerary />} />

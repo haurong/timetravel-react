@@ -26,7 +26,7 @@ import ComDatePicker from './ComDatePicker/ComDatePicker';
 import BookingBar from './BookingBar/BookingBar';
 
 function Stays() {
-  const dataFrom = '38';
+  const dataFrom = '1';
   const {
     roomCounts,
     hotelRoomPrice,
