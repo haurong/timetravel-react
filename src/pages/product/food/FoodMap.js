@@ -12,7 +12,11 @@ export default function FoodMap() {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         <Marker position={[25.149916, 121.763819]} className="marker">
-          <Popup>萬祝號<br />WanChuHao</Popup>
+          <Popup>
+            萬祝號
+            <br />
+            WanChuHao
+          </Popup>
         </Marker>
         {/* <Marker position={[25.0393607, 121.5026982]}>
           <Popup>
