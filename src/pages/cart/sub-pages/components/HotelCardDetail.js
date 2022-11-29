@@ -5,7 +5,15 @@ import StateButton from './StateButton';
 import DateInput from './DateInput';
 import { useHotelCart } from '../../utils/useCart';
 import CountButton from './CountButton';
-function HotelCardDetail({ name, id, type, quantity, rate }) {
+function HotelCardDetail({
+  name,
+  id,
+  type,
+  quantity,
+  rate,
+  checkin,
+  checkout,
+}) {
   const { removeItem, plusOne, minusOne } = useHotelCart();
   return (
     <div className="pb-5">
@@ -18,8 +26,8 @@ function HotelCardDetail({ name, id, type, quantity, rate }) {
       <CardBodyTop productName={name} rate={rate} />
       <StateButton text={type} />
       <div className="d-flex">
-        <DateInput text={'入住時間'} />
-        <DateInput text={'退房時間'} />
+        <DateInput text={'入住時間'} date={checkin} />
+        <DateInput text={'退房時間'} date={checkout} />
         <div className="day-count">
           <p>1晚</p>
         </div>
