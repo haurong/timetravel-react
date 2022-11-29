@@ -37,6 +37,7 @@ import {
   FoodCartProvider,
   TicketCartProvider,
 } from './pages/cart/utils/useCart';
+
 function App() {
   return (
     <HotelCartProvider localStorageKey="hotelcart">
