@@ -13,7 +13,6 @@ yarn.lock
 
 # production
 /build
-/src/pages/product/itinerary/Key.js
 
 # misc
 .DS_Store

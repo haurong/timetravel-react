@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Trash from './../../../icon/Trash.svg';
-import { ITINERARY_ITEM, GOOGLE_ADDRESS, SITE_IMG } from './site-config';
+import { ITINERARY_ITEM, SITE_IMG } from './site-config';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { useLocation } from 'react-router-dom';
+import ThemeContext from './ThemeContext';
 
 // dnd功能shinder建議取消，此頁面僅供瀏覽列表跟地圖
 export default function IList({ iData }) {
@@ -36,173 +37,144 @@ export default function IList({ iData }) {
   let arr = list;
 
   return (
-    <DragDropContext
-      onDragEnd={(result) => {
-        const { source, destination, draggableId } = result;
-        if (!destination) {
-          return;
-        }
+    <ThemeContext.Provider value={{}}>
+      <DragDropContext
+        onDragEnd={(result) => {
+          const { source, destination, draggableId } = result;
+          if (!destination) {
+            return;
+          }
 
-        console.log(list);
-        const [remove] = list.splice(source.index, 1);
-        list.splice(destination.index, 0, remove);
-        setList(list);
-      }}
-    >
-      <Droppable droppableId="id">
-        {(provided) => (
-          <div ref={provided.innerRef} {...provided.droppableProps}>
-            {dList.map((el, i) => {
-              const dItem = +arr.filter((v) => v.day === el.day).length;
-              return (
-                <>
-                  <div
-                    key={i}
-                    id={'day' + el.day}
-                    className={'day stickyt' + el.day + ' day' + el.day}
-                    onClick={() => {
-                      document.querySelector('#iList').scrollTo({
-                        top:
-                          document.querySelector('#iItem' + el.day + '-1')
-                            .offsetTop - 120,
-                        behavior: 'smooth',
-                      });
-                    }}
-                  >
-                    <h2>{'Day' + el.day}</h2>
-                    <h3>{dItem + '個行程'}</h3>
-                  </div>
-                  {el.day === 1
-                    ? dList1.map((el, i) => {
-                        return (
-                          <>
-                            <Draggable draggableId={el.sid + ' '} index={i}>
-                              {(p) => (
-                                <div
-                                  className="iItem"
-                                  id={'iItem' + el.day + '-' + el.sequence}
-                                  ref={p.innerRef}
-                                  {...p.draggableProps}
-                                  {...p.dragHandleProps}
-                                >
-                                  <img
-                                    className="iItem-img"
-                                    src={SITE_IMG + el.img1}
-                                    alt=""
-                                  />
-                                  <div className="iItemText ">
-                                    <h2>{el.name}</h2>
-                                    <p>{el.city_name + ' ' + el.area_name}</p>
+          console.log(list);
+          const [remove] = list.splice(source.index, 1);
+          list.splice(destination.index, 0, remove);
+          setList(list);
+        }}
+      >
+        <Droppable droppableId="id">
+          {(provided) => (
+            <div ref={provided.innerRef} {...provided.droppableProps}>
+              {dList.map((el, i) => {
+                const dItem = +arr.filter((v) => v.day === el.day).length;
+                return (
+                  <>
+                    <div
+                      key={i}
+                      id={'day' + el.day}
+                      className={'day stickyt' + el.day + ' day' + el.day}
+                      onClick={() => {
+                        document.querySelector('#iList').scrollTo({
+                          top:
+                            document.querySelector('#iItem' + el.day + '-1')
+                              .offsetTop - 120,
+                          behavior: 'smooth',
+                        });
+                      }}
+                    >
+                      <h2>{'Day' + el.day}</h2>
+                      <h3>{dItem + '個行程'}</h3>
+                    </div>
+                    {el.day === 1
+                      ? dList1.map((el, i) => {
+                          return (
+                            <>
+                              <Draggable draggableId={el.sid + ' '} index={i}>
+                                {(p) => (
+                                  <div
+                                    className="iItem"
+                                    id={'iItem' + el.day + '-' + el.sequence}
+                                    ref={p.innerRef}
+                                    {...p.draggableProps}
+                                    {...p.dragHandleProps}
+                                  >
+                                    <img
+                                      className="iItem-img"
+                                      src={SITE_IMG + el.img1}
+                                      alt=""
+                                    />
+                                    <div className="iItemText ">
+                                      <h2>{el.name}</h2>
+                                      <p>{el.city_name + ' ' + el.area_name}</p>
+                                    </div>
+                                    <span className="icon">
+                                      <img src={Trash} alt="" />
+                                    </span>
                                   </div>
-                                  <span className="icon">
-                                    <img src={Trash} alt="" />
-                                  </span>
-                                </div>
-                              )}
-                            </Draggable>
-                          </>
-                        );
-                      })
-                    : ''}
-                  {el.day === 2
-                    ? dList2.map((el, i) => {
-                        return (
-                          <>
-                            <Draggable draggableId={el.sid + ' '} index={i}>
-                              {(p) => (
-                                <div
-                                  className="iItem"
-                                  id={'iItem' + el.day + '-' + el.sequence}
-                                  ref={p.innerRef}
-                                  {...p.draggableProps}
-                                  {...p.dragHandleProps}
-                                >
-                                  <img
-                                    className="iItem-img"
-                                    src={SITE_IMG + el.img1}
-                                    alt=""
-                                  />
-                                  <div className="iItemText ">
-                                    <h2>{el.name}</h2>
-                                    <p>{el.city_name + ' ' + el.area_name}</p>
+                                )}
+                              </Draggable>
+                            </>
+                          );
+                        })
+                      : ''}
+                    {el.day === 2
+                      ? dList2.map((el, i) => {
+                          return (
+                            <>
+                              <Draggable draggableId={el.sid + ' '} index={i}>
+                                {(p) => (
+                                  <div
+                                    className="iItem"
+                                    id={'iItem' + el.day + '-' + el.sequence}
+                                    ref={p.innerRef}
+                                    {...p.draggableProps}
+                                    {...p.dragHandleProps}
+                                  >
+                                    <img
+                                      className="iItem-img"
+                                      src={SITE_IMG + el.img1}
+                                      alt=""
+                                    />
+                                    <div className="iItemText ">
+                                      <h2>{el.name}</h2>
+                                      <p>{el.city_name + ' ' + el.area_name}</p>
+                                    </div>
+                                    <span className="icon">
+                                      <img src={Trash} alt="" />
+                                    </span>
                                   </div>
-                                  <span className="icon">
-                                    <img src={Trash} alt="" />
-                                  </span>
-                                </div>
-                              )}
-                            </Draggable>
-                          </>
-                        );
-                      })
-                    : ''}
-                  {el.day === 3
-                    ? dList3.map((el, i) => {
-                        return (
-                          <>
-                            <Draggable draggableId={el.sid + ' '} index={i}>
-                              {(p) => (
-                                <div
-                                  className="iItem"
-                                  id={'iItem' + el.day + '-' + el.sequence}
-                                  ref={p.innerRef}
-                                  {...p.draggableProps}
-                                  {...p.dragHandleProps}
-                                >
-                                  <img
-                                    className="iItem-img"
-                                    src={SITE_IMG + el.img1}
-                                    alt=""
-                                  />
-                                  <div className="iItemText ">
-                                    <h2>{el.name}</h2>
-                                    <p>{el.city_name + ' ' + el.area_name}</p>
+                                )}
+                              </Draggable>
+                            </>
+                          );
+                        })
+                      : ''}
+                    {el.day === 3
+                      ? dList3.map((el, i) => {
+                          return (
+                            <>
+                              <Draggable draggableId={el.sid + ' '} index={i}>
+                                {(p) => (
+                                  <div
+                                    className="iItem"
+                                    id={'iItem' + el.day + '-' + el.sequence}
+                                    ref={p.innerRef}
+                                    {...p.draggableProps}
+                                    {...p.dragHandleProps}
+                                  >
+                                    <img
+                                      className="iItem-img"
+                                      src={SITE_IMG + el.img1}
+                                      alt=""
+                                    />
+                                    <div className="iItemText ">
+                                      <h2>{el.name}</h2>
+                                      <p>{el.city_name + ' ' + el.area_name}</p>
+                                    </div>
+                                    <span className="icon">
+                                      <img src={Trash} alt="" />
+                                    </span>
                                   </div>
-                                  <span className="icon">
-                                    <img src={Trash} alt="" />
-                                  </span>
-                                </div>
-                              )}
-                            </Draggable>
-                          </>
-                        );
-                      })
-                    : ''}
-                  {/* {dList1.map((el, i) => {
-                    return (
-                      <>
-                        <Draggable draggableId={el.sid + ' '} index={i}>
-                          {(p) => (
-                            <div
-                              className="iItem"
-                              id={'iItem' + el.day + '-' + el.sequence}
-                              ref={p.innerRef}
-                              {...p.draggableProps}
-                              {...p.dragHandleProps}
-                            >
-                              <img
-                                className="iItem-img"
-                                src={SITE_IMG + el.img1}
-                                alt=""
-                              />
-                              <div className="iItemText ">
-                                <h2>{el.name}</h2>
-                                <p>{el.city_name + ' ' + el.area_name}</p>
-                              </div>
-                              <span className="icon">
-                                <img src={Trash} alt="" />
-                              </span>
-                            </div>
-                          )}
-                        </Draggable>
-                      </>
-                    );
-                  })} */}
-                </>
-              );
-            })}
+                                )}
+                              </Draggable>
+                            </>
+                          );
+                        })
+                      : ''}
+                  </>
+                );
+              })}
 
-            {/* {list.map((el, i) => {
+              {/* {list.map((el, i) => {
               const dItem = +arr.filter((v) => v.day === el.day).length;
               return (
                 <>
@@ -252,10 +224,11 @@ export default function IList({ iData }) {
                 </>
               );
             })} */}
-            {/* {provided.placeholder} */}
-          </div>
-        )}
-      </Droppable>
-    </DragDropContext>
+              {/* {provided.placeholder} */}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+    </ThemeContext.Provider>
   );
 }
