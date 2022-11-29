@@ -34,7 +34,7 @@ function BookingBar() {
               setBookingBarOpen(!bookingBarOpen);
             }}
           >
-            <h2 style={{ color: '#4D4D4D' }}>{hotelListData.hotel_name}</h2>
+            <h2 style={{ color: '#4D4D4D' }}>{hotelListData.product_name}</h2>
             {/* <div className="icon d-flex align-items-center">
               <Sort />
             </div> */}

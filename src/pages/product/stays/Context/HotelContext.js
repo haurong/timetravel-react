@@ -17,7 +17,8 @@ export const HotelContextProvider = ({ children }) => {
     endTime: tomorrow,
     days: 1,
   });
-
+  //  住宿列表資料
+  const [hotelAllData, setHotelAllData] = useState([]);
   //  房間價格
   const [hotelRoomPrice, setHotelRoomPrice] = useState(1);
 
@@ -69,6 +70,8 @@ export const HotelContextProvider = ({ children }) => {
         setCommentSort,
         roomsChooseName,
         setRoomsChooseName,
+        hotelAllData,
+        setHotelAllData,
       }}
     >
       {children}
