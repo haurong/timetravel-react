@@ -7,11 +7,13 @@ import RoomChoose from '../RoomChoose/RoomChoose';
 import RoomCounts from '../RoomCounts/RoomCounts';
 import BuyButton from '../BuyButton/BuyButton';
 import { useHotelContext } from '../Context/HotelContext';
+import { Today } from '@mui/icons-material';
 const { RangePicker } = DatePicker;
 
 function ComDatePicker(props) {
-  const { pickDate, setPickDate, hotelRoomPrice, roomCounts } =
+  const { pickDate, setPickDate, hotelRoomPrice, roomCounts, today } =
     useHotelContext();
+
   return (
     <>
       <div className="ComDatePicker d-flex">
@@ -40,6 +42,7 @@ function ComDatePicker(props) {
               bordered
               format="YYYY-MM-DD"
               onChange={(e) => {
+                console.log(e);
                 moment.locale('zh-tw');
                 let start = moment(e[0]._d).format('YYYY-MM-DD');
                 let end = moment(e[1]._d).format('YYYY-MM-DD');
@@ -53,6 +56,9 @@ function ComDatePicker(props) {
               }}
               value={[moment(pickDate.startTime), moment(pickDate.endTime)]}
               popupClassName={'popupDatePicker hiddenBox'}
+              disabledDate={(current) => {
+                return current < moment(today);
+              }}
             />
           </div>
         </div>

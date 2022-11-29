@@ -42,9 +42,6 @@ function HashChange(props) {
       setSlideOut(true);
       setWhichPart('旅客評價');
     }
-    if(nowScroll + screen > part5){
-      
-    }
   });
 
   // window.addEventListener('onhashchange', () => {
