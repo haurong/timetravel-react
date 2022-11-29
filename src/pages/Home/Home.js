@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import '../../global.scss';
 import './Home.scss';
 
+
 import '../../../node_modules/slick-carousel/slick/slick.css';
 import '../../../node_modules/slick-carousel/slick/slick-theme.css';
 
 // import BannerSliderHot from '../../pages/product/ticket/BannerSlider/BannerSliderHot';
 import BannerSliderHot from './Carousel/Card_Carousel';
-import BannerSliderNewest from '../../pages/Home/BannerSlider/BannerSliderNewest';
-// import BannerSliderNewest from './Carousel/Carousel';
+// import BannerSliderNewest from '../../pages/Home/BannerSlider/BannerSliderNewest';
+import BannerSliderNewest from './Carousel/Carousel';
 import ButtonSign from '../../pages/product/ticket/ButtonSign/ButtonSign';
 import TagSiteButton from './TagButton/TagSiteButton';
 import TagFoodButton from './TagButton/TagFoodButton';
@@ -23,6 +24,8 @@ import TagSelectRooms from './TagSelect/TagSelectRooms';
 import TagStaySearchBtn from './ButtonSearch/ButtonSearch';
 import TagSearchBtn from './ButtonSearch/ButtonSearch';
 import { useLocation } from 'react-router-dom';
+import { useScrollPosition } from '@n8tb1t/use-scroll-position'
+
 
 function Home() {
   const [bgClassName, setBgClassName] = useState(

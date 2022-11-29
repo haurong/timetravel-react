@@ -1,7 +1,7 @@
 import React, { useState, useContext, createContext, useEffect } from 'react';
 import moment from 'moment/moment';
 
-const HotelContext = createContext(null);
+const TicketContext = createContext(null);
 
 export const HotelContextProvider = ({ children }) => {
   //  日期選擇
@@ -37,7 +37,7 @@ export const HotelContextProvider = ({ children }) => {
   const [allStar, setAllStar] = useState();
 
   return (
-    <HotelContext.Provider
+    <TicketContext.Provider
       value={{
         slideOut,
         setSlideOut,
@@ -62,8 +62,8 @@ export const HotelContextProvider = ({ children }) => {
       }}
     >
       {children}
-    </HotelContext.Provider>
+    </TicketContext.Provider>
   );
 };
 
-export const useHotelContext = () => useContext(HotelContext);
+export const useHotelContext = () => useContext(TicketContext);

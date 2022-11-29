@@ -2,12 +2,33 @@ import { useState } from 'react';
 import './RankChoose.scss';
 function RankChoose() {
   const Rank = ['五星', '四星', '三星', '二星', '一星'];
-  const [isChecked, setIsChecked] = useState(false);
-  const [RankChoose, setRankChoose] = useState(0);
+  const [Checked, setChecked] = useState('false');
+  const [RankChoose, setRankChoose] = useState('');
 
   return (
     <div className="RankChoose">
-      <label>
+      {Rank.map((v, i) => {
+        return (
+          <div
+            className="RankCheckbox"
+            key={i}
+            onclick={() => {
+              setRankChoose(i);
+            }}
+          >
+            <input
+            // type="checkbox"
+            // {className=''}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+{
+  /* <label>
         <input
           type="checkbox"
           onChange={() => {
@@ -20,29 +41,11 @@ function RankChoose() {
           // we hide it for screen readers
           aria-hidden="true"
         />
-        <span>
-          五星
-        </span>
+        
 
-        {/* {Rank.map((v, i) => {
-        return (
-          <div
-            className="Rank_button"
-            key={i}
-            onClick={() => {
-              setRankChoose(i);
-            }}
-          >
-            <button className={RankChoose === i ? 'rankChooseActive' : ''}>
-              {v}
-            </button>
-
-          </div>
-        );
-      })} */}
+        
       </label>
-    </div>
-  );
+    </div> */
 }
 
 export default RankChoose;

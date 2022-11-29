@@ -68,11 +68,11 @@ function Ticket() {
               <div>
                 <h2>評分</h2>
               </div>
-              <RankChoose />
+              {/* <RankChoose />
               <RankChoose4 />
               <RankChoose3 />
               <RankChoose2 />
-              <RankChoose1 />
+              <RankChoose1 /> */}
             </div>
           </Col>
           <Col className="col-9 ticket-list-test">
