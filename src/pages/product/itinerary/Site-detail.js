@@ -6,10 +6,11 @@ import Swal from 'sweetalert2';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import { Container } from 'react-bootstrap';
-import Carousel from '../../../Component/Carousel/Carousel';
+import Carousel from './Carousel/SiteCarousel';
 import BreadCrumb from '../../../Component/BreadCrumb/BreadCrumb';
 import SiteDes from './SiteDes';
 import './Site-detail.scss';
+import './Carousel/SiteCarousel.scss';
 import { SITE_DETAIL } from './site-config';
 
 import Heart from '../../../icon/heart_gray.svg';
