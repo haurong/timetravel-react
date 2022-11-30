@@ -9,6 +9,7 @@ import ThemeContext from './ThemeContext';
 // dnd功能shinder建議取消，此頁面僅供瀏覽列表跟地圖
 export default function IList() {
   const [list, setList] = useState([]);
+  const [arr, setArr] = useState([]);
   const [dList, setDlist] = useState([]);
   const [dList1, setDlist1] = useState([]);
   const [dList2, setDlist2] = useState([]);
@@ -24,6 +25,8 @@ export default function IList() {
     // console.log(newData.filter((v) => v.sequence === 1));
 
     setList(response.data);
+    setArr(response.data);
+
     setDlist(newData.filter((v) => v.sequence === 1));
     setDlist1(newData.filter((v) => v.day === 1));
     setDlist2(newData.filter((v) => v.day === 2));
@@ -33,8 +36,6 @@ export default function IList() {
   useEffect(() => {
     getItemList();
   }, [location]);
-
-  let arr = list;
 
   return (
     <ThemeContext.Provider value={{}}>
@@ -67,10 +68,10 @@ export default function IList() {
           setList(list);
         }}
       >
-        <Droppable droppableId="id">
+        <Droppable droppableId="id" id="drop">
           {(provided) => (
             <div ref={provided.innerRef} {...provided.droppableProps}>
-              {list.map((el, i) => {
+              {arr.map((el, i) => {
                 const d = list[i - 1] ? list[i - 1].day : 0;
                 const dItem = +arr.filter((v) => v.day === el.day).length;
 
@@ -78,6 +79,7 @@ export default function IList() {
                   <div key={i}>
                     {/* {d !== el.day ? (
                       <div
+                        key={i + '0'}
                         id={'day' + el.day}
                         className={'day stickyt' + el.day + ' day' + el.day}
                         onClick={() => {
@@ -101,7 +103,6 @@ export default function IList() {
                           className="iItem"
                           id={'iItem' + el.day + '-' + el.sequence}
                           {...p.draggableProps}
-                          {...p.dragHandleProps}
                           ref={p.innerRef}
                         >
                           {/* <img
@@ -109,11 +110,18 @@ export default function IList() {
                           src={SITE_IMG + el.img1}
                           alt=""
                         /> */}
-                          <div className="iItemText ">
+                          <div className="iItemText " {...p.dragHandleProps}>
                             <h2>{el.name}</h2>
                             <p>{el.city_name + ' ' + el.area_name}</p>
                           </div>
-                          <span className="icon">
+                          <span
+                            className="icon"
+                            onClick={() => {
+                              const newArr = arr;
+                              const keep = newArr.splice(i + 1);
+                              setArr(keep);
+                            }}
+                          >
                             <img src={Trash} alt="" />
                           </span>
                         </div>
