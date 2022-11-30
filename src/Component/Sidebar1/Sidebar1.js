@@ -15,7 +15,14 @@ function getItem(label, key, children, type) {
     type,
   };
 }
-const items3 = ['五星', '四星', '三星', '二星', '一星'];
+const items3 = [
+  getItem('全部', 'score1'),
+  getItem('五星', 'score2'),
+  getItem('四星', 'score3'),
+  getItem('三星', 'score4'),
+  getItem('二星', 'score5'),
+  getItem('一星', 'score6'),
+];
 const options = [
   {
     label: '五星',
@@ -39,6 +46,7 @@ const options = [
   },
 ];
 const items1 = [
+  getItem('全部', 'sub0'),
   getItem('台北市', 'sub1'),
   getItem('新北市', 'sub2'),
   getItem('基隆市', 'sub3'),
@@ -126,7 +134,7 @@ export default function Sidebar1() {
   };
 
   return (
-    <>
+    <div className="Eliot_Du_Boss">
       <div className="destination">
         <h2 className="sidebarMarginTop">篩選目的地</h2>
         <Menu
@@ -148,16 +156,13 @@ export default function Sidebar1() {
       <div className="selectScore">
         <h2 className="sidebarMarginTop">旅客評分</h2>
         <Menu
-         mode="vertical"
-        >
-          <Checkbox.Group
-            options={items3}
-            defaultValue={[]}
-            onChange={onChange}
-          />
-        </Menu>
+          mode="inline"
+          openKeys={openKeys}
+          onOpenChange={onOpenChange}
+          items={items3}
+        />
       </div>
-    </>
+    </div>
   );
 }
 

@@ -18,7 +18,7 @@ function BreadcrumbHotel() {
           <a href="#/">{hotelListData.hotel_categories}</a>
         </Breadcrumb.Item>
         <Breadcrumb.Item className="Breadcrumb_Here">
-          <a href="#/">{hotelListData.hotel_name}</a>
+          <a href="#/">{hotelListData.product_name}</a>
         </Breadcrumb.Item>
       </Breadcrumb>
     </>

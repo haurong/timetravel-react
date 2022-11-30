@@ -11,7 +11,7 @@ function HotelDetail() {
           <ul>
             <li>
               <BsFillDiamondFill className="hotel_detail_BsFillDiamondFill" />
-              飯店名稱：{hotelListData.hotel_name}
+              飯店名稱：{hotelListData.product_name}
             </li>
             <li>
               <BsFillDiamondFill className="hotel_detail_BsFillDiamondFill" />

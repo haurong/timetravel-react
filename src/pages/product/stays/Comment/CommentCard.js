@@ -1,16 +1,48 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Rate } from 'antd';
 import './Comment.scss';
 import moment from 'moment/moment';
 import { useHotelContext } from '../Context/HotelContext';
+
 function CommentCard() {
-  const { hotelCommentData, commentSort } = useHotelContext();
-  if(commentSort === 'time_ASC'){
-    
-  }
-    // hotelCommentData.sort((a, b) => {
-    //   return a.score - b.score;
-    // })
+  const { hotelCommentData, commentSort, setHotelCommentData } =
+    useHotelContext();
+  // console.log(Date.parse(hotelCommentData[0].create_time));
+  console.log(hotelCommentData);
+
+  useEffect(() => {
+    // if (hotelCommentData.length !== 0) {
+    let tmp = hotelCommentData.map((v) => {
+      return { ...v };
+    });
+
+    // console.log('tmp', tmp);
+
+    if (commentSort === 'score_ASC') {
+      tmp = tmp.sort((a, b) => {
+        return a.score - b.score;
+      });
+      setHotelCommentData(tmp);
+    } else if (commentSort === 'score_DESC') {
+      tmp = tmp.sort((a, b) => {
+        return b.score - a.score;
+      });
+      setHotelCommentData(tmp);
+    } else if (commentSort === 'time_ASC') {
+      tmp = tmp.sort((a, b) => {
+        return Date.parse(a.create_time) - Date.parse(b.create_time);
+      });
+      setHotelCommentData(tmp);
+    } else if (commentSort === 'time_DESC') {
+      tmp = tmp.sort((a, b) => {
+        return Date.parse(b.create_time) - Date.parse(a.create_time);
+      });
+      setHotelCommentData(tmp);
+    }
+
+    //}
+  }, [commentSort]);
+
   return (
     <>
       {hotelCommentData.map((v, i) => {

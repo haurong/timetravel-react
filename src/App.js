@@ -13,6 +13,7 @@ import SiteDetail from './pages/product/itinerary/Site-detail';
 import Food from './pages/product/food/Food';
 import FoodDetail from './pages/product/food/FoodDetail';
 import Stays from './pages/product/stays/Stays';
+import StaysDetail from './pages/product/stays/StaysDetail';
 import Ticket from './pages/product/ticket/Ticket';
 import TicketDetail from './pages/product/ticket/TicketDetail';
 import LogIn from './pages/member/LogIn';
@@ -64,7 +65,8 @@ function App() {
                     <Route path="food" element={<Food />} />
                     <Route path="food/detail" element={<FoodDetail />} />
                     <Route path="stays" element={<Stays />} />
-                    <Route path="ticket" element={<Ticket />} />
+                    <Route path="stays/detail/:sid" element={<StaysDetail />} />
+                  <Route path="ticket" element={<Ticket />} />
                     <Route path="TicketDeatil" element={<TicketDetail />} />
                     <Route path="logIn" element={<LogIn />} />
                     <Route
