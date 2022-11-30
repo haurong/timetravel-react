@@ -10,7 +10,7 @@ import { useHotelContext } from '../../../stays/Context/HotelContext';
 const { RangePicker } = DatePicker;
 
 function ComDatePicker(props) {
-  const { pickDate, setPickDate, roomCounts } =
+  const { pickDate, setPickDate, hotelRoomPrice,roomCounts } =
     useHotelContext();
   return (
     <>
@@ -62,7 +62,7 @@ function ComDatePicker(props) {
           <div className="ComDatePicker_Right_text">
             <h5>票種選擇</h5>
           </div>
-          <RoomChoose />
+          <RoomChoose ticketType={props.ticketType}/>
           <h5 style={{ marginTop: '50px' }}>票券張數</h5>
           <RoomCounts />
           <h4
@@ -72,7 +72,7 @@ function ComDatePicker(props) {
               marginBottom: '30px',
             }}
           >
-            TWD${123}
+            TWD${hotelRoomPrice * roomCounts}
           </h4>
           <div className="d-flex ComDatePicker_Right_BuyButton ">
             <BuyButton />

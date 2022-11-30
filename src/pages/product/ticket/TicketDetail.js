@@ -11,7 +11,8 @@ import { TICKET_DETAIL } from './ticket-config';
 import Carousel from './DetailComponent/CarouselDu/Carousel';
 // import BreadCrumb from './DetailComponent/BreadCrumb/BreadCrumb';
 import BreadCrumb from './Breadcrumb/Breadcrumb';
-import Rate from './Rate/Rate';
+// import Rate from './Rate/Rate';
+import Rate from '../ticket/DetailComponent/Rate/Rate';
 import IconBar from './DetailComponent/IconBar/IconBar';
 import ShowPic from '../ticket/DetailComponent/ShowPic/ShowPic';
 import HotelNotice from '../../product/ticket/DetailComponent/HotelNotice/HotelNotice';
@@ -47,7 +48,7 @@ function Ticket() {
   const path = window.location.pathname.split('/');
   const sid = path[2];
   async function getHotelDetail() {
-    //  拿到票券所有資料
+    //  拿到票券大表
     const res_ticketListData = await axios.get(TICKET_DETAIL + dataFrom);
     console.log(res_ticketListData);
     setHotelListData(res_ticketListData.data);
@@ -58,14 +59,25 @@ function Ticket() {
     // );
     // const toArray = res_hotelRoomData.data;
     // setHotelRoomChoose(toArray);
-    //  設定最便宜的價格
-    // setHotelRoomPrice(toArray[0].room_price);
+
+    // 拿票種&價錢
+    const res_ticketType = await axios.get(
+      TICKET_DETAIL + dataFrom + '/types' 
+    );
+    const myArray = res_ticketType.data;
+    setHotelRoomChoose(myArray);
+    console.log(res_ticketType);
+    //  設定預設價格
+    setHotelRoomPrice(myArray[0].product_price);
+
+
     //  拿到所有評論的資料
     // const res_hotelCommentData = await axios.get(
     //   TICKET_DETAIL + dataFrom + '/hotelComment'
     // );
     // setHotelCommentData(res_hotelCommentData.data);
     // console.log(res_hotelCommentData.data);
+
     // 拿票券所有評論test
     const res_ticketCommentData = await axios.get(
       TICKET_DETAIL + dataFrom + '/ticketComment'
@@ -135,7 +147,7 @@ function Ticket() {
         {/* <BreadCrumbList /> */}
       </div>
       <div className="container ticket_carousel">
-        <Carousel />
+        <Carousel className="tk_detail_carousel" />
       </div>
       <div className="ComputerHidden">
         <HashChange allPart={allPart} />
@@ -156,8 +168,8 @@ function Ticket() {
               </h2>
               <Rate />
               <IconBar
-                hotelListDataArea={hotelListData.area_name}
-                hotelListDataCategories={hotelListData.classname}
+                ticketListDataArea={hotelListData.area_name}
+                ticketListDataCategories={hotelListData.classname}
               />
               <h4
                 className="ComputerHidden"
@@ -178,7 +190,7 @@ function Ticket() {
           </div>
           <div className="">
             <div className="MobileHidden givePadding">
-              <ComDatePicker hotelRoomData={hotelRoomChoose} />
+              <ComDatePicker ticketType={hotelRoomChoose} />
             </div>
           </div>
           <div

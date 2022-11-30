@@ -11,11 +11,11 @@ function IconBar(props) {
         <div className="icon ">
           <MapMarker className="Hotel_Icon" />
         </div>
-        <h5>{props.hotelListDataArea}</h5>
+        <h5>{props.ticketListDataArea}</h5>
         <div className="icon">
           <Stay className="Hotel_Icon" />
         </div>
-        <h5>{props.hotelListDataCategories}</h5>
+        <h5>{props.ticketListDataCategories}</h5>
       </div>
     </>
   );
