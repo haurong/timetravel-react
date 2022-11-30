@@ -1,16 +1,43 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Rate } from 'antd';
 import './Comment.scss';
 import moment from 'moment/moment';
 import { useHotelContext } from '../Context/HotelContext';
+
 function CommentCard() {
-  const { hotelCommentData, commentSort } = useHotelContext();
-  if(commentSort === 'time_ASC'){
-    
+  const { hotelCommentData, commentSort, setHotelCommentData } =
+    useHotelContext();
+  // console.log(Date.parse(hotelCommentData[0].create_time));
+  // console.log(hotelCommentData);
+
+  if (hotelCommentData.length !== 0) {
+    if (commentSort === 'score_ASC') {
+      setHotelCommentData(
+        hotelCommentData.sort((a, b) => {
+          return a.score - b.score;
+        })
+      );
+    } else if (commentSort === 'score_DESC') {
+      setHotelCommentData(
+        hotelCommentData.sort((a, b) => {
+          return b.score - a.score;
+        })
+      );
+    } else if (commentSort === 'time_ASC') {
+      setHotelCommentData(
+        hotelCommentData.sort((a, b) => {
+          return Date.parse(a.create_time) - Date.parse(b.create_time);
+        })
+      );
+    } else if (commentSort === 'time_DESC') {
+      setHotelCommentData(
+        hotelCommentData.sort((a, b) => {
+          return Date.parse(b.create_time) - Date.parse(a.create_time);
+        })
+      );
+    }
   }
-    // hotelCommentData.sort((a, b) => {
-    //   return a.score - b.score;
-    // })
+
   return (
     <>
       {hotelCommentData.map((v, i) => {

@@ -39,6 +39,9 @@ export const HotelContextProvider = ({ children }) => {
   //  評價排序
   const [commentSort, setCommentSort] = useState('time_ASC');
 
+  //  選擇的房型
+  const [roomsChooseName, setRoomsChooseName] = useState();
+
   return (
     <HotelContext.Provider
       value={{
@@ -64,6 +67,8 @@ export const HotelContextProvider = ({ children }) => {
         setAllStar,
         commentSort,
         setCommentSort,
+        roomsChooseName,
+        setRoomsChooseName,
       }}
     >
       {children}

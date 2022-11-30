@@ -36,7 +36,6 @@ function Stays() {
     setHotelRoomChoose,
     setHotelRoomPrice,
     setHotelCommentData,
-    commentSort,
   } = useHotelContext();
   // const { roomCounts, hotelRoomPrice } = useHotelContext();
 
