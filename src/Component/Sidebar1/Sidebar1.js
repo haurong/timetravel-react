@@ -17,12 +17,12 @@ function getItem(label, key, children, type) {
 }
 
 const items3 = [
-  getItem('全部', 'scoreAll'),
-  getItem('五星', 'score5'),
-  getItem('四星', 'score4'),
-  getItem('三星', 'score3'),
-  getItem('二星', 'score2'),
-  getItem('一星', 'score1'),
+  getItem('全部', 'likeAll'),
+  getItem('1-100', 'like100'),
+  getItem('101-200', 'like200'),
+  getItem('201-300', 'like300'),
+  getItem('301-400', 'like400'),
+  getItem('401-500', 'like500'),
 ];
 
 const items1 = [
@@ -100,12 +100,12 @@ const rootSubmenuKeys = [
   'cate_Food',
   'cate_Hotel',
   'cate_Ticket',
-  'scoreAll',
-  'score5',
-  'score4',
-  'score3',
-  'score2',
-  'score1',
+  'likeAll',
+  'like100',
+  'like200',
+  'like300',
+  'like400',
+  'like500',
 ];
 //const rootSubmenuKeys2 = ['sub4', 'sub5', 'sub6', 'sub7'];
 
@@ -133,11 +133,10 @@ export default function Sidebar1() {
           items={items1}
           defaultSelectedKeys={'area_All'}
           onSelect={(e) => {
-            console.log(e.key);
             setHotelSort({
               area: e.key,
               cate: hotelSort.cate,
-              score: hotelSort.score,
+              like: hotelSort.like,
             });
           }}
         />
@@ -152,7 +151,7 @@ export default function Sidebar1() {
         />
       </div>
       <div className="selectScore">
-        <h2 className="sidebarMarginTop">旅客評分</h2>
+        <h2 className="sidebarMarginTop">收藏數量</h2>
         <Menu
           mode="inline"
           openKeys={openKeys}
@@ -162,10 +161,10 @@ export default function Sidebar1() {
             setHotelSort({
               area: hotelSort.area,
               cate: hotelSort.cate,
-              score: e.key,
+              like: e.key,
             });
           }}
-          defaultSelectedKeys={'scoreAll'}
+          defaultSelectedKeys={'likeAll'}
         />
       </div>
     </div>

@@ -52,7 +52,7 @@ export const HotelContextProvider = ({ children }) => {
   });
 
   //  住宿列表資料篩選條件
-  const [hotelSort, setHotelSort] = useState({ area: '', cate: '', score: '' });
+  const [hotelSort, setHotelSort] = useState({ area: '', cate: '', like: '' });
 
   //  住宿列表資料改變
   const [hotelSortData, setHotelSortData] = useState([]);

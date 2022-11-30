@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import { HOTEL_IMG } from '../../pages/product/stays/hotel-config';
@@ -6,11 +6,12 @@ import Map from '../../icon/map.svg';
 import Heart from '../../icon/heart_gray.svg';
 import PinkHeart from '../../icon/heart.svg';
 import { useHotelContext } from '../../pages/product/stays/Context/HotelContext';
-
 import './Card_List.scss';
 
 function Card_List({ rows }) {
-  const { hotelAllData, hotelSort } = useHotelContext();
+  const { hotelAllData, hotelSort, hotelSortData, setHotelSortData } =
+    useHotelContext();
+  // console.log(hotelAllData.rows);
   // console.log({ rows });
   const [like, setLike] = useState(false);
 
@@ -25,6 +26,10 @@ function Card_List({ rows }) {
       return;
     }
   };
+
+  useEffect(() => {
+    console.log(hotelSort);
+  }, [hotelSort]);
   //TODO:收藏人數按鈕樣式待定
   return (
     <Row xs={1} lg={4} className="d-flex justify-content-center flex-wrap">
@@ -75,7 +80,7 @@ function Card_List({ rows }) {
                   </div>
                   <div>
                     <h2 variant="primary" className="Card_Price">
-                      NT$ {el.p_selling_price}
+                      NT$ {el.room_price}
                     </h2>
                   </div>
                 </div>
