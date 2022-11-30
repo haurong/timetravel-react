@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { FOOD_LIST } from '../../config';
 import { SITE_LIST } from '../product/itinerary/site-config';
 import { HOTEL_LIST } from '../../config';
+import { TICKET_LIST } from './ticket/ticket-config';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import { FOOD_IMG } from '../../config';
@@ -39,11 +40,14 @@ function ProductList({ foodRows, siteRows }) {
     page: 1,
     rows: [],
   });
-  const allProductTotalPage =
-    hotelData.totalPages + foodData.totalPages + siteData.totalPages;
-  const allProductPage = hotelData.page + siteData.page + foodData.page;
+  const [ticketData, setTicketData] = useState({
+    totalRows: 0,
+    totalPages: 0,
+    perPage: 0,
+    page: 1,
+    rows: [],
+  });
 
-  console.log(allProductTotalPage);
   const [like, setLike] = useState(false);
   const [likeList, setLikeList] = useState([]);
   const toggleLike1 = () => setLike(!like);
@@ -51,16 +55,34 @@ function ProductList({ foodRows, siteRows }) {
   const location = useLocation();
   const usp = new URLSearchParams(location.search);
 
-  async function getFoodList() {
+  async function getAllListData() {
     const response_food = await axios.get(FOOD_LIST);
     setFoodData(response_food.data);
+
     const response_site = await axios.get(SITE_LIST);
     console.log(response_site.data.rows);
     setSiteData(response_site.data);
+
     const response_hotel = await axios.get(HOTEL_LIST);
     setHotelData(response_hotel.data);
     console.log(response_hotel.data.rows);
+
+    const response_ticket = await axios.get(TICKET_LIST);
+    setTicketData(response_ticket.data);
+    console.log(response_ticket.data.rows);
   }
+
+  const allProductTotalPage =
+    hotelData.totalPages +
+    foodData.totalPages +
+    siteData.totalPages +
+    ticketData.totalPages;
+  const allProductPage =
+    hotelData.page + siteData.page + foodData.page + ticketData.page;
+
+  console.log(allProductPage);
+  console.log(allProductTotalPage);
+
   const addLikeListHandler = (id) => {
     if (likeList.includes(id)) {
       return;
@@ -71,10 +93,8 @@ function ProductList({ foodRows, siteRows }) {
   };
 
   useEffect(() => {
-    // getSiteList();
-
-    getFoodList();
-  }, []);
+    getAllListData();
+  }, [MyPagination]);
 
   return (
     <>
@@ -171,6 +191,52 @@ function ProductList({ foodRows, siteRows }) {
                       </span>
                     </Card.Text>
                     <h2 variant="primary" className="Card_Price"></h2>
+                  </Card.Body>
+                </Card>
+              );
+            })}
+          </Row>
+          <Row xs={1} md={2} lg={3} className="g-4 ">
+            {ticketData.rows.map((el) => {
+              return (
+                <Card
+                  className="MyCard col-3"
+                  style={{ width: '20rem' }}
+                  key={el.product_number}
+                >
+                  <Card.Img
+                    variant="top"
+                    className="foodCardImg1"
+                    // src={`${FOOD_IMG}${el.product_photo}`}
+                  />
+                  <button
+                    data-product-number={el.product_number}
+                    className="Heart_Btn"
+                    // onClick={() => {
+                    //   addLikeListHandler(el.product_number);
+
+                    //   toggleLike1();
+                    // }}
+                  >
+                    <img
+                      src={like ? PinkHeart : Heart}
+                      className="Card_Heart"
+                      alt=""
+                    />
+                  </button>
+                  <Card.Body>
+                    <Card.Title className="Card_Title">
+                      {el.product_name}
+                    </Card.Title>
+                    <Card.Text className="Card_Text">
+                      <Card.Img src={Map} className="Map_icon" />
+                      <span class="Card_Score">
+                        {el.city_name} | {el.area_name}
+                      </span>
+                    </Card.Text>
+                    <h2 variant="primary" className="Card_Price">
+                      NT$
+                    </h2>
                   </Card.Body>
                 </Card>
               );

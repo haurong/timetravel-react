@@ -6,7 +6,7 @@ const FoodContext = createContext(null);
 export const FoodContextProvider = ({ children }) => {
   //Food資料
   const [foodData, setFoodData] = useState({});
-
+  //hashchange的滑動偵測
   const [slideOut, setSlideOut] = useState(false);
   //Food計數器
   const [count, setCount] = useState(1);

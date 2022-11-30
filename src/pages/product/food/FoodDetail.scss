@@ -204,10 +204,9 @@
         }
     }
     .foodmap{
-        
         margin: 50px 0 0 0 ;
         .leaflet-container {
-            z-index: -1;
+            z-index: 0;
             width: 450px;
             height: 450px;
         }

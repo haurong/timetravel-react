@@ -20,7 +20,7 @@ export default function Qrcode() {
     getData();
   }, [location]);
 
-
+//TODO:value要抓orderdetailfood的sid
   return (
     <div>
       <QRCodeSVG value="F116" size="216" level="M" className="qrcode" />

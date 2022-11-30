@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { useFoodContext } from './FoodContext/FoodContext.js';
 import { FOOD_ITEM } from '../../../config.js';
 import { FOOD_COMMIT } from '../../../config.js';
+import { useFoodCart } from '../../cart/utils/useCart';
 import FoodMap from './FoodMap';
 import Commit from './Commit';
 import CommitSelect from './CommitSelect';
@@ -45,6 +46,13 @@ function FoodDetail() {
     add,
     setAdd,
   } = useFoodContext();
+
+  const foodObj = {
+    id: foodData.sid,
+    name: foodData.product_name,
+    quantity: count,
+    price: totalPrice,
+  };
   const toggleLike = () => setLike(!like);
   const toggleAdd = () => setAdd(!add);
 
@@ -105,7 +113,8 @@ function FoodDetail() {
   useEffect(() => {
     getData();
   }, []);
-  //TODO:包了context後bookingbar無法render
+
+  const { addItem } = useFoodCart();
   return (
     <>
       <NavBar />
@@ -236,7 +245,13 @@ function FoodDetail() {
             </h1>
           </div>
           <div className="btnGroup">
-            <button type="button" className="btn add_cart">
+            <button
+              type="button"
+              className="btn add_cart"
+              onClick={() => {
+                addItem(foodObj);
+              }}
+            >
               加入購物車
             </button>
             <button type="button" className="btn buy_now">
