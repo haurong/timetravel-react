@@ -1,6 +1,15 @@
 import React from 'react';
 
-function PaymentCardInfo() {
+function PaymentCardInfo({
+  paymentRepresent,
+  setPaymentRepresent,
+  paymentMobile,
+  setPaymentMobile,
+  paymentEmail,
+  setPaymentEmail,
+  paymentId,
+  setPaymentId,
+}) {
   return (
     <>
       <div className="d-flex pb-5">
@@ -10,6 +19,11 @@ function PaymentCardInfo() {
             className="input form-control"
             type={'text'}
             placeholder={'請輸入姓名'}
+            value={paymentRepresent}
+            onChange={(e) => {
+              const payname = e.target.value;
+              setPaymentRepresent(payname);
+            }}
             style={{ width: '300px' }}
           />
         </div>
@@ -20,6 +34,11 @@ function PaymentCardInfo() {
             type={'tel'}
             placeholder={'請輸入正確的電話號碼'}
             style={{ width: '300px' }}
+            value={paymentMobile}
+            onChange={(e) => {
+              const v = e.target.value;
+              setPaymentMobile(v);
+            }}
           />
         </div>
       </div>
@@ -31,6 +50,11 @@ function PaymentCardInfo() {
             type={'tel'}
             placeholder={'example@mail.com'}
             style={{ width: '300px' }}
+            value={paymentEmail}
+            onChange={(e) => {
+              const v = e.target.value;
+              setPaymentEmail(v);
+            }}
           />
         </div>
         <div>
@@ -40,6 +64,11 @@ function PaymentCardInfo() {
             type={'tel'}
             placeholder={'外籍人士請輸入護照號碼'}
             style={{ width: '300px' }}
+            value={paymentId}
+            onChange={(e) => {
+              const v = e.target.value;
+              setPaymentId(v);
+            }}
           />
         </div>
       </div>

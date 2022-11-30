@@ -1,6 +1,17 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
-function ProgressButton({ prev, next, step, maxSteps }) {
+
+function ProgressButton({
+  prev,
+  next,
+  step,
+  maxSteps,
+  hotelRepresent,
+  hotelMobile,
+  paymentRepresent,
+  paymentMobile,
+  paymentEmail,
+  paymentId,
+}) {
   return (
     <div className="d-flex justify-content-evenly mb-5">
       {step === 1 ? (
@@ -16,7 +27,11 @@ function ProgressButton({ prev, next, step, maxSteps }) {
           下一步
         </button>
       ) : (
-        <button type="button" className="btn btn-primary" onClick={prev}>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          onClick={console.log()}
+        >
           確認結帳
         </button>
       )}

@@ -23,9 +23,9 @@ export const FOOD_COMMIT = `${MY_HOST}/food/commit`;
 
 //購物車路徑
 export const MakeOrder = `${MY_HOST}/cart/api/makeorder`;
-export const MakeHotelOrder = `${MY_HOST}/cart/api/makehotelorder`;
-export const MakeFoodOrder = `${MY_HOST}/cart/api/makefoodorder`;
-export const MakeTicketOrder = `${MY_HOST}/cart/api/maketicketorder`;
+// export const MakeHotelOrder = `${MY_HOST}/cart/api/makehotelorder`;
+// export const MakeFoodOrder = `${MY_HOST}/cart/api/makefoodorder`;
+// export const MakeTicketOrder = `${MY_HOST}/cart/api/maketicketorder`;
 
 //從node抓照片資料
 export const appConfig = {
