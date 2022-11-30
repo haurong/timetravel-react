@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom';
 import ThemeContext from './ThemeContext';
 
 // dnd功能shinder建議取消，此頁面僅供瀏覽列表跟地圖
-export default function IList({ iData }) {
+export default function IList() {
   const [list, setList] = useState([]);
   const [dList, setDlist] = useState([]);
   const [dList1, setDlist1] = useState([]);
@@ -54,16 +54,16 @@ export default function IList({ iData }) {
           console.log(list);
           const [remove] = list.splice(source.index, 1);
           list.splice(destination.index, 0, remove);
-          for (let i = 0; i < list.length; i++) {
-            if (i < 3) {
-              list[i].day = 1;
-            } else if (i < 6) {
-              list[i].day = 2;
-            } else {
-              list[i].day = 3;
-            }
-            list[i].sequence = i;
-          }
+          // for (let i = 0; i < list.length; i++) {
+          //   if (i < 3) {
+          //     list[i].day = 1;
+          //   } else if (i < 6) {
+          //     list[i].day = 2;
+          //   } else {
+          //     list[i].day = 3;
+          //   }
+          //   list[i].sequence = i;
+          // }
           setList(list);
         }}
       >
@@ -71,31 +71,55 @@ export default function IList({ iData }) {
           {(provided) => (
             <div ref={provided.innerRef} {...provided.droppableProps}>
               {list.map((el, i) => {
+                const d = list[i - 1] ? list[i - 1].day : 0;
+                const dItem = +arr.filter((v) => v.day === el.day).length;
+
                 return (
-                  <Draggable draggableId={i + ' '} index={i} key={i}>
-                    {(p) => (
+                  <div key={i}>
+                    {/* {d !== el.day ? (
                       <div
-                        className="iItem"
-                        id={'iItem' + el.day + '-' + el.sequence}
-                        {...p.draggableProps}
-                        {...p.dragHandleProps}
-                        ref={p.innerRef}
+                        id={'day' + el.day}
+                        className={'day stickyt' + el.day + ' day' + el.day}
+                        onClick={() => {
+                          document.querySelector('#iList').scrollTo({
+                            top:
+                              document.querySelector('#iItem' + el.day + '-1')
+                                .offsetTop - 120,
+                            behavior: 'smooth',
+                          });
+                        }}
                       >
-                        {/* <img
+                        <h2>{'Day' + el.day}</h2>
+                        <h3>{dItem + '個行程'}</h3>
+                      </div>
+                    ) : (
+                      ''
+                    )} */}
+                    <Draggable draggableId={i + ' '} index={i}>
+                      {(p) => (
+                        <div
+                          className="iItem"
+                          id={'iItem' + el.day + '-' + el.sequence}
+                          {...p.draggableProps}
+                          {...p.dragHandleProps}
+                          ref={p.innerRef}
+                        >
+                          {/* <img
                           className="iItem-img"
                           src={SITE_IMG + el.img1}
                           alt=""
                         /> */}
-                        <div className="iItemText ">
-                          <h2>{el.name}</h2>
-                          <p>{el.city_name + ' ' + el.area_name}</p>
+                          <div className="iItemText ">
+                            <h2>{el.name}</h2>
+                            <p>{el.city_name + ' ' + el.area_name}</p>
+                          </div>
+                          <span className="icon">
+                            <img src={Trash} alt="" />
+                          </span>
                         </div>
-                        <span className="icon">
-                          <img src={Trash} alt="" />
-                        </span>
-                      </div>
-                    )}
-                  </Draggable>
+                      )}
+                    </Draggable>
+                  </div>
                 );
               })}
               {provided.placeholder}

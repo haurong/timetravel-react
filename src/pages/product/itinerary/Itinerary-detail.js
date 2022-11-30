@@ -35,7 +35,7 @@ function ItineraryDetail() {
       <ThemeContext.Provider value={{}}>
         <div id="iContainer">
           <div id="iList">
-            <IList iData={iData} />
+            <IList />
           </div>
           <Map />
         </div>
