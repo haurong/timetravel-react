@@ -5,11 +5,13 @@ import { HOTEL_IMG } from '../../pages/product/stays/hotel-config';
 import Map from '../../icon/map.svg';
 import Heart from '../../icon/heart_gray.svg';
 import PinkHeart from '../../icon/heart.svg';
+import { useHotelContext } from '../../pages/product/stays/Context/HotelContext';
 
 import './Card_List.scss';
 
 function Card_List({ rows }) {
-  console.log({ rows });
+  const { hotelAllData, hotelSort } = useHotelContext();
+  // console.log({ rows });
   const [like, setLike] = useState(false);
 
   const [likeList, setLikeList] = useState([]);
@@ -26,7 +28,7 @@ function Card_List({ rows }) {
   //TODO:收藏人數按鈕樣式待定
   return (
     <Row xs={1} lg={4} className="d-flex justify-content-center flex-wrap">
-      {rows.map((el) => {
+      {hotelAllData.rows.map((el) => {
         return (
           <Card
             className="MyCard col-3"

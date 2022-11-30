@@ -13,23 +13,21 @@ import BreadCrumb from '../stays/Breadcrumb/Breadcrumb';
 import '../food/Food.scss';
 import './Stays.scss';
 function Food() {
-  const [hotelAllData, setHotelAllData] = useState({
-    totalRows: 0,
-    totalPages: 0,
-    perPage: 0,
-    page: 1,
-    rows: [],
-  });
-
+  const { hotelAllData, setHotelAllData } = useHotelContext();
   const location = useLocation();
   const usp = new URLSearchParams(location.search);
   const path = window.location.pathname.split('/');
   async function getList() {
     const response = await axios.get(HOTEL_LIST + `?` + usp.toString());
-    console.log(response.data);
+    // console.log(response.data);
     setHotelAllData(response.data);
   }
-  console.log(hotelAllData);
+  // console.log(hotelAllData.rowsAll);
+  let a = hotelAllData.rowsAll.filter((v) => {
+    return v.city_name === '新北市';
+  });
+  // console.log(a);
+
   useEffect(() => {
     getList();
   }, [location]);
@@ -52,7 +50,7 @@ function Food() {
             <CommitSelector />
             <CommitSelector />
           </div>
-          <CardList rows={hotelAllData.rows} />
+          <CardList/>
         </div>
       </div>
       <div className="foodPagination">

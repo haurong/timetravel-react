@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import './Pagination.scss';
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
 export default function MyPagination({ page, totalPages }) {
-  console.log({ page, totalPages });
+  // console.log({ page, totalPages });
   // const firstPage = `?page=1`;
   //const lastPage = `?page=${totalPages}`;
   const prevPage = `?page=page-1`;

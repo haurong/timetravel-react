@@ -9,7 +9,7 @@ import PinkHeart from '../../icon/heart.svg';
 import './Card_List.scss';
 
 function Card_List({ rows }) {
-  console.log({ rows });
+  // console.log({ rows });
   const [like, setLike] = useState(false);
 
   const [likeList, setLikeList] = useState([]);
