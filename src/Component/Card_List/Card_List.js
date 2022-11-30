@@ -39,20 +39,6 @@ function Card_List({ rows }) {
               className="foodCardImg1"
               src={`${FOOD_IMG}${el.product_photo}`}
             />
-            <button
-              data-product-number={el.product_number}
-              className="Heart_Btn"
-              onClick={() => {
-                addLikeListHandler(el.product_number);
-                toggleLike1();
-              }}
-            >
-              <img
-                src={like ? PinkHeart : Heart}
-                className="Card_Heart"
-                alt=""
-              />
-            </button>
             <Card.Body>
               <Link to="/food/detail">
                 <Card.Title className="Card_Title">
@@ -69,11 +55,11 @@ function Card_List({ rows }) {
                   <div>
                     <button className="Heart_btn">
                       <img
-                        src={PinkHeart}
+                        src={Heart}
                         style={{ width: '25px', height: '25px' }}
                         alt=""
                       />
-                      <span>999</span>
+                      <span>{el.collect}</span>
                     </button>
                   </div>
                   <div>

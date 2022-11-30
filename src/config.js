@@ -20,14 +20,17 @@ export const FOOD_CARD_ITEM5 = `${MY_HOST}/food/item/129`;
 export const FOOD_CARD_ITEM6 = `${MY_HOST}/food/item/128`;
 export const FOOD_IMG = `${MY_HOST}/uploads/Food/`;
 export const FOOD_COMMIT = `${MY_HOST}/food/commit`;
-//從node抓照片資料
-export const appConfig = {
-  debug: true,
-  devUrl: 'http://localhost:3001',
-  devServerUrl: MY_HOST,
-  prodUrl: 'https://www.timetravel.com',
-};
 
-export const imgUrl = appConfig.debug
-  ? appConfig.devServerUrl
-  : appConfig.prodUrl;
+export const ALLPRODUCT_LIST = `${MY_HOST}/productAll/api`;
+export const ADD_FOOD_COLLECT= `${MY_HOST}/productAll/api/addCollect-api`;
+// //從node抓照片資料
+// export const appConfig = {
+//   debug: true,
+//   devUrl: 'http://localhost:3001',
+//   devServerUrl: MY_HOST,
+//   prodUrl: 'https://www.timetravel.com',
+// };
+
+// export const imgUrl = appConfig.debug
+//   ? appConfig.devServerUrl
+//   : appConfig.prodUrl;

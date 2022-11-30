@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './Pagination.scss';
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
 export default function MyPagination({ page, totalPages }) {
-  // console.log({ page, totalPages });
   return (
     <ul className="pagination d-flex">
       <li className="page-item ">
@@ -15,7 +14,7 @@ export default function MyPagination({ page, totalPages }) {
           <MdOutlineChevronLeft />
         </Link>
       </li>
-      {Array(15)
+      {Array(13)
         .fill(1)
         .map((el, i) => {
           const classNames = ['page-item'];
