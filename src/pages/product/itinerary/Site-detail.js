@@ -23,7 +23,7 @@ import Star_icon from '../../../icon/star.svg';
 import HashChange from '../food/HashChange';
 
 function SiteDetail() {
-  const [siteData, setSiteData] = useState({});
+  const [siteData, setSiteData] = useState('');
   const [like, setLike] = useState(false);
   const toggleLike = () => setLike(!like);
   const location = useLocation();
@@ -31,7 +31,6 @@ function SiteDetail() {
   const sid = path[2];
   async function getData() {
     const response = await axios.get(SITE_DETAIL + sid);
-    // const response = await axios.get(SITE_DETAIL);
     setSiteData(response.data);
   }
 

@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation, Link } from 'react-router-dom';
+import axios from 'axios';
+import { SITE_DETAIL } from './site-config';
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 // import Map from './SiteMap';
@@ -6,14 +9,29 @@ import { SITE_IMG } from './site-config';
 import map1 from './../../../icon/map.svg';
 
 export default function SiteDes({ siteData }) {
-  const position = [siteData.lat, siteData.lng];
-  console.log(siteData.lat, siteData.lng);
+  const [position, setPosition] = useState(null);
+  const location = useLocation();
+  const path = window.location.pathname.split('/');
+  const sid = path[2];
+
+  async function getPosition() {
+    const response = await axios.get(SITE_DETAIL + sid);
+    const lat = response.data.lat;
+    const lng = response.data.lng;
+    setPosition([lat, lng]);
+    console.log([lat, lng]);
+  }
   const customMarker1 = new L.Icon({
     iconUrl: map1,
     iconSize: [40, 40],
     iconAnchor: [10, 41],
     popupAnchor: [2, -40],
   });
+
+  useEffect(() => {
+    getPosition();
+  }, [location]);
+
   return (
     <div className="siteDesCon">
       <h2>旅遊攻略</h2>
@@ -61,10 +79,26 @@ export default function SiteDes({ siteData }) {
         「小北街站」68、216、218、250、277、280、290、304、310、606 、承德幹線
         「士林官邸站」111、203、206、220、255、260、267、279、280、285、303、304、310、557、606、612、620、646、680、683、685、902、1717、中山幹線、重慶幹線
       </p>
-
-      <div id="map" style={{ margin: '20px 0' }}>
+      {position === null ? (
+        ''
+      ) : (
+        <div id="map" style={{ margin: '20px 0' }}>
+          <MapContainer
+            center={[siteData.lat || 25.033028, siteData.lng || 121.563593]}
+            zoom={14}
+            scrollWheelZoom={true}
+          >
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            />
+            <Marker position={position} icon={customMarker1}></Marker>
+          </MapContainer>
+        </div>
+      )}
+      {/* <div id="map" style={{ margin: '20px 0' }}>
         <MapContainer
-          center={[siteData.lat, siteData.lng]}
+          center={[siteData.lat || 25.033028, siteData.lng || 121.563593]}
           zoom={14}
           scrollWheelZoom={true}
         >
@@ -74,7 +108,7 @@ export default function SiteDes({ siteData }) {
           />
           <Marker position={position} icon={customMarker1}></Marker>
         </MapContainer>
-      </div>
+      </div> */}
       {/* <Map lat={siteData.lat} lng={siteData.lng} /> */}
       <h2>開放時間</h2>
       <p>
