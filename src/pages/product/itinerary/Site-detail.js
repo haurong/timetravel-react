@@ -8,6 +8,7 @@ import Footer from '../../../layout/Footer';
 import { Container } from 'react-bootstrap';
 import Carousel from '../../../Component/Carousel/Carousel';
 import BreadCrumb from '../../../Component/BreadCrumb/BreadCrumb';
+import SiteDes from './SiteDes';
 import './Site-detail.scss';
 import { SITE_DETAIL } from './site-config';
 
@@ -19,6 +20,7 @@ import Map_Green_icon from '../../../icon/map.svg';
 import Food_icon from '../../../icon/food_blue.svg';
 import Phone_icon from '../../../icon/iphone.svg';
 import Star_icon from '../../../icon/star.svg';
+import HashChange from '../food/HashChange';
 
 function SiteDetail() {
   const [siteData, setSiteData] = useState({});
@@ -89,6 +91,35 @@ function SiteDetail() {
                 <img src={Food_icon} alt="" className="Food_icon" />
                 <p>{siteData.categorise_name}</p>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', marginTop: '80px' }}>
+          <SiteDes siteData={siteData} />
+          <div
+            className="hashchange"
+            style={{
+              width: '240px',
+              marginLeft: '10px',
+              alignItems: 'center',
+              color: ' #8a8a8a',
+            }}
+          >
+            <div>
+              <Link>旅遊攻略</Link>
+            </div>
+            <div>
+              <Link>景點介紹</Link>
+            </div>
+            <div>
+              <Link>如何前往</Link>
+            </div>
+            <div>
+              <Link>開放時間</Link>
+            </div>
+            <div>
+              <Link>回到頂部</Link>
             </div>
           </div>
         </div>
