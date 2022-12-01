@@ -29,7 +29,6 @@ import ItineraryDetail from './pages/product/itinerary/Itinerary-detail';
 import Orders from './pages/cart/order/Orders';
 import OrderSuccess from './pages/cart/OrderSuccess';
 import OrderFail from './pages/cart/OrderFail';
-
 //context
 import { FoodContextProvider } from './pages/product/food/FoodContext/FoodContext';
 import { HotelContextProvider } from './pages/product/stays/Context/HotelContext';
@@ -68,6 +67,10 @@ function App() {
                       <Route path="food" element={<Food />} />
                       <Route path="food/detail" element={<FoodDetail />} />
                       <Route path="stays" element={<Stays />} />
+                      <Route
+                        path="stays/detail/:sid"
+                        element={<StaysDetail />}
+                      />
                       <Route path="ticket" element={<Ticket />} />
                       <Route path="TicketDeatil" element={<TicketDetail />} />
                       <Route path="logIn" element={<LogIn />} />

@@ -1,25 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import OrdersTypesList from './components/OrdersTypesList';
 import './../styles/OrdersDetails.scss';
-import OrdersAccordion from './components/OrdersAccordion';
+import OrdersCard from './components/OrdersCard';
+import OrdersHistory from './components/OrdersHistory';
+import OrdersUndone from './components/OrdersUndone';
 function OrdersDetail() {
+  const [path, setPath] = useState('now');
   return (
     <div className="container">
-      <OrdersTypesList />
-      <div className="orders-details-wrap row">
-        <ul className="orders-details-ul">
-          <li className="col text-center">
-            <p>訂單成立日期</p>
-          </li>
-          <li className="col text-center">
-            <p>訂單編號</p>
-          </li>
-          <li className="col text-center">
-            <p>訂單總價</p>
-          </li>
-        </ul>
-        <OrdersAccordion />
-      </div>
+      <OrdersTypesList path={path} setPath={setPath} />
+      {path === 'now' ? <OrdersCard /> : ''}
+      {path === 'undone' ? <OrdersUndone /> : ''}
+      {path === 'history' ? <OrdersHistory /> : ''}
     </div>
   );
 }

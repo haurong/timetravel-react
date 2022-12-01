@@ -18,8 +18,15 @@
   .orders-accordion-ul {
     list-style: none;
     display: flex;
-    p {
-      margin: 0px;
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      p {
+        margin: 0px;
+        // height: 100%;
+        // line-height: 50px;
+      }
     }
   }
   .orders-details-ul {
@@ -47,5 +54,16 @@
   }
   .accordion-button {
     padding: 14px 0px;
+  }
+  .btn-danger {
+    color: #fff;
+    // padding: 0rem 1.8rem;
+  }
+  .btn-danger:hover,
+  .btn-danger:focus,
+  .btn-danger:active:hover {
+    color: #ea8a8a !important;
+    background-color: #fff !important;
+    border-color: #ea8a8a !important;
   }
 }
