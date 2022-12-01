@@ -9,8 +9,10 @@ import { useHotelContext } from '../stays/Context/HotelContext';
 import { TICKET_DETAIL } from './ticket-config';
 
 import Carousel from './DetailComponent/CarouselDu/Carousel';
-import Breadcrumb from '../ticket/DetailComponent/Breadcrumb/Breadcrumb';
-import Rate from './Rate/Rate';
+// import BreadCrumb from './DetailComponent/BreadCrumb/BreadCrumb';
+import BreadCrumb from './Breadcrumb/Breadcrumb';
+// import Rate from './Rate/Rate';
+import Rate from '../ticket/DetailComponent/Rate/Rate';
 import IconBar from './DetailComponent/IconBar/IconBar';
 import ShowPic from '../ticket/DetailComponent/ShowPic/ShowPic';
 import HotelNotice from '../../product/ticket/DetailComponent/HotelNotice/HotelNotice';
@@ -24,8 +26,10 @@ import HashChange from './DetailComponent/HashChange/HashChange';
 import ComputerLikeAdd from './DetailComponent/ComputerLikeAdd/ComputerLikeAdd';
 import ComDatePicker from '../../product/ticket/DetailComponent/ComDatePicker/ComDatePicker';
 import BookingBar from '../../product/ticket/DetailComponent/BookingBar/BookingBar';
+import { useLocation } from 'react-router-dom';
+// import BreadCrumbList from '../../../Component/BreadCrumb/BreadCrumbList';
 
-function Stays() {
+function Ticket() {
   const dataFrom = '14';
   const {
     roomCounts,
@@ -39,11 +43,15 @@ function Stays() {
   } = useHotelContext();
   // const { roomCounts, hotelRoomPrice } = useHotelContext();
 
+  const [typeName, setTypeName] = useState('');
+  const location = useLocation();
+  const path = window.location.pathname.split('/');
+  const sid = path[2];
   async function getHotelDetail() {
-    //  拿到飯店所有資料
-    const res_hotelListData = await axios.get(TICKET_DETAIL + dataFrom);
-    console.log(res_hotelListData);
-    setHotelListData(res_hotelListData.data);
+    //  拿到票券大表
+    const res_ticketListData = await axios.get(TICKET_DETAIL + dataFrom);
+    console.log(res_ticketListData);
+    setHotelListData(res_ticketListData.data);
 
     //  拿到房型所有資料
     // const res_hotelRoomData = await axios.get(
@@ -51,14 +59,31 @@ function Stays() {
     // );
     // const toArray = res_hotelRoomData.data;
     // setHotelRoomChoose(toArray);
-    //  設定最便宜的價格
-    // setHotelRoomPrice(toArray[0].room_price);
+
+    // 拿票種&價錢
+    const res_ticketType = await axios.get(
+      TICKET_DETAIL + dataFrom + '/types' 
+    );
+    const myArray = res_ticketType.data;
+    setHotelRoomChoose(myArray);
+    console.log(res_ticketType);
+    //  設定預設價格
+    setHotelRoomPrice(myArray[0].product_price);
+
+
     //  拿到所有評論的資料
     // const res_hotelCommentData = await axios.get(
     //   TICKET_DETAIL + dataFrom + '/hotelComment'
     // );
     // setHotelCommentData(res_hotelCommentData.data);
     // console.log(res_hotelCommentData.data);
+
+    // 拿票券所有評論test
+    const res_ticketCommentData = await axios.get(
+      TICKET_DETAIL + dataFrom + '/ticketComment'
+    );
+    setHotelCommentData(res_ticketCommentData.data);
+    console.log(res_ticketCommentData.data);
   }
   const Hotel_part0 = useRef();
   const Hotel_part1 = useRef();
@@ -118,10 +143,11 @@ function Stays() {
       <BottomBar />
       <div ref={Hotel_part0} id="Hotel_part0"></div>
       <div className="MobileHidden container">
-        <Breadcrumb />
+        <BreadCrumb ticketData={hotelListData} />
+        {/* <BreadCrumbList /> */}
       </div>
       <div className="container ticket_carousel">
-        <Carousel />
+        <Carousel className="tk_detail_carousel" />
       </div>
       <div className="ComputerHidden">
         <HashChange allPart={allPart} />
@@ -133,7 +159,8 @@ function Stays() {
             <div className="Hotel_part0 Hotel_partHidden"></div>
             <div className="Hotel_part0_left">
               <div className="ComputerHidden">
-                <Breadcrumb />
+                <BreadCrumb />
+                {/* <BreadCrumbList /> */}
               </div>
 
               <h2 style={{ color: '#4D4D4D', marginBottom: '20px' }}>
@@ -141,10 +168,8 @@ function Stays() {
               </h2>
               <Rate />
               <IconBar
-              hotelListDataArea={"士林區"}
-                hotelListDataCategories={"樂園、戶外"}
-                // hotelListDataArea={TICKET_DETAIL.area_name}
-                // hotelListDataCategories={TICKET_DETAIL.classname}
+                ticketListDataArea={hotelListData.area_name}
+                ticketListDataCategories={hotelListData.classname}
               />
               <h4
                 className="ComputerHidden"
@@ -165,7 +190,7 @@ function Stays() {
           </div>
           <div className="">
             <div className="MobileHidden givePadding">
-              <ComDatePicker hotelRoomData={hotelRoomChoose} />
+              <ComDatePicker ticketType={hotelRoomChoose} />
             </div>
           </div>
           <div
@@ -243,4 +268,4 @@ function Stays() {
   );
 }
 
-export default Stays;
+export default Ticket;

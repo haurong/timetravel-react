@@ -1,17 +1,20 @@
-/* Breadcrumb */
-.TimeTravel_Breadcrumb {
-  margin-top: 30px;
-  margin-bottom: 20px;
-  .Breadcrumb {
-    color: #59d8a1;
-    a {
-      color: #59d8a1;
+#breadcrumb{
+    width: 100%;
+    padding-top: 0;
+}
+#bcindex{
+    color: #59D8A1;
+}
+#bctype{
+    color: #59D8A1;
+}
+#bccatename{
+    color: #59D8A1;
+}
+#bcitem{
+    color: #4D4D4D;
+    p{
+        word-wrap: none;
+        width: 150px;
     }
-  }
-  .Breadcrumb_Here {
-    color: #4d4d4d;
-  }
-  @media (min-width: 992px) {
-    margin: 20px 0px !important; 
-  }
 }

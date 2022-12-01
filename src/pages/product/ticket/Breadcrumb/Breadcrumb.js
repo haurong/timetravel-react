@@ -5,17 +5,19 @@ import './Breadcrumb.scss';
 function breadcrumb() {
   return (
     <>
-      <Breadcrumb>
-        <Breadcrumb.Item>
-          <a href="/">Home</a>
+      <Breadcrumb className="TimeTravel_Breadcrumb">
+        <Breadcrumb.Item className="Breadcrumb">
+          <a href="/">首頁</a>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>
+        <Breadcrumb.Item className="Breadcrumb">
           <a href="/">票券</a>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <a href="/">作坊、體驗</a>
+        <Breadcrumb.Item className="Breadcrumb">
+          <a href="/">樂園、戶外</a>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>九份茶坊</Breadcrumb.Item>
+        <Breadcrumb.Item className="Breadcrumb_Here">
+          台北兒童新樂園｜一日票
+        </Breadcrumb.Item>
       </Breadcrumb>
     </>
   );

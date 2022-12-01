@@ -1,0 +1,60 @@
+.Card .card{
+    margin:10px;
+    padding:0;
+    height: 400px;
+    border: none;
+    box-shadow: 0 0 18px 0 rgba(0,0,0,0.1);
+ }
+.Card_Title{
+    font-size: 21px;
+    color:#4D4D4D;   
+}
+.Heart_Btn{
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color:rgba(255, 255, 255, 0.004);
+    position: absolute;
+    top: 0;
+    right:0;
+}
+.Card_Heart{
+    width: 100%;
+    height: 100%;
+    background-color: none; 
+}
+.card-img-top{
+    width: 100%;
+    height: 250px;
+    border: 0;
+    border-bottom: 0;
+    box-shadow: 0 0 18px 0 rgba(0,0,0,0.1);
+}
+.Map_icon{
+    width: 30px;
+    height: 30px;
+}
+.Card_Text{
+    margin-top: 10px;
+    align-content: flex-end;
+    .Card_Score{
+        margin-left: 10px;
+        padding-top: 20px;
+        text-align: center;
+        font-size: 14px;
+    }
+}
+.Card_Price{
+    text-align: end;
+    color: #59D8A1;
+    margin: 0;
+}
+.foodCardData1Img{
+    object-fit: cover;  
+    width: 100%;
+    height: 100%;
+    background-image: url('http://localhost:3001/uploads/Food/F117-1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

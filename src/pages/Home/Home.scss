@@ -20,7 +20,6 @@
 }
 .home_bg_food{
     background-image: url('../../img/food-banner.jpg');
-
 }
 .home_bg_itinerary{
     background-image: url('../../img/itinerary_home.jpg');
@@ -46,7 +45,7 @@
     }
     .home_bg_text_travel {
         font-size: 160px;
-        color: #ffffff00;
+        color: transparent;
         position: absolute;
         top: 352px;
         left: 620px;
@@ -106,7 +105,6 @@
 
 // 填選區1 stay
 .home_tags_input1{
-    visibility: hidden;
     display: flex;
     width: 1084px;
     height: 71px;
@@ -129,7 +127,7 @@
             // border: 1px solid black;
         }
 
-        .home_tag_input1 {
+        .home_Hoteltag_input {
             width: 183px;
             height: 46px;
             // border: 1px solid black;
@@ -189,9 +187,130 @@
             // border: 1px solid black;
         }
 
-        .TagSelectDays {
-            
+
+    }
+
+    // input5
+    .tag_input_unit5 {
+        width: 200px;
+        height: 71px;
+        .home_tag_input_tittle5 {
+            width: 200px;
+            height: 25px;
+            color:#ffffff;
+            // border: 1px solid black;
         }
+
+        .home_tag_input5 {
+            width: 200px;
+            height: 46px;
+            // border: 1px solid black;
+        }
+
+    }
+
+    // input6
+    .tag_input_unit6 {
+        width: 114px;
+        height: 71px;
+        // border: 1px solid black;
+        
+        .home_tag_input_tittle6 {
+            width: 114px;
+            height: 25px;
+        }
+
+        .home_tag_input6 {
+            width: 114px;
+            height: 46px;
+            // border: 1px solid black;
+        }
+    }
+}
+.home_tags_input1_hidden{
+    visibility: hidden;
+    display: flex;
+    width: 1084px;
+    height: 71px;
+    position:absolute;
+    justify-content: space-between;
+    margin: 0;
+    // border: 1px solid black;
+    top: 750px;
+    // input1
+    .tag_input_unit1 {
+        width: 183px;
+        height: 71px;
+        position: relative;
+        // border: 1px solid black;
+
+        .home_tag_input_tittle1{
+            width: 183px;
+            height: 25px;
+            color:#ffffff;
+            // border: 1px solid black;
+        }
+
+        .home_Hoteltag_input {
+            width: 183px;
+            height: 46px;
+            // border: 1px solid black;
+        }
+    }
+
+    // input2
+    .tag_input_unit2 {
+        width: 183px;
+        height: 71px;
+        .home_tag_input_tittle2{
+            width: 183px;
+            height: 25px;
+            color:#ffffff;
+            // border: 1px solid black;
+        }
+
+        .home_tag_input2 {
+            width: 183px;
+            height: 46px;
+            // border: 1px solid black;
+        }
+    }
+
+    // input3
+    .tag_input_unit3 {
+        width: 183px;
+        height: 71px;
+        .home_tag_input_tittle3{
+            width: 183px;
+            height: 25px;
+            color:#ffffff;
+            // border: 1px solid black;
+        }
+
+        .home_tag_input3 {
+            width: 183px;
+            height: 46px;
+            // border: 1px solid black;
+        }
+    }
+
+    // input4
+    .tag_input_unit4 {
+        width: 120px;
+        height: 71px;
+        .home_tag_input_tittle4 {
+            width: 120px;
+            height: 25px;
+            color:#ffffff;
+            // border: 1px solid black;
+        }
+
+        .home_tag_input4 {
+            width: 120px;
+            height: 46px;
+            // border: 1px solid black;
+        }
+
 
     }
 
@@ -235,6 +354,57 @@
 
 // 填選區2 others
 .home_tags_input2{
+    display: flex;
+    width: 794px;
+    height: 46px;
+    position:absolute;
+    justify-content: space-between;
+    margin: 0;
+    // border: 3px solid rgb(196, 0, 0);
+    top: 750px;
+    // input1
+    .tag_input_unit1 {
+        width: 680px;
+        height: 46px;
+        position: relative;
+        // border: 1px solid black;
+
+        .home_tag_input_tittle1{
+            width: 183px;
+            height: 25px;
+            color:#ffffff;
+            // border: 1px solid black;
+        }
+
+        .home_tag2_input1 {
+            width: 680px;
+            height: 46px;
+            // border: 1px solid black;
+        }
+    }
+
+   
+
+    // input6
+    .tag_input_unit6 {
+        width: 114px;
+        height: 71px;
+        // border: 1px solid black;
+        
+        .home_tag_input_tittle6 {
+            width: 114px;
+            height: 25px;
+        }
+
+        .home_tag_input6 {
+            width: 114px;
+            height: 46px;
+            // border: 1px solid black;
+        }
+    }
+}
+
+.home_tags_input2_hidden{
     visibility: hidden;
     display: flex;
     width: 794px;
@@ -286,18 +456,7 @@
     }
 }
 
-.view_search_stay {
-    visibility: visible;
-}
-.view_search_food {
-    visibility: visible;
-}
-.view_search_itinerary {
-    visibility: visible;
-}
-.view_search_ticket {
-    visibility: visible;
-}
+
 
 
 
