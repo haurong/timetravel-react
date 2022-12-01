@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 // import { imgUrl } from '../../config';
 // import Star from '../../icon/star.svg';
 // import Heart from '../../icon/heart_white.svg';
-function Site_Card_List({ rows }) {
+function SiteCardList({ rows }) {
   return (
     <Row xs={1} md={2} lg={3} className="g-4">
       {rows.map((el, i) => {
@@ -33,4 +33,4 @@ function Site_Card_List({ rows }) {
   );
 }
 
-export default Site_Card_List;
+export default SiteCardList;

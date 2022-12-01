@@ -15,4 +15,3 @@ export const ITINERARY_ADDITEM = `${MY_HOST}/itinerary/api/additem`;
 export const ITINERARY_ITEM = `${MY_HOST}/itinerary/api/item/`;
 export const ITINERARY_EDITITEM = `${MY_HOST}/itinerary/api/edititem/`;
 export const ITINERARY_DELITEM = `${MY_HOST}/itinerary/api/delitem/`;
-// export const GOOGLE_ADDRESS = `https://maps.googleapis.com/maps/api/geocode/json?key=${Key}&address=`;

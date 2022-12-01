@@ -8,6 +8,7 @@ import IList from './IList';
 import ITitle from './ITitle';
 import IRecSite from './iRecSite';
 import IRecFood from './iRecFood';
+import ThemeContext from './ThemeContext';
 import './Itinerary-detail.scss';
 import { ITINERARY_ITEM } from './site-config';
 
@@ -31,12 +32,14 @@ function ItineraryDetail() {
     <>
       <NavBar />
       <ITitle />
-      <div id="iContainer">
-        <div id="iList">
-          <IList iData={iData} />
+      <ThemeContext.Provider value={{}}>
+        <div id="iContainer">
+          <div id="iList">
+            <IList />
+          </div>
+          <Map />
         </div>
-        <Map />
-      </div>
+      </ThemeContext.Provider>
       <div id="iRecItems">
         <IRecSite />
         <IRecFood />

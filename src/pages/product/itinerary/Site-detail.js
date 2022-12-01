@@ -6,10 +6,12 @@ import Swal from 'sweetalert2';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import { Container } from 'react-bootstrap';
-import Carousel from '../../../Component/Carousel/Carousel';
+import SiteCarousel from './Carousel/SiteCarousel';
 import BreadCrumb from '../../../Component/BreadCrumb/BreadCrumb';
+import SiteDes from './SiteDes';
 import './Site-detail.scss';
-import { SITE_DETAIL } from './site-config';
+// import './Carousel/SiteCarousel.scss';
+import { SITE_DETAIL, ITINERARY_ADDITEM, ITINERARY_LIST } from './site-config';
 
 import Heart from '../../../icon/heart_gray.svg';
 import PinkHeart from '../../../icon/heart.svg';
@@ -19,9 +21,10 @@ import Map_Green_icon from '../../../icon/map.svg';
 import Food_icon from '../../../icon/food_blue.svg';
 import Phone_icon from '../../../icon/iphone.svg';
 import Star_icon from '../../../icon/star.svg';
+import HashChange from '../food/HashChange';
 
 function SiteDetail() {
-  const [siteData, setSiteData] = useState({});
+  const [siteData, setSiteData] = useState('');
   const [like, setLike] = useState(false);
   const toggleLike = () => setLike(!like);
   const location = useLocation();
@@ -29,20 +32,44 @@ function SiteDetail() {
   const sid = path[2];
   async function getData() {
     const response = await axios.get(SITE_DETAIL + sid);
-    // const response = await axios.get(SITE_DETAIL);
     setSiteData(response.data);
+  }
+  const [formData, setFormData] = useState([]);
+
+  async function userData() {
+    const membersid = JSON.parse(localStorage.getItem('auth')).sid;
+    const response = await axios.get(ITINERARY_LIST + '/' + membersid);
+    setFormData(response.data);
   }
 
   useEffect(() => {
     getData();
+    userData();
   }, [location]);
+
+  const mySubmit = async () => {
+    console.log(formData);
+    // if
+
+    // const { data } = await axios.post(ITINERARY_ADDITEM, formData);
+    // console.log(data);
+    //   if (data.success) {
+    //     localStorage.setItem('auth', JSON.stringify(data.auth));
+    //     alert('登入成功');
+    //     setMyAuth({ ...data, authorised: true });
+    //     navigate('/');
+    //   } else {
+    //     localStorage.removeItem('auth'); // 移除
+    //     alert('登入失敗');
+    //   }
+  };
 
   return (
     <>
       <NavBar />
       <Container className="spaceSite">
         <BreadCrumb siteData={siteData} />
-        <Carousel />
+        <SiteCarousel />
         <div className="container ">
           <div className="product_name d-flex">
             <div className="product_name_title">
@@ -60,10 +87,11 @@ function SiteDetail() {
               <button
                 className="CalendarBtn"
                 onClick={() => {
-                  Swal.fire({
-                    icon: 'success',
-                    title: '新增至我的行程',
-                  });
+                  mySubmit();
+                  // Swal.fire({
+                  //   icon: 'success',
+                  //   title: '新增至我的行程',
+                  // });
                 }}
               >
                 <img src={Calendar} className="Calendar_icon" alt="" />
@@ -89,6 +117,35 @@ function SiteDetail() {
                 <img src={Food_icon} alt="" className="Food_icon" />
                 <p>{siteData.categorise_name}</p>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', marginTop: '80px' }}>
+          <SiteDes siteData={siteData} />
+          <div
+            className="hashchange"
+            style={{
+              width: '240px',
+              marginLeft: '10px',
+              alignItems: 'center',
+              color: ' #8a8a8a',
+            }}
+          >
+            <div>
+              <Link>旅遊攻略</Link>
+            </div>
+            <div>
+              <Link>景點介紹</Link>
+            </div>
+            <div>
+              <Link>如何前往</Link>
+            </div>
+            <div>
+              <Link>開放時間</Link>
+            </div>
+            <div>
+              <Link>回到頂部</Link>
             </div>
           </div>
         </div>

@@ -1,1 +1,51 @@
-// 123
+.siteDesCon{
+    width: 800px;
+    img{
+        width: 100%;
+    }
+}
+.Site_Img1{
+    object-fit: cover;  
+    width: 100%;
+    height: 100%;
+    background-image: url('http://localhost:3001/imgs/site/10001.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+   }
+  .Site_Img2{
+    object-fit: cover;  
+    width: 100%;
+    height: 100%;
+    background-image: url('http://localhost:3001/imgs/site/10002.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+   }
+  .Site_Img3{
+    object-fit: cover;  
+    width: 100%;
+    height: 100%;
+    background-image: url('http://localhost:3001/imgs/site/10003.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+   }
+  .Site_Img4{
+    object-fit: cover;  
+    width: 100%;
+    height: 100%;
+    background-image: url('http://localhost:3001/imgs/site/10004.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+   }
+  .Site_Img5{
+    object-fit:cover;  
+    width: 100%;
+    height: 100%;
+    background-image: url('http://localhost:3001/imgs/site/10005.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:  bottom 20% center;
+   }
