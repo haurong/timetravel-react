@@ -21,19 +21,19 @@ export default function SiteCarousel() {
       className="mySwiper"
     >
       <SwiperSlide className="SwiperSlide">
-        <div className="Site_Img1 ">1</div>
+        <div className="Site_Img1"></div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlide">
-        <div className="Site_Img2">2</div>
+        <div className="Site_Img2"></div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlide">
-        <div className="Site_Img3">3</div>
+        <div className="Site_Img3"></div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlide">
-        <div className="Site_Img4">4</div>
+        <div className="Site_Img4"></div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlide">
-        <div className="Site_Img5">5</div>
+        <div className="Site_Img5"></div>
       </SwiperSlide>
     </Swiper>
   );

@@ -6,7 +6,7 @@ import Footer from '../../../layout/Footer';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import BreadCrumbList from '../../../Component/BreadCrumb/BreadCrumbList';
-import Site_Card_List from './Site_Card_List';
+import SiteCardList from './SiteCardList';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
@@ -51,7 +51,7 @@ function Site() {
             </Card>
           </Col>
           <Col className="col-9">
-            <Site_Card_List rows={siteData.rows} />
+            <SiteCardList rows={siteData.rows} />
           </Col>
         </Row>
         <div className="Food_pagination givePadding ">

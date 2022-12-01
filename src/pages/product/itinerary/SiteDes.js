@@ -19,7 +19,7 @@ export default function SiteDes({ siteData }) {
     const lat = response.data.lat;
     const lng = response.data.lng;
     setPosition([lat, lng]);
-    console.log([lat, lng]);
+    // console.log([lat, lng]);
   }
   const customMarker1 = new L.Icon({
     iconUrl: map1,
