@@ -4,16 +4,23 @@ import { useHotelContext } from '../Context/HotelContext';
 import { useHotelCart } from './../../../cart/utils/useCart';
 function BuyButton() {
   const { addItem } = useHotelCart();
-  const { roomCounts, hotelRoomPrice, hotelListData, pickDate, allStar } =
-    useHotelContext();
+  const {
+    roomCounts,
+    hotelRoomPrice,
+    hotelListData,
+    pickDate,
+    allStar,
+    roomsChooseName,
+  } = useHotelContext();
   const items = {
     id: hotelListData.sid,
-    name: hotelListData.hotel_name,
+    name: hotelListData.product_name,
     price: hotelRoomPrice,
     checkin: pickDate.startTime,
     checkout: pickDate.endTime,
     quantity: roomCounts,
     rate: allStar,
+    type: roomsChooseName,
   };
   return (
     <>
@@ -23,6 +30,7 @@ function BuyButton() {
           style={{ backgroundColor: '#63D2FF' }}
           onClick={() => {
             addItem(items);
+            // console.log(roomsChooseName);
             // console.log(allStar);
           }}
         >

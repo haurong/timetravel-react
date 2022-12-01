@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { MakeOrder } from '../../../config';
+import axios from 'axios';
 function ProgressButton({
   prev,
   next,
@@ -11,7 +12,17 @@ function ProgressButton({
   paymentMobile,
   paymentEmail,
   paymentId,
+  formData,
 }) {
+  const mySubmit = async (e) => {
+    const { data } = await axios.post(MakeOrder, formData);
+    if (data.success) {
+      alert('已成功建立訂單！！');
+    } else {
+      alert('訂購失敗！');
+    }
+  };
+
   return (
     <div className="d-flex justify-content-evenly mb-5">
       {step === 1 ? (
@@ -30,7 +41,9 @@ function ProgressButton({
         <button
           type="submit"
           className="btn btn-primary"
-          onClick={console.log()}
+          onClick={() => {
+            mySubmit();
+          }}
         >
           確認結帳
         </button>
