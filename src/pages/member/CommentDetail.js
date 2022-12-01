@@ -1,45 +1,57 @@
 import React from 'react';
+import { Rate } from 'antd';
 import '../../global.scss';
 import './style/CommentDetail.scss';
-import Star_icon from '../../icon/star.svg';
 import Edit from '../../icon/edit.svg';
 import Trash from '../../icon/Trash.svg';
+import moment from 'moment';
 
-function CommentDetail() {
+function CommentDetail({ rows }) {
+  const newRows = rows.reduce((acc, cur) => {
+    acc = acc.concat(cur);
+    return acc;
+  }, []);
+
+  console.log(newRows);
   return (
     <>
-      <div className="card col-10 comment-card">
-        <div className="card-body body-comment-padding">
-          <div className="d-flex">
-            <div className="comment_img"></div>
-            {/* <img className="sideBar_img" src="" /> */}
-            <div className="comment_title">
-              <h2>欣葉日本料理 | 日式料理吃到飽</h2>
+      {newRows?.map((el) => {
+        const dataTime = el.create_time;
+        let day = moment(dataTime).format('YYYY/MM/DD');
+        return (
+          <div className="card col-10 comment-card" key={el.product_number}>
+            <div className="card-body body-comment-padding">
               <div className="d-flex">
-                <div className="star_group star-comment-margin">
-                  <img src={Star_icon} alt="" />
-                  <img src={Star_icon} alt="" />
-                  <img src={Star_icon} alt="" />
-                  <img src={Star_icon} alt="" />
-                  <img src={Star_icon} alt="" />
+                <div className="comment_img"></div>
+                {/* <img className="sideBar_img" src="" /> */}
+                <div className="comment_title">
+                  <h2>{el.product_name}</h2>
+                  <div className="d-flex">
+                    <div className="star_group star-comment-margin">
+                      <Rate
+                        disabled
+                        value={el.score}
+                        className="TimeTravel_Rate"
+                        style={{ zIndex: -1 }}
+                      />
+                    </div>
+                    <p className="comment-time my-auto">{day}</p>
+                  </div>
                 </div>
-                <p className="comment-time my-auto">2022/10/20</p>
+                <div className="d-flex comment-icon-dlex my-auto">
+                  <div className="icon comment-icon">
+                    <img src={Edit} alt="" />
+                  </div>
+                  <div className="icon comment-icon ">
+                    <img src={Trash} alt="" />
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="d-flex comment-icon-dlex my-auto">
-              <div className="icon comment-icon">
-                <img src={Edit} alt="" />
-              </div>
-              <div className="icon comment-icon ">
-                <img src={Trash} alt="" />
-              </div>
+              <p className="card-text comment-body-text">{el.commit_text}</p>
             </div>
           </div>
-          <p className="card-text comment-body-text">
-            已經成為每次帶小孩去墾丁的口袋景點之一了，除了可以消耗時間，小孩也能增長許多豐富的知識，每次都很依依不捨的離開呢！
-          </p>
-        </div>
-      </div>
+        );
+      })}
     </>
   );
 }
