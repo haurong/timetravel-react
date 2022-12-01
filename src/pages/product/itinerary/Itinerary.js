@@ -15,9 +15,13 @@ import './Itinerary.scss';
 function Itinerary() {
   const [iData, setIData] = useState([]);
   async function getList() {
-    const response = await axios.get(ITINERARY_LIST);
-    setIData(response.data);
+    if (localStorage.getItem('auth') !== null) {
+      const membersid = JSON.parse(localStorage.getItem('auth')).sid;
+      const response = await axios.get(ITINERARY_LIST + '/' + membersid);
+      setIData(response.data);
+    }
   }
+
   const location = useLocation();
 
   useEffect(() => {
