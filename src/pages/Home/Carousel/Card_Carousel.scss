@@ -1,6 +1,116 @@
-.swiper-slide{
+.bannerSlider {
     width: 100%;
+    // max-height: 650px;
+    overflow: hidden;
+  // .SwiperSlide{
+  //   width: 100%;
+  //   max-height: 650px;
+  // }
+  .swiper-button-prev,
+  .swiper-rtl .swiper-button-next {
+    &:after {
+      color:#4D4D4D;
+      content: 'prev';
+    }
+    left: -2px;
+    right: auto;
+    top:50%;
+  }
+
+  .swiper-button-next,
+  .swiper-rtl .swiper-button-prev {
+    &:after {
+      color:#4D4D4D;
+      content: 'next';
+    }
+    right: -2px;
+    left: auto;
+    top:50%;
+  }
+    .swiper-slide {
+        margin-bottom: 20px;
+        width: 100%;
+        height: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;   
+        //  background-position 依照你的照片內容調整
+        .Food_Img1{
+          object-fit: cover;  
+          width: 100%;
+          height: 100%;
+          background-image: url('http://localhost:3001/uploads/Food/F116-1.jpg');
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+         }
+        .Food_Img2{
+          object-fit: cover;  
+          width: 100%;
+          height: 100%;
+          background-image: url('http://localhost:3001/uploads/Food/F116-2.jpg');
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+         }
+        .Food_Img3{
+          object-fit: cover;  
+          width: 100%;
+          height: 100%;
+          background-image: url('http://localhost:3001/uploads/Food/F116-3.jpg');
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+         }
+        .Food_Img4{
+          object-fit: cover;  
+          width: 100%;
+          height: 100%;
+          background-image: url('http://localhost:3001/uploads/Food/F116-4.jpg');
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+         }
+        .Food_Img5{
+          object-fit:cover;  
+          width: 100%;
+          height: 100%;
+          background-image: url('http://localhost:3001/uploads/Food/F116-5.jpg');
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position:  bottom 20% center;
+         }
+         
+      } 
+  }
+  @media (max-width:992px) {
+    .mySwiper .swiper-slide .swiper-wrapper{
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    // .SwiperSlide{
+    //   width: 100%;
+    //   max-height: 650px;
+    // }
+  }
+  }
+
+
+
+.bannerHot{
+    width: 100%;
+    height: 407px;
+    // align-items: center;
     
+   
 }
 .swiper{
     position: relative;

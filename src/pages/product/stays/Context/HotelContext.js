@@ -17,7 +17,6 @@ export const HotelContextProvider = ({ children }) => {
     endTime: tomorrow,
     days: 1,
   });
-
   //  房間價格
   const [hotelRoomPrice, setHotelRoomPrice] = useState(1);
 
@@ -41,6 +40,28 @@ export const HotelContextProvider = ({ children }) => {
 
   //  選擇的房型
   const [roomsChooseName, setRoomsChooseName] = useState();
+
+  //  住宿列表資料
+  const [hotelAllData, setHotelAllData] = useState({
+    totalRows: 0,
+    totalPages: 0,
+    perPage: 0,
+    page: 1,
+    rows: [],
+    rowsAll: [],
+  });
+
+  //  住宿列表資料篩選條件
+  const [hotelSort, setHotelSort] = useState({
+    area: 'area_All',
+    cate: 'cate_All',
+    like: 'likeAll',
+  });
+
+  //  住宿列表資料改變
+  const [hotelSortData, setHotelSortData] = useState([]);
+
+  const [displayData, setDisplayData] = useState([]);
 
   return (
     <HotelContext.Provider
@@ -69,6 +90,14 @@ export const HotelContextProvider = ({ children }) => {
         setCommentSort,
         roomsChooseName,
         setRoomsChooseName,
+        hotelAllData,
+        setHotelAllData,
+        hotelSort,
+        setHotelSort,
+        hotelSortData,
+        setHotelSortData,
+        displayData,
+        setDisplayData,
       }}
     >
       {children}

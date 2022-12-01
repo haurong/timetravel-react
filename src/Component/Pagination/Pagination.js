@@ -1,25 +1,20 @@
 import * as React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Pagination.scss';
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
 export default function MyPagination({ page, totalPages }) {
-  console.log({ page, totalPages });
-  // const firstPage = `?page=1`;
-  //const lastPage = `?page=${totalPages}`;
-  const prevPage = `?page=page-1`;
-  const nextPage = `?page=page+1`;
   return (
     <ul className="pagination d-flex">
       <li className="page-item ">
         <Link
           className="page-link  prevPage"
-          to={prevPage}
+          to={`?page=${page - 1}`}
           aria-label="Previous"
         >
           <MdOutlineChevronLeft />
         </Link>
       </li>
-      {Array(11)
+      {Array(13)
         .fill(1)
         .map((el, i) => {
           const classNames = ['page-item'];
@@ -36,7 +31,11 @@ export default function MyPagination({ page, totalPages }) {
           );
         })}
       <li className="page-item">
-        <Link className="page-link nextPage" to={nextPage} aria-label="Next">
+        <Link
+          className="page-link nextPage"
+          to={`?page=${page + 1}`}
+          aria-label="Next"
+        >
           <MdOutlineChevronRight />
         </Link>
       </li>

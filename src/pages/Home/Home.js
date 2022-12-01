@@ -1,63 +1,99 @@
 import React, { useState, useEffect } from 'react';
+
 import '../../global.scss';
 import './Home.scss';
-
 import '../../../node_modules/slick-carousel/slick/slick.css';
 import '../../../node_modules/slick-carousel/slick/slick-theme.css';
 
 // import BannerSliderHot from '../../pages/product/ticket/BannerSlider/BannerSliderHot';
 import BannerSliderHot from './Carousel/Card_Carousel';
-import BannerSliderNewest from '../../pages/Home/BannerSlider/BannerSliderNewest';
-// import BannerSliderNewest from './Carousel/Carousel';
+// import BannerSliderNewest from '../../pages/Home/BannerSlider/BannerSliderNewest';
+import BannerSliderNewest from './Carousel/Carousel';
 import ButtonSign from '../../pages/product/ticket/ButtonSign/ButtonSign';
+// icon元件按鈕
 import TagSiteButton from './TagButton/TagSiteButton';
 import TagFoodButton from './TagButton/TagFoodButton';
 import TagStayButton from './TagButton/TagStayButton';
 import TagTicketButton from './TagButton/TagTicketButton';
+// searchBar
 import TagStayInput from './TagInput/TagInput';
-import TagInput from './TagInput/TagInput2';
+import TagFoodInput from './TagInput/TagInput2';
+import TagItineraryInput from './TagInput/TagInput2';
+import TagTicketInput from './TagInput/TagInput2';
 import TagStayDatePickerIn from './TagStayDatePicker/TagStayDatePicker';
 import TagStayDatePickerOut from './TagStayDatePicker/TagStayDatePicker';
 import TagSelectDays from './TagSelect/TagSelectDays';
 import TagSelectRooms from './TagSelect/TagSelectRooms';
 import TagStaySearchBtn from './ButtonSearch/ButtonSearch';
-import TagSearchBtn from './ButtonSearch/ButtonSearch';
+import TagFoodSearchBtn from './ButtonSearch/ButtonSearch';
+import TagItinerarySearchBtn from './ButtonSearch/ButtonSearch';
+import TagTicketSearchBtn from './ButtonSearch/ButtonSearch';
 import { useLocation } from 'react-router-dom';
+import { useScrollPosition } from '@n8tb1t/use-scroll-position'
+
 
 function Home() {
   const [bgClassName, setBgClassName] = useState(
     'home_bg_absolute home_bg_ticket'
   );
 
-  const [searchBar, setSearchBar] = useState(
-    'home_tags_input2 view_search_ticket '
+  const [searchStayClassname, setSearchStayClassname] = useState(
+    'home_tags_input1_hidden'
   );
 
-  const changeItinerary = function () {
-    setBgClassName('home_bg_absolute home_bg_itinerary');
-  };  
+  const [searchOtherClassname, setSearchOtherClassname] =
+    useState('home_tags_input2');
 
-  const changeFood = function () {
+  const changeBgItinerary = function () {
+    setBgClassName('home_bg_absolute home_bg_itinerary');
+  };
+
+  const changeBgFood = function () {
     setBgClassName('home_bg_absolute home_bg_food');
   };
-  
+
   const changeBgStay = function () {
     setBgClassName('home_bg_absolute home_bg_stay');
   };
 
-  const changeTicket = function () {
+  const changeBgTicket = function () {
     setBgClassName('home_bg_absolute home_bg_ticket');
   };
 
   const searchStay = function () {
-    setSearchBar('home_tags_input1 home_tags_input2 view_search_stay');
+    setSearchStayClassname('home_tags_input1 ');
+    setSearchOtherClassname('home_tags_input2_hidden');
   };
+
+  const searchOthers = function () {
+    setSearchStayClassname('home_tags_input1_hidden ');
+    setSearchOtherClassname('home_tags_input2');
+  }
+
+  // const searchOthers = function () {
+  //   setSearchStayClassname('home_tags_input1_hidden ');
+  //   setSearchOtherClassname('home_tags_input2');
+  // }
 
   const stayChange = function () {
     changeBgStay();
     searchStay();
   };
 
+  const ItineraryChange = function () {
+    changeBgItinerary();
+    searchOthers();
+  };
+
+  const FoodChange = function () {
+    changeBgFood();
+    searchOthers();
+  };
+
+  const TicketChange = function () {
+    changeBgTicket();
+    searchOthers();
+  };
 
   // const changeFoodColor = function () {
   //   setLogoColor('home_bg_text_wrap home_logo_color');
@@ -75,26 +111,26 @@ function Home() {
             </div>
             {/* 標籤icons部分 */}
             <div className="home_tags">
-              <div onClick={changeItinerary} className="tag_unit">
+              <div onClick={ItineraryChange} className="tag_unit">
                 <TagSiteButton />
               </div>
-              <div onClick={changeFood} className="tag_unit">
+              <div onClick={FoodChange} className="tag_unit">
                 <TagFoodButton />
               </div>
               <div onClick={stayChange} className="tag_unit">
                 <TagStayButton />
               </div>
-              <div onClick={changeTicket} className="tag_unit">
+              <div onClick={TicketChange} className="tag_unit">
                 <TagTicketButton />
               </div>
             </div>
-            {/* 2個搜尋的框框 */}
-              {/* <div className="searchBar"> */}
-            {/* 填選區1 */}
-            <div className="home_tags_input1 view_search_stay">
+            
+            
+            {/* 住宿填選區 */}
+            <div className={searchStayClassname}>
               <div className="tag_input_unit1">
                 <div className="home_tag_input_tittle1">目的地</div>
-                <div className="home_tag_input1">
+                <div className="home_Hoteltag_input">
                   <TagStayInput />
                 </div>
               </div>
@@ -130,25 +166,57 @@ function Home() {
               </div>
             </div>
 
-            {/* 填選區2 */}
-            <div className="home_tags_input2 home_tags_search_other">
-              
+            {/* 美食填選區 */}
+            <div className={searchOtherClassname}>
               <div className="tag_input_unit1">
                 <div className="home_tag_input_tittle1"></div>
                 <div className="home_tag2_input1">
-                  <TagInput />
+                  <TagFoodInput />
                 </div>
               </div>
-              
+
               <div className="tag_input_unit6">
                 <div className="home_tag_input_tittle6"></div>
                 <div className="home_tag_input6">
-                  <TagSearchBtn />
+                  <TagFoodSearchBtn />
                 </div>
               </div>
-              {/* </div> */}
-
             </div>
+
+            {/* 景點填選區 */}
+            <div className={searchOtherClassname}>
+              <div className="tag_input_unit1">
+                <div className="home_tag_input_tittle1"></div>
+                <div className="home_tag2_input1">
+                  <TagItineraryInput />
+                </div>
+              </div>
+
+              <div className="tag_input_unit6">
+                <div className="home_tag_input_tittle6"></div>
+                <div className="home_tag_input6">
+                  <TagItinerarySearchBtn />
+                </div>
+              </div>
+            </div>
+
+            {/* 票券填選區 */}
+            <div className={searchOtherClassname}>
+              <div className="tag_input_unit1">
+                <div className="home_tag_input_tittle1"></div>
+                <div className="home_tag2_input1">
+                  <TagTicketInput />
+                </div>
+              </div>
+
+              <div className="tag_input_unit6">
+                <div className="home_tag_input_tittle6"></div>
+                <div className="home_tag_input6">
+                  <TagTicketSearchBtn />
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <div className="home-part2">

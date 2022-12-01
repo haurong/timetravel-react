@@ -5,48 +5,37 @@
 import { Menu } from 'antd';
 import { Checkbox } from 'antd';
 import React, { useState } from 'react';
+import { useHotelContext } from '../../pages/product/stays/Context/HotelContext';
 import './Sidebar1.scss';
 function getItem(label, key, children, type) {
   return {
     key,
-
     children,
     label,
     type,
   };
 }
-const items3 = ['五星', '四星', '三星', '二星', '一星'];
-const options = [
-  {
-    label: '五星',
-    value: '5',
-  },
-  {
-    label: '四星',
-    value: '4',
-  },
-  {
-    label: '三星',
-    value: '3',
-  },
-  {
-    label: '二星',
-    value: '2',
-  },
-  {
-    label: '一星',
-    value: '1',
-  },
+
+const items3 = [
+  getItem('全部', 'likeAll'),
+  getItem('0-100', 'like100'),
+  getItem('101-200', 'like200'),
+  getItem('201-300', 'like300'),
+  getItem('301-400', 'like400'),
+  getItem('401-500', 'like500'),
 ];
+
 const items1 = [
-  getItem('台北市', 'sub1'),
-  getItem('新北市', 'sub2'),
-  getItem('基隆市', 'sub3'),
+  getItem('全部', 'area_All'),
+  getItem('台北市', 'area_Taipei'),
+  getItem('新北市', 'area_NewTaipei'),
+  getItem('基隆市', 'area_Keelung'),
 ];
 const items2 = [
+  getItem('全部', 'cate_All'),
   getItem(
     '景點',
-    'sub4',
+    'cate_Site',
     // <Site className="sidebarIcon" style={{ width: '40px' }} />,
     [
       getItem('全部', '1'),
@@ -59,7 +48,7 @@ const items2 = [
   ),
   getItem(
     '美食',
-    'sub5',
+    'cate_Food',
     // <Food className="sidebarIcon" style={{ width: '40px' }} />,
     [
       getItem('全部', '7'),
@@ -75,7 +64,7 @@ const items2 = [
   ),
   getItem(
     '住宿',
-    'sub6',
+    'cate_Hotel',
     // <Stay className="sidebarIcon" style={{ width: '40px' }} />,
     [
       getItem('全部', '16'),
@@ -86,7 +75,7 @@ const items2 = [
   ),
   getItem(
     '票券',
-    'sub7',
+    'cate_Ticket',
     // <Ticket className="sidebarIcon" style={{ width: '40px' }} />,
     [
       getItem('全部', '20'),
@@ -104,18 +93,28 @@ const items2 = [
 
 // submenu keys of first level
 const rootSubmenuKeys = [
-  'sub1',
-  'sub2',
-  'sub3',
-  'sub4',
-  'sub5',
-  'sub6',
-  'sub7',
+  'area_All',
+  'area_Taipei',
+  'area_NewTaipei',
+  'area_Keelung',
+  'cate_All',
+  'cate_Site',
+  'cate_Food',
+  'cate_Hotel',
+  'cate_Ticket',
+  'likeAll',
+  'like100',
+  'like200',
+  'like300',
+  'like400',
+  'like500',
 ];
 //const rootSubmenuKeys2 = ['sub4', 'sub5', 'sub6', 'sub7'];
 
 export default function Sidebar1() {
   const [openKeys, setOpenKeys] = useState([]);
+  const { hotelSort, setHotelSort } = useHotelContext();
+  // console.log(hotelAllData.rows);
   const onOpenChange = (keys) => {
     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
     if (rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
@@ -126,7 +125,7 @@ export default function Sidebar1() {
   };
 
   return (
-    <>
+    <div className="Eliot_Du_Boss">
       <div className="destination">
         <h2 className="sidebarMarginTop">篩選目的地</h2>
         <Menu
@@ -134,6 +133,14 @@ export default function Sidebar1() {
           openKeys={openKeys}
           onOpenChange={onOpenChange}
           items={items1}
+          defaultSelectedKeys={'area_All'}
+          onSelect={(e) => {
+            setHotelSort({
+              area: e.key,
+              cate: hotelSort.cate,
+              like: hotelSort.like,
+            });
+          }}
         />
       </div>
       <div className="allproduct">
@@ -142,25 +149,38 @@ export default function Sidebar1() {
           mode="inline"
           openKeys={openKeys}
           onOpenChange={onOpenChange}
+          defaultSelectedKeys={'cate_All'}
           items={items2}
+          onSelect={(e) => {
+            // console.log(e.key);
+            // console.log(openKeys);
+            if (e.key === 'cate_All') {
+              setOpenKeys('');
+            }
+          }}
         />
       </div>
       <div className="selectScore">
-        <h2 className="sidebarMarginTop">旅客評分</h2>
+        <h2 className="sidebarMarginTop">收藏數量</h2>
         <Menu
-         mode="vertical"
-        >
-          <Checkbox.Group
-            options={items3}
-            defaultValue={[]}
-            onChange={onChange}
-          />
-        </Menu>
+          mode="inline"
+          openKeys={openKeys}
+          onOpenChange={onOpenChange}
+          items={items3}
+          onSelect={(e) => {
+            setHotelSort({
+              area: hotelSort.area,
+              cate: hotelSort.cate,
+              like: e.key,
+            });
+          }}
+          defaultSelectedKeys={'likeAll'}
+        />
       </div>
-    </>
+    </div>
   );
 }
 
-const onChange = (checkedValues) => {
-  console.log('checked = ', checkedValues);
-};
+// const onChange = (checkedValues) => {
+//   console.log('checked = ', checkedValues);
+// };

@@ -1,7 +1,7 @@
 import React from 'react';
 import Pic from './../../../../img/stay_home.jpg';
-import Rate from '../../../product/stays/Rate/Rate';
-function CardBodyTop({ productName }) {
+import { Rate } from 'antd';
+function CardBodyTop({ productName, rate }) {
   return (
     <div className="d-flex align-items-center">
       <div className="pic-wrap">
@@ -9,13 +9,16 @@ function CardBodyTop({ productName }) {
       </div>
       <div className="card-body-top-text">
         <p>{productName}</p>
-        <div className="score-wrap">
+        <div className="score-wrap d-flex">
           <Rate
             disabled
-            defaultValue={4}
+            value={rate}
             className="TimeTravel_Rate"
             style={{ zIndex: '-1' }}
           />
+          <div className="rate_text">
+            <p>{isNaN(rate) ? '目前沒有評價' : `${rate}顆星`}</p>
+          </div>
         </div>
       </div>
     </div>

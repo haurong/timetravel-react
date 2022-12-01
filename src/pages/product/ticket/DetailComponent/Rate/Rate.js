@@ -1,7 +1,7 @@
 import './Rate.scss';
 import { Rate } from 'antd';
 import React from 'react';
-import { useHotelContext } from '../Context/HotelContext';
+import { useHotelContext } from '../../../stays/Context/HotelContext';
 function RateHotel() {
   const { allStar } = useHotelContext();
   return (

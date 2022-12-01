@@ -1,16 +1,21 @@
-
-.mySwiper .swiper-slide .swiper-wrapper{
+// div {
+//   border: 1px solid red;
+// }
+.bannerSwiper {
   width: 100%;
-  // height: 650px;
+  height: 141px;
   overflow: hidden;
-.SwiperSlide{
-  width: 100%;
-  // height: 650px;
-}
+  
+
+// .SwiperSlide{
+//   width: 100%;
+//   height: 141px;
+//   border: 1px solid red;
+// }
   .swiper-button-prev,
   .swiper-rtl .swiper-button-next {
     &:after {
-      color:#E9E9E9;
+      color:#4D4D4D;
       content: 'prev';
     }
     left: -2px;
@@ -21,17 +26,18 @@
   .swiper-button-next,
   .swiper-rtl .swiper-button-prev {
     &:after {
-      color:#E9E9E9;
+      color:#4D4D4D;
       content: 'next';
     }
     right: -2px;
     left: auto;
     top:50%;
   }
-  .swiper-slide {
+  .SwiperSlideBannerNewest {
       margin-bottom: 20px;
+      padding-left:10px;
       width: 100%;
-      height: 650px;
+      height: 100%;
       display: -webkit-box;
       display: -ms-flexbox;
       display: -webkit-flex;
@@ -45,47 +51,56 @@
       -webkit-align-items: center;
       align-items: center;   
       //  background-position 依照你的照片內容調整
-      .home_newest_banner_1{
+      .bannerNewest1{
         object-fit: cover;  
         width: 100%;
         height: 100%;
-        background-image: url('../../../img/banner/banner01.jpg');
+        background-image: url('.../../../../../img/banner/banner01.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
        }
-      .Food_Img2{
+      .bannerNewest2{
         object-fit: cover;  
         width: 100%;
         height: 100%;
-        background-image: url('http://localhost:3001/uploads/Food/F116-2.jpg');
+        background-image: url('.../../../../../img/banner/banner02.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
        }
-      .Food_Img3{
+      .bannerNewest3{
         object-fit: cover;  
         width: 100%;
         height: 100%;
-        background-image: url('http://localhost:3001/uploads/Food/F116-3.jpg');
+        background-image: url('.../../../../../img/banner/banner03.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
        }
-      .Food_Img4{
+      .bannerNewest4{
         object-fit: cover;  
         width: 100%;
         height: 100%;
-        background-image: url('http://localhost:3001/uploads/Food/F116-4.jpg');
+        background-image: url('.../../../../../img/banner/banner04.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
        }
-      .Food_Img5{
+      .bannerNewest5{
         object-fit:cover;  
         width: 100%;
         height: 100%;
-        background-image: url('http://localhost:3001/uploads/Food/F116-5.jpg');
+        background-image: url('.../../../../../img/banner/banner05.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position:  bottom 20% center;
+       }
+       .bannerNewest6{
+        object-fit:cover;  
+        width: 100%;
+        height: 100%;
+        background-image: url('.../../../../../img/banner/banner06.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position:  bottom 20% center;

@@ -8,35 +8,40 @@ function CommentCard() {
   const { hotelCommentData, commentSort, setHotelCommentData } =
     useHotelContext();
   // console.log(Date.parse(hotelCommentData[0].create_time));
-  // console.log(hotelCommentData);
+  console.log(hotelCommentData);
 
-  if (hotelCommentData.length !== 0) {
+  useEffect(() => {
+    // if (hotelCommentData.length !== 0) {
+    let tmp = hotelCommentData.map((v) => {
+      return { ...v };
+    });
+
+    // console.log('tmp', tmp);
+
     if (commentSort === 'score_ASC') {
-      setHotelCommentData(
-        hotelCommentData.sort((a, b) => {
-          return a.score - b.score;
-        })
-      );
+      tmp = tmp.sort((a, b) => {
+        return a.score - b.score;
+      });
+      setHotelCommentData(tmp);
     } else if (commentSort === 'score_DESC') {
-      setHotelCommentData(
-        hotelCommentData.sort((a, b) => {
-          return b.score - a.score;
-        })
-      );
+      tmp = tmp.sort((a, b) => {
+        return b.score - a.score;
+      });
+      setHotelCommentData(tmp);
     } else if (commentSort === 'time_ASC') {
-      setHotelCommentData(
-        hotelCommentData.sort((a, b) => {
-          return Date.parse(a.create_time) - Date.parse(b.create_time);
-        })
-      );
+      tmp = tmp.sort((a, b) => {
+        return Date.parse(a.create_time) - Date.parse(b.create_time);
+      });
+      setHotelCommentData(tmp);
     } else if (commentSort === 'time_DESC') {
-      setHotelCommentData(
-        hotelCommentData.sort((a, b) => {
-          return Date.parse(b.create_time) - Date.parse(a.create_time);
-        })
-      );
+      tmp = tmp.sort((a, b) => {
+        return Date.parse(b.create_time) - Date.parse(a.create_time);
+      });
+      setHotelCommentData(tmp);
     }
-  }
+
+    //}
+  }, [commentSort]);
 
   return (
     <>

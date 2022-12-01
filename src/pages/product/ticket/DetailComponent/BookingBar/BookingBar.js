@@ -15,6 +15,7 @@ function BookingBar() {
     setBookingBarOpen,
     roomCounts,
     hotelRoomPrice,
+    hotelListData
   } = useHotelContext();
   // const [bookingBarOpen, setBookingBarOpen] = useState(false);
 
@@ -34,7 +35,8 @@ function BookingBar() {
             }}
           >
             <h2 style={{ color: '#4D4D4D' }}>
-              {/* TODO:拿到真實名稱 */}台北兒童新樂園｜一日票（無限暢玩13項指定設施）
+              {/* TODO:拿到真實名稱 */}
+              {hotelListData.product_name}
             </h2>
             {/* <div className="icon d-flex align-items-center">
               <Sort />
@@ -56,9 +58,8 @@ function BookingBar() {
               }}
             >
               {/* TODO:拿到真實價格 */}
-              TWD$123
               
-              {/* TWD${roomCounts * hotelRoomPrice} */}
+              TWD${roomCounts * hotelRoomPrice}
             </h4>
             <div className="d-flex">
               <BuyButton />

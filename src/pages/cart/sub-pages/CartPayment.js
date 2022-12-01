@@ -1,11 +1,89 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PaymentCard from './components/PaymentCard';
 import ProgressButton from './ProgressButton';
-function CartPayment({ prev, next, step, maxSteps }) {
+import { useFoodCart, useHotelCart, useTicketCart } from '../utils/useCart';
+import axios from 'axios';
+import { MakeOrder } from '../../../config';
+import { useNavigate } from 'react-router-dom';
+function CartPayment({
+  prev,
+  next,
+  step,
+  maxSteps,
+  hotelRepresent,
+  hotelMobile,
+  paymentRepresent,
+  setPaymentRepresent,
+  paymentMobile,
+  setPaymentMobile,
+  paymentEmail,
+  setPaymentEmail,
+  paymentId,
+  setPaymentId,
+}) {
+  //用毫秒當作訂單的uuid
+  const uuid = +new Date();
+  //計算訂單的總價格
+  const totalPrice =
+    useHotelCart().cart.cartTotal +
+    useFoodCart().cart.cartTotal +
+    useTicketCart().cart.cartTotal;
+
+  //抓出localstorage的資料
+  const foodItems = useFoodCart().items;
+  const hotelItems = useHotelCart().items;
+  const ticketItems = useTicketCart().items;
+
+  const newFood = foodItems.map((v, i) => {
+    return { ...v, uuid };
+  });
+  const newHotel = hotelItems.map((v, i) => {
+    return { ...v, uuid, repName: hotelRepresent, repMobile: hotelMobile };
+  });
+  const newTicket = ticketItems.map((v, i) => {
+    return { ...v, uuid };
+  });
+  const order = {
+    member_sid: 1,
+    uuid: uuid,
+    orders_total_price: totalPrice,
+  };
+
+  const formData = {
+    order: order,
+    food: newFood,
+    hotel: newHotel,
+    ticket: newTicket,
+  };
+
+  console.log(newHotel);
+  console.log(newTicket);
+  // console.log(order);
+  const { navigate } = useNavigate();
+  // {food:[{id: "1",itemTotal: 25000,name: "美食1",picture: "https://via.placeholder.com/32",price: 25000,quantity: 1,rate: 4}],hotel:[{}],ticket:[{}]}
+
+  const mySubmit = async (e) => {
+    const { data } = await axios.post(MakeOrder, formData);
+    if (data.success) {
+      alert('註冊成功');
+      navigate('/');
+    } else {
+      alert('註冊失敗');
+    }
+  };
   return (
     <div className="container">
       <div className="row">
-        <PaymentCard />
+        <PaymentCard
+          paymentRepresent={paymentRepresent}
+          setPaymentRepresent={setPaymentRepresent}
+          paymentMobile={paymentMobile}
+          setPaymentMobile={setPaymentMobile}
+          paymentEmail={paymentEmail}
+          setPaymentEmail={setPaymentEmail}
+          paymentId={paymentId}
+          setPaymentId={setPaymentId}
+        />
       </div>
       <div>
         <ProgressButton
@@ -13,7 +91,22 @@ function CartPayment({ prev, next, step, maxSteps }) {
           next={next}
           step={step}
           maxSteps={maxSteps}
+          paymentRepresent={paymentRepresent}
+          paymentMobile={paymentMobile}
+          paymentEmail={paymentEmail}
+          paymentId={paymentId}
+          hotelRepresent={hotelRepresent}
+          hotelMobile={hotelMobile}
         />
+        <button
+          type="button"
+          onClick={(e) => {
+            e.preventDefault();
+            mySubmit();
+          }}
+        >
+          發送
+        </button>
       </div>
     </div>
   );

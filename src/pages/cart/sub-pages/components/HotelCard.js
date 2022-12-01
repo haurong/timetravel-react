@@ -2,23 +2,38 @@ import React from 'react';
 import HotelCardInfo from './HotelCardInfo';
 import HotelCardDetail from './HotelCardDetail';
 import { useHotelCart } from '../../utils/useCart';
-function HotelCard() {
+function HotelCard({
+  hotelRepresent,
+  setHotelRepresent,
+  hotelMobile,
+  setHotelMobile,
+}) {
   const { items } = useHotelCart();
-
   return (
     <>
       {items.map((v, i) => {
         return (
-          <>
-            <div className="card-wrap">
-              <div className="card-body">
-                <HotelCardDetail name={v.name} id={v.id} type={v.roomtype} />
-              </div>
+          <div className="card-wrap" key={v.id}>
+            <div className="card-body">
+              <HotelCardDetail
+                name={v.name}
+                id={v.id}
+                type={v.roomtype}
+                quantity={v.quantity}
+                rate={v.rate}
+                checkin={v.checkintime}
+                checkout={v.checkouttime}
+              />
             </div>
-          </>
+          </div>
         );
       })}
-      <HotelCardInfo />
+      <HotelCardInfo
+        hotelRepresent={hotelRepresent}
+        setHotelRepresent={setHotelRepresent}
+        hotelMobile={hotelMobile}
+        setHotelMobile={setHotelMobile}
+      />
       {/* <PutInCartButton /> */}
       <div className="space"></div>
     </>

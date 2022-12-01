@@ -7,6 +7,9 @@ export const SIGNIN_API = `${MY_HOST}/member/api/signin-api`;
 export const PROFILE_API = `${MY_HOST}/member/api/edit-member-api`;
 export const RESET_PASSWORD_API = `${MY_HOST}/member/api/reset-password-member-api`;
 export const UPLOAD_AVATAR_API = `${MY_HOST}/member/upload-avatar`;
+export const COMMENT_API = function (sid) {
+  return `${MY_HOST}/member/${sid}/comment`;
+};
 
 export const HOTEL_LIST = `${MY_HOST}/hotel/api`;
 
@@ -20,6 +23,13 @@ export const FOOD_CARD_ITEM5 = `${MY_HOST}/food/item/129`;
 export const FOOD_CARD_ITEM6 = `${MY_HOST}/food/item/128`;
 export const FOOD_IMG = `${MY_HOST}/uploads/Food/`;
 export const FOOD_COMMIT = `${MY_HOST}/food/commit`;
+
+//購物車路徑
+export const MakeOrder = `${MY_HOST}/cart/api/makeorder`;
+// export const MakeHotelOrder = `${MY_HOST}/cart/api/makehotelorder`;
+// export const MakeFoodOrder = `${MY_HOST}/cart/api/makefoodorder`;
+// export const MakeTicketOrder = `${MY_HOST}/cart/api/maketicketorder`;
+
 //從node抓照片資料
 export const appConfig = {
   debug: true,
@@ -28,6 +38,16 @@ export const appConfig = {
   prodUrl: 'https://www.timetravel.com',
 };
 
-export const imgUrl = appConfig.debug
-  ? appConfig.devServerUrl
-  : appConfig.prodUrl;
+export const ALLPRODUCT_LIST = `${MY_HOST}/productAll/api`;
+export const ADD_FOOD_COLLECT= `${MY_HOST}/productAll/api/addCollect-api`;
+// //從node抓照片資料
+// export const appConfig = {
+//   debug: true,
+//   devUrl: 'http://localhost:3001',
+//   devServerUrl: MY_HOST,
+//   prodUrl: 'https://www.timetravel.com',
+// };
+
+// export const imgUrl = appConfig.debug
+//   ? appConfig.devServerUrl
+//   : appConfig.prodUrl;

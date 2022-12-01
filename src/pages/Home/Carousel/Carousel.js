@@ -12,28 +12,33 @@ export default function Carousel() {
   return (
     <Swiper
       slidesPerView={3}
-      spaceBetween={10}
-      slidesPerGroup={1}
+      spaceBetween={19}
+      slidesPerGroup={3}
       loop={true}
       loopFillGroupWithBlank={true}
       navigation={true}
       modules={[Pagination, Navigation]}
-      className="mySwiper"
+      className="bannerSwiper"
     >
-      <SwiperSlide className="SwiperSlide">
-        <div className="Food_Img1 " style={{ height: '650px ' }}></div>
+      <div className="bannerWrap">
+      <SwiperSlide className="SwiperSlideBannerNewest">
+        <div className="bannerNewest1 " style={{ height: '141px ' }}></div>
       </SwiperSlide>
-      <SwiperSlide className="SwiperSlide">
-        <div className="Food_Img2" style={{ height: '650px ' }}></div>
+      </div>
+      <SwiperSlide className="SwiperSlideBannerNewest">
+        <div className="bannerNewest2" style={{ height: '141px ' }}></div>
       </SwiperSlide>
-      <SwiperSlide className="SwiperSlide">
-        <div className="Food_Img3" style={{ height: '650px ' }}></div>
+      <SwiperSlide className="SwiperSlideBannerNewest">
+        <div className="bannerNewest3" style={{ height: '141px ' }}></div>
       </SwiperSlide>
-      <SwiperSlide className="SwiperSlide">
-        <div className="Food_Img4" style={{ height: '650px ' }}></div>
+      <SwiperSlide className="SwiperSlideBannerNewest">
+        <div className="bannerNewest4" style={{ height: '141px ' }}></div>
       </SwiperSlide>
-      <SwiperSlide className="SwiperSlide">
-        <div className="Food_Img5" style={{ height: '650px ' }}></div>
+      <SwiperSlide className="SwiperSlideBannerNewest">
+        <div className="bannerNewest5" style={{ height: '141px ' }}></div>
+      </SwiperSlide>
+      <SwiperSlide className="SwiperSlideBannerNewest">
+        <div className="bannerNewest6" style={{ height: '141px ' }}></div>
       </SwiperSlide>
     </Swiper>
   );

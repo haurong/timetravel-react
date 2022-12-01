@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import { FOOD_IMG } from '../../config';
@@ -9,7 +10,7 @@ import PinkHeart from '../../icon/heart.svg';
 import './Card_List.scss';
 
 function Card_List({ rows }) {
-  console.log({ rows });
+  // console.log({ rows });
   const [like, setLike] = useState(false);
 
   const [likeList, setLikeList] = useState([]);
@@ -38,22 +39,12 @@ function Card_List({ rows }) {
               className="foodCardImg1"
               src={`${FOOD_IMG}${el.product_photo}`}
             />
-            <button
-              data-product-number={el.product_number}
-              className="Heart_Btn"
-              onClick={() => {
-                addLikeListHandler(el.product_number);
-                toggleLike1();
-              }}
-            >
-              <img
-                src={like ? PinkHeart : Heart}
-                className="Card_Heart"
-                alt=""
-              />
-            </button>
             <Card.Body>
-              <Card.Title className="Card_Title">{el.product_name}</Card.Title>
+              <Link to="/food/detail">
+                <Card.Title className="Card_Title">
+                  {el.product_name}
+                </Card.Title>
+              </Link>
               <Card.Text className="Card_Text">
                 <Card.Img src={Map} className="Map_icon" />
                 <span class="Card_Score">
@@ -64,11 +55,11 @@ function Card_List({ rows }) {
                   <div>
                     <button className="Heart_btn">
                       <img
-                        src={PinkHeart}
+                        src={Heart}
                         style={{ width: '25px', height: '25px' }}
                         alt=""
                       />
-                      <span>999</span>
+                      <span>{el.collect}</span>
                     </button>
                   </div>
                   <div>

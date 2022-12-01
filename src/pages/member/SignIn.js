@@ -28,7 +28,7 @@ function SignIn() {
     e.preventDefault();
     const { data } = await axios.post(SIGNIN_API, formData);
     if (data.success) {
-      alert('註冊成功');
+      alert('註冊成功,請重新登入');
       navigate('/');
     } else {
       alert('註冊失敗');

@@ -34,7 +34,7 @@ function Comment() {
           />
           <p>
             {hotelCommentData.length}
-            條評論
+            則評論
           </p>
         </div>
       </div>

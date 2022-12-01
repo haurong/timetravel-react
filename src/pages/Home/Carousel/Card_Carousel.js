@@ -71,6 +71,7 @@ export default function Card_Carousel() {
   }, [Location]);
 
   return (
+    <div className="bannerHotwrap">
     <Swiper
       slidesPerView={4}
       spaceBetween={0}
@@ -79,7 +80,7 @@ export default function Card_Carousel() {
       loopFillGroupWithBlank={true}
       navigation={true}
       modules={[Pagination, Navigation]}
-      className="mySwiper"
+      className="bannerSlider"
     >
       <SwiperSlide>
         <Card  className="Card " style={{ width: '20rem' }}>
@@ -242,5 +243,6 @@ export default function Card_Carousel() {
         </Card>
       </SwiperSlide>
     </Swiper>
+    </div>
   );
 }
