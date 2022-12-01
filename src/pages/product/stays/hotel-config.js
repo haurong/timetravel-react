@@ -6,7 +6,7 @@
 export const MY_HOST = 'http://192.168.1.182:3001';
 
 //  iphone
-//export const MY_HOST = 'http://172.20.10.4:3001';
+// export const MY_HOST = 'http://172.20.10.4:3001';
 
 //  Home
 // export const MY_HOST = 'http://192.168.0.74:3001';
