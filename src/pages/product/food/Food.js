@@ -3,7 +3,7 @@ import axios from 'axios';
 import _ from 'lodash';
 import { useLocation, Link } from 'react-router-dom';
 import { FOOD_LIST } from '../../../config.js';
-import InputIME from './FoodSearch';
+import SearchBar from './SearchBar';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import CardList from '../../../Component/Card_List/Card_List';
@@ -15,63 +15,73 @@ import SearchIcon from '../../../icon/search.svg';
 
 import './Food.scss';
 function Food() {
+  //產品用的資料
+  //1.從伺服器來的資料
   const [foodData, setFoodData] = useState({
     totalRows: 0,
     totalPages: 0,
     perPage: 0,
     page: 1,
     rows: [],
+    rowsAll: [],
   });
+  // console.log(foodData);
+  //呈現顯示資料用
+  const [foodProductDisplay, setFoodProductDisplay] = useState([]);
+
+  //搜尋關鍵字用
   const [searchWord, setSearchWord] = useState('');
   // 錯誤訊息用
   const [errorMessage, setErrorMessage] = useState('');
 
+  // useEffect(() => {
+  //   setFoodProductDisplay(foodData);
+  // });
+
   async function getList() {
     const response = await axios.get(FOOD_LIST + `?` + usp.toString());
+
     setFoodData(response.data);
+    setFoodProductDisplay(response.data.rowsAll);
   }
+  //console.log(foodData)
+  useEffect(() => {
+    getList();
+  }, []);
+  // console.log(foodProductDisplay);
+  // console.log(foodData)
+  // // // 處理過濾的函式
+  const handleSearch = (foodData, searchWord) => {
+    let newFoodData = [...foodData.rowsAll];
 
-  const getFoodProductBySearchWord = async (keyword) => {
-    try {
-      const response = await axios.get(FOOD_LIST + keyword);
+    if (searchWord.length) {
+      newFoodData = newFoodData.filter((newFoodData) => {
+        return newFoodData.product_name.includes(searchWord);
+      });
 
-      //設定到state裡
-      setFoodData(response.data);
-    } catch (e) {
-      // 錯誤處理
-      console.error(e.message);
-      setErrorMessage(e.message);
+      // console.log(newFoodData);
     }
+    return newFoodData;
   };
-  // 處理過濾的函式
-  const handleSearch = (keyword) => {
-    // 檢查，當都沒輸入時回復原本data
-    if (keyword === '') {
-      getList();
-      return;
-    }
-    getFoodProductBySearchWord(keyword);
-  };
-  const handleChange = (e) => {
-    // 可控元件綁用state使用
-    setSearchWord(e.target.value);
 
-    // 搜尋用 - trim去除空白，toLowerCase轉小寫英文
-    const newSearchWord = e.target.value.trim().toLowerCase();
-
-    // // 傳至debounceFn中
-    debounceHandleSearch(newSearchWord);
-  };
   const location = useLocation();
   const usp = new URLSearchParams(location.search);
   const path = window.location.pathname.split('/');
 
-  const debounceHandleSearch = useCallback(_.debounce(handleSearch, 400), []);
+  // const debounceHandleSearch = useCallback(_.debounce(handleSearch, 400), []);
 
-  console.log(foodData);
+  // console.log(foodData);
   useEffect(() => {
-    getList();
-  }, [location]);
+    if (searchWord.length < 3 && searchWord.length !== 0) return;
+
+    let newFoodData = [];
+
+    newFoodData = handleSearch(foodData, searchWord);
+
+    setFoodProductDisplay(newFoodData);
+  }, [searchWord, foodData, location]);
+
+  //cardlist顯示用的資料
   return (
     <>
       <NavBar />
@@ -88,36 +98,13 @@ function Food() {
           style={{ border: '1px solid black' }}
         >
           <div className="d-flex foodSort">
-            {/* <form className="d-flex" role="search"> */}
-            <div className="input-group" style={{ width: '300px' }}>
-              <span className="icon" id="basic-addon1">
-                <img src={SearchIcon} alt="" />
-              </span>
-              <InputIME
-                className="form-control search-border me-4"
-                type="text"
-                value={searchWord}
-                placeholder="搜尋"
-                aria-label="Search"
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                value={searchWord}
-                onChange={(e) => {
-                  const newSearchWord = e.target.value;
+            <SearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
 
-                  setSearchWord(newSearchWord);
-
-                  getFoodProductBySearchWord(newSearchWord);
-                }}
-              />
-            </div>
             <CommitSelector />
             <CommitSelector />
           </div>
 
-          <CardList rows={foodData.rows} />
+          <CardList rowsAll={foodProductDisplay} />
         </div>
       </div>
       <div className="foodPagination">

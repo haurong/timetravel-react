@@ -96,7 +96,6 @@ function FoodDetail() {
         part2: part2,
         part3: part3,
         part4: part4,
-
         bodyOffsetY: document.body.offsetHeight,
       });
     }
@@ -107,6 +106,8 @@ function FoodDetail() {
     setCommitData(response.data);
   }
   console.log(commitData);
+
+
   useEffect(() => {
     getList();
   }, [location]);
@@ -136,7 +137,7 @@ function FoodDetail() {
         <div className="container carousel">
           <Carousel />
         </div>
-        <div className="container ">
+        <div className="container">
           <div className="product_name d-flex">
             <div className="product_name_title">
               <h1>{foodData.product_name} WANCHUHAO</h1>
@@ -185,7 +186,7 @@ function FoodDetail() {
               </div>
               <div className="cate d-flex">
                 <img src={Food_icon} alt="" className="Food_icon" />
-                <p>{foodData.categories_name}</p>
+                <p>{foodData.categorise_name}</p>
               </div>
             </div>
             <div className="tickets_group d-flex ">
