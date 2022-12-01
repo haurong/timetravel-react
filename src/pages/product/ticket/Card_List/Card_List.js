@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
-import { FOOD_IMG } from '../../config';
-import Map from '../../icon/map.svg';
-import Heart from '../../icon/heart_gray.svg';
-import PinkHeart from '../../icon/heart.svg';
+import { TICKET_IMG } from '../ticket-config';
+
+import Map from '../../../../icon/map.svg';
+import Heart from '../../../../icon/heart_gray.svg';
+import PinkHeart from '../../../../icon/heart.svg';
 
 import './Card_List.scss';
 
@@ -36,7 +37,7 @@ function Card_List({ rows }) {
             <Card.Img
               variant="top"
               className="foodCardImg1"
-              src={`${FOOD_IMG}${el.product_photo}`}
+              src={`${TICKET_IMG}${el.product_cover}`}
             />
             <button
               data-product-number={el.product_number}
@@ -73,7 +74,7 @@ function Card_List({ rows }) {
                   </div>
                   <div>
                     <h2 variant="primary" className="Card_Price">
-                      NT$ {el.p_selling_price}
+                      NT$ {el.product_price}
                     </h2>
                   </div>
                 </div>

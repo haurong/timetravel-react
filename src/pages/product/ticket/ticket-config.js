@@ -9,4 +9,4 @@ export const TICKET_LIST = `${MY_HOST}/ticket/api`;
 export const TICKET_DETAIL = `${MY_HOST}/ticket/item/`;
 // export const TICKET_LIST = `${MY_HOST}/ticket/api`;
 // export const TICKET_DETAIL = `${MY_HOST}/ticket/item/:sid`;
-export const TICKET_IMG = `${MY_HOST}/uploads/ticket`;
+export const TICKET_IMG = `${MY_HOST}/uploads/ticket/`;

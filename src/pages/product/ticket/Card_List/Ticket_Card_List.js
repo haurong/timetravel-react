@@ -1,7 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import { TICKET_DETAIL } from '../ticket-config';
+import { TICKET_IMG } from '../ticket-config';
 import Map from '../../../../icon/map.svg';
 import Heart from '../../../../icon/heart_gray.svg';
 import PinkHeart from '../../../../icon/heart.svg';
@@ -13,7 +13,7 @@ function Ticket_Card_List({ rows }) {
           <Col key={i}>
             <div className=""></div>
             <Card className="Card">
-              <Card.Img className="card-img" variant="top" src={`${TICKET_DETAIL}${el.product_cover}`} />
+              <Card.Img className="card-img" variant="top" src={`${TICKET_IMG}${el.product_cover}`} />
               {/* <button className="Heart_Btn">
                 <Card.Img src={''} className="Card_Heart" />
               </button> */}

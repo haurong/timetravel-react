@@ -10,16 +10,14 @@ import Row from 'react-bootstrap/Row';
 import './Ticket.scss';
 import '../../../../node_modules/antd/dist/antd.css';
 
-import CardList from './Card_List/Ticket_Card_List';
+// import CardList from './Card_List/Ticket_Card_List';
+import CardList from './Card_List/Card_List';
 import Breadcrumb from './Breadcrumb/Breadcrumb.js';
 import Sidebar from './Sidebar/Sidebar.js';
 import Slider from './Slider/Slider.js';
 import DatePicker from './DatePicker/DatePicker.js';
 import RankChoose from './RankChoose/RankChoose.js';
-import RankChoose4 from './RankChoose/RankChoose4.js';
-import RankChoose3 from './RankChoose/RankChoose3.js';
-import RankChoose2 from './RankChoose/RankChoose2.js';
-import RankChoose1 from './RankChoose/RankChoose1.js';
+import MyPagination from '../../../Component/Pagination/Pagination';
 
 import CitySelection from './CitySelection/CitySelection.js';
 
@@ -79,6 +77,9 @@ function Ticket() {
             <CardList rows={ticketData.rows}/>
           </Col>
         </Row>
+      </div>
+      <div className="foodPagination">
+        <MyPagination page={ticketData.page} totalPages={ticketData.totalPages} />
       </div>
 
       <Footer />
