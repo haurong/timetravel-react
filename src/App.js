@@ -68,6 +68,10 @@ function App() {
                       <Route path="food" element={<Food />} />
                       <Route path="food/detail" element={<FoodDetail />} />
                       <Route path="stays" element={<Stays />} />
+                      <Route
+                        path="stays/detail/:sid"
+                        element={<StaysDetail />}
+                      />
                       <Route path="ticket" element={<Ticket />} />
                       <Route path="TicketDeatil" element={<TicketDetail />} />
                       <Route path="logIn" element={<LogIn />} />

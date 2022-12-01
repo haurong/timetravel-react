@@ -6,15 +6,24 @@ import { HOTEL_LIST } from '../stays/hotel-config';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import CardList from '../../../Component/Card_List/Card_List_Hotel';
-import Sidebar from '../../../Component/Sidebar1/Sidebar1';
+import Sidebar from '../../../Component/Sidebar1/Sidebar_Hotel';
 import MyPagination from '../../../Component/Pagination/Pagination';
 import CommitSelector from '../food/CommitSelect';
 import BreadCrumb from '../stays/Breadcrumb/Breadcrumb';
+import HotelListSortSelector from './HotelListSortSelector/HotelListSortSelector.js';
+import { ReactComponent as Sort } from '../../../icon/sort.svg';
 import '../food/Food.scss';
 import './Stays.scss';
+
 function Stays() {
-  const { hotelAllData, setHotelAllData, setHotelSortData, setDisplayData } =
-    useHotelContext();
+  const {
+    hotelAllData,
+    setHotelAllData,
+    setHotelSortData,
+    setDisplayData,
+    hotelSort,
+    setHotelSort,
+  } = useHotelContext();
   const location = useLocation();
   const usp = new URLSearchParams(location.search);
   const path = window.location.pathname.split('/');
@@ -26,9 +35,9 @@ function Stays() {
     setDisplayData(response.data.rowsAll);
   }
   // console.log(hotelAllData.rowsAll);
-  let a = hotelAllData.rowsAll.filter((v) => {
-    return v.city_name === '新北市';
-  });
+  // let a = hotelAllData.rowsAll.filter((v) => {
+  //   return v.city_name === '新北市';
+  // });
   // console.log(a);
 
   useEffect(() => {
@@ -49,9 +58,8 @@ function Stays() {
           className="col-lg-9 col-md-12 px-3 mx-0 CardListStyle"
           style={{ border: '1px solid orange' }}
         >
-          <div className="d-flex foodSort">
-            <CommitSelector />
-            <CommitSelector />
+          <div className="d-flex hotelSort">
+            <HotelListSortSelector />
           </div>
           <CardList />
         </div>

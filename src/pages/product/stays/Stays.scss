@@ -1,3 +1,32 @@
-div{
+div {
   // outline: 1px solid red;
 }
+.hotelSort {
+  p {
+    margin: auto 0px;
+    padding: 0px;
+  }
+  padding-top: 20px;
+  justify-content: flex-end;
+  align-items: center;
+  .hotelSortBtn {
+    margin: 0px 20px;
+    align-self: center;
+    cursor: pointer;
+    .icon {
+      .hotelSort_icon {
+        height: 100%;
+        // transform: rotateX(180deg);
+      }
+    }
+  }
+}
+.upturn{
+  .icon {
+    .hotelSort_icon {
+      height: 100%;
+      transform: rotateX(180deg);
+    }
+  }
+}
+

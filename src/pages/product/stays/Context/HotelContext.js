@@ -56,6 +56,7 @@ export const HotelContextProvider = ({ children }) => {
     area: 'area_All',
     cate: 'cate_All',
     like: 'likeAll',
+    sortBy: '',
   });
 
   //  住宿列表資料改變

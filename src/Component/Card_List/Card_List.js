@@ -26,7 +26,7 @@ function Card_List({ rows }) {
   };
   //TODO:收藏人數按鈕樣式待定
   return (
-    <Row xs={1} lg={4} className="d-flex justify-content-center flex-wrap">
+    <Row xs={1} lg={4} className="d-flex justify-content-flexstart flex-wrap">
       {rows.map((el) => {
         return (
           <Card
