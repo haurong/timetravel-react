@@ -13,7 +13,8 @@ import BreadCrumb from '../stays/Breadcrumb/Breadcrumb';
 import '../food/Food.scss';
 import './Stays.scss';
 function Food() {
-  const { hotelAllData, setHotelAllData } = useHotelContext();
+  const { hotelAllData, setHotelAllData, setHotelSortData, setDisplayData } =
+    useHotelContext();
   const location = useLocation();
   const usp = new URLSearchParams(location.search);
   const path = window.location.pathname.split('/');
@@ -21,6 +22,8 @@ function Food() {
     const response = await axios.get(HOTEL_LIST + `?` + usp.toString());
     // console.log(response.data);
     setHotelAllData(response.data);
+    setHotelSortData(response.data.rowsAll);
+    setDisplayData(response.data.rowsAll);
   }
   // console.log(hotelAllData.rowsAll);
   let a = hotelAllData.rowsAll.filter((v) => {
@@ -50,7 +53,7 @@ function Food() {
             <CommitSelector />
             <CommitSelector />
           </div>
-          <CardList/>
+          <CardList />
         </div>
       </div>
       <div className="foodPagination">

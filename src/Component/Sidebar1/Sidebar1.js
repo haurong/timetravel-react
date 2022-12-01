@@ -18,7 +18,7 @@ function getItem(label, key, children, type) {
 
 const items3 = [
   getItem('全部', 'likeAll'),
-  getItem('1-100', 'like100'),
+  getItem('0-100', 'like100'),
   getItem('101-200', 'like200'),
   getItem('201-300', 'like300'),
   getItem('301-400', 'like400'),
@@ -32,6 +32,7 @@ const items1 = [
   getItem('基隆市', 'area_Keelung'),
 ];
 const items2 = [
+  getItem('全部', 'cate_All'),
   getItem(
     '景點',
     'cate_Site',
@@ -96,6 +97,7 @@ const rootSubmenuKeys = [
   'area_Taipei',
   'area_NewTaipei',
   'area_Keelung',
+  'cate_All',
   'cate_Site',
   'cate_Food',
   'cate_Hotel',
@@ -147,7 +149,15 @@ export default function Sidebar1() {
           mode="inline"
           openKeys={openKeys}
           onOpenChange={onOpenChange}
+          defaultSelectedKeys={'cate_All'}
           items={items2}
+          onSelect={(e) => {
+            // console.log(e.key);
+            // console.log(openKeys);
+            if (e.key === 'cate_All') {
+              setOpenKeys('');
+            }
+          }}
         />
       </div>
       <div className="selectScore">

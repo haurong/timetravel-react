@@ -9,9 +9,15 @@ import { useHotelContext } from '../../pages/product/stays/Context/HotelContext'
 import './Card_List.scss';
 
 function Card_List({ rows }) {
-  const { hotelAllData, hotelSort, hotelSortData, setHotelSortData } =
-    useHotelContext();
-  // console.log(hotelAllData.rows);
+  const {
+    hotelSort,
+    hotelSortData,
+    setHotelSortData,
+    displayData,
+    setDisplayData,
+  } = useHotelContext();
+
+  // console.log(hotelSortData);
   // console.log({ rows });
   const [like, setLike] = useState(false);
 
@@ -26,14 +32,73 @@ function Card_List({ rows }) {
       return;
     }
   };
+  //  列表資料篩選
+  const handleArea = (hotelSortData, hotelSort) => {
+    let newHotelSortData = [...hotelSortData];
+
+    // 處理目的地
+    switch (hotelSort) {
+      case 'area_Taipei':
+        newHotelSortData = hotelSortData.filter((v) => {
+          return v.city_name === '台北市';
+        });
+        break;
+      case 'area_NewTaipei':
+        newHotelSortData = hotelSortData.filter((v) => {
+          return v.city_name === '新北市';
+        });
+        break;
+      case 'area_Keelung':
+        newHotelSortData = hotelSortData.filter((v) => {
+          return v.city_name === '基隆市';
+        });
+        break;
+      // 指所有的產品都出現
+      default:
+        break;
+    }
+
+    return newHotelSortData;
+  };
+  //  列表資料篩選
+  const handleAddLike = (hotelSortData, hotelSort) => {
+    let newHotelSortData = [...hotelSortData];
+
+    // 處理目的地
+    switch (hotelSort) {
+      case 'area_Taipei':
+        newHotelSortData = hotelSortData.filter((v) => {
+          return v.city_name === '台北市';
+        });
+        break;
+      case 'area_NewTaipei':
+        newHotelSortData = hotelSortData.filter((v) => {
+          return v.city_name === '新北市';
+        });
+        break;
+      case 'area_Keelung':
+        newHotelSortData = hotelSortData.filter((v) => {
+          return v.city_name === '基隆市';
+        });
+        break;
+      // 指所有的產品都出現
+      default:
+        break;
+    }
+
+    return newHotelSortData;
+  };
 
   useEffect(() => {
-    console.log(hotelSort);
+    // console.log(hotelSort);
+    let newHotelSortData = [];
+    newHotelSortData = handleArea(hotelSortData, hotelSort.area);
+    setDisplayData(newHotelSortData);
   }, [hotelSort]);
   //TODO:收藏人數按鈕樣式待定
   return (
     <Row xs={1} lg={4} className="d-flex justify-content-center flex-wrap">
-      {hotelAllData.rows.map((el) => {
+      {displayData.map((el) => {
         return (
           <Card
             className="MyCard col-3"

@@ -52,10 +52,16 @@ export const HotelContextProvider = ({ children }) => {
   });
 
   //  住宿列表資料篩選條件
-  const [hotelSort, setHotelSort] = useState({ area: '', cate: '', like: '' });
+  const [hotelSort, setHotelSort] = useState({
+    area: 'area_All',
+    cate: 'cate_All',
+    like: 'likeAll',
+  });
 
   //  住宿列表資料改變
   const [hotelSortData, setHotelSortData] = useState([]);
+
+  const [displayData, setDisplayData] = useState([]);
 
   return (
     <HotelContext.Provider
@@ -90,6 +96,8 @@ export const HotelContextProvider = ({ children }) => {
         setHotelSort,
         hotelSortData,
         setHotelSortData,
+        displayData,
+        setDisplayData,
       }}
     >
       {children}
