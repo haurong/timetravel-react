@@ -3,6 +3,9 @@ import { useContext, useState } from 'react';
 import '../member/style/LogIn.scss';
 import '../../global.scss';
 import Logo from '../../icon/logo/logo_white.svg';
+
+import EyeClosed from '../../icon/eye_closed.svg';
+import Eye from '../../icon/eye.svg';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { LOGIN_API } from '../../config';
@@ -16,6 +19,7 @@ function LogIn() {
     email: '',
     password: '',
   });
+  const [passwordFieldType, setPasswordFieldType] = useState('password');
 
   const handler = (e) => {
     const id = e.currentTarget.id;
@@ -66,13 +70,32 @@ function LogIn() {
               <div className="mb-3">
                 <label className="form-label">密碼</label>
                 <input
-                  type="password"
+                  type={passwordFieldType}
                   className="form-control"
                   placeholder="8位以上英數密碼，請區分大小寫"
                   id="password"
                   onChange={handler}
                   value={formData.password}
                 />
+                <button
+                  className="icon login-eye-btn"
+                  type="button"
+                  onClick={() => {
+                    setPasswordFieldType(
+                      passwordFieldType === 'text' ? 'password' : 'text'
+                    );
+                  }}
+                >
+                  {passwordFieldType === 'text' ? (
+                    <div className="icon comment-icon">
+                      <img src={EyeClosed} alt="" />
+                    </div>
+                  ) : (
+                    <div className="icon comment-icon">
+                      <img src={Eye} alt="" />
+                    </div>
+                  )}
+                </button>
                 <Link className="forget-password-text" to="/forget_password">
                   忘記密碼？
                 </Link>
