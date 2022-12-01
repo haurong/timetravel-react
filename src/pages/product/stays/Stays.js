@@ -12,7 +12,7 @@ import CommitSelector from '../food/CommitSelect';
 import BreadCrumb from '../stays/Breadcrumb/Breadcrumb';
 import '../food/Food.scss';
 import './Stays.scss';
-function Food() {
+function Stays() {
   const { hotelAllData, setHotelAllData, setHotelSortData, setDisplayData } =
     useHotelContext();
   const location = useLocation();
@@ -70,4 +70,4 @@ function Food() {
   );
 }
 
-export default Food;
+export default Stays;
