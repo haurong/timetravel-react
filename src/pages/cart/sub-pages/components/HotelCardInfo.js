@@ -1,6 +1,11 @@
 import React from 'react';
 
-function HotelCardInfo() {
+function HotelCardInfo({
+  hotelRepresent,
+  setHotelRepresent,
+  hotelMobile,
+  setHotelMobile,
+}) {
   return (
     <div className="card-wrap">
       <div className="card-body">
@@ -11,14 +16,13 @@ function HotelCardInfo() {
             <input
               className="input form-control"
               type={'text'}
-              placeholder={'中文姓'}
-            />
-          </div>
-          <div>
-            <input
-              className="input form-control"
-              type={'text'}
-              placeholder={'中文名'}
+              placeholder={'中文姓名'}
+              value={hotelRepresent}
+              onChange={(e) => {
+                const name = e.target.value;
+                setHotelRepresent(name);
+                // console.log(name);
+              }}
             />
           </div>
         </div>
@@ -33,6 +37,12 @@ function HotelCardInfo() {
               className="input form-control"
               type={'tel'}
               placeholder={'請輸入正確的手機號碼'}
+              value={hotelMobile}
+              onChange={(e) => {
+                const mobile = e.target.value;
+                setHotelMobile(mobile);
+                // console.log(mobile);
+              }}
             />
           </div>
         </div>

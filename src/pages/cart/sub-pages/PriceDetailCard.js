@@ -10,20 +10,28 @@ function PriceDetailCard({ title, items, total }) {
         <div className="card-body pt-0 pb-3 px-5">
           <p>{title}</p>
         </div>
-        {items.map((v, i) => {
-          return (
-            <>
-              <div className="d-flex justify-content-evenly">
-                <p>{v.name}</p>
-                <p>{`$${v.price}`}</p>
-                <p>{`X${v.quantity}`}</p>
-              </div>
-              <div className="btn-wrap">
-                <StateButton text={v.type} />
-              </div>
-            </>
-          );
-        })}
+        {items.length === 0 ? (
+          <div className="empty-cart">
+            <h2>{`您的${title}購物車是空的喔`}</h2>
+          </div>
+        ) : (
+          <div>
+            {items.map((v, i) => {
+              return (
+                <div key={v.id}>
+                  <div className="d-flex justify-content-evenly">
+                    <p>{v.name}</p>
+                    <p>{`$${v.price}`}</p>
+                    <p>{`X${v.quantity}`}</p>
+                  </div>
+                  <div className="btn-wrap">
+                    <StateButton text={v.type} />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
       <div className="card-wrap">
         <div className="card-body pt-1 pb-5 d-flex justify-content-between">

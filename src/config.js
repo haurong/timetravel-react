@@ -21,6 +21,20 @@ export const FOOD_CARD_ITEM6 = `${MY_HOST}/food/item/128`;
 export const FOOD_IMG = `${MY_HOST}/uploads/Food/`;
 export const FOOD_COMMIT = `${MY_HOST}/food/commit`;
 
+//購物車路徑
+export const MakeOrder = `${MY_HOST}/cart/api/makeorder`;
+// export const MakeHotelOrder = `${MY_HOST}/cart/api/makehotelorder`;
+// export const MakeFoodOrder = `${MY_HOST}/cart/api/makefoodorder`;
+// export const MakeTicketOrder = `${MY_HOST}/cart/api/maketicketorder`;
+
+//從node抓照片資料
+export const appConfig = {
+  debug: true,
+  devUrl: 'http://localhost:3001',
+  devServerUrl: MY_HOST,
+  prodUrl: 'https://www.timetravel.com',
+};
+
 export const ALLPRODUCT_LIST = `${MY_HOST}/productAll/api`;
 export const ADD_FOOD_COLLECT= `${MY_HOST}/productAll/api/addCollect-api`;
 // //從node抓照片資料
