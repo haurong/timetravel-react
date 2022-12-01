@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { MY_HOST } from '../../config';
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
 import _ from 'lodash';
+import SearchBar from '../product/food/SearchBar';
 import { ALLPRODUCT_LIST } from '../../config';
 import { ADD_FOOD_COLLECT } from '../../config';
 import Card from 'react-bootstrap/Card';
@@ -15,7 +16,7 @@ import Heart from '../../icon/heart_gray.svg';
 import PinkHeart from '../../icon/heart.svg';
 import NavBar from '../../layout/NavBar';
 import Footer from '../../layout/Footer';
-import MyPagination from '../../Component/Pagination/Pagination';
+// import MyPagination from '../../Component/Pagination/Pagination';
 import Sidebar1 from '../../Component/Sidebar1/Sidebar1';
 import { useFoodContext } from '../product/food/FoodContext/FoodContext';
 function ProductList() {
@@ -44,11 +45,8 @@ function ProductList() {
   const [productData, setProductData] = useState([]);
   //呈現分頁資料用
   const [productDisplay, setProductDisplay] = useState([]);
-
+  //搜尋關鍵字用
   const [searchWord, setSearchWord] = useState('');
-
-  //載入資料指示,true代表正在載入資料
-  const [isLoading, setIsLoading] = useState(false);
 
   //錯誤訊息用
   const [errorMessage, setErrorMessage] = useState('');
@@ -83,6 +81,22 @@ function ProductList() {
   //   const { collect } = await axios.post(ADD_FOOD_COLLECT, addCollect);
   // }
 
+  // 處理過濾的函式
+  const handleSearch = (productData, searchWord) => {
+    let newAllData = [...productData];
+
+    if (searchWord.length) {
+      newAllData = newAllData.filter((newAllData) => {
+        //搜尋商品名稱、縣市地區名
+        return (
+          newAllData.product_name.includes(searchWord) +
+          newAllData.city_name.includes(searchWord) +
+          newAllData.area_name.includes(searchWord)
+        );
+      });
+    }
+    return newAllData;
+  };
   const getAllListData = async () => {
     try {
       const response = await axios.get(ALLPRODUCT_LIST);
@@ -104,6 +118,24 @@ function ProductList() {
       setErrorMessage(e.message);
     }
   };
+
+  const location = useLocation();
+  // useEffect(() => {
+
+  //   if (searchWord.length < 1 && searchWord.length !== 0) return;
+
+  //   let newAllData = [];
+
+  //   newAllData = handleSearch(productData, searchWord);
+
+  //   setProductDisplay(newAllData);
+
+ 
+  // }, [searchWord, productData,location]);
+  useEffect(() => {
+    
+    getAllListData();
+  }, [location]);
 
   const paginationBar = (
     <ul className="pagination d-flex">
@@ -203,10 +235,7 @@ function ProductList() {
         })}
     </Row>
   );
-  const location = useLocation();
-  useEffect(() => {
-    getAllListData();
-  }, [location]);
+
   return (
     <>
       <NavBar />
@@ -217,6 +246,7 @@ function ProductList() {
           <Sidebar1 />
         </div>
         <div className="col-lg-9 " style={{ margin: 0 }}>
+          <SearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
           <div
             style={{
               paddingTop: '60px',
@@ -231,8 +261,6 @@ function ProductList() {
         <div
           style={{
             textAlign: 'center',
-            margin: 'auto',
-            overflow: 'scroll',
           }}
         >
           {paginationBar}
