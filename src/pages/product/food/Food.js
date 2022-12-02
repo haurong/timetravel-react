@@ -2,13 +2,19 @@ import React, { useEffect, useState, useCallback } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
 import { useLocation, Link } from 'react-router-dom';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
 import { FOOD_LIST } from '../../../config.js';
 import SearchBar from './SearchBar';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
-import CardList from '../../../Component/Card_List/Card_List';
+import { FOOD_IMG } from '../../../config';
+// import CardList from '../../../Component/Card_List/Card_List';
+import Map from '../../../icon/map.svg';
+import Heart from '../../../icon/heart_gray.svg';
+import PinkHeart from '../../../icon/heart.svg';
 import Sidebar from '../../../Component/Sidebar1/Sidebar1';
-import MyPagination from '../../../Component/Pagination/Pagination';
+// import MyPagination from '../../../Component/Pagination/Pagination';
 import CommitSelector from './CommitSelect.js';
 import BreadCrumb from './BreadCrumb';
 import SearchIcon from '../../../icon/search.svg';
@@ -18,22 +24,34 @@ import './Food.scss';
 
 function Food() {
   //從伺服器來的資料
-  const [foodData, setFoodData] = useState({
-    totalRows: 0,
-    totalPages: 0,
-    perPage: 0,
-    page: 1,
-    rows: [],
-    rowsAll: [],
-  });
+  const [foodData, setFoodData] = useState([]);
 
   //呈現顯示資料用
   const [foodProductDisplay, setFoodProductDisplay] = useState([]);
 
   //搜尋關鍵字用
   const [searchWord, setSearchWord] = useState('');
-  // 錯誤訊息用
+
+  //錯誤訊息用
   const [errorMessage, setErrorMessage] = useState('');
+
+  //看是否取得資料
+  const [haveData, setHaveData] = useState(false);
+
+  async function getList() {
+    const response = await axios.get(FOOD_LIST);
+
+    setFoodData(response.data);
+    setFoodProductDisplay(response.data);
+    console.log('foodDisplay', foodProductDisplay);
+  }
+
+  useEffect(() => {
+    getList();
+  }, []);
+  useEffect(() => {
+    getFoodListData(foodProductDisplay, perPage);
+  }, [foodData]);
 
   //分頁
   //當前分頁最小為1,最大看資料計算最大頁數
@@ -43,57 +61,156 @@ function Food() {
   //總共多少頁。在資料進入後(didMount)後需要計算出後才決定
   const [pageTotal, setPageTotal] = useState(0);
 
-  async function getList() {
-    const response = await axios.get(FOOD_LIST);
+  const [like, setLike] = useState(false);
+  const [collect, setCollect] = useState(false);
+  const toggleLike = () => {
+    setCollect(!collect);
+    setLike(!like);
+  };
 
-    setFoodData(response.data);
-    setFoodProductDisplay(response.data.rowsAll);
-  }
   //console.log(foodData)
-  useEffect(() => {
-    getList();
-  }, []);
+
+  //處理分頁資料
+  const getFoodListData = (v, perPage) => {
+    const pageList = _.chunk(v, perPage);
+    console.log('pageList:', pageList[0]);
+
+    if (pageList.length > 0) {
+      setPageTotal(pageList.length);
+      //紀錄分塊後的資料
+      setFoodProductDisplay(pageList);
+      setHaveData(true);
+    }
+
+    console.log('foodProductDisplay', foodProductDisplay);
+  };
 
   // 處理過濾的函式
   const handleSearch = (foodData, searchWord) => {
-    let newFoodData = [...foodData.rowsAll];
+    let newFoodData = [...foodData];
+    console.log('newFoodData', newFoodData);
 
-    if (searchWord.length) {
-      newFoodData = newFoodData.filter((newFoodData) => {
-        //搜尋商品名稱、縣市地區名
-        return (
-          newFoodData.product_name.includes(searchWord) +
-          newFoodData.city_name.includes(searchWord) +
-          newFoodData.area_name.includes(searchWord)
-        );
-      });
-    }
+    newFoodData = newFoodData.filter((item) => {
+      //搜尋商品名稱、縣市地區名
+      return (
+        item.product_name.includes(searchWord) +
+        item.city_name.includes(searchWord) +
+        item.area_name.includes(searchWord)
+      );
+    });
+    setPageNow(0);
     return newFoodData;
-    debounceHandleSearch(newFoodData);
   };
+  useEffect(() => {
+    if (searchWord.length < 1) return;
 
-  const debounceHandleSearch = useCallback(_.debounce(handleSearch, 400), []);
-  //console.log(foodData);
-  const location = useLocation();
-  // const usp = new URLSearchParams(location.search);
-  // const path = window.location.pathname.split('/');
+    let newFoodData = [];
 
-  // const getFoodListData = async (foodData) => {
+    newFoodData = handleSearch(foodData, searchWord);
 
-  //   let newFoodDataPage = [...foodData.rowsAll];
-  //   const pageList = _.chunk(newFoodDataPage, perPage);
+    getFoodListData(newFoodData, perPage);
+  }, [searchWord]);
 
-  //   console.log(pageList);
+  const display = errorMessage ? (
+    errorMessage
+  ) : (
+    <Row xs={1} lg={4} className="d-flex justify-content-start flex-wrap">
+      {haveData
+        ? foodProductDisplay[pageNow - 1].map((v, i) => {
+            return (
+              <Card
+                className="MyCard col-3"
+                style={{ width: '20rem' }}
+                key={i}
+                onClick={() => {
+                  console.log(v.product_number);
+                }}
+              >
+                <Card.Img
+                  variant="top"
+                  className="foodCardImg1"
+                  src={`${FOOD_IMG}${v.product_photo}`}
+                />
+                <Card.Body>
+                  <Card.Title className="Card_Title">
+                    {v.product_name}
+                  </Card.Title>
+                  <Card.Text className="Card_Text">
+                    <Card.Img src={Map} className="Map_icon" />
+                    <span class="Card_Score">
+                      {v.city_name} | {v.area_name}
+                    </span>
+                  </Card.Text>
+                  <div className="d-flex PriceAndCollect">
+                    <div>
+                      <button className="Heart_btn" onClick={toggleLike}>
+                        <img
+                          src={like ? PinkHeart : Heart}
+                          style={{ width: '25px', height: '25px' }}
+                          alt=""
+                        />
+                        <span>{collect ? v.collect + 1 : v.collect}</span>
+                      </button>
+                    </div>
+                    <div>
+                      <h2 variant="primary" className="Card_Price">
+                        NT${v.p_selling_price}
+                      </h2>
+                    </div>
+                  </div>
+                </Card.Body>
+              </Card>
+            );
+          })
+        : foodProductDisplay.map((v, i) => {
+            return (
+              <Card
+                className="MyCard col-3"
+                style={{ width: '20rem' }}
+                key={i}
+                onClick={() => {
+                  console.log(v.product_number);
+                }}
+              >
+                <Card.Img
+                  variant="top"
+                  className="foodCardImg1"
+                  src={`${FOOD_IMG}${v.product_photo}`}
+                />
+                <Card.Body>
+                  <Card.Title className="Card_Title">
+                    {v.product_name}
+                  </Card.Title>
+                  <Card.Text className="Card_Text">
+                    <Card.Img src={Map} className="Map_icon" />
+                    <span class="Card_Score">
+                      {v.city_name} | {v.area_name}
+                    </span>
+                  </Card.Text>
+                  <div className="d-flex PriceAndCollect">
+                    <div>
+                      <button className="Heart_btn" onClick={toggleLike}>
+                        <img
+                          src={like ? PinkHeart : Heart}
+                          style={{ width: '25px', height: '25px' }}
+                          alt=""
+                        />
 
-  //   if (pageList.length > 0) {
-  //     setPageTotal(pageList.length);
-  //     //紀錄分塊後的資料
-  //     setFoodProductDisplay(pageList);
-  //     //設定到state裡
-  //     setFoodData(newFoodDataPage);
-  //   }
-  // };
-
+                        <span>{collect ? v.collect + 1 : v.collect}</span>
+                      </button>
+                    </div>
+                    <div>
+                      <h2 variant="primary" className="Card_Price">
+                        NT${v.p_selling_price}
+                      </h2>
+                    </div>
+                  </div>
+                </Card.Body>
+              </Card>
+            );
+          })}
+    </Row>
+  );
   const paginationBar = (
     <ul className="pagination d-flex">
       <li className="page-item ">
@@ -148,16 +265,6 @@ function Food() {
   );
   // console.log(foodData);
 
-  useEffect(() => {
-    if (searchWord.length < 1 && searchWord.length !== 0) return;
-
-    let newFoodData = [];
-
-    newFoodData = handleSearch(foodData, searchWord);
-
-    setFoodProductDisplay(newFoodData);
-  }, [searchWord, foodData, location]);
-
   //cardlist顯示過濾完的資料用的資料
   return (
     <>
@@ -179,8 +286,8 @@ function Food() {
             <CommitSelector />
             <CommitSelector />
           </div>
-
-          <CardList rowsAll={foodProductDisplay} />
+          {display}
+          {/* <CardList rowsAll={errorMessage ? foodProductDisplay : {}} /> */}
         </div>
       </div>
       <div className="foodPagination">

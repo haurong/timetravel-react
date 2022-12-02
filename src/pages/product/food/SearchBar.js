@@ -4,8 +4,13 @@ function SearchBar(props) {
   const { searchWord, setSearchWord } = props;
   return (
     <>
-
-      <form className="d-flex" role="search">
+      <form
+        className="d-flex"
+        role="search"
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <div className="input-group">
           <span className="icon" id="basic-addon1">
             <img src={SearchIcon} alt="" />

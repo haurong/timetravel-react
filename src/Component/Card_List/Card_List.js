@@ -59,7 +59,7 @@ function Card_List({ rowsAll }) {
                         style={{ width: '25px', height: '25px' }}
                         alt=""
                       />
-                      <span>{el.collect}</span>
+                      <span>{el.collect ? el.collect + 1 : el.collect}</span>
                     </button>
                   </div>
                   <div>
