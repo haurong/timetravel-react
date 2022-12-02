@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SortIcon from './../../../../icon/sort.svg';
-function OrdersAccordion() {
+import axios from 'axios';
+import { ORDER_DETAILS_FOOD_API } from '../../../../config';
+function OrdersAccordion({ createdTime, uuid, totalPrice }) {
   const [show, setShow] = useState(false);
-
+  const [foodOrdersData, setFoodOrdersData] = useState([]);
+  async function getFoodOrders() {
+    const response = await axios.get(ORDER_DETAILS_FOOD_API(uuid));
+    setFoodOrdersData(response.data);
+  }
+  useEffect(() => {
+    getFoodOrders();
+  }, [uuid]);
+  // console.log(foodOrdersData);
   return (
     <div className="accordion">
       <div className="accordion-item">
@@ -23,13 +33,13 @@ function OrdersAccordion() {
             <div className="w-100 m-0 ">
               <ul className="orders-accordion-ul p-0 m-0">
                 <li className="col-lg-4 text-center">
-                  <p>2022/10/18</p>
+                  <p>{createdTime}</p>
                 </li>
                 <li className="col-lg-4 text-center">
-                  <p>12938909049</p>
+                  <p>{uuid}</p>
                 </li>
                 <li className="col-lg-4 text-center">
-                  <p>TWD$9831</p>
+                  <p>{`TWD$${totalPrice}`}</p>
                 </li>
               </ul>
             </div>
@@ -64,44 +74,41 @@ function OrdersAccordion() {
                   <p>評價</p>
                 </li>
               </ul>
-              <ul className="orders-accordion-ul p-0 m-0 pb-2 d-flex align-items-center">
-                <li className="col text-center">
-                  <p>JR東日本大飯店</p>
-                </li>
-                <li className="col text-center">
-                  <p>TWD$599</p>
-                </li>
-                <li className="col text-center">
-                  <p>1</p>
-                </li>
-                <li className="col text-center">
-                  <p>TWD$599</p>
-                </li>
-                <li className="col text-center">
-                  <button type="button" class="btn btn-primary">
-                    留下評價
-                  </button>
-                </li>
-              </ul>
-              <ul className="orders-accordion-ul p-0 m-0 pb-2 d-flex align-items-center">
-                <li className="col text-center">
-                  <p>JR東日本大飯店</p>
-                </li>
-                <li className="col text-center">
-                  <p>TWD$599</p>
-                </li>
-                <li className="col text-center">
-                  <p>1</p>
-                </li>
-                <li className="col text-center">
-                  <p>TWD$599</p>
-                </li>
-                <li className="col text-center">
-                  <button type="button" class="btn btn-disabled" disabled>
-                    已經評價
-                  </button>
-                </li>
-              </ul>
+              {foodOrdersData.map((v, i) => {
+                return (
+                  <div key={i}>
+                    <ul className="orders-accordion-ul p-0 m-0 pb-2 d-flex align-items-center">
+                      <li className="col text-center">
+                        <p>{v.product_name}</p>
+                      </li>
+                      <li className="col text-center">
+                        <p>{v.p_selling_price}</p>
+                      </li>
+                      <li className="col text-center">
+                        <p>{v.quantity}</p>
+                      </li>
+                      <li className="col text-center">
+                        <p>{`TWD$${v.total_price}`}</p>
+                      </li>
+                      <li className="col text-center">
+                        {v.committed === 1 ? (
+                          <button type="button" className="btn btn-primary">
+                            留下評價
+                          </button>
+                        ) : (
+                          <button
+                            type="button"
+                            className="btn btn-primary"
+                            disabled
+                          >
+                            已經評價
+                          </button>
+                        )}
+                      </li>
+                    </ul>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

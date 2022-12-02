@@ -31,7 +31,7 @@ function OrdersAccordionUndone() {
                   <p>TWD$9831</p>
                 </li>
                 <li className="col-lg-3 text-center">
-                  <button type="button" class="btn btn-danger">
+                  <button type="button" className="btn btn-danger">
                     尚未付款
                   </button>
                 </li>

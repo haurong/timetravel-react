@@ -1,6 +1,7 @@
 import React from 'react';
 import OrdersAccordion from './OrdersAccordion';
-function OrdersCard() {
+import moment from 'moment';
+function OrdersCard({ ordersData }) {
   return (
     <>
       <div className="orders-details-wrap row">
@@ -15,7 +16,21 @@ function OrdersCard() {
             <p>訂單總價</p>
           </li>
         </ul>
-        <OrdersAccordion />
+        {ordersData.map((v, i) => {
+          const { orders_created_time, uuid, orders_total_price } = v;
+          const createdTime = moment(new Date(orders_created_time)).format(
+            'YYYY-MM-DD'
+          );
+          return (
+            <div key={v.uuid} className={'mb-3'}>
+              <OrdersAccordion
+                createdTime={createdTime}
+                uuid={uuid}
+                totalPrice={orders_total_price}
+              />
+            </div>
+          );
+        })}
       </div>
     </>
   );
