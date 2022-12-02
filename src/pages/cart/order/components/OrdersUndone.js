@@ -2,9 +2,6 @@ import React from 'react';
 import OrdersAccordionUndone from './OrdersAccordionUndone';
 import moment from 'moment';
 function OrdersUndone({ ordersData }) {
-  const newOrder = ordersData.filter((v, i) => {
-    return v.orders_status_sid === 2;
-  });
   // console.log(newOrder);
   return (
     <>
@@ -23,21 +20,27 @@ function OrdersUndone({ ordersData }) {
             <p>訂單狀態</p>
           </li>
         </ul>
-        {newOrder.map((v, i) => {
-          const { orders_created_time, uuid, orders_total_price } = v;
-          const createdTime = moment(new Date(orders_created_time)).format(
-            'YYYY-MM-DD'
-          );
-          return (
-            <div key={v.uuid} className={'mb-3'}>
-              <OrdersAccordionUndone
-                createdTime={createdTime}
-                uuid={uuid}
-                totalPrice={orders_total_price}
-              />
-            </div>
-          );
-        })}
+        {ordersData.length === 0 ? (
+          <div className="d-flex justify-content-center">
+            <h1>您目前未結帳的訂單喔！</h1>
+          </div>
+        ) : (
+          ordersData.map((v, i) => {
+            const { orders_created_time, uuid, orders_total_price } = v;
+            const createdTime = moment(new Date(orders_created_time)).format(
+              'YYYY-MM-DD'
+            );
+            return (
+              <div key={v.uuid} className={'mb-3'}>
+                <OrdersAccordionUndone
+                  createdTime={createdTime}
+                  uuid={uuid}
+                  totalPrice={orders_total_price}
+                />
+              </div>
+            );
+          })
+        )}
       </div>
     </>
   );

@@ -4,17 +4,20 @@ import './../styles/OrdersDetails.scss';
 import OrdersCard from './components/OrdersCard';
 import OrdersHistory from './components/OrdersHistory';
 import OrdersUndone from './components/OrdersUndone';
-import axios from 'axios';
-
-import { ORDER_DETAILS_FOOD_API } from '../../../config';
 function OrdersDetail({ ordersData }) {
+  const nowOrder = ordersData.filter((v, i) => {
+    return v.orders_status_sid === 1;
+  });
+  const undoneOrder = ordersData.filter((v, i) => {
+    return v.orders_status_sid === 2;
+  });
   const [path, setPath] = useState('now');
   // console.log(ordersData);
   return (
     <div className="container">
       <OrdersTypesList path={path} setPath={setPath} />
-      {path === 'now' ? <OrdersCard ordersData={ordersData} /> : ''}
-      {path === 'undone' ? <OrdersUndone ordersData={ordersData} /> : ''}
+      {path === 'now' ? <OrdersCard ordersData={nowOrder} /> : ''}
+      {path === 'undone' ? <OrdersUndone ordersData={undoneOrder} /> : ''}
       {path === 'history' ? <OrdersHistory /> : ''}
     </div>
   );
