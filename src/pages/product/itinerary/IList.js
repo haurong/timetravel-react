@@ -48,16 +48,16 @@ export default function IList() {
         const [remove] = iData.splice(source.index, 1);
         iData.splice(destination.index, 0, remove);
 
-        // for (let i = 0; i < list.length; i++) {
-        //   if (i < 3) {
-        //     list[i].day = 1;
-        //   } else if (i < 6) {
-        //     list[i].day = 2;
-        //   } else {
-        //     list[i].day = 3;
-        //   }
-        //   list[i].sequence = i;
-        // }
+        for (let i = 0; i < iData.length; i++) {
+          if (i < 3) {
+            iData[i].day = 1;
+          } else if (i < 6) {
+            iData[i].day = 2;
+          } else {
+            iData[i].day = 3;
+          }
+          iData[i].sequence = i;
+        }
         setIData(iData);
       }}
     >
@@ -88,9 +88,13 @@ export default function IList() {
                           <span
                             className="icon"
                             onClick={() => {
-                              const newData = iData;
-                              const keep = newData.splice(i + 1);
-                              setIData(keep);
+                              console.log(iData);
+
+                              const newData = JSON.parse(JSON.stringify(iData));
+                              const trash = newData.splice(i, 1);
+                              console.log(newData);
+                              console.log({ trash });
+                              setIData(newData);
                             }}
                           >
                             <img src={Trash} alt="" />

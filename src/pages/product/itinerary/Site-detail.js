@@ -68,9 +68,6 @@ function SiteDetail() {
   }, [location]);
 
   const mySubmit = async () => {
-    // console.log(userData);
-    // console.log(userData.length);
-    // for (let i=0,)
     let selOptions = {};
     let j = 1;
     userData.map((el, i) => {
@@ -86,35 +83,6 @@ function SiteDetail() {
       // showCancelButton: true,
     });
     console.log(selected);
-
-    //////////////////////////TODO
-    // if (selected === 'userData') {
-    //   setFormData({
-    //     list_number: userData[0].list_number,
-    //     day: 1,
-    //     sequence: 10,
-    //     category: 1,
-    //     category_id: sid,
-    //     time: null,
-    //   });
-    //   const { data } = await axios.post(ITINERARY_ADDITEM, {
-    //     list_number: userData[0].list_number,
-    //     day: 1,
-    //     sequence: 10,
-    //     category: 1,
-    //     category_id: +sid,
-    //     time: null,
-    //   });
-    //   if (data.success) {
-    //     Swal.fire({
-    //       icon: 'success',
-    //       title: '新增至我的行程',
-    //     });
-    //   } else {
-    //     alert('註冊失敗');
-    //   }
-    // } else
-    //////////////////////////TODO
 
     if (selected === 'newList') {
       const membersid = JSON.parse(localStorage.getItem('auth')).sid;
@@ -143,6 +111,31 @@ function SiteDetail() {
         } else {
           alert('註冊失敗');
         }
+      }
+    } else if (selected <= userData.length) {
+      setFormData({
+        list_number: userData[selected].list_number,
+        day: 1,
+        sequence: 10,
+        category: 1,
+        category_id: sid,
+        time: null,
+      });
+      const { data } = await axios.post(ITINERARY_ADDITEM, {
+        list_number: userData[selected].list_number,
+        day: 1,
+        sequence: 10,
+        category: 1,
+        category_id: +sid,
+        time: null,
+      });
+      if (data.success) {
+        Swal.fire({
+          icon: 'success',
+          title: '新增至我的行程',
+        });
+      } else {
+        alert('註冊失敗');
       }
     }
   };
