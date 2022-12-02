@@ -203,6 +203,11 @@ function Card_List({ rows }) {
               variant="top"
               className="foodCardImg1"
               src={`${HOTEL_IMG}/${el.picture}`}
+              style={{ cursor: 'pointer' }}
+              onClick={() => {
+                let sid = Number(el.product_number.split('A')[1]);
+                window.location.href = `stays/detail/${sid}`;
+              }}
             />
             <button
               data-product-number={el.product_number}
@@ -219,7 +224,16 @@ function Card_List({ rows }) {
               />
             </button>
             <Card.Body>
-              <Card.Title className="Card_Title">{el.product_name}</Card.Title>
+              <Card.Title
+                className="Card_Title"
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  let sid = Number(el.product_number.split('A')[1]);
+                  window.location.href = `stays/detail/${sid}`;
+                }}
+              >
+                {el.product_name}
+              </Card.Title>
               <Card.Text className="Card_Text">
                 <Card.Img src={Map} className="Map_icon" />
                 <span className="Card_Score">
@@ -231,7 +245,10 @@ function Card_List({ rows }) {
                     <button className="Heart_btn">
                       <img
                         src={PinkHeart}
-                        style={{ width: '25px', height: '25px' }}
+                        style={{
+                          width: '25px',
+                          height: '25px',
+                        }}
                         alt=""
                       />
                       <span>{el.collect}</span>
