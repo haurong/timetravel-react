@@ -38,6 +38,9 @@ export const ORDERS_API = function (sid) {
 export const ORDER_DETAILS_FOOD_API = function (uuid) {
   return `${MY_HOST}/orders/api/list/foodlist/${uuid}`;
 };
+export const ORDER_DETAILS_HOTEL_API = function (uuid) {
+  return `${MY_HOST}/orders/api/list/hotellist/${uuid}`;
+};
 
 //從node抓照片資料
 export const appConfig = {

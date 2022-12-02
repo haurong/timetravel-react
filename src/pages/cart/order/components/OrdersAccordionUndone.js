@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import SortIcon from './../../../../icon/sort.svg';
+import axios from 'axios';
 import Accordion from 'react-bootstrap/Accordion';
-function OrdersAccordionUndone() {
+import {
+  ORDER_DETAILS_FOOD_API,
+  ORDER_DETAILS_HOTEL_API,
+} from '../../../../config';
+function OrdersAccordionUndone({ createdTime, uuid, totalPrice }) {
+  const [foodOrdersData, setFoodOrdersData] = useState([]);
+  const [hotelOrdersData, setHotelOrdersData] = useState([]);
+  async function getFoodOrders() {
+    const response = await axios.get(ORDER_DETAILS_FOOD_API(uuid));
+    setFoodOrdersData(response.data);
+  }
+  async function getHotelOrders() {
+    const response = await axios.get(ORDER_DETAILS_HOTEL_API(uuid));
+    setHotelOrdersData(response.data);
+  }
+  useEffect(() => {
+    getFoodOrders();
+    getHotelOrders();
+  }, [uuid]);
   return (
     <Accordion>
       <Accordion.Item eventKey="0">
@@ -10,18 +29,18 @@ function OrdersAccordionUndone() {
           <div className="w-100 m-0 ">
             <ul className="orders-accordion-ul p-0 m-0">
               <li className="col-lg-3 text-center">
-                <p>2022/10/18</p>
+                <p>{createdTime}</p>
               </li>
               <li className="col-lg-3 text-center">
-                <p>12938909049</p>
+                <p>{uuid}</p>
               </li>
               <li className="col-lg-3 text-center">
-                <p>TWD$9831</p>
+                <p>{`TWD$${totalPrice}`}</p>
               </li>
               <li className="col-lg-3 text-center">
-                <button type="button" className="btn btn-danger">
+                <div type="button" className="btn btn-danger">
                   尚未付款
-                </button>
+                </div>
               </li>
             </ul>
           </div>
@@ -42,34 +61,46 @@ function OrdersAccordionUndone() {
                 <p>小計</p>
               </li>
             </ul>
-            <ul className="orders-accordion-ul p-0 m-0 pb-2 d-flex align-items-center">
-              <li className="col text-center">
-                <p>JR東日本大飯店</p>
-              </li>
-              <li className="col text-center">
-                <p>TWD$599</p>
-              </li>
-              <li className="col text-center">
-                <p>1</p>
-              </li>
-              <li className="col text-center">
-                <p>TWD$599</p>
-              </li>
-            </ul>
-            <ul className="orders-accordion-ul p-0 m-0 pb-2 d-flex align-items-center">
-              <li className="col text-center">
-                <p>JR東日本大飯店</p>
-              </li>
-              <li className="col text-center">
-                <p>TWD$599</p>
-              </li>
-              <li className="col text-center">
-                <p>1</p>
-              </li>
-              <li className="col text-center">
-                <p>TWD$599</p>
-              </li>
-            </ul>
+            {foodOrdersData.map((v, i) => {
+              return (
+                <div key={i}>
+                  <ul className="orders-accordion-ul p-0 m-0 pb-2 d-flex align-items-center">
+                    <li className="col text-center">
+                      <p>{v.product_name}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{v.p_selling_price}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{v.quantity}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{`TWD$${v.total_price}`}</p>
+                    </li>
+                  </ul>
+                </div>
+              );
+            })}
+            {hotelOrdersData.map((v, i) => {
+              return (
+                <div key={i}>
+                  <ul className="orders-accordion-ul p-0 m-0 pb-2 d-flex align-items-center">
+                    <li className="col text-center">
+                      <p>{v.product_name}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{v.room_price}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{v.quantity}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{`TWD$${v.total_price}`}</p>
+                    </li>
+                  </ul>
+                </div>
+              );
+            })}
           </div>
         </Accordion.Body>
       </Accordion.Item>

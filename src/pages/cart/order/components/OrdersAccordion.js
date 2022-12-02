@@ -2,15 +2,24 @@ import React, { useEffect, useState } from 'react';
 import SortIcon from './../../../../icon/sort.svg';
 import axios from 'axios';
 import Accordion from 'react-bootstrap/Accordion';
-import { ORDER_DETAILS_FOOD_API } from '../../../../config';
+import {
+  ORDER_DETAILS_FOOD_API,
+  ORDER_DETAILS_HOTEL_API,
+} from '../../../../config';
 function OrdersAccordion({ createdTime, uuid, totalPrice }) {
   const [foodOrdersData, setFoodOrdersData] = useState([]);
+  const [hotelOrdersData, setHotelOrdersData] = useState([]);
   async function getFoodOrders() {
     const response = await axios.get(ORDER_DETAILS_FOOD_API(uuid));
     setFoodOrdersData(response.data);
   }
+  async function getHotelOrders() {
+    const response = await axios.get(ORDER_DETAILS_HOTEL_API(uuid));
+    setHotelOrdersData(response.data);
+  }
   useEffect(() => {
     getFoodOrders();
+    getHotelOrders();
   }, [uuid]);
   // console.log(foodOrdersData);
   return (
@@ -60,6 +69,44 @@ function OrdersAccordion({ createdTime, uuid, totalPrice }) {
                     </li>
                     <li className="col text-center">
                       <p>{v.p_selling_price}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{v.quantity}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{`TWD$${v.total_price}`}</p>
+                    </li>
+                    <li className="col text-center">
+                      {v.committed === 1 ? (
+                        <button type="button" className="btn btn-primary">
+                          留下評價
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          className="btn btn-primary"
+                          disabled
+                        >
+                          已經評價
+                        </button>
+                      )}
+                    </li>
+                  </ul>
+                </div>
+              );
+            })}
+            {hotelOrdersData.map((v, i) => {
+              {
+                /* console.log(v); */
+              }
+              return (
+                <div key={i}>
+                  <ul className="orders-accordion-ul p-0 m-0 pb-2 d-flex align-items-center">
+                    <li className="col text-center">
+                      <p>{v.product_name}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{v.room_price}</p>
                     </li>
                     <li className="col text-center">
                       <p>{v.quantity}</p>
