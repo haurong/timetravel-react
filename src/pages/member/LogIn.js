@@ -3,7 +3,6 @@ import { useContext, useState } from 'react';
 import '../member/style/LogIn.scss';
 import '../../global.scss';
 import Logo from '../../icon/logo/logo_white.svg';
-
 import EyeClosed from '../../icon/eye_closed.svg';
 import Eye from '../../icon/eye.svg';
 import { Link } from 'react-router-dom';
@@ -21,6 +20,20 @@ function LogIn() {
   });
   const [passwordFieldType, setPasswordFieldType] = useState('password');
 
+  const emailRule = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+
+  const validate = (value) => {
+    const errors = {};
+
+    if (!value.email) {
+      errors.email = '請輸入email';
+    } else if (!emailRule.test(value.email)) {
+      errors.email = '請輸入8位以上英數密碼區分大小寫';
+    }
+
+    return errors;
+  };
+
   const handler = (e) => {
     const id = e.currentTarget.id;
     const val = e.currentTarget.value;
@@ -35,7 +48,6 @@ function LogIn() {
     //console.log(data);
     if (data.success) {
       localStorage.setItem('auth', JSON.stringify(data.auth));
-      alert('登入成功');
       console.log(JSON.stringify(data));
       setMyAuth({ ...data.auth, authorised: true });
       navigate('/');
@@ -65,40 +77,42 @@ function LogIn() {
                   onChange={handler}
                   value={formData.email}
                 />
+                {validate ? (
+                  <p className="error-text">{/* TODO放入提示訊息 */}</p>
+                ) : null}
               </div>
 
               <div className="mb-3">
                 <label className="form-label">密碼</label>
-                <input
-                  type={passwordFieldType}
-                  className="form-control"
-                  placeholder="8位以上英數密碼，請區分大小寫"
-                  id="password"
-                  onChange={handler}
-                  value={formData.password}
-                />
-                <button
-                  className="icon login-eye-btn"
-                  type="button"
-                  onClick={() => {
-                    setPasswordFieldType(
-                      passwordFieldType === 'text' ? 'password' : 'text'
-                    );
-                  }}
-                >
-                  {passwordFieldType === 'text' ? (
-                    <div className="icon comment-icon">
-                      <img src={EyeClosed} alt="" />
-                    </div>
-                  ) : (
-                    <div className="icon comment-icon">
-                      <img src={Eye} alt="" />
-                    </div>
-                  )}
-                </button>
-                <Link className="forget-password-text" to="/forget_password">
-                  忘記密碼？
-                </Link>
+                <div className="password-group">
+                  <input
+                    type={passwordFieldType}
+                    className="form-control"
+                    placeholder="8位以上英數密碼，請區分大小寫"
+                    id="password"
+                    onChange={handler}
+                    value={formData.password}
+                  />
+                  <button
+                    className="icon login-eye-btn"
+                    type="button"
+                    onClick={() => {
+                      setPasswordFieldType(
+                        passwordFieldType === 'text' ? 'password' : 'text'
+                      );
+                    }}
+                  >
+                    {passwordFieldType === 'text' ? (
+                      <div className="icon comment-icon">
+                        <img src={EyeClosed} alt="" />
+                      </div>
+                    ) : (
+                      <div className="icon comment-icon">
+                        <img src={Eye} alt="" />
+                      </div>
+                    )}
+                  </button>
+                </div>
               </div>
               <div className="mx-auto">
                 <button
