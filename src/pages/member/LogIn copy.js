@@ -1,4 +1,5 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { useContext, useState } from 'react';
 import '../member/style/LogIn.scss';
 import '../../global.scss';
@@ -12,30 +13,20 @@ import { useNavigate } from 'react-router-dom';
 import AuthContext from './context/AuthContext';
 
 function LogIn() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const { setMyAuth } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+  // const [formData, setFormData] = useState({
+  //   email: '',
+  //   password: '',
+  // });
   const [passwordFieldType, setPasswordFieldType] = useState('password');
 
-  const validate = (value) => {
-    const errors = {};
-    const emailRule = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-    if (!value.email && value.email.length === 0) {
-      errors.email = '請輸入email';
-    } else if (!emailRule.test(value.email)) {
-      errors.email = '請輸入正確格式的email';
-    }
-    const passwordRule = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;
-    if (!value.password && value.password.length === 0) {
-      errors.password = '請輸入密碼';
-    } else if (!passwordRule.test(value.password)) {
-      errors.password = '請輸入8位以上英數密碼，區分大小寫';
-    }
-    return errors;
-  };
+  //const emailRule = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 
   const handler = (e) => {
     const id = e.currentTarget.id;
@@ -47,18 +38,16 @@ function LogIn() {
 
   const mySubmit = async (e) => {
     e.preventDefault();
-    if (validate) {
-      const { data } = await axios.post(LOGIN_API, formData);
-      //console.log(data);
-      if (data.success) {
-        localStorage.setItem('auth', JSON.stringify(data.auth));
-        console.log(JSON.stringify(data));
-        setMyAuth({ ...data.auth, authorised: true });
-        navigate('/');
-      } else {
-        localStorage.removeItem('auth'); // 移除
-        alert('登入失敗');
-      }
+    const { data } = await axios.post(LOGIN_API, formData);
+    //console.log(data);
+    if (data.success) {
+      localStorage.setItem('auth', JSON.stringify(data.auth));
+      console.log(JSON.stringify(data));
+      setMyAuth({ ...data.auth, authorised: true });
+      navigate('/');
+    } else {
+      localStorage.removeItem('auth'); // 移除
+      alert('登入失敗');
     }
   };
 
@@ -82,7 +71,9 @@ function LogIn() {
                   onChange={handler}
                   value={formData.email}
                 />
-                {errors.email && <p>請輸入email</p>}
+                {validate ? (
+                  <p className="error-text">{/* TODO放入提示訊息 */}</p>
+                ) : null}
               </div>
 
               <div className="mb-3">
