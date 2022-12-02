@@ -9,7 +9,7 @@ import PinkHeart from '../../icon/heart.svg';
 
 import './Card_List.scss';
 
-function Card_List({ rows }) {
+function Card_List({ rowsAll }) {
   // console.log({ rows });
   const [like, setLike] = useState(false);
 
@@ -26,8 +26,8 @@ function Card_List({ rows }) {
   };
   //TODO:收藏人數按鈕樣式待定
   return (
-    <Row xs={1} lg={4} className="d-flex justify-content-flexstart flex-wrap">
-      {rows.map((el) => {
+    <Row xs={1} lg={4} className="d-flex justify-content-start flex-wrap">
+      {rowsAll.map((el) => {
         return (
           <Card
             className="MyCard col-3"
@@ -59,7 +59,7 @@ function Card_List({ rows }) {
                         style={{ width: '25px', height: '25px' }}
                         alt=""
                       />
-                      <span>{el.collect}</span>
+                      <span>{el.collect ? el.collect + 1 : el.collect}</span>
                     </button>
                   </div>
                   <div>
