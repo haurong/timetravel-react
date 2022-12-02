@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useHotelContext } from '../stays/Context/HotelContext';
 import { useLocation } from 'react-router-dom';
-import {TICKET_LIST} from './ticket-config'
+import { TICKET_LIST } from './ticket-config';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import Col from 'react-bootstrap/Col';
@@ -10,6 +11,8 @@ import Row from 'react-bootstrap/Row';
 import './Ticket.scss';
 import '../../../../node_modules/antd/dist/antd.css';
 
+import MyPagination from '../../../Component/Pagination/Pagination';
+
 // import CardList from './Card_List/Ticket_Card_List';
 import CardList from './Card_List/Card_List';
 import Breadcrumb from './Breadcrumb/Breadcrumb.js';
@@ -17,8 +20,6 @@ import Sidebar from './Sidebar/Sidebar.js';
 import Slider from './Slider/Slider.js';
 import DatePicker from './DatePicker/DatePicker.js';
 import RankChoose from './RankChoose/RankChoose.js';
-import MyPagination from '../../../Component/Pagination/Pagination';
-
 import CitySelection from './CitySelection/CitySelection.js';
 
 function Ticket() {
@@ -30,13 +31,23 @@ function Ticket() {
     rows: [],
   });
 
+  const [ticketPage, setTicketPage] = useState({
+    rows: [],
+  });
+
+  const { hotelAllData, setHotelAllData, setHotelSortData, setDisplayData } =
+  useHotelContext();
+
   const location = useLocation();
   // const usp = new URLSearchParams(location.search);
 
   async function getList() {
     // const response = await axios.get(TICKET_LIST + `?` + usp.toString());
     const response = await axios.get(TICKET_LIST);
-    setTicketData(response.data);
+    console.log(response.data);
+    setHotelAllData(response.data);
+    setHotelSortData(response.data.rowsAll);
+    setDisplayData(response.data.rowsAll);
   }
 
   useEffect(() => {
@@ -74,12 +85,15 @@ function Ticket() {
             </div>
           </Col>
           <Col className="col-9 ticket_card_list">
-            <CardList rows={ticketData.rows}/>
+            <CardList rows={ticketData.rows} />
           </Col>
         </Row>
       </div>
       <div className="foodPagination">
-        <MyPagination page={ticketData.page} totalPages={ticketData.totalPages} />
+        <MyPagination
+          page={ticketData.page}
+          totalPages={ticketData.totalPages}
+        />
       </div>
 
       <Footer />
