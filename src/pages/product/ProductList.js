@@ -7,7 +7,7 @@ import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
 import _ from 'lodash';
 import SearchBar from '../product/food/SearchBar';
 import { ALLPRODUCT_LIST } from '../../config';
-import { ADD_FOOD_COLLECT } from '../../config';
+// import { ADD_FOOD_COLLECT } from '../../config';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import { FOOD_IMG } from '../../config';
@@ -90,7 +90,7 @@ function ProductList() {
       return item.city_name.includes(searchWord);
     });
     console.log('newAllData', newAllData);
-    setPageNow(0);
+    setPageNow(1);
     return newAllData;
   };
 
@@ -283,7 +283,7 @@ function ProductList() {
               className="d-flex justify-content-start flex-wrap"
             >
               {haveData
-                ? productDisplay[pageNow - 1].map((v, i) => {
+                ? productDisplay[pageNow-1].map((v, i) => {
                     return (
                       <Card
                         className="MyCard col-3"

@@ -98,7 +98,7 @@ function Food() {
         item.area_name.includes(searchWord)
       );
     });
-    setPageNow(0);
+    setPageNow(1);
     return newFoodData;
   };
   useEffect(() => {
@@ -219,8 +219,10 @@ function Food() {
           to={`?page=${pageNow - 1}`}
           aria-label="Previous"
           onClick={() => {
-            const newPageNowMinus = pageNow - 1;
-            setPageNow(newPageNowMinus);
+            if (pageNow > 1) {
+              const newPageNowMinus = pageNow - 1;
+              setPageNow(newPageNowMinus);
+            }
           }}
         >
           <MdOutlineChevronLeft />
@@ -230,7 +232,8 @@ function Food() {
         .fill(1)
         .map((v, i) => {
           const classNames = ['page-item'];
-          const p = pageNow - 5 + i;
+          const p = pageNow + i - 1;
+          console.log({ pageTotal, pageNow, p });
           if (p < 1 || p > pageTotal) return null;
           if (p === pageNow) classNames.push('active');
           const link = `?page=${p}`;
@@ -286,8 +289,103 @@ function Food() {
             <CommitSelector />
             <CommitSelector />
           </div>
+          {/* <Row xs={1} lg={4} className="d-flex justify-content-start flex-wrap">
+            {haveData
+              ? foodProductDisplay[pageNow - 1].map((v, i) => {
+                  return (
+                    <Card
+                      className="MyCard col-3"
+                      style={{ width: '20rem' }}
+                      key={i}
+                      onClick={() => {
+                        console.log(v.product_number);
+                      }}
+                    >
+                      <Card.Img
+                        variant="top"
+                        className="foodCardImg1"
+                        src={`${FOOD_IMG}${v.product_photo}`}
+                      />
+                      <Card.Body>
+                        <Card.Title className="Card_Title">
+                          {v.product_name}
+                        </Card.Title>
+                        <Card.Text className="Card_Text">
+                          <Card.Img src={Map} className="Map_icon" />
+                          <span class="Card_Score">
+                            {v.city_name} | {v.area_name}
+                          </span>
+                        </Card.Text>
+                        <div className="d-flex PriceAndCollect">
+                          <div>
+                            <button className="Heart_btn" onClick={toggleLike}>
+                              <img
+                                src={like ? PinkHeart : Heart}
+                                style={{ width: '25px', height: '25px' }}
+                                alt=""
+                              />
+                              <span>{collect ? v.collect + 1 : v.collect}</span>
+                            </button>
+                          </div>
+                          <div>
+                            <h2 variant="primary" className="Card_Price">
+                              NT${v.p_selling_price}
+                            </h2>
+                          </div>
+                        </div>
+                      </Card.Body>
+                    </Card>
+                  );
+                })
+              : foodProductDisplay.map((v, i) => {
+                  return (
+                    <Card
+                      className="MyCard col-3"
+                      style={{ width: '20rem' }}
+                      key={i}
+                      onClick={() => {
+                        console.log(v.product_number);
+                      }}
+                    >
+                      <Card.Img
+                        variant="top"
+                        className="foodCardImg1"
+                        src={`${FOOD_IMG}${v.product_photo}`}
+                      />
+                      <Card.Body>
+                        <Card.Title className="Card_Title">
+                          {v.product_name}
+                        </Card.Title>
+                        <Card.Text className="Card_Text">
+                          <Card.Img src={Map} className="Map_icon" />
+                          <span class="Card_Score">
+                            {v.city_name} | {v.area_name}
+                          </span>
+                        </Card.Text>
+                        <div className="d-flex PriceAndCollect">
+                          <div>
+                            <button className="Heart_btn" onClick={toggleLike}>
+                              <img
+                                src={like ? PinkHeart : Heart}
+                                style={{ width: '25px', height: '25px' }}
+                                alt=""
+                              />
+
+                              <span>{collect ? v.collect + 1 : v.collect}</span>
+                            </button>
+                          </div>
+                          <div>
+                            <h2 variant="primary" className="Card_Price">
+                              NT${v.p_selling_price}
+                            </h2>
+                          </div>
+                        </div>
+                      </Card.Body>
+                    </Card>
+                  );
+                })}
+          </Row> */}
           {display}
-          {/* <CardList rowsAll={errorMessage ? foodProductDisplay : {}} /> */}
         </div>
       </div>
       <div className="foodPagination">
