@@ -5,10 +5,12 @@ import { useLocation, Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import { FOOD_LIST } from '../../../config.js';
+import { FOOD_ADD_COLLECT } from '../../../config.js';
 import SearchBar from './SearchBar';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import { FOOD_IMG } from '../../../config';
+// import { FOOD_COLLECT } from '../../../config';
 // import CardList from '../../../Component/Card_List/Card_List';
 import Map from '../../../icon/map.svg';
 import Heart from '../../../icon/heart_gray.svg';
@@ -17,7 +19,7 @@ import Sidebar from '../../../Component/Sidebar1/Sidebar1';
 // import MyPagination from '../../../Component/Pagination/Pagination';
 import CommitSelector from './CommitSelect.js';
 import BreadCrumb from './BreadCrumb';
-import SearchIcon from '../../../icon/search.svg';
+
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
 
 import './Food.scss';
@@ -32,20 +34,40 @@ function Food() {
   //搜尋關鍵字用
   const [searchWord, setSearchWord] = useState('');
 
-  //錯誤訊息用
-  const [errorMessage, setErrorMessage] = useState('');
-
   //看是否取得資料
   const [haveData, setHaveData] = useState(false);
 
+  const [like, setLike] = useState(false);
+  const [collect, setCollect] = useState(false);
+
+  const [formData, setFormData] = useState({
+    member_sid: '',
+    food_product_sid: '',
+  });
+
+  const addCollectHandler = (e) => {
+    const { data } = axios.post(FOOD_ADD_COLLECT, formData);
+    console.log({ data });
+    const member_sid = 24;
+    const food_product_sid = e.currentTarget.food_product_sid;
+    if (data.length) {
+      return console.log({data} );
+    }
+    setFormData({ ...formData, member_sid, food_product_sid });
+
+    console.log(formData)
+  };
+
+  const toggleLike = () => {
+    setLike(!like);
+  };
+
   async function getList() {
     const response = await axios.get(FOOD_LIST);
-
     setFoodData(response.data);
     setFoodProductDisplay(response.data);
     console.log('foodDisplay', foodProductDisplay);
   }
-
   useEffect(() => {
     getList();
   }, []);
@@ -60,13 +82,6 @@ function Food() {
   const [perPage, setPerPage] = useState(12);
   //總共多少頁。在資料進入後(didMount)後需要計算出後才決定
   const [pageTotal, setPageTotal] = useState(0);
-
-  const [like, setLike] = useState(false);
-  const [collect, setCollect] = useState(false);
-  const toggleLike = () => {
-    setCollect(!collect);
-    setLike(!like);
-  };
 
   //console.log(foodData)
 
@@ -110,10 +125,8 @@ function Food() {
 
     getFoodListData(newFoodData, perPage);
   }, [searchWord]);
-
-  const display = errorMessage ? (
-    errorMessage
-  ) : (
+//TODO:發axios到後端新增與移除收藏
+  const display = (
     <Row xs={1} lg={4} className="d-flex justify-content-start flex-wrap">
       {haveData
         ? foodProductDisplay[pageNow - 1].map((v, i) => {
@@ -123,7 +136,7 @@ function Food() {
                 style={{ width: '20rem' }}
                 key={i}
                 onClick={() => {
-                  console.log(v.product_number);
+                  console.log(v.sid);
                 }}
               >
                 <Card.Img
@@ -143,11 +156,13 @@ function Food() {
                   </Card.Text>
                   <div className="d-flex PriceAndCollect">
                     <div>
-                      <button className="Heart_btn" onClick={toggleLike}>
+                      <button
+                        className="Heart_btn"
+                        onClick={(e) => ( addCollectHandler)}
+                      >
                         <img
-                          src={like ? PinkHeart : Heart}
+                          src={v.food_product_sid == v.sid ? PinkHeart : Heart}
                           style={{ width: '25px', height: '25px' }}
-                          alt=""
                         />
                         <span>{collect ? v.collect + 1 : v.collect}</span>
                       </button>
@@ -191,11 +206,10 @@ function Food() {
                     <div>
                       <button className="Heart_btn" onClick={toggleLike}>
                         <img
-                          src={like ? PinkHeart : Heart}
+                          src={true ? PinkHeart : Heart}
                           style={{ width: '25px', height: '25px' }}
                           alt=""
                         />
-
                         <span>{collect ? v.collect + 1 : v.collect}</span>
                       </button>
                     </div>
@@ -233,7 +247,6 @@ function Food() {
         .map((v, i) => {
           const classNames = ['page-item'];
           const p = pageNow + i - 1;
-          console.log({ pageTotal, pageNow, p });
           if (p < 1 || p > pageTotal) return null;
           if (p === pageNow) classNames.push('active');
           const link = `?page=${p}`;
@@ -266,7 +279,6 @@ function Food() {
       </li>
     </ul>
   );
-  // console.log(foodData);
 
   //cardlist顯示過濾完的資料用的資料
   return (
@@ -289,109 +301,10 @@ function Food() {
             <CommitSelector />
             <CommitSelector />
           </div>
-          {/* <Row xs={1} lg={4} className="d-flex justify-content-start flex-wrap">
-            {haveData
-              ? foodProductDisplay[pageNow - 1].map((v, i) => {
-                  return (
-                    <Card
-                      className="MyCard col-3"
-                      style={{ width: '20rem' }}
-                      key={i}
-                      onClick={() => {
-                        console.log(v.product_number);
-                      }}
-                    >
-                      <Card.Img
-                        variant="top"
-                        className="foodCardImg1"
-                        src={`${FOOD_IMG}${v.product_photo}`}
-                      />
-                      <Card.Body>
-                        <Card.Title className="Card_Title">
-                          {v.product_name}
-                        </Card.Title>
-                        <Card.Text className="Card_Text">
-                          <Card.Img src={Map} className="Map_icon" />
-                          <span class="Card_Score">
-                            {v.city_name} | {v.area_name}
-                          </span>
-                        </Card.Text>
-                        <div className="d-flex PriceAndCollect">
-                          <div>
-                            <button className="Heart_btn" onClick={toggleLike}>
-                              <img
-                                src={like ? PinkHeart : Heart}
-                                style={{ width: '25px', height: '25px' }}
-                                alt=""
-                              />
-                              <span>{collect ? v.collect + 1 : v.collect}</span>
-                            </button>
-                          </div>
-                          <div>
-                            <h2 variant="primary" className="Card_Price">
-                              NT${v.p_selling_price}
-                            </h2>
-                          </div>
-                        </div>
-                      </Card.Body>
-                    </Card>
-                  );
-                })
-              : foodProductDisplay.map((v, i) => {
-                  return (
-                    <Card
-                      className="MyCard col-3"
-                      style={{ width: '20rem' }}
-                      key={i}
-                      onClick={() => {
-                        console.log(v.product_number);
-                      }}
-                    >
-                      <Card.Img
-                        variant="top"
-                        className="foodCardImg1"
-                        src={`${FOOD_IMG}${v.product_photo}`}
-                      />
-                      <Card.Body>
-                        <Card.Title className="Card_Title">
-                          {v.product_name}
-                        </Card.Title>
-                        <Card.Text className="Card_Text">
-                          <Card.Img src={Map} className="Map_icon" />
-                          <span class="Card_Score">
-                            {v.city_name} | {v.area_name}
-                          </span>
-                        </Card.Text>
-                        <div className="d-flex PriceAndCollect">
-                          <div>
-                            <button className="Heart_btn" onClick={toggleLike}>
-                              <img
-                                src={like ? PinkHeart : Heart}
-                                style={{ width: '25px', height: '25px' }}
-                                alt=""
-                              />
-
-                              <span>{collect ? v.collect + 1 : v.collect}</span>
-                            </button>
-                          </div>
-                          <div>
-                            <h2 variant="primary" className="Card_Price">
-                              NT${v.p_selling_price}
-                            </h2>
-                          </div>
-                        </div>
-                      </Card.Body>
-                    </Card>
-                  );
-                })}
-          </Row> */}
           {display}
         </div>
       </div>
-      <div className="foodPagination">
-        {paginationBar}
-        {/* <MyPagination page={foodData.page} totalPages={foodData.totalPages} /> */}
-      </div>
+      <div className="foodPagination">{paginationBar}</div>
 
       <div className="givePadding"></div>
 
