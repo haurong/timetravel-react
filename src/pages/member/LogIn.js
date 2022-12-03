@@ -20,20 +20,24 @@ function LogIn() {
   });
   const [passwordFieldType, setPasswordFieldType] = useState('password');
 
+  var errors = {};
   const validate = (value) => {
-    const errors = {};
     const emailRule = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-    if (!value.email && value.email.length === 0) {
+
+    if (value && value.email) {
+      if (!emailRule.test(value.email)) {
+        errors.email = '請輸入正確格式的email';
+      }
+    } else {
       errors.email = '請輸入email';
-    } else if (!emailRule.test(value.email)) {
-      errors.email = '請輸入正確格式的email';
     }
     const passwordRule = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;
-    if (!value.password && value.password.length === 0) {
-      errors.password = '請輸入密碼';
-    } else if (!passwordRule.test(value.password)) {
-      errors.password = '請輸入8位以上英數密碼，區分大小寫';
-    }
+    if (value && value.password)
+      if (!passwordRule.test(value.password)) {
+        errors.password = '請輸入8位以上英數密碼，區分大小寫';
+      } else {
+        errors.password = '請輸入密碼';
+      }
     return errors;
   };
 
@@ -43,6 +47,7 @@ function LogIn() {
     // console.log({id, val});
 
     setFormData({ ...formData, [id]: val });
+    validate(formData);
   };
 
   const mySubmit = async (e) => {
@@ -75,14 +80,14 @@ function LogIn() {
               <div className="mb-3">
                 <label className="form-label">Email</label>
                 <input
-                  type="email"
+                  type="text"
                   className="form-control"
                   placeholder="example@mail.com"
                   id="email"
                   onChange={handler}
                   value={formData.email}
                 />
-                {errors.email && <p>請輸入email</p>}
+                <p>{errors.email}</p>
               </div>
 
               <div className="mb-3">
