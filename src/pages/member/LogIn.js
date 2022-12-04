@@ -17,42 +17,65 @@ function LogIn() {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
+    errorMsg: {
+      password: '',
+      email: '',
+    },
   });
   const [passwordFieldType, setPasswordFieldType] = useState('password');
 
-  var errors = {};
-  const validate = (value) => {
+  const validateEmail = (value) => {
+    let errorMsg = '';
     const emailRule = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
-
     if (value && value.email) {
       if (!emailRule.test(value.email)) {
-        errors.email = '請輸入正確格式的email';
+        errorMsg = '請輸入正確格式的email';
       }
     } else {
-      errors.email = '請輸入email';
+      errorMsg = '請輸入email';
     }
+    return errorMsg;
+  };
+  const validatePassword = (value) => {
+    let errorMsg = '';
     const passwordRule = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;
-    if (value && value.password)
+    if (value && value.password) {
       if (!passwordRule.test(value.password)) {
-        errors.password = '請輸入8位以上英數密碼，區分大小寫';
-      } else {
-        errors.password = '請輸入密碼';
+        errorMsg = '請輸入8位以上英數密碼，區分大小寫';
       }
-    return errors;
+    } else {
+      errorMsg = '請輸入密碼';
+    }
+    return errorMsg;
+  };
+  const validate = (value) => {
+    if (value.email !== '') value.errorMsg.email = validateEmail(value);
+    if (value.password !== '')
+      value.errorMsg.password = validatePassword(value);
+    return value.errorMsg.email === '' && value.errorMsg.password === '';
   };
 
-  const handler = (e) => {
+  const handlerEmailChange = (e) => {
     const id = e.currentTarget.id;
     const val = e.currentTarget.value;
     // console.log({id, val});
-
     setFormData({ ...formData, [id]: val });
-    validate(formData);
+    if (formData.email !== '')
+      formData.errorMsg.email = validateEmail(formData);
+  };
+
+  const handlerPasswordChange = (e) => {
+    const id = e.currentTarget.id;
+    const val = e.currentTarget.value;
+    // console.log({id, val});
+    setFormData({ ...formData, [id]: val });
+    if (formData.password !== '')
+      formData.errorMsg.password = validatePassword(formData);
   };
 
   const mySubmit = async (e) => {
     e.preventDefault();
-    if (validate) {
+    if (validate(formData)) {
       const { data } = await axios.post(LOGIN_API, formData);
       //console.log(data);
       if (data.success) {
@@ -84,10 +107,10 @@ function LogIn() {
                   className="form-control"
                   placeholder="example@mail.com"
                   id="email"
-                  onChange={handler}
+                  onChange={handlerEmailChange}
                   value={formData.email}
                 />
-                <p>{errors.email}</p>
+                <p>{formData.errorMsg.email}</p>
               </div>
 
               <div className="mb-3">
@@ -98,9 +121,10 @@ function LogIn() {
                     className="form-control"
                     placeholder="8位以上英數密碼，請區分大小寫"
                     id="password"
-                    onChange={handler}
+                    onChange={handlerPasswordChange}
                     value={formData.password}
                   />
+                  <p>{formData.errorMsg.password}</p>
                   <button
                     className="icon login-eye-btn"
                     type="button"
