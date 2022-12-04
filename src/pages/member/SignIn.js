@@ -28,11 +28,10 @@ function SignIn() {
   const [passwordFieldType, setPasswordFieldType] = useState('password');
   const [passwordAgainFieldType, setPasswordAgainFieldType] =
     useState('password');
-
+  debugger;
   useEffect(() => {
-    // 使用瀏覽器 API 更新文件標題
-    //document.title = `You clicked ${count} times`;
-  });
+    validateEmail(formData);
+  }, [formData]);
 
   const validateUsername = (value) => {
     let errorMsg = '';
@@ -72,7 +71,7 @@ function SignIn() {
     if (value && value.againPassword) {
       if (!passwordRule.test(value.againPassword)) {
         errorMsg = '請輸入8位以上英數密碼，區分大小寫';
-      } else if (value.password === value.againPassword) {
+      } else if (value.password !== value.againPassword) {
         errorMsg = '密碼不相同';
       }
     } else {
