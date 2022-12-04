@@ -28,10 +28,6 @@ function SignIn() {
   const [passwordFieldType, setPasswordFieldType] = useState('password');
   const [passwordAgainFieldType, setPasswordAgainFieldType] =
     useState('password');
-  debugger;
-  useEffect(() => {
-    validateEmail(formData);
-  }, [formData]);
 
   const validateUsername = (value) => {
     let errorMsg = '';
@@ -150,6 +146,9 @@ function SignIn() {
       }
     }
   };
+  useEffect(() => {
+    validate(formData);
+  });
 
   return (
     <>
