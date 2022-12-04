@@ -6,6 +6,7 @@ import Layout from './layout/Layout';
 // 以下為各頁面元件
 import Home from './pages/Home/Home';
 import HomeJie from './pages/HomeJie/HomeJie';
+import BannerEffect from './pages/HomeEffect/bannerEffect';
 import ProductList from './pages/product/ProductList';
 import Itinerary from './pages/product/itinerary/Itinerary';
 import Site from './pages/product/itinerary/Site';
@@ -57,6 +58,7 @@ function App() {
                         {/* index代表此路由中的預設子頁 */}
                         <Route index element={<Home />} />
                       </Route>
+                      <Route path="bannerEffect" element={<BannerEffect />} />
                       <Route path="productList" element={<ProductList />} />
                       <Route path="itinerary" element={<Itinerary />} />
                       <Route

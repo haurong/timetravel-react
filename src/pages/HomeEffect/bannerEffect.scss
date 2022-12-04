@@ -1,0 +1,1078 @@
+
+  .BannerEffect {
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f7f7;
+  }
+  
+  .site {
+    width: 25%;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(to bottom, #e097c0 0%, #e6b8b8 50%, #f6f7e2 100%);
+    // box-shadow: 0px 0px 20px rgba(0,0,0, 0.30); 
+    overflow: hidden;
+    .sun {
+      position: absolute;
+      border-radius: 50%;
+      left: 50%;
+      transform: translate(-50%, 0%)
+    }
+    .sun-1 {
+      background-color:#e8c2b9;
+      width: 400px;
+      height: 400px;
+      top:40%;
+      opacity: .3;
+    }
+    .sun-2 {
+      background-color:#e8c2b9;
+      width: 300px;
+      height: 300px;
+      top:43%;
+      opacity: .5;
+    }
+    
+    .sun-3 {
+      background-color:#e9c9c2;
+      width: 250px;
+      height: 250px;
+      top:47%;
+      opacity: .7;
+    }
+    
+    .sun-4 {
+      background-color:#ecd4c9;
+      width: 200px;
+      height: 200px;
+      top:50%;
+      opacity: .8;
+    }
+    
+    .sun-5 {
+      background-color:#fdfdec;
+      width: 150px;
+      height: 150px;
+      top:53%;  
+    }
+    
+    .landscape {
+      position: absolute;
+      width: 800px;
+      height: 180px;
+    }
+    
+    .landscape-1 {
+      background-color: #a5337f;
+      right: -40px;
+      bottom: 250px;
+    
+      transform: rotate(12deg);
+    }
+    
+    .landscape-2 {
+      background-color: #e2a1b6;
+      right: -40px;
+      bottom: 250px;
+    
+      transform: rotate(-12deg);
+    }
+    
+    .landscape-3 {
+      background-color: #d68c98;
+      bottom: 200px;
+      left: -10px;
+      transform: rotate(5deg);
+    }
+    
+    .landscape-4 {
+      background-color: #a5337f;
+      bottom: 130px;
+      transform: rotate(-8deg);
+    }
+    
+    .landscape-5 {
+      background-color: #791f59;
+      bottom: 80px;
+      left: -10px;
+      transform: rotate(5deg);
+    }
+    .landscape-6 {
+      background-color: #5b0f3a;
+      bottom: 20px;
+      transform: rotate(-7deg);
+    }
+    .landscape-7 {
+      background-color: #3a1129;
+      left: -30px;
+      bottom: -50px;
+      transform: rotate(8deg);
+    }
+    
+    .tree {
+      position: absolute;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+    
+    .tree-2 {
+      background-color: #a53374;
+      top: 66%;
+      left: 30%;
+      height: 45px;
+      width: 20px;
+    }
+    
+    .tree-3 {
+      background-color: #bf6a9f;
+      top: 58%;
+      left: 80%;
+      height: 45px;
+      width: 20px;
+    }
+    
+    .tree-4 {
+      background-color: #5f1245;
+      top: 71%;
+      left: 60%;
+      height: 35px;
+      width: 15px;
+    }
+    .tree-5 {
+      background-color: #5f1245;
+      top: 75%;
+      left: 80%;
+      height: 45px;
+      width: 25px;
+    }
+    
+    .tree-6 {
+      background-color: #3e112e;
+      top: 81%;
+      left: 39%;
+      height: 50px;
+      width: 25px;
+    }
+    
+    .tree-7 {
+      background-color: #3e112e;
+      top: 73%;
+      left: 15%;
+      height: 50px;
+      width: 25px;
+    }
+    
+    .baloon { 
+      position: absolute;
+      left: 0%;
+      top: 18%;
+      animation: balloonmove 10s linear infinite;
+    }
+    
+    
+    .baloon-1 {
+      position: relative;
+      clip-path: polygon(9% 20%,19% 11%,29% 5%,40% 1%,50% 0%,60% 1%,70% 5%,81% 11%,91% 20%,96% 31%,97% 46%,92% 59%,67% 100%,34% 100%,8% 58%,3% 46%,4% 31%);
+      width: 80px;
+      height: 75px;
+      background: linear-gradient(to right, #6e1b51 50%, #d97e90 50%);
+    
+    }
+    
+    .strip-1 {
+      position: relative;
+      clip-path: polygon(9% 20%,19% 11%,29% 5%,40% 1%,50% 0%,60% 1%,70% 5%,81% 11%,91% 20%,96% 31%,97% 46%,92% 59%,67% 100%,34% 100%,8% 58%,3% 46%,4% 31%);
+      width: 50px;
+      height: 75px;
+      left:20%;
+      background: linear-gradient(to right, #b487a7 50%, #e8c1c9 50%);
+      
+    }
+    
+    .strip-2 {
+      position: relative;
+      clip-path: polygon(9% 20%,19% 11%,29% 5%,40% 1%,50% 0%,60% 1%,70% 5%,81% 11%,91% 20%,96% 31%,97% 46%,92% 59%,67% 100%,34% 100%,8% 58%,3% 46%,4% 31%);
+      width: 25px;
+      height: 75px;
+      left:26%;
+      background: #c3475c; 
+    }
+    
+    .bottom-strip {
+      position: relative;
+      background: #6e1b51;
+      width: 70px;
+      height: 20px;
+      top:-10%;
+    }
+    
+    .basket {
+      position: absolute;
+      width: 25px;
+      height: 18px;
+      background: linear-gradient(to right, #6f2935 50%, #c6475c 50%) ;
+      top:110%;
+      left: 50%;
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;
+      transform: translate(-50%, 0%);
+      
+    }
+    
+    .basket span {
+      position: absolute;
+      width: 25px;
+      height: 5px;
+      top: 20%;
+      background: linear-gradient(to right, #88747f 50%, #e7bbc2 50%);
+    }
+    
+    .line {
+      position: absolute;
+      background: #8c565a;
+      width: 1px;
+      height:10px;    
+    }
+    
+    .line-1 {
+      left: 36%;
+      transform: rotate(-10deg);
+    }
+    
+    .line-2 {
+      left: 44%;
+      transform: rotate(-8deg);
+    }
+    
+    .line-3 {
+      left: 54%;
+      transform: rotate(8deg);
+    }
+    
+    .line-4 {
+      left: 64%;
+      transform: rotate(10deg);
+    }
+    
+    @keyframes balloonmove{
+      0%{
+        transform: translate(-100%, 20px);
+        }
+      25% {
+        transform: translate(25%, 0px);
+      }
+      50% {
+        transform: translate(150%, 20px);
+      }
+      75% {
+        transform: translate(275%, 0px);
+      }
+      100%{
+        transform: translate(400%, 20px);
+        }
+    }
+  }
+  .hotel {
+    width: 25%;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(to bottom, #ffdf8f 0%, #ffb185 50%, #f6f7e2 100%);
+    // box-shadow: 0px 0px 20px rgba(0,0,0, 0.30); 
+    overflow: hidden;
+    .sun {
+      position: absolute;
+      border-radius: 50%;
+      left: 50%;
+      transform: translate(-50%, 0%)
+    }
+    .sun-1 {
+      background-color:#ffb26a;
+      width: 400px;
+      height: 400px;
+      top:40%;
+      opacity: .3;
+    }
+    .sun-2 {
+      background-color:#f5be86;
+      width: 300px;
+      height: 300px;
+      top:43%;
+      opacity: .5;
+    }
+    
+    .sun-3 {
+      background-color:#f6d393;
+      width: 250px;
+      height: 250px;
+      top:47%;
+      opacity: .7;
+    }
+    
+    .sun-4 {
+      background-color:#f9db9d;
+      width: 200px;
+      height: 200px;
+      top:50%;
+      opacity: .8;
+    }
+    
+    .sun-5 {
+      background-color:#fdf1cb;
+      width: 150px;
+      height: 150px;
+      top:53%;  
+    }
+    
+    .landscape {
+      position: absolute;
+      width: 800px;
+      height: 180px;
+    }
+    
+    .landscape-1 {
+      background-color: #ef9c56;
+      right: -40px;
+      bottom: 250px;
+    
+      transform: rotate(12deg);
+    }
+    
+    .landscape-2 {
+      background-color: #f7dc99;
+      right: -40px;
+      bottom: 250px;
+    
+      transform: rotate(-12deg);
+    }
+    
+    .landscape-3 {
+      background-color: #f5c477;
+      bottom: 200px;
+      left: -10px;
+      transform: rotate(5deg);
+    }
+    
+    .landscape-4 {
+      background-color: #f2af60;
+      bottom: 130px;
+      transform: rotate(-8deg);
+    }
+    
+    .landscape-5 {
+      background-color: #ef9c56;
+      bottom: 80px;
+      left: -10px;
+      transform: rotate(5deg);
+    }
+    .landscape-6 {
+      background-color: #ec7d48;
+      bottom: 20px;
+      transform: rotate(-7deg);
+    }
+    .landscape-7 {
+      background-color: #eb6c43;
+      left: -30px;
+      bottom: -50px;
+      transform: rotate(8deg);
+    }
+    
+    .tree {
+      position: absolute;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+    
+    .tree-2 {
+      background-color: #f1a557;
+      top: 66%;
+      left: 30%;
+      height: 45px;
+      width: 20px;
+    }
+    
+    .tree-3 {
+      background-color: #e87735;
+      top: 58%;
+      left: 80%;
+      height: 45px;
+      width: 20px;
+    }
+    
+    .tree-4 {
+      background-color: #eb6c43;
+      top: 71%;
+      left: 60%;
+      height: 35px;
+      width: 15px;
+    }
+    .tree-5 {
+      background-color: #d15428;
+      top: 75%;
+      left: 80%;
+      height: 45px;
+      width: 25px;
+    }
+    
+    .tree-6 {
+      background-color: #f4c377;
+      top: 81%;
+      left: 39%;
+      height: 50px;
+      width: 25px;
+    }
+    
+    .tree-7 {
+      background-color: #e87735;
+      top: 73%;
+      left: 15%;
+      height: 50px;
+      width: 25px;
+    }
+    
+    .baloon { 
+      position: absolute;
+      left: 0%;
+      top: 18%;
+      animation: balloonmove 10s linear infinite;
+    }
+    
+    
+    .baloon-1 {
+      position: relative;
+      clip-path: polygon(9% 20%,19% 11%,29% 5%,40% 1%,50% 0%,60% 1%,70% 5%,81% 11%,91% 20%,96% 31%,97% 46%,92% 59%,67% 100%,34% 100%,8% 58%,3% 46%,4% 31%);
+      width: 80px;
+      height: 75px;
+      background: linear-gradient(to right, #6e1b51 50%, #d97e90 50%);
+    
+    }
+    
+    .strip-1 {
+      position: relative;
+      clip-path: polygon(9% 20%,19% 11%,29% 5%,40% 1%,50% 0%,60% 1%,70% 5%,81% 11%,91% 20%,96% 31%,97% 46%,92% 59%,67% 100%,34% 100%,8% 58%,3% 46%,4% 31%);
+      width: 50px;
+      height: 75px;
+      left:20%;
+      background: linear-gradient(to right, #b487a7 50%, #e8c1c9 50%);
+      
+    }
+    
+    .strip-2 {
+      position: relative;
+      clip-path: polygon(9% 20%,19% 11%,29% 5%,40% 1%,50% 0%,60% 1%,70% 5%,81% 11%,91% 20%,96% 31%,97% 46%,92% 59%,67% 100%,34% 100%,8% 58%,3% 46%,4% 31%);
+      width: 25px;
+      height: 75px;
+      left:26%;
+      background: #c3475c; 
+    }
+    
+    .bottom-strip {
+      position: relative;
+      background: #6e1b51;
+      width: 70px;
+      height: 20px;
+      top:-10%;
+    }
+    
+    .basket {
+      position: absolute;
+      width: 25px;
+      height: 18px;
+      background: linear-gradient(to right, #6f2935 50%, #c6475c 50%) ;
+      top:110%;
+      left: 50%;
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;
+      transform: translate(-50%, 0%);
+      
+    }
+    
+    .basket span {
+      position: absolute;
+      width: 25px;
+      height: 5px;
+      top: 20%;
+      background: linear-gradient(to right, #88747f 50%, #e7bbc2 50%);
+    }
+    
+    .line {
+      position: absolute;
+      background: #8c565a;
+      width: 1px;
+      height:10px;    
+    }
+    
+    .line-1 {
+      left: 36%;
+      transform: rotate(-10deg);
+    }
+    
+    .line-2 {
+      left: 44%;
+      transform: rotate(-8deg);
+    }
+    
+    .line-3 {
+      left: 54%;
+      transform: rotate(8deg);
+    }
+    
+    .line-4 {
+      left: 64%;
+      transform: rotate(10deg);
+    }
+    
+    @keyframes balloonmove{
+      0%{
+        transform: translate(-100%, 20px);
+        }
+      25% {
+        transform: translate(25%, 0px);
+      }
+      50% {
+        transform: translate(150%, 20px);
+      }
+      75% {
+        transform: translate(275%, 0px);
+      }
+      100%{
+        transform: translate(400%, 20px);
+        }
+    }
+  }
+  .food {
+    width: 25%;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(to bottom, #7a89dd 0%, #c8f9ff 100%);
+    // box-shadow: 0px 0px 20px rgba(0,0,0, 0.30); 
+    overflow: hidden;
+    .sun {
+      position: absolute;
+      border-radius: 50%;
+      left: 50%;
+      transform: translate(-50%, 0%)
+    }
+    .sun-1 {
+      background-color:#a9bfef;
+      width: 400px;
+      height: 400px;
+      top:40%;
+      opacity: .3;
+    }
+    .sun-2 {
+      background-color:#b5caf5;
+      width: 300px;
+      height: 300px;
+      top:43%;
+      opacity: .5;
+    }
+    
+    .sun-3 {
+      background-color:#c4d5fa;
+      width: 250px;
+      height: 250px;
+      top:47%;
+      opacity: .7;
+    }
+    
+    .sun-4 {
+      background-color:#d0defc;
+      width: 200px;
+      height: 200px;
+      top:50%;
+      opacity: .8;
+    }
+    
+    .sun-5 {
+      background-color:#dee9fd;
+      width: 150px;
+      height: 150px;
+      top:53%;  
+    }
+    
+    .landscape {
+      position: absolute;
+      width: 800px;
+      height: 180px;
+    }
+    
+    .landscape-1 {
+      background-color: #4960b6;
+      right: -40px;
+      bottom: 250px;
+    
+      transform: rotate(12deg);
+    }
+    
+    .landscape-2 {
+      background-color: #9db4e6;
+      right: -40px;
+      bottom: 250px;
+    
+      transform: rotate(-12deg);
+    }
+    
+    .landscape-3 {
+      background-color: #7e99e0;
+      bottom: 200px;
+      left: -10px;
+      transform: rotate(5deg);
+    }
+    
+    .landscape-4 {
+      background-color: #5e76cf;
+      bottom: 130px;
+      transform: rotate(-8deg);
+    }
+    
+    .landscape-5 {
+      background-color: #4960b6;
+      bottom: 80px;
+      left: -10px;
+      transform: rotate(5deg);
+    }
+    .landscape-6 {
+      background-color: #7e8bd7;
+      bottom: 20px;
+      transform: rotate(-7deg);
+    }
+    .landscape-7 {
+      background-color: #3a3d84;
+      left: -30px;
+      bottom: -50px;
+      transform: rotate(8deg);
+    }
+    
+    .tree {
+      position: absolute;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+    
+    .tree-2 {
+      background-color: #dee9fd;
+      top: 66%;
+      left: 30%;
+      height: 45px;
+      width: 20px;
+    }
+    
+    .tree-3 {
+      background-color: #5e76cf;
+      top: 58%;
+      left: 80%;
+      height: 45px;
+      width: 20px;
+    }
+    
+    .tree-4 {
+      background-color: #4960b6;
+      top: 71%;
+      left: 60%;
+      height: 35px;
+      width: 15px;
+    }
+    .tree-5 {
+      background-color: #dee9fd;
+      top: 75%;
+      left: 80%;
+      height: 45px;
+      width: 25px;
+    }
+    
+    .tree-6 {
+      background-color: #9db4e6;
+      top: 81%;
+      left: 39%;
+      height: 50px;
+      width: 25px;
+    }
+    
+    .tree-7 {
+      background-color: #dee9fd;
+      top: 73%;
+      left: 15%;
+      height: 50px;
+      width: 25px;
+    }
+    
+    .baloon { 
+      position: absolute;
+      left: 0%;
+      top: 18%;
+      animation: balloonmove 10s linear infinite;
+    }
+    
+    
+    .baloon-1 {
+      position: relative;
+      clip-path: polygon(9% 20%,19% 11%,29% 5%,40% 1%,50% 0%,60% 1%,70% 5%,81% 11%,91% 20%,96% 31%,97% 46%,92% 59%,67% 100%,34% 100%,8% 58%,3% 46%,4% 31%);
+      width: 80px;
+      height: 75px;
+      background: linear-gradient(to right, #6e1b51 50%, #d97e90 50%);
+    
+    }
+    
+    .strip-1 {
+      position: relative;
+      clip-path: polygon(9% 20%,19% 11%,29% 5%,40% 1%,50% 0%,60% 1%,70% 5%,81% 11%,91% 20%,96% 31%,97% 46%,92% 59%,67% 100%,34% 100%,8% 58%,3% 46%,4% 31%);
+      width: 50px;
+      height: 75px;
+      left:20%;
+      background: linear-gradient(to right, #b487a7 50%, #e8c1c9 50%);
+      
+    }
+    
+    .strip-2 {
+      position: relative;
+      clip-path: polygon(9% 20%,19% 11%,29% 5%,40% 1%,50% 0%,60% 1%,70% 5%,81% 11%,91% 20%,96% 31%,97% 46%,92% 59%,67% 100%,34% 100%,8% 58%,3% 46%,4% 31%);
+      width: 25px;
+      height: 75px;
+      left:26%;
+      background: #c3475c; 
+    }
+    
+    .bottom-strip {
+      position: relative;
+      background: #6e1b51;
+      width: 70px;
+      height: 20px;
+      top:-10%;
+    }
+    
+    .basket {
+      position: absolute;
+      width: 25px;
+      height: 18px;
+      background: linear-gradient(to right, #6f2935 50%, #c6475c 50%) ;
+      top:110%;
+      left: 50%;
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;
+      transform: translate(-50%, 0%);
+      
+    }
+    
+    .basket span {
+      position: absolute;
+      width: 25px;
+      height: 5px;
+      top: 20%;
+      background: linear-gradient(to right, #88747f 50%, #e7bbc2 50%);
+    }
+    
+    .line {
+      position: absolute;
+      background: #8c565a;
+      width: 1px;
+      height:10px;    
+    }
+    
+    .line-1 {
+      left: 36%;
+      transform: rotate(-10deg);
+    }
+    
+    .line-2 {
+      left: 44%;
+      transform: rotate(-8deg);
+    }
+    
+    .line-3 {
+      left: 54%;
+      transform: rotate(8deg);
+    }
+    
+    .line-4 {
+      left: 64%;
+      transform: rotate(10deg);
+    }
+    
+    @keyframes balloonmove{
+      0%{
+        transform: translate(-100%, 20px);
+        }
+      25% {
+        transform: translate(25%, 0px);
+      }
+      50% {
+        transform: translate(150%, 20px);
+      }
+      75% {
+        transform: translate(275%, 0px);
+      }
+      100%{
+        transform: translate(400%, 20px);
+        }
+    }
+  }
+  .ticket {
+    width: 25%;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(to bottom, #fff9da 0%, #9cd491 100%);
+    // box-shadow: 0px 0px 20px rgba(0,0,0, 0.30); 
+    overflow: hidden;
+    .sun {
+      position: absolute;
+      border-radius: 50%;
+      left: 50%;
+      transform: translate(-50%, 0%)
+    }
+    .sun-1 {
+      background-color:#dae9c0;
+      width: 400px;
+      height: 400px;
+      top:40%;
+      opacity: .3;
+    }
+    .sun-2 {
+      background-color:#e3edc8;
+      width: 300px;
+      height: 300px;
+      top:43%;
+      opacity: .5;
+    }
+    
+    .sun-3 {
+      background-color:#e8f0cb;
+      width: 250px;
+      height: 250px;
+      top:47%;
+      opacity: .7;
+    }
+    
+    .sun-4 {
+      background-color:#eef2d1;
+      width: 200px;
+      height: 200px;
+      top:50%;
+      opacity: .8;
+    }
+    
+    .sun-5 {
+      background-color:#fcf8db;
+      width: 150px;
+      height: 150px;
+      top:53%;  
+    }
+    
+    .landscape {
+      position: absolute;
+      width: 800px;
+      height: 180px;
+    }
+    
+    .landscape-1 {
+      background-color: #607b34;
+      right: -40px;
+      bottom: 250px;
+    
+      transform: rotate(12deg);
+    }
+    
+    .landscape-2 {
+      background-color: #95ae6c;
+      right: -40px;
+      bottom: 250px;
+    
+      transform: rotate(-12deg);
+    }
+    
+    .landscape-3 {
+      background-color: #799250;
+      bottom: 200px;
+      left: -10px;
+      transform: rotate(5deg);
+    }
+    
+    .landscape-4 {
+      background-color: #577a38;
+      bottom: 130px;
+      transform: rotate(-8deg);
+    }
+    
+    .landscape-5 {
+      background-color: #45692c;
+      bottom: 80px;
+      left: -10px;
+      transform: rotate(5deg);
+    }
+    .landscape-6 {
+      background-color: #587b39;
+      bottom: 20px;
+      transform: rotate(-7deg);
+    }
+    .landscape-7 {
+      background-color: #284d21;
+      left: -30px;
+      bottom: -50px;
+      transform: rotate(8deg);
+    }
+    
+    .tree {
+      position: absolute;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+    
+    .tree-2 {
+      background-color: #587b39;
+      top: 66%;
+      left: 30%;
+      height: 45px;
+      width: 20px;
+    }
+    
+    .tree-3 {
+      background-color: #284d21;
+      top: 58%;
+      left: 80%;
+      height: 45px;
+      width: 20px;
+    }
+    
+    .tree-4 {
+      background-color: #fdf9dc;
+      top: 71%;
+      left: 60%;
+      height: 35px;
+      width: 15px;
+    }
+    .tree-5 {
+      background-color: #c4d89b;
+      top: 75%;
+      left: 80%;
+      height: 45px;
+      width: 25px;
+    }
+    
+    .tree-6 {
+      background-color: #fdf9dc;
+      top: 81%;
+      left: 39%;
+      height: 50px;
+      width: 25px;
+    }
+    
+    .tree-7 {
+      background-color: #d9e8bf;
+      top: 73%;
+      left: 15%;
+      height: 50px;
+      width: 25px;
+    }
+    
+    .baloon { 
+      position: absolute;
+      left: 0%;
+      top: 18%;
+      animation: balloonmove 10s linear infinite;
+    }
+    
+    
+    .baloon-1 {
+      position: relative;
+      clip-path: polygon(9% 20%,19% 11%,29% 5%,40% 1%,50% 0%,60% 1%,70% 5%,81% 11%,91% 20%,96% 31%,97% 46%,92% 59%,67% 100%,34% 100%,8% 58%,3% 46%,4% 31%);
+      width: 80px;
+      height: 75px;
+      background: linear-gradient(to right, #6e1b51 50%, #d97e90 50%);
+    
+    }
+    
+    .strip-1 {
+      position: relative;
+      clip-path: polygon(9% 20%,19% 11%,29% 5%,40% 1%,50% 0%,60% 1%,70% 5%,81% 11%,91% 20%,96% 31%,97% 46%,92% 59%,67% 100%,34% 100%,8% 58%,3% 46%,4% 31%);
+      width: 50px;
+      height: 75px;
+      left:20%;
+      background: linear-gradient(to right, #b487a7 50%, #e8c1c9 50%);
+      
+    }
+    
+    .strip-2 {
+      position: relative;
+      clip-path: polygon(9% 20%,19% 11%,29% 5%,40% 1%,50% 0%,60% 1%,70% 5%,81% 11%,91% 20%,96% 31%,97% 46%,92% 59%,67% 100%,34% 100%,8% 58%,3% 46%,4% 31%);
+      width: 25px;
+      height: 75px;
+      left:26%;
+      background: #c3475c; 
+    }
+    
+    .bottom-strip {
+      position: relative;
+      background: #6e1b51;
+      width: 70px;
+      height: 20px;
+      top:-10%;
+    }
+    
+    .basket {
+      position: absolute;
+      width: 25px;
+      height: 18px;
+      background: linear-gradient(to right, #6f2935 50%, #c6475c 50%) ;
+      top:110%;
+      left: 50%;
+      border-bottom-left-radius: 50%;
+      border-bottom-right-radius: 50%;
+      transform: translate(-50%, 0%);
+      
+    }
+    
+    .basket span {
+      position: absolute;
+      width: 25px;
+      height: 5px;
+      top: 20%;
+      background: linear-gradient(to right, #88747f 50%, #e7bbc2 50%);
+    }
+    
+    .line {
+      position: absolute;
+      background: #8c565a;
+      width: 1px;
+      height:10px;    
+    }
+    
+    .line-1 {
+      left: 36%;
+      transform: rotate(-10deg);
+    }
+    
+    .line-2 {
+      left: 44%;
+      transform: rotate(-8deg);
+    }
+    
+    .line-3 {
+      left: 54%;
+      transform: rotate(8deg);
+    }
+    
+    .line-4 {
+      left: 64%;
+      transform: rotate(10deg);
+    }
+    
+    @keyframes balloonmove{
+      0%{
+        transform: translate(-100%, 20px);
+        }
+      25% {
+        transform: translate(25%, 0px);
+      }
+      50% {
+        transform: translate(150%, 20px);
+      }
+      75% {
+        transform: translate(275%, 0px);
+      }
+      100%{
+        transform: translate(400%, 20px);
+        }
+    }
+  }
+  
+  
+  
+  
+  
