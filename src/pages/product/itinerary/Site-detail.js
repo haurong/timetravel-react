@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { v4 as uuidv4 } from 'uuid';
 
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
@@ -11,7 +12,12 @@ import BreadCrumb from '../../../Component/BreadCrumb/BreadCrumb';
 import SiteDes from './SiteDes';
 import './Site-detail.scss';
 // import './Carousel/SiteCarousel.scss';
-import { SITE_DETAIL, ITINERARY_ADDITEM, ITINERARY_LIST } from './site-config';
+import {
+  SITE_DETAIL,
+  ITINERARY_ADDITEM,
+  ITINERARY_LIST,
+  ITINERARY_ADDLIST,
+} from './site-config';
 
 import Heart from '../../../icon/heart_gray.svg';
 import PinkHeart from '../../../icon/heart.svg';
@@ -19,6 +25,7 @@ import Calendar from '../../../icon/calendar+add.svg';
 import Map_icon from '../../../icon/map_blue.svg';
 import Map_Green_icon from '../../../icon/map.svg';
 import Food_icon from '../../../icon/food_blue.svg';
+import Site_icon from '../../../icon/itinerary_blue.svg';
 import Phone_icon from '../../../icon/iphone.svg';
 import Star_icon from '../../../icon/star.svg';
 import HashChange from '../food/HashChange';
@@ -30,38 +37,107 @@ function SiteDetail() {
   const location = useLocation();
   const path = window.location.pathname.split('/');
   const sid = path[2];
+
   async function getData() {
     const response = await axios.get(SITE_DETAIL + sid);
     setSiteData(response.data);
   }
-  const [formData, setFormData] = useState([]);
 
-  async function userData() {
-    const membersid = JSON.parse(localStorage.getItem('auth')).sid;
-    const response = await axios.get(ITINERARY_LIST + '/' + membersid);
-    setFormData(response.data);
+  const [userData, setUserData] = useState([]);
+
+  async function userDatas() {
+    if (localStorage.getItem('auth') !== null) {
+      const membersid = JSON.parse(localStorage.getItem('auth')).sid;
+      const response = await axios.get(ITINERARY_LIST + '/' + membersid);
+      setUserData(response.data);
+    }
   }
+
+  const [formData, setFormData] = useState({
+    list_number: 0,
+    day: 1,
+    sequence: 10,
+    category: 1,
+    category_id: sid,
+    time: null,
+  });
 
   useEffect(() => {
     getData();
-    userData();
+    userDatas();
   }, [location]);
 
   const mySubmit = async () => {
-    console.log(formData);
-    // if
+    let selOptions = {};
+    let j = 1;
+    userData.map((el, i) => {
+      selOptions[i] = el.list_name;
+      j++;
+    });
+    const newOpt = { ...selOptions, newList: `新增行程${j}` };
+    const { value: selected } = await Swal.fire({
+      title: '請選擇要新增至哪個行程?',
+      input: 'select',
+      inputOptions: newOpt,
+      inputPlaceholder: '請選擇行程',
+      // showCancelButton: true,
+    });
+    console.log(selected);
 
-    // const { data } = await axios.post(ITINERARY_ADDITEM, formData);
-    // console.log(data);
-    //   if (data.success) {
-    //     localStorage.setItem('auth', JSON.stringify(data.auth));
-    //     alert('登入成功');
-    //     setMyAuth({ ...data, authorised: true });
-    //     navigate('/');
-    //   } else {
-    //     localStorage.removeItem('auth'); // 移除
-    //     alert('登入失敗');
-    //   }
+    if (selected === 'newList') {
+      const membersid = JSON.parse(localStorage.getItem('auth')).sid;
+      const listNumber = uuidv4();
+      const { data } = await axios.post(ITINERARY_ADDLIST, {
+        member_sid: membersid,
+        list_number: listNumber,
+        list_name: `我的行程${j}`,
+        day: 1,
+        status: 1,
+      });
+      if (data.success) {
+        const { data } = await axios.post(ITINERARY_ADDITEM, {
+          list_number: listNumber,
+          day: 1,
+          sequence: 10,
+          category: 1,
+          category_id: +sid,
+          time: null,
+        });
+        if (data.success) {
+          Swal.fire({
+            icon: 'success',
+            title: '建立並新增至我的行程',
+          });
+        } else {
+          alert('註冊失敗');
+        }
+      }
+    } else if (selected <= userData.length) {
+      setFormData({
+        list_number: userData[selected].list_number,
+        day: 1,
+        sequence: 10,
+        category: 1,
+        category_id: sid,
+        time: null,
+      });
+      const { data } = await axios.post(ITINERARY_ADDITEM, {
+        list_number: userData[selected].list_number,
+        day: 1,
+        sequence: 10,
+        category: 1,
+        category_id: +sid,
+        time: null,
+      });
+      if (data.success) {
+        Swal.fire({
+          icon: 'success',
+          title: '新增至我的行程',
+        });
+      } else {
+        alert('註冊失敗');
+      }
+    }
   };
 
   return (
@@ -73,7 +149,7 @@ function SiteDetail() {
         <div className="container ">
           <div className="product_name d-flex">
             <div className="product_name_title">
-              <h1>{siteData.product_name} WANCHUHAO</h1>
+              <h1>{siteData.name}</h1>
             </div>
 
             <div className="Heart_Calendar_icon">
@@ -98,25 +174,26 @@ function SiteDetail() {
               </button>
             </div>
           </div>
-          <div className="star_group">
-            <img src={Star_icon} alt="" />
-            <img src={Star_icon} alt="" />
-            <img src={Star_icon} alt="" />
-            <img src={Star_icon} alt="" />
-            <p>4.3顆星</p>
-          </div>
-          <div className="container location d-flex ">
-            <div className="map_cate d-flex ">
+          <div
+            className="container location d-flex "
+            style={{ justifyContent: 'space-between' }}
+          >
+            <div className="map_cate d-flex " style={{ alignItems: 'center' }}>
               <div className="map d-flex">
                 <img src={Map_icon} alt="" className="Map_icon" />
-                <p>
+                <p style={{ padding: 0 }}>
                   {siteData.city_name} | {siteData.area_name}
                 </p>
               </div>
-              <div className="cate d-flex">
-                <img src={Food_icon} alt="" className="Food_icon" />
-                <p>{siteData.categorise_name}</p>
+              <div className="cate d-flex" style={{ alignItems: 'center' }}>
+                <img src={Site_icon} alt="" className="Food_icon" />
+                <p style={{ padding: 0 }}>{siteData.site_category_name}</p>
               </div>
+            </div>
+            <div>
+              <button type="button" className="btn btn-secondary">
+                查看相關票卷
+              </button>
             </div>
           </div>
         </div>
