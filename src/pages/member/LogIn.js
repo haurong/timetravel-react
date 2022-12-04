@@ -85,7 +85,7 @@ function LogIn() {
         navigate('/');
       } else {
         localStorage.removeItem('auth'); // 移除
-        alert('登入失敗');
+        alert('帳號密碼錯誤');
       }
     }
   };
@@ -110,7 +110,7 @@ function LogIn() {
                   onChange={handlerEmailChange}
                   value={formData.email}
                 />
-                <p>{formData.errorMsg.email}</p>
+                <p className="errorMsg">{formData.errorMsg.email}</p>
               </div>
 
               <div className="mb-3">
@@ -124,7 +124,7 @@ function LogIn() {
                     onChange={handlerPasswordChange}
                     value={formData.password}
                   />
-                  <p>{formData.errorMsg.password}</p>
+                  <p className="errorMsg">{formData.errorMsg.password}</p>
                   <button
                     className="icon login-eye-btn"
                     type="button"
