@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import SortIcon from './../../../../icon/sort.svg';
 import axios from 'axios';
 import Accordion from 'react-bootstrap/Accordion';
+
+import AccordionDetail from './AccordionDetail';
 import {
   ORDER_DETAILS_FOOD_API,
   ORDER_DETAILS_HOTEL_API,
@@ -9,6 +11,7 @@ import {
 function OrdersAccordion({ createdTime, uuid, totalPrice }) {
   const [foodOrdersData, setFoodOrdersData] = useState([]);
   const [hotelOrdersData, setHotelOrdersData] = useState([]);
+
   async function getFoodOrders() {
     const response = await axios.get(ORDER_DETAILS_FOOD_API(uuid));
     setFoodOrdersData(response.data);
@@ -63,73 +66,26 @@ function OrdersAccordion({ createdTime, uuid, totalPrice }) {
             {foodOrdersData.map((v, i) => {
               return (
                 <div key={i}>
-                  <ul className="orders-accordion-ul p-0 m-0 pb-2 d-flex align-items-center">
-                    <li className="col text-center">
-                      <p>{v.product_name}</p>
-                    </li>
-                    <li className="col text-center">
-                      <p>{v.p_selling_price}</p>
-                    </li>
-                    <li className="col text-center">
-                      <p>{v.quantity}</p>
-                    </li>
-                    <li className="col text-center">
-                      <p>{`TWD$${v.total_price}`}</p>
-                    </li>
-                    <li className="col text-center">
-                      {v.committed === 1 ? (
-                        <button type="button" className="btn btn-primary">
-                          留下評價
-                        </button>
-                      ) : (
-                        <button
-                          type="button"
-                          className="btn btn-primary"
-                          disabled
-                        >
-                          已經評價
-                        </button>
-                      )}
-                    </li>
-                  </ul>
+                  <AccordionDetail
+                    name={v.product_name}
+                    price={v.p_selling_price}
+                    quantity={v.quantity}
+                    totalPrice={v.total_price}
+                    committed={v.committed}
+                  />
                 </div>
               );
             })}
             {hotelOrdersData.map((v, i) => {
-              {
-                /* console.log(v); */
-              }
               return (
                 <div key={i}>
-                  <ul className="orders-accordion-ul p-0 m-0 pb-2 d-flex align-items-center">
-                    <li className="col text-center">
-                      <p>{v.product_name}</p>
-                    </li>
-                    <li className="col text-center">
-                      <p>{v.room_price}</p>
-                    </li>
-                    <li className="col text-center">
-                      <p>{v.quantity}</p>
-                    </li>
-                    <li className="col text-center">
-                      <p>{`TWD$${v.total_price}`}</p>
-                    </li>
-                    <li className="col text-center">
-                      {v.committed === 1 ? (
-                        <button type="button" className="btn btn-primary">
-                          留下評價
-                        </button>
-                      ) : (
-                        <button
-                          type="button"
-                          className="btn btn-primary"
-                          disabled
-                        >
-                          已經評價
-                        </button>
-                      )}
-                    </li>
-                  </ul>
+                  <AccordionDetail
+                    name={v.product_name}
+                    price={v.room_price}
+                    quantity={v.quantity}
+                    totalPrice={v.total_price}
+                    committed={v.committed}
+                  />
                 </div>
               );
             })}

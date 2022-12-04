@@ -249,6 +249,10 @@ function FoodDetail() {
               type="button"
               className="btn add_cart"
               onClick={() => {
+                Swal.fire({
+                  icon: 'success',
+                  title: '已加入購物車！',
+                });
                 addItem(foodObj);
               }}
             >
