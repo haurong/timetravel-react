@@ -68,29 +68,55 @@ function SiteDetail() {
   }, [location]);
 
   const mySubmit = async () => {
+    if (localStorage.getItem('auth') === null) {
+      return Swal.fire({
+        title: '請先登入',
+        confirmButtonText: '確認',
+        confirmButtonColor: '#59d8a1',
+      });
+    }
     let selOptions = {};
     let j = 1;
     userData.map((el, i) => {
       selOptions[i] = el.list_name;
       j++;
     });
-    const newOpt = { ...selOptions, newList: `新增行程${j}` };
+    const newOpt = { ...selOptions, newList: `新增行程` };
+    console.log(newOpt);
     const { value: selected } = await Swal.fire({
       title: '請選擇要新增至哪個行程?',
       input: 'select',
       inputOptions: newOpt,
       inputPlaceholder: '請選擇行程',
-      // showCancelButton: true,
+      confirmButtonText: '確認',
+      confirmButtonColor: '#59d8a1',
+      showCancelButton: true,
+      cancelButtonText: '取消',
+      cancelButtonColor: '#D9D9D9',
     });
     console.log(selected);
 
     if (selected === 'newList') {
+      const { value: listname } = await Swal.fire({
+        title: '請輸入行程名稱',
+        input: 'text',
+        inputValue: `我的行程${j}`,
+        confirmButtonText: '確認',
+        confirmButtonColor: '#59d8a1',
+        allowOutsideClick: false,
+        inputValidator: (value) => {
+          if (!value) {
+            return '請輸入名稱';
+          }
+        },
+      });
+
       const membersid = JSON.parse(localStorage.getItem('auth')).sid;
       const listNumber = uuidv4();
       const { data } = await axios.post(ITINERARY_ADDLIST, {
         member_sid: membersid,
         list_number: listNumber,
-        list_name: `我的行程${j}`,
+        list_name: listname,
         day: 1,
         status: 1,
       });
@@ -106,7 +132,9 @@ function SiteDetail() {
         if (data.success) {
           Swal.fire({
             icon: 'success',
-            title: '建立並新增至我的行程',
+            title: `建立並新增至${listname}`,
+            confirmButtonText: '確認',
+            confirmButtonColor: '#59d8a1',
           });
         } else {
           alert('註冊失敗');
@@ -132,7 +160,9 @@ function SiteDetail() {
       if (data.success) {
         Swal.fire({
           icon: 'success',
-          title: '新增至我的行程',
+          title: `新增至${selOptions[selected]}`,
+          confirmButtonText: '確認',
+          confirmButtonColor: '#59d8a1',
         });
       } else {
         alert('註冊失敗');
@@ -164,10 +194,6 @@ function SiteDetail() {
                 className="CalendarBtn"
                 onClick={() => {
                   mySubmit();
-                  // Swal.fire({
-                  //   icon: 'success',
-                  //   title: '新增至我的行程',
-                  // });
                 }}
               >
                 <img src={Calendar} className="Calendar_icon" alt="" />
