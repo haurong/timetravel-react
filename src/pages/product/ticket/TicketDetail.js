@@ -9,9 +9,8 @@ import { useHotelContext } from '../stays/Context/HotelContext';
 import { TICKET_DETAIL } from './ticket-config';
 
 import Carousel from './DetailComponent/CarouselDu/Carousel';
-// import BreadCrumb from './DetailComponent/BreadCrumb/BreadCrumb';
-import BreadCrumb from './Breadcrumb/Breadcrumb';
-// import Rate from './Rate/Rate';
+import BreadCrumb from './BreadCrumbZheng/BreadCrumb';
+// import BreadCrumb from './Breadcrumb/Breadcrumb';
 import Rate from '../ticket/DetailComponent/Rate/Rate';
 import IconBar from './DetailComponent/IconBar/IconBar';
 import ShowPic from '../ticket/DetailComponent/ShowPic/ShowPic';
@@ -27,7 +26,6 @@ import ComputerLikeAdd from './DetailComponent/ComputerLikeAdd/ComputerLikeAdd';
 import ComDatePicker from '../../product/ticket/DetailComponent/ComDatePicker/ComDatePicker';
 import BookingBar from '../../product/ticket/DetailComponent/BookingBar/BookingBar';
 import { useLocation } from 'react-router-dom';
-// import BreadCrumbList from '../../../Component/BreadCrumb/BreadCrumbList';
 
 function Ticket() {
   const dataFrom = '14';
@@ -53,13 +51,6 @@ function Ticket() {
     console.log(res_ticketListData);
     setHotelListData(res_ticketListData.data);
 
-    //  拿到房型所有資料
-    // const res_hotelRoomData = await axios.get(
-    //   TICKET_DETAIL + dataFrom + '/room'
-    // );
-    // const toArray = res_hotelRoomData.data;
-    // setHotelRoomChoose(toArray);
-
     // 拿票種&價錢
     const res_ticketType = await axios.get(
       TICKET_DETAIL + dataFrom + '/types' 
@@ -71,19 +62,12 @@ function Ticket() {
     setHotelRoomPrice(myArray[0].product_price);
 
 
-    //  拿到所有評論的資料
-    // const res_hotelCommentData = await axios.get(
-    //   TICKET_DETAIL + dataFrom + '/hotelComment'
-    // );
-    // setHotelCommentData(res_hotelCommentData.data);
-    // console.log(res_hotelCommentData.data);
-
     // 拿票券所有評論test
     const res_ticketCommentData = await axios.get(
       TICKET_DETAIL + dataFrom + '/ticketComment'
     );
     setHotelCommentData(res_ticketCommentData.data);
-    console.log(res_ticketCommentData.data);
+    // console.log(res_ticketCommentData.data);
   }
   const Hotel_part0 = useRef();
   const Hotel_part1 = useRef();
@@ -144,7 +128,6 @@ function Ticket() {
       <div ref={Hotel_part0} id="Hotel_part0"></div>
       <div className="MobileHidden container">
         <BreadCrumb ticketData={hotelListData} />
-        {/* <BreadCrumbList /> */}
       </div>
       <div className="container ticket_carousel">
         <Carousel className="tk_detail_carousel" />
@@ -159,8 +142,8 @@ function Ticket() {
             <div className="Hotel_part0 Hotel_partHidden"></div>
             <div className="Hotel_part0_left">
               <div className="ComputerHidden">
-                <BreadCrumb />
-                {/* <BreadCrumbList /> */}
+              {/* <BreadCrumb ticketData={hotelListData} /> */}
+           
               </div>
 
               <h2 style={{ color: '#4D4D4D', marginBottom: '20px' }}>

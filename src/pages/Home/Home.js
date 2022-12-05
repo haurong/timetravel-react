@@ -242,11 +242,11 @@ function Home() {
           <div className="home-part4">
             <div className=" feature-card ">
               <div className=" feature-circle  fc-bg1"></div>
-              <h5>防疫旅館</h5>
+              <h5>泳池住宿</h5>
             </div>
             <div className=" feature-card ">
               <div className=" feature-circle fc-bg2"></div>
-              <h5>戶外露營</h5>
+              <h5>手作DIY</h5>
             </div>
             <div className=" feature-card ">
               <div className=" feature-circle fc-bg3"></div>
@@ -254,7 +254,7 @@ function Home() {
             </div>
             <div className=" feature-card ">
               <div className=" feature-circle fc-bg4"></div>
-              <h5>樂園專區</h5>
+              <h5>不由自"煮"</h5>
             </div>
             <div className=" feature-card ">
               <div className=" feature-circle fc-bg5"></div>

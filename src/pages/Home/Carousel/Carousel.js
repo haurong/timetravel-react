@@ -12,7 +12,7 @@ export default function Carousel() {
   return (
     <Swiper
       slidesPerView={3}
-      spaceBetween={19}
+      spaceBetween={0}
       slidesPerGroup={3}
       loop={true}
       loopFillGroupWithBlank={true}
@@ -21,24 +21,42 @@ export default function Carousel() {
       className="bannerSwiper"
     >
       <div className="bannerWrap">
-      <SwiperSlide className="SwiperSlideBannerNewest">
-        <div className="bannerNewest1 " style={{ height: '141px ' }}></div>
-      </SwiperSlide>
+        <SwiperSlide className="SwiperSlideBannerNewest">
+          <div
+            className="bannerNewest1 "
+            style={{ height: '141px', width: '500px' }}
+          ></div>
+        </SwiperSlide>
       </div>
       <SwiperSlide className="SwiperSlideBannerNewest">
-        <div className="bannerNewest2" style={{ height: '141px ' }}></div>
+        <div
+          className="bannerNewest2"
+          style={{ height: '141px ', width: '500px' }}
+        ></div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlideBannerNewest">
-        <div className="bannerNewest3" style={{ height: '141px ' }}></div>
+        <div
+          className="bannerNewest3"
+          style={{ height: '141px ', width: '500px' }}
+        ></div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlideBannerNewest">
-        <div className="bannerNewest4" style={{ height: '141px ' }}></div>
+        <div
+          className="bannerNewest4"
+          style={{ height: '141px ', width: '500px' }}
+        ></div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlideBannerNewest">
-        <div className="bannerNewest5" style={{ height: '141px ' }}></div>
+        <div
+          className="bannerNewest5"
+          style={{ height: '141px ', width: '500px' }}
+        ></div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlideBannerNewest">
-        <div className="bannerNewest6" style={{ height: '141px ' }}></div>
+        <div
+          className="bannerNewest6"
+          style={{ height: '141px ', width: '500px' }}
+        ></div>
       </SwiperSlide>
     </Swiper>
   );
