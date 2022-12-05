@@ -17,12 +17,12 @@ function SignIn() {
     email: '',
     password: '',
     againPassword: '',
-    errorMsg: {
-      username: '',
-      email: '',
-      password: '',
-      againPassword: '',
-    },
+  });
+  const [errorMsg, setErrorMsg] = useState({
+    username: '',
+    email: '',
+    password: '',
+    againPassword: '',
   });
 
   const [passwordFieldType, setPasswordFieldType] = useState('password');
@@ -76,19 +76,30 @@ function SignIn() {
     return errorMsg;
   };
   const validate = (value) => {
-    if (value.username !== '')
-      value.errorMsg.username = validateUsername(value);
-    if (value.email !== '') value.errorMsg.email = validateEmail(value);
-    if (value.password !== '')
-      value.errorMsg.password = validatePassword(value);
-    if (value.againPassword !== '')
-      value.errorMsg.againPassword = validateAgainPassword(value);
-    return (
-      value.errorMsg.username === '' &&
-      value.errorMsg.email === '' &&
-      value.errorMsg.password === '' &&
-      value.errorMsg.againPassword === ''
-    );
+    // if (value.username !== '')
+    //   value.errorMsg.username = validateUsername(value);
+    // if (value.email !== '') value.errorMsg.email = validateEmail(value);
+    // if (value.password !== '')
+    //   value.errorMsg.password = validatePassword(value);
+    // if (value.againPassword !== '')
+    //   value.errorMsg.againPassword = validateAgainPassword(value);
+    // return (
+    //   value.errorMsg.username === '' &&
+    //   value.errorMsg.email === '' &&
+    //   value.errorMsg.password === '' &&
+    //   value.errorMsg.againPassword === ''
+    // );
+    if (value.username !== '') {
+      return false;
+    } else if (value.email !== '') {
+      return false;
+    } else if (value.password !== '') {
+      return false;
+    } else if (value.againPassword !== '') {
+      return false;
+    } else {
+      return true;
+    }
   };
 
   const handlerUsernameChange = (e) => {
@@ -96,8 +107,6 @@ function SignIn() {
     const val = e.currentTarget.value;
     // console.log({id, val});
     setFormData({ ...formData, [id]: val });
-    if (formData.username !== '')
-      formData.errorMsg.username = validateUsername(formData);
   };
 
   const handlerEmailChange = (e) => {
@@ -105,8 +114,6 @@ function SignIn() {
     const val = e.currentTarget.value;
     // console.log({id, val});
     setFormData({ ...formData, [id]: val });
-    if (formData.email !== '')
-      formData.errorMsg.email = validateEmail(formData);
   };
 
   const handlerPasswordChange = (e) => {
@@ -114,8 +121,6 @@ function SignIn() {
     const val = e.currentTarget.value;
     // console.log({id, val});
     setFormData({ ...formData, [id]: val });
-    if (formData.password !== '')
-      formData.errorMsg.password = validatePassword(formData);
   };
 
   const handlerAgainPasswordChange = (e) => {
@@ -123,8 +128,6 @@ function SignIn() {
     const val = e.currentTarget.value;
     // console.log({id, val});
     setFormData({ ...formData, [id]: val });
-    if (formData.againPassword !== '')
-      formData.errorMsg.againPassword = validateAgainPassword(formData);
   };
 
   // const handler = (e) => {
@@ -136,7 +139,57 @@ function SignIn() {
 
   const mySubmit = async (e) => {
     e.preventDefault();
-    if (validate(formData)) {
+    // if (formData.username.length === 0) {
+    //   setErrorMsg({
+    //     username: '請輸入姓名',
+    //     email: errorMsg.email,
+    //     password: errorMsg.password,
+    //     againPassword: errorMsg.againPassword,
+    //   });
+    //   return;
+    // }
+    // if (formData.email.length === 0) {
+    //   setErrorMsg({
+    //     username: errorMsg.username,
+    //     email: '請輸入信箱',
+    //     password: errorMsg.password,
+    //     againPassword: errorMsg.againPassword,
+    //   });
+    //   return;
+    // }
+    // if (formData.password.length === 0) {
+    //   setErrorMsg({
+    //     username: errorMsg.username,
+    //     email: errorMsg.email,
+    //     password: '請輸入密碼',
+    //     againPassword: errorMsg.againPassword,
+    //   });
+    //   return;
+    // }
+    // if (formData.againPassword.length === 0) {
+    // setErrorMsg({
+    //   username: errorMsg.username,
+    //   email: errorMsg.email,
+    //   password: errorMsg.password,
+    //   againPassword: '請再次輸入密碼',
+    // });
+    //   return;
+    // }
+    if (
+      formData.username.length === 0 ||
+      formData.email.length === 0 ||
+      formData.password.length === 0 ||
+      formData.againPassword.length === 0
+    ) {
+      setErrorMsg({
+        username: validateUsername(formData),
+        email: validateEmail(formData),
+        password: validatePassword(formData),
+        againPassword: validateAgainPassword(formData),
+      });
+      return;
+    }
+    if (validate(errorMsg)) {
       const { data } = await axios.post(SIGNIN_API, formData);
       if (data.success) {
         alert('註冊成功,請重新登入');
@@ -146,9 +199,57 @@ function SignIn() {
       }
     }
   };
+  // useEffect(() => {
+  //   validate(formData);
+  // }, [formData]);
+
   useEffect(() => {
-    validate(formData);
-  });
+    if (formData.username !== '') {
+      let userNameErrorMsg = validateUsername(formData);
+      setErrorMsg({
+        username: userNameErrorMsg,
+        email: errorMsg.email,
+        password: errorMsg.password,
+        againPassword: errorMsg.againPassword,
+      });
+    }
+  }, [formData.username]);
+
+  useEffect(() => {
+    if (formData.email !== '') {
+      let emailErrorMsg = validateEmail(formData);
+      setErrorMsg({
+        username: errorMsg.username,
+        email: emailErrorMsg,
+        password: errorMsg.password,
+        againPassword: errorMsg.againPassword,
+      });
+    }
+  }, [formData.email]);
+
+  useEffect(() => {
+    if (formData.password !== '') {
+      let passwordErrorMsg = validatePassword(formData);
+      setErrorMsg({
+        username: errorMsg.username,
+        email: errorMsg.email,
+        password: passwordErrorMsg,
+        againPassword: errorMsg.againPassword,
+      });
+    }
+  }, [formData.password]);
+
+  useEffect(() => {
+    if (formData.againPassword !== '') {
+      let againPasswordErrorMsg = validateAgainPassword(formData);
+      setErrorMsg({
+        username: errorMsg.username,
+        email: errorMsg.email,
+        password: errorMsg.password,
+        againPassword: againPasswordErrorMsg,
+      });
+    }
+  }, [formData.againPassword]);
 
   return (
     <>
@@ -171,7 +272,7 @@ function SignIn() {
                   onChange={handlerUsernameChange}
                   value={formData.name}
                 />
-                <p className="errorMsg">{formData.errorMsg.username}</p>
+                <p className="errorMsg">{errorMsg.username}</p>
               </div>
               <div className="mb-3">
                 <label className="form-label">Email</label>
@@ -183,7 +284,7 @@ function SignIn() {
                   onChange={handlerEmailChange}
                   value={formData.email}
                 />
-                <p className="errorMsg">{formData.errorMsg.email}</p>
+                <p className="errorMsg">{errorMsg.email}</p>
               </div>
               <div className="mb-3">
                 <label className="form-label">密碼</label>
@@ -196,7 +297,7 @@ function SignIn() {
                     onChange={handlerPasswordChange}
                     value={formData.password}
                   />
-                  <p className="errorMsg">{formData.errorMsg.password}</p>
+                  <p className="errorMsg">{errorMsg.password}</p>
                   <button
                     className="icon login-eye-btn"
                     type="button"
@@ -229,7 +330,7 @@ function SignIn() {
                     onChange={handlerAgainPasswordChange}
                     value={formData.againPassword}
                   />
-                  <p className="errorMsg">{formData.errorMsg.againPassword}</p>
+                  <p className="errorMsg">{errorMsg.againPassword}</p>
                   <button
                     className="icon login-eye-btn"
                     type="button"
