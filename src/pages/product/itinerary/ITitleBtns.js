@@ -14,20 +14,20 @@ export default function ITitleBtns() {
   const location = useLocation();
   const listNumber = location.pathname.split('/')[2];
   const mySubmit = async () => {
-    const { del } = await axios.delete(ITINERARY_DELITEM + listNumber, {
-      list_number: listNumber,
-    });
+    // const { del } = await axios.delete(ITINERARY_DELITEM + listNumber, {
+    //   list_number: listNumber,
+    // });
     // console.log({ del });
     // console.log(iData);
     // console.log(iData[0]);
-    for (let i = 0; i < iData.length; i++) {
-      const { add } = await axios.post(ITINERARY_ADDITEM, iData[i]);
-      // console.log({ add });
-    }
+    // for (let i = 0; i < iData.length; i++) {
+    //   const { add } = await axios.post(ITINERARY_ADDITEM, iData[i]);
+    //   // console.log({ add });
+    // }
     const { edit } = await axios.put(ITINERARY_EDITLIST + listNumber, {
-      list_name: '',
-      day: '',
-      date: '',
+      list_name: '123',
+      day: 3,
+      date: 2022 - 12 - 20,
     });
     Swal.fire({
       icon: 'success',

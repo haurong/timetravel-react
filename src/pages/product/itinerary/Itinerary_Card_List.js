@@ -22,8 +22,13 @@ function Itinerary_Card_List({ rows }) {
                   </Link>
 
                   <p>
-                    {moment(el.date).format('YYYY-MM-DD')}~
-                    {moment(el.date).add(el.day, 'd').format('YYYY-MM-DD')}
+                    {el.day === 1
+                      ? moment(el.date).format('YYYY-MM-DD(ddd)')
+                      : moment(el.date).format('YYYY-MM-DD(ddd)') +
+                        '~' +
+                        moment(el.date)
+                          .add(el.day - 1, 'd')
+                          .format('YYYY-MM-DD(ddd)')}
                   </p>
                   <p>一共{el.day}天</p>
                 </div>
