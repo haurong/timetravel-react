@@ -56,12 +56,26 @@ export const HotelContextProvider = ({ children }) => {
     area: 'area_All',
     cate: 'cate_All',
     like: 'likeAll',
+    sortBy: '',
   });
 
   //  住宿列表資料改變
   const [hotelSortData, setHotelSortData] = useState([]);
 
   const [displayData, setDisplayData] = useState([]);
+
+  //分頁
+  //當前分頁最小為1,最大看資料計算最大頁數
+  const [pageNow, setPageNow] = useState(1);
+
+  //總共多少頁。在資料進入後(didMount)後需要計算出後才決定
+  const [pageTotal, setPageTotal] = useState(0);
+
+  //每頁多少筆資料
+  const perPage = 12;
+
+  //看是否取得資料
+  const [haveData, setHaveData] = useState(false);
 
   return (
     <HotelContext.Provider
@@ -98,6 +112,13 @@ export const HotelContextProvider = ({ children }) => {
         setHotelSortData,
         displayData,
         setDisplayData,
+        pageNow,
+        setPageNow,
+        pageTotal,
+        setPageTotal,
+        perPage,
+        haveData,
+        setHaveData,
       }}
     >
       {children}

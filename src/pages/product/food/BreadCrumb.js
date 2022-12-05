@@ -3,7 +3,7 @@ import { useLocation, NavLink } from 'react-router-dom';
 import '../../../Component/BreadCrumb/BreadCrumb.scss';
 
 function BreadCrumb({ foodData }) {
-  console.log({ foodData });
+  //console.log({ foodData });
   const [typeName, setTypeName] = useState('');
   const location = useLocation();
   const path = window.location.pathname.split('/');

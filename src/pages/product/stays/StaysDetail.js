@@ -26,7 +26,7 @@ import ComDatePicker from './ComDatePicker/ComDatePicker';
 import BookingBar from './BookingBar/BookingBar';
 
 function StaysDetail() {
-  const dataFrom = '1';
+  const dataFrom = window.location.pathname.split('/stays/detail/')[1];
   const {
     roomCounts,
     hotelRoomPrice,

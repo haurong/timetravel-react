@@ -7,9 +7,15 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 // import Map from './SiteMap';
 import { SITE_IMG } from './site-config';
 import map1 from './../../../icon/map.svg';
+import { split } from 'lodash';
 
 export default function SiteDes({ siteData }) {
   const [position, setPosition] = useState(null);
+  const [img1, setImg1] = useState('');
+  const [img2, setImg2] = useState('');
+  const [img3, setImg3] = useState('');
+  const [img4, setImg4] = useState('');
+  const [img5, setImg5] = useState('');
   const location = useLocation();
   const path = window.location.pathname.split('/');
   const sid = path[2];
@@ -19,6 +25,16 @@ export default function SiteDes({ siteData }) {
     const lat = response.data.lat;
     const lng = response.data.lng;
     setPosition([lat, lng]);
+    const img1 = response.data.img1.split(',')[0];
+    setImg1(img1);
+    const img2 = response.data.img1.split(',')[1];
+    setImg2(img2);
+    const img3 = response.data.img1.split(',')[2];
+    setImg3(img3);
+    const img4 = response.data.img1.split(',')[3];
+    setImg4(img4);
+    const img5 = response.data.img1.split(',')[4];
+    setImg5(img5);
     // console.log([lat, lng]);
   }
   const customMarker1 = new L.Icon({
@@ -27,6 +43,9 @@ export default function SiteDes({ siteData }) {
     iconAnchor: [10, 41],
     popupAnchor: [2, -40],
   });
+
+  // console.log(siteData.img1);
+  // console.log(siteData.img1.split(','));
 
   useEffect(() => {
     getPosition();
@@ -46,24 +65,24 @@ export default function SiteDes({ siteData }) {
       <p>
         士林官邸有精緻的庭園造景設計，蟲鳴鳥叫、景色秀麗，是休閒遊憩的絕佳場所。當年因為緊鄰著中山北路，佔據極佳的地理位置，可快速直達總統府，加上後有福山做為倚靠，優越的地勢，所以成為蔣故總統官邸。
       </p>
-      <img src={SITE_IMG + '/10001.jpg'} alt={'/'} />
+      <img src={SITE_IMG + '/' + img1} alt={'/'} />
       <p>
         1996年，官邸首度開放市民觀賞園藝與休憩使用。玫瑰園，是蔣夫人最喜愛的花園；西式庭園中浪漫美好的風光，是新人婚紗照最常取景的地方；中式庭園裡的拱橋、曲池、流水等東方庭園造景，則令人彷彿置身古代中式庭院。
       </p>
-      <img src={SITE_IMG + '/10002.jpg'} alt={'/'} />
+      <img src={SITE_IMG + '/' + img2} alt={'/'} />
       <p>
         官邸公園周圍為福山山系所環抱，佔地9.28公頃。其中的士林官邸於民國三十九年因先總統蔣公居住於此而設立，因為總統居住於此的關係，附近嚴禁改建及新建，使得官邸公園能維持原有的自然景觀。
         凱歌堂為蔣家人禮拜及受洗之處。新蘭亭建於民國三十九年，又名壽亭，為中式四角狀建築，是每年蔣公作壽的地方，也是舉辦各類蘭花展覽之地。慈雲亭建於福山之上，為兩層樓方形亭，是老總統為懷念母親所建。
       </p>
-      <img src={SITE_IMG + '/10003.jpg'} alt={'/'} />
+      <img src={SITE_IMG + '/' + img3} alt={'/'} />
       <p>
         官邸公園主要分為外花園、內花園、正房、栽種蘭花的溫室盆栽區、玫瑰園、凱歌堂、新蘭亭和慈雲亭。其中內花園屬中式庭園，其中有曲折的小橋流水、假山、奇石及一座紅色的中式涼亭。外花園區為西式庭園，區內設計成毛氈花壇，廣植花卉，美不勝收，是每年辦理菊展的主題園區。玫瑰園，育有200餘玫瑰品種，4000多株玫瑰，盛開期在每年的11月至翌年4月間，色彩繽紛為蔣夫人最喜愛散步的地方。
       </p>
-      <img src={SITE_IMG + '/10004.jpg'} alt={'/'} />
+      <img src={SITE_IMG + '/' + img4} alt={'/'} />
       <p>
         士林官邸每年年初及年末都會舉辦各式花展，像是鬱金香展、玫瑰花展、蝴蝶蘭展、菊展…等，而最為廣為人知的就是菊展和鬱金香展，利用花卉搭配上園區造景，打造出色彩繽紛的展
       </p>
-      <img src={SITE_IMG + '/10005.jpg'} alt={'/'} />
+      <img src={SITE_IMG + '/' + img5} alt={'/'} />
       <p>
         菊展
         接近秋冬的11至12月就是全台知名花展之一的菊展。藉由大立菊、造型菊、小菊及菊科草花搭配每年不同主題的展場造型物與園藝造景，將士林官邸打造成大型花園，吸引各地遊客前來觀賞。

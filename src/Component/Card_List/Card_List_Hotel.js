@@ -5,22 +5,26 @@ import { HOTEL_IMG } from '../../pages/product/stays/hotel-config';
 import Map from '../../icon/map.svg';
 import Heart from '../../icon/heart_gray.svg';
 import PinkHeart from '../../icon/heart.svg';
+import { Location } from 'react-router-dom';
 import { useHotelContext } from '../../pages/product/stays/Context/HotelContext';
+import _ from 'lodash';
 import './Card_List.scss';
 
-function Card_List({ rows }) {
+function Card_List() {
   const {
     hotelSort,
     hotelSortData,
-    setHotelSortData,
     displayData,
     setDisplayData,
+    setPageTotal,
+    perPage,
+    haveData,
+    setHaveData,
+    pageNow,
+    setPageNow,
   } = useHotelContext();
 
-  // console.log(hotelSortData);
-  // console.log({ rows });
   const [like, setLike] = useState(false);
-
   const [likeList, setLikeList] = useState([]);
   const toggleLike1 = () => setLike(!like);
   // console.log(fakedata[0].favorite)
@@ -32,7 +36,39 @@ function Card_List({ rows }) {
       return;
     }
   };
-  //  列表資料篩選
+  //  處理排序（價格、收藏數）
+  const handleSortPrice = (hotelSortData, hotelSort) => {
+    let newHotelSortData = [...hotelSortData];
+
+    // 處理目的地
+    switch (hotelSort) {
+      case 'sortByPriceDESC':
+        newHotelSortData = [...newHotelSortData].sort((a, b) => {
+          return b.room_price - a.room_price;
+        });
+        break;
+      case 'sortByPriceASC':
+        newHotelSortData = [...newHotelSortData].sort((a, b) => {
+          return a.room_price - b.room_price;
+        });
+        break;
+      case 'sortByCollectDESC':
+        newHotelSortData = [...newHotelSortData].sort((a, b) => {
+          return b.collect - a.collect;
+        });
+        break;
+      case 'sortByCollectASC':
+        newHotelSortData = [...newHotelSortData].sort((a, b) => {
+          return a.collect - b.collect;
+        });
+        break;
+      default:
+        break;
+    }
+
+    return newHotelSortData;
+  };
+  //  列表資料篩選（地區）
   const handleArea = (hotelSortData, hotelSort) => {
     let newHotelSortData = [...hotelSortData];
 
@@ -54,31 +90,90 @@ function Card_List({ rows }) {
         });
         break;
       // 指所有的產品都出現
+      case 'area_All':
+        newHotelSortData = hotelSortData.filter((v) => {
+          return v.city_name !== '';
+        });
+        break;
       default:
         break;
     }
 
     return newHotelSortData;
   };
-  //  列表資料篩選
-  const handleAddLike = (hotelSortData, hotelSort) => {
+  //  列表資料篩選（住宿類型）
+  const handleCate = (hotelSortData, hotelSort) => {
     let newHotelSortData = [...hotelSortData];
 
     // 處理目的地
     switch (hotelSort) {
-      case 'area_Taipei':
+      case 'cate_Hotel_1':
         newHotelSortData = hotelSortData.filter((v) => {
-          return v.city_name === '台北市';
+          return v.categories_sid === 1;
         });
         break;
-      case 'area_NewTaipei':
+      case 'cate_Hotel_2':
         newHotelSortData = hotelSortData.filter((v) => {
-          return v.city_name === '新北市';
+          return v.categories_sid === 2;
         });
         break;
-      case 'area_Keelung':
+      case 'cate_Hotel_3':
         newHotelSortData = hotelSortData.filter((v) => {
-          return v.city_name === '基隆市';
+          return v.categories_sid === 3;
+        });
+        break;
+      // 指所有的產品都出現
+      case 'cate_Hotel_All':
+        newHotelSortData = hotelSortData.filter((v) => {
+          return v.categories_sid !== '';
+        });
+        break;
+      default:
+        break;
+    }
+
+    return newHotelSortData;
+  };
+  //  列表資料篩選（收藏數）
+  const handleAddLike = (hotelSortData, hotelSort) => {
+    let newHotelSortData = [...hotelSortData];
+    // console.log(newHotelSortData);
+
+    // 處理目的地
+    switch (hotelSort) {
+      case 'like<100':
+        newHotelSortData = hotelSortData.filter((v) => {
+          return v.collect <= 100;
+        });
+        break;
+      case 'like200':
+        newHotelSortData = hotelSortData.filter((v) => {
+          return v.collect <= 200 && v.collect > 100;
+        });
+        break;
+      case 'like300':
+        newHotelSortData = hotelSortData.filter((v) => {
+          return v.collect <= 300 && v.collect > 200;
+        });
+        break;
+      case 'like400':
+        newHotelSortData = hotelSortData.filter((v) => {
+          return v.collect <= 400 && v.collect > 300;
+        });
+        break;
+      case 'like500':
+        newHotelSortData = hotelSortData.filter((v) => {
+          return v.collect <= 500 && v.collect > 400;
+        });
+        break;
+      case 'like>500':
+        newHotelSortData = hotelSortData.filter((v) => {
+          return v.collect >= 500;
+        });
+        break;
+      case 'likeAll':
+        newHotelSortData = hotelSortData.filter((v) => {
+          return v.collect < 1000;
         });
         break;
       // 指所有的產品都出現
@@ -88,72 +183,109 @@ function Card_List({ rows }) {
 
     return newHotelSortData;
   };
+  //  把資料處理成分頁
+  const getFoodListData = (v, perPage) => {
+    const pageList = _.chunk(v, perPage);
+    // console.log('pageList:', pageList[0]);
+
+    if (pageList.length > 0) {
+      setPageTotal(pageList.length);
+      //紀錄分塊後的資料
+      setDisplayData(pageList);
+      setHaveData(true);
+    }
+  };
 
   useEffect(() => {
-    // console.log(hotelSort);
+    // console.log();
     let newHotelSortData = [];
-    newHotelSortData = handleArea(hotelSortData, hotelSort.area);
+    setPageNow(1);
+    newHotelSortData = handleSortPrice(hotelSortData, hotelSort.sortBy);
+    newHotelSortData = handleArea(newHotelSortData, hotelSort.area);
+    newHotelSortData = handleCate(newHotelSortData, hotelSort.cate);
+    newHotelSortData = handleAddLike(newHotelSortData, hotelSort.like);
+
     setDisplayData(newHotelSortData);
-  }, [hotelSort]);
+    getFoodListData(newHotelSortData, perPage);
+  }, [hotelSort.area, hotelSort.like, hotelSort.cate, hotelSort.sortBy]);
   //TODO:收藏人數按鈕樣式待定
   return (
-    <Row xs={1} lg={4} className="d-flex justify-content-center flex-wrap">
-      {displayData.map((el) => {
-        return (
-          <Card
-            className="MyCard col-3"
-            style={{ width: '20rem' }}
-            key={el.product_number}
-          >
-            <Card.Img
-              variant="top"
-              className="foodCardImg1"
-              src={`${HOTEL_IMG}/${el.picture}`}
-            />
-            <button
-              data-product-number={el.product_number}
-              className="Heart_Btn"
-              onClick={() => {
-                addLikeListHandler(el.product_number);
-                toggleLike1();
-              }}
-            >
-              <img
-                src={like ? PinkHeart : Heart}
-                className="Card_Heart"
-                alt=""
-              />
-            </button>
-            <Card.Body>
-              <Card.Title className="Card_Title">{el.product_name}</Card.Title>
-              <Card.Text className="Card_Text">
-                <Card.Img src={Map} className="Map_icon" />
-                <span class="Card_Score">
-                  {el.city_name} | {el.area_name}
-                </span>
+    <Row xs={1} lg={4} className="d-flex justify-content-flexstart flex-wrap">
+      {displayData[pageNow - 1]
+        ? displayData[pageNow - 1].map((el) => {
+            return (
+              <Card
+                className="MyCard col-3"
+                style={{ width: '20rem' }}
+                key={el.product_number}
+              >
+                <Card.Img
+                  variant="top"
+                  className="foodCardImg1"
+                  src={`${HOTEL_IMG}/${el.picture}`}
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => {
+                    let sid = Number(el.product_number.split('A')[1]);
+                    window.location.href = `stays/detail/${sid}`;
+                  }}
+                />
+                <button
+                  data-product-number={el.product_number}
+                  className="Heart_Btn"
+                  onClick={() => {
+                    addLikeListHandler(el.product_number);
+                    toggleLike1();
+                  }}
+                >
+                  <img
+                    src={like ? PinkHeart : Heart}
+                    className="Card_Heart"
+                    alt=""
+                  />
+                </button>
+                <Card.Body>
+                  <Card.Title
+                    className="Card_Title"
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => {
+                      let sid = Number(el.product_number.split('A')[1]);
+                      window.location.href = `stays/detail/${sid}`;
+                    }}
+                  >
+                    {el.product_name}
+                  </Card.Title>
+                  <Card.Text className="Card_Text">
+                    <Card.Img src={Map} className="Map_icon" />
+                    <span className="Card_Score">
+                      {el.city_name} | {el.area_name}
+                    </span>
 
-                <div className="d-flex PriceAndCollect">
-                  <div>
-                    <button className="Heart_btn">
-                      <img
-                        src={PinkHeart}
-                        style={{ width: '25px', height: '25px' }}
-                        alt=""
-                      />
-                      <span>999</span>
-                    </button>
-                  </div>
-                  <div>
-                    <h2 variant="primary" className="Card_Price">
-                      NT$ {el.room_price}
-                    </h2>
-                  </div>
-                </div>
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        );
-      })}
+                    <div className="d-flex PriceAndCollect">
+                      <div>
+                        <button className="Heart_btn">
+                          <img
+                            src={PinkHeart}
+                            style={{
+                              width: '25px',
+                              height: '25px',
+                            }}
+                            alt=""
+                          />
+                          <span>{el.collect}</span>
+                        </button>
+                      </div>
+                      <div>
+                        <h2 variant="primary" className="Card_Price">
+                          NT$ {el.room_price}
+                        </h2>
+                      </div>
+                    </div>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            );
+          })
+        : ' '}
     </Row>
   );
 }

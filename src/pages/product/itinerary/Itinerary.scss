@@ -16,9 +16,12 @@
     flex-direction: row;
     align-items: center;
     // margin-bottom: 20px;
+    h1,h2,p{
+        margin: 0;
+    }
 }
 .titlespace-x{
-    margin-right: 10px;
+    padding-right: 20px;
 }
 .card-img{
     height: 200px;

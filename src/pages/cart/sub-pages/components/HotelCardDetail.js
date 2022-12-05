@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CardTitle from './CardTitle';
 import CardBodyTop from './CardBodyTop';
 import StateButton from './StateButton';
-import DateInput from './DateInput';
 import { useHotelCart } from '../../utils/useCart';
 import CountButton from './CountButton';
+import DateInput from './DateInput';
 function HotelCardDetail({
   name,
   id,
@@ -14,7 +14,8 @@ function HotelCardDetail({
   checkin,
   checkout,
 }) {
-  const { removeItem, plusOne, minusOne } = useHotelCart();
+  let dateLong = (+new Date(checkout) - +new Date(checkin)) / 86400000;
+  const { removeItem, plusOne, minusOne, updateDate } = useHotelCart();
   return (
     <div className="pb-5">
       <CardTitle
@@ -26,10 +27,22 @@ function HotelCardDetail({
       <CardBodyTop productName={name} rate={rate} />
       <StateButton text={type} />
       <div className="d-flex">
-        <DateInput text={'入住時間'} date={checkin} />
-        <DateInput text={'退房時間'} date={checkout} />
+        <DateInput
+          text={'入住時間'}
+          date={checkin}
+          id={id}
+          updateDate={updateDate}
+          dateProps={'checkin'}
+        />
+        <DateInput
+          text={'退房時間'}
+          date={checkout}
+          id={id}
+          updateDate={updateDate}
+          dateProps={'checkout'}
+        />
         <div className="day-count">
-          <p>1晚</p>
+          <p>{`${dateLong}晚`}</p>
         </div>
       </div>
       <div className="pt-4">

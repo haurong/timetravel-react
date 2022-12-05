@@ -1,3 +1,4 @@
+import { CountertopsOutlined } from '@mui/icons-material';
 import React, { useReducer, useContext, createContext, useEffect } from 'react';
 import { reducer, init } from './cartReducer';
 import useLocalStorage from './useLocalstorage';
@@ -89,6 +90,13 @@ export const HotelCartProvider = ({
     });
   };
 
+  const updateDate = (id, item) => {
+    dispatch({
+      type: 'UPDATE_DATE',
+      payload: { id, item },
+    });
+  };
+
   /**
    * 清空整個購物車
    * @returns {void}}
@@ -135,7 +143,7 @@ export const HotelCartProvider = ({
       },
     });
   };
-
+  // console.log(state);
   return (
     <HotelCartContext.Provider
       value={{
@@ -148,6 +156,7 @@ export const HotelCartProvider = ({
         isInCart,
         plusOne,
         minusOne,
+        updateDate,
       }}
     >
       {children}
@@ -157,6 +166,7 @@ export const HotelCartProvider = ({
 
 export const useHotelCart = () => useContext(HotelCartContext);
 
+//美食context
 const FoodCartContext = createContext(null);
 
 export const FoodCartProvider = ({
@@ -320,6 +330,12 @@ export const TicketCartProvider = ({
     });
   };
 
+  const updateDate = (id, item) => {
+    dispatch({
+      type: 'UPDATE_DATE',
+      payload: { id, item },
+    });
+  };
   const clearCart = () => {
     dispatch({
       type: 'CLEAR_CART',
@@ -361,6 +377,7 @@ export const TicketCartProvider = ({
         clearCart,
         isInCart,
         plusOne,
+        updateDate,
         minusOne,
       }}
     >

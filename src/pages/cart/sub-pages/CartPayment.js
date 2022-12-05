@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
 import PaymentCard from './components/PaymentCard';
 import ProgressButton from './ProgressButton';
 import { useFoodCart, useHotelCart, useTicketCart } from '../utils/useCart';
-import axios from 'axios';
-import { MakeOrder } from '../../../config';
 import { useNavigate } from 'react-router-dom';
 function CartPayment({
   prev,
@@ -21,6 +18,9 @@ function CartPayment({
   paymentId,
   setPaymentId,
 }) {
+  //取的存在localstorga的會員sid
+  const member = JSON.parse(localStorage.getItem('auth'));
+  // console.log(member.sid);
   //用毫秒當作訂單的uuid
   const uuid = +new Date();
   //計算訂單的總價格
@@ -44,7 +44,7 @@ function CartPayment({
     return { ...v, uuid };
   });
   const order = {
-    member_sid: 1,
+    member_sid: member.sid,
     uuid: uuid,
     orders_total_price: totalPrice,
   };
@@ -55,22 +55,12 @@ function CartPayment({
     hotel: newHotel,
     ticket: newTicket,
   };
-
-  console.log(newHotel);
-  console.log(newTicket);
+  // console.log(newFood);
+  // console.log(newHotel);
+  // console.log(newTicket);
   // console.log(order);
-  const { navigate } = useNavigate();
   // {food:[{id: "1",itemTotal: 25000,name: "美食1",picture: "https://via.placeholder.com/32",price: 25000,quantity: 1,rate: 4}],hotel:[{}],ticket:[{}]}
 
-  const mySubmit = async (e) => {
-    const { data } = await axios.post(MakeOrder, formData);
-    if (data.success) {
-      alert('註冊成功');
-      navigate('/');
-    } else {
-      alert('註冊失敗');
-    }
-  };
   return (
     <div className="container">
       <div className="row">
@@ -97,16 +87,8 @@ function CartPayment({
           paymentId={paymentId}
           hotelRepresent={hotelRepresent}
           hotelMobile={hotelMobile}
+          formData={formData}
         />
-        <button
-          type="button"
-          onClick={(e) => {
-            e.preventDefault();
-            mySubmit();
-          }}
-        >
-          發送
-        </button>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ function CommentCard() {
   const { hotelCommentData, commentSort, setHotelCommentData } =
     useHotelContext();
   // console.log(Date.parse(hotelCommentData[0].create_time));
-  console.log(hotelCommentData);
+  // console.log(hotelCommentData);
 
   useEffect(() => {
     // if (hotelCommentData.length !== 0) {
