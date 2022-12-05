@@ -30,6 +30,24 @@ export const MakeOrder = `${MY_HOST}/cart/api/makeorder`;
 // export const MakeFoodOrder = `${MY_HOST}/cart/api/makefoodorder`;
 // export const MakeTicketOrder = `${MY_HOST}/cart/api/maketicketorder`;
 
+//訂單路徑
+//指定會員的總訂單
+export const ORDERS_API = function (sid) {
+  return `${MY_HOST}/orders/api/list/${sid}`;
+};
+export const ORDER_DETAILS_FOOD_API = function (uuid) {
+  return `${MY_HOST}/orders/api/list/foodlist/${uuid}`;
+};
+export const ORDER_DETAILS_HOTEL_API = function (uuid) {
+  return `${MY_HOST}/orders/api/list/hotellist/${uuid}`;
+};
+
+//輸入評論路徑
+export const SUBMIT_COMMENT_API = `${MY_HOST}/comment/api/submit-comment-api`;
+
+//修改訂單未評論/已評論狀態
+export const CHANGE_COMMENTED_API = `${MY_HOST}/comment/api/change-commented`;
+
 //從node抓照片資料
 export const appConfig = {
   debug: true,
@@ -39,7 +57,7 @@ export const appConfig = {
 };
 
 export const ALLPRODUCT_LIST = `${MY_HOST}/productAll/api`;
-export const ADD_FOOD_COLLECT= `${MY_HOST}/productAll/api/addCollect-api`;
+export const ADD_FOOD_COLLECT = `${MY_HOST}/productAll/api/addCollect-api`;
 // //從node抓照片資料
 // export const appConfig = {
 //   debug: true,

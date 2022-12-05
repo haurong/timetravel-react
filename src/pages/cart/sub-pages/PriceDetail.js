@@ -6,12 +6,13 @@ function PriceDetail({ prev, next, step, maxSteps }) {
   const hotel = useHotelCart();
   const food = useFoodCart();
   const ticket = useTicketCart();
+  // console.log(hotel);
   return (
     <div className="price-detail-wrap mb-5">
       <PriceDetailCard
         title={'住宿'}
         items={hotel.items}
-        total={hotel.cart.cartTotal}
+        total={hotel.cart.hotelTotal}
       />
       <PriceDetailCard
         title={'美食'}
@@ -26,7 +27,7 @@ function PriceDetail({ prev, next, step, maxSteps }) {
       <div className="d-flex justify-content-evenly">
         <h1 className="total">總計</h1>
         <h1 className="total">
-          {hotel.cart.cartTotal + food.cart.cartTotal + ticket.cart.cartTotal}
+          {hotel.cart.hotelTotal + food.cart.cartTotal + ticket.cart.cartTotal}
         </h1>
       </div>
       <div>

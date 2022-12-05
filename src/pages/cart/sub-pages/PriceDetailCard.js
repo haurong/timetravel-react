@@ -23,6 +23,14 @@ function PriceDetailCard({ title, items, total }) {
                     <p>{v.name}</p>
                     <p>{`$${v.price}`}</p>
                     <p>{`X${v.quantity}`}</p>
+                    {v.checkin || v.checkout ? (
+                      <p>{`X${
+                        (+new Date(v.checkout) - +new Date(v.checkin)) /
+                        86400000
+                      }晚`}</p>
+                    ) : (
+                      ''
+                    )}
                   </div>
                   <div className="btn-wrap">
                     <StateButton text={v.type} />

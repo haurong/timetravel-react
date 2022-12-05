@@ -2,16 +2,13 @@ import React, { useEffect, useState } from 'react';
 import SortIcon from './../../../../icon/sort.svg';
 import axios from 'axios';
 import Accordion from 'react-bootstrap/Accordion';
-
-import AccordionDetail from './AccordionDetail';
 import {
   ORDER_DETAILS_FOOD_API,
   ORDER_DETAILS_HOTEL_API,
 } from '../../../../config';
-function OrdersAccordion({ createdTime, uuid, totalPrice, memberSid }) {
+function OrdersAccordionUndone({ createdTime, uuid, totalPrice }) {
   const [foodOrdersData, setFoodOrdersData] = useState([]);
   const [hotelOrdersData, setHotelOrdersData] = useState([]);
-  // console.log(memberSid);
   async function getFoodOrders() {
     const response = await axios.get(ORDER_DETAILS_FOOD_API(uuid));
     setFoodOrdersData(response.data);
@@ -20,27 +17,30 @@ function OrdersAccordion({ createdTime, uuid, totalPrice, memberSid }) {
     const response = await axios.get(ORDER_DETAILS_HOTEL_API(uuid));
     setHotelOrdersData(response.data);
   }
-  // console.log(foodOrdersData);
   useEffect(() => {
     getFoodOrders();
     getHotelOrders();
   }, [uuid]);
-  // console.log(foodOrdersData);
   return (
-    <Accordion defaultActiveKey="0">
-      <Accordion.Item>
+    <Accordion>
+      <Accordion.Item eventKey="0">
         <Accordion.Header>
           <img alt="sort-img" className="sort-img" src={SortIcon} />
           <div className="w-100 m-0 ">
             <ul className="orders-accordion-ul p-0 m-0">
-              <li className="col-lg-4 text-center">
+              <li className="col-lg-3 text-center">
                 <p>{createdTime}</p>
               </li>
-              <li className="col-lg-4 text-center">
+              <li className="col-lg-3 text-center">
                 <p>{uuid}</p>
               </li>
-              <li className="col-lg-4 text-center">
+              <li className="col-lg-3 text-center">
                 <p>{`TWD$${totalPrice}`}</p>
+              </li>
+              <li className="col-lg-3 text-center">
+                <div type="button" className="btn btn-danger">
+                  尚未付款
+                </div>
               </li>
             </ul>
           </div>
@@ -60,41 +60,44 @@ function OrdersAccordion({ createdTime, uuid, totalPrice, memberSid }) {
               <li className="col text-center">
                 <p>小計</p>
               </li>
-              <li className="col text-center">
-                <p>評價</p>
-              </li>
             </ul>
             {foodOrdersData.map((v, i) => {
               return (
                 <div key={i}>
-                  <AccordionDetail
-                    type={'food'}
-                    name={v.product_name}
-                    price={v.p_selling_price}
-                    quantity={v.quantity}
-                    totalPrice={v.total_price}
-                    commented={v.commented}
-                    productNumber={v.product_number}
-                    memberSid={memberSid}
-                    uuid={uuid}
-                  />
+                  <ul className="orders-accordion-ul p-0 m-0 pb-2 d-flex align-items-center">
+                    <li className="col text-center">
+                      <p>{v.product_name}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{v.p_selling_price}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{v.quantity}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{`TWD$${v.total_price}`}</p>
+                    </li>
+                  </ul>
                 </div>
               );
             })}
             {hotelOrdersData.map((v, i) => {
               return (
                 <div key={i}>
-                  <AccordionDetail
-                    type={'hotel'}
-                    name={v.product_name}
-                    price={v.room_price}
-                    quantity={v.quantity}
-                    totalPrice={v.total_price}
-                    commented={v.commented}
-                    memberSid={memberSid}
-                    productNumber={v.product_number}
-                    uuid={uuid}
-                  />
+                  <ul className="orders-accordion-ul p-0 m-0 pb-2 d-flex align-items-center">
+                    <li className="col text-center">
+                      <p>{v.product_name}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{v.room_price}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{v.quantity}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{`TWD$${v.total_price}`}</p>
+                    </li>
+                  </ul>
                 </div>
               );
             })}
@@ -105,4 +108,4 @@ function OrdersAccordion({ createdTime, uuid, totalPrice, memberSid }) {
   );
 }
 
-export default OrdersAccordion;
+export default OrdersAccordionUndone;

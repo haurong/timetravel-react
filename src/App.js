@@ -30,7 +30,6 @@ import ItineraryDetail from './pages/product/itinerary/Itinerary-detail';
 import Orders from './pages/cart/order/Orders';
 import OrderSuccess from './pages/cart/OrderSuccess';
 import OrderFail from './pages/cart/OrderFail';
-
 //context
 import { FoodContextProvider } from './pages/product/food/FoodContext/FoodContext';
 import { HotelContextProvider } from './pages/product/stays/Context/HotelContext';
