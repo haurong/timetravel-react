@@ -74,7 +74,7 @@ function Stays() {
         />
       </div>
 
-      <div className="givePadding">123</div>
+      <div className="givePadding"></div>
 
       <Footer />
     </>
