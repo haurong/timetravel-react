@@ -5,10 +5,12 @@ import Accordion from 'react-bootstrap/Accordion';
 import {
   ORDER_DETAILS_FOOD_API,
   ORDER_DETAILS_HOTEL_API,
+  ORDER_DETAILS_TICKET_API,
 } from '../../../../config';
 function OrdersAccordionUndone({ createdTime, uuid, totalPrice }) {
   const [foodOrdersData, setFoodOrdersData] = useState([]);
   const [hotelOrdersData, setHotelOrdersData] = useState([]);
+  const [ticketOrdersData, setTicketOrdersData] = useState([]);
   async function getFoodOrders() {
     const response = await axios.get(ORDER_DETAILS_FOOD_API(uuid));
     setFoodOrdersData(response.data);
@@ -17,9 +19,15 @@ function OrdersAccordionUndone({ createdTime, uuid, totalPrice }) {
     const response = await axios.get(ORDER_DETAILS_HOTEL_API(uuid));
     setHotelOrdersData(response.data);
   }
+  async function getTicketOrders() {
+    const response = await axios.get(ORDER_DETAILS_TICKET_API(uuid));
+    setTicketOrdersData(response.data);
+  }
+  // console.log(hotelOrdersData);
   useEffect(() => {
     getFoodOrders();
     getHotelOrders();
+    getTicketOrders();
   }, [uuid]);
   return (
     <Accordion>
@@ -90,6 +98,26 @@ function OrdersAccordionUndone({ createdTime, uuid, totalPrice }) {
                     </li>
                     <li className="col text-center">
                       <p>{v.room_price}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{v.quantity}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{`TWD$${v.total_price}`}</p>
+                    </li>
+                  </ul>
+                </div>
+              );
+            })}
+            {ticketOrdersData.map((v, i) => {
+              return (
+                <div key={i}>
+                  <ul className="orders-accordion-ul p-0 m-0 pb-2 d-flex align-items-center">
+                    <li className="col text-center">
+                      <p>{v.product_name}</p>
+                    </li>
+                    <li className="col text-center">
+                      <p>{v.ticket_price}</p>
                     </li>
                     <li className="col text-center">
                       <p>{v.quantity}</p>

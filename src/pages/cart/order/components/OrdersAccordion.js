@@ -7,11 +7,13 @@ import AccordionDetail from './AccordionDetail';
 import {
   ORDER_DETAILS_FOOD_API,
   ORDER_DETAILS_HOTEL_API,
+  ORDER_DETAILS_TICKET_API,
 } from '../../../../config';
 function OrdersAccordion({ createdTime, uuid, totalPrice, memberSid }) {
   const [foodOrdersData, setFoodOrdersData] = useState([]);
   const [hotelOrdersData, setHotelOrdersData] = useState([]);
-  // console.log(memberSid);
+  const [ticketOrdersData, setTicketOrdersData] = useState([]);
+
   async function getFoodOrders() {
     const response = await axios.get(ORDER_DETAILS_FOOD_API(uuid));
     setFoodOrdersData(response.data);
@@ -20,12 +22,17 @@ function OrdersAccordion({ createdTime, uuid, totalPrice, memberSid }) {
     const response = await axios.get(ORDER_DETAILS_HOTEL_API(uuid));
     setHotelOrdersData(response.data);
   }
-  // console.log(foodOrdersData);
+  async function getTicketOrders() {
+    const response = await axios.get(ORDER_DETAILS_TICKET_API(uuid));
+    setTicketOrdersData(response.data);
+  }
+
   useEffect(() => {
     getFoodOrders();
     getHotelOrders();
+    getTicketOrders();
   }, [uuid]);
-  // console.log(foodOrdersData);
+
   return (
     <Accordion defaultActiveKey="0">
       <Accordion.Item>
@@ -93,6 +100,23 @@ function OrdersAccordion({ createdTime, uuid, totalPrice, memberSid }) {
                     commented={v.commented}
                     memberSid={memberSid}
                     productNumber={v.product_number}
+                    uuid={uuid}
+                  />
+                </div>
+              );
+            })}
+            {ticketOrdersData.map((v, i) => {
+              return (
+                <div key={i}>
+                  <AccordionDetail
+                    type={'ticket'}
+                    name={v.product_name}
+                    price={v.ticket_price}
+                    quantity={v.quantity}
+                    totalPrice={v.total_price}
+                    commented={v.commented}
+                    productNumber={v.product_number}
+                    memberSid={memberSid}
                     uuid={uuid}
                   />
                 </div>

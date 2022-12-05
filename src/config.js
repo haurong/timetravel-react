@@ -41,6 +41,9 @@ export const ORDER_DETAILS_FOOD_API = function (uuid) {
 export const ORDER_DETAILS_HOTEL_API = function (uuid) {
   return `${MY_HOST}/orders/api/list/hotellist/${uuid}`;
 };
+export const ORDER_DETAILS_TICKET_API = function (uuid) {
+  return `${MY_HOST}/orders/api/list/ticketlist/${uuid}`;
+};
 
 //輸入評論路徑
 export const SUBMIT_COMMENT_API = `${MY_HOST}/comment/api/submit-comment-api`;
