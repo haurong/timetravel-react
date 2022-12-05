@@ -1,5 +1,4 @@
 import React from 'react';
-import IDay from './IDay';
 
 export default function IRecSite() {
   return (

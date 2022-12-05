@@ -3,6 +3,8 @@ import { useContext, useState } from 'react';
 import '../member/style/LogIn.scss';
 import '../../global.scss';
 import Logo from '../../icon/logo/logo_white.svg';
+import EyeClosed from '../../icon/eye_closed.svg';
+import Eye from '../../icon/eye.svg';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { LOGIN_API } from '../../config';
@@ -15,29 +17,76 @@ function LogIn() {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
+    errorMsg: {
+      password: '',
+      email: '',
+    },
   });
+  const [passwordFieldType, setPasswordFieldType] = useState('password');
 
-  const handler = (e) => {
+  const validateEmail = (value) => {
+    let errorMsg = '';
+    const emailRule = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+    if (value && value.email) {
+      if (!emailRule.test(value.email)) {
+        errorMsg = '請輸入正確格式的email';
+      }
+    } else {
+      errorMsg = '請輸入email';
+    }
+    return errorMsg;
+  };
+  const validatePassword = (value) => {
+    let errorMsg = '';
+    const passwordRule = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$/;
+    if (value && value.password) {
+      if (!passwordRule.test(value.password)) {
+        errorMsg = '請輸入8位以上英數密碼，區分大小寫';
+      }
+    } else {
+      errorMsg = '請輸入密碼';
+    }
+    return errorMsg;
+  };
+  const validate = (value) => {
+    if (value.email !== '') value.errorMsg.email = validateEmail(value);
+    if (value.password !== '')
+      value.errorMsg.password = validatePassword(value);
+    return value.errorMsg.email === '' && value.errorMsg.password === '';
+  };
+
+  const handlerEmailChange = (e) => {
     const id = e.currentTarget.id;
     const val = e.currentTarget.value;
     // console.log({id, val});
-
     setFormData({ ...formData, [id]: val });
+    if (formData.email !== '')
+      formData.errorMsg.email = validateEmail(formData);
+  };
+
+  const handlerPasswordChange = (e) => {
+    const id = e.currentTarget.id;
+    const val = e.currentTarget.value;
+    // console.log({id, val});
+    setFormData({ ...formData, [id]: val });
+    if (formData.password !== '')
+      formData.errorMsg.password = validatePassword(formData);
   };
 
   const mySubmit = async (e) => {
     e.preventDefault();
-    const { data } = await axios.post(LOGIN_API, formData);
-    //console.log(data);
-    if (data.success) {
-      localStorage.setItem('auth', JSON.stringify(data.auth));
-      alert('登入成功');
-      console.log(JSON.stringify(data));
-      setMyAuth({ ...data.auth, authorised: true });
-      navigate('/');
-    } else {
-      localStorage.removeItem('auth'); // 移除
-      alert('登入失敗');
+    if (validate(formData)) {
+      const { data } = await axios.post(LOGIN_API, formData);
+      //console.log(data);
+      if (data.success) {
+        localStorage.setItem('auth', JSON.stringify(data.auth));
+        console.log(JSON.stringify(data));
+        setMyAuth({ ...data.auth, authorised: true });
+        navigate('/');
+      } else {
+        localStorage.removeItem('auth'); // 移除
+        alert('帳號密碼錯誤');
+      }
     }
   };
 
@@ -54,28 +103,48 @@ function LogIn() {
               <div className="mb-3">
                 <label className="form-label">Email</label>
                 <input
-                  type="email"
+                  type="text"
                   className="form-control"
                   placeholder="example@mail.com"
                   id="email"
-                  onChange={handler}
+                  onChange={handlerEmailChange}
                   value={formData.email}
                 />
+                <p className="errorMsg">{formData.errorMsg.email}</p>
               </div>
 
               <div className="mb-3">
                 <label className="form-label">密碼</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="8位以上英數密碼，請區分大小寫"
-                  id="password"
-                  onChange={handler}
-                  value={formData.password}
-                />
-                <Link className="forget-password-text" to="/forget_password">
-                  忘記密碼？
-                </Link>
+                <div className="password-group">
+                  <input
+                    type={passwordFieldType}
+                    className="form-control"
+                    placeholder="8位以上英數密碼，請區分大小寫"
+                    id="password"
+                    onChange={handlerPasswordChange}
+                    value={formData.password}
+                  />
+                  <p className="errorMsg">{formData.errorMsg.password}</p>
+                  <button
+                    className="icon login-eye-btn"
+                    type="button"
+                    onClick={() => {
+                      setPasswordFieldType(
+                        passwordFieldType === 'text' ? 'password' : 'text'
+                      );
+                    }}
+                  >
+                    {passwordFieldType === 'text' ? (
+                      <div className="icon comment-icon">
+                        <img src={EyeClosed} alt="" />
+                      </div>
+                    ) : (
+                      <div className="icon comment-icon">
+                        <img src={Eye} alt="" />
+                      </div>
+                    )}
+                  </button>
+                </div>
               </div>
               <div className="mx-auto">
                 <button

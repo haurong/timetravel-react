@@ -40,7 +40,7 @@ function ComputerLikeAdd() {
           });
         }}
       >
-        {/* TODO:點下去變色 加入行成 */}
+        {/* TODO:點下去變色 加入行程 */}
         {likeAndCalendar.calendar ? (
           <CalendarAdd className="HotelCalendarAdd" />
         ) : (

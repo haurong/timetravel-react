@@ -25,9 +25,28 @@
         .nosigning-text{
             font-size: 1.1rem;
         }
+        
         .signin-text{
             color: #59D8A1;
             margin-left: 5px;
+        }
+        .password-group{
+            position: relative;
+            .login-eye-btn{
+                position:absolute;
+                top: 0;
+                right: 0;
+                border: none;
+                background: none;
+                padding-right: 40px;
+            }
+            .login-eye-btn img{
+                width: 32px;
+            }
+        }
+        .errorMsg{
+            color: #EA8A8A;
+            font-weight: 400!important;
         }
     }
 }

@@ -57,12 +57,12 @@ function FoodDetail() {
   const toggleAdd = () => setAdd(!add);
 
   const location = useLocation();
-  //const path = window.location.pathname.split('/');
-  const sid = 116;
+  // const path = window.location.pathname.split('/');
+  // const sid = path[2];
 
   async function getData() {
     //拿到資料設定回foodData
-    const response = await axios.get(FOOD_ITEM + sid);
+    const response = await axios.get(FOOD_ITEM + 116);
     setFoodData(response.data);
     setTotalPrice(response.data.p_selling_price);
   }
@@ -96,7 +96,6 @@ function FoodDetail() {
         part2: part2,
         part3: part3,
         part4: part4,
-
         bodyOffsetY: document.body.offsetHeight,
       });
     }
@@ -107,6 +106,7 @@ function FoodDetail() {
     setCommitData(response.data);
   }
   console.log(commitData);
+
   useEffect(() => {
     getList();
   }, [location]);
@@ -136,7 +136,7 @@ function FoodDetail() {
         <div className="container carousel">
           <Carousel />
         </div>
-        <div className="container ">
+        <div className="container">
           <div className="product_name d-flex">
             <div className="product_name_title">
               <h1>{foodData.product_name} WANCHUHAO</h1>
@@ -145,7 +145,9 @@ function FoodDetail() {
             <div className="Heart_Calendar_icon">
               <button className="HeartBtn" onClick={toggleLike}>
                 <img
-                  src={like ? PinkHeart : Heart}
+                  src={
+                    foodData.product_sid === foodData.sid ? PinkHeart : Heart
+                  }
                   className="Heart_icon"
                   alt=""
                 />
@@ -353,10 +355,11 @@ function FoodDetail() {
         </div>
       </div>
       <div className="givePadding"></div>
-      <div className="container ">
+      <div className="container mobileShow">
         <h2 className="cardCarouselTitle">更多美食推薦</h2>
         <Card_Carousel className="cardCarousel" />
       </div>
+
       <Footer />
     </>
   );

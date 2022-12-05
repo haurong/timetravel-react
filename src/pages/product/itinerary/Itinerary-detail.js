@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import Map from './map';
@@ -8,16 +9,16 @@ import IList from './IList';
 import ITitle from './ITitle';
 import IRecSite from './iRecSite';
 import IRecFood from './iRecFood';
-import ThemeContext from './ThemeContext';
+import { useItineraryContext } from './ItineraryContext';
 import './Itinerary-detail.scss';
 import { ITINERARY_ITEM } from './site-config';
 
 function ItineraryDetail() {
-  const [iData, setIData] = useState({});
-
+  // const [iData, setIData] = useState({});
+  const { iData, setIData } = useItineraryContext();
   const location = useLocation();
 
-  async function getList() {
+  async function getData() {
     const path = window.location.pathname.split('/');
     const sid = path[2];
     const response = await axios.get(ITINERARY_ITEM + sid);
@@ -25,21 +26,20 @@ function ItineraryDetail() {
   }
 
   useEffect(() => {
-    getList();
+    getData();
   }, [location]);
+  // useEffect(() => {}, [iData]);
 
   return (
     <>
       <NavBar />
       <ITitle />
-      <ThemeContext.Provider value={{}}>
-        <div id="iContainer">
-          <div id="iList">
-            <IList />
-          </div>
-          <Map />
+      <div id="iContainer">
+        <div id="iList">
+          <IList />
         </div>
-      </ThemeContext.Provider>
+        <Map />
+      </div>
       <div id="iRecItems">
         <IRecSite />
         <IRecFood />

@@ -3,6 +3,7 @@ import { Rate } from 'antd';
 import './Commit.scss';
 import moment from 'moment';
 function CommitCard({ rows }) {
+  console.log(rows);
   return (
     <>
       {rows?.map((el) => {

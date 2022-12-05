@@ -18,11 +18,12 @@ function getItem(label, key, children, type) {
 
 const items3 = [
   getItem('全部', 'likeAll'),
-  getItem('0-100', 'like100'),
+  getItem('小於100', 'like<100'),
   getItem('101-200', 'like200'),
   getItem('201-300', 'like300'),
   getItem('301-400', 'like400'),
   getItem('401-500', 'like500'),
+  getItem('大於500', 'like>500'),
 ];
 
 const items1 = [
@@ -38,12 +39,12 @@ const items2 = [
     'cate_Site',
     // <Site className="sidebarIcon" style={{ width: '40px' }} />,
     [
-      getItem('全部', '1'),
-      getItem('蹣山', '2'),
-      getItem('望海', '3'),
-      getItem('戶外活動', '4'),
-      getItem('室內活動', '5'),
-      getItem('手作、工坊', '6'),
+      getItem('全部', 'cate_Site_All'),
+      getItem('蹣山', 'cate_Site_1'),
+      getItem('望海', 'cate_Site_2'),
+      getItem('戶外活動', 'cate_Site_3'),
+      getItem('室內活動', 'cate_Site_4'),
+      getItem('手作、工坊', 'cate_Site_5'),
     ]
   ),
   getItem(
@@ -51,15 +52,15 @@ const items2 = [
     'cate_Food',
     // <Food className="sidebarIcon" style={{ width: '40px' }} />,
     [
-      getItem('全部', '7'),
-      getItem('特色小吃', '8'),
-      getItem('飲品', '9'),
-      getItem('火鍋', '10'),
-      getItem('台式', '11'),
-      getItem('日式', '12'),
-      getItem('甜點', '13'),
-      getItem('咖啡', '14'),
-      getItem('泰式', '15'),
+      getItem('全部', 'cate_Food_All'),
+      getItem('特色小吃', 'cate_Food_1'),
+      getItem('飲品', 'cate_Food_2'),
+      getItem('火鍋', 'cate_Food_3'),
+      getItem('台式', 'cate_Food_4'),
+      getItem('日式', 'cate_Food_5'),
+      getItem('甜點', 'cate_Food_6'),
+      getItem('咖啡', 'cate_Food_7'),
+      getItem('泰式', 'cate_Food_8'),
     ]
   ),
   getItem(
@@ -67,10 +68,10 @@ const items2 = [
     'cate_Hotel',
     // <Stay className="sidebarIcon" style={{ width: '40px' }} />,
     [
-      getItem('全部', '16'),
-      getItem('旅館', '17'),
-      getItem('飯店', '18'),
-      getItem('民宿', '19'),
+      getItem('全部', 'cate_Hotel_All'),
+      getItem('旅館', 'cate_Hotel_1'),
+      getItem('飯店', 'cate_Hotel_2'),
+      getItem('民宿', 'cate_Hotel_3'),
     ]
   ),
   getItem(
@@ -78,12 +79,12 @@ const items2 = [
     'cate_Ticket',
     // <Ticket className="sidebarIcon" style={{ width: '40px' }} />,
     [
-      getItem('全部', '20'),
-      getItem('舒壓、放鬆', '21'),
-      getItem('展覽、藝文', '22'),
-      getItem('樂園、戶外', '23'),
-      getItem('生態、風景', '24'),
-      getItem('工坊、手作', '25'),
+      getItem('全部', 'cate_Ticket_All'),
+      getItem('舒壓、放鬆', 'cate_Ticket_1'),
+      getItem('展覽、藝文', 'cate_Ticket_2'),
+      getItem('樂園、戶外', 'cate_Ticket_3'),
+      getItem('生態、風景', 'cate_Ticket_4'),
+      getItem('工坊、手作', 'cate_Ticket_5'),
     ]
   ),
 ];
@@ -103,11 +104,12 @@ const rootSubmenuKeys = [
   'cate_Hotel',
   'cate_Ticket',
   'likeAll',
-  'like100',
+  'like<100',
   'like200',
   'like300',
   'like400',
   'like500',
+  'like>500',
 ];
 //const rootSubmenuKeys2 = ['sub4', 'sub5', 'sub6', 'sub7'];
 
@@ -157,6 +159,11 @@ export default function Sidebar1() {
             if (e.key === 'cate_All') {
               setOpenKeys('');
             }
+            setHotelSort({
+              area: hotelSort.area,
+              cate: e.key,
+              like: hotelSort.like,
+            });
           }}
         />
       </div>
