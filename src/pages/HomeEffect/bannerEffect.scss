@@ -2,8 +2,8 @@
   .BannerEffect {
     height: 100vh;
     display:flex;
-    justify-content: center;
-    align-items: center;
+    // justify-content: center;
+    // align-items: center;
     background-color: #f7f7f7;
   }
   
@@ -13,7 +13,7 @@
     position: relative;
     background: linear-gradient(to bottom, #e097c0 0%, #e6b8b8 50%, #f6f7e2 100%);
     // box-shadow: 0px 0px 20px rgba(0,0,0, 0.30); 
-    overflow: hidden;
+    //overflow: hidden;
     .sun {
       position: absolute;
       border-radius: 50%;
@@ -61,53 +61,53 @@
     .landscape {
       position: absolute;
       width: 800px;
-      height: 180px;
+      height: 7vw;
     }
     
     .landscape-1 {
       background-color: #a5337f;
       right: -40px;
-      bottom: 250px;
+      bottom: 13vw;
     
-      transform: rotate(12deg);
+      transform: rotate(10deg);
     }
     
     .landscape-2 {
       background-color: #e2a1b6;
       right: -40px;
-      bottom: 250px;
+      bottom: 12vw;
     
-      transform: rotate(-12deg);
+      transform: rotate(-8deg);
     }
     
     .landscape-3 {
       background-color: #d68c98;
-      bottom: 200px;
+      bottom: 10vw;
       left: -10px;
-      transform: rotate(5deg);
+      transform: rotate(3deg);
     }
     
     .landscape-4 {
       background-color: #a5337f;
-      bottom: 130px;
+      bottom: 8vw;
       transform: rotate(-8deg);
     }
     
     .landscape-5 {
       background-color: #791f59;
-      bottom: 80px;
+      bottom: 4vw;
       left: -10px;
       transform: rotate(5deg);
     }
     .landscape-6 {
       background-color: #5b0f3a;
-      bottom: 20px;
+      bottom: 1.5vw;
       transform: rotate(-7deg);
     }
     .landscape-7 {
       background-color: #3a1129;
       left: -30px;
-      bottom: -50px;
+      bottom: -4vw;
       transform: rotate(8deg);
     }
     
@@ -167,7 +167,7 @@
       position: absolute;
       left: 0%;
       top: 18%;
-      animation: balloonmove 10s linear infinite;
+      animation: balloonmove-red 20s linear infinite;
     }
     
     
@@ -255,22 +255,19 @@
       transform: rotate(10deg);
     }
     
-    @keyframes balloonmove{
+    @keyframes balloonmove-red{
       0%{
-        transform: translate(-100%, 20px);
+        transform: translate(-120%, 30px);
         }
       25% {
-        transform: translate(25%, 0px);
+        transform: translate(700%, 7px);
       }
-      50% {
-        transform: translate(150%, 20px);
-      }
-      75% {
-        transform: translate(275%, 0px);
+      26%{
+        transform: translate(700%, 7px);
       }
       100%{
-        transform: translate(400%, 20px);
-        }
+        transform: translate(700%, 7px);
+      }
     }
   }
   .hotel {
@@ -279,7 +276,7 @@
     position: relative;
     background: linear-gradient(to bottom, #ffdf8f 0%, #ffb185 50%, #f6f7e2 100%);
     // box-shadow: 0px 0px 20px rgba(0,0,0, 0.30); 
-    overflow: hidden;
+    // overflow: hidden;
     .sun {
       position: absolute;
       border-radius: 50%;
@@ -327,53 +324,53 @@
     .landscape {
       position: absolute;
       width: 800px;
-      height: 180px;
+      height: 7vw;
     }
     
     .landscape-1 {
       background-color: #ef9c56;
       right: -40px;
-      bottom: 250px;
+      bottom: 13vw;
     
-      transform: rotate(12deg);
+      transform: rotate(10deg);
     }
     
     .landscape-2 {
       background-color: #f7dc99;
       right: -40px;
-      bottom: 250px;
+      bottom: 12vw;
     
-      transform: rotate(-12deg);
+      transform: rotate(-8deg);
     }
     
     .landscape-3 {
       background-color: #f5c477;
       bottom: 200px;
       left: -10px;
-      transform: rotate(5deg);
+      transform: rotate(3deg);
     }
     
     .landscape-4 {
       background-color: #f2af60;
-      bottom: 130px;
+      bottom: 8vw;
       transform: rotate(-8deg);
     }
     
     .landscape-5 {
       background-color: #ef9c56;
-      bottom: 80px;
+      bottom: 4vw;
       left: -10px;
       transform: rotate(5deg);
     }
     .landscape-6 {
       background-color: #ec7d48;
-      bottom: 20px;
+      bottom: 1.5vw;
       transform: rotate(-7deg);
     }
     .landscape-7 {
       background-color: #eb6c43;
       left: -30px;
-      bottom: -50px;
+      bottom: -4vw;
       transform: rotate(8deg);
     }
     
@@ -433,7 +430,7 @@
       position: absolute;
       left: 0%;
       top: 18%;
-      animation: balloonmove 10s linear infinite;
+      animation: balloonmove-orange 20s linear infinite;
     }
     
     
@@ -442,7 +439,7 @@
       clip-path: polygon(9% 20%,19% 11%,29% 5%,40% 1%,50% 0%,60% 1%,70% 5%,81% 11%,91% 20%,96% 31%,97% 46%,92% 59%,67% 100%,34% 100%,8% 58%,3% 46%,4% 31%);
       width: 80px;
       height: 75px;
-      background: linear-gradient(to right, #6e1b51 50%, #d97e90 50%);
+      background: linear-gradient(to right, #ce552d 50%, #f2af60 50%);
     
     }
     
@@ -452,7 +449,7 @@
       width: 50px;
       height: 75px;
       left:20%;
-      background: linear-gradient(to right, #b487a7 50%, #e8c1c9 50%);
+      background: linear-gradient(to right, #ffc17a 50%, #ffddb7 50%);
       
     }
     
@@ -462,12 +459,12 @@
       width: 25px;
       height: 75px;
       left:26%;
-      background: #c3475c; 
+      background: #ed8d3e; 
     }
     
     .bottom-strip {
       position: relative;
-      background: #6e1b51;
+      background: #ce552d;
       width: 70px;
       height: 20px;
       top:-10%;
@@ -477,7 +474,7 @@
       position: absolute;
       width: 25px;
       height: 18px;
-      background: linear-gradient(to right, #6f2935 50%, #c6475c 50%) ;
+      background: linear-gradient(to right, #ad4624 50%, #d4704e 50%) ;
       top:110%;
       left: 50%;
       border-bottom-left-radius: 50%;
@@ -491,12 +488,12 @@
       width: 25px;
       height: 5px;
       top: 20%;
-      background: linear-gradient(to right, #88747f 50%, #e7bbc2 50%);
+      background: linear-gradient(to right, #dbb182 50%, #ffddb7 50%);
     }
     
     .line {
       position: absolute;
-      background: #8c565a;
+      background: #b47d56;
       width: 1px;
       height:10px;    
     }
@@ -521,22 +518,25 @@
       transform: rotate(10deg);
     }
     
-    @keyframes balloonmove{
+    @keyframes balloonmove-orange{
       0%{
-        transform: translate(-100%, 20px);
-        }
-      25% {
-        transform: translate(25%, 0px);
+        transform: translate(-100%, 10px);
       }
-      50% {
-        transform: translate(150%, 20px);
+      19% {
+        transform: translate(-100%, 10px);
       }
-      75% {
-        transform: translate(275%, 0px);
+      42% {
+        transform: translate(700%, 22px);
       }
-      100%{
-        transform: translate(400%, 20px);
-        }
+      100% {
+        transform: translate(700%, 22px);
+      }
+      // 75% {
+      //   transform: translate(1775%, 0px);
+      // }
+      // 100%{
+      //   transform: translate(1150%, 30px);
+      //   }
     }
   }
   .food {
@@ -545,7 +545,7 @@
     position: relative;
     background: linear-gradient(to bottom, #7a89dd 0%, #c8f9ff 100%);
     // box-shadow: 0px 0px 20px rgba(0,0,0, 0.30); 
-    overflow: hidden;
+    // overflow: hidden;
     .sun {
       position: absolute;
       border-radius: 50%;
@@ -593,53 +593,53 @@
     .landscape {
       position: absolute;
       width: 800px;
-      height: 180px;
+      height: 7vw;
     }
     
     .landscape-1 {
       background-color: #4960b6;
       right: -40px;
-      bottom: 250px;
+      bottom: 13vw;
     
-      transform: rotate(12deg);
+      transform: rotate(10deg);
     }
     
     .landscape-2 {
       background-color: #9db4e6;
       right: -40px;
-      bottom: 250px;
+      bottom: 12vw;
     
-      transform: rotate(-12deg);
+      transform: rotate(-8deg);
     }
     
     .landscape-3 {
       background-color: #7e99e0;
       bottom: 200px;
       left: -10px;
-      transform: rotate(5deg);
+      transform: rotate(3deg);
     }
     
     .landscape-4 {
       background-color: #5e76cf;
-      bottom: 130px;
+      bottom: 8vw;
       transform: rotate(-8deg);
     }
     
     .landscape-5 {
       background-color: #4960b6;
-      bottom: 80px;
+      bottom: 4vw;
       left: -10px;
       transform: rotate(5deg);
     }
     .landscape-6 {
       background-color: #7e8bd7;
-      bottom: 20px;
+      bottom: 1.5vw;
       transform: rotate(-7deg);
     }
     .landscape-7 {
       background-color: #3a3d84;
       left: -30px;
-      bottom: -50px;
+      bottom: -4vw;
       transform: rotate(8deg);
     }
     
@@ -699,7 +699,7 @@
       position: absolute;
       left: 0%;
       top: 18%;
-      animation: balloonmove 10s linear infinite;
+      animation: balloonmove-blue 20s linear infinite;
     }
     
     
@@ -708,7 +708,7 @@
       clip-path: polygon(9% 20%,19% 11%,29% 5%,40% 1%,50% 0%,60% 1%,70% 5%,81% 11%,91% 20%,96% 31%,97% 46%,92% 59%,67% 100%,34% 100%,8% 58%,3% 46%,4% 31%);
       width: 80px;
       height: 75px;
-      background: linear-gradient(to right, #6e1b51 50%, #d97e90 50%);
+      background: linear-gradient(to right, #3a4f9c 50%, #647cd1 50%);
     
     }
     
@@ -718,7 +718,7 @@
       width: 50px;
       height: 75px;
       left:20%;
-      background: linear-gradient(to right, #b487a7 50%, #e8c1c9 50%);
+      background: linear-gradient(to right, #aec3ea 50%, #dee9fd 50%);
       
     }
     
@@ -728,12 +728,12 @@
       width: 25px;
       height: 75px;
       left:26%;
-      background: #c3475c; 
+      background: #5e76cf; 
     }
     
     .bottom-strip {
       position: relative;
-      background: #6e1b51;
+      background: #3a4f9c;
       width: 70px;
       height: 20px;
       top:-10%;
@@ -743,7 +743,7 @@
       position: absolute;
       width: 25px;
       height: 18px;
-      background: linear-gradient(to right, #6f2935 50%, #c6475c 50%) ;
+      background: linear-gradient(to right, #3a4f9c 50%, #5e76cf 50%) ;
       top:110%;
       left: 50%;
       border-bottom-left-radius: 50%;
@@ -757,12 +757,12 @@
       width: 25px;
       height: 5px;
       top: 20%;
-      background: linear-gradient(to right, #88747f 50%, #e7bbc2 50%);
+      background: linear-gradient(to right, #747c88 50%, #dee9fd 50%);
     }
     
     .line {
       position: absolute;
-      background: #8c565a;
+      background: #56708c;
       width: 1px;
       height:10px;    
     }
@@ -787,21 +787,18 @@
       transform: rotate(10deg);
     }
     
-    @keyframes balloonmove{
+    @keyframes balloonmove-blue{
       0%{
         transform: translate(-100%, 20px);
         }
-      25% {
-        transform: translate(25%, 0px);
-      }
-      50% {
-        transform: translate(150%, 20px);
-      }
-      75% {
-        transform: translate(275%, 0px);
+      36%{
+          transform: translate(-100%, 20px);
+        }
+      65% {
+        transform: translate(700%, 0px);
       }
       100%{
-        transform: translate(400%, 20px);
+        transform: translate(700%, 0px);
         }
     }
   }
@@ -811,7 +808,7 @@
     position: relative;
     background: linear-gradient(to bottom, #fff9da 0%, #9cd491 100%);
     // box-shadow: 0px 0px 20px rgba(0,0,0, 0.30); 
-    overflow: hidden;
+    // overflow: hidden;
     .sun {
       position: absolute;
       border-radius: 50%;
@@ -859,53 +856,53 @@
     .landscape {
       position: absolute;
       width: 800px;
-      height: 180px;
+      height: 7vw;
     }
     
     .landscape-1 {
       background-color: #607b34;
       right: -40px;
-      bottom: 250px;
+      bottom: 13vw;
     
-      transform: rotate(12deg);
+      transform: rotate(10deg);
     }
     
     .landscape-2 {
       background-color: #95ae6c;
       right: -40px;
-      bottom: 250px;
+      bottom: 12vw;
     
-      transform: rotate(-12deg);
+      transform: rotate(-8deg);
     }
     
     .landscape-3 {
       background-color: #799250;
-      bottom: 200px;
+      bottom: 10vw;
       left: -10px;
-      transform: rotate(5deg);
+      transform: rotate(3deg);
     }
     
     .landscape-4 {
       background-color: #577a38;
-      bottom: 130px;
+      bottom: 8vw;
       transform: rotate(-8deg);
     }
     
     .landscape-5 {
       background-color: #45692c;
-      bottom: 80px;
+      bottom: 4vw;
       left: -10px;
       transform: rotate(5deg);
     }
     .landscape-6 {
       background-color: #587b39;
-      bottom: 20px;
+      bottom: 1.5vw;
       transform: rotate(-7deg);
     }
     .landscape-7 {
       background-color: #284d21;
       left: -30px;
-      bottom: -50px;
+      bottom: -4vw;
       transform: rotate(8deg);
     }
     
@@ -965,7 +962,7 @@
       position: absolute;
       left: 0%;
       top: 18%;
-      animation: balloonmove 10s linear infinite;
+      animation: balloonmove-green 20s linear infinite;
     }
     
     
@@ -974,7 +971,7 @@
       clip-path: polygon(9% 20%,19% 11%,29% 5%,40% 1%,50% 0%,60% 1%,70% 5%,81% 11%,91% 20%,96% 31%,97% 46%,92% 59%,67% 100%,34% 100%,8% 58%,3% 46%,4% 31%);
       width: 80px;
       height: 75px;
-      background: linear-gradient(to right, #6e1b51 50%, #d97e90 50%);
+      background: linear-gradient(to right, #4f7134 50%, #80ac59 50%);
     
     }
     
@@ -984,7 +981,7 @@
       width: 50px;
       height: 75px;
       left:20%;
-      background: linear-gradient(to right, #b487a7 50%, #e8c1c9 50%);
+      background: linear-gradient(to right, #c4d89b 50%, #d9e8bf 50%);
       
     }
     
@@ -994,12 +991,12 @@
       width: 25px;
       height: 75px;
       left:26%;
-      background: #c3475c; 
+      background: #78a651; 
     }
     
     .bottom-strip {
       position: relative;
-      background: #6e1b51;
+      background: #4f7134;
       width: 70px;
       height: 20px;
       top:-10%;
@@ -1009,7 +1006,7 @@
       position: absolute;
       width: 25px;
       height: 18px;
-      background: linear-gradient(to right, #6f2935 50%, #c6475c 50%) ;
+      background: linear-gradient(to right, #4f7134 50%, #78a651 50%) ;
       top:110%;
       left: 50%;
       border-bottom-left-radius: 50%;
@@ -1023,7 +1020,7 @@
       width: 25px;
       height: 5px;
       top: 20%;
-      background: linear-gradient(to right, #88747f 50%, #e7bbc2 50%);
+      background: linear-gradient(to right, #8aa163 50%, #d9e8bf 50%);
     }
     
     .line {
@@ -1053,21 +1050,15 @@
       transform: rotate(10deg);
     }
     
-    @keyframes balloonmove{
+    @keyframes balloonmove-green{
       0%{
         transform: translate(-100%, 20px);
         }
-      25% {
-        transform: translate(25%, 0px);
-      }
-      50% {
-        transform: translate(150%, 20px);
-      }
-      75% {
-        transform: translate(275%, 0px);
+      60% {
+        transform: translate(-100%, 20px);
       }
       100%{
-        transform: translate(400%, 20px);
+        transform: translate(700%, 0px);
         }
     }
   }
