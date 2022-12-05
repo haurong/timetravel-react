@@ -32,7 +32,7 @@ function CommentDetail({ rows }) {
                         disabled
                         value={el.score}
                         className="TimeTravel_Rate"
-                        style={{ zIndex: -1 }}
+                        style={{ zIndex: 2 }}
                       />
                     </div>
                     <p className="comment-time my-auto">{day}</p>

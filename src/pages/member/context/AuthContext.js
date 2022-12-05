@@ -28,7 +28,7 @@ export const AuthContextProvider = function ({ children }) {
   const logout = () => {
     localStorage.removeItem('auth');
     setMyAuth(unAuth);
-    navigate('/login');
+    navigate('/');
   };
 
   return (
