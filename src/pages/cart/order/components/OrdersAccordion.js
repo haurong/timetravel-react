@@ -73,9 +73,10 @@ function OrdersAccordion({ createdTime, uuid, totalPrice, memberSid }) {
                     price={v.p_selling_price}
                     quantity={v.quantity}
                     totalPrice={v.total_price}
-                    committed={v.committed}
+                    commented={v.commented}
                     productNumber={v.product_number}
                     memberSid={memberSid}
+                    uuid={uuid}
                   />
                 </div>
               );
@@ -89,9 +90,10 @@ function OrdersAccordion({ createdTime, uuid, totalPrice, memberSid }) {
                     price={v.room_price}
                     quantity={v.quantity}
                     totalPrice={v.total_price}
-                    committed={v.committed}
+                    commented={v.commented}
                     memberSid={memberSid}
                     productNumber={v.product_number}
+                    uuid={uuid}
                   />
                 </div>
               );

@@ -3,13 +3,23 @@ import { Button, Modal } from 'react-bootstrap';
 import { Rate } from 'antd';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { SUBMIT_COMMENT_API } from './../../../../config';
+import { SUBMIT_COMMENT_API, CHANGE_COMMENTED_API } from './../../../../config';
 import './Comment.scss';
-function Comment({ onHide, show, type, name, productNumber, memberSid }) {
+function Comment({
+  onHide,
+  show,
+  type,
+  name,
+  productNumber,
+  memberSid,
+  uuid,
+  setCommentButton,
+}) {
   const [score, setScore] = useState(5);
   const [textInput, setTextInput] = useState('');
   // console.log(memberSid);
   const [formData, setFormData] = useState({
+    uuid: uuid,
     type: type,
     product_name: name,
     product_number: productNumber,
@@ -34,8 +44,10 @@ function Comment({ onHide, show, type, name, productNumber, memberSid }) {
   // console.log(SUBMIT_COMMENT_API);
   const mySubmit = async (e) => {
     const { data } = await axios.post(SUBMIT_COMMENT_API, formData);
+    await axios.put(CHANGE_COMMENTED_API, formData);
     if (data.success) {
       swalWithBootstrapButtons.fire('評論成功', '感謝您的評論', 'success');
+      setCommentButton(1);
     } else {
       swalWithBootstrapButtons.fire(
         '喔喔，可能有哪裡出錯了！',
@@ -44,6 +56,7 @@ function Comment({ onHide, show, type, name, productNumber, memberSid }) {
       );
     }
   };
+
   return (
     <Modal
       show={show}

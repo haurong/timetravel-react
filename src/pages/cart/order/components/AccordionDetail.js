@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Modal } from 'react-bootstrap';
 import Comment from '../comment/Comment';
 function AccordionDetail({
   type,
@@ -7,12 +6,14 @@ function AccordionDetail({
   price,
   quantity,
   totalPrice,
-  committed,
+  commented,
   productNumber,
   memberSid,
+  uuid,
 }) {
-  // console.log(memberSid);
+  // console.log(commented);
   const [commentShow, setCommentShow] = useState(false);
+  const [commentButton, setCommentButton] = useState(commented);
   return (
     <ul className="orders-accordion-ul p-0 m-0 pb-2 d-flex align-items-center">
       <li className="col text-center">
@@ -28,7 +29,11 @@ function AccordionDetail({
         <p>{`TWD$${totalPrice}`}</p>
       </li>
       <li className="col text-center">
-        {committed === 1 ? (
+        {commentButton === 1 ? (
+          <button type="button" className="btn btn-primary" disabled>
+            已經評價
+          </button>
+        ) : (
           <button
             type="button"
             className="btn btn-primary"
@@ -37,10 +42,6 @@ function AccordionDetail({
             }}
           >
             留下評價
-          </button>
-        ) : (
-          <button type="button" className="btn btn-primary" disabled>
-            已經評價
           </button>
         )}
         <Comment
@@ -51,6 +52,8 @@ function AccordionDetail({
           productNumber={productNumber}
           memberSid={memberSid}
           type={type}
+          uuid={uuid}
+          setCommentButton={setCommentButton}
         />
       </li>
     </ul>
