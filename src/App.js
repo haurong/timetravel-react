@@ -61,6 +61,10 @@ function App() {
                             {/* index代表此路由中的預設子頁 */}
                             <Route index element={<Home />} />
                           </Route>
+                          <Route
+                            path="BannerEffect"
+                            element={<BannerEffect />}
+                          />
                           <Route path="productList" element={<ProductList />} />
                           <Route path="itinerary" element={<Itinerary />} />
                           <Route
