@@ -7,7 +7,7 @@ import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import CardList from '../../../Component/Card_List/Card_List_Hotel';
 import Sidebar from '../../../Component/Sidebar1/Sidebar_Hotel';
-import MyPagination from '../../../Component/Pagination/Pagination';
+import MyPagination from '../../../Component/Pagination/Pagination_Hotel';
 import CommitSelector from '../food/CommitSelect';
 import BreadCrumb from '../stays/Breadcrumb/Breadcrumb';
 import HotelListSortSelector from './HotelListSortSelector/HotelListSortSelector.js';
@@ -21,6 +21,8 @@ function Stays() {
     setHotelAllData,
     setHotelSortData,
     setDisplayData,
+    pageNow,
+    setPageNow,
     hotelSort,
     setHotelSort,
   } = useHotelContext();
@@ -29,7 +31,7 @@ function Stays() {
   const path = window.location.pathname.split('/');
   async function getList() {
     const response = await axios.get(HOTEL_LIST + `?` + usp.toString());
-    // console.log(response.data);
+    console.log(response);
     setHotelAllData(response.data);
     setHotelSortData(response.data.rowsAll);
     setDisplayData(response.data.rowsAll);
