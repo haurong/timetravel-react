@@ -14,8 +14,8 @@ export const TicketContextProvider = ({ children }) => {
   const [bookingBarOpen, setBookingBarOpen] = useState(false);
   const [pickDate, setPickDate] = useState({
     startTime: today,
-    endTime: tomorrow,
-    days: 1,
+    // endTime: tomorrow,
+    // days: 1,
   });
   //  房間價格
   const [hotelRoomPrice, setHotelRoomPrice] = useState(1);

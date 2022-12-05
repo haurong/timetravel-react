@@ -7,11 +7,18 @@ import RoomChoose from '../RoomChoose/RoomChoose';
 import RoomCounts from '../RoomCounts/RoomCounts';
 import BuyButton from '../BuyButton/BuyButton';
 import { useHotelContext } from '../../../stays/Context/HotelContext';
+import { useTicketContext } from '../../Context/TicketContext';
+
 const { RangePicker } = DatePicker;
 
 function ComDatePicker(props) {
-  const { pickDate, setPickDate, hotelRoomPrice,roomCounts } =
+  // const { pickDate, setPickDate, hotelRoomPrice, roomCounts, today } =
+  //   useHotelContext();
+  const {  hotelRoomPrice, roomCounts} =
     useHotelContext();
+
+    const { pickDate, setPickDate, today } = useTicketContext();
+    
   return (
     <>
       <div className="ComDatePicker d-flex">
@@ -21,14 +28,10 @@ function ComDatePicker(props) {
               選擇使用日:
               <span>{pickDate.startTime}</span>
             </h5>
-            <h5>
-              {/* 結束日:<span>{pickDate.endTime}</span> */}
-            </h5>
+            {/* <h5>結束日:<span>{pickDate.endTime}</span></h5> */}
             <div className="ComDatePicker_Left_text_tag_no">
               <div>
-                <h5>
-                  {/* 共<span>{pickDate.days}</span>日 */}
-                </h5>
+                {/* <h5>共<span>{pickDate.days}</span>日</h5> */}
               </div>
             </div>
           </div>
@@ -42,19 +45,21 @@ function ComDatePicker(props) {
               showToday={false}
               onChange={(e) => {
                 moment.locale('zh-tw');
-                let start = moment(e[0]._d).format('YYYY-MM-DD');
-                let end = moment(e[1]._d).format('YYYY-MM-DD');
-                let howLong = (+new Date(end) - +new Date(start)) / 86400000;
+                let start = moment(e._d).format('YYYY-MM-DD');
+                // let end = moment(e[1]._d).format('YYYY-MM-DD');
+                // let howLong = (+new Date(end) - +new Date(start)) / 86400000;
                 // console.log(howLong);
                 setPickDate({
                   startTime: start,
-                  endTime: end,
-                  days: howLong,
+                  // endTime: end,
+                  // days: howLong,
                 });
               }}
-              value={moment(pickDate.startTime)}
               // value={[moment(pickDate.startTime), moment(pickDate.endTime)]}
               popupClassName={'popupDatePicker hiddenBox'}
+              disabledDate={(current) => {
+                return current < moment(today);
+              }}
             />
           </div>
         </div>
@@ -62,7 +67,7 @@ function ComDatePicker(props) {
           <div className="ComDatePicker_Right_text">
             <h5>票種選擇</h5>
           </div>
-          <RoomChoose ticketType={props.ticketType}/>
+          <RoomChoose ticketType={props.ticketType} />
           <h5 style={{ marginTop: '50px' }}>票券張數</h5>
           <RoomCounts />
           <h4
