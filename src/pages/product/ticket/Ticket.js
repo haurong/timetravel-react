@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useHotelContext } from '../stays/Context/HotelContext';
+// import { useHotelContext } from '../stays/Context/HotelContext';
+import { useTicketContext } from '../ticket/Context/TicketContext';
 import { useLocation } from 'react-router-dom';
 import { TICKET_LIST } from './ticket-config';
 import NavBar from '../../../layout/NavBar';
@@ -11,9 +12,8 @@ import Row from 'react-bootstrap/Row';
 import './Ticket.scss';
 import '../../../../node_modules/antd/dist/antd.css';
 
-import MyPagination from '../../../Component/Pagination/Pagination';
+import MyPagination from './TK_Pagination/TK_Pagination';
 
-// import CardList from './Card_List/Ticket_Card_List';
 import CardList from './Card_List/Card_List';
 import Breadcrumb from './Breadcrumb/Breadcrumb.js';
 import Sidebar from './Sidebar/Sidebar.js';
@@ -28,15 +28,11 @@ function Ticket() {
     totalPages: 0,
     perPage: 0,
     page: 1,
-    rows: [],
+    rowsAll: [],
   });
 
-  const [ticketPage, setTicketPage] = useState({
-    rows: [],
-  });
-
-  const { hotelAllData, setHotelAllData, setHotelSortData, setDisplayData } =
-  useHotelContext();
+  const { ticketAllData, setTicketAllData, setTicketSortData, setDisplayData } =
+    useTicketContext();
 
   const location = useLocation();
   // const usp = new URLSearchParams(location.search);
@@ -44,12 +40,15 @@ function Ticket() {
   async function getList() {
     // const response = await axios.get(TICKET_LIST + `?` + usp.toString());
     const response = await axios.get(TICKET_LIST);
-    console.log(response.data);
-    setHotelAllData(response.data);
-    setHotelSortData(response.data.rowsAll);
+    // console.log(response.data);
+    setTicketAllData(response.data);
+    setTicketData(response.data);
+    // 篩選↓↓↓?
+    setTicketSortData(response.data.rowsAll);
     setDisplayData(response.data.rowsAll);
   }
-
+  
+  console.log(ticketData);
   useEffect(() => {
     getList();
   }, [location]);
@@ -77,15 +76,12 @@ function Ticket() {
               <div>
                 <h2>評分</h2>
               </div>
-              {/* <RankChoose />
-              <RankChoose4 />
-              <RankChoose3 />
-              <RankChoose2 />
-              <RankChoose1 /> */}
+              {/* <RankChoose /> */}
             </div>
           </Col>
+          
           <Col className="col-9 ticket_card_list">
-            <CardList rows={ticketData.rows} />
+            <CardList rows={ticketAllData.rowsAll} />
           </Col>
         </Row>
       </div>

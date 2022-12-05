@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import { TICKET_IMG } from '../ticket-config';
 
 import { useHotelContext } from '../../stays/Context/HotelContext';
+import { useTicketContext } from '../../ticket/Context/TicketContext';
 
 import Map from '../../../../icon/map.svg';
 import Heart from '../../../../icon/heart_gray.svg';
@@ -11,23 +12,16 @@ import PinkHeart from '../../../../icon/heart.svg';
 
 import './Card_List.scss';
 
-function Card_List({ rows }) {
-  console.log(rows)
-  // const [ticketData, setTicketData] = useState({
-  //   totalRows: 0,
-  //   totalPages: 0,
-  //   perPage: 0,
-  //   page: 1,
-  //   rows: [],
-  // });
+function Card_List({ rowsAll }) {
   const {
-    hotelSort,
-    hotelSortData,
-    setHotelSortData,
+    ticketSort,
+    ticketSortData,
+    setTicketSortData,
     displayData,
     setDisplayData,
-  } = useHotelContext();
-  console.log({ rows });
+  } = useTicketContext();
+  console.log({ displayData });
+
   const [like, setLike] = useState(false);
 
   const [likeList, setLikeList] = useState([]);
@@ -41,73 +35,74 @@ function Card_List({ rows }) {
       return;
     }
   };
-    //  列表資料篩選
-    const handleArea = (hotelSortData, hotelSort) => {
-      let newHotelSortData = [...hotelSortData];
-  
-      // 處理目的地
-      switch (hotelSort) {
-        case 'area_Taipei':
-          newHotelSortData = hotelSortData.filter((v) => {
-            return v.city_name === '台北市';
-          });
-          break;
-        case 'area_NewTaipei':
-          newHotelSortData = hotelSortData.filter((v) => {
-            return v.city_name === '新北市';
-          });
-          break;
-        case 'area_Keelung':
-          newHotelSortData = hotelSortData.filter((v) => {
-            return v.city_name === '基隆市';
-          });
-          break;
-        // 指所有的產品都出現
-        default:
-          break;
-      }
-  
-      return newHotelSortData;
-    };
-    //  列表資料篩選
-    const handleAddLike = (hotelSortData, hotelSort) => {
-      let newHotelSortData = [...hotelSortData];
-  
-      // 處理目的地
-      switch (hotelSort) {
-        case 'area_Taipei':
-          newHotelSortData = hotelSortData.filter((v) => {
-            return v.city_name === '台北市';
-          });
-          break;
-        case 'area_NewTaipei':
-          newHotelSortData = hotelSortData.filter((v) => {
-            return v.city_name === '新北市';
-          });
-          break;
-        case 'area_Keelung':
-          newHotelSortData = hotelSortData.filter((v) => {
-            return v.city_name === '基隆市';
-          });
-          break;
-        // 指所有的產品都出現
-        default:
-          break;
-      }
-  
-      return newHotelSortData;
-    };
-  
-    useEffect(() => {
-      // console.log(hotelSort);
-      let newHotelSortData = [];
-      newHotelSortData = handleArea(hotelSortData, hotelSort.area);
-      setDisplayData(newHotelSortData);
-    }, [hotelSort]);
+  //  列表資料篩選
+  const handleArea = (ticketSortData, ticketSort) => {
+    let newTicketSortData = [...ticketSortData];
+
+    // 處理目的地
+    switch (ticketSort) {
+      case 'area_Taipei':
+        newTicketSortData = ticketSortData.filter((v) => {
+          return v.city_name === '台北市';
+        });
+        break;
+      case 'area_NewTaipei':
+        newTicketSortData = ticketSortData.filter((v) => {
+          return v.city_name === '新北市';
+        });
+        break;
+      case 'area_Keelung':
+        newTicketSortData = ticketSortData.filter((v) => {
+          return v.city_name === '基隆市';
+        });
+        break;
+      // 指所有的產品都出現
+      default:
+        break;
+    }
+
+    return newTicketSortData;
+  };
+  //  列表資料篩選
+  const handleAddLike = (ticketSortData, ticketSort) => {
+    let newTicketSortData = [...ticketSortData];
+
+    // 處理目的地
+    switch (ticketSort) {
+      case 'area_Taipei':
+        newTicketSortData = ticketSortData.filter((v) => {
+          return v.city_name === '台北市';
+        });
+        break;
+      case 'area_NewTaipei':
+        newTicketSortData = ticketSortData.filter((v) => {
+          return v.city_name === '新北市';
+        });
+        break;
+      case 'area_Keelung':
+        newTicketSortData = ticketSortData.filter((v) => {
+          return v.city_name === '基隆市';
+        });
+        break;
+      // 指所有的產品都出現
+      default:
+        break;
+    }
+
+    return newTicketSortData;
+  };
+
+  useEffect(() => {
+    // console.log(ticketSort);
+    let newTicketSortData = [];
+    // ticketSort.area !?
+    newTicketSortData = handleArea(ticketSortData, ticketSort);
+    setDisplayData(newTicketSortData);
+  }, [ticketSort]);
   //TODO:收藏人數按鈕樣式待定
   return (
     <Row xs={1} lg={4} className="d-flex justify-content-center flex-wrap">
-    {/* {rows.map((el) => { */}
+      {/* {rows.map((el) => { */}
       {displayData.map((el) => {
         return (
           <Card
