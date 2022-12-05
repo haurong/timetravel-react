@@ -14,6 +14,7 @@ import HotelListSortSelector from './HotelListSortSelector/HotelListSortSelector
 import { ReactComponent as Sort } from '../../../icon/sort.svg';
 import '../food/Food.scss';
 import './Stays.scss';
+import _ from 'lodash';
 
 function Stays() {
   const {
@@ -21,10 +22,8 @@ function Stays() {
     setHotelAllData,
     setHotelSortData,
     setDisplayData,
-    pageNow,
-    setPageNow,
-    hotelSort,
-    setHotelSort,
+    perPage,
+    setPageTotal,
   } = useHotelContext();
   const location = useLocation();
   const usp = new URLSearchParams(location.search);
@@ -34,7 +33,9 @@ function Stays() {
     console.log(response);
     setHotelAllData(response.data);
     setHotelSortData(response.data.rowsAll);
-    setDisplayData(response.data.rowsAll);
+    const pageList = _.chunk(response.data.rowsAll, perPage);
+    setDisplayData(pageList);
+    setPageTotal(pageList.length);
   }
   // console.log(hotelAllData.rowsAll);
   // let a = hotelAllData.rowsAll.filter((v) => {
