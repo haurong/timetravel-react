@@ -17,6 +17,7 @@ import {
   ITINERARY_ADDITEM,
   ITINERARY_LIST,
   ITINERARY_ADDLIST,
+  SITE_IMG,
 } from './site-config';
 
 import Heart from '../../../icon/heart_gray.svg';
@@ -32,6 +33,11 @@ import HashChange from '../food/HashChange';
 
 function SiteDetail() {
   const [siteData, setSiteData] = useState('');
+  const [img1, setImg1] = useState('');
+  const [img2, setImg2] = useState('');
+  const [img3, setImg3] = useState('');
+  const [img4, setImg4] = useState('');
+  const [img5, setImg5] = useState('');
   const [like, setLike] = useState(false);
   const toggleLike = () => setLike(!like);
   const location = useLocation();
@@ -41,6 +47,16 @@ function SiteDetail() {
   async function getData() {
     const response = await axios.get(SITE_DETAIL + sid);
     setSiteData(response.data);
+    const img1 = response.data.img1.split(',')[0];
+    setImg1(img1);
+    const img2 = response.data.img1.split(',')[1];
+    setImg2(img2);
+    const img3 = response.data.img1.split(',')[2];
+    setImg3(img3);
+    const img4 = response.data.img1.split(',')[3];
+    setImg4(img4);
+    const img5 = response.data.img1.split(',')[4];
+    setImg5(img5);
   }
 
   const [userData, setUserData] = useState([]);
@@ -175,7 +191,13 @@ function SiteDetail() {
       <NavBar />
       <Container className="spaceSite">
         <BreadCrumb siteData={siteData} />
-        <SiteCarousel />
+        <SiteCarousel
+          img1={img1}
+          img2={img2}
+          img3={img3}
+          img4={img4}
+          img5={img5}
+        />
         <div className="container ">
           <div className="product_name d-flex">
             <div className="product_name_title">
