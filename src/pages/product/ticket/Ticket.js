@@ -15,7 +15,7 @@ import '../../../../node_modules/antd/dist/antd.css';
 import MyPagination from './TK_Pagination/TK_Pagination';
 
 import CardList from './Card_List/Card_List';
-import Breadcrumb from './Breadcrumb/Breadcrumb.js';
+import Breadcrumb from '../../../Component/BreadCrumb/BreadCrumbList';
 import Sidebar from './Sidebar/Sidebar.js';
 import Slider from './Slider/Slider.js';
 import DatePicker from './DatePicker/DatePicker.js';
@@ -47,7 +47,7 @@ function Ticket() {
     setTicketSortData(response.data.rowsAll);
     setDisplayData(response.data.rowsAll);
   }
-  
+
   console.log(ticketData);
   useEffect(() => {
     getList();
@@ -58,7 +58,9 @@ function Ticket() {
       <NavBar />
       <div className="container marginTop">
         <Row>
-          <div className="ticket-Breadcrumb">{/* <Breadcrumb /> */}</div>
+          <div className="ticket-Breadcrumb">
+            <Breadcrumb />
+          </div>
           <Col className="col-3">
             <div className="shadow ticket-CitySelection">
               <CitySelection />
@@ -79,7 +81,7 @@ function Ticket() {
               {/* <RankChoose /> */}
             </div>
           </Col>
-          
+
           <Col className="col-9 ticket_card_list">
             <CardList rows={ticketAllData.rowsAll} />
           </Col>
