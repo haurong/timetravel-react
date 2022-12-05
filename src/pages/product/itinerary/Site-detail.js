@@ -97,13 +97,13 @@ function SiteDetail() {
       selOptions[i] = el.list_name;
       j++;
     });
-    const newOpt = { ...selOptions, newList: `新增行程` };
+    const newOpt = { ...selOptions, newList: `建立行程` };
     console.log(newOpt);
     const { value: selected } = await Swal.fire({
-      title: '請選擇要新增至哪個行程?',
+      title: '新增至哪個行程?',
       input: 'select',
       inputOptions: newOpt,
-      inputPlaceholder: '請選擇行程',
+      inputPlaceholder: '',
       confirmButtonText: '確認',
       confirmButtonColor: '#59d8a1',
       showCancelButton: true,
@@ -114,7 +114,7 @@ function SiteDetail() {
 
     if (selected === 'newList') {
       const { value: listname } = await Swal.fire({
-        title: '請輸入行程名稱',
+        title: '新增行程名稱',
         input: 'text',
         inputValue: `我的行程${j}`,
         confirmButtonText: '確認',
@@ -122,7 +122,7 @@ function SiteDetail() {
         allowOutsideClick: false,
         inputValidator: (value) => {
           if (!value) {
-            return '請輸入名稱';
+            return '請輸入行程名稱';
           }
         },
       });
@@ -148,7 +148,7 @@ function SiteDetail() {
         if (data.success) {
           Swal.fire({
             icon: 'success',
-            title: `建立並新增至${listname}`,
+            title: `新增成功`,
             confirmButtonText: '確認',
             confirmButtonColor: '#59d8a1',
           });

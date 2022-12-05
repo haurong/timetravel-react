@@ -5,9 +5,10 @@ const ItineraryContext = createContext(null);
 
 export const ItineraryContextProvider = ({ children }) => {
   const [iData, setIData] = useState({});
+  const [iTData, setITData] = useState({});
 
   return (
-    <ItineraryContext.Provider value={{ iData, setIData }}>
+    <ItineraryContext.Provider value={{ iData, setIData, iTData, setITData }}>
       {children}
     </ItineraryContext.Provider>
   );

@@ -26,20 +26,24 @@ export default function SiteCarousel({ img1, img2, img3, img4, img5 }) {
         </div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlide">
-        <img src={SITE_IMG + '/' + img2} alt={'/'} />
-        <div className="Site_Img2"></div>
+        <div className="Site_Img2">
+          <img src={SITE_IMG + '/' + img2} alt={'/'} />
+        </div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlide">
-        <img src={SITE_IMG + '/' + img3} alt={'/'} />
-        <div className="Site_Img3"></div>
+        <div className="Site_Img3">
+          <img src={SITE_IMG + '/' + img3} alt={'/'} />
+        </div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlide">
-        <img src={SITE_IMG + '/' + img4} alt={'/'} />
-        <div className="Site_Img4"></div>
+        <div className="Site_Img4">
+          <img src={SITE_IMG + '/' + img4} alt={'/'} />
+        </div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlide">
-        <img src={SITE_IMG + '/' + img5} alt={'/'} />
-        <div className="Site_Img5"></div>
+        <div className="Site_Img5">
+          <img src={SITE_IMG + '/' + img5} alt={'/'} />
+        </div>
       </SwiperSlide>
     </Swiper>
   );

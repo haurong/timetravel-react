@@ -8,7 +8,7 @@ import { useItineraryContext } from './ItineraryContext';
 
 export default function IList() {
   const { iData, setIData } = useItineraryContext();
-  console.log(iData);
+  // console.log(iData);
   // const [list, setList] = useState([]);
   // const [arr, setArr] = useState([]);
   // const [dList, setDlist] = useState([]);
@@ -78,7 +78,7 @@ export default function IList() {
                         >
                           <img
                             className="iItem-img"
-                            src={SITE_IMG + el.img1}
+                            src={SITE_IMG + '/' + el.img1.split(',')[0]}
                             alt=""
                           />
                           <div className="iItemText " {...p.dragHandleProps}>
@@ -88,12 +88,12 @@ export default function IList() {
                           <span
                             className="icon"
                             onClick={() => {
-                              console.log(iData);
+                              // console.log(iData);
 
                               const newData = JSON.parse(JSON.stringify(iData));
                               const trash = newData.splice(i, 1);
-                              console.log(newData);
-                              console.log({ trash });
+                              // console.log(newData);
+                              // console.log({ trash });
                               setIData(newData);
                             }}
                           >
