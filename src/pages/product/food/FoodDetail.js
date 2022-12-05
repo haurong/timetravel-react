@@ -7,8 +7,8 @@ import { FOOD_ITEM } from '../../../config.js';
 import { FOOD_COMMIT } from '../../../config.js';
 import { useFoodCart } from '../../cart/utils/useCart';
 import FoodMap from './FoodMap';
-import Commit from './Commit';
-import CommitSelect from './CommitSelect';
+import Comment from './Comment';
+import CommentSelect from './CommentSelect';
 import FoodBookingBar from './FoodBookingBar';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
@@ -39,8 +39,8 @@ function FoodDetail() {
     setCount,
     totalPrice,
     setTotalPrice,
-    commitData,
-    setCommitData,
+    commentData,
+    setCommentData,
     like,
     setLike,
     add,
@@ -103,9 +103,9 @@ function FoodDetail() {
 
   async function getList() {
     const response = await axios.get(FOOD_COMMIT);
-    setCommitData(response.data);
+    setCommentData(response.data);
   }
-  console.log(commitData);
+  console.log(commentData);
 
   useEffect(() => {
     getList();
@@ -344,9 +344,9 @@ function FoodDetail() {
                 >
                   旅客評價
                 </h2>
-                <CommitSelect />
+                <CommentSelect />
               </div>
-              <Commit rows={commitData} className="commit" />
+              <Comment rows={commentData} className="commit" />
             </div>
           </div>
         </div>

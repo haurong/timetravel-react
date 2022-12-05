@@ -13,7 +13,7 @@ export const FoodContextProvider = ({ children }) => {
   //Food總價
   const [totalPrice, setTotalPrice] = useState(foodData.p_selling_price);
   //Food評論資料
-  const [commitData, setCommitData] = useState([]);
+  const [commentData, setCommentData] = useState([]);
   //liketoggle
   const [like, setLike] = useState(false);
   //Food新增至我行程
@@ -29,8 +29,8 @@ export const FoodContextProvider = ({ children }) => {
         setCount,
         totalPrice,
         setTotalPrice,
-        commitData,
-        setCommitData,
+        commentData,
+        setCommentData,
         like,
         setLike,
         add,

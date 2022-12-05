@@ -27,8 +27,7 @@ function ProductList() {
   //搜尋關鍵字用
   const [searchWord, setSearchWord] = useState('');
 
-  //錯誤訊息用
-  const [errorMessage, setErrorMessage] = useState('');
+
   //看是否取得資料
   const [haveData, setHaveData] = useState(false);
 
@@ -53,14 +52,9 @@ function ProductList() {
   const [pageTotal, setPageTotal] = useState(0);
 
   const [like, setLike] = useState(false);
-  //TODO:按下收藏後送資料到資料庫
+ 
 
-  // const { count, setCount } = useFoodContext();
-  // //TODO:1.拿到member_sid 2.送到member_food_collect新增一筆收藏
-  const [addCollect, setAddCollect] = useState({
-    member_sid: '',
-    food_product_sid: '',
-  });
+
   const [collect, setCollect] = useState(false);
 
   const toggleLike = () => {

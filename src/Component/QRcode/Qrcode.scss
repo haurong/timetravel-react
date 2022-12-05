@@ -1,0 +1,63 @@
+.QrcodeStyle{
+    width: 300px;
+    height: 400px;
+    margin:auto;
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: 0 0 20px 0 #D9D9D9;
+    border-radius: 15px;
+    .circleGroupTop{
+   
+    border-Bottom: 3px dashed #D9D9D9;
+    .circleGroup{
+        width: 100%;
+        height: 20px;
+        display: flex;
+      
+        position: relative;
+        .circleRight{
+            position: relative;
+            top:90px;
+            right:30px;
+            width: 20px;
+            height:20px;
+            background-color: #D9D9D9;
+     
+            border-top-right-radius: 50%;
+            border-bottom-right-radius: 50%;
+        }
+        .circleLeft{
+            position: relative;
+            top:90px;
+            left:290px;
+            background-color: #D9D9D9;
+            width: 20px;
+            height: 20px;
+            border-top-left-radius: 50%;
+            border-bottom-left-radius: 50%;
+        }
+    }
+    .qrcodeTitle{
+        height:100%;
+        font-weight: bold;
+        padding-top: 20px;
+        margin: auto;
+        text-align: center;
+    }
+    }
+    .qrcode{
+        width: 70%;
+        margin-top: 35px;
+        margin-left:50px;
+        justify-content: center;
+        align-content: center;
+        border:3px solid#59d8a1;
+        border-radius: 5px;
+    }
+    .useTime{
+        text-align: center;
+        padding-top: 10px;
+    }
+    
+}
+

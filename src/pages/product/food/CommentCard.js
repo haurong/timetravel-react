@@ -1,8 +1,8 @@
 import React from 'react';
 import { Rate } from 'antd';
-import './Commit.scss';
+import './Comment.scss';
 import moment from 'moment';
-function CommitCard({ rows }) {
+function CommentCard({ rows }) {
   console.log(rows);
   return (
     <>
@@ -38,4 +38,4 @@ function CommitCard({ rows }) {
   );
 }
 
-export default CommitCard;
+export default CommentCard;

@@ -14,8 +14,8 @@ import Map from '../../../icon/map.svg';
 import Heart from '../../../icon/heart_gray.svg';
 import PinkHeart from '../../../icon/heart.svg';
 import Sidebar from '../../../Component/Sidebar1/Sidebar1';
-import CommitSelector from './CommitSelect.js';
-import BreadCrumb from './BreadCrumb';
+import CommitSelector from './CommentSelect.js';
+import BreadCrumbList from './BreadCrumbList';
 import Qrcode from '../../../Component/QRcode/Qrcode';
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
 
@@ -305,7 +305,7 @@ function Food() {
       <NavBar />
       <div className="space "></div>
       <div className="container col-12 givePadding ">
-        <BreadCrumb foodData={foodData} />
+        <BreadCrumbList foodData={foodData} />
       </div>
       <div className="container col-lg-12 d-flex foodContent">
         <div className="col-lg-3  px-3 ">

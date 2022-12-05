@@ -1,10 +1,10 @@
 import { React, useRef, useState } from 'react';
 import { Select } from 'antd';
-import './Commit.scss';
+import './Comment.scss';
 //import { ReactComponent as Sort } from '../../../../icon/sort.svg';
 import Sort from '../../../icon/sort.svg';
 
-function CommitSelector() {
+function CommentSelector() {
   const [openSelector, setOpenSelector] = useState(false);
   const handleChange = (e) => {
     console.log(`selected ${e}`);
@@ -58,4 +58,4 @@ function CommitSelector() {
   );
 }
 
-export default CommitSelector;
+export default CommentSelector;

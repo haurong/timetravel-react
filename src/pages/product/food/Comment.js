@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Rate } from 'antd';
-import CommitCard from './CommitCard';
-import './Commit.scss';
+import CommentCard from './CommentCard';
+import './Comment.scss';
 
 
 //從FoodDetail拿到commit資料
@@ -21,7 +21,7 @@ function Commit({ rows }) {
           <p>221則評論</p>
         </div>
       </div>
-      <CommitCard rows={rows} />
+      <CommentCard rows={rows} />
     </div>
   );
 }
