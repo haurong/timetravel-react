@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import Comment from '../comment/Comment';
-function AccordionDetail({ name, price, quantity, totalPrice, committed }) {
+function AccordionDetail({
+  type,
+  name,
+  price,
+  quantity,
+  totalPrice,
+  committed,
+  productNumber,
+  memberSid,
+}) {
+  // console.log(memberSid);
   const [commentShow, setCommentShow] = useState(false);
   return (
     <ul className="orders-accordion-ul p-0 m-0 pb-2 d-flex align-items-center">
@@ -37,6 +47,10 @@ function AccordionDetail({ name, price, quantity, totalPrice, committed }) {
           show={commentShow}
           onHide={() => setCommentShow(false)}
           state="editing"
+          name={name}
+          productNumber={productNumber}
+          memberSid={memberSid}
+          type={type}
         />
       </li>
     </ul>

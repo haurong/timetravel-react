@@ -42,6 +42,9 @@ export const ORDER_DETAILS_HOTEL_API = function (uuid) {
   return `${MY_HOST}/orders/api/list/hotellist/${uuid}`;
 };
 
+//評論路徑
+export const SUBMIT_COMMENT_API = `${MY_HOST}/comment/api/submit-comment-api`;
+
 //從node抓照片資料
 export const appConfig = {
   debug: true,

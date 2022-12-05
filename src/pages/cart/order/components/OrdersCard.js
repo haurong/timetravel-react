@@ -1,7 +1,7 @@
 import React from 'react';
 import OrdersAccordion from './OrdersAccordion';
 import moment from 'moment';
-function OrdersCard({ ordersData }) {
+function OrdersCard({ ordersData, memberSid }) {
   return (
     <>
       <div className="orders-details-wrap row">
@@ -32,6 +32,7 @@ function OrdersCard({ ordersData }) {
                   createdTime={createdTime}
                   uuid={uuid}
                   totalPrice={orders_total_price}
+                  memberSid={memberSid}
                 />
               </div>
             );

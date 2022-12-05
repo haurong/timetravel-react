@@ -18,7 +18,7 @@ function CardTitle({ text, deleteFun }) {
         onClick={() => {
           swalWithBootstrapButtons
             .fire({
-              title: '確定要移除商品嗎？?',
+              title: '確定要移除商品嗎？',
               icon: 'warning',
               showCancelButton: true,
               confirmButtonText: ' 確定，請幫我移出購物車',

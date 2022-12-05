@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import OrdersTypesList from './components/OrdersTypesList';
 import './../styles/OrdersDetails.scss';
 import OrdersCard from './components/OrdersCard';
 import OrdersHistory from './components/OrdersHistory';
 import OrdersUndone from './components/OrdersUndone';
-function OrdersDetail({ ordersData }) {
+function OrdersDetail({ ordersData, memberSid }) {
+  // console.log(memberSid);
   const nowOrder = ordersData.filter((v, i) => {
     return (
       v.orders_status_sid === 1 &&
@@ -25,9 +26,21 @@ function OrdersDetail({ ordersData }) {
   return (
     <div className="container">
       <OrdersTypesList path={path} setPath={setPath} />
-      {path === 'now' ? <OrdersCard ordersData={nowOrder} /> : ''}
-      {path === 'undone' ? <OrdersUndone ordersData={undoneOrder} /> : ''}
-      {path === 'history' ? <OrdersHistory ordersData={historyOrder} /> : ''}
+      {path === 'now' ? (
+        <OrdersCard ordersData={nowOrder} memberSid={memberSid} />
+      ) : (
+        ''
+      )}
+      {path === 'undone' ? (
+        <OrdersUndone ordersData={undoneOrder} memberSid={memberSid} />
+      ) : (
+        ''
+      )}
+      {path === 'history' ? (
+        <OrdersHistory ordersData={historyOrder} memberSid={memberSid} />
+      ) : (
+        ''
+      )}
     </div>
   );
 }

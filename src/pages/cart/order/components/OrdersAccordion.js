@@ -8,10 +8,10 @@ import {
   ORDER_DETAILS_FOOD_API,
   ORDER_DETAILS_HOTEL_API,
 } from '../../../../config';
-function OrdersAccordion({ createdTime, uuid, totalPrice }) {
+function OrdersAccordion({ createdTime, uuid, totalPrice, memberSid }) {
   const [foodOrdersData, setFoodOrdersData] = useState([]);
   const [hotelOrdersData, setHotelOrdersData] = useState([]);
-
+  // console.log(memberSid);
   async function getFoodOrders() {
     const response = await axios.get(ORDER_DETAILS_FOOD_API(uuid));
     setFoodOrdersData(response.data);
@@ -20,6 +20,7 @@ function OrdersAccordion({ createdTime, uuid, totalPrice }) {
     const response = await axios.get(ORDER_DETAILS_HOTEL_API(uuid));
     setHotelOrdersData(response.data);
   }
+  // console.log(foodOrdersData);
   useEffect(() => {
     getFoodOrders();
     getHotelOrders();
@@ -67,11 +68,14 @@ function OrdersAccordion({ createdTime, uuid, totalPrice }) {
               return (
                 <div key={i}>
                   <AccordionDetail
+                    type={'food'}
                     name={v.product_name}
                     price={v.p_selling_price}
                     quantity={v.quantity}
                     totalPrice={v.total_price}
                     committed={v.committed}
+                    productNumber={v.product_number}
+                    memberSid={memberSid}
                   />
                 </div>
               );
@@ -80,11 +84,14 @@ function OrdersAccordion({ createdTime, uuid, totalPrice }) {
               return (
                 <div key={i}>
                   <AccordionDetail
+                    type={'hotel'}
                     name={v.product_name}
                     price={v.room_price}
                     quantity={v.quantity}
                     totalPrice={v.total_price}
                     committed={v.committed}
+                    memberSid={memberSid}
+                    productNumber={v.product_number}
                   />
                 </div>
               );

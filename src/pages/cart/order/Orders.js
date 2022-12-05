@@ -26,7 +26,7 @@ function Orders() {
         <div className="givePadding profile_padding d-flex">
           <SideBar />
           <div className="profile col-9">
-            <OrdersDetail ordersData={ordersData} />
+            <OrdersDetail ordersData={ordersData} memberSid={member_sid} />
           </div>
         </div>
       </div>
