@@ -15,9 +15,13 @@ import './Itinerary.scss';
 function Itinerary() {
   const [iData, setIData] = useState([]);
   async function getList() {
-    const response = await axios.get(ITINERARY_LIST);
-    setIData(response.data);
+    if (localStorage.getItem('auth') !== null) {
+      const membersid = JSON.parse(localStorage.getItem('auth')).sid;
+      const response = await axios.get(ITINERARY_LIST + '/' + membersid);
+      setIData(response.data);
+    }
   }
+
   const location = useLocation();
 
   useEffect(() => {
@@ -33,8 +37,8 @@ function Itinerary() {
           <Col className="col-9 g-4 m-0">
             <div className="d-flex justify-content-between">
               <div className="ititlerow">
-                <h1 className="titlespace-x">我的行程規劃</h1>
-                <p>三個規劃</p>
+                <h1 className="titlespace-x">我的行程規劃 </h1>
+                {iData.length === 0 ? '' : <p>{iData.length}個規劃</p>}
               </div>
               <button type="button" className="btn btn-primary btnstyle">
                 新增規劃

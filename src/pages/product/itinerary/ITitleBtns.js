@@ -1,12 +1,38 @@
 import React from 'react';
 import axios from 'axios';
-import ITINERARY_EDITITEM from './site-config';
+import Swal from 'sweetalert2';
+import { useLocation } from 'react-router-dom';
+import {
+  ITINERARY_DELITEM,
+  ITINERARY_ADDITEM,
+  ITINERARY_EDITLIST,
+} from './site-config';
+import { useItineraryContext } from './ItineraryContext';
 
 export default function ITitleBtns() {
-  const mySubmit = async (e) => {
-    e.preventDefault();
-    // const { data } = await axios.post(ITINERARY_EDITITEM, list); //TODO
-    // console.log(data);
+  const { iData, setIData } = useItineraryContext();
+  const location = useLocation();
+  const listNumber = location.pathname.split('/')[2];
+  const mySubmit = async () => {
+    const { del } = await axios.delete(ITINERARY_DELITEM + listNumber, {
+      list_number: listNumber,
+    });
+    // console.log({ del });
+    // console.log(iData);
+    // console.log(iData[0]);
+    for (let i = 0; i < iData.length; i++) {
+      const { add } = await axios.post(ITINERARY_ADDITEM, iData[i]);
+      // console.log({ add });
+    }
+    const { edit } = await axios.put(ITINERARY_EDITLIST + listNumber, {
+      list_name: '',
+      day: '',
+      date: '',
+    });
+    Swal.fire({
+      icon: 'success',
+      title: '已儲存',
+    });
   };
   return (
     <div id="iTitleBtns">

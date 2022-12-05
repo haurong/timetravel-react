@@ -17,7 +17,7 @@ function Itinerary_Card_List({ rows }) {
               <Card.Body className="d-flex flex-column justify-content-between">
                 <div className=" card-margin0">
                   <Card.Title>{el.name}</Card.Title>
-                  <Link to="/itinerary/1">
+                  <Link to={'/itinerary/' + el.list_number}>
                     <h2>{el.list_name}</h2>
                   </Link>
 
