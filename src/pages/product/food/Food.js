@@ -5,21 +5,18 @@ import { useLocation, Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import { FOOD_LIST } from '../../../config.js';
-import { FOOD_ADD_COLLECT } from '../../../config.js';
+import { ADD_COLLECT } from '../../../config.js';
 import SearchBar from './SearchBar';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import { FOOD_IMG } from '../../../config';
-// import { FOOD_COLLECT } from '../../../config';
-// import CardList from '../../../Component/Card_List/Card_List';
 import Map from '../../../icon/map.svg';
 import Heart from '../../../icon/heart_gray.svg';
 import PinkHeart from '../../../icon/heart.svg';
 import Sidebar from '../../../Component/Sidebar1/Sidebar1';
-// import MyPagination from '../../../Component/Pagination/Pagination';
 import CommitSelector from './CommitSelect.js';
 import BreadCrumb from './BreadCrumb';
-
+import Qrcode from '../../../Component/QRcode/Qrcode';
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
 
 import './Food.scss';
@@ -38,29 +35,8 @@ function Food() {
   const [haveData, setHaveData] = useState(false);
 
   const [like, setLike] = useState(false);
+
   const [collect, setCollect] = useState(false);
-
-  const [formData, setFormData] = useState({
-    member_sid: '',
-    food_product_sid: '',
-  });
-
-  const addCollectHandler = (e) => {
-    const { data } = axios.post(FOOD_ADD_COLLECT, formData);
-    console.log({ data });
-    const member_sid = 24;
-    const food_product_sid = e.currentTarget.food_product_sid;
-    if (data.length) {
-      return console.log({data} );
-    }
-    setFormData({ ...formData, member_sid, food_product_sid });
-
-    console.log(formData)
-  };
-
-  const toggleLike = () => {
-    setLike(!like);
-  };
 
   async function getList() {
     const response = await axios.get(FOOD_LIST);
@@ -110,12 +86,14 @@ function Food() {
       return (
         item.product_name.includes(searchWord) +
         item.city_name.includes(searchWord) +
-        item.area_name.includes(searchWord)
+        item.area_name.includes(searchWord) +
+        item.categories_name.includes(searchWord)
       );
     });
     setPageNow(1);
     return newFoodData;
   };
+
   useEffect(() => {
     if (searchWord.length < 1) return;
 
@@ -125,10 +103,16 @@ function Food() {
 
     getFoodListData(newFoodData, perPage);
   }, [searchWord]);
-//TODO:發axios到後端新增與移除收藏
+
+  // useEffect(() => {
+  //   getList();
+  // }, [like]);
+
+  //TODO:發axios到後端新增與移除收藏
+
   const display = (
     <Row xs={1} lg={4} className="d-flex justify-content-start flex-wrap">
-      {haveData
+      {haveData && foodProductDisplay[pageNow - 1].length > 0
         ? foodProductDisplay[pageNow - 1].map((v, i) => {
             return (
               <Card
@@ -136,7 +120,7 @@ function Food() {
                 style={{ width: '20rem' }}
                 key={i}
                 onClick={() => {
-                  console.log(v.sid);
+                  // console.log(v.sid);
                 }}
               >
                 <Card.Img
@@ -145,9 +129,11 @@ function Food() {
                   src={`${FOOD_IMG}${v.product_photo}`}
                 />
                 <Card.Body>
-                  <Card.Title className="Card_Title">
-                    {v.product_name}
-                  </Card.Title>
+                  <Link to="detail">
+                    <Card.Title className="Card_Title">
+                      {v.product_name}
+                    </Card.Title>
+                  </Link>
                   <Card.Text className="Card_Text">
                     <Card.Img src={Map} className="Map_icon" />
                     <span class="Card_Score">
@@ -158,11 +144,41 @@ function Food() {
                     <div>
                       <button
                         className="Heart_btn"
-                        onClick={(e) => ( addCollectHandler)}
+                        onClick={async function handleLike() {
+                          const member_sid = JSON.parse(
+                            localStorage.getItem('auth')
+                          ).sid;
+                          const product_sid = v.sid;
+                          const { data } = await axios.post(ADD_COLLECT, {
+                            member_sid: member_sid,
+                            product_sid: product_sid,
+                          });
+
+                          // setLike(!like);
+
+                          const newItem = {
+                            ...v,
+                            product_sid: v.product_sid ? null : product_sid,
+                          };
+
+                          const newPagesArray = JSON.parse(
+                            JSON.stringify(foodProductDisplay)
+                          );
+
+                          console.log(newPagesArray[pageNow - 1][i], newItem);
+
+                          newPagesArray[pageNow - 1][i] = newItem;
+
+                          setFoodProductDisplay(newPagesArray);
+
+                          console.log(like);
+                          console.log({ data });
+                        }}
                       >
                         <img
-                          src={v.food_product_sid == v.sid ? PinkHeart : Heart}
+                          src={v.product_sid === v.sid ? PinkHeart : Heart}
                           style={{ width: '25px', height: '25px' }}
+                          alt=""
                         />
                         <span>{collect ? v.collect + 1 : v.collect}</span>
                       </button>
@@ -204,7 +220,7 @@ function Food() {
                   </Card.Text>
                   <div className="d-flex PriceAndCollect">
                     <div>
-                      <button className="Heart_btn" onClick={toggleLike}>
+                      <button className="Heart_btn">
                         <img
                           src={true ? PinkHeart : Heart}
                           style={{ width: '25px', height: '25px' }}
@@ -242,11 +258,11 @@ function Food() {
           <MdOutlineChevronLeft />
         </Link>
       </li>
-      {Array(pageTotal)
+      {Array(5)
         .fill(1)
         .map((v, i) => {
           const classNames = ['page-item'];
-          const p = pageNow + i - 1;
+          const p = pageNow + i;
           if (p < 1 || p > pageTotal) return null;
           if (p === pageNow) classNames.push('active');
           const link = `?page=${p}`;
@@ -272,6 +288,9 @@ function Food() {
           onClick={() => {
             const newPageNowPlus = pageNow + 1;
             setPageNow(newPageNowPlus);
+            if (pageNow > pageTotal) {
+              setPageNow(pageTotal);
+            }
           }}
         >
           <MdOutlineChevronRight />
@@ -289,13 +308,10 @@ function Food() {
         <BreadCrumb foodData={foodData} />
       </div>
       <div className="container col-lg-12 d-flex foodContent">
-        <div className="col-lg-3  px-3 " style={{ border: '1px solid blue' }}>
+        <div className="col-lg-3  px-3 ">
           <Sidebar />
         </div>
-        <div
-          className="col-lg-9 col-md-12 px-3 mx-0 CardListStyle"
-          style={{ border: '1px solid black' }}
-        >
+        <div className="col-lg-9 col-md-12 px-3 mx-0 CardListStyle">
           <div className="d-flex foodSort">
             <SearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
             <CommitSelector />
@@ -307,6 +323,7 @@ function Food() {
       <div className="foodPagination">{paginationBar}</div>
 
       <div className="givePadding"></div>
+      <Qrcode />
 
       <Footer />
     </>

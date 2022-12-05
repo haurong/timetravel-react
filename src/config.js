@@ -23,12 +23,14 @@ export const FOOD_CARD_ITEM5 = `${MY_HOST}/food/item/129`;
 export const FOOD_CARD_ITEM6 = `${MY_HOST}/food/item/128`;
 export const FOOD_IMG = `${MY_HOST}/uploads/Food/`;
 export const FOOD_COMMIT = `${MY_HOST}/food/commit`;
+export const FOOD_ORDER_DETAIL = `${MY_HOST}/orders/api/list/foodlist/`;
 
+export const PRODUCT_LIST = `${MY_HOST}/productAll/api`;
 //新增member24得收藏資料
 //移除member24得收藏資料
 
-export const FOOD_ADD_COLLECT = `${MY_HOST}/productAll/foodAddCollect`;
-export const FOOD_DEL_COLLECT = `${MY_HOST}/productAll/foodDelCollect`;
+export const ADD_COLLECT = `${MY_HOST}/productAll/AddCollect`;
+export const DEL_COLLECT = `${MY_HOST}/productAll/DelCollect`;
 
 //購物車路徑
 export const MakeOrder = `${MY_HOST}/cart/api/makeorder`;
