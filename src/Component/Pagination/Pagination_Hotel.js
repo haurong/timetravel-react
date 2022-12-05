@@ -30,7 +30,7 @@ export default function MyPagination() {
           //  現在第幾頁
           const p = i + 1;
           //  頁籤範圍
-          if (pageNow >= 4) {
+          if (pageNow >= 4 && pageNow <= pageTotal - 3) {
             if (pageNow > p + 3 || pageNow < p - 3) return null;
           } else if (pageNow === 3) {
             if (pageNow > p + 2 || pageNow < p - 4) return null;
@@ -38,8 +38,13 @@ export default function MyPagination() {
             if (pageNow > p + 1 || pageNow < p - 5) return null;
           } else if (pageNow === 1) {
             if (pageNow > p || pageNow < p - 6) return null;
+          } else if (pageNow === pageTotal - 2) {
+            if (pageNow > p + 4 || pageNow < p - 2) return null;
+          }else if (pageNow === pageTotal - 1) {
+            if (pageNow > p + 5 || pageNow < p - 1) return null;
+          }else if (pageNow === pageTotal ) {
+            if (pageNow > p + 6 || pageNow < p ) return null;
           }
-
           if (p === pageNow) classNames.push('active');
           return (
             <li className={classNames.join(' ')} key={p}>
