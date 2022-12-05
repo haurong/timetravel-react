@@ -1,4 +1,3 @@
-import { CountertopsOutlined } from '@mui/icons-material';
 import React, { useReducer, useContext, createContext, useEffect } from 'react';
 import { reducer, init } from './cartReducer';
 import useLocalStorage from './useLocalstorage';

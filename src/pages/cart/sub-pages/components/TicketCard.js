@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CardTitle from './CardTitle';
 import CardBodyTop from './CardBodyTop';
 import StateButton from './StateButton';
@@ -7,12 +7,12 @@ import CountButton from './CountButton';
 import { useTicketCart } from '../../utils/useCart';
 function TicketCard() {
   const { items, plusOne, minusOne, removeItem, updateDate } = useTicketCart();
-
+  // console.log(items);
   return (
     <>
       {items.map((v, i) => {
         return (
-          <div className="card-wrap pb-5">
+          <div className="card-wrap pb-5" key={v.name}>
             <div className="card-body">
               <CardTitle
                 text={'票券預定資訊'}
@@ -21,14 +21,14 @@ function TicketCard() {
                 }}
               />
               <CardBodyTop productName={v.name} />
-              <StateButton text={v.tickettype} />
+              <StateButton text={v.type} />
               <div className="d-flex justify-content-between">
                 <DateInput
                   text={'入住時間'}
-                  date={v.usedate}
+                  date={v.date}
                   id={v.id}
                   updateDate={updateDate}
-                  dateProps={'usedate'}
+                  dateProps={'date'}
                 />
                 <CountButton
                   quantity={v.quantity}
