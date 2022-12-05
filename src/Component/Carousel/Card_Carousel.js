@@ -19,7 +19,7 @@ import 'swiper/scss';
 import 'swiper/scss/pagination';
 import 'swiper/scss/navigation';
 import { Pagination, Navigation } from 'swiper';
-
+import { ADD_COLLECT } from '../../config';
 export default function Card_Carousel() {
   //設定６張卡片收藏功能
   const [like1, setLike1] = useState(false);
@@ -42,33 +42,31 @@ export default function Card_Carousel() {
   const [foodCardData5, setFoodCardData5] = useState({});
   const [foodCardData6, setFoodCardData6] = useState({});
 
-  const path = window.location.pathname.split('/');
-  const sid = path[2];
-
+  const [collect, setCollect] = useState(false);
   async function getData() {
-    const foodCardItem1 = await axios.get(FOOD_CARD_ITEM1 );
+    const foodCardItem1 = await axios.get(FOOD_CARD_ITEM1);
     setFoodCardData1(foodCardItem1.data);
-    //console.log(foodCardData1);
-    const foodCardItem2 = await axios.get(FOOD_CARD_ITEM2 );
+    console.log(foodCardItem1.data);
+    const foodCardItem2 = await axios.get(FOOD_CARD_ITEM2);
     setFoodCardData2(foodCardItem2.data);
-    //console.log(foodCardData2);
-    const foodCardItem3 = await axios.get(FOOD_CARD_ITEM3 );
+    console.log(foodCardItem2.data);
+    const foodCardItem3 = await axios.get(FOOD_CARD_ITEM3);
     setFoodCardData3(foodCardItem3.data);
-    //console.log(foodCardData3);
-    const foodCardItem4 = await axios.get(FOOD_CARD_ITEM4 );
+  console.log(foodCardItem3.data);
+    const foodCardItem4 = await axios.get(FOOD_CARD_ITEM4);
     setFoodCardData4(foodCardItem4.data);
     //console.log(foodCardData4);
-    const foodCardItem5 = await axios.get(FOOD_CARD_ITEM5 );
+    const foodCardItem5 = await axios.get(FOOD_CARD_ITEM5);
     setFoodCardData5(foodCardItem5.data);
     //console.log(foodCardData5);
-    const foodCardItem6 = await axios.get(FOOD_CARD_ITEM6 );
+    const foodCardItem6 = await axios.get(FOOD_CARD_ITEM6);
     setFoodCardData6(foodCardItem6.data);
-    //console.log(foodCardData6);
+    console.log(foodCardData6);
   }
 
   useEffect(() => {
     getData();
-  }, [Location]);
+  }, [Location,collect]);
 
   return (
     <Swiper
@@ -82,15 +80,10 @@ export default function Card_Carousel() {
       className="mySwiper"
     >
       <SwiperSlide>
-        <Card  className="Card " style={{ width: '20rem' }}>
-          <Card.Img variant="top" className="foodCardData1Img" />
-          <button className="Heart_Btn" onClick={toggleLike1}>
-            <img
-              src={like1 ? PinkHeart : Heart}
-              className="Card_Heart"
-              alt=""
-            />
-          </button>
+        <Card className="Card " style={{ width: '20rem' }}>
+          <div className="foodCardDataOutside">
+            <Card.Img variant="top" className="foodCardData1Img" />
+          </div>
           <Card.Body>
             <Card.Title className="Card_Title">
               {foodCardData1.product_name}
@@ -100,24 +93,53 @@ export default function Card_Carousel() {
               <span class="Card_Score">
                 {foodCardData1.city_name} | {foodCardData1.area_name}
               </span>
-            </Card.Text>
-            <h2 variant="primary" className="Card_Price">
-              NT${foodCardData1.p_selling_price}
-            </h2>
+            </Card.Text>{' '}
+            <div className="d-flex PriceAndCollect">
+              <div>
+                <button
+                  className="Heart_btn"
+                  onClick={async () => {
+                    const member_sid = JSON.parse(
+                      localStorage.getItem('auth')
+                    ).sid;
+                    const food_product_sid = foodCardData1.sid;
+                    const { data } = await axios.post(ADD_COLLECT, {
+                      member_sid: member_sid,
+                      food_product_sid: food_product_sid,
+                    });
+                    console.log({ data }.data);
+                  }}
+                >
+                  <img
+                    src={
+                      foodCardData1.product_sid === foodCardData1.sid
+                        ? PinkHeart
+                        : Heart
+                    }
+                    style={{ width: '25px', height: '25px' }}
+                    alt=""
+                  />
+                  <span>
+                    {collect
+                      ? foodCardData1.collect + 1
+                      : foodCardData1.collect}
+                  </span>
+                </button>
+              </div>
+              <div>
+                <h2 variant="primary" className="Card_Price">
+                  NT${foodCardData1.p_selling_price}
+                </h2>
+              </div>
+            </div>
           </Card.Body>
         </Card>
       </SwiperSlide>
       <SwiperSlide>
         <Card className="Card " style={{ width: '20rem' }}>
-          <Card.Img variant="top" className="foodCardData2Img" />
-          <button className="Heart_Btn" onClick={toggleLike2}>
-            <img
-              src={like2 ? PinkHeart : Heart}
-              className="Card_Heart"
-              alt=""
-            />
-          </button>
-
+          <div className="foodCardDataOutside">
+            <Card.Img variant="top" className="foodCardData2Img" />
+          </div>
           <Card.Body>
             <Card.Title className="Card_Title">
               {foodCardData2.product_name}
@@ -127,24 +149,53 @@ export default function Card_Carousel() {
               <span class="Card_Score">
                 {foodCardData2.city_name} | {foodCardData2.area_name}
               </span>
-            </Card.Text>
-            <h2 variant="primary" className="Card_Price">
-              NT${foodCardData2.p_selling_price}
-            </h2>
+            </Card.Text>{' '}
+            <div className="d-flex PriceAndCollect">
+              <div>
+                <button
+                  className="Heart_btn"
+                  onClick={async () => {
+                    const member_sid = JSON.parse(
+                      localStorage.getItem('auth')
+                    ).sid;
+                    const food_product_sid = foodCardData2.sid;
+                    const { data } = await axios.post(ADD_COLLECT, {
+                      member_sid: member_sid,
+                      food_product_sid: food_product_sid,
+                    });
+                    console.log({ data }.data);
+                  }}
+                >
+                  <img
+                    src={
+                      foodCardData2.product_sid === foodCardData2.sid
+                        ? PinkHeart
+                        : Heart
+                    }
+                    style={{ width: '25px', height: '25px' }}
+                    alt=""
+                  />
+                  <span>
+                    {collect
+                      ? foodCardData2.collect + 1
+                      : foodCardData2.collect}
+                  </span>
+                </button>
+              </div>
+              <div>
+                <h2 variant="primary" className="Card_Price">
+                  NT${foodCardData2.p_selling_price}
+                </h2>
+              </div>
+            </div>
           </Card.Body>
         </Card>
       </SwiperSlide>
       <SwiperSlide>
-        <Card className="Card" style={{ width: '20rem' }}>
-          <Card.Img variant="top" className="foodCardData3Img" />
-          <button className="Heart_Btn" onClick={toggleLike3}>
-            <img
-              src={like3 ? PinkHeart : Heart}
-              className="Card_Heart"
-              alt=""
-            />
-          </button>
-
+        <Card className="Card " style={{ width: '20rem' }}>
+          <div className="foodCardDataOutside">
+            <Card.Img variant="top" className="foodCardData3Img" />
+          </div>
           <Card.Body>
             <Card.Title className="Card_Title">
               {foodCardData3.product_name}
@@ -154,24 +205,55 @@ export default function Card_Carousel() {
               <span class="Card_Score">
                 {foodCardData3.city_name} | {foodCardData3.area_name}
               </span>
-            </Card.Text>
-            <h2 variant="primary" className="Card_Price">
-              NT${foodCardData3.p_selling_price}
-            </h2>
+            </Card.Text>{' '}
+            <div className="d-flex PriceAndCollect">
+              <div>
+                <button
+                  className="Heart_btn"
+                  onClick={async () => {
+                    const member_sid = JSON.parse(
+                      localStorage.getItem('auth')
+                    ).sid;
+                    const food_product_sid = foodCardData3.sid;
+                    const { data } = await axios.post(ADD_COLLECT, {
+                      member_sid: member_sid,
+                      food_product_sid: food_product_sid,
+                    });
+                    console.log({ data }.data);
+                  }}
+                >
+                  <img
+
+                  
+                    src={
+                      foodCardData3.sid === foodCardData3.product_sid
+                        ? PinkHeart
+                        : Heart
+                    }
+                    style={{ width: '25px', height: '25px' }}
+                    alt=""
+                  />
+                  <span>
+                    {collect
+                      ? setCollect(foodCardData3.collect + 1)
+                      : foodCardData3.collect}
+                  </span>
+                </button>
+              </div>
+              <div>
+                <h2 variant="primary" className="Card_Price">
+                  NT${foodCardData3.p_selling_price}
+                </h2>
+              </div>
+            </div>
           </Card.Body>
         </Card>
       </SwiperSlide>
       <SwiperSlide>
-        <Card className="Card" style={{ width: '20rem' }}>
-          <Card.Img variant="top" className="foodCardData4Img" />
-          <button className="Heart_Btn" onClick={toggleLike4}>
-            <img
-              src={like4 ? PinkHeart : Heart}
-              className="Card_Heart"
-              alt=""
-            />
-          </button>
-
+        <Card className="Card " style={{ width: '20rem' }}>
+          <div className="foodCardDataOutside">
+            <Card.Img variant="top" className="foodCardData4Img" />
+          </div>
           <Card.Body>
             <Card.Title className="Card_Title">
               {foodCardData4.product_name}
@@ -181,23 +263,53 @@ export default function Card_Carousel() {
               <span class="Card_Score">
                 {foodCardData4.city_name} | {foodCardData4.area_name}
               </span>
-            </Card.Text>
-            <h2 variant="primary" className="Card_Price">
-              NT${foodCardData4.p_selling_price}
-            </h2>
+            </Card.Text>{' '}
+            <div className="d-flex PriceAndCollect">
+              <div>
+                <button
+                  className="Heart_btn"
+                  onClick={async () => {
+                    const member_sid = JSON.parse(
+                      localStorage.getItem('auth')
+                    ).sid;
+                    const food_product_sid = foodCardData4.sid;
+                    const { data } = await axios.post(ADD_COLLECT, {
+                      member_sid: member_sid,
+                      food_product_sid: food_product_sid,
+                    });
+                    console.log({ data }.data);
+                  }}
+                >
+                  <img
+                    src={
+                      foodCardData4.product_sid === foodCardData4.sid
+                        ? PinkHeart
+                        : Heart
+                    }
+                    style={{ width: '25px', height: '25px' }}
+                    alt=""
+                  />
+                  <span>
+                    {collect
+                      ? foodCardData4.collect + 1
+                      : foodCardData4.collect}
+                  </span>
+                </button>
+              </div>
+              <div>
+                <h2 variant="primary" className="Card_Price">
+                  NT${foodCardData4.p_selling_price}
+                </h2>
+              </div>
+            </div>
           </Card.Body>
         </Card>
       </SwiperSlide>
       <SwiperSlide>
-        <Card className="Card" style={{ width: '20rem' }}>
-          <Card.Img variant="top" className="foodCardData5Img" />
-          <button className="Heart_Btn" onClick={toggleLike5}>
-            <img
-              src={like5 ? PinkHeart : Heart}
-              className="Card_Heart"
-              alt=""
-            />
-          </button>
+        <Card className="Card " style={{ width: '20rem' }}>
+          <div className="foodCardDataOutside">
+            <Card.Img variant="top" className="foodCardData5Img" />
+          </div>
           <Card.Body>
             <Card.Title className="Card_Title">
               {foodCardData5.product_name}
@@ -207,24 +319,53 @@ export default function Card_Carousel() {
               <span class="Card_Score">
                 {foodCardData5.city_name} | {foodCardData5.area_name}
               </span>
-            </Card.Text>
-            <h2 variant="primary" className="Card_Price">
-              NT${foodCardData5.p_selling_price}
-            </h2>
+            </Card.Text>{' '}
+            <div className="d-flex PriceAndCollect">
+              <div>
+                <button
+                  className="Heart_btn"
+                  onClick={async () => {
+                    const member_sid = JSON.parse(
+                      localStorage.getItem('auth')
+                    ).sid;
+                    const food_product_sid = foodCardData5.sid;
+                    const { data } = await axios.post(ADD_COLLECT, {
+                      member_sid: member_sid,
+                      food_product_sid: food_product_sid,
+                    });
+                    console.log({ data }.data);
+                  }}
+                >
+                  <img
+                    src={
+                      foodCardData5.sid === foodCardData5.product_sid
+                        ? PinkHeart
+                        : Heart
+                    }
+                    style={{ width: '25px', height: '25px' }}
+                    alt=""
+                  />
+                  <span>
+                    {collect
+                      ? foodCardData5.collect + 1
+                      : foodCardData5.collect}
+                  </span>
+                </button>
+              </div>
+              <div>
+                <h2 variant="primary" className="Card_Price">
+                  NT${foodCardData5.p_selling_price}
+                </h2>
+              </div>
+            </div>
           </Card.Body>
         </Card>
       </SwiperSlide>
       <SwiperSlide>
-        <Card className="Card" style={{ width: '20rem' }}>
-          <Card.Img variant="top" className="foodCardData6Img" />
-          <button className="Heart_Btn" onClick={toggleLike6}>
-            <img
-              src={like6 ? PinkHeart : Heart}
-              className="Card_Heart"
-              alt=""
-            />
-          </button>
-
+        <Card className="Card " style={{ width: '20rem' }}>
+          <div className="foodCardDataOutside">
+            <Card.Img variant="top" className="foodCardData6Img" />
+          </div>
           <Card.Body>
             <Card.Title className="Card_Title">
               {foodCardData6.product_name}
@@ -234,13 +375,49 @@ export default function Card_Carousel() {
               <span class="Card_Score">
                 {foodCardData6.city_name} | {foodCardData6.area_name}
               </span>
-            </Card.Text>
-            <h2 variant="primary" className="Card_Price">
-              NT${foodCardData6.p_selling_price}
-            </h2>
+            </Card.Text>{' '}
+            <div className="d-flex PriceAndCollect">
+              <div>
+                <button
+                  className="Heart_btn"
+                  onClick={async () => {
+                    const member_sid = JSON.parse(
+                      localStorage.getItem('auth')
+                    ).sid;
+                    const food_product_sid = foodCardData6.sid;
+                    const { data } = await axios.post(ADD_COLLECT, {
+                      member_sid: member_sid,
+                      food_product_sid: food_product_sid,
+                    });
+                    console.log({ data }.data);
+                  }}
+                >
+                  <img
+                    src={
+                      foodCardData6.sid === foodCardData6.product_sid
+                        ? PinkHeart
+                        : Heart
+                    }
+                    style={{ width: '25px', height: '25px' }}
+                    alt=""
+                  />
+                  <span>
+                    {collect
+                      ? foodCardData6.collect + 1
+                      : foodCardData6.collect}
+                  </span>
+                </button>
+              </div>
+              <div>
+                <h2 variant="primary" className="Card_Price">
+                  NT${foodCardData6.p_selling_price}
+                </h2>
+              </div>
+            </div>
           </Card.Body>
         </Card>
       </SwiperSlide>
+    
     </Swiper>
   );
 }

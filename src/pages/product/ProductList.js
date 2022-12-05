@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
 import _ from 'lodash';
 import SearchBar from '../product/food/SearchBar';
-import { ALLPRODUCT_LIST } from '../../config';
-import { ADD_FOOD_COLLECT } from '../../config';
+import { PRODUCT_LIST } from '../../config';
+// import { ADD_FOOD_COLLECT } from '../../config';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import { FOOD_IMG } from '../../config';
@@ -33,7 +33,7 @@ function ProductList() {
   const [haveData, setHaveData] = useState(false);
 
   async function getData() {
-    const response = await axios.get(ALLPRODUCT_LIST);
+    const response = await axios.get(PRODUCT_LIST);
     setProductData(response.data);
     setProductDisplay(response.data);
   }
@@ -90,7 +90,7 @@ function ProductList() {
       return item.city_name.includes(searchWord);
     });
     console.log('newAllData', newAllData);
-    setPageNow(0);
+    setPageNow(1);
     return newAllData;
   };
 
@@ -221,7 +221,7 @@ function ProductList() {
           <MdOutlineChevronLeft />
         </Link>
       </li>
-      {Array(pageTotal)
+      {Array(5)
         .fill(1)
         .map((v, i) => {
           const classNames = ['page-item'];
@@ -283,20 +283,20 @@ function ProductList() {
               className="d-flex justify-content-start flex-wrap"
             >
               {haveData
-                ? productDisplay[pageNow - 1].map((v, i) => {
+                ? productDisplay[pageNow-1].map((v, i) => {
                     return (
                       <Card
                         className="MyCard col-3"
                         style={{ width: '20rem' }}
                         key={i}
                         onClick={() => {
-                          console.log(v.product_number);
+                          console.log(v.sid);
                         }}
                       >
                         <Card.Img
                           variant="top"
                           className="foodCardImg1"
-                          src={`${FOOD_IMG}${v.product_photo}`}
+                          src={`${FOOD_IMG}${v.photo}`}
                         />
                         <Card.Body>
                           <Card.Title className="Card_Title">
@@ -327,7 +327,7 @@ function ProductList() {
                             </div>
                             <div>
                               <h2 variant="primary" className="Card_Price">
-                                NT${v.p_selling_price}
+                                NT${v.price}
                               </h2>
                             </div>
                           </div>
