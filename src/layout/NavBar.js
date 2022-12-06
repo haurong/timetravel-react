@@ -9,11 +9,14 @@ import SearchIcon from '../icon/search.svg';
 
 import AuthContext from '../pages/member/context/AuthContext';
 import Dropdown from 'react-bootstrap/Dropdown';
-
+import SearchBar from '../pages/product/food/SearchBar';
 import CartIcon from './CartIcon';
+
+import { useAllContext } from '../pages/AllContext/AllContext';
 function NavBar() {
   const location = useLocation();
   const { myAuth, logout } = useContext(AuthContext);
+  const { searchWord, setSearchWord } = useAllContext();
   return (
     <>
       <nav className="navbar navbar-expand-lg">
@@ -55,7 +58,8 @@ function NavBar() {
                 </NavLink>
               </li>
             </ul>
-            <form className="d-flex" role="search">
+            <SearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
+            {/* <form className="d-flex" role="search">
               <div className="input-group">
                 <span className="icon" id="basic-addon1">
                   <img src={SearchIcon} alt="" />
@@ -67,7 +71,7 @@ function NavBar() {
                   aria-label="Search"
                 />
               </div>
-            </form>
+            </form> */}
             <div>
               {myAuth.authorised ? (
                 <>

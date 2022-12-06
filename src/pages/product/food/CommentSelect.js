@@ -1,6 +1,6 @@
 import { React, useRef, useState } from 'react';
 import { Select } from 'antd';
-import './Comment.scss';
+import './style/Comment.scss';
 //import { ReactComponent as Sort } from '../../../../icon/sort.svg';
 import Sort from '../../../icon/sort.svg';
 

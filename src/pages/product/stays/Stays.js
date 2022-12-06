@@ -12,7 +12,7 @@ import CommitSelector from '../food/CommentSelect';
 import BreadCrumb from '../stays/Breadcrumb/Breadcrumb';
 import HotelListSortSelector from './HotelListSortSelector/HotelListSortSelector.js';
 import { ReactComponent as Sort } from '../../../icon/sort.svg';
-import '../food/Food.scss';
+import '../food/style/Food.scss';
 import './Stays.scss';
 import _ from 'lodash';
 

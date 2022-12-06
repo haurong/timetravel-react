@@ -1,6 +1,6 @@
 import React from 'react';
 import { Rate } from 'antd';
-import './Comment.scss';
+import './style/Comment.scss';
 import moment from 'moment';
 function CommentCard({ rows }) {
   console.log(rows);

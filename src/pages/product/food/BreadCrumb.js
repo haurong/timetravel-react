@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, NavLink } from 'react-router-dom';
-import '../../../Component/BreadCrumb/BreadCrumb.scss';
+import './style/BreadCrumb.scss'
 
 function BreadCrumb({ foodData }) {
   //console.log({ foodData });

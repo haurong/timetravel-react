@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Minus_icon from '../../../icon/minus.svg';
 import Add_icon from '../../../icon/add.svg';
-import './FoodBookingBar.scss';
+import './style/FoodBookingBar.scss';
 import { useFoodContext } from './FoodContext/FoodContext';
-//import BuyButton from '../BuyButton/BuyButton';
+
 
 function FoodBookingBar({foodData}) {
   console.log({foodData})

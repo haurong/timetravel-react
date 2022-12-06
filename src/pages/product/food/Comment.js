@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Rate } from 'antd';
 import CommentCard from './CommentCard';
-import './Comment.scss';
+import './style/Comment.scss';
 
 
 //從FoodDetail拿到commit資料

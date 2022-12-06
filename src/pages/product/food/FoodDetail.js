@@ -29,7 +29,7 @@ import Minus_icon from '../../../icon/minus.svg';
 import Add_icon from '../../../icon/add.svg';
 import House_icon from '../../../icon/house.svg';
 
-import './FoodDetail.scss';
+import './style/FoodDetail.scss';
 
 function FoodDetail() {
   const {

@@ -1,9 +1,6 @@
-
-
-
 import React, { useState } from 'react';
-import './HashChange.scss';
-import { useFoodContext } from './FoodContext/FoodContext'
+import './style/HashChange.scss';
+import { useFoodContext } from './FoodContext/FoodContext';
 // import { slideOut, setSlideOut } from '../Context/SlideOutContext';
 
 function HashChange(props) {
@@ -15,8 +12,6 @@ function HashChange(props) {
     '回到頂部',
   ];
   const { slideOut, setSlideOut } = useFoodContext();
-  // const [slideOut, setSlideOut] = useState(false);
-  // const [computerHashChangeFixed, setComputerHashChangeFixed] = useState(false);
   let part1 = props.allPart.part1 - 50;
   let part2 = props.allPart.part2 - 50;
   let part3 = props.allPart.part3 - 50;
@@ -42,16 +37,13 @@ function HashChange(props) {
       // setComputerHashChangeFixed(true);
       setSlideOut(true);
       setWhichPart('適用店家');
-    } else if (nowScroll >= part4 ) {
+    } else if (nowScroll >= part4) {
       // setComputerHashChangeFixed(true);
       setSlideOut(true);
       setWhichPart('旅客評價');
     }
   });
 
-  // window.addEventListener('onhashchange', () => {
-  //   window.history.pushState(0, 0, window.location.origin + '/stays');
-  // });
   window.onhashchange = function () {
     window.history.pushState(0, 0, window.location.origin + '/food');
   };
