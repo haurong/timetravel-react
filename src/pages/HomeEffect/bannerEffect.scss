@@ -6,7 +6,17 @@
     // align-items: center;
     background-color: #f7f7f7;
   }
-  
+  .site-seachbar{
+    .banner-seachbar{
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, 0%);
+      z-index: 1;
+      background-color: none;
+      
+    }
+  }
   .site {
     width: 25%;
     height: 100vh;
@@ -19,23 +29,23 @@
     }
     @keyframes sun-site {
       0%{
-        transform: translateY(800px);;
-        }
-      20%{
-          transform: translateY(800px);;
-        }
-      40%{
           transform: translateY(600px);;
+        }
+      10%{
+          transform: translateY(600px);;
+        }
+      30%{
+          transform: translateY(400px);;
         }
       100%{
-          transform: translateY(600px);;
+          transform: translateY(400px);;
         }
     }
     .sun {
       position: absolute;
       border-radius: 50%;
       left: 50%;
-      transform: translate(-50%, 0%)
+      transform: translate(-50%, 0%);
       
     }
     .sun-1 {
@@ -295,11 +305,28 @@
     background: linear-gradient(to bottom, #ffdf8f 0%, #ffb185 50%, #f6f7e2 100%);
     // box-shadow: 0px 0px 20px rgba(0,0,0, 0.30); 
     overflow: hidden;
+    .sun-an{
+      animation: sun-food 10s ease-in-out infinite alternate;
+    }
+    @keyframes sun-food {
+      0%{
+        transform: translateY(600px);
+        }
+      40%{
+          transform: translateY(600px);
+        }
+      60%{
+          transform: translateY(400px);
+        }
+      100%{
+          transform: translateY(400px);
+        }
+    }
     .sun {
       position: absolute;
       border-radius: 50%;
       left: 50%;
-      transform: translate(-50%, 0%)
+      transform: translate(-50%, 0%);
     }
     .sun-1 {
       background-color:#ffb26a;
@@ -564,6 +591,23 @@
     background: linear-gradient(to bottom, #7a89dd 0%, #c8f9ff 100%);
     // box-shadow: 0px 0px 20px rgba(0,0,0, 0.30); 
     overflow: hidden;
+    .sun-an{
+      animation: sun-stay 10s ease-in-out infinite alternate;
+    }
+    @keyframes sun-stay {
+      0%{
+          transform: translateY(600px);
+        }
+      75%{
+          transform: translateY(600px);
+        }
+      95%{
+          transform: translateY(400px);
+        }
+      100%{
+          transform: translateY(400px);
+        }
+    }
     .sun {
       position: absolute;
       border-radius: 50%;
@@ -827,6 +871,23 @@
     background: linear-gradient(to bottom, #fff9da 0%, #9cd491 100%);
     // box-shadow: 0px 0px 20px rgba(0,0,0, 0.30); 
     overflow: hidden;
+    .sun-an{
+      animation: sun-ticket 10s ease-in-out infinite alternate;
+    }
+    @keyframes sun-ticket {
+      0%{
+        transform: translateY(600px);
+      }
+      79%{
+        transform: translateY(600px);
+      }
+      80%{
+          transform: translateY(600px);
+        }
+      100%{
+          transform: translateY(400px);
+        }
+    }
     .sun {
       position: absolute;
       border-radius: 50%;
@@ -1084,7 +1145,7 @@
     }
   }
   .effect-text{
-    font-size: 110px;
+    font-size: 5vw;
     font-weight: 800;
     padding-top: 150px;
   }

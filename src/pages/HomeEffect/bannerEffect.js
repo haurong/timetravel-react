@@ -6,6 +6,9 @@ function BannerEffect() {
     <>
       <div class="BannerEffect">
         <div class="site">
+          <div className="site-seachbar">
+            <input className="banner-seachbar" type="text" placeholder="搜尋" />
+          </div>
           <div class="sun-an">
             <div class="sun sun-1"></div>
             <div class="sun sun-2"></div>
@@ -47,12 +50,14 @@ function BannerEffect() {
           </div>
         </div>
         <div class="hotel">
+          <div class="sun-an">
+            <div class="sun sun-1"></div>
+            <div class="sun sun-2"></div>
+            <div class="sun sun-3"></div>
+            <div class="sun sun-4"></div>
+            <div class="sun sun-5"></div>
+          </div>
           <div className="effect-text food-text text-center">FOOD</div>
-          <div class="sun sun-1"></div>
-          <div class="sun sun-2"></div>
-          <div class="sun sun-3"></div>
-          <div class="sun sun-4"></div>
-          <div class="sun sun-5"></div>
           <div class="landscape landscape-1"></div>
           <div class="landscape landscape-2"></div>
           <div class="landscape landscape-3"></div>
@@ -86,12 +91,14 @@ function BannerEffect() {
           </div>
         </div>
         <div class="food">
+          <div class="sun-an">
+            <div class="sun sun-1"></div>
+            <div class="sun sun-2"></div>
+            <div class="sun sun-3"></div>
+            <div class="sun sun-4"></div>
+            <div class="sun sun-5"></div>
+          </div>
           <div className="effect-text stay-text text-center">STAY</div>
-          <div class="sun sun-1"></div>
-          <div class="sun sun-2"></div>
-          <div class="sun sun-3"></div>
-          <div class="sun sun-4"></div>
-          <div class="sun sun-5"></div>
           <div class="landscape landscape-1"></div>
           <div class="landscape landscape-2"></div>
           <div class="landscape landscape-3"></div>
@@ -125,12 +132,14 @@ function BannerEffect() {
           </div>
         </div>
         <div class="ticket">
+          <div class="sun-an">
+            <div class="sun sun-1"></div>
+            <div class="sun sun-2"></div>
+            <div class="sun sun-3"></div>
+            <div class="sun sun-4"></div>
+            <div class="sun sun-5"></div>
+          </div>
           <div className="effect-text ticket-text text-center">TICKET</div>
-          <div class="sun sun-1"></div>
-          <div class="sun sun-2"></div>
-          <div class="sun sun-3"></div>
-          <div class="sun sun-4"></div>
-          <div class="sun sun-5"></div>
           <div class="landscape landscape-1"></div>
           <div class="landscape landscape-2"></div>
           <div class="landscape landscape-3"></div>
