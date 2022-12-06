@@ -21,8 +21,8 @@ function HotelCard({
                 type={v.roomtype}
                 quantity={v.quantity}
                 rate={v.rate}
-                checkin={v.checkintime}
-                checkout={v.checkouttime}
+                checkin={v.checkin}
+                checkout={v.checkout}
               />
             </div>
           </div>

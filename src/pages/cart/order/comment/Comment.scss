@@ -1,0 +1,14 @@
+.order-comment {
+  .modal-header {
+    border: none !important;
+  }
+  .modal-footer {
+    border: none !important;
+    display: flex;
+    justify-content: center;
+  }
+  textarea {
+    width: 100%;
+    resize: none;
+  }
+}

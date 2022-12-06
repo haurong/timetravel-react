@@ -1,25 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import OrdersTypesList from './components/OrdersTypesList';
 import './../styles/OrdersDetails.scss';
-import OrdersAccordion from './components/OrdersAccordion';
-function OrdersDetail() {
+import OrdersCard from './components/OrdersCard';
+import OrdersHistory from './components/OrdersHistory';
+import OrdersUndone from './components/OrdersUndone';
+function OrdersDetail({ ordersData, memberSid }) {
+  // console.log(memberSid);
+  const nowOrder = ordersData.filter((v, i) => {
+    return (
+      v.orders_status_sid === 1 &&
+      +new Date() - +new Date(v.orders_created_time) < 2592000000
+    );
+  });
+  const undoneOrder = ordersData.filter((v, i) => {
+    return v.orders_status_sid === 2;
+  });
+  const historyOrder = ordersData.filter((v, i) => {
+    return (
+      v.orders_status_sid === 1 &&
+      +new Date() - +new Date(v.orders_created_time) >= 2592000000
+    );
+  });
+  const [path, setPath] = useState('now');
+  // console.log(ordersData);
   return (
     <div className="container">
-      <OrdersTypesList />
-      <div className="orders-details-wrap row">
-        <ul className="orders-details-ul">
-          <li className="col text-center">
-            <p>訂單成立日期</p>
-          </li>
-          <li className="col text-center">
-            <p>訂單編號</p>
-          </li>
-          <li className="col text-center">
-            <p>訂單總價</p>
-          </li>
-        </ul>
-        <OrdersAccordion />
-      </div>
+      <OrdersTypesList path={path} setPath={setPath} />
+      {path === 'now' ? (
+        <OrdersCard ordersData={nowOrder} memberSid={memberSid} />
+      ) : (
+        ''
+      )}
+      {path === 'undone' ? (
+        <OrdersUndone ordersData={undoneOrder} memberSid={memberSid} />
+      ) : (
+        ''
+      )}
+      {path === 'history' ? (
+        <OrdersHistory ordersData={historyOrder} memberSid={memberSid} />
+      ) : (
+        ''
+      )}
     </div>
   );
 }

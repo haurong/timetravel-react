@@ -15,9 +15,7 @@ function FoodCard() {
               <CardTitle
                 text={'美食購買資訊'}
                 id={v.id}
-                deleteFun={() => {
-                  removeItem(v.id);
-                }}
+                deleteFun={() => removeItem(v.id)}
               />
               <div className="d-flex justify-content-between">
                 <CardBodyTop productName={v.name} />

@@ -5,10 +5,9 @@
 .CommentDetail{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    //TODO如何讓h1靠齊左側
+    margin-left: 120px;
     h1{
-        padding-right: 55vh;
-        padding-bottom: 50px;
+        padding-left: 10px;
+        padding-bottom: 10px;
     }
 }
