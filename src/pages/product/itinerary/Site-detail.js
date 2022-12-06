@@ -84,11 +84,19 @@ function SiteDetail() {
   }, [location]);
 
   const mySubmit = async () => {
+    // 判斷是否登入 如果沒登入
     if (localStorage.getItem('auth') === null) {
-      return Swal.fire({
+      return await Swal.fire({
         title: '請先登入',
-        confirmButtonText: '確認',
+        confirmButtonText: '立即登入',
         confirmButtonColor: '#59d8a1',
+        showCancelButton: true,
+        cancelButtonText: '返回頁面',
+        cancelButtonColor: '#D9D9D9',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location = '/logIn';
+        }
       });
     }
     let selOptions = {};
@@ -98,7 +106,6 @@ function SiteDetail() {
       j++;
     });
     const newOpt = { ...selOptions, newList: `建立行程` };
-    console.log(newOpt);
     const { value: selected } = await Swal.fire({
       title: '新增至哪個行程?',
       input: 'select',
@@ -153,7 +160,7 @@ function SiteDetail() {
             confirmButtonColor: '#59d8a1',
           });
         } else {
-          alert('註冊失敗');
+          console.log('error1');
         }
       }
     } else if (selected <= userData.length) {
@@ -181,7 +188,7 @@ function SiteDetail() {
           confirmButtonColor: '#59d8a1',
         });
       } else {
-        alert('註冊失敗');
+        console.log('error2');
       }
     }
   };
