@@ -1,14 +1,28 @@
 import React from 'react';
 import './bannerEffect.scss';
+import SearchIcon_white from '../../icon/search_white.svg';
 
 function BannerEffect() {
   return (
     <>
       <div class="BannerEffect">
         <div class="site">
-          <div className="site-seachbar">
-            <input className="banner-seachbar" type="text" placeholder="搜尋" />
+          <div className="hover-effect">
+            <form className="d-flex BannerEffect-flex" role="search">
+              <div className="input-group">
+                <span className="icon" id="basic-addon1">
+                  <img src={SearchIcon_white} alt="" />
+                </span>
+                <input
+                  className="form-control search-border me-4"
+                  type="search"
+                  placeholder="搜尋"
+                  aria-label="Search"
+                />
+              </div>
+            </form>
           </div>
+
           <div class="sun-an">
             <div class="sun sun-1"></div>
             <div class="sun sun-2"></div>
@@ -50,6 +64,19 @@ function BannerEffect() {
           </div>
         </div>
         <div class="hotel">
+          <form className="d-flex BannerEffect-flex" role="search">
+            <div className="input-group">
+              <span className="icon" id="basic-addon1">
+                <img src={SearchIcon_white} alt="" />
+              </span>
+              <input
+                className="form-control search-border me-4"
+                type="search"
+                placeholder="搜尋"
+                aria-label="Search"
+              />
+            </div>
+          </form>
           <div class="sun-an">
             <div class="sun sun-1"></div>
             <div class="sun sun-2"></div>
@@ -91,6 +118,19 @@ function BannerEffect() {
           </div>
         </div>
         <div class="food">
+          <form className="d-flex BannerEffect-flex" role="search">
+            <div className="input-group">
+              <span className="icon" id="basic-addon1">
+                <img src={SearchIcon_white} alt="" />
+              </span>
+              <input
+                className="form-control search-border me-4"
+                type="search"
+                placeholder="搜尋"
+                aria-label="Search"
+              />
+            </div>
+          </form>
           <div class="sun-an">
             <div class="sun sun-1"></div>
             <div class="sun sun-2"></div>
@@ -132,6 +172,19 @@ function BannerEffect() {
           </div>
         </div>
         <div class="ticket">
+          <form className="d-flex BannerEffect-flex" role="search">
+            <div className="input-group">
+              <span className="icon" id="basic-addon1">
+                <img src={SearchIcon_white} alt="" />
+              </span>
+              <input
+                className="form-control search-border me-4"
+                type="search"
+                placeholder="搜尋"
+                aria-label="Search"
+              />
+            </div>
+          </form>
           <div class="sun-an">
             <div class="sun sun-1"></div>
             <div class="sun sun-2"></div>
