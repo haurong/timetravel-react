@@ -28,8 +28,9 @@ function ItineraryDetail() {
         <Map />
       </div>
       <div id="iRecItems">
+        <h1>附近景點</h1>
         <IRecSite />
-        <IRecFood />
+        {/* <IRecFood /> */}
       </div>
       <Footer />
     </>
