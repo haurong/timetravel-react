@@ -1,9 +1,45 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
 import { Rate } from 'antd';
 import './style/Comment.scss';
 import moment from 'moment';
+import { useFoodContext } from '../food/FoodContext/FoodContext';
 function CommentCard({ rows }) {
+  const { commentData, setCommentData, commentSort } = useFoodContext();
   console.log(rows);
+
+  useEffect(() => {
+    // if (hotelCommentData.length !== 0) {
+    let tmp = commentData.map((v) => {
+      return { ...v };
+    });
+
+    // console.log('tmp', tmp);
+
+    if (commentSort === 'score_ASC') {
+      tmp = tmp.sort((a, b) => {
+        return a.score - b.score;
+      });
+      setCommentData(tmp);
+    } else if (commentSort === 'score_DESC') {
+      tmp = tmp.sort((a, b) => {
+        return b.score - a.score;
+      });
+      setCommentData(tmp);
+    } else if (commentSort === 'time_ASC') {
+      tmp = tmp.sort((a, b) => {
+        return Date.parse(a.create_time) - Date.parse(b.create_time);
+      });
+      setCommentData(tmp);
+    } else if (commentSort === 'time_DESC') {
+      tmp = tmp.sort((a, b) => {
+        return Date.parse(b.create_time) - Date.parse(a.create_time);
+      });
+      setCommentData(tmp);
+    }
+
+    //}
+  }, [commentSort]);
   return (
     <>
       {rows?.map((el) => {

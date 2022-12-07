@@ -28,8 +28,7 @@ function ProductList() {
   const [productData, setProductData] = useState([]);
   //呈現資料用
   const [productDisplay, setProductDisplay] = useState([]);
-  //搜尋關鍵字用
-  // const [searchWord, setSearchWord] = useState('');
+
   const location = useLocation();
   //篩選排序
   const { hotelSort } = useHotelContext();
