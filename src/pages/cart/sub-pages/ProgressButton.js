@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MakeOrder, LINE_PAY_API } from '../../../config';
-import { useCart } from '../utils/useCart';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { PlayCircleOutlineRounded } from '@mui/icons-material';
 function ProgressButton({
   prev,
   next,
@@ -16,8 +16,7 @@ function ProgressButton({
   paymentId,
   formData,
 }) {
-  const { orderId, setOrderId } = useCart();
-
+  const [payUrl, setPayUrl] = useState('');
   const mySubmit = async (e) => {
     const { data } = await axios.post(MakeOrder, formData);
     if (data.success) {
@@ -35,7 +34,8 @@ function ProgressButton({
   const uuid = 1670387472990;
   async function pay() {
     const response = await axios.get(LINE_PAY_API(uuid));
-    console.log(response.data);
+    console.log(response);
+    setPayUrl(response.data.payUrl);
   }
   return (
     <div className="d-flex justify-content-evenly mb-5">
@@ -68,6 +68,25 @@ function ProgressButton({
             className="btn btn-primary"
             onClick={() => {
               pay();
+              Swal.fire({
+                title: '即將跳往結帳頁面',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: ' 確定',
+                confirmButtonColor: '#59d8a1',
+                cancelButtonText: '取消',
+                cancelButtonColor: '#D9D9D9',
+                reverseButtons: true,
+              }).then((result) => {
+                if (result.isConfirmed) {
+                } else if (
+                  /* Read more about handling dismissals below */
+                  result.dismiss === Swal.DismissReason.cancel
+                ) {
+                  Swal.fire('取消', '稍後付款', 'error');
+                  return;
+                }
+              });
             }}
           >
             測試付款
