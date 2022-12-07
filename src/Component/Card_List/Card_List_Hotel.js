@@ -19,12 +19,10 @@ function Card_List() {
     setDisplayData,
     setPageTotal,
     perPage,
-    haveData,
-    setHaveData,
     pageNow,
     setPageNow,
   } = useHotelContext();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [like, setLike] = useState(false);
   const [likeList, setLikeList] = useState([]);
   const toggleLike1 = () => setLike(!like);
@@ -193,7 +191,7 @@ function Card_List() {
       setPageTotal(pageList.length);
       //紀錄分塊後的資料
       setDisplayData(pageList);
-      setHaveData(true);
+      // setHaveData(true);
     }
   };
 
@@ -252,7 +250,7 @@ function Card_List() {
                     onClick={() => {
                       let sid = Number(el.product_number.split('A')[1]);
                       // window.location.href = `stays/detail/${sid}`;
-           
+
                       navigate(`detail/${sid}`);
                     }}
                   >

@@ -106,7 +106,10 @@ function NavBar() {
                       </Dropdown.Item>
                       <Dropdown.Item
                         className="dropdown-user-item"
-                        href="/reset_password"
+                        // href="/reset_password"
+                        onClick={() => {
+                          navigate('/reset_password');
+                        }}
                       >
                         重設密碼
                       </Dropdown.Item>
