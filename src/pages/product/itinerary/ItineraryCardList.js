@@ -7,27 +7,62 @@ import Row from 'react-bootstrap/Row';
 
 import Trash from './../../../icon/Trash.svg';
 import Edit from './../../../icon/edit.svg';
-import { ITINERARY_DELLIST } from './site-config';
+import {
+  ITINERARY_DELLIST,
+  ITINERARY_LIST,
+  ITINERARY_LISTNEW,
+  SITE_IMG,
+} from './site-config';
 import { useItineraryContext } from './ItineraryContext';
+import { useLocation } from 'react-router-dom';
 
 function ItineraryCardList(rows) {
   const { iTData, setITData } = useItineraryContext();
-  // console.log(iTData);
-  // console.log(rows);
+  const [userData, setUserData] = useState([]);
+  const [img, setImg] = useState([]);
+  async function userDatas() {
+    if (localStorage.getItem('auth') !== null) {
+      const membersid = JSON.parse(localStorage.getItem('auth')).sid;
+      const response = await axios.get(ITINERARY_LIST + '/' + membersid);
+      setUserData(response.data);
+
+      // let a = [];
+      // for (let i = 0; i < iTData.length; i++) {
+      //   a.push({ ...iTData[i], img1: '1 (1).jpg' });
+      //   // a.push({ ...iTData[i], img1: img[i] });
+      // }
+      // console.log(a);
+      // setITData(a);
+    }
+  }
+  console.log(iTData);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    userDatas();
+  }, [location]);
 
   return (
     <Row xs={1} md={2} lg={3} className="g-4">
       {iTData[0] === undefined ? (
-        <h2>請加入行程</h2>
+        <h2 style={{ width: '100%' }}>您目前沒有規劃行程，請加入新行程</h2>
       ) : (
         iTData.map((el, i) => {
           return (
             <div className="CardList" key={el.sid}>
               <Card className="Card">
-                <Card.Img className="card-img" variant="top" src={''} />
+                <div style={{ overflow: 'hidden', height: '50%' }}>
+                  <Card.Img
+                    className="card-img"
+                    variant="top"
+                    // src={SITE_IMG + '/' + '0.png'}
+                    src={SITE_IMG + '/' + el.img1.split(',')[0]}
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
                 <Card.Body className="d-flex flex-column justify-content-between">
                   <div className=" card-margin0">
-                    <Card.Title>{el.name}</Card.Title>
                     <Link to={'/itinerary/' + el.list_number}>
                       <h2>{el.list_name}</h2>
                     </Link>
@@ -56,10 +91,10 @@ function ItineraryCardList(rows) {
                       className="icon"
                       onClick={async () => {
                         //資料庫刪除
-                        const sid = el.sid;
+                        const listNumber = el.list_number;
                         const { del } = await axios.delete(
-                          ITINERARY_DELLIST + sid,
-                          { sid: sid }
+                          ITINERARY_DELLIST + listNumber,
+                          { listNumber: listNumber }
                         );
                         console.log(123);
                         //前端刪除

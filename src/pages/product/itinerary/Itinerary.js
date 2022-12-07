@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-import { ITINERARY_LIST, ITINERARY_ADDLIST } from './site-config';
+import { ITINERARY_LIST, ITINERARY_ADDLIST, SITE_IMG } from './site-config';
 import { useItineraryContext } from './ItineraryContext';
 import Swal from 'sweetalert2';
 import { v4 as uuidv4 } from 'uuid';
@@ -55,6 +55,14 @@ function Itinerary() {
       day: 1,
       status: 1,
     });
+    iTData.push({
+      member_sid: membersid,
+      list_number: listNumber,
+      list_name: listname,
+      // day: 1,
+      status: 1,
+    });
+    setITData(iTData);
     if (data.success) {
       Swal.fire({
         icon: 'success',
@@ -65,7 +73,7 @@ function Itinerary() {
     } else {
       console.log('error1');
     }
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (
