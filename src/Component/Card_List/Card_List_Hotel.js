@@ -7,6 +7,7 @@ import Heart from '../../icon/heart_gray.svg';
 import PinkHeart from '../../icon/heart.svg';
 import { Location } from 'react-router-dom';
 import { useHotelContext } from '../../pages/product/stays/Context/HotelContext';
+import { useNavigate } from 'react-router-dom';
 import _ from 'lodash';
 import './Card_List.scss';
 
@@ -23,7 +24,7 @@ function Card_List() {
     pageNow,
     setPageNow,
   } = useHotelContext();
-
+  const navigate = useNavigate()
   const [like, setLike] = useState(false);
   const [likeList, setLikeList] = useState([]);
   const toggleLike1 = () => setLike(!like);
@@ -226,7 +227,8 @@ function Card_List() {
                   style={{ cursor: 'pointer' }}
                   onClick={() => {
                     let sid = Number(el.product_number.split('A')[1]);
-                    window.location.href = `stays/detail/${sid}`;
+                    // window.location.href = `stays/detail/${sid}`;
+                    navigate(`detail/${sid}`);
                   }}
                 />
                 <button
@@ -249,7 +251,9 @@ function Card_List() {
                     style={{ cursor: 'pointer' }}
                     onClick={() => {
                       let sid = Number(el.product_number.split('A')[1]);
-                      window.location.href = `stays/detail/${sid}`;
+                      // window.location.href = `stays/detail/${sid}`;
+           
+                      navigate(`detail/${sid}`);
                     }}
                   >
                     {el.product_name}

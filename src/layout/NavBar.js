@@ -6,6 +6,8 @@ import { NavLink, useLocation } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Logo from '../icon/logo/logo.svg';
 import SearchIcon from '../icon/search.svg';
+import { userImg } from '../config';
+import { useNavigate } from 'react-router-dom';
 
 import AuthContext from '../pages/member/context/AuthContext';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -15,6 +17,7 @@ import CartIcon from './CartIcon';
 import { useAllContext } from '../pages/AllContext/AllContext';
 function NavBar() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { myAuth, logout } = useContext(AuthContext);
   const { searchWord, setSearchWord } = useAllContext();
   return (
@@ -74,7 +77,14 @@ function NavBar() {
             </form> */}
             <div>
               {myAuth.authorised ? (
-                <>
+                <div className="d-flex navbarUserPic">
+                  <div
+                    className="userIcon"
+                    style={{
+                      background: `url(${userImg}${myAuth.member_img}) no-repeat center center`,
+                      backgroundSize: 'cover',
+                    }}
+                  ></div>
                   <Dropdown>
                     <Dropdown.Toggle
                       className="nav-link login-user-text"
@@ -87,7 +97,10 @@ function NavBar() {
                     <Dropdown.Menu>
                       <Dropdown.Item
                         className="dropdown-user-item"
-                        href="/profile"
+                        // href="/profile"
+                        onClick={() => {
+                          navigate('/profile');
+                        }}
                       >
                         修改個人資料
                       </Dropdown.Item>
@@ -99,31 +112,46 @@ function NavBar() {
                       </Dropdown.Item>
                       <Dropdown.Item
                         className="dropdown-user-item"
-                        href="/orders"
+                        // href="/orders"
+                        onClick={() => {
+                          navigate('/orders');
+                        }}
                       >
                         訂單記錄
                       </Dropdown.Item>
                       <Dropdown.Item
                         className="dropdown-user-item"
-                        href="/itinerary"
+                        // href="/itinerary"
+                        onClick={() => {
+                          navigate('/itinerary');
+                        }}
                       >
                         我的行程規劃
                       </Dropdown.Item>
                       <Dropdown.Item
                         className="dropdown-user-item"
-                        href="/ticket_qrcode"
+                        // href="/ticket_qrcode"
+                        onClick={() => {
+                          navigate('/ticket_qrcode');
+                        }}
                       >
                         我的票夾
                       </Dropdown.Item>
                       <Dropdown.Item
                         className="dropdown-user-item"
-                        href="/comment"
+                        // href="/comment"
+                        onClick={() => {
+                          navigate('/comment');
+                        }}
                       >
                         我的評論
                       </Dropdown.Item>
                       <Dropdown.Item
                         className="dropdown-user-item"
-                        href="/collect"
+                        // href="/collect"
+                        onClick={() => {
+                          navigate('/collect');
+                        }}
                       >
                         我的收藏
                       </Dropdown.Item>
@@ -139,7 +167,7 @@ function NavBar() {
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
-                </>
+                </div>
               ) : (
                 <>
                   <button type="button" className="btn">

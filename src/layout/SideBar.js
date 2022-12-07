@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import '../global.scss';
 import './SideBar.scss';
 import AuthContext from '../pages/member/context/AuthContext';
+import { userImg } from '../config';
 
 function SideBar() {
   const { myAuth } = useContext(AuthContext);
@@ -11,7 +12,13 @@ function SideBar() {
     <>
       <div className="sideBar_card col-3">
         <div className="sideBar_member">
-          <div className="sideBar_img"></div>
+          <div
+            className="sideBar_img"
+            style={{
+              background: `url(${userImg}${myAuth.member_img}) no-repeat center center`,
+              backgroundSize: 'cover',
+            }}
+          ></div>
           {/* <img className="sideBar_img" src="" /> */}
           <h2 className="sideBar_h2">{myAuth.email}</h2>
         </div>
