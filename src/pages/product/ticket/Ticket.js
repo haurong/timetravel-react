@@ -31,15 +31,21 @@ function Ticket() {
     rowsAll: [],
   });
 
-  const { ticketAllData, setTicketAllData, setTicketSortData, setDisplayData } =
-    useTicketContext();
+  const {
+    ticketAllData,
+    setTicketAllData,
+    setTicketSortData,
+    setDisplayData,
+    perPage,
+    setPageTotal,
+  } = useTicketContext();
 
   const location = useLocation();
-  // const usp = new URLSearchParams(location.search);
-
+  const usp = new URLSearchParams(location.search);
+  const path = window.location.pathname.split('/');
   async function getList() {
-    // const response = await axios.get(TICKET_LIST + `?` + usp.toString());
-    const response = await axios.get(TICKET_LIST);
+    const response = await axios.get(TICKET_LIST + `?` + usp.toString());
+    // const response = await axios.get(TICKET_LIST);
     // console.log(response.data);
     setTicketAllData(response.data);
     setTicketData(response.data);
