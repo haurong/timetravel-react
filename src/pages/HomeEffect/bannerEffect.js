@@ -22,7 +22,6 @@ function BannerEffect() {
               </div>
             </form>
           </div>
-
           <div class="sun-an">
             <div class="sun sun-1"></div>
             <div class="sun sun-2"></div>
@@ -64,19 +63,21 @@ function BannerEffect() {
           </div>
         </div>
         <div class="hotel">
-          <form className="d-flex BannerEffect-flex" role="search">
-            <div className="input-group">
-              <span className="icon" id="basic-addon1">
-                <img src={SearchIcon_white} alt="" />
-              </span>
-              <input
-                className="form-control search-border me-4"
-                type="search"
-                placeholder="搜尋"
-                aria-label="Search"
-              />
-            </div>
-          </form>
+          <div className="hover-effect">
+            <form className="d-flex BannerEffect-flex" role="search">
+              <div className="input-group">
+                <span className="icon" id="basic-addon1">
+                  <img src={SearchIcon_white} alt="" />
+                </span>
+                <input
+                  className="form-control search-border me-4"
+                  type="search"
+                  placeholder="搜尋"
+                  aria-label="Search"
+                />
+              </div>
+            </form>
+          </div>
           <div class="sun-an">
             <div class="sun sun-1"></div>
             <div class="sun sun-2"></div>
@@ -118,19 +119,21 @@ function BannerEffect() {
           </div>
         </div>
         <div class="food">
-          <form className="d-flex BannerEffect-flex" role="search">
-            <div className="input-group">
-              <span className="icon" id="basic-addon1">
-                <img src={SearchIcon_white} alt="" />
-              </span>
-              <input
-                className="form-control search-border me-4"
-                type="search"
-                placeholder="搜尋"
-                aria-label="Search"
-              />
-            </div>
-          </form>
+          <div className="hover-effect">
+            <form className="d-flex BannerEffect-flex" role="search">
+              <div className="input-group">
+                <span className="icon" id="basic-addon1">
+                  <img src={SearchIcon_white} alt="" />
+                </span>
+                <input
+                  className="form-control search-border me-4"
+                  type="search"
+                  placeholder="搜尋"
+                  aria-label="Search"
+                />
+              </div>
+            </form>
+          </div>
           <div class="sun-an">
             <div class="sun sun-1"></div>
             <div class="sun sun-2"></div>
@@ -172,19 +175,21 @@ function BannerEffect() {
           </div>
         </div>
         <div class="ticket">
-          <form className="d-flex BannerEffect-flex" role="search">
-            <div className="input-group">
-              <span className="icon" id="basic-addon1">
-                <img src={SearchIcon_white} alt="" />
-              </span>
-              <input
-                className="form-control search-border me-4"
-                type="search"
-                placeholder="搜尋"
-                aria-label="Search"
-              />
-            </div>
-          </form>
+          <div className="hover-effect">
+            <form className="d-flex BannerEffect-flex" role="search">
+              <div className="input-group">
+                <span className="icon" id="basic-addon1">
+                  <img src={SearchIcon_white} alt="" />
+                </span>
+                <input
+                  className="form-control search-border me-4"
+                  type="search"
+                  placeholder="搜尋"
+                  aria-label="Search"
+                />
+              </div>
+            </form>
+          </div>
           <div class="sun-an">
             <div class="sun sun-1"></div>
             <div class="sun sun-2"></div>

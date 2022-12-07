@@ -7,11 +7,11 @@
     background-color: #f7f7f7;
   }
   .hover-effect{
-    opacity: 0;
     .BannerEffect-flex{
       position: absolute;
+      top: 81%;
       left: 50%;
-      z-index: 1;
+      z-index: 5;
       transform: translate(-50%, 0%);
       .input-group{
         border-bottom: 2px solid #FFF;
@@ -34,20 +34,17 @@
       }
     }
   }
-  
-  .hover-effect:hover{
-    opacity: 1;
-    animation: hover 5s ease-in-out infinite alternate;
-    @keyframes hover {
-      0%{
-        transform: translateY(600px);
-      }
-      100%{
-        transform: translateY(400px);
-      }
-    }
-    
-  }
+  // .hover-effect:hover{
+  //   animation: hover 5s ease-in-out infinite alternate;
+  // @keyframes hover {
+  //   0%{
+  //     transform: translateY(800px);
+  //   }
+  //   100%{
+  //     transform: translateY(400px);
+  //   }
+  // }
+  // }
   .site {
     width: 25%;
     height: 100vh;
