@@ -32,12 +32,11 @@ function ProgressButton({
       });
     }
   };
-  const payForm = { uuid: 1670346171015 };
-  const pay = async (e) => {
-    const { data } = await axios.post(LINE_PAY_API, payForm);
-    console.log(data);
-  };
-
+  const uuid = 1670387472990;
+  async function pay() {
+    const response = await axios.get(LINE_PAY_API(uuid));
+    console.log(response.data);
+  }
   return (
     <div className="d-flex justify-content-evenly mb-5">
       {step === 1 ? (
@@ -58,12 +57,20 @@ function ProgressButton({
             type="submit"
             className="btn btn-primary"
             onClick={() => {
-              // mySubmit();
-              setOrderId(formData.order.uuid);
-              pay();
+              mySubmit();
+              // setOrderId(formData.order.uuid);
             }}
           >
             確認結帳
+          </button>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={() => {
+              pay();
+            }}
+          >
+            測試付款
           </button>
         </>
       )}

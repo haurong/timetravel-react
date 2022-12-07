@@ -108,6 +108,7 @@ function CartPayment({
           hotelMobile={hotelMobile}
           formData={formData}
           payMethod={payMethod}
+          uuid={uuid}
         />
       </div>
     </div>
