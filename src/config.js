@@ -51,6 +51,15 @@ export const ORDER_DETAILS_FOOD_API = function (uuid) {
 export const ORDER_DETAILS_HOTEL_API = function (uuid) {
   return `${MY_HOST}/orders/api/list/hotellist/${uuid}`;
 };
+export const ORDER_DETAILS_TICKET_API = function (uuid) {
+  return `${MY_HOST}/orders/api/list/ticketlist/${uuid}`;
+};
+
+//結帳流程
+//獲取指定訂單編號的資料
+export const LINE_PAY_API = function (uuid) {
+  return `${MY_HOST}/pay/api/paylist/${uuid}`;
+};
 
 //輸入評論路徑
 export const SUBMIT_COMMENT_API = `${MY_HOST}/comment/api/submit-comment-api`;

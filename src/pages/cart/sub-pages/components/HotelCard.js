@@ -13,7 +13,7 @@ function HotelCard({
     <>
       {items.map((v, i) => {
         return (
-          <div className="card-wrap" key={v.id}>
+          <div className="card-wrap" key={v.name}>
             <div className="card-body">
               <HotelCardDetail
                 name={v.name}

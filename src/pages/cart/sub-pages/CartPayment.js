@@ -1,7 +1,13 @@
 import PaymentCard from './components/PaymentCard';
 import ProgressButton from './ProgressButton';
-import { useFoodCart, useHotelCart, useTicketCart } from '../utils/useCart';
+import {
+  useFoodCart,
+  useHotelCart,
+  useTicketCart,
+  useCart,
+} from '../utils/useCart';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 function CartPayment({
   prev,
   next,
@@ -18,11 +24,14 @@ function CartPayment({
   paymentId,
   setPaymentId,
 }) {
+  const { setOrderId } = useCart();
+  const [payMethod, setPayMethod] = useState('');
   //取的存在localstorga的會員sid
   const member = JSON.parse(localStorage.getItem('auth'));
   // console.log(member.sid);
   //用毫秒當作訂單的uuid
   const uuid = +new Date();
+
   //計算訂單的總價格
   const totalPrice =
     useHotelCart().cart.cartTotal +
@@ -48,13 +57,14 @@ function CartPayment({
     uuid: uuid,
     orders_total_price: totalPrice,
   };
-
+  // setOrderId(order.uuid);
   const formData = {
     order: order,
     food: newFood,
     hotel: newHotel,
     ticket: newTicket,
   };
+
   // console.log(newFood);
   // console.log(newHotel);
   // console.log(newTicket);
@@ -76,6 +86,15 @@ function CartPayment({
         />
       </div>
       <div>
+        <button
+          onClick={() => {
+            setPayMethod('linePay');
+          }}
+        >
+          LinePay
+        </button>
+      </div>
+      <div>
         <ProgressButton
           prev={prev}
           next={next}
@@ -88,6 +107,8 @@ function CartPayment({
           hotelRepresent={hotelRepresent}
           hotelMobile={hotelMobile}
           formData={formData}
+          payMethod={payMethod}
+          uuid={uuid}
         />
       </div>
     </div>

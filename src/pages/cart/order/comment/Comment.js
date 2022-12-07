@@ -25,13 +25,6 @@ function Comment({
     product_number: productNumber,
     userID: memberSid,
   });
-  const swalWithBootstrapButtons = Swal.mixin({
-    customClass: {
-      confirmButton: 'btn btn-success',
-      cancelButton: 'btn btn-danger',
-    },
-    buttonsStyling: false,
-  });
 
   useEffect(() => {
     const newForm = { ...formData, score: score, commit_text: textInput };
@@ -46,14 +39,10 @@ function Comment({
     const { data } = await axios.post(SUBMIT_COMMENT_API, formData);
     await axios.put(CHANGE_COMMENTED_API, formData);
     if (data.success) {
-      swalWithBootstrapButtons.fire('評論成功', '感謝您的評論', 'success');
+      Swal.fire('評論成功', '感謝您的評論', 'success');
       setCommentButton(1);
     } else {
-      swalWithBootstrapButtons.fire(
-        '喔喔，可能有哪裡出錯了！',
-        '您的評論並未成功送出',
-        'error'
-      );
+      Swal.fire('喔喔，可能有哪裡出錯了！', '您的評論並未成功送出', 'error');
     }
   };
 
@@ -95,31 +84,27 @@ function Comment({
           <Button
             onClick={() => {
               // console.log(formData);
-              swalWithBootstrapButtons
-                .fire({
-                  title: '確定要送出評論嗎？',
-                  icon: 'warning',
-                  showCancelButton: true,
-                  confirmButtonText: ' 確定',
-                  cancelButtonText: '取消',
-                  reverseButtons: true,
-                })
-                .then((result) => {
-                  if (result.isConfirmed) {
-                    console.log(formData);
-                    mySubmit();
-                  } else if (
-                    /* Read more about handling dismissals below */
-                    result.dismiss === Swal.DismissReason.cancel
-                  ) {
-                    swalWithBootstrapButtons.fire(
-                      '取消',
-                      '您的評論並未送出',
-                      'error'
-                    );
-                    return;
-                  }
-                });
+              Swal.fire({
+                title: '確定要送出評論嗎？',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: ' 確定',
+                confirmButtonColor: '#59d8a1',
+                cancelButtonText: '取消',
+                cancelButtonColor: '#D9D9D9',
+                reverseButtons: true,
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  console.log(formData);
+                  mySubmit();
+                } else if (
+                  /* Read more about handling dismissals below */
+                  result.dismiss === Swal.DismissReason.cancel
+                ) {
+                  Swal.fire('取消', '您的評論並未送出', 'error');
+                  return;
+                }
+              });
               // console.log(formData);
               onHide();
             }}

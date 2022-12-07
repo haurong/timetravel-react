@@ -18,7 +18,7 @@ function PriceDetailCard({ title, items, total }) {
           <div>
             {items.map((v, i) => {
               return (
-                <div key={v.id}>
+                <div key={v.name}>
                   <div className="d-flex justify-content-evenly">
                     <p>{v.name}</p>
                     <p>{`$${v.price}`}</p>
