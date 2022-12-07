@@ -63,6 +63,16 @@ export const TicketContextProvider = ({ children }) => {
 
   const [displayData, setDisplayData] = useState([]);
 
+  //分頁
+  //當前分頁最小為1,最大看資料計算最大頁數
+  const [pageNow, setPageNow] = useState(1);
+
+  //總共多少頁。在資料進入後(didMount)後需要計算出後才決定
+  const [pageTotal, setPageTotal] = useState(0);
+
+  //每頁多少筆資料
+  const perPage = 12;
+
   return (
     <TicketContext.Provider
       value={{
@@ -98,6 +108,11 @@ export const TicketContextProvider = ({ children }) => {
         setTicketSortData,
         displayData,
         setDisplayData,
+        pageNow,
+        setPageNow,
+        pageTotal,
+        setPageTotal,
+        perPage,
       }}
     >
       {children}
