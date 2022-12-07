@@ -26,6 +26,7 @@ export const FOOD_COMMIT = `${MY_HOST}/food/commit`;
 export const FOOD_ORDER_DETAIL = `${MY_HOST}/orders/api/list/foodlist/`;
 
 export const PRODUCT_LIST = `${MY_HOST}/productAll/api`;
+
 //新增member24得收藏資料
 //移除member24得收藏資料
 

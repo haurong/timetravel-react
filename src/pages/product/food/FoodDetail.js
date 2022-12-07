@@ -8,7 +8,7 @@ import { FOOD_COMMIT } from '../../../config.js';
 import { useFoodCart } from '../../cart/utils/useCart';
 import FoodMap from './FoodMap';
 import Comment from './Comment';
-import CommentSelect from './CommentSelect';
+import CommentSelector from './CommentSelector';
 import FoodBookingBar from './FoodBookingBar';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
@@ -20,7 +20,6 @@ import Heart from '../../../icon/heart_gray.svg';
 import PinkHeart from '../../../icon/heart.svg';
 import Calendar from '../../../icon/calendar+add.svg';
 import ActiveCalendar from '../../../icon/calendar+greenadd.svg';
-
 import Map_icon from '../../../icon/map_blue.svg';
 import Food_icon from '../../../icon/food_blue.svg';
 import Phone_icon from '../../../icon/iphone.svg';
@@ -45,6 +44,8 @@ function FoodDetail() {
     setLike,
     add,
     setAdd,
+    commentSort,
+    setCommentSort
   } = useFoodContext();
 
   const foodObj = {
@@ -344,7 +345,7 @@ function FoodDetail() {
                 >
                   旅客評價
                 </h2>
-                <CommentSelect />
+                <CommentSelector />
               </div>
               <Comment rows={commentData} className="commit" />
             </div>

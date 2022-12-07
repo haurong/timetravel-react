@@ -4,11 +4,13 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
 import _, { set } from 'lodash';
+import { ADD_COLLECT } from '../../config.js';
+
 // import SearchBar from '../product/food/SearchBar';
 import { PRODUCT_LIST } from '../../config';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
-import { FOOD_IMG } from '../../config';
+import { MY_HOST } from '../../config';
 import Map from '../../icon/map.svg';
 import Heart from '../../icon/heart_gray.svg';
 import PinkHeart from '../../icon/heart.svg';
@@ -38,7 +40,7 @@ function ProductList() {
 
   // const [like, setLike] = useState(false);
 
-  const [collect, setCollect] = useState(0);
+  const [collect, setCollect] = useState(productData.collect);
 
   async function getData() {
     const response = await axios.get(PRODUCT_LIST);
@@ -52,8 +54,7 @@ function ProductList() {
     getData();
   }, []);
 
-
-  //處理分頁資料
+  // //處理分頁資料
   function getAllListData(v, perPage) {
     const pageList = _.chunk(v, perPage);
     console.log('pageList:', pageList[0]);
@@ -71,10 +72,8 @@ function ProductList() {
     getAllListData(productDisplay, perPage);
   }, [productData]);
 
-
-  //處理過濾的函式
+  // //處理過濾的函式
   const handleSearch = (productData, searchWord) => {
-
     //解構原始資料出來做操作
     let newAllData = [...productData];
     console.log(newAllData);
@@ -93,29 +92,17 @@ function ProductList() {
     return newAllData;
   };
 
-  //TODO:待修改
-  //監聽searchWord，使用者輸入searchWord後改變欲顯示的資料
+  // //監聽searchWord，使用者輸入searchWord後改變欲顯示的資料
   useEffect(() => {
-    if (searchWord.length < 1) return;
+    if (searchWord.length < 2) return;
 
     let newAllData = [];
 
     newAllData = handleSearch(productData, searchWord);
-    //setProductDisplay(newAllData);
 
-    //getData(newAllData, perPage);
     //呼叫getAllListData搜尋完的資料再去做一次分頁處理
-    // getAllListData(newAllData, perPage);
+    getAllListData(newAllData, perPage);
   }, [searchWord]);
-
-
-
-  // useEffect(() => {
-  //   // console.log('123', productData);
-  //   getAllListData(productDisplay, perPage);
-  //   // console.log(2);
-  // }, [productData]);
-  // //處理過濾的函式
 
   const paginationBar = (
     <ul className="pagination d-flex">
@@ -177,7 +164,7 @@ function ProductList() {
 
   const display = (
     <Row xs={1} lg={4} className="d-flex justify-content-start flex-wrap">
-      {productDisplay[0].length > 0
+      {haveData && productDisplay[pageNow - 1].length > 0
         ? productDisplay[pageNow - 1].map((v, i) => {
             return (
               <Card
@@ -185,13 +172,106 @@ function ProductList() {
                 style={{ width: '20rem' }}
                 key={i}
                 onClick={() => {
-                  console.log(v.sid);
+                  // console.log(v.sid);
+                }}
+              >
+                <div style={{ overflow: 'hidden' }}>
+                  <Card.Img
+                    variant="top"
+                    className="foodCardImg1"
+                    src={MY_HOST + `/uploads` + v.photo}
+                  />
+                </div>
+                <Card.Body>
+                  <Link to="detail">
+                    <Card.Title className="Card_Title">
+                      {v.product_name}
+                    </Card.Title>
+                  </Link>
+                  <Card.Text className="Card_Text">
+                    <Card.Img src={Map} className="Map_icon" />
+                    <span className="Card_Score">
+                      {v.city_name} | {v.area_name}
+                    </span>
+                  </Card.Text>
+                  <div className="d-flex PriceAndCollect">
+                    <div>
+                      <button
+                        className="Heart_btn"
+                        onClick={async function handleLike() {
+                          const member_sid = JSON.parse(
+                            localStorage.getItem('auth')
+                          ).sid;
+                          const product_sid = v.sid;
+                          const { data } = await axios.post(ADD_COLLECT, {
+                            member_sid: member_sid,
+                            product_sid: product_sid,
+                          });
+                          //選告newItem(新的物件)
+                          const newItem = {
+                            ...v,
+                            product_sid: v.product_sid ? null : product_sid,
+                          };
+                          //深拷貝要顯示的資料
+                          const newPagesArray = JSON.parse(
+                            JSON.stringify(productDisplay)
+                          );
+
+                          console.log(newPagesArray[pageNow - 1][i], newItem);
+                          //要知道現在使用者點到的是第幾個，用i當作索引值
+                          newPagesArray[pageNow - 1][i] = newItem;
+                          //再設定回拷貝出來的資料
+                          setProductDisplay(newPagesArray);
+
+                          // console.log(like);
+                          console.log({ data });
+
+                          // if (v.product_sid.length.indexOf === -1) {
+                          //   const member_sid = JSON.parse(
+                          //     localStorage.getItem('auth')
+                          //   ).sid;
+                          //   const product_sid = v.sid;
+
+                          //   const {data}=await axios.delete(DEL_COLLECT,{
+                          //     member_sid:member_sid,
+
+                          //   })
+
+                          // }
+                        }}
+                      >
+                        <img
+                          src={v.product_sid === v.sid ? PinkHeart : Heart}
+                          style={{ width: '25px', height: '25px' }}
+                          alt=""
+                        />
+                        <span>{v.collect}</span>
+                      </button>
+                    </div>
+                    <div>
+                      <h2 variant="primary" className="Card_Price">
+                        {v.price !== 0 ? `NT${v.price}` : null}
+                      </h2>
+                    </div>
+                  </div>
+                </Card.Body>
+              </Card>
+            );
+          })
+        : productDisplay.map((v, i) => {
+            return (
+              <Card
+                className="MyCard col-3"
+                style={{ width: '20rem' }}
+                key={i}
+                onClick={() => {
+                  console.log(v.product_number);
                 }}
               >
                 <Card.Img
                   variant="top"
                   className="foodCardImg1"
-                  src={`${FOOD_IMG}${v.photo}`}
+                  src={`${MY_HOST}/uploads/${v.photo}`}
                 />
                 <Card.Body>
                   <Card.Title className="Card_Title">
@@ -205,16 +285,12 @@ function ProductList() {
                   </Card.Text>
                   <div className="d-flex PriceAndCollect">
                     <div>
-                      <button
-                        className="Heart_btn"
-                        onClick={() => setCollect(collect + 1)}
-                      >
+                      <button className="Heart_btn">
                         <img
                           src={true ? PinkHeart : Heart}
                           style={{ width: '25px', height: '25px' }}
                           alt=""
                         />
-
                         <span>{v.collect}</span>
                       </button>
                     </div>
@@ -227,113 +303,9 @@ function ProductList() {
                 </Card.Body>
               </Card>
             );
-          })
-        : ''}
+          })}
     </Row>
   );
-
-  // const display1 = (
-  //   <Row xs={1} lg={4} className="d-flex justify-content-start flex-wrap">
-  //     {pageTotal > 0
-  //       ? productDisplay[pageNow - 1].map((v, i) => {
-  //           return (
-  //             <Card
-  //               className="MyCard col-3"
-  //               style={{ width: '20rem' }}
-  //               key={i}
-  //               onClick={() => {
-  //                 console.log(v.sid);
-  //               }}
-  //             >
-  //               <Card.Img
-  //                 variant="top"
-  //                 className="foodCardImg1"
-  //                 src={`${FOOD_IMG}${v.photo}`}
-  //               />
-  //               <Card.Body>
-  //                 <Card.Title className="Card_Title">
-  //                   {v.product_name}
-  //                 </Card.Title>
-  //                 <Card.Text className="Card_Text">
-  //                   <Card.Img src={Map} className="Map_icon" />
-  //                   <span class="Card_Score">
-  //                     {v.city_name} | {v.area_name}
-  //                   </span>
-  //                 </Card.Text>
-  //                 <div className="d-flex PriceAndCollect">
-  //                   <div>
-  //                     <button
-  //                       className="Heart_btn"
-  //                       onClick={setCollect(collect + 1)}
-  //                     >
-  //                       <img
-  //                         src={true ? PinkHeart : Heart}
-  //                         style={{ width: '25px', height: '25px' }}
-  //                         alt=""
-  //                       />
-
-  //                       <span>{v.collect}</span>
-  //                     </button>
-  //                   </div>
-  //                   <div>
-  //                     <h2 variant="primary" className="Card_Price">
-  //                       NT${v.price}
-  //                     </h2>
-  //                   </div>
-  //                 </div>
-  //               </Card.Body>
-  //             </Card>
-  //           );
-  //         })
-  //       : productDisplay.map((v, i) => {
-  //           return (
-  //             <Card
-  //               className="MyCard col-3"
-  //               style={{ width: '20rem' }}
-  //               key={i}
-  //               onClick={() => {
-  //                 console.log(v.product_number);
-  //               }}
-  //             >
-  //               <Card.Img
-  //                 variant="top"
-  //                 className="foodCardImg1"
-  //                 src={`${FOOD_IMG}${v.product_photo}`}
-  //               />
-  //               <Card.Body>
-  //                 <Card.Title className="Card_Title">
-  //                   {v.product_name}
-  //                 </Card.Title>
-  //                 <Card.Text className="Card_Text">
-  //                   <Card.Img src={Map} className="Map_icon" />
-  //                   <span class="Card_Score">
-  //                     {v.city_name} | {v.area_name}
-  //                   </span>
-  //                 </Card.Text>
-  //                 <div className="d-flex PriceAndCollect">
-  //                   <div>
-  //                     <button className="Heart_btn">
-  //                       <img
-  //                         src={like ? PinkHeart : Heart}
-  //                         style={{ width: '25px', height: '25px' }}
-  //                         alt=""
-  //                       />
-  //                       <span>{v.collect}</span>
-  //                     </button>
-  //                   </div>
-  //                   <div>
-  //                     <h2 variant="primary" className="Card_Price">
-  //                       NT${v.p_selling_price}
-  //                     </h2>
-  //                   </div>
-  //                 </div>
-  //               </Card.Body>
-  //             </Card>
-  //           );
-  //         })}
-  //   </Row>
-  // );
-
   return (
     <>
       <NavBar />
@@ -351,109 +323,6 @@ function ProductList() {
             }}
           >
             {display}
-            {/* <Row
-              xs={1}
-              lg={4}
-              className="d-flex justify-content-start flex-wrap"
-            >
-              {haveData
-                ? productDisplay[pageNow - 1].map((v, i) => {
-                    return (
-                      <Card
-                        className="MyCard col-3"
-                        style={{ width: '20rem' }}
-                        key={i}
-                        onClick={() => {
-                          console.log(v.sid);
-                        }}
-                      >
-                        <Card.Img
-                          variant="top"
-                          className="foodCardImg1"
-                          src={`${FOOD_IMG}${v.photo}`}
-                        />
-                        <Card.Body>
-                          <Card.Title className="Card_Title">
-                            {v.product_name}
-                          </Card.Title>
-                          <Card.Text className="Card_Text">
-                            <Card.Img src={Map} className="Map_icon" />
-                            <span class="Card_Score">
-                              {v.city_name} | {v.area_name}
-                            </span>
-                          </Card.Text>
-                          <div className="d-flex PriceAndCollect">
-                            <div>
-                              <button
-                                className="Heart_btn"
-                                onClick={setCollect(collect + 1)}
-                              >
-                                <img
-                                  src={true ? PinkHeart : Heart}
-                                  style={{ width: '25px', height: '25px' }}
-                                  alt=""
-                                />
-
-                                <span>{v.collect}</span>
-                              </button>
-                            </div>
-                            <div>
-                              <h2 variant="primary" className="Card_Price">
-                                NT${v.price}
-                              </h2>
-                            </div>
-                          </div>
-                        </Card.Body>
-                      </Card>
-                    );
-                  })
-                : productDisplay.map((v, i) => {
-                    return (
-                      <Card
-                        className="MyCard col-3"
-                        style={{ width: '20rem' }}
-                        key={i}
-                        onClick={() => {
-                          console.log(v.product_number);
-                        }}
-                      >
-                        <Card.Img
-                          variant="top"
-                          className="foodCardImg1"
-                          src={`${FOOD_IMG}${v.product_photo}`}
-                        />
-                        <Card.Body>
-                          <Card.Title className="Card_Title">
-                            {v.product_name}
-                          </Card.Title>
-                          <Card.Text className="Card_Text">
-                            <Card.Img src={Map} className="Map_icon" />
-                            <span class="Card_Score">
-                              {v.city_name} | {v.area_name}
-                            </span>
-                          </Card.Text>
-                          <div className="d-flex PriceAndCollect">
-                            <div>
-                              <button className="Heart_btn">
-                                <img
-                                  src={like ? PinkHeart : Heart}
-                                  style={{ width: '25px', height: '25px' }}
-                                  alt=""
-                                />
-                                <span>{v.collect}</span>
-                              </button>
-                            </div>
-                            <div>
-                              <h2 variant="primary" className="Card_Price">
-                                NT${v.p_selling_price}
-                              </h2>
-                            </div>
-                          </div>
-                        </Card.Body>
-                      </Card>
-                    );
-                  })}
-            </Row> */}
           </div>
         </div>
       </div>
