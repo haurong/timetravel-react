@@ -1,7 +1,8 @@
 import React from 'react';
 import SearchIcon from '../../../icon/search.svg';
-function SearchBar(props) {
-  const { searchWord, setSearchWord } = props;
+import {useAllContext}from '../../AllContext/AllContext'
+function SearchBar() {
+  const { searchWord, setSearchWord } = useAllContext();
   return (
     <>
       <form

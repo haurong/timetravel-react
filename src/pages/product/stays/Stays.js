@@ -8,11 +8,11 @@ import Footer from '../../../layout/Footer';
 import CardList from '../../../Component/Card_List/Card_List_Hotel';
 import Sidebar from '../../../Component/Sidebar1/Sidebar_Hotel';
 import MyPagination from '../../../Component/Pagination/Pagination_Hotel';
-import CommitSelector from '../food/CommitSelect';
+import CommitSelector from '../food/CommentSelect';
 import BreadCrumb from '../stays/Breadcrumb/Breadcrumb';
 import HotelListSortSelector from './HotelListSortSelector/HotelListSortSelector.js';
 import { ReactComponent as Sort } from '../../../icon/sort.svg';
-import '../food/Food.scss';
+import '../food/style/Food.scss';
 import './Stays.scss';
 import _ from 'lodash';
 

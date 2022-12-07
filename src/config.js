@@ -1,4 +1,4 @@
-export const MY_HOST = 'http://localhost:3001';
+export const MY_HOST = 'http://192.168.1.182:3001';
 
 // export const AB_LIST_AUTH = `${MY_HOST}/ab/api/list-auth`;
 // 假登入
@@ -7,6 +7,7 @@ export const SIGNIN_API = `${MY_HOST}/member/api/signin-api`;
 export const PROFILE_API = `${MY_HOST}/member/api/edit-member-api`;
 export const RESET_PASSWORD_API = `${MY_HOST}/member/api/reset-password-member-api`;
 export const UPLOAD_AVATAR_API = `${MY_HOST}/member/upload-avatar`;
+export const userImg = `${MY_HOST}/uploads/Member/`;
 export const COMMENT_API = function (sid) {
   return `${MY_HOST}/member/${sid}/comment`;
 };
@@ -26,6 +27,7 @@ export const FOOD_COMMIT = `${MY_HOST}/food/commit`;
 export const FOOD_ORDER_DETAIL = `${MY_HOST}/orders/api/list/foodlist/`;
 
 export const PRODUCT_LIST = `${MY_HOST}/productAll/api`;
+
 //新增member24得收藏資料
 //移除member24得收藏資料
 

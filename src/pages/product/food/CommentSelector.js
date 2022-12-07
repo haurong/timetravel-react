@@ -1,13 +1,16 @@
 import { React, useRef, useState } from 'react';
 import { Select } from 'antd';
-import './Commit.scss';
-//import { ReactComponent as Sort } from '../../../../icon/sort.svg';
-import Sort from '../../../icon/sort.svg';
+import './style/Comment.scss';
+import { ReactComponent as Sort } from '../../../icon/sort.svg';
+import SortImg from '../../../icon/sort.svg';
+import { useFoodContext } from './FoodContext/FoodContext';
 
-function CommitSelector() {
+function CommentSelector() {
   const [openSelector, setOpenSelector] = useState(false);
+  const { commentSort, setCommentSort } = useFoodContext();
   const handleChange = (e) => {
-    console.log(`selected ${e}`);
+    // console.log(`selected ${e}`);
+    setCommentSort(e);
   };
   return (
     <div className="CommentSelector">
@@ -17,20 +20,24 @@ function CommitSelector() {
         popupClassName="CommentSelector_Select"
         options={[
           {
-            value: 'hot',
-            label: '熱門程度',
+            value: 'time_ASC',
+            label: '評價時間：舊到新',
           },
           {
-            value: 'comment_DESC',
+            value: 'time_DESC',
+            label: '評價時間：新到舊',
+          },
+          {
+            value: 'score_DESC',
             label: '評價：高至低',
           },
           {
-            value: 'comment_ASC',
+            value: 'score_ASC',
             label: '評價：低至高',
           },
         ]}
         style={{ width: 150 }}
-        defaultValue={'hot'}
+        defaultValue={commentSort}
         autoFocus={false}
         virtual={false}
         suffixIcon={''}
@@ -43,7 +50,7 @@ function CommitSelector() {
           }
         }}
       ></Select>
-      <div
+      <Sort
         className="CommentSelector_svg"
         onClick={() => {
           if (openSelector) {
@@ -53,9 +60,8 @@ function CommitSelector() {
           }
         }}
       />
-      <img src={Sort} style={{ width: '40px', height: '35px' }} />
     </div>
   );
 }
 
-export default CommitSelector;
+export default CommentSelector;

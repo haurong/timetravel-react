@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import '../../global.scss';
 import './style/Profile.scss';
@@ -6,8 +6,10 @@ import NavBar from '../../layout/NavBar';
 import Footer from '../../layout/Footer';
 import SideBar from '../../layout/SideBar';
 import axios from 'axios';
-import { PROFILE_API } from '../../config';
-import { UPLOAD_AVATAR_API } from '../../config';
+import { PROFILE_API, MY_HOST } from '../../config';
+import { UPLOAD_AVATAR_API, userImg } from '../../config';
+import AuthContext from '../member/context/AuthContext';
+import { pick } from 'lodash';
 
 function Profile() {
   const [formData, setFormData] = useState({
@@ -15,10 +17,40 @@ function Profile() {
     telephone: '',
     sid: JSON.parse(localStorage.getItem('auth')).sid,
   });
+
+  const [placeHolderValue, setPlaceHolderValue] = useState({});
+
+  const [selectPic, setSelectPic] = useState(null);
+
+  // 預覽圖片
+  const [preview, setPreview] = useState('');
+
+  const { myAuth, setMyAuth } = useContext(AuthContext);
   // const [avatar, setAvatar] = useState({
   //   sid: JSON.parse(localStorage.getItem('auth')).sid,
   // });
   //console.log(formData);
+
+  //  把資料存進placeholder
+  useEffect(() => {
+    setPlaceHolderValue({ name: myAuth.username, telephone: myAuth.telephone });
+  }, []);
+
+  // 當選擇檔案更動時建立預覽圖
+  useEffect(() => {
+    if (!selectPic) {
+      setPreview('');
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(selectPic);
+    console.log(objectUrl);
+    setPreview(objectUrl);
+
+    // 當元件unmounted時清除記憶體
+    return () => URL.revokeObjectURL(objectUrl);
+  }, [selectPic]);
+
   const handler = (e) => {
     const id = e.currentTarget.id;
     const val = e.currentTarget.value;
@@ -26,17 +58,39 @@ function Profile() {
   };
   const handleOnClickUpload = (e) => {
     const id = e.currentTarget.id;
-    const file = e.currentTarget.files;
-    setFormData({ ...formData, [id]: file });
+    const file = e.currentTarget.files[0];
+    // setFormData({ ...formData, [id]: file });
+    if (file) {
+      setSelectPic(file);
+    }
   };
-  console.log(handleOnClickUpload);
+  // console.log(handleOnClickUpload);
 
   const mySubmit = async (e) => {
     e.preventDefault();
-    const { image } = await axios.post(UPLOAD_AVATAR_API);
-    const { data } = await axios.put(PROFILE_API, formData);
+    const picForm = new FormData();
+    picForm.append('avatar', selectPic);
+    picForm.append('sid', formData.sid);
+    const image = await axios.post(UPLOAD_AVATAR_API, picForm);
+    // console.log('picForm',picForm);
+    console.log(image);
 
-    if (data.success && image) {
+    if (formData.username !== '' && formData.telephone !== '') {
+      const { data } = await axios.put(PROFILE_API, formData);
+      if (data.success) {
+        alert('儲存成功');
+        return;
+      } else {
+        alert('儲存失敗');
+        return;
+      }
+    }
+    if (image) {
+      let r = await axios.get(
+        'http://192.168.1.182:3001/Member/api/information/11'
+      );
+      console.log(r.data[0]);
+      setMyAuth({ ...myAuth, member_img: r.data[0].member_img });
       alert('儲存成功');
     } else {
       alert('儲存失敗');
@@ -52,8 +106,24 @@ function Profile() {
             <h1>修改個人資訊</h1>
 
             <form className="form" onSubmit={mySubmit}>
-              <div className="profile_img">
-                <img src="" />
+              <div
+                className="profile_img"
+                style={
+                  selectPic
+                    ? {
+                        backgroundImage: `url(${preview})`,
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'center center',
+                        backgroundSize: 'cover',
+                      }
+                    : {
+                        backgroundImage: `url(${userImg}${myAuth.member_img}) `,
+                        backgroundRepeat: 'no-repeat',
+                        backgroundPosition: 'center center',
+                        backgroundSize: 'cover',
+                      }
+                }
+              >
                 <div className="profile-hovor">
                   <label>
                     <input
@@ -75,7 +145,7 @@ function Profile() {
                   type="text"
                   className="form-control"
                   id="username"
-                  placeholder="王小明"
+                  placeholder={placeHolderValue.name}
                   onChange={handler}
                   value={formData.name}
                 />
@@ -87,9 +157,9 @@ function Profile() {
                   type="tel"
                   className="form-control"
                   id="telephone"
-                  required
-                  pattern="[0-9]{9}"
-                  placeholder="09xxxxxxxx"
+                  // required
+                  // pattern="[0-9]{9}"
+                  placeholder={placeHolderValue.telephone}
                   onChange={handler}
                   value={formData.telephone}
                 />

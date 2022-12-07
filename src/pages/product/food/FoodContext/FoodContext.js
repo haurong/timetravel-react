@@ -13,11 +13,20 @@ export const FoodContextProvider = ({ children }) => {
   //Food總價
   const [totalPrice, setTotalPrice] = useState(foodData.p_selling_price);
   //Food評論資料
-  const [commitData, setCommitData] = useState([]);
+  const [commentData, setCommentData] = useState([]);
   //liketoggle
   const [like, setLike] = useState(false);
   //Food新增至我行程
   const [add, setAdd] = useState(false);
+  //  評價排序
+  const [commentSort, setCommentSort] = useState('time_ASC');
+
+  //  Food列表資料篩選條件
+  const [foodSort, setFoodSort] = useState({
+    cate: 'cate_All',
+    like: 'likeAll',
+    sortBy: '',
+  });
   return (
     <FoodContext.Provider
       value={{
@@ -29,12 +38,16 @@ export const FoodContextProvider = ({ children }) => {
         setCount,
         totalPrice,
         setTotalPrice,
-        commitData,
-        setCommitData,
+        commentData,
+        setCommentData,
         like,
         setLike,
         add,
-        setAdd
+        setAdd,
+        commentSort,
+        setCommentSort,
+        foodSort,
+        setFoodSort
       }}
     >
       {children}

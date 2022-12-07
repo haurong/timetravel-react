@@ -7,8 +7,8 @@ import { FOOD_ITEM } from '../../../config.js';
 import { FOOD_COMMIT } from '../../../config.js';
 import { useFoodCart } from '../../cart/utils/useCart';
 import FoodMap from './FoodMap';
-import Commit from './Commit';
-import CommitSelect from './CommitSelect';
+import Comment from './Comment';
+import CommentSelector from './CommentSelector';
 import FoodBookingBar from './FoodBookingBar';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
@@ -20,7 +20,6 @@ import Heart from '../../../icon/heart_gray.svg';
 import PinkHeart from '../../../icon/heart.svg';
 import Calendar from '../../../icon/calendar+add.svg';
 import ActiveCalendar from '../../../icon/calendar+greenadd.svg';
-
 import Map_icon from '../../../icon/map_blue.svg';
 import Food_icon from '../../../icon/food_blue.svg';
 import Phone_icon from '../../../icon/iphone.svg';
@@ -29,7 +28,7 @@ import Minus_icon from '../../../icon/minus.svg';
 import Add_icon from '../../../icon/add.svg';
 import House_icon from '../../../icon/house.svg';
 
-import './FoodDetail.scss';
+import './style/FoodDetail.scss';
 
 function FoodDetail() {
   const {
@@ -39,12 +38,14 @@ function FoodDetail() {
     setCount,
     totalPrice,
     setTotalPrice,
-    commitData,
-    setCommitData,
+    commentData,
+    setCommentData,
     like,
     setLike,
     add,
     setAdd,
+    commentSort,
+    setCommentSort
   } = useFoodContext();
 
   const foodObj = {
@@ -103,9 +104,9 @@ function FoodDetail() {
 
   async function getList() {
     const response = await axios.get(FOOD_COMMIT);
-    setCommitData(response.data);
+    setCommentData(response.data);
   }
-  console.log(commitData);
+  console.log(commentData);
 
   useEffect(() => {
     getList();
@@ -344,9 +345,9 @@ function FoodDetail() {
                 >
                   旅客評價
                 </h2>
-                <CommitSelect />
+                <CommentSelector />
               </div>
-              <Commit rows={commitData} className="commit" />
+              <Comment rows={commentData} className="commit" />
             </div>
           </div>
         </div>
