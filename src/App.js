@@ -78,7 +78,7 @@ function App() {
                           />
                           <Route path="ticket" element={<Ticket />} />
                           <Route
-                            path="ticket/detail"
+                            path="ticket/detail/:sid"
                             element={<TicketDetail />}
                           />
                           <Route path="logIn" element={<LogIn />} />
