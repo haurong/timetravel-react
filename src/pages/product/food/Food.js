@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { useLocation, Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
-import { FOOD_LIST } from '../../../config.js';
+import { DEL_COLLECT, FOOD_LIST } from '../../../config.js';
 import { ADD_COLLECT } from '../../../config.js';
 import SearchBar from './SearchBar';
 import NavBar from '../../../layout/NavBar';
@@ -14,29 +14,23 @@ import Map from '../../../icon/map.svg';
 import Heart from '../../../icon/heart_gray.svg';
 import PinkHeart from '../../../icon/heart.svg';
 import Sidebar from '../../../Component/Sidebar1/Sidebar1';
-import CommitSelector from './CommitSelect.js';
-import BreadCrumb from './BreadCrumb';
+import CommitSelector from './CommentSelect.js';
+import BreadCrumbList from './BreadCrumbList';
 import Qrcode from '../../../Component/QRcode/Qrcode';
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
-
-import './Food.scss';
+import { useAllContext } from '../../AllContext/AllContext.js';
+import './style/Food.scss';
 
 function Food() {
+  const { searchWord, setSearchWord } = useAllContext();
   //從伺服器來的資料
   const [foodData, setFoodData] = useState([]);
 
   //呈現顯示資料用
   const [foodProductDisplay, setFoodProductDisplay] = useState([]);
 
-  //搜尋關鍵字用
-  const [searchWord, setSearchWord] = useState('');
-
   //看是否取得資料
   const [haveData, setHaveData] = useState(false);
-
-  const [like, setLike] = useState(false);
-
-  const [collect, setCollect] = useState(false);
 
   async function getList() {
     const response = await axios.get(FOOD_LIST);
@@ -47,6 +41,7 @@ function Food() {
   useEffect(() => {
     getList();
   }, []);
+
   useEffect(() => {
     getFoodListData(foodProductDisplay, perPage);
   }, [foodData]);
@@ -58,8 +53,6 @@ function Food() {
   const [perPage, setPerPage] = useState(12);
   //總共多少頁。在資料進入後(didMount)後需要計算出後才決定
   const [pageTotal, setPageTotal] = useState(0);
-
-  //console.log(foodData)
 
   //處理分頁資料
   const getFoodListData = (v, perPage) => {
@@ -82,7 +75,7 @@ function Food() {
     console.log('newFoodData', newFoodData);
 
     newFoodData = newFoodData.filter((item) => {
-      //搜尋商品名稱、縣市地區名
+      //搜尋商品名稱、縣市地區名、分類名
       return (
         item.product_name.includes(searchWord) +
         item.city_name.includes(searchWord) +
@@ -104,12 +97,6 @@ function Food() {
     getFoodListData(newFoodData, perPage);
   }, [searchWord]);
 
-  // useEffect(() => {
-  //   getList();
-  // }, [like]);
-
-  //TODO:發axios到後端新增與移除收藏
-
   const display = (
     <Row xs={1} lg={4} className="d-flex justify-content-start flex-wrap">
       {haveData && foodProductDisplay[pageNow - 1].length > 0
@@ -123,11 +110,13 @@ function Food() {
                   // console.log(v.sid);
                 }}
               >
-                <Card.Img
-                  variant="top"
-                  className="foodCardImg1"
-                  src={`${FOOD_IMG}${v.product_photo}`}
-                />
+                <div style={{ overflow: 'hidden' }}>
+                  <Card.Img
+                    variant="top"
+                    className="foodCardImg1"
+                    src={`${FOOD_IMG}${v.product_photo}`}
+                  />
+                </div>
                 <Card.Body>
                   <Link to="detail">
                     <Card.Title className="Card_Title">
@@ -136,7 +125,7 @@ function Food() {
                   </Link>
                   <Card.Text className="Card_Text">
                     <Card.Img src={Map} className="Map_icon" />
-                    <span class="Card_Score">
+                    <span className="Card_Score">
                       {v.city_name} | {v.area_name}
                     </span>
                   </Card.Text>
@@ -153,26 +142,37 @@ function Food() {
                             member_sid: member_sid,
                             product_sid: product_sid,
                           });
-
-                          // setLike(!like);
-
+                          //選告newItem(新的物件)
                           const newItem = {
                             ...v,
                             product_sid: v.product_sid ? null : product_sid,
                           };
-
+                          //深拷貝要顯示的資料
                           const newPagesArray = JSON.parse(
                             JSON.stringify(foodProductDisplay)
                           );
 
                           console.log(newPagesArray[pageNow - 1][i], newItem);
-
+                          //要知道現在使用者點到的是第幾個，用i當作索引值
                           newPagesArray[pageNow - 1][i] = newItem;
-
+                          //再設定回拷貝出來的資料
                           setFoodProductDisplay(newPagesArray);
 
-                          console.log(like);
+                          // console.log(like);
                           console.log({ data });
+
+                          // if (v.product_sid.length.indexOf === -1) {
+                          //   const member_sid = JSON.parse(
+                          //     localStorage.getItem('auth')
+                          //   ).sid;
+                          //   const product_sid = v.sid;
+
+                          //   const {data}=await axios.delete(DEL_COLLECT,{
+                          //     member_sid:member_sid,
+
+                          //   })
+
+                          // }
                         }}
                       >
                         <img
@@ -180,7 +180,7 @@ function Food() {
                           style={{ width: '25px', height: '25px' }}
                           alt=""
                         />
-                        <span>{collect ? v.collect + 1 : v.collect}</span>
+                        <span>{v.collect}</span>
                       </button>
                     </div>
                     <div>
@@ -214,7 +214,7 @@ function Food() {
                   </Card.Title>
                   <Card.Text className="Card_Text">
                     <Card.Img src={Map} className="Map_icon" />
-                    <span class="Card_Score">
+                    <span className="Card_Score">
                       {v.city_name} | {v.area_name}
                     </span>
                   </Card.Text>
@@ -226,7 +226,7 @@ function Food() {
                           style={{ width: '25px', height: '25px' }}
                           alt=""
                         />
-                        <span>{collect ? v.collect + 1 : v.collect}</span>
+                        <span>{v.collect}</span>
                       </button>
                     </div>
                     <div>
@@ -299,13 +299,12 @@ function Food() {
     </ul>
   );
 
-  //cardlist顯示過濾完的資料用的資料
   return (
     <>
       <NavBar />
       <div className="space "></div>
       <div className="container col-12 givePadding ">
-        <BreadCrumb foodData={foodData} />
+        <BreadCrumbList foodData={foodData} />
       </div>
       <div className="container col-lg-12 d-flex foodContent">
         <div className="col-lg-3  px-3 ">
@@ -313,7 +312,6 @@ function Food() {
         </div>
         <div className="col-lg-9 col-md-12 px-3 mx-0 CardListStyle">
           <div className="d-flex foodSort">
-            <SearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
             <CommitSelector />
             <CommitSelector />
           </div>

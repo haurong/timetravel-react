@@ -8,11 +8,11 @@ import Footer from '../../../layout/Footer';
 import CardList from '../../../Component/Card_List/Card_List_Hotel';
 import Sidebar from '../../../Component/Sidebar1/Sidebar_Hotel';
 import MyPagination from '../../../Component/Pagination/Pagination_Hotel';
-import CommitSelector from '../food/CommitSelect';
+import CommitSelector from '../food/CommentSelect';
 import BreadCrumb from '../stays/Breadcrumb/Breadcrumb';
 import HotelListSortSelector from './HotelListSortSelector/HotelListSortSelector.js';
 import { ReactComponent as Sort } from '../../../icon/sort.svg';
-import '../food/Food.scss';
+import '../food/style/Food.scss';
 import './Stays.scss';
 import _ from 'lodash';
 
@@ -30,7 +30,7 @@ function Stays() {
   const path = window.location.pathname.split('/');
   async function getList() {
     const response = await axios.get(HOTEL_LIST + `?` + usp.toString());
-    console.log(response);
+    // console.log(response);
     setHotelAllData(response.data);
     setHotelSortData(response.data.rowsAll);
     const pageList = _.chunk(response.data.rowsAll, perPage);
@@ -54,13 +54,10 @@ function Stays() {
         <BreadCrumb hotelAllData={hotelAllData} />
       </div>
       <div className="container col-lg-12 d-flex foodContent">
-        <div className="col-lg-3  px-3 " style={{ border: '1px solid green' }}>
+        <div className="col-lg-3  px-3 ">
           <Sidebar />
         </div>
-        <div
-          className="col-lg-9 col-md-12 px-3 mx-0 CardListStyle"
-          style={{ border: '1px solid orange' }}
-        >
+        <div className="col-lg-9 col-md-12 px-3 mx-0 CardListStyle">
           <div className="d-flex hotelSort">
             <HotelListSortSelector />
           </div>

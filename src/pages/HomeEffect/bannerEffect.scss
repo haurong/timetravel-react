@@ -6,19 +6,75 @@
     // align-items: center;
     background-color: #f7f7f7;
   }
-  
+  .hover-effect{
+    .BannerEffect-flex{
+      position: absolute;
+      top: 81%;
+      left: 50%;
+      z-index: 5;
+      transform: translate(-50%, 0%);
+      .input-group{
+        border-bottom: 2px solid #FFF;
+        .icon{
+          border:none; 
+        }
+        .search-border{
+          border: none;
+          background-color: #fff0;
+        }
+        input[type=search] {
+          color: white;
+          font-weight: 400;
+        }
+        .form-control::placeholder {
+          color: white;
+          font-weight: 300;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+  // .hover-effect:hover{
+  //   animation: hover 5s ease-in-out infinite alternate;
+  // @keyframes hover {
+  //   0%{
+  //     transform: translateY(800px);
+  //   }
+  //   100%{
+  //     transform: translateY(400px);
+  //   }
+  // }
+  // }
   .site {
     width: 25%;
     height: 100vh;
     position: relative;
     background: linear-gradient(to bottom, #e097c0 0%, #e6b8b8 50%, #f6f7e2 100%);
     // box-shadow: 0px 0px 20px rgba(0,0,0, 0.30); 
-    //overflow: hidden;
+    overflow: hidden;
+    .sun-an{
+      animation: sun-site 10s ease-in-out infinite alternate;
+    }
+    @keyframes sun-site {
+      0%{
+          transform: translateY(600px);
+        }
+      10%{
+          transform: translateY(600px);
+        }
+      30%{
+          transform: translateY(400px);
+        }
+      100%{
+          transform: translateY(400px);
+        }
+    }
     .sun {
       position: absolute;
       border-radius: 50%;
       left: 50%;
-      transform: translate(-50%, 0%)
+      transform: translate(-50%, 0%);
+      
     }
     .sun-1 {
       background-color:#e8c2b9;
@@ -276,12 +332,29 @@
     position: relative;
     background: linear-gradient(to bottom, #ffdf8f 0%, #ffb185 50%, #f6f7e2 100%);
     // box-shadow: 0px 0px 20px rgba(0,0,0, 0.30); 
-    // overflow: hidden;
+    overflow: hidden;
+    .sun-an{
+      animation: sun-food 10s ease-in-out infinite alternate;
+    }
+    @keyframes sun-food {
+      0%{
+        transform: translateY(600px);
+        }
+      40%{
+          transform: translateY(600px);
+        }
+      60%{
+          transform: translateY(400px);
+        }
+      100%{
+          transform: translateY(400px);
+        }
+    }
     .sun {
       position: absolute;
       border-radius: 50%;
       left: 50%;
-      transform: translate(-50%, 0%)
+      transform: translate(-50%, 0%);
     }
     .sun-1 {
       background-color:#ffb26a;
@@ -545,7 +618,24 @@
     position: relative;
     background: linear-gradient(to bottom, #7a89dd 0%, #c8f9ff 100%);
     // box-shadow: 0px 0px 20px rgba(0,0,0, 0.30); 
-    // overflow: hidden;
+    overflow: hidden;
+    .sun-an{
+      animation: sun-stay 10s ease-in-out infinite alternate;
+    }
+    @keyframes sun-stay {
+      0%{
+          transform: translateY(600px);
+        }
+      75%{
+          transform: translateY(600px);
+        }
+      95%{
+          transform: translateY(400px);
+        }
+      100%{
+          transform: translateY(400px);
+        }
+    }
     .sun {
       position: absolute;
       border-radius: 50%;
@@ -808,7 +898,24 @@
     position: relative;
     background: linear-gradient(to bottom, #fff9da 0%, #9cd491 100%);
     // box-shadow: 0px 0px 20px rgba(0,0,0, 0.30); 
-    // overflow: hidden;
+    overflow: hidden;
+    .sun-an{
+      animation: sun-ticket 10s ease-in-out infinite alternate;
+    }
+    @keyframes sun-ticket {
+      0%{
+        transform: translateY(600px);
+      }
+      79%{
+        transform: translateY(600px);
+      }
+      80%{
+          transform: translateY(600px);
+        }
+      100%{
+          transform: translateY(400px);
+        }
+    }
     .sun {
       position: absolute;
       border-radius: 50%;
@@ -1052,18 +1159,35 @@
     
     @keyframes balloonmove-green{
       0%{
-        transform: translate(-100%, 20px);
+        transform: translate(-100%, 2px);
         }
-      60% {
-        transform: translate(-100%, 20px);
+      58% {
+        transform: translate(-100%, 2px);
+      }
+      90%{
+        transform: translate(700%, 30px);
       }
       100%{
-        transform: translate(700%, 0px);
-        }
+          transform: translate(700%, 30px);
+      }
     }
   }
-  
-  
-  
+  .effect-text{
+    font-size: 5vw;
+    font-weight: 800;
+    padding-top: 150px;
+  }
+  .site-text{
+    color: #973D7B;
+  }
+  .food-text{
+    color: #D9734D;
+  }
+  .stay-text{
+    color: #4E61B0;
+  }
+  .ticket-text{
+    color: #607B34;
+  }
   
   
