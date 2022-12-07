@@ -7,7 +7,6 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 // import Map from './SiteMap';
 import { SITE_IMG } from './site-config';
 import map1 from './../../../icon/map.svg';
-import { split } from 'lodash';
 
 export default function SiteDes({ siteData }) {
   const [position, setPosition] = useState(null);

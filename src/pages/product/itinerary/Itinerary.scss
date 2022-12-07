@@ -1,6 +1,4 @@
-.ispace{
-    margin-top: 180px;
-}
+
 .CardList{
     padding: 10px;
 }
@@ -15,13 +13,14 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    // margin-bottom: 20px;
+    margin-bottom: 20px;
     h1,h2,p{
         margin: 0;
     }
 }
 .titlespace-x{
     padding-right: 20px;
+    padding-bottom: 0 !important;
 }
 .card-img{
     height: 200px;
@@ -38,4 +37,17 @@
 }
 .rowmb{
     margin-bottom: 100px;
+}
+
+.icon{
+    height: 40px;
+    width: 40px;
+    img{
+        width: 40px;
+        height: 30px;
+        margin: 0;
+        display: block;
+        margin: 5px auto;
+    }
+
 }

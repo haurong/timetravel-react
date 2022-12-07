@@ -8,6 +8,7 @@ export const SITE_IMG = `${MY_HOST}/imgs/site`;
 
 export const ITINERARY_ADDLIST = `${MY_HOST}/itinerary/api/addlist`;
 export const ITINERARY_LIST = `${MY_HOST}/itinerary/api/lists`;
+export const ITINERARY_LISTNEW = `${MY_HOST}/itinerary/api/listnew`;
 export const ITINERARY_TITLE = `${MY_HOST}/itinerary/api/list/`;
 export const ITINERARY_EDITLIST = `${MY_HOST}/itinerary/api/editlist/`;
 export const ITINERARY_DELLIST = `${MY_HOST}/itinerary/api/dellist/`;

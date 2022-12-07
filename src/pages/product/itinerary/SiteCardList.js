@@ -2,6 +2,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { Link } from 'react-router-dom';
+import { SITE_IMG } from './site-config';
 // import { imgUrl } from '../../config';
 // import Star from '../../icon/star.svg';
 // import Heart from '../../icon/heart_white.svg';
@@ -13,7 +14,11 @@ function SiteCardList({ rows }) {
           <Col key={i}>
             <Link to={'/site/' + el.sid}>
               <Card className="Card">
-                <Card.Img className="card-img" variant="top" src={''} />
+                <Card.Img
+                  className="card-img"
+                  variant="top"
+                  src={SITE_IMG + '/' + el.img1.split(',')[0]}
+                />
                 {/* <button className="Heart_Btn">
                 <Card.Img src={''} className="Card_Heart" />
               </button> */}

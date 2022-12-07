@@ -88,12 +88,8 @@ export default function IList() {
                           <span
                             className="icon"
                             onClick={() => {
-                              // console.log(iData);
-
                               const newData = JSON.parse(JSON.stringify(iData));
                               const trash = newData.splice(i, 1);
-                              // console.log(newData);
-                              // console.log({ trash });
                               setIData(newData);
                             }}
                           >
@@ -110,7 +106,7 @@ export default function IList() {
           )}
         </Droppable>
       ) : (
-        ''
+        <h2>請添加景點</h2>
       )}
     </DragDropContext>
   );

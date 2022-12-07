@@ -16,19 +16,6 @@ import { ITINERARY_ITEM } from './site-config';
 function ItineraryDetail() {
   // const [iData, setIData] = useState({});
   const { iData, setIData } = useItineraryContext();
-  const location = useLocation();
-
-  async function getData() {
-    const path = window.location.pathname.split('/');
-    const sid = path[2];
-    const response = await axios.get(ITINERARY_ITEM + sid);
-    setIData(response.data);
-  }
-
-  useEffect(() => {
-    getData();
-  }, [location]);
-  // useEffect(() => {}, [iData]);
 
   return (
     <>
