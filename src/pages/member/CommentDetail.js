@@ -22,8 +22,6 @@ function CommentDetail({ rows }) {
           <div className="card col-10 comment-card" key={el.product_number}>
             <div className="card-body body-comment-padding">
               <div className="d-flex">
-                <div className="comment_img"></div>
-                {/* <img className="sideBar_img" src="" /> */}
                 <div className="comment_title">
                   <h2>{el.product_name}</h2>
                   <div className="d-flex">
@@ -38,14 +36,14 @@ function CommentDetail({ rows }) {
                     <p className="comment-time my-auto">{day}</p>
                   </div>
                 </div>
-                <div className="d-flex comment-icon-dlex my-auto">
+                {/* <div className="d-flex comment-icon-dlex my-auto">
                   <div className="icon comment-icon">
                     <img src={Edit} alt="" />
                   </div>
                   <div className="icon comment-icon ">
                     <img src={Trash} alt="" />
                   </div>
-                </div>
+                </div> */}
               </div>
               <p className="card-text comment-body-text">{el.commit_text}</p>
             </div>
