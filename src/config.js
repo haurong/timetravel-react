@@ -1,5 +1,5 @@
-export const MY_HOST = 'http://192.168.1.182:3001';
-
+// export const MY_HOST = 'http://192.168.1.182:3001';
+export const MY_HOST='http://localhost:3001'
 // export const AB_LIST_AUTH = `${MY_HOST}/ab/api/list-auth`;
 // 假登入
 export const LOGIN_API = `${MY_HOST}/member/api/login-api`;

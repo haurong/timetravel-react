@@ -504,7 +504,7 @@ function ProductList() {
                   <Card.Img
                     variant="top"
                     className="foodCardImg1"
-                    src={MY_HOST + `/uploads` + v.photo}
+                    src={MY_HOST + `/uploads/Food/` + v.photo}
                   />
                 </div>
                 <Card.Body>
