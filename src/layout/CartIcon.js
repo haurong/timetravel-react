@@ -14,6 +14,22 @@ function CartIcon() {
   const hotelcart = useHotelCart().cart;
   const ticketcart = useTicketCart().cart;
   // console.log(myAuth);
+  const myLogIn = () => {
+    if (localStorage.getItem('auth') === null) {
+      return Swal.fire({
+        title: '請先登入',
+        confirmButtonText: '立即登入',
+        confirmButtonColor: '#59d8a1',
+        showCancelButton: true,
+        cancelButtonText: '返回頁面',
+        cancelButtonColor: '#D9D9D9',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location = '/logIn';
+        }
+      });
+    }
+  };
   return (
     <>
       {myAuth.authorised ? (
@@ -28,16 +44,7 @@ function CartIcon() {
           </div>
         </NavLink>
       ) : (
-        <div
-          className="nav-link"
-          role="button"
-          onClick={() => {
-            Swal.fire({
-              icon: 'warning',
-              title: '請先登入',
-            });
-          }}
-        >
+        <div className="nav-link" role="button" onClick={myLogIn}>
           <img src={CartImg} alt="" />
           <div className="cart-count">
             <span>

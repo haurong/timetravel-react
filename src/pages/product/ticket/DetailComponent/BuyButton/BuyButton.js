@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import './BuyButton.scss';
+import Swal from 'sweetalert2';
 import { useTicketCart } from '../../../../cart/utils/useCart';
 function BuyButton() {
   const { addItem } = useTicketCart();
@@ -18,6 +19,10 @@ function BuyButton() {
     <>
       <div
         onClick={() => {
+          Swal.fire({
+            icon: 'success',
+            title: '已加入購物車！',
+          });
           addItem(ticketOrder);
         }}
         className="BookingBarPriceAndButton"

@@ -1,5 +1,7 @@
-import React from 'react';
-import { MakeOrder } from '../../../config';
+import React, { useEffect } from 'react';
+import { MakeOrder, LINE_PAY_API } from '../../../config';
+import { useCart } from '../utils/useCart';
+import Swal from 'sweetalert2';
 import axios from 'axios';
 function ProgressButton({
   prev,
@@ -14,13 +16,26 @@ function ProgressButton({
   paymentId,
   formData,
 }) {
+  const { orderId, setOrderId } = useCart();
+
   const mySubmit = async (e) => {
     const { data } = await axios.post(MakeOrder, formData);
     if (data.success) {
-      alert('已成功建立訂單！！');
+      Swal.fire({
+        icon: 'success',
+        title: '已成功建立訂單！',
+      });
     } else {
-      alert('訂購失敗！');
+      Swal.fire({
+        icon: 'error',
+        title: '訂單成立失敗！',
+      });
     }
+  };
+  const payForm = { uuid: 1670346171015 };
+  const pay = async (e) => {
+    const { data } = await axios.post(LINE_PAY_API, payForm);
+    console.log(data);
   };
 
   return (
@@ -38,15 +53,19 @@ function ProgressButton({
           下一步
         </button>
       ) : (
-        <button
-          type="submit"
-          className="btn btn-primary"
-          onClick={() => {
-            mySubmit();
-          }}
-        >
-          確認結帳
-        </button>
+        <>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={() => {
+              // mySubmit();
+              setOrderId(formData.order.uuid);
+              pay();
+            }}
+          >
+            確認結帳
+          </button>
+        </>
       )}
     </div>
   );

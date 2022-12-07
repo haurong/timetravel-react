@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './BuyButton.scss';
 import { useHotelContext } from '../Context/HotelContext';
 import { useHotelCart } from './../../../cart/utils/useCart';
+import Swal from 'sweetalert2';
 function BuyButton() {
   const { addItem } = useHotelCart();
   const {
@@ -29,6 +30,10 @@ function BuyButton() {
           className="BottomBar_Buy_Right "
           style={{ backgroundColor: '#63D2FF' }}
           onClick={() => {
+            Swal.fire({
+              icon: 'success',
+              title: '已加入購物車！',
+            });
             addItem(items);
             // console.log(roomsChooseName);
             // console.log(allStar);

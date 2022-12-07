@@ -1,6 +1,28 @@
-import React, { useReducer, useContext, createContext, useEffect } from 'react';
+import React, {
+  useReducer,
+  useContext,
+  createContext,
+  useEffect,
+  useState,
+} from 'react';
 import { reducer, init } from './cartReducer';
 import useLocalStorage from './useLocalstorage';
+
+const CartContext = createContext(null);
+export const CartProvider = ({ children }) => {
+  const [orderId, setOrderId] = useState(0);
+  return (
+    <CartContext.Provider
+      value={{
+        orderId,
+        setOrderId,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
+};
+export const useCart = () => useContext(CartContext);
 
 const HotelCartContext = createContext(null);
 
