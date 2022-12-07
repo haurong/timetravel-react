@@ -130,7 +130,7 @@ function Ticket() {
         <BreadCrumb ticketData={hotelListData} />
       </div>
       <div className="container ticket_carousel">
-        <Carousel className="tk_detail_carousel" />
+        <Carousel />
       </div>
       <div className="ComputerHidden">
         <HashChange allPart={allPart} />
