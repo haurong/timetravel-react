@@ -110,11 +110,13 @@ function Food() {
                   // console.log(v.sid);
                 }}
               >
-                <Card.Img
-                  variant="top"
-                  className="foodCardImg1"
-                  src={`${FOOD_IMG}${v.product_photo}`}
-                />
+                <div style={{ overflow: 'hidden' }}>
+                  <Card.Img
+                    variant="top"
+                    className="foodCardImg1"
+                    src={`${FOOD_IMG}${v.product_photo}`}
+                  />
+                </div>
                 <Card.Body>
                   <Link to="detail">
                     <Card.Title className="Card_Title">
