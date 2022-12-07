@@ -16,7 +16,7 @@ function ProgressButton({
   paymentId,
   formData,
 }) {
-  const [payUrl, setPayUrl] = useState('');
+  const [toPayUrl, setToPayUrl] = useState('');
   const mySubmit = async (e) => {
     const { data } = await axios.post(MakeOrder, formData);
     if (data.success) {
@@ -34,8 +34,8 @@ function ProgressButton({
   const uuid = 1670387472990;
   async function pay() {
     const response = await axios.get(LINE_PAY_API(uuid));
-    console.log(response);
-    setPayUrl(response.data.payUrl);
+    const url = response.data.payUrl;
+    setToPayUrl(url);
   }
   return (
     <div className="d-flex justify-content-evenly mb-5">
@@ -79,6 +79,7 @@ function ProgressButton({
                 reverseButtons: true,
               }).then((result) => {
                 if (result.isConfirmed) {
+                  console.log(toPayUrl);
                 } else if (
                   /* Read more about handling dismissals below */
                   result.dismiss === Swal.DismissReason.cancel
