@@ -24,7 +24,7 @@ import { useHotelContext } from '../stays/Context/HotelContext.js';
 import './style/Food.scss';
 
 function Food() {
-  const { searchWord, setSearchWord } = useAllContext();
+  const { pageSearchWord, setPageSearchWord } = useAllContext();
   //從伺服器來的資料
   const [foodData, setFoodData] = useState([]);
 
@@ -47,7 +47,7 @@ function Food() {
   useEffect(() => {
     getList();
   }, []);
-
+  const [collect, setCollect] = useState(foodData.collect);
   // useEffect(() => {
   //   getFoodListData(foodProductDisplay, perPage);
   // }, [foodData]);
@@ -271,13 +271,13 @@ function Food() {
   };
 
   useEffect(() => {
-    // if (searchWord.length < 1) return;
+    // if (pageSearchWord.length < 1) return;
 
     let newFoodData = [];
 
     setPageNow(1);
 
-    newFoodData = handleSearch(foodData, searchWord);
+    newFoodData = handleSearch(foodData, pageSearchWord);
 
     newFoodData = handleSortPrice(newFoodData, hotelSort.sortBy);
 
@@ -291,7 +291,7 @@ function Food() {
 
     getFoodListData(newFoodData, perPage);
   }, [
-    searchWord,
+    pageSearchWord,
     hotelSort.sortBy,
     hotelSort.area,
     hotelSort.cate,
@@ -299,7 +299,12 @@ function Food() {
   ]);
 
   const display = (
-    <Row xs={1} md={2} lg={4} className="d-flex justify-content-center flex-wrap">
+    <Row
+      xs={1}
+      md={2}
+      lg={4}
+      className="d-flex justify-content-flexstart flex-wrap"
+    >
       {foodProductDisplay[pageNow - 1]
         ? foodProductDisplay[pageNow - 1].map((v, i) => {
             return (
@@ -339,15 +344,21 @@ function Food() {
                             localStorage.getItem('auth')
                           ).sid;
                           const product_sid = v.sid;
+                          const collect_product_name = v.product_name;
                           const { data } = await axios.post(ADD_COLLECT, {
                             member_sid: member_sid,
                             product_sid: product_sid,
+                            collect_product_name: collect_product_name,
                           });
                           //選告newItem(新的物件)
                           const newItem = {
                             ...v,
-                            product_sid: v.product_sid ? null : product_sid,
+                            member_sid: member_sid,
+                            collect_product_name: v.product_name
+                              ? null
+                              : collect_product_name,
                           };
+                          console.log(newItem);
                           //深拷貝要顯示的資料
                           const newPagesArray = JSON.parse(
                             JSON.stringify(foodProductDisplay)
@@ -361,23 +372,20 @@ function Food() {
 
                           // console.log(like);
                           console.log({ data });
-
-                          // if (v.product_sid.length.indexOf === -1) {
-                          //   const member_sid = JSON.parse(
-                          //     localStorage.getItem('auth')
-                          //   ).sid;
-                          //   const product_sid = v.sid;
-
-                          //   const {data}=await axios.delete(DEL_COLLECT,{
-                          //     member_sid:member_sid,
-
-                          //   })
-
+                          // if (product_sid !== null) {
+                          //   const newCollect = collect + 1;
+                          //   setCollect(newCollect);
+                          // } else {
+                          //   setCollect(collect);
                           // }
                         }}
                       >
                         <img
-                          src={v.product_sid === v.sid ? PinkHeart : Heart}
+                          src={
+                            v.collect_product_name === v.product_name
+                              ? PinkHeart
+                              : Heart
+                          }
                           style={{ width: '25px', height: '25px' }}
                           alt=""
                         />
@@ -477,27 +485,7 @@ function Food() {
         .map((v, i) => {
           const classNames = ['page-item'];
           const p = i + 1;
-          {
-            /* console.log({ pageTotal, pageNow, p }); */
-          }
-          {
-            /* if (p < 1 || p > pageTotal) return null;
-          if (p === pageNow) classNames.push('active');
-          const link = `?page=${p}`;
-          return (
-            <li className={classNames.join(' ')} key={p}>
-              <Link
-                className="page-link"
-                to={link}
-                onClick={() => {
-                  setPageNow(p);
-                }}
-              >
-                {p}
-              </Link>
-            </li>
-          ); */
-          }
+
           if (pageNow >= 4 && pageNow <= pageTotal - 3) {
             if (pageNow > p + 3 || pageNow < p - 3) return null;
           } else if (pageNow === 3) {
@@ -529,29 +517,8 @@ function Food() {
             </li>
           );
         })}
-      {/* <li className="page-item">
-        <Link
-          className="page-link "
-          to={`?page=${pageNow + 1}`}
-          aria-label="Next"
-          onClick={() => {
-            const newPageNowPlus = pageNow + 1;
-            setPageNow(newPageNowPlus);
-          }}
-        >
-          <MdOutlineChevronRight />
-        </Link>
-      </li> */}
+
       <li className="page-item">
-        {/* <Link
-          className="page-link nextPage"
-          aria-label="Next"
-          onClick={() => {
-            setPageNow(1);
-          }}
-        >
-          <MdOutlineChevronRight />
-        </Link> */}
         <div>
           <button
             className="page-link nextPage"
@@ -572,24 +539,32 @@ function Food() {
     <>
       <NavBar />
       <div className="space "></div>
-      <div className="container col-12 givePadding ">
-        <BreadCrumbList foodData={foodData} />
-      </div>
-      <div className="container col-lg-12 d-flex foodContent">
-        <div className="col-lg-3   ">
-          <Sidebar />
-        </div>
-        <div className="col-lg-9 col-md-12   CardListStyle">
-          <div className="d-flex hotelSort">
+
+      <div
+        className="container col-12 d-flex justify-content-space-between;"
+        style={{ paddingLeft: '14px' }}
+      >
+        <div className="d-flex col-12">
+          <div style={{ paddingTop: '10px' }} className="textAlign-center">
+            <BreadCrumbList foodData={foodData} />
+          </div>
+
+          <div className="d-flex col-lg-10 hotelSort">
             <HotelListSortSelector />
           </div>
-          {display}
         </div>
+      </div>
+      <div className="container col-lg-12 d-flex foodContent">
+        <div className="col-lg-3  px-3 " style={{ paddingTop: '20px' }}>
+          <Sidebar />
+        </div>
+
+        <div className="col-lg-9 col-md-12 CardListStyle">{display}</div>
       </div>
       <div className="foodPagination">{paginationBar}</div>
 
       <div className="givePadding"></div>
-      <Qrcode />
+      {/* <Qrcode /> */}
 
       <Footer />
     </>

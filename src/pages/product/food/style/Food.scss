@@ -1,9 +1,9 @@
 // div{
 //     outline: 1px solid blue;
 // }
-.row{
-    margin: 0;
-}
+// .row{
+//     margin: 0;
+// }
 .space{
     padding:60px
 }
@@ -29,8 +29,9 @@
     margin-top: 80px;
 }
 .CardListStyle{
-    padding: 0;
+    // padding-top:50px;
     margin: 0 !important
+    
 }
 @media (max-width:768px) {
 .foodContent{
@@ -41,5 +42,6 @@
         width: 100%;
         display: block;
         flex-wrap: nowrap;
+        
     }
 }
