@@ -1,16 +1,20 @@
 import { React, useRef, useState } from 'react';
 import { Select } from 'antd';
-import './Comment.scss';
-import { ReactComponent as Sort } from '../../../../../icon/sort.svg';
-
-import { useTicketContext } from '../../Context/TicketContext';
+import '../Comment/Comment.scss';
+import { ReactComponent as Sort } from '../../../../icon/sort.svg';
+import { useHotelContext } from '../Context/HotelContext';
 
 function CommentSelector() {
   const [openSelector, setOpenSelector] = useState(false);
-  const { commentSort, setCommentSort } = useTicketContext();
+  const { hotelSort, setHotelSort } = useHotelContext();
   const handleChange = (e) => {
     // console.log(`selected ${e}`);
-    setCommentSort(e);
+    setHotelSort({
+      area: hotelSort.area,
+      cate: hotelSort.cate,
+      like: hotelSort.like,
+      sortBy: e,
+    });
   };
   return (
     <div className="CommentSelector">
@@ -20,24 +24,16 @@ function CommentSelector() {
         popupClassName="CommentSelector_Select"
         options={[
           {
-            value: 'time_ASC',
-            label: '評價時間：舊到新',
+            value: 'sortByCollectASC',
+            label: '收藏數：低到高',
           },
           {
-            value: 'time_DESC',
-            label: '評價時間：新到舊',
-          },
-          {
-            value: 'score_DESC',
-            label: '評價：高至低',
-          },
-          {
-            value: 'score_ASC',
-            label: '評價：低至高',
+            value: 'sortByCollectDESC',
+            label: '收藏數：高到低',
           },
         ]}
         style={{ width: 150 }}
-        defaultValue={commentSort}
+        defaultValue={'排序條件'}
         autoFocus={false}
         virtual={false}
         suffixIcon={''}

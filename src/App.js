@@ -56,7 +56,7 @@ function App() {
               <ItineraryContextProvider>
                 <CommentContextProvider>
                   <CartProvider>
-                  <FoodContextProvider>
+                    <FoodContextProvider>
                       <HotelContextProvider>
                         <TicketContextProvider>
                           <AuthContextProvider>
@@ -66,27 +66,24 @@ function App() {
                                 <Route index element={<Home />} />
                               </Route>
                               <Route
-                             
-                              path="productList"
-                             
-                              element={<ProductList />}
-                           
-                            />
+                                path="productList"
+                                element={<ProductList />}
+                              />
                               <Route path="itinerary" element={<Itinerary />} />
                               <Route
                                 path="itinerary/:sid"
                                 element={<ItineraryDetail />}
                               />
                               <Route path="site" element={<Site />} />
-                              <Route path="site/:sid" element={<SiteDetail />} />
+                              <Route
+                                path="site/:sid"
+                                element={<SiteDetail />}
+                              />
                               <Route path="food" element={<Food />} />
                               <Route
-                             
-                              path="food/detail"
-                             
-                              element={<FoodDetail />}
-                           
-                            />
+                                path="food/detail"
+                                element={<FoodDetail />}
+                              />
                               <Route path="stays" element={<Stays />} />
                               <Route
                                 path="stays/detail/:sid"
@@ -127,7 +124,7 @@ function App() {
                       </HotelContextProvider>
                     </FoodContextProvider>
                   </CartProvider>
-              </CommentContextProvider>
+                </CommentContextProvider>
               </ItineraryContextProvider>
             </AllContextProvider>
           </BrowserRouter>

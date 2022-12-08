@@ -33,7 +33,7 @@ function ProductList() {
   //篩選排序
   const { hotelSort } = useHotelContext();
   //看是否取得資料
-  const [haveData, setHaveData] = useState(false);
+  // const [haveData, setHaveData] = useState(false);
   //分頁
   //當前分頁最小為1,最大看資料計算最大頁數
   const [pageNow, setPageNow] = useState(1);
@@ -41,10 +41,6 @@ function ProductList() {
   const [perPage, setPerPage] = useState(12);
   //總共多少頁。在資料進入後(didMount)後需要計算出後才決定
   const [pageTotal, setPageTotal] = useState(0);
-
-  // const [like, setLike] = useState(false);
-
-  const [collect, setCollect] = useState(productData.collect);
 
   async function getData() {
     const response = await axios.get(PRODUCT_LIST);
@@ -504,7 +500,7 @@ function ProductList() {
                   <Card.Img
                     variant="top"
                     className="foodCardImg1"
-                    src={MY_HOST + `/uploads` + v.photo}
+                    src={MY_HOST + `/uploads/` + v.photo}
                   />
                 </div>
                 <Card.Body>

@@ -1,26 +1,44 @@
-import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import { Link } from 'react-router-dom';
-import { SITE_IMG } from './site-config';
-import { useHotelContext } from '../stays/Context/HotelContext';
 import { useEffect, useState } from 'react';
+import Card from 'react-bootstrap/Card';
+import Row from 'react-bootstrap/Row';
+import { HOTEL_IMG } from '../../pages/product/stays/hotel-config';
+import Map from '../../icon/map.svg';
+import Heart from '../../icon/heart_gray.svg';
+import PinkHeart from '../../icon/heart.svg';
+import { Location } from 'react-router-dom';
+import { useHotelContext } from '../../pages/product/stays/Context/HotelContext';
+import { useTicketContext } from '../../pages/product/ticket/Context/TicketContext';
+import { useNavigate } from 'react-router-dom';
 import _ from 'lodash';
-// import { imgUrl } from '../../config';
-// import Star from '../../icon/star.svg';
-// import Heart from '../../icon/heart_white.svg';
 
-function SiteCardList() {
+import './Card_List.scss';
+
+function Card_List() {
   const {
-    hotelSort,
-    hotelSortData,
+    ticketSortData,
     displayData,
     setDisplayData,
     setPageTotal,
     perPage,
     pageNow,
     setPageNow,
-  } = useHotelContext();
+  } = useTicketContext();
+
+  const { hotelSort } = useHotelContext();
+
+  const navigate = useNavigate();
+  const [like, setLike] = useState(false);
+  const [likeList, setLikeList] = useState([]);
+  const toggleLike1 = () => setLike(!like);
+  // console.log(fakedata[0].favorite)
+  const addLikeListHandler = (id) => {
+    if (likeList.includes(id)) {
+      return;
+    } else {
+      setLikeList([...likeList, id]);
+      return;
+    }
+  };
   //  處理排序（價格、收藏數）
   const handleSortPrice = (hotelSortData, hotelSort) => {
     let newHotelSortData = [...hotelSortData];
@@ -29,12 +47,12 @@ function SiteCardList() {
     switch (hotelSort) {
       case 'sortByPriceDESC':
         newHotelSortData = [...newHotelSortData].sort((a, b) => {
-          return b.room_price - a.room_price;
+          return b.product_price - a.product_price;
         });
         break;
       case 'sortByPriceASC':
         newHotelSortData = [...newHotelSortData].sort((a, b) => {
-          return a.room_price - b.room_price;
+          return a.product_price - b.product_price;
         });
         break;
       case 'sortByCollectDESC':
@@ -92,35 +110,35 @@ function SiteCardList() {
 
     // 處理目的地
     switch (hotelSort) {
-      case 'cate_Site_1':
+      case 'cate_Ticket_1':
         newHotelSortData = hotelSortData.filter((v) => {
-          return v.site_category_sid === 1;
+          return v.categories_id === 1;
         });
         break;
-      case 'cate_Site_2':
+      case 'cate_Ticket_2':
         newHotelSortData = hotelSortData.filter((v) => {
-          return v.site_category_sid === 2;
+          return v.categories_id === 2;
         });
         break;
-      case 'cate_Site_3':
+      case 'cate_Ticket_3':
         newHotelSortData = hotelSortData.filter((v) => {
-          return v.site_category_sid === 3;
+          return v.categories_id === 3;
         });
         break;
-      case 'cate_Site_4':
+      case 'cate_Ticket_4':
         newHotelSortData = hotelSortData.filter((v) => {
-          return v.site_category_sid === 4;
+          return v.categories_id === 4;
         });
         break;
-      case 'cate_Site_5':
+      case 'cate_Ticket_5':
         newHotelSortData = hotelSortData.filter((v) => {
-          return v.site_category_sid === 5;
+          return v.categories_id === 5;
         });
         break;
       // 指所有的產品都出現
-      case 'cate_Site_All':
+      case 'cate_Ticket_All':
         newHotelSortData = hotelSortData.filter((v) => {
-          return v.site_category_sid !== '';
+          return v.categories_id !== '';
         });
         break;
       default:
@@ -195,47 +213,97 @@ function SiteCardList() {
     // console.log();
     let newHotelSortData = [];
     setPageNow(1);
-    newHotelSortData = handleSortPrice(hotelSortData, hotelSort.sortBy);
+    newHotelSortData = handleSortPrice(ticketSortData, hotelSort.sortBy);
     newHotelSortData = handleArea(newHotelSortData, hotelSort.area);
     newHotelSortData = handleCate(newHotelSortData, hotelSort.cate);
-    newHotelSortData = handleAddLike(newHotelSortData, hotelSort.like);
+    // newHotelSortData = handleAddLike(newHotelSortData, hotelSort.like);
 
     setDisplayData(newHotelSortData);
     getFoodListData(newHotelSortData, perPage);
   }, [hotelSort.area, hotelSort.like, hotelSort.cate, hotelSort.sortBy]);
+  //TODO:收藏人數按鈕樣式待定
   return (
-    <Row xs={1} md={2} lg={3} className="g-4">
+    <Row xs={1} lg={4} className="d-flex justify-content-flexstart flex-wrap">
       {displayData[pageNow - 1]
-        ? displayData[pageNow - 1].map((el, i) => {
+        ? displayData[pageNow - 1].map((el) => {
             return (
-              <Col key={i}>
-                <Link to={'/site/' + el.sid}>
-                  <Card className="Card">
-                    <Card.Img
-                      className="card-img"
-                      variant="top"
-                      // src={SITE_IMG + '/' + el.img1.split(',')[0]}
-                    />
-                    {/* <button className="Heart_Btn">
-                  <Card.Img src={''} className="Card_Heart" />
-                </button> */}
-                    <Card.Body className="card-margin0">
-                      <Card.Title>{el.name}</Card.Title>
-                      <Card.Text></Card.Text>
-                      <p>{el.site_category_name}</p>
-                      <p className="card-text">
-                        {el.city_name}
-                        {el.area_name}
-                      </p>
-                    </Card.Body>
-                  </Card>
-                </Link>
-              </Col>
+              <Card
+                className="MyCard col-3"
+                style={{ width: '20rem' }}
+                key={el.product_number}
+              >
+                <Card.Img
+                  variant="top"
+                  className="foodCardImg1"
+                  src={`${HOTEL_IMG}/${el.picture}`}
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => {
+                    let sid = Number(el.product_number.split('A')[1]);
+                    // window.location.href = `stays/detail/${sid}`;
+                    navigate(`detail/${sid}`);
+                  }}
+                />
+                <button
+                  data-product-number={el.product_number}
+                  className="Heart_Btn"
+                  onClick={() => {
+                    addLikeListHandler(el.product_number);
+                    toggleLike1();
+                  }}
+                >
+                  <img
+                    src={like ? PinkHeart : Heart}
+                    className="Card_Heart"
+                    alt=""
+                  />
+                </button>
+                <Card.Body>
+                  <Card.Title
+                    className="Card_Title"
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => {
+                      let sid = Number(el.product_number.split('A')[1]);
+                      // window.location.href = `stays/detail/${sid}`;
+
+                      navigate(`detail/${sid}`);
+                    }}
+                  >
+                    {el.product_name}
+                  </Card.Title>
+                  <Card.Text className="Card_Text">
+                    <Card.Img src={Map} className="Map_icon" />
+                    <span className="Card_Score">
+                      {el.city_name} | {el.area_name}
+                    </span>
+
+                    <div className="d-flex PriceAndCollect">
+                      <div>
+                        <button className="Heart_btn">
+                          <img
+                            src={PinkHeart}
+                            style={{
+                              width: '25px',
+                              height: '25px',
+                            }}
+                            alt=""
+                          />
+                          <span>{el.collect}</span>
+                        </button>
+                      </div>
+                      <div>
+                        <h2 variant="primary" className="Card_Price">
+                          NT$ {el.product_price}
+                        </h2>
+                      </div>
+                    </div>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
             );
           })
-        : ''}
+        : ' '}
     </Row>
   );
 }
 
-export default SiteCardList;
+export default Card_List;

@@ -6,6 +6,7 @@ import '../stays/TimeTravel_Hotel.scss';
 
 import axios from 'axios';
 import { useHotelContext } from '../stays/Context/HotelContext';
+import { useTicketContext } from './Context/TicketContext';
 import { TICKET_DETAIL } from './ticket-config';
 
 import Carousel from './DetailComponent/CarouselDu/Carousel';
@@ -18,7 +19,7 @@ import HotelNotice from '../../product/ticket/DetailComponent/HotelNotice/HotelN
 import HotelDetail from '../ticket/DetailComponent/HotelDetail/HotelDetail';
 import Comment from './DetailComponent/Comment/Comment';
 import MapButton from '../stays/MapButton/MapButton';
-import CommentSelector from '../stays/Comment/CommentSelector';
+import CommentSelector from '../ticket/DetailComponent/Comment/CommentSelector';
 import BottomBar from '../stays/BottomBar/BottomBar';
 import MobileFooter from '../stays/MobileFooter/MobileFooter';
 import HashChange from './DetailComponent/HashChange/HashChange';
@@ -29,38 +30,41 @@ import { useLocation } from 'react-router-dom';
 
 function Ticket() {
   const dataFrom = '14';
+  // const dataFrom = window.location.pathname.split('ticket/detail')[1];
   const {
-    roomCounts,
-    hotelRoomPrice,
-    hotelListData,
-    setHotelListData,
     hotelRoomChoose,
     setHotelRoomChoose,
-    setHotelRoomPrice,
     setHotelCommentData,
   } = useHotelContext();
-  // const { roomCounts, hotelRoomPrice } = useHotelContext();
-
-  const [typeName, setTypeName] = useState('');
-  const location = useLocation();
-  const path = window.location.pathname.split('/');
-  const sid = path[2];
+  const {
+    ticketCounts,
+    ticketTypePrice,
+    setTicketTypePrice,
+    ticketListData,
+    setTicketListData,
+    setTicketCommentData,
+    like,
+    setLike,
+    add,
+    setAdd,
+  } = useTicketContext();
+ 
+  // const toggleLike = () => setLike(!like);
+  // const toggleAdd = () => setAdd(!add);
+ 
   async function getHotelDetail() {
     //  拿到票券大表
     const res_ticketListData = await axios.get(TICKET_DETAIL + dataFrom);
     console.log(res_ticketListData);
-    setHotelListData(res_ticketListData.data);
+    setTicketListData(res_ticketListData.data);
 
     // 拿票種&價錢
-    const res_ticketType = await axios.get(
-      TICKET_DETAIL + dataFrom + '/types' 
-    );
+    const res_ticketType = await axios.get(TICKET_DETAIL + dataFrom + '/types' );
     const myArray = res_ticketType.data;
     setHotelRoomChoose(myArray);
     console.log(res_ticketType);
     //  設定預設價格
-    setHotelRoomPrice(myArray[0].product_price);
-
+    setTicketTypePrice(myArray[0].product_price);
 
     // 拿票券所有評論test
     const res_ticketCommentData = await axios.get(
@@ -127,7 +131,7 @@ function Ticket() {
       <BottomBar />
       <div ref={Hotel_part0} id="Hotel_part0"></div>
       <div className="MobileHidden container">
-        <BreadCrumb ticketData={hotelListData} />
+        <BreadCrumb ticketData={ticketListData} />
       </div>
       <div className="container ticket_carousel">
         <Carousel />
@@ -147,12 +151,12 @@ function Ticket() {
               </div>
 
               <h2 style={{ color: '#4D4D4D', marginBottom: '20px' }}>
-                {hotelListData.product_name}
+                {ticketListData.product_name}
               </h2>
               <Rate />
               <IconBar
-                ticketListDataArea={hotelListData.area_name}
-                ticketListDataCategories={hotelListData.classname}
+                ticketListDataArea={ticketListData.area_name}
+                ticketListDataCategories={ticketListData.classname}
               />
               <h4
                 className="ComputerHidden"
@@ -162,7 +166,7 @@ function Ticket() {
                   marginBottom: '30px',
                 }}
               >
-                TWD${roomCounts * hotelRoomPrice}
+                TWD${ticketCounts * ticketTypePrice}
               </h4>
             </div>
             <div className="Hotel_part0_right MobileHidden">

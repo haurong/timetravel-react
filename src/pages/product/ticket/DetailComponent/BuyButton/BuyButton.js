@@ -1,18 +1,24 @@
 import { React, useState } from 'react';
 import './BuyButton.scss';
+import { useTicketContext } from '../../Context/TicketContext';
 import Swal from 'sweetalert2';
 import { useTicketCart } from '../../../../cart/utils/useCart';
 function BuyButton() {
   const { addItem } = useTicketCart();
-  const [cartData, setcartData] = useState('');
-
+  const {
+    ticketCounts,
+    ticketTypePrice,
+    ticketListData,
+    pickDate,
+    typesChooseName,
+  } = useTicketContext();
   const ticketOrder = {
-    id: 14,
-    name: '兒童樂園',
-    type: '成人票',
-    quantity: 1,
-    date: '2022-11-30',
-    price: 80,
+    id: ticketListData.sid,
+    name: ticketListData.product_name,
+    type: typesChooseName,
+    quantity: ticketCounts,
+    date: pickDate.startTime,
+    price: ticketTypePrice,
   };
 
   return (
