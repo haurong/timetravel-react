@@ -195,10 +195,10 @@ function SiteCardList() {
     // console.log();
     let newHotelSortData = [];
     setPageNow(1);
-    // newHotelSortData = handleSortPrice(hotelSortData, hotelSort.sortBy);
-    newHotelSortData = handleArea(hotelSortData, hotelSort.area);
+    newHotelSortData = handleSortPrice(hotelSortData, hotelSort.sortBy);
+    newHotelSortData = handleArea(newHotelSortData, hotelSort.area);
     newHotelSortData = handleCate(newHotelSortData, hotelSort.cate);
-    // newHotelSortData = handleAddLike(newHotelSortData, hotelSort.like);
+    newHotelSortData = handleAddLike(newHotelSortData, hotelSort.like);
 
     setDisplayData(newHotelSortData);
     getFoodListData(newHotelSortData, perPage);

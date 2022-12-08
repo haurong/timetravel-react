@@ -14,6 +14,7 @@ import Card from 'react-bootstrap/Card';
 import MyPagination from '../../../Component/Pagination/Pagination_Hotel';
 import { useHotelContext } from '../stays/Context/HotelContext';
 import Sidebar1 from '../../../Component/Sidebar1/Sidebar_Site';
+import HotelListSortSelector from '../stays/HotelListSortSelector/HotelListSortSelector_forSite';
 import _ from 'lodash';
 import './Site.scss';
 
@@ -61,6 +62,9 @@ function Site() {
             </Card>
           </Col>
           <Col className="col-9">
+            <div className="d-flex hotelSort">
+              <HotelListSortSelector />
+            </div>
             {/* <SiteCardList rows={siteData.rows} /> */}
             <SiteCardList />
           </Col>
