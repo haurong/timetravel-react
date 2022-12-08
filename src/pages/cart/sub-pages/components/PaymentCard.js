@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CardHeader from './CardHeader';
 import CreditCardInput from './CreditCardInput';
 import PaymentCardInfo from './PaymentCardInfo';

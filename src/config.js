@@ -63,6 +63,10 @@ export const LINE_PAY_API = function (uuid) {
 //確認訂單是否結帳成功
 export const LINE_PAY_CONFIRM_API = `${MY_HOST}/pay/api/paycheck`;
 
+//獲取指定訂單編號的資料-綠界
+export const GREEN_PAY_API = function (uuid) {
+  return `${MY_HOST}/pay/api/paygreen/${uuid}`;
+};
 //更改訂單付款狀態
 export const CHANGE_PAY_API = `${MY_HOST}/pay/api/change-pay`;
 

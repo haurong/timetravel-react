@@ -1,5 +1,5 @@
 import React from 'react';
-import { MakeOrder, LINE_PAY_API } from '../../../config';
+import { MakeOrder, LINE_PAY_API, GREEN_PAY_API } from '../../../config';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 function ProgressButton({
@@ -33,12 +33,34 @@ function ProgressButton({
       });
     }
   };
+  const mySubmit2 = async (e) => {
+    const { data } = await axios.post(MakeOrder, formData);
+    if (data.success) {
+      Swal.fire({
+        icon: 'success',
+        title: '已成功建立訂單，即將跳往結帳頁面',
+      });
+      await greenpay();
+      // window.location = payUrl;
+      // console.log(data);
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: '訂單成立失敗！',
+      });
+    }
+  };
   // const uuid = 1670387472990;
   async function pay() {
     const response = await axios.get(LINE_PAY_API(uuid));
     const url = response.data.payUrl;
     payUrl = url;
-    console.log(payUrl);
+    // console.log(payUrl);
+  }
+  async function greenpay() {
+    const response = await axios.get(GREEN_PAY_API(uuid));
+
+    console.log(response);
   }
   // console.log(toPayUrl);
   return (
