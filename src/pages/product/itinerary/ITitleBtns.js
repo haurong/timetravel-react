@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useLocation } from 'react-router-dom';
@@ -10,10 +10,14 @@ import {
 import { useItineraryContext } from './ItineraryContext';
 
 export default function ITitleBtns() {
-  const { iData, setIData } = useItineraryContext();
+  const { iData, setIData, name, setName, day, setDay, date, setDate } =
+    useItineraryContext();
   const location = useLocation();
   const listNumber = location.pathname.split('/')[2];
   const mySubmit = async () => {
+    console.log(name);
+    console.log(day);
+    console.log(date);
     // const { del } = await axios.delete(ITINERARY_DELITEM + listNumber, {
     //   list_number: listNumber,
     // });
@@ -24,11 +28,11 @@ export default function ITitleBtns() {
     //   const { add } = await axios.post(ITINERARY_ADDITEM, iData[i]);
     //   // console.log({ add });
     // }
-    const { edit } = await axios.put(ITINERARY_EDITLIST + listNumber, {
-      list_name: '123',
-      day: 3,
-      date: 2022 - 12 - 20,
-    });
+    // const { edit } = await axios.put(ITINERARY_EDITLIST + listNumber, {
+    //   list_name: name,
+    //   day: day,
+    //   date: date,
+    // });
     Swal.fire({
       icon: 'success',
       title: '已儲存',
