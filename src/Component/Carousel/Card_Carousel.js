@@ -79,7 +79,7 @@ export default function Card_Carousel() {
       modules={[Pagination, Navigation]}
       className="mySwiper"
     >
-      <SwiperSlide>
+     <SwiperSlide className="cardSlide"> 
         <Card className="Card " style={{ width: '20rem' }}>
           <div className="foodCardDataOutside">
             <Card.Img variant="top" className="foodCardData1Img" />
@@ -135,7 +135,7 @@ export default function Card_Carousel() {
           </Card.Body>
         </Card>
       </SwiperSlide>
-      <SwiperSlide>
+     <SwiperSlide className="cardSlide">
         <Card className="Card " style={{ width: '20rem' }}>
           <div className="foodCardDataOutside">
             <Card.Img variant="top" className="foodCardData2Img" />
@@ -191,7 +191,7 @@ export default function Card_Carousel() {
           </Card.Body>
         </Card>
       </SwiperSlide>
-      <SwiperSlide>
+     <SwiperSlide className="cardSlide">
         <Card className="Card " style={{ width: '20rem' }}>
           <div className="foodCardDataOutside">
             <Card.Img variant="top" className="foodCardData3Img" />
@@ -249,7 +249,7 @@ export default function Card_Carousel() {
           </Card.Body>
         </Card>
       </SwiperSlide>
-      <SwiperSlide>
+     <SwiperSlide className="cardSlide">
         <Card className="Card " style={{ width: '20rem' }}>
           <div className="foodCardDataOutside">
             <Card.Img variant="top" className="foodCardData4Img" />
@@ -305,7 +305,7 @@ export default function Card_Carousel() {
           </Card.Body>
         </Card>
       </SwiperSlide>
-      <SwiperSlide>
+     <SwiperSlide className="cardSlide">
         <Card className="Card " style={{ width: '20rem' }}>
           <div className="foodCardDataOutside">
             <Card.Img variant="top" className="foodCardData5Img" />
@@ -361,7 +361,7 @@ export default function Card_Carousel() {
           </Card.Body>
         </Card>
       </SwiperSlide>
-      <SwiperSlide>
+     <SwiperSlide className="cardSlide">
         <Card className="Card " style={{ width: '20rem' }}>
           <div className="foodCardDataOutside">
             <Card.Img variant="top" className="foodCardData6Img" />
