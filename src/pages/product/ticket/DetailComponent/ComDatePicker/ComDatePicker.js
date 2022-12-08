@@ -14,11 +14,11 @@ const { RangePicker } = DatePicker;
 function ComDatePicker(props) {
   // const { pickDate, setPickDate, hotelRoomPrice, roomCounts, today } =
   //   useHotelContext();
-  const {  hotelRoomPrice, roomCounts} =
-    useHotelContext();
+  // const { hotelRoomPrice, roomCounts } = useHotelContext();
 
-    const { pickDate, setPickDate, today } = useTicketContext();
-    
+  const { ticketTypePrice, ticketCounts, pickDate, setPickDate, today } =
+    useTicketContext();
+
   return (
     <>
       <div className="ComDatePicker d-flex">
@@ -30,9 +30,7 @@ function ComDatePicker(props) {
             </h5>
             {/* <h5>結束日:<span>{pickDate.endTime}</span></h5> */}
             <div className="ComDatePicker_Left_text_tag_no">
-              <div>
-                {/* <h5>共<span>{pickDate.days}</span>日</h5> */}
-              </div>
+              <div>{/* <h5>共<span>{pickDate.days}</span>日</h5> */}</div>
             </div>
           </div>
           <div className="hiddenBox RangePicker_relative">
@@ -77,7 +75,7 @@ function ComDatePicker(props) {
               marginBottom: '30px',
             }}
           >
-            TWD${hotelRoomPrice * roomCounts}
+            TWD${ticketTypePrice * ticketCounts}
           </h4>
           <div className="d-flex ComDatePicker_Right_BuyButton ">
             <BuyButton />

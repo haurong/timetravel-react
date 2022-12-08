@@ -17,20 +17,26 @@ export const TicketContextProvider = ({ children }) => {
     // endTime: tomorrow,
     // days: 1,
   });
-  //  房間價格
-  const [hotelRoomPrice, setHotelRoomPrice] = useState(1);
+  //  票券價格
+  const [ticketTypePrice, setTicketTypePrice] = useState(1);
 
-  //  房間數量
-  const [roomCounts, setRoomCounts] = useState(1);
+  //  數量
+  const [ticketCounts, setTicketCounts] = useState(1);
 
   //  要到住宿資料
-  const [hotelListData, setHotelListData] = useState({});
+  const [ticketListData, setTicketListData] = useState({});
 
   //  要到房型資料
   const [hotelRoomChoose, setHotelRoomChoose] = useState([]);
 
+  //liketoggle
+  const [like, setLike] = useState(false);
+
+  //新增至我行程
+  const [add, setAdd] = useState(false);
+
   //  要到評論資料
-  const [hotelCommentData, setHotelCommentData] = useState([]);
+  const [ticketCommentData, setTicketCommentData] = useState([]);
 
   //  取得總星星平均
   const [allStar, setAllStar] = useState();
@@ -39,7 +45,7 @@ export const TicketContextProvider = ({ children }) => {
   const [commentSort, setCommentSort] = useState('time_ASC');
 
   //  選擇的房型
-  const [roomsChooseName, setRoomsChooseName] = useState();
+  const [typesChooseName, SetTypesChooseName] = useState();
 
   //  列表資料
   const [ticketAllData, setTicketAllData] = useState({
@@ -74,22 +80,22 @@ export const TicketContextProvider = ({ children }) => {
         setPickDate,
         today,
         tomorrow,
-        hotelRoomPrice,
-        setHotelRoomPrice,
-        roomCounts,
-        setRoomCounts,
-        hotelListData,
-        setHotelListData,
+        ticketTypePrice,
+        setTicketTypePrice,
+        ticketCounts,
+        setTicketCounts,
+        ticketListData,
+        setTicketListData,
         hotelRoomChoose,
         setHotelRoomChoose,
-        hotelCommentData,
-        setHotelCommentData,
+        ticketCommentData,
+        setTicketCommentData,
         allStar,
         setAllStar,
         commentSort,
         setCommentSort,
-        roomsChooseName,
-        setRoomsChooseName,
+        typesChooseName,
+        SetTypesChooseName,
         ticketAllData,
         setTicketAllData,
         hotelSort,
@@ -98,6 +104,10 @@ export const TicketContextProvider = ({ children }) => {
         setTicketSortData,
         displayData,
         setDisplayData,
+        like,
+        setLike,
+        add,
+        setAdd,
       }}
     >
       {children}
