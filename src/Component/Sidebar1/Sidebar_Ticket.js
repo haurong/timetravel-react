@@ -155,7 +155,7 @@ export default function Sidebar1() {
         />
       </div>
       <div className="allproduct">
-        <h2 className="sidebarMarginTop">住宿類型</h2>
+        <h2 className="sidebarMarginTop">票券類型</h2>
         <Menu
           mode="inline"
           openKeys={openKeys}
