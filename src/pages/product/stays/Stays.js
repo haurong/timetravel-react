@@ -9,7 +9,7 @@ import CardList from '../../../Component/Card_List/Card_List_Hotel';
 import Sidebar from '../../../Component/Sidebar1/Sidebar_Hotel';
 import MyPagination from '../../../Component/Pagination/Pagination_Hotel';
 import CommitSelector from '../food/CommentSelect';
-import BreadCrumb from '../stays/Breadcrumb/Breadcrumb';
+import BreadCrumb from './Breadcrumb/Breadcrumb_listPage';
 import HotelListSortSelector from './HotelListSortSelector/HotelListSortSelector.js';
 import { ReactComponent as Sort } from '../../../icon/sort.svg';
 import '../food/style/Food.scss';
@@ -24,8 +24,8 @@ function Stays() {
     setDisplayData,
     perPage,
     setPageTotal,
+    setBreadCrumbText,
   } = useHotelContext();
-  const a = 123;
   const location = useLocation();
   const usp = new URLSearchParams(location.search);
   const path = window.location.pathname.split('/');
@@ -43,7 +43,10 @@ function Stays() {
   //   return v.city_name === '新北市';
   // });
   // console.log(a);
-
+  useEffect(() => {
+    // console.log('BreadCrumb設成全部');
+    setBreadCrumbText('全部');
+  });
   useEffect(() => {
     getList();
   }, [location]);

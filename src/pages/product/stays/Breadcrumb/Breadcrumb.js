@@ -9,7 +9,8 @@ function BreadcrumbHotel() {
     <>
       <Breadcrumb className="TimeTravel_Breadcrumb">
         <Breadcrumb.Item className="Breadcrumb">
-          {/* TODO:拿到真實路徑 */}TimeTravel
+          {/* TODO:拿到真實路徑 */}
+          <a href="#/">首頁</a>
         </Breadcrumb.Item>
         <Breadcrumb.Item className="Breadcrumb">
           <a href="#/">住宿</a>
@@ -17,8 +18,10 @@ function BreadcrumbHotel() {
         <Breadcrumb.Item className="Breadcrumb">
           <a href="#/">{hotelListData.hotel_categories}</a>
         </Breadcrumb.Item>
-        <Breadcrumb.Item className="Breadcrumb_Here">
-          <a href="#/">{hotelListData.product_name}</a>
+        <Breadcrumb.Item>
+          <a href="#/" className="Breadcrumb_Here">
+            {hotelListData.product_name}
+          </a>
         </Breadcrumb.Item>
       </Breadcrumb>
     </>

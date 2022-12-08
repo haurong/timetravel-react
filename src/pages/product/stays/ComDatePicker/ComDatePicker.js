@@ -76,7 +76,7 @@ function ComDatePicker(props) {
               marginBottom: '30px',
             }}
           >
-            TWD${hotelRoomPrice * roomCounts}
+            TWD${hotelRoomPrice * roomCounts * pickDate.days}
           </h4>
           <div className="d-flex ComDatePicker_Right_BuyButton ">
             <BuyButton />

@@ -16,6 +16,7 @@ function BookingBar() {
     roomCounts,
     hotelRoomPrice,
     hotelListData,
+    pickDate,
   } = useHotelContext();
   // const [bookingBarOpen, setBookingBarOpen] = useState(false);
 
@@ -54,7 +55,8 @@ function BookingBar() {
                 fontSize: '22px',
               }}
             >
-              {/* TODO:拿到真實價格 */}TWD${roomCounts * hotelRoomPrice}
+              {/* TODO:拿到真實價格 */}TWD$
+              {roomCounts * hotelRoomPrice * pickDate.days}
             </h4>
             <div className="d-flex">
               <BuyButton />

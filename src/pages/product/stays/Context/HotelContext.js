@@ -77,6 +77,8 @@ export const HotelContextProvider = ({ children }) => {
   //看是否取得資料
   const [haveData, setHaveData] = useState(false);
 
+  const [breadCrumbText, setBreadCrumbText] = useState('全部');
+
   return (
     <HotelContext.Provider
       value={{
@@ -119,6 +121,8 @@ export const HotelContextProvider = ({ children }) => {
         perPage,
         haveData,
         setHaveData,
+        breadCrumbText,
+        setBreadCrumbText,
       }}
     >
       {children}

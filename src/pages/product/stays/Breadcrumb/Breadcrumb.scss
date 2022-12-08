@@ -2,6 +2,9 @@
 .TimeTravel_Breadcrumb {
   margin-top: 30px;
   margin-bottom: 20px;
+  .ant-breadcrumb li:last-child a {
+    color: #4d4d4d !important;
+  }
   .Breadcrumb {
     color: #59d8a1;
     a {
@@ -9,9 +12,11 @@
     }
   }
   .Breadcrumb_Here {
-    color: #4d4d4d;
+    color: #4d4d4d !important;
   }
+
   @media (min-width: 992px) {
     margin: 20px 0px !important; 
   }
 }
+
