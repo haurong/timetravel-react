@@ -10,7 +10,12 @@ import SiteCardList from './SiteCardList';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
-import BasicPagination from '../../../Component/Pagination/Pagination';
+// import BasicPagination from '../../../Component/Pagination/Pagination';
+import MyPagination from '../../../Component/Pagination/Pagination_Hotel';
+import { useHotelContext } from '../stays/Context/HotelContext';
+import Sidebar1 from '../../../Component/Sidebar1/Sidebar_Site';
+import HotelListSortSelector from '../stays/HotelListSortSelector/HotelListSortSelector_forSite';
+import _ from 'lodash';
 import './Site.scss';
 
 function Site() {
@@ -21,13 +26,18 @@ function Site() {
     page: 1,
     rows: [],
   });
-
+  const { setHotelSortData, perPage, setDisplayData, setPageTotal } =
+    useHotelContext();
   const location = useLocation();
   const usp = new URLSearchParams(location.search);
 
   async function getList() {
     const response = await axios.get(SITE_LIST);
     setSiteData(response.data);
+    setHotelSortData(response.data.rowsAll);
+    const pageList = _.chunk(response.data.rowsAll, perPage);
+    setDisplayData(pageList);
+    setPageTotal(pageList.length);
   }
 
   useEffect(() => {
@@ -46,19 +56,25 @@ function Site() {
         <Row className="container d-flex">
           <Col className="Accordion col-3 g-4">
             <Card style={{ width: '18rem' }}>
-              <p>sidebar</p>
+              {/* <p>sidebar</p> */}
+              <Sidebar1 />
               {/* <Accordions className="col-2 " /> */}
             </Card>
           </Col>
           <Col className="col-9">
-            <SiteCardList rows={siteData.rows} />
+            <div className="d-flex hotelSort">
+              <HotelListSortSelector />
+            </div>
+            {/* <SiteCardList rows={siteData.rows} /> */}
+            <SiteCardList />
           </Col>
         </Row>
         <div className="Food_pagination givePadding ">
-          <BasicPagination
+          {/* <BasicPagination
             page={siteData.page}
             totalPages={siteData.totalPages}
-          />
+          /> */}
+          <MyPagination />
         </div>
       </Container>
       <Footer />
