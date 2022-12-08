@@ -86,13 +86,13 @@ function CartPayment({
         />
       </div>
       <div>
-        <button
+        {/* <button
           onClick={() => {
             setPayMethod('linePay');
           }}
         >
           LinePay
-        </button>
+        </button> */}
       </div>
       <div>
         <ProgressButton

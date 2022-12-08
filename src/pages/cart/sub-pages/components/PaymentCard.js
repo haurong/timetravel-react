@@ -25,9 +25,16 @@ function PaymentCard({
         paymentId={paymentId}
         setPaymentId={setPaymentId}
       />
-      <CardHeader text={'信用卡資料'} />
+      <CardHeader text={'選擇付款方式'} />
       <div className="pb-5">
-        <CreditCardInput />
+        <button type="button" className="btn btn-primary" onClick={() => {}}>
+          LinePay
+        </button>
+      </div>
+      <div className="pb-5">
+        <button type="button" className="btn btn-primary" onClick={() => {}}>
+          信用卡一次付清
+        </button>
       </div>
     </div>
   );

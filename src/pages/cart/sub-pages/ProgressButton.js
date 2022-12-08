@@ -20,6 +20,9 @@ function ProgressButton({
   const mySubmit = async (e) => {
     const { data } = await axios.post(MakeOrder, formData);
     if (data.success) {
+      localStorage.removeItem('foodcart');
+      localStorage.removeItem('ticketcart');
+      localStorage.removeItem('hotelcart');
       Swal.fire({
         icon: 'success',
         title: '已成功建立訂單，即將跳往結帳頁面',
