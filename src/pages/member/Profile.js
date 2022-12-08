@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import '../../global.scss';
 import './style/Profile.scss';
+import Swal from 'sweetalert2';
 import NavBar from '../../layout/NavBar';
 import Footer from '../../layout/Footer';
 import SideBar from '../../layout/SideBar';
@@ -78,10 +79,16 @@ function Profile() {
     if (formData.username !== '' && formData.telephone !== '') {
       const { data } = await axios.put(PROFILE_API, formData);
       if (data.success) {
-        alert('儲存成功');
+        Swal.fire({
+          icon: 'success',
+          title: '儲存成功',
+        });
         return;
       } else {
-        alert('儲存失敗');
+        Swal.fire({
+          icon: 'error',
+          title: '儲存失敗',
+        });
         return;
       }
     }
