@@ -140,7 +140,7 @@ export default function Sidebar1() {
   return (
     <div className="Eliot_Du_Boss">
       <div className="destination">
-        <h2 className="sidebarMarginTop">篩選目的地</h2>
+        <h2 className="sidebarMarginTop">選擇目的地</h2>
         <Menu
           mode="inline"
           openKeys={openKeys}
@@ -158,7 +158,7 @@ export default function Sidebar1() {
         />
       </div>
       <div className="allproduct">
-        <h2 className="sidebarMarginTop">住宿類型</h2>
+        <h2 className="sidebarMarginTop">美食類型</h2>
         <Menu
           mode="inline"
           openKeys={openKeys}
@@ -181,7 +181,7 @@ export default function Sidebar1() {
         />
       </div>
       <div className="selectScore">
-        <h2 className="sidebarMarginTop">收藏數量</h2>
+        <h2 className="sidebarMarginTop">收藏數</h2>
         <Menu
           mode="inline"
           openKeys={openKeys}

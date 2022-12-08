@@ -299,7 +299,7 @@ function Food() {
   ]);
 
   const display = (
-    <Row xs={1} lg={4} className="d-flex justify-content-start flex-wrap">
+    <Row xs={1} md={2} lg={4} className="d-flex justify-content-center flex-wrap">
       {foodProductDisplay[pageNow - 1]
         ? foodProductDisplay[pageNow - 1].map((v, i) => {
             return (
@@ -576,14 +576,10 @@ function Food() {
         <BreadCrumbList foodData={foodData} />
       </div>
       <div className="container col-lg-12 d-flex foodContent">
-        <div className="col-lg-3  px-3 ">
+        <div className="col-lg-3   ">
           <Sidebar />
         </div>
-        <div className="col-lg-9 col-md-12 px-3 mx-0 CardListStyle">
-          {/* <div className="d-flex foodSort">
-            <CommitSelector />
-            <CommitSelector />
-          </div> */}
+        <div className="col-lg-9 col-md-12   CardListStyle">
           <div className="d-flex hotelSort">
             <HotelListSortSelector />
           </div>
