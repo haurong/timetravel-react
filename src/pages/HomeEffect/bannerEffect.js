@@ -62,7 +62,7 @@ function BannerEffect() {
             </div>
           </div>
         </div>
-        <div class="hotel">
+        <div class="food">
           <div className="hover-effect">
             <form className="d-flex BannerEffect-flex" role="search">
               <div className="input-group">
@@ -118,7 +118,7 @@ function BannerEffect() {
             </div>
           </div>
         </div>
-        <div class="food">
+        <div class="hotel">
           <div className="hover-effect">
             <form className="d-flex BannerEffect-flex" role="search">
               <div className="input-group">
