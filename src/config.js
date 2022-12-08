@@ -22,8 +22,8 @@ export const FOOD_CARD_ITEM3 = `${MY_HOST}/food/item/119`;
 export const FOOD_CARD_ITEM4 = `${MY_HOST}/food/item/120`;
 export const FOOD_CARD_ITEM5 = `${MY_HOST}/food/item/129`;
 export const FOOD_CARD_ITEM6 = `${MY_HOST}/food/item/128`;
-export const FOOD_IMG = `${MY_HOST}/uploads/Food/`;
-export const FOOD_COMMIT = `${MY_HOST}/food/commit`;
+export const FOOD_IMG = `${MY_HOST}/uploads/`;
+export const FOOD_COMMENT = `${MY_HOST}/food/commit`;
 export const FOOD_ORDER_DETAIL = `${MY_HOST}/orders/api/list/foodlist/`;
 
 export const PRODUCT_LIST = `${MY_HOST}/productAll/api`;

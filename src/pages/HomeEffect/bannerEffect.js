@@ -1,8 +1,24 @@
 import React from 'react';
 import './bannerEffect.scss';
 import SearchIcon_white from '../../icon/search_white.svg';
+import { useAllContext } from '../AllContext/AllContext';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function BannerEffect() {
+  const { searchWord, setSearchWord } = useAllContext();
+  const navigate = useNavigate();
+
+  const foodCate = {
+    cate1: '特色小吃',
+    cate2: '台式',
+    cate3: '泰式',
+    cate4: '日式',
+    cate5: '飲品',
+    cate6: '火鍋',
+    cate7: '咖啡',
+    cate8: '甜點',
+  };
+//TODO:輸入iuput後要跳轉頁面
   return (
     <>
       <div class="BannerEffect">
@@ -130,6 +146,14 @@ function BannerEffect() {
                   type="search"
                   placeholder="搜尋"
                   aria-label="Search"
+                  value={searchWord}
+                  onChange={(e) => {
+                    setSearchWord(e.target.value);
+                  }}
+                  onSubmit={() => {
+                    navigate('/food');
+             
+                  }}
                 />
               </div>
             </form>

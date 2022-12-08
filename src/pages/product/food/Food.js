@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import { DEL_COLLECT, FOOD_LIST } from '../../../config.js';
 import { ADD_COLLECT } from '../../../config.js';
-import SearchBar from './SearchBar';
+
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
 import { FOOD_IMG } from '../../../config';
@@ -14,7 +14,7 @@ import Map from '../../../icon/map.svg';
 import Heart from '../../../icon/heart_gray.svg';
 import PinkHeart from '../../../icon/heart.svg';
 import Sidebar from '../../../Component/Sidebar1/Sidebar1';
-import CommitSelector from './CommentSelect.js';
+import CommentSelector from './CommentSelect.js';
 import BreadCrumbList from './BreadCrumbList';
 import Qrcode from '../../../Component/QRcode/Qrcode';
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
@@ -30,7 +30,7 @@ function Food() {
   const [foodProductDisplay, setFoodProductDisplay] = useState([]);
 
   //看是否取得資料
-  const [haveData, setHaveData] = useState(false);
+  // const [haveData, setHaveData] = useState(false);
 
   async function getList() {
     const response = await axios.get(FOOD_LIST);
@@ -63,7 +63,6 @@ function Food() {
       setPageTotal(pageList.length);
       //紀錄分塊後的資料
       setFoodProductDisplay(pageList);
-      setHaveData(true);
     }
 
     console.log('foodProductDisplay', foodProductDisplay);
@@ -93,13 +92,13 @@ function Food() {
     let newFoodData = [];
 
     newFoodData = handleSearch(foodData, searchWord);
-
+    setFoodProductDisplay(newFoodData);
     getFoodListData(newFoodData, perPage);
   }, [searchWord]);
 
   const display = (
     <Row xs={1} lg={4} className="d-flex justify-content-start flex-wrap">
-      {haveData && foodProductDisplay[pageNow - 1].length > 0
+      {foodProductDisplay[pageNow - 1]
         ? foodProductDisplay[pageNow - 1].map((v, i) => {
             return (
               <Card
@@ -193,52 +192,7 @@ function Food() {
               </Card>
             );
           })
-        : foodProductDisplay.map((v, i) => {
-            return (
-              <Card
-                className="MyCard col-3"
-                style={{ width: '20rem' }}
-                key={i}
-                onClick={() => {
-                  console.log(v.product_number);
-                }}
-              >
-                <Card.Img
-                  variant="top"
-                  className="foodCardImg1"
-                  src={`${FOOD_IMG}${v.product_photo}`}
-                />
-                <Card.Body>
-                  <Card.Title className="Card_Title">
-                    {v.product_name}
-                  </Card.Title>
-                  <Card.Text className="Card_Text">
-                    <Card.Img src={Map} className="Map_icon" />
-                    <span className="Card_Score">
-                      {v.city_name} | {v.area_name}
-                    </span>
-                  </Card.Text>
-                  <div className="d-flex PriceAndCollect">
-                    <div>
-                      <button className="Heart_btn">
-                        <img
-                          src={true ? PinkHeart : Heart}
-                          style={{ width: '25px', height: '25px' }}
-                          alt=""
-                        />
-                        <span>{v.collect}</span>
-                      </button>
-                    </div>
-                    <div>
-                      <h2 variant="primary" className="Card_Price">
-                        NT${v.p_selling_price}
-                      </h2>
-                    </div>
-                  </div>
-                </Card.Body>
-              </Card>
-            );
-          })}
+        : ''}
     </Row>
   );
   const paginationBar = (
@@ -312,8 +266,8 @@ function Food() {
         </div>
         <div className="col-lg-9 col-md-12 px-3 mx-0 CardListStyle">
           <div className="d-flex foodSort">
-            <CommitSelector />
-            <CommitSelector />
+            <CommentSelector />
+            <CommentSelector />
           </div>
           {display}
         </div>

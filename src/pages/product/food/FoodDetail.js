@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { useLocation } from 'react-router-dom';
 import { useFoodContext } from './FoodContext/FoodContext.js';
 import { FOOD_ITEM } from '../../../config.js';
-import { FOOD_COMMIT } from '../../../config.js';
+import { FOOD_COMMENT } from '../../../config.js';
 import { useFoodCart } from '../../cart/utils/useCart';
 import FoodMap from './FoodMap';
 import Comment from './Comment';
@@ -103,7 +103,7 @@ function FoodDetail() {
   }, [isScroll]);
 
   async function getList() {
-    const response = await axios.get(FOOD_COMMIT);
+    const response = await axios.get(FOOD_COMMENT);
     setCommentData(response.data);
   }
   console.log(commentData);
