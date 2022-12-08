@@ -173,11 +173,11 @@ function NavBar() {
                 </div>
               ) : (
                 <>
-                  <button type="button" className="btn">
-                    <NavLink className="nav-link login-btn-text" to="/logIn">
+                  <NavLink className="nav-link" to="/logIn">
+                    <button type="button" className="btn login-btn-text">
                       登入
-                    </NavLink>
-                  </button>
+                    </button>
+                  </NavLink>
                   <NavLink className="signin-m" to="/signIn">
                     <Button
                       className="signin-btn"
