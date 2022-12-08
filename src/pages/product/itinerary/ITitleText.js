@@ -4,26 +4,27 @@ import axios from 'axios';
 import moment from 'moment-timezone';
 import { ITINERARY_TITLE } from './site-config';
 import { useItineraryContext } from './ItineraryContext';
+import ComDatePicker from './ComDatePicker/ComDatePicker';
 // import Swal from 'sweetalert2';
 
 export default function ITitleText() {
-  const { iTData, setITData } = useItineraryContext();
-  const [name, setName] = useState('');
-  const [day, setDay] = useState(1);
-  const [date, setDate] = useState('');
-  // const [iTData, setITData] = useState({});
+  const { iTData, setITData, name, setName, day, setDay, date, setDate } =
+    useItineraryContext();
+  // const [newYear, setNewYear] = useState(2022);
+  // const [newMonth, setNewMonth] = useState(12);
+  // const [newDay, setNewDay] = useState(1);
   const location = useLocation();
   async function getData() {
     const path = window.location.pathname.split('/');
     const sid = path[2];
     const response = await axios.get(ITINERARY_TITLE + sid);
     setITData(response.data);
-    console.log(response.data);
     setName(response.data.list_name);
     setDay(response.data.day);
+    setDate(response.data.date);
   }
   let arr = JSON.parse(JSON.stringify(iTData));
-  // console.log(arr);
+
   useEffect(() => {
     getData();
   }, [location]);
@@ -35,21 +36,20 @@ export default function ITitleText() {
         onChange={(e) => {
           const a = e.target.value;
           arr.name = a;
-          // setName(a);
+          setName(a);
         }}
         style={{ width: '200px' }}
       >
         {iTData.list_name}
       </h1>
       <h2 style={{ paddingRight: '12px' }}>一共</h2>
-      {/* <h2>{+day}</h2> */}
       <select
         className="daySelector"
-        // onChange={(e) => {
-        //   const a = e.target.value;
-        //   arr.day = a;
-        //   setDay(a);
-        // }}
+        onChange={(e) => {
+          const a = e.target.value;
+          arr.day = a;
+          setDay(a);
+        }}
         style={{
           border: '0',
           color: '#59d8a1',
@@ -86,14 +86,15 @@ export default function ITitleText() {
         )}
       </select>
       <h2>天</h2>
-      <h2>{moment(iTData.date).format('YYYY-MM-DD(ddd)')}</h2>
-      <h2>
+      <ComDatePicker />
+      {/* <h2>{moment(iTData.date).format('YYYY-MM-DD')}</h2> */}
+      <h2 style={{ marginLeft: '0' }}>
         {iTData.day === 1
           ? ''
           : '~' +
             moment(iTData.date)
               .add(iTData.day - 1, 'd')
-              .format('YYYY-MM-DD(ddd)')}
+              .format('YYYY-MM-DD')}
       </h2>
     </div>
   );

@@ -19,8 +19,8 @@ export default function Card_Carousel() {
   async function getData() {
     const response = await axios.get(SITE_LIST);
     const remove = response.data.rows.splice(6, 6);
-    console.log(remove);
-    console.log(response.data.rows);
+    // console.log(remove);
+    // console.log(response.data.rows);
     setData(remove);
   }
   const location = useLocation();
