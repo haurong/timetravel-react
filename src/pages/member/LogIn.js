@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext, useState } from 'react';
 import '../member/style/LogIn.scss';
 import '../../global.scss';
+import Swal from 'sweetalert2';
 import Logo from '../../icon/logo/logo_white.svg';
 import EyeClosed from '../../icon/eye_closed.svg';
 import Eye from '../../icon/eye.svg';
@@ -85,7 +86,10 @@ function LogIn() {
         navigate('/');
       } else {
         localStorage.removeItem('auth'); // 移除
-        alert('帳號密碼錯誤');
+        Swal.fire({
+          icon: 'error',
+          title: '帳號密碼錯誤',
+        });
       }
     }
   };

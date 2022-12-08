@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import '../member/style/SignIn.scss';
 import '../../global.scss';
+import Swal from 'sweetalert2';
 import Logo from '../../icon/logo/logo_white.svg';
 import EyeClosed from '../../icon/eye_closed.svg';
 import Eye from '../../icon/eye.svg';
@@ -192,10 +193,16 @@ function SignIn() {
     if (validate(errorMsg)) {
       const { data } = await axios.post(SIGNIN_API, formData);
       if (data.success) {
-        alert('註冊成功,請重新登入');
+        Swal.fire({
+          icon: 'success',
+          title: '註冊成功,請重新登入',
+        });
         navigate('/login');
       } else {
-        alert('註冊失敗');
+        Swal.fire({
+          icon: 'error',
+          title: '註冊失敗',
+        });
       }
     }
   };
