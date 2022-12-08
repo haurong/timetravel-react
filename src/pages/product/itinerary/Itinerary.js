@@ -39,6 +39,9 @@ function Itinerary() {
       inputValue: `我的行程${j + 1}`,
       confirmButtonText: '確認',
       confirmButtonColor: '#59d8a1',
+      showCancelButton: true,
+      cancelButtonText: '取消',
+      cancelButtonColor: '#D9D9D9',
       allowOutsideClick: false,
       inputValidator: (value) => {
         if (!value) {
@@ -46,34 +49,35 @@ function Itinerary() {
         }
       },
     });
-    const membersid = JSON.parse(localStorage.getItem('auth')).sid;
-    const listNumber = uuidv4();
-    const { data } = await axios.post(ITINERARY_ADDLIST, {
-      member_sid: membersid,
-      list_number: listNumber,
-      list_name: listname,
-      day: 1,
-      status: 1,
-    });
-    iTData.push({
-      member_sid: membersid,
-      list_number: listNumber,
-      list_name: listname,
-      // day: 1,
-      status: 1,
-    });
-    setITData(iTData);
-    if (data.success) {
+    // const membersid = JSON.parse(localStorage.getItem('auth')).sid;
+    // const listNumber = uuidv4();
+    // const { data } = await axios.post(ITINERARY_ADDLIST, {
+    //   member_sid: membersid,
+    //   list_number: listNumber,
+    //   list_name: listname,
+    //   day: 1,
+    //   status: 1,
+    // });
+    // iTData.push({
+    //   member_sid: membersid,
+    //   list_number: listNumber,
+    //   list_name: listname,
+    //   // day: 1,
+    //   status: 1,
+    // });
+    // setITData(iTData);
+    if (listname.length > 1) {
       Swal.fire({
         icon: 'success',
         title: `新增成功`,
         confirmButtonText: '確認',
         confirmButtonColor: '#59d8a1',
       });
-    } else {
-      console.log('error1');
     }
-    // window.location.reload();
+    //   } else {
+    //     console.log('error1');
+    //   }
+    //   // window.location.reload();
   };
 
   return (

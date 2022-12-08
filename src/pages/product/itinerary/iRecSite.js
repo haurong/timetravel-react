@@ -1,9 +1,10 @@
 import React from 'react';
+import Card_Carousel from './Carousel/Card_Carousel';
 
 export default function IRecSite() {
   return (
     <>
-      <h1>附近景點</h1>
+      <Card_Carousel />
     </>
   );
 }
