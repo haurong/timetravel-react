@@ -25,7 +25,6 @@ function Stays() {
     perPage,
     setPageTotal,
   } = useHotelContext();
-  const a = 123;
   const location = useLocation();
   const usp = new URLSearchParams(location.search);
   const path = window.location.pathname.split('/');
