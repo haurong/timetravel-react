@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useContext } from 'react';
 import '../../global.scss';
+import Swal from 'sweetalert2';
 import NavBar from '../../layout/NavBar';
 import Footer from '../../layout/Footer';
 import SideBar from '../../layout/SideBar';
@@ -30,12 +31,18 @@ function ResetPassword() {
     const { data } = await axios.post(RESET_PASSWORD_API, formData);
 
     if (data.success) {
-      alert('重設密碼成功');
+      Swal.fire({
+        icon: 'success',
+        title: '重設密碼成功,請重新登入',
+      });
       navigate('/');
       e.preventDefault();
       logout();
     } else {
-      alert('重設密碼失敗');
+      Swal.fire({
+        icon: 'error',
+        title: '重設密碼失敗',
+      });
     }
   };
   return (

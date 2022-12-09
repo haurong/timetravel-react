@@ -1,6 +1,9 @@
 import React from 'react';
 import './bannerEffect.scss';
-import SearchIcon_white from '../../icon/search_white.svg';
+import SiteIcon from '../../icon/itinerary_white.svg';
+import FoodIcon from '../../icon/food_white.svg';
+import StayIcon from '../../icon/stay_white.svg';
+import TicketIcon from '../../icon/ticket_white.svg';
 import { useAllContext } from '../AllContext/AllContext';
 import { Navigate, useNavigate } from 'react-router-dom';
 
@@ -27,7 +30,7 @@ function BannerEffect() {
             <form className="d-flex BannerEffect-flex" role="search">
               <div className="input-group">
                 <span className="icon" id="basic-addon1">
-                  <img src={SearchIcon_white} alt="" />
+                  <img src={SiteIcon} alt="" />
                 </span>
                 <input
                   className="form-control search-border me-4"
@@ -78,12 +81,12 @@ function BannerEffect() {
             </div>
           </div>
         </div>
-        <div class="hotel">
+        <div class="food">
           <div className="hover-effect">
             <form className="d-flex BannerEffect-flex" role="search">
               <div className="input-group">
                 <span className="icon" id="basic-addon1">
-                  <img src={SearchIcon_white} alt="" />
+                  <img src={FoodIcon} alt="" />
                 </span>
                 <input
                   className="form-control search-border me-4"
@@ -134,12 +137,12 @@ function BannerEffect() {
             </div>
           </div>
         </div>
-        <div class="food">
+        <div class="hotel">
           <div className="hover-effect">
             <form className="d-flex BannerEffect-flex" role="search">
               <div className="input-group">
                 <span className="icon" id="basic-addon1">
-                  <img src={SearchIcon_white} alt="" />
+                  <img src={StayIcon} alt="" />
                 </span>
                 <input
                   className="form-control search-border me-4"
@@ -203,7 +206,7 @@ function BannerEffect() {
             <form className="d-flex BannerEffect-flex" role="search">
               <div className="input-group">
                 <span className="icon" id="basic-addon1">
-                  <img src={SearchIcon_white} alt="" />
+                  <img src={TicketIcon} alt="" />
                 </span>
                 <input
                   className="form-control search-border me-4"
