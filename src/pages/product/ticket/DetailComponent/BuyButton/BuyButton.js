@@ -11,6 +11,7 @@ function BuyButton() {
     ticketListData,
     pickDate,
     typesChooseName,
+    allStar,
   } = useTicketContext();
   const ticketOrder = {
     id: ticketListData.sid,
@@ -19,6 +20,8 @@ function BuyButton() {
     quantity: ticketCounts,
     date: pickDate.startTime,
     price: ticketTypePrice,
+    rate: allStar,
+    img: 'http://localhost:3001/uploads/ticket/14-1.jpg',
   };
 
   return (

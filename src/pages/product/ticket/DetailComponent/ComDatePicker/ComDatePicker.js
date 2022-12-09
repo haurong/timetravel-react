@@ -40,6 +40,7 @@ function ComDatePicker(props) {
               locale={locale}
               bordered
               format="YYYY-MM-DD"
+              defaultValue={moment()}
               showToday={false}
               onChange={(e) => {
                 moment.locale('zh-tw');

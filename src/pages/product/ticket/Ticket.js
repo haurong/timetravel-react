@@ -57,7 +57,6 @@ function Ticket() {
     // console.log(response.data);
     setTicketAllData(response.data);
     setTicketData(response.data);
-    // 篩選↓↓↓?
     setTicketSortData(response.data.rowsAll);
     const pageList = _.chunk(response.data.rowsAll, perPage);
     setDisplayData(pageList);
@@ -117,29 +116,8 @@ function Ticket() {
             </li>
           );
         })}
-      {/* <li className="page-item">
-        <Link
-          className="page-link "
-          to={`?page=${pageNow + 1}`}
-          aria-label="Next"
-          onClick={() => {
-            const newPageNowPlus = pageNow + 1;
-            setPageNow(newPageNowPlus);
-          }}
-        >
-          <MdOutlineChevronRight />
-        </Link>
-      </li> */}
+     
       <li className="page-item">
-        {/* <Link
-          className="page-link nextPage"
-          aria-label="Next"
-          onClick={() => {
-            setPageNow(1);
-          }}
-        >
-          <MdOutlineChevronRight />
-        </Link> */}
         <div>
           <button
             className="page-link nextPage"
@@ -163,9 +141,10 @@ function Ticket() {
   return (
     <>
       <NavBar />
+      {/* <div className="space "></div> */}
       <div className="container marginTop">
         <Row>
-          <div className="ticket-Breadcrumb">
+          <div className="container col-12 givePadding">
             <Breadcrumb />
           </div>
           <Col className="col-3">
@@ -175,18 +154,6 @@ function Ticket() {
             <div className="shadow ticket-Sidebar">
               <Sidebar />
             </div>
-            {/* <div className="shadow ticket-DatePicker">
-              <DatePicker />
-            </div> */}
-            {/* <div className="shadow ticket-Slider">
-              <Slider />
-            </div> */}
-            {/* <div className="shadow ticket-RankChoose">
-              <div>
-                <h2>評分</h2>
-              </div>
-              <RankChoose />
-            </div> */}
           </Col>
 
           <Col className="col-9 ticket_card_list">
@@ -199,11 +166,7 @@ function Ticket() {
       </div>
       <div className="foodPagination">
         {paginationBar}
-        {/* <MyPagination /> */}
-        {/* <MyPagination
-          page={ticketData.page}
-          totalPages={ticketData.totalPages}
-        /> */}
+       
       </div>
 
       <Footer />

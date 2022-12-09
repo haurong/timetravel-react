@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
-import { HOTEL_IMG } from '../../pages/product/stays/hotel-config';
+import { TICKET_IMG } from '../../pages/product/ticket/ticket-config';
 import Map from '../../icon/map.svg';
 import Heart from '../../icon/heart_gray.svg';
 import PinkHeart from '../../icon/heart.svg';
@@ -216,7 +216,7 @@ function Card_List() {
     newHotelSortData = handleSortPrice(ticketSortData, hotelSort.sortBy);
     newHotelSortData = handleArea(newHotelSortData, hotelSort.area);
     newHotelSortData = handleCate(newHotelSortData, hotelSort.cate);
-    // newHotelSortData = handleAddLike(newHotelSortData, hotelSort.like);
+    newHotelSortData = handleAddLike(newHotelSortData, hotelSort.like);
 
     setDisplayData(newHotelSortData);
     getFoodListData(newHotelSortData, perPage);
@@ -235,10 +235,12 @@ function Card_List() {
                 <Card.Img
                   variant="top"
                   className="foodCardImg1"
-                  src={`${HOTEL_IMG}/${el.picture}`}
+                  src={`${TICKET_IMG}/${el.product_cover}`}
                   style={{ cursor: 'pointer' }}
                   onClick={() => {
-                    let sid = Number(el.product_number.split('A')[1]);
+                    // let sid = Number(el.product_number.split('A')[1]);
+                    let sid = Number(el.sid);
+                    console.log("see the sid:",sid);
                     // window.location.href = `stays/detail/${sid}`;
                     navigate(`detail/${sid}`);
                   }}
@@ -262,7 +264,8 @@ function Card_List() {
                     className="Card_Title"
                     style={{ cursor: 'pointer' }}
                     onClick={() => {
-                      let sid = Number(el.product_number.split('A')[1]);
+                      // let sid = Number(el.product_number.split('A')[1]);
+                      let sid = Number(el.sid);
                       // window.location.href = `stays/detail/${sid}`;
 
                       navigate(`detail/${sid}`);

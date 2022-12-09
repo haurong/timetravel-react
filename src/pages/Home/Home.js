@@ -259,7 +259,7 @@ function Home() {
             </div>
             <div className=" feature-card ">
               <div className=" feature-circle fc-bg5"></div>
-              <h5>吃到飽餐廳</h5>
+              <h5>玩得瘋樂園</h5>
             </div>
           </div>
 

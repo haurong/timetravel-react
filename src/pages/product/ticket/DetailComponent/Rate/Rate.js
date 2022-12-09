@@ -1,9 +1,12 @@
 import './Rate.scss';
 import { Rate } from 'antd';
 import React from 'react';
-import { useHotelContext } from '../../../stays/Context/HotelContext';
+// import { useHotelContext } from '../../../stays/Context/HotelContext';
+import { useTicketContext } from '../../Context/TicketContext';
 function RateHotel() {
-  const { allStar } = useHotelContext();
+  // const { allStar } = useHotelContext();
+  const { allStar } = useTicketContext();
+
   return (
     <>
       <div className="d-flex align-items-center">

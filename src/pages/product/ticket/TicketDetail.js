@@ -29,8 +29,9 @@ import BookingBar from '../../product/ticket/DetailComponent/BookingBar/BookingB
 import { useLocation } from 'react-router-dom';
 
 function Ticket() {
-  const dataFrom = '14';
-  // const dataFrom = window.location.pathname.split('ticket/detail')[1];
+  // const dataFrom = '14';
+  const dataFrom = window.location.pathname.split('ticket/detail/')[1];
+  // console.log("see dataForm:",dataFrom);
   const {
     hotelRoomChoose,
     setHotelRoomChoose,
@@ -55,14 +56,14 @@ function Ticket() {
   async function getHotelDetail() {
     //  拿到票券大表
     const res_ticketListData = await axios.get(TICKET_DETAIL + dataFrom);
-    console.log(res_ticketListData);
+    // console.log(res_ticketListData);
     setTicketListData(res_ticketListData.data);
 
     // 拿票種&價錢
-    const res_ticketType = await axios.get(TICKET_DETAIL + dataFrom + '/types' );
+    const res_ticketType = await axios.get(TICKET_DETAIL + dataFrom + '/types');
     const myArray = res_ticketType.data;
     setHotelRoomChoose(myArray);
-    console.log(res_ticketType);
+    // console.log(res_ticketType);
     //  設定預設價格
     setTicketTypePrice(myArray[0].product_price);
 
@@ -145,10 +146,7 @@ function Ticket() {
           <div className="d-flex">
             <div className="Hotel_part0 Hotel_partHidden"></div>
             <div className="Hotel_part0_left">
-              <div className="ComputerHidden">
-              {/* <BreadCrumb ticketData={hotelListData} /> */}
-           
-              </div>
+              <div className="ComputerHidden"></div>
 
               <h2 style={{ color: '#4D4D4D', marginBottom: '20px' }}>
                 {ticketListData.product_name}
