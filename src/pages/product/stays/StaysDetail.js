@@ -24,7 +24,7 @@ import HashChange from './HashChange/HashChange';
 import ComputerLikeAdd from './ComputerLikeAdd/ComputerLikeAdd';
 import ComDatePicker from './ComDatePicker/ComDatePicker';
 import BookingBar from './BookingBar/BookingBar';
-import FoodMap from '../food/FoodMap';
+import HotelMap from './HotelMap/HotelMap';
 
 function StaysDetail() {
   const dataFrom = window.location.pathname.split('/stays/detail/')[1];
@@ -194,7 +194,7 @@ function StaysDetail() {
               <HotelDetail />
               {/* <MapButton /> */}
               <div className="foodmap" style={{ zIndex: '-1' }}>
-                <FoodMap />
+                <HotelMap />
               </div>
               <div
                 className="Hotel_partHidden"
