@@ -79,6 +79,9 @@ export const HotelContextProvider = ({ children }) => {
 
   const [breadCrumbText, setBreadCrumbText] = useState('全部');
 
+  //收藏項目
+  const [collectItem, setCollectItem] = useState([]);
+
   return (
     <HotelContext.Provider
       value={{
@@ -123,6 +126,8 @@ export const HotelContextProvider = ({ children }) => {
         setHaveData,
         breadCrumbText,
         setBreadCrumbText,
+        collectItem,
+        setCollectItem,
       }}
     >
       {children}

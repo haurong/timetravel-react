@@ -36,12 +36,14 @@ function StaysDetail() {
     setHotelRoomChoose,
     setHotelRoomPrice,
     setHotelCommentData,
+    setCollectItem,
   } = useHotelContext();
   // const { roomCounts, hotelRoomPrice } = useHotelContext();
 
   async function getHotelDetail() {
     //  拿到飯店所有資料
     const res_hotelListData = await axios.get(HOTEL_DETAIL + dataFrom);
+    // console.log(res_hotelListData);
     setHotelListData(res_hotelListData.data);
 
     //  拿到房型所有資料
@@ -58,6 +60,14 @@ function StaysDetail() {
     );
     setHotelCommentData(res_hotelCommentData.data);
     // console.log(res_hotelCommentData.data);
+
+    // 拿到該會員的收藏項目
+    const res = await axios.get(
+      `http://localhost:3001/productAll/checkCollect/${
+        JSON.parse(localStorage.getItem('auth')).sid
+      }`
+    );
+    setCollectItem(res.data);
   }
   const Hotel_part0 = useRef();
   const Hotel_part1 = useRef();
