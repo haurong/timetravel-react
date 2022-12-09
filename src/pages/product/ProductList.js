@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
 import _, { set } from 'lodash';
-import { ADD_COLLECT } from '../../config.js';
+// import { ADD_COLLECT } from '../../config.js';
 
 // import SearchBar from '../product/food/SearchBar';
 import { PRODUCT_LIST } from '../../config';
@@ -45,6 +45,7 @@ function ProductList() {
 
   //總共多少頁。在資料進入後(didMount)後需要計算出後才決定
   const [pageTotal, setPageTotal] = useState(0);
+
   const [collect, setCollect] = useState([]);
 
   async function getData() {
@@ -363,14 +364,7 @@ function ProductList() {
       {productDisplay[pageNow - 1]
         ? productDisplay[pageNow - 1].map((v, i) => {
             return (
-              <Card
-                className="MyCard col-3"
-                style={{ width: '20rem' }}
-                key={i}
-                // onClick={() => {
-                //   // console.log(v.sid);
-                // }}
-              >
+              <Card className="MyCard col-3" style={{ width: '20rem' }} key={i}>
                 <div style={{ overflow: 'hidden' }}>
                   <Card.Img
                     variant="top"
@@ -400,6 +394,7 @@ function ProductList() {
                           ).sid;
                           const product_sid = v.sid;
                           const collect_product_name = v.product_name;
+
                           //後端先發送移除收藏
                           if (collect.includes(v.product_name)) {
                             axios.post(
@@ -410,50 +405,27 @@ function ProductList() {
                                 collect_product_name: collect_product_name,
                               }
                             );
+                            console.log(1111);
                             //前端顯示空心
                             setCollect(
-                              collect.filter((v) => {
-                                return v.product_name !== collect_product_name;
+                              collect.filter((el) => {
+                                return el !== v.product_name;
                               })
                             );
+                          } else {
+                            //前端發送新增收藏
+                            axios.post(
+                              'http://localhost:3001/productAll/AddCollect',
+                              {
+                                member_sid: member_sid,
+                                product_sid: product_sid,
+                                collect_product_name: collect_product_name,
+                              }
+                            );
+                            //解構出原收藏陣列,把新的收藏塞回去
+                            setCollect([...collect, v.product_name]);
                           }
                         }}
-                        // onClick={async function handleLike() {
-                        //   const member_sid = JSON.parse(
-                        //     localStorage.getItem('auth')
-                        //   ).sid;
-                        //   const product_sid = v.sid;
-                        //   const collect_product_name = v.product_name;
-                        //   const collect = v.collect;
-                        //   const { data } = await axios.post(ADD_COLLECT, {
-                        //     member_sid: member_sid,
-                        //     product_sid: product_sid,
-                        //     collect_product_name: collect_product_name,
-                        //   });
-                        //   //選告newItem(新的物件)
-                        //   const newItem = {
-                        //     ...v,
-
-                        //     member_sid: member_sid,
-                        //     collect_product_name: v.product_name
-                        //       ? null
-                        //       : collect_product_name,
-                        //     collect: v.collect ? collect + 1 : collect - 1,
-                        //   };
-                        //   console.log('newItem', newItem);
-                        //   //深拷貝要顯示的資料
-                        //   const newPagesArray = JSON.parse(
-                        //     JSON.stringify(productDisplay)
-                        //   );
-
-                        //   console.log(newPagesArray[pageNow - 1][i], newItem);
-                        //   //要知道現在使用者點到的是第幾個，用i當作索引值
-                        //   newPagesArray[pageNow - 1][i] = newItem;
-                        //   //再設定回拷貝出來的資料
-                        //   setProductDisplay(newPagesArray);
-
-                        //   console.log({ data });
-                        // }
                       >
                         <img
                           src={
@@ -462,7 +434,11 @@ function ProductList() {
                           style={{ width: '25px', height: '25px' }}
                           alt=""
                         />
-                        <span>{v.collect}</span>
+                        <span>
+                          {collect.includes(v.product_name)
+                            ? Number(v.collect) + 1
+                            : v.collect}
+                        </span>
                       </button>
                     </div>
                     <div>
@@ -481,30 +457,30 @@ function ProductList() {
   return (
     <>
       <NavBar />
-      <div className="givePadding"></div>
-      <div className="container col-12 givePadding ">
-        <BreadCrumbList />
+      <div className="space"></div>
+      <div
+        className="container col-12 d-flex breadCrumb_Sort;"
+        style={{ paddingLeft: '14px' }}
+      >
+        <div style={{ paddingTop: '10px' }} className="textAlign-center">
+          <BreadCrumbList />
+        </div>
+
+        <div className="d-flex col-lg-10 hotelSort">
+          <HotelListSortSelector />
+        </div>
       </div>
+
       <div className="container givePadding col-12 d-flex">
         <div className="col-lg-3 px-3">
           <Sidebar1 />
         </div>
         <div className="col-lg-9 " style={{ margin: 0 }}>
-          <div className="d-flex hotelSort">
-            <HotelListSortSelector />
-          </div>
           <div>{display}</div>
         </div>
       </div>
-      <div className="container">
-        <div
-          style={{
-            textAlign: 'center',
-          }}
-        >
-          {paginationBar}
-        </div>
-      </div>
+      <div className="container foodPagination">{paginationBar}</div>
+      <div className="space"></div>
       <Footer />
     </>
   );

@@ -4,8 +4,8 @@ import _ from 'lodash';
 import { useLocation, Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
-import { DEL_COLLECT, FOOD_LIST } from '../../../config.js';
-import { ADD_COLLECT } from '../../../config.js';
+import { FOOD_LIST } from '../../../config.js';
+// import { ADD_COLLECT } from '../../../config.js';
 
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
@@ -31,8 +31,7 @@ function Food() {
   //呈現顯示資料用
   const [foodProductDisplay, setFoodProductDisplay] = useState([]);
 
-  //看是否取得資料
-  const [haveData, setHaveData] = useState(false);
+  const [collect, setCollect] = useState([]);
 
   const { hotelSort } = useHotelContext();
 
@@ -42,12 +41,22 @@ function Food() {
     const pageList = _.chunk(response.data, perPage);
     setFoodProductDisplay(pageList);
     setPageTotal(pageList.length);
+
+    const responseCollect = await axios.get(
+      `http://localhost:3001/productAll/checkCollect/${
+        JSON.parse(localStorage.getItem('auth')).sid
+      }`
+    );
+
+    setCollect(responseCollect.data);
+
+    console.log(responseCollect.data);
     // console.log('foodDisplay', foodProductDisplay);
   }
   useEffect(() => {
     getList();
   }, []);
-  const [collect, setCollect] = useState(foodData.collect);
+
   // useEffect(() => {
   //   getFoodListData(foodProductDisplay, perPage);
   // }, [foodData]);
@@ -337,7 +346,7 @@ function Food() {
                   </Card.Text>
                   <div className="d-flex PriceAndCollect">
                     <div>
-                      <button
+                      {/* <button
                         className="Heart_btn"
                         onClick={async function handleLike() {
                           const member_sid = JSON.parse(
@@ -390,6 +399,60 @@ function Food() {
                           alt=""
                         />
                         <span>{v.collect}</span>
+                      </button> */}
+                      <button
+                        className="Heart_btn"
+                        onClick={() => {
+                          const member_sid = JSON.parse(
+                            localStorage.getItem('auth')
+                          ).sid;
+                          const product_sid = v.sid;
+                          const collect_product_name = v.product_name;
+
+                          //後端先發送移除收藏
+                          if (collect.includes(v.product_name)) {
+                            axios.post(
+                              'http://localhost:3001/productAll/DelCollect',
+                              {
+                                member_sid: member_sid,
+                                product_sid: product_sid,
+                                collect_product_name: collect_product_name,
+                              }
+                            );
+                            console.log(1111);
+                            //前端顯示空心
+                            setCollect(
+                              collect.filter((el) => {
+                                return el !== v.product_name;
+                              })
+                            );
+                          } else {
+                            //前端發送新增收藏
+                            axios.post(
+                              'http://localhost:3001/productAll/AddCollect',
+                              {
+                                member_sid: member_sid,
+                                product_sid: product_sid,
+                                collect_product_name: collect_product_name,
+                              }
+                            );
+                            //解構出原收藏陣列,把新的收藏塞回去
+                            setCollect([...collect, v.product_name]);
+                          }
+                        }}
+                      >
+                        <img
+                          src={
+                            collect.includes(v.product_name) ? PinkHeart : Heart
+                          }
+                          style={{ width: '25px', height: '25px' }}
+                          alt=""
+                        />
+                        <span>
+                          {collect.includes(v.product_name)
+                            ? Number(v.collect) + 1
+                            : v.collect}
+                        </span>
                       </button>
                     </div>
                     <div>
@@ -541,7 +604,7 @@ function Food() {
       <div className="space "></div>
 
       <div
-        className="container col-12 d-flex breadCrumb_Sort;"
+        className="container col-12 d-flex breadCrumb_Sort"
         style={{ paddingLeft: '14px' }}
       >
         <div style={{ paddingTop: '10px' }} className="textAlign-center">
@@ -562,9 +625,7 @@ function Food() {
       </div>
       <div className="foodPagination">{paginationBar}</div>
 
-      <div className="givePadding"></div>
-      {/* <Qrcode /> */}
-
+      <div className="space"></div>
       <Footer />
     </>
   );

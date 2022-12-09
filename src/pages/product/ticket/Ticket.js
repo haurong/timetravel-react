@@ -62,6 +62,12 @@ function Ticket() {
     setDisplayData(pageList);
     setPageTotal(pageList.length);
   }
+
+
+
+
+
+  
   const paginationBar = (
     <ul className="pagination d-flex">
       <li className="page-item ">
@@ -116,7 +122,7 @@ function Ticket() {
             </li>
           );
         })}
-     
+
       <li className="page-item">
         <div>
           <button
@@ -141,17 +147,42 @@ function Ticket() {
   return (
     <>
       <NavBar />
-      {/* <div className="space "></div> */}
-      <div className="container marginTop">
+      <div className="space"></div>
+      <div
+        className="container col-12 d-flex breadCrumb_Sort;"
+        style={{ paddingLeft: '14px' }}
+      >
+        <div style={{ paddingTop: '10px' }} className="textAlign-center">
+          <Breadcrumb />
+        </div>
+
+        <div className="d-flex col-lg-10 hotelSort">
+          <HotelListSortSelector />
+        </div>
+      </div>
+
+      <div className="container givePadding col-12 d-flex">
+        <div className="col-lg-3 px-3" style={{ paddingTop: '20px' }}>
+          <Sidebar />
+        </div>
+        <div className="col-lg-9 CardListStyle">
+          <div>
+            <CardList />
+          </div>
+        </div>
+      </div>
+      <div className="container foodPagination">{paginationBar}</div>
+      <div className="space"></div>
+      {/* <div className="container marginTop">
         <Row>
           <div className="container col-12 givePadding">
             <Breadcrumb />
           </div>
-          <Col className="col-3">
-            {/* <div className="shadow ticket-CitySelection">
+          <Col className="col-3"> */}
+      {/* <div className="shadow ticket-CitySelection">
               <CitySelection />
             </div> */}
-            <div className="shadow ticket-Sidebar">
+      {/* <div className="shadow ticket-Sidebar">
               <Sidebar />
             </div>
           </Col>
@@ -163,11 +194,8 @@ function Ticket() {
             <CardList />
           </Col>
         </Row>
-      </div>
-      <div className="foodPagination">
-        {paginationBar}
-       
-      </div>
+      </div> */}
+      {/* <div className="foodPagination">{paginationBar}</div> */}
 
       <Footer />
     </>

@@ -6,6 +6,7 @@ import Map from '../../icon/map.svg';
 import Heart from '../../icon/heart_gray.svg';
 import PinkHeart from '../../icon/heart.svg';
 import { Location } from 'react-router-dom';
+import { useAllContext } from '../.././pages/AllContext/AllContext';
 import { useHotelContext } from '../../pages/product/stays/Context/HotelContext';
 import { useNavigate } from 'react-router-dom';
 import _ from 'lodash';
@@ -26,6 +27,7 @@ function Card_List() {
     setCollectItem,
     setPageNow,
   } = useHotelContext();
+  const { pageSearchWord, setPageSearchWord } = useAllContext();
   const navigate = useNavigate();
   const [like, setLike] = useState(false);
   const [likeList, setLikeList] = useState([]);
@@ -198,19 +200,42 @@ function Card_List() {
       // setHaveData(true);
     }
   };
+  // 處理過濾的函式
+  const handleSearch = (hotelSortData, searchWord) => {
+    let newHotelProductData = [...hotelSortData];
+    if (pageSearchWord.length < 2) return newHotelProductData;
+    // console.log('newFoodData', newFoodData);
+
+    newHotelProductData = newHotelProductData.filter((item) => {
+      //搜尋商品名稱、縣市地區名、分類名
+      return (
+        item.product_name.includes(searchWord) +
+        item.city_name.includes(searchWord) +
+        item.area_name.includes(searchWord)
+      );
+    });
+    setPageNow(1);
+    return newHotelProductData;
+  };
 
   useEffect(() => {
     // console.log();
     let newHotelSortData = [];
     setPageNow(1);
-    newHotelSortData = handleSortPrice(hotelSortData, hotelSort.sortBy);
-    newHotelSortData = handleArea(newHotelSortData, hotelSort.area);
+    newHotelSortData = handleSearch(hotelSortData, pageSearchWord);
+    newHotelSortData = handleSortPrice(newHotelSortData, hotelSort.sortBy);
     newHotelSortData = handleCate(newHotelSortData, hotelSort.cate);
     newHotelSortData = handleAddLike(newHotelSortData, hotelSort.like);
 
     setDisplayData(newHotelSortData);
     getFoodListData(newHotelSortData, perPage);
-  }, [hotelSort.area, hotelSort.like, hotelSort.cate, hotelSort.sortBy]);
+  }, [
+    pageSearchWord,
+    hotelSort.area,
+    hotelSort.like,
+    hotelSort.cate,
+    hotelSort.sortBy,
+  ]);
   //TODO:收藏人數按鈕樣式待定
   return (
     <Row xs={1} lg={4} className="d-flex justify-content-flexstart flex-wrap">
@@ -222,17 +247,19 @@ function Card_List() {
                 style={{ width: '20rem' }}
                 key={el.product_number}
               >
-                <Card.Img
-                  variant="top"
-                  className="foodCardImg1"
-                  src={`${HOTEL_IMG}/${el.picture}`}
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => {
-                    let sid = Number(el.product_number.split('A')[1]);
-                    // window.location.href = `stays/detail/${sid}`;
-                    navigate(`detail/${sid}`);
-                  }}
-                />
+                <div style={{ overflow: 'hidden' }}>
+                  <Card.Img
+                    variant="top"
+                    className="foodCardImg1"
+                    src={`${HOTEL_IMG}/${el.picture}`}
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => {
+                      let sid = Number(el.product_number.split('A')[1]);
+                      // window.location.href = `stays/detail/${sid}`;
+                      navigate(`detail/${sid}`);
+                    }}
+                  />
+                </div>
                 {/* <button
                   data-product-number={el.product_number}
                   className="Heart_Btn"
