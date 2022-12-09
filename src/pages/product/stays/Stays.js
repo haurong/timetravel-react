@@ -25,6 +25,7 @@ function Stays() {
     perPage,
     setPageTotal,
     setBreadCrumbText,
+    setCollectItem,
   } = useHotelContext();
   const location = useLocation();
   const usp = new URLSearchParams(location.search);
@@ -37,6 +38,14 @@ function Stays() {
     const pageList = _.chunk(response.data.rowsAll, perPage);
     setDisplayData(pageList);
     setPageTotal(pageList.length);
+
+    //拿到會員的收藏項目
+    const res = await axios.get(
+      `http://localhost:3001/productAll/checkCollect/${
+        JSON.parse(localStorage.getItem('auth')).sid
+      }`
+    );
+    setCollectItem(res.data);
   }
   // console.log(hotelAllData.rowsAll);
   // let a = hotelAllData.rowsAll.filter((v) => {

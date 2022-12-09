@@ -22,6 +22,8 @@ function Card_List() {
     setPageTotal,
     perPage,
     pageNow,
+    collectItem,
+    setCollectItem,
     setPageNow,
   } = useHotelContext();
   const navigate = useNavigate();
@@ -268,54 +270,91 @@ function Card_List() {
                       <div>
                         <button
                           className="Heart_btn"
-                          onClick={async function handleLike() {
+                          // onClick={async function handleLike() {
+                          //   const member_sid = JSON.parse(
+                          //     localStorage.getItem('auth')
+                          //   ).sid;
+                          //   const product_sid = el.sid;
+                          //   const { data } = await axios.post(ADD_COLLECT, {
+                          //     member_sid: member_sid,
+                          //     product_sid: product_sid,
+                          //   });
+                          //   //選告newItem(新的物件)
+                          //   const newItem = {
+                          //     ...el,
+                          //     product_sid: el.product_sid ? null : product_sid,
+                          //   };
+                          //   //深拷貝要顯示的資料
+                          //   const newPagesArray = JSON.parse(
+                          //     JSON.stringify(displayData)
+                          //   );
+
+                          //   console.log(newPagesArray[pageNow - 1][i], newItem);
+                          //   //要知道現在使用者點到的是第幾個，用i當作索引值
+                          //   newPagesArray[pageNow - 1][i] = newItem;
+                          //   //再設定回拷貝出來的資料
+                          //   setDisplayData(newPagesArray);
+
+                          //   // console.log(like);
+                          //   console.log({ data });
+
+                          // if (v.product_sid.length.indexOf === -1) {
+                          //   const member_sid = JSON.parse(
+                          //     localStorage.getItem('auth')
+                          //   ).sid;
+                          //   const product_sid = v.sid;
+
+                          //   const {data}=await axios.delete(DEL_COLLECT,{
+                          //     member_sid:member_sid,
+                          //   })
+                          // }
+                          // }}
+                          onClick={() => {
                             const member_sid = JSON.parse(
                               localStorage.getItem('auth')
                             ).sid;
                             const product_sid = el.sid;
-                            const { data } = await axios.post(ADD_COLLECT, {
-                              member_sid: member_sid,
-                              product_sid: product_sid,
-                            });
-                            //選告newItem(新的物件)
-                            const newItem = {
-                              ...el,
-                              product_sid: el.product_sid ? null : product_sid,
-                            };
-                            //深拷貝要顯示的資料
-                            const newPagesArray = JSON.parse(
-                              JSON.stringify(displayData)
-                            );
-
-                            console.log(newPagesArray[pageNow - 1][i], newItem);
-                            //要知道現在使用者點到的是第幾個，用i當作索引值
-                            newPagesArray[pageNow - 1][i] = newItem;
-                            //再設定回拷貝出來的資料
-                            setDisplayData(newPagesArray);
-
-                            // console.log(like);
-                            console.log({ data });
-
-                            // if (v.product_sid.length.indexOf === -1) {
-                            //   const member_sid = JSON.parse(
-                            //     localStorage.getItem('auth')
-                            //   ).sid;
-                            //   const product_sid = v.sid;
-
-                            //   const {data}=await axios.delete(DEL_COLLECT,{
-                            //     member_sid:member_sid,
-
-                            //   })
-
-                            // }
+                            const collect_product_name = el.product_name;
+                            if (collectItem.includes(el.product_name)) {
+                              const res = axios.post(
+                                'http://localhost:3001/productAll/DelCollect',
+                                {
+                                  member_sid: member_sid,
+                                  product_sid: product_sid,
+                                  collect_product_name: collect_product_name,
+                                }
+                              );
+                              // console.log(res);
+                              setCollectItem(
+                                collectItem.filter((v) => {
+                                  return v !== el.product_name;
+                                })
+                              );
+                            } else {
+                              setCollectItem([...collectItem, el.product_name]);
+                              const res = axios.post(ADD_COLLECT, {
+                                member_sid: member_sid,
+                                product_sid: product_sid,
+                                collect_product_name: collect_product_name,
+                              });
+                            }
                           }}
                         >
                           <img
-                            src={el.product_sid === el.sid ? PinkHeart : Heart}
+                            src={
+                              collectItem.includes(el.product_name)
+                                ? PinkHeart
+                                : Heart
+                            }
                             style={{ width: '25px', height: '25px' }}
                             alt=""
                           />
-                          <span>{el.collect}</span>
+                          <span>
+                            {/* {el.collect} */}
+                            {collectItem.includes(el.product_name)
+                              ? `${Number(el.collect) + 1}`
+                              : `${el.collect}`}
+                          </span>
                         </button>
                       </div>
                       <div>

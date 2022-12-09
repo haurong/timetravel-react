@@ -24,6 +24,7 @@ import HashChange from './HashChange/HashChange';
 import ComputerLikeAdd from './ComputerLikeAdd/ComputerLikeAdd';
 import ComDatePicker from './ComDatePicker/ComDatePicker';
 import BookingBar from './BookingBar/BookingBar';
+import FoodMap from '../food/FoodMap';
 
 function StaysDetail() {
   const dataFrom = window.location.pathname.split('/stays/detail/')[1];
@@ -60,14 +61,6 @@ function StaysDetail() {
     );
     setHotelCommentData(res_hotelCommentData.data);
     // console.log(res_hotelCommentData.data);
-
-    // 拿到該會員的收藏項目
-    const res = await axios.get(
-      `http://localhost:3001/productAll/checkCollect/${
-        JSON.parse(localStorage.getItem('auth')).sid
-      }`
-    );
-    setCollectItem(res.data);
   }
   const Hotel_part0 = useRef();
   const Hotel_part1 = useRef();
@@ -199,7 +192,10 @@ function StaysDetail() {
               ></div>
               <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>商品說明</h2>
               <HotelDetail />
-              <MapButton />
+              {/* <MapButton /> */}
+              <div className="foodmap" style={{ zIndex: '-1' }}>
+                <FoodMap />
+              </div>
               <div
                 className="Hotel_partHidden"
                 id="Hotel_part4"
