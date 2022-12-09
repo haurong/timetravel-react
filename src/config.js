@@ -18,11 +18,11 @@ export const FOOD_LIST = `${MY_HOST}/food/api`;
 export const FOOD_ITEM = `${MY_HOST}/food/item/`;
 export const FOOD_CARD_ITEM1 = `${MY_HOST}/food/item/117`;
 export const FOOD_CARD_ITEM2 = `${MY_HOST}/food/item/125`;
-export const FOOD_CARD_ITEM3 = `${MY_HOST}/food/item/119`;
-export const FOOD_CARD_ITEM4 = `${MY_HOST}/food/item/120`;
+export const FOOD_CARD_ITEM3 = `${MY_HOST}/food/item/124`;
+export const FOOD_CARD_ITEM4 = `${MY_HOST}/food/item/118`;
 export const FOOD_CARD_ITEM5 = `${MY_HOST}/food/item/129`;
 export const FOOD_CARD_ITEM6 = `${MY_HOST}/food/item/128`;
-export const FOOD_IMG = `${MY_HOST}/uploads/`;
+export const FOOD_IMG = `${MY_HOST}/uploads/Food/`;
 export const FOOD_COMMENT = `${MY_HOST}/food/commit`;
 export const FOOD_ORDER_DETAIL = `${MY_HOST}/orders/api/list/foodlist/`;
 

@@ -14,10 +14,11 @@ import Map from '../../../icon/map.svg';
 import Heart from '../../../icon/heart_gray.svg';
 import PinkHeart from '../../../icon/heart.svg';
 import Sidebar from '../../../Component/Sidebar1/Sidebar_Food';
-import CommitSelector from './CommentSelect.js';
+// import CommitSelector from './CommentSelect.js';
 import BreadCrumbList from './BreadCrumbList';
 import Qrcode from '../../../Component/QRcode/Qrcode';
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
+import { useFoodContext } from './FoodContext/FoodContext.js';
 import { useAllContext } from '../../AllContext/AllContext.js';
 import HotelListSortSelector from '../stays/HotelListSortSelector/HotelListSortSelector';
 import { useHotelContext } from '../stays/Context/HotelContext.js';
@@ -25,13 +26,12 @@ import './style/Food.scss';
 
 function Food() {
   const { pageSearchWord, setPageSearchWord } = useAllContext();
+  const { collect, setCollect } = useFoodContext();
   //從伺服器來的資料
   const [foodData, setFoodData] = useState([]);
 
   //呈現顯示資料用
   const [foodProductDisplay, setFoodProductDisplay] = useState([]);
-
-  const [collect, setCollect] = useState([]);
 
   const { hotelSort } = useHotelContext();
 
@@ -346,60 +346,6 @@ function Food() {
                   </Card.Text>
                   <div className="d-flex PriceAndCollect">
                     <div>
-                      {/* <button
-                        className="Heart_btn"
-                        onClick={async function handleLike() {
-                          const member_sid = JSON.parse(
-                            localStorage.getItem('auth')
-                          ).sid;
-                          const product_sid = v.sid;
-                          const collect_product_name = v.product_name;
-                          const { data } = await axios.post(ADD_COLLECT, {
-                            member_sid: member_sid,
-                            product_sid: product_sid,
-                            collect_product_name: collect_product_name,
-                          });
-                          //選告newItem(新的物件)
-                          const newItem = {
-                            ...v,
-                            member_sid: member_sid,
-                            collect_product_name: v.product_name
-                              ? null
-                              : collect_product_name,
-                          };
-                          console.log(newItem);
-                          //深拷貝要顯示的資料
-                          const newPagesArray = JSON.parse(
-                            JSON.stringify(foodProductDisplay)
-                          );
-
-                          console.log(newPagesArray[pageNow - 1][i], newItem);
-                          //要知道現在使用者點到的是第幾個，用i當作索引值
-                          newPagesArray[pageNow - 1][i] = newItem;
-                          //再設定回拷貝出來的資料
-                          setFoodProductDisplay(newPagesArray);
-
-                          // console.log(like);
-                          console.log({ data });
-                          // if (product_sid !== null) {
-                          //   const newCollect = collect + 1;
-                          //   setCollect(newCollect);
-                          // } else {
-                          //   setCollect(collect);
-                          // }
-                        }}
-                      >
-                        <img
-                          src={
-                            v.collect_product_name === v.product_name
-                              ? PinkHeart
-                              : Heart
-                          }
-                          style={{ width: '25px', height: '25px' }}
-                          alt=""
-                        />
-                        <span>{v.collect}</span>
-                      </button> */}
                       <button
                         className="Heart_btn"
                         onClick={() => {
@@ -419,7 +365,7 @@ function Food() {
                                 collect_product_name: collect_product_name,
                               }
                             );
-                            console.log(1111);
+                            console.log('移除收藏');
                             //前端顯示空心
                             setCollect(
                               collect.filter((el) => {
@@ -436,6 +382,7 @@ function Food() {
                                 collect_product_name: collect_product_name,
                               }
                             );
+                            console.log('新增收藏');
                             //解構出原收藏陣列,把新的收藏塞回去
                             setCollect([...collect, v.product_name]);
                           }
@@ -468,64 +415,7 @@ function Food() {
         : ''}
     </Row>
   );
-  // const paginationBar = (
 
-  //   <ul className="pagination d-flex">
-  //     <li className="page-item ">
-  //       <Link
-  //         className="page-link  prevPage"
-  //         to={`?page=${pageNow - 1}`}
-  //         aria-label="Previous"
-  //         onClick={() => {
-  //           if (pageNow > 1) {
-  //             const newPageNowMinus = pageNow - 1;
-  //             setPageNow(newPageNowMinus);
-  //           }
-  //         }}
-  //       >
-  //         <MdOutlineChevronLeft />
-  //       </Link>
-  //     </li>
-  //     {Array(5)
-  //       .fill(1)
-  //       .map((v, i) => {
-  //         const classNames = ['page-item'];
-  //         const p = pageNow + i;
-  //         if (p < 1 || p > pageTotal) return null;
-  //         if (p === pageNow) classNames.push('active');
-  //         const link = `?page=${p}`;
-  //         return (
-  //           <li className={classNames.join(' ')} key={p}>
-  //             <Link
-  //               className="page-link"
-  //               to={link}
-  //               onClick={() => {
-  //                 setPageNow(p);
-  //               }}
-  //             >
-  //               {p}
-  //             </Link>
-  //           </li>
-  //         );
-  //       })}
-  //     <li className="page-item">
-  //       <Link
-  //         className="page-link "
-  //         to={`?page=${pageNow + 1}`}
-  //         aria-label="Next"
-  //         onClick={() => {
-  //           const newPageNowPlus = pageNow + 1;
-  //           setPageNow(newPageNowPlus);
-  //           if (pageNow > pageTotal) {
-  //             setPageNow(pageTotal);
-  //           }
-  //         }}
-  //       >
-  //         <MdOutlineChevronRight />
-  //       </Link>
-  //     </li>
-  //   </ul>
-  // );
   const paginationBar = (
     <ul className="pagination d-flex">
       <li className="page-item ">

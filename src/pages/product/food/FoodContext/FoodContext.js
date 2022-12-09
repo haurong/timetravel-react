@@ -20,7 +20,8 @@ export const FoodContextProvider = ({ children }) => {
   const [add, setAdd] = useState(false);
   //  評價排序
   const [commentSort, setCommentSort] = useState('time_ASC');
-
+  //收藏陣列
+  const [collect, setCollect] = useState([]);
   //  Food列表資料篩選條件
   const [foodSort, setFoodSort] = useState({
     cate: 'cate_All',
@@ -47,7 +48,9 @@ export const FoodContextProvider = ({ children }) => {
         commentSort,
         setCommentSort,
         foodSort,
-        setFoodSort
+        setFoodSort,
+        collect,
+        setCollect
       }}
     >
       {children}

@@ -19,12 +19,13 @@ import HashChange from './HashChange';
 import Heart from '../../../icon/heart_gray.svg';
 import PinkHeart from '../../../icon/heart.svg';
 import Calendar from '../../../icon/calendar+add.svg';
-import ActiveCalendar from '../../../icon/calendar+greenadd.svg';
+// import ActiveCalendar from '../../../icon/calendar+greenadd.svg';
 import Map_icon from '../../../icon/map_blue.svg';
 import Food_icon from '../../../icon/food_blue.svg';
 import Phone_icon from '../../../icon/iphone.svg';
 import Star_icon from '../../../icon/star.svg';
 import Minus_icon from '../../../icon/minus.svg';
+import Minus_icon_active from '../../../icon/minusActive.svg';
 import Add_icon from '../../../icon/add.svg';
 import House_icon from '../../../icon/house.svg';
 
@@ -53,6 +54,8 @@ function FoodDetail() {
     setAdd,
     commentSort,
     setCommentSort,
+    collect,
+    setCollect,
   } = useFoodContext();
 
   const foodObj = {
@@ -63,8 +66,6 @@ function FoodDetail() {
     img: 'http:/localhost:3001/uploads/F116-1.jpg',
     rate: 4.3,
   };
-  const toggleLike = () => setLike(!like);
-  const toggleAdd = () => setAdd(!add);
 
   const location = useLocation();
   // const path = window.location.pathname.split('/');
@@ -286,10 +287,47 @@ function FoodDetail() {
             </div>
 
             <div className="Heart_Calendar_icon">
-              <button className="HeartBtn" onClick={toggleLike}>
+              <button
+                className="HeartBtn"
+                onClick={() => {
+                  const member_sid = JSON.parse(
+                    localStorage.getItem('auth')
+                  ).sid;
+                  const product_sid = foodData.sid;
+                  const collect_product_name = foodData.product_name;
+
+                  //後端先發送移除收藏
+                  if (collect.includes(foodData.product_name)) {
+                    axios.post('http://localhost:3001/productAll/DelCollect', {
+                      member_sid: member_sid,
+                      product_sid: product_sid,
+                      collect_product_name: collect_product_name,
+                    });
+                    console.log('移除收藏');
+                    //前端顯示空心
+                    setCollect(
+                      collect.filter((el) => {
+                        return el !== foodData.product_name;
+                      })
+                    );
+                  } else {
+                    //前端發送新增收藏
+                    axios.post('http://localhost:3001/productAll/AddCollect', {
+                      member_sid: member_sid,
+                      product_sid: product_sid,
+                      collect_product_name: collect_product_name,
+                    });
+                    console.log('新增收藏');
+                    //解構出原收藏陣列,把新的收藏塞回去
+                    setCollect([...collect, foodData.product_name]);
+                  }
+                }}
+              >
                 <img
-                  src={like ? PinkHeart : Heart}
-                  className="Heart_icon"
+                  src={
+                    collect.includes(foodData.product_name) ? PinkHeart : Heart
+                  }
+                  style={{ width: '25px', height: '25px' }}
                   alt=""
                 />
               </button>
@@ -297,18 +335,8 @@ function FoodDetail() {
                 className="CalendarBtn"
                 onClick={() => {
                   mySubmit();
-                  // Swal.fire({
-                  //   icon: 'success',
-                  //   title: '新增至我的行程',
-                  // });
-                  // toggleAdd();
                 }}
               >
-                {/* <img
-                  src={add ? ActiveCalendar : Calendar}
-                  className="Calendar_icon"
-                  alt=""
-                /> */}
                 <img src={Calendar} className="Calendar_icon" alt="" />
               </button>
             </div>
@@ -367,7 +395,11 @@ function FoodDetail() {
                 }
               }}
             >
-              <img src={Minus_icon} alt="" className="Minus_icon" />
+              <img
+                src={count > 1 ? Minus_icon_active : Minus_icon}
+                alt=""
+                className="Minus_icon"
+              />
             </button>
             <p>{count}</p>
             <button
