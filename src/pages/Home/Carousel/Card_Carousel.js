@@ -556,33 +556,33 @@ export default function Card_Carousel() {
             />
           </button>
 
-          <Card.Body>
-            <Card.Title className="Card_Title">
-              {foodCardData2.product_name}
-            </Card.Title>
-            <Card.Text className="Card_Text">
-              <Card.Img src={Map} className="Map_icon" />
-              <span class="Card_Score">
-                {foodCardData2.city_name} | {foodCardData2.area_name}
-              </span>
-            </Card.Text>
-            <h2 variant="primary" className="Card_Price">
-              NT${foodCardData2.p_selling_price}
-            </h2>
-          </Card.Body>
-        </Card>
-      </SwiperSlide>
+            <Card.Body>
+              <Card.Title className="Card_Title">
+                {foodCardData2.product_name}
+              </Card.Title>
+              <Card.Text className="Card_Text">
+                <Card.Img src={Map} className="Map_icon" />
+                <span class="Card_Score">
+                  {foodCardData2.city_name} | {foodCardData2.area_name}
+                </span>
+              </Card.Text>
+              <h2 variant="primary" className="Card_Price">
+                NT${foodCardData2.p_selling_price}
+              </h2>
+            </Card.Body>
+          </Card>
+        </SwiperSlide>
 
-      <SwiperSlide>
-        <Card className="Card" style={{ width: '20rem' }}>
-          <Card.Img variant="top" className="foodCardData3Img" />
-          <button className="Heart_Btn" onClick={toggleLike3}>
-            <img
-              src={like3 ? PinkHeart : Heart}
-              className="Card_Heart"
-              alt=""
-            />
-          </button>
+        <SwiperSlide>
+          <Card className="Card" style={{ width: '20rem' }}>
+            <Card.Img variant="top" className="foodCardData3Img" />
+            <button className="Heart_Btn" onClick={toggleLike3}>
+              <img
+                src={like3 ? PinkHeart : Heart}
+                className="Card_Heart"
+                alt=""
+              />
+            </button>
 
           <Card.Body>
             <Card.Title className="Card_Title">

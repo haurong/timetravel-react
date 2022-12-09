@@ -4,6 +4,7 @@
 // import { ReactComponent as Ticket } from '../../icon/ticket.svg';
 import { Menu } from 'antd';
 import { Checkbox } from 'antd';
+import PageSearchBar from '../../pages/product/PageSearchBar';
 import React, { useState } from 'react';
 import { useHotelContext } from '../../pages/product/stays/Context/HotelContext';
 import './Sidebar1.scss';
@@ -134,6 +135,9 @@ export default function Sidebar1() {
 
   return (
     <div className="Eliot_Du_Boss">
+      <Menu mode="inline">
+        <PageSearchBar />
+      </Menu>
       <div className="destination">
         <h2 className="sidebarMarginTop">篩選目的地</h2>
         <Menu

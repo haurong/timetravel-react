@@ -33,7 +33,7 @@ export const PRODUCT_LIST = `${MY_HOST}/productAll/api`;
 
 export const ADD_COLLECT = `${MY_HOST}/productAll/AddCollect`;
 export const DEL_COLLECT = `${MY_HOST}/productAll/DelCollect`;
-
+export const GET_COLLECT = `${MY_HOST}/productAll/checkCollect/:member`;
 //購物車路徑
 export const MakeOrder = `${MY_HOST}/cart/api/makeorder`;
 // export const MakeHotelOrder = `${MY_HOST}/cart/api/makehotelorder`;

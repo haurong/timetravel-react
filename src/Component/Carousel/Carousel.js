@@ -24,16 +24,16 @@ export default function Carousel() {
         <div className="Food_Img1 "></div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlide">
-        <div className="Food_Img2" ></div>
+        <div className="Food_Img2"></div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlide">
-        <div className="Food_Img3" ></div>
+        <div className="Food_Img3"></div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlide">
-        <div className="Food_Img4" ></div>
+        <div className="Food_Img4"></div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlide">
-        <div className="Food_Img5" ></div>
+        <div className="Food_Img5"></div>
       </SwiperSlide>
     </Swiper>
   );

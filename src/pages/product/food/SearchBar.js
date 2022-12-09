@@ -1,8 +1,10 @@
 import React from 'react';
 import SearchIcon from '../../../icon/search.svg';
-import {useAllContext}from '../../AllContext/AllContext'
+import { useAllContext } from '../../AllContext/AllContext';
+import { NavLink, useNavigate } from 'react-router-dom';
 function SearchBar() {
   const { searchWord, setSearchWord } = useAllContext();
+  const navigate = useNavigate();
   return (
     <>
       <form
@@ -10,6 +12,7 @@ function SearchBar() {
         role="search"
         onSubmit={(e) => {
           e.preventDefault();
+          navigate('/productList');
         }}
       >
         <div className="input-group">

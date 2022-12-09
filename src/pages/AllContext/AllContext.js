@@ -5,6 +5,7 @@ const AllContext = createContext(null);
 export const AllContextProvider = ({ children }) => {
   //搜尋關鍵字
   const [searchWord, setSearchWord] = useState('');
+  const [pageSearchWord, setPageSearchWord] = useState('');
   const [collect, setCollect] = useState([]);
   return (
     <AllContext.Provider
@@ -13,6 +14,8 @@ export const AllContextProvider = ({ children }) => {
         setSearchWord,
         collect,
         setCollect,
+        pageSearchWord,
+        setPageSearchWord
       }}
     >
       {children}

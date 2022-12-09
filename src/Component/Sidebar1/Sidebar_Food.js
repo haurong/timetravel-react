@@ -3,6 +3,7 @@
 // import { ReactComponent as Stay } from '../../icon/stay.svg';
 // import { ReactComponent as Ticket } from '../../icon/ticket.svg';
 import { Menu } from 'antd';
+import PageSearchBar from '../../pages/product/PageSearchBar';
 import { Checkbox } from 'antd';
 import React, { useState } from 'react';
 import { useHotelContext } from '../../pages/product/stays/Context/HotelContext';
@@ -43,67 +44,7 @@ const items2 = [
   getItem('甜點', 'cate_Food_7'),
   getItem('咖啡', 'cate_Food_8'),
 ];
-// const items2 = [
-//   getItem('全部', 'cate_All'),
-//   getItem(
-//     '景點',
-//     'cate_Site',
-//     // <Site className="sidebarIcon" style={{ width: '40px' }} />,
-//     [
-//       getItem('全部', 'cate_Site_All'),
-//       getItem('蹣山', 'cate_Site_1'),
-//       getItem('望海', 'cate_Site_2'),
-//       getItem('戶外活動', 'cate_Site_3'),
-//       getItem('室內活動', 'cate_Site_4'),
-//       getItem('手作、工坊', 'cate_Site_5'),
-//     ]
-//   ),
-//   getItem(
-//     '美食',
-//     'cate_Food',
-//     // <Food className="sidebarIcon" style={{ width: '40px' }} />,
-//     [
-//       getItem('全部', 'cate_Food_All'),
-//       getItem('特色小吃', 'cate_Food_1'),
-//       getItem('飲品', 'cate_Food_2'),
-//       getItem('火鍋', 'cate_Food_3'),
-//       getItem('台式', 'cate_Food_4'),
-//       getItem('日式', 'cate_Food_5'),
-//       getItem('甜點', 'cate_Food_6'),
-//       getItem('咖啡', 'cate_Food_7'),
-//       getItem('泰式', 'cate_Food_8'),
-//     ]
-//   ),
-//   getItem(
-//     '住宿',
-//     'cate_Hotel',
-//     // <Stay className="sidebarIcon" style={{ width: '40px' }} />,
-//     [
-//       getItem('全部', 'cate_Hotel_All'),
-//       getItem('旅館', 'cate_Hotel_1'),
-//       getItem('飯店', 'cate_Hotel_2'),
-//       getItem('民宿', 'cate_Hotel_3'),
-//     ]
-//   ),
-//   getItem(
-//     '票券',
-//     'cate_Ticket',
-//     // <Ticket className="sidebarIcon" style={{ width: '40px' }} />,
-//     [
-//       getItem('全部', 'cate_Ticket_All'),
-//       getItem('舒壓、放鬆', 'cate_Ticket_1'),
-//       getItem('展覽、藝文', 'cate_Ticket_2'),
-//       getItem('樂園、戶外', 'cate_Ticket_3'),
-//       getItem('生態、風景', 'cate_Ticket_4'),
-//       getItem('工坊、手作', 'cate_Ticket_5'),
-//     ]
-//   ),
-// ];
-// const item3=[
-//   getItem('')
-// ]
 
-// submenu keys of first level
 const rootSubmenuKeys = [
   'area_All',
   'area_Taipei',
@@ -139,8 +80,12 @@ export default function Sidebar1() {
 
   return (
     <div className="Eliot_Du_Boss">
+      <Menu mode="inline">
+        <PageSearchBar />
+      </Menu>
+
       <div className="destination">
-        <h2 className="sidebarMarginTop">篩選目的地</h2>
+        <h2 className="sidebarMarginTop">選擇目的地</h2>
         <Menu
           mode="inline"
           openKeys={openKeys}
@@ -158,7 +103,7 @@ export default function Sidebar1() {
         />
       </div>
       <div className="allproduct">
-        <h2 className="sidebarMarginTop">住宿類型</h2>
+        <h2 className="sidebarMarginTop">美食類型</h2>
         <Menu
           mode="inline"
           openKeys={openKeys}
@@ -181,7 +126,7 @@ export default function Sidebar1() {
         />
       </div>
       <div className="selectScore">
-        <h2 className="sidebarMarginTop">收藏數量</h2>
+        <h2 className="sidebarMarginTop">收藏數</h2>
         <Menu
           mode="inline"
           openKeys={openKeys}

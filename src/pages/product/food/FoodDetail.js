@@ -288,9 +288,7 @@ function FoodDetail() {
             <div className="Heart_Calendar_icon">
               <button className="HeartBtn" onClick={toggleLike}>
                 <img
-                  src={
-                    foodData.product_sid === foodData.sid ? PinkHeart : Heart
-                  }
+                  src={like ? PinkHeart : Heart}
                   className="Heart_icon"
                   alt=""
                 />

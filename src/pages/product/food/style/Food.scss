@@ -1,3 +1,13 @@
+// div{
+//     outline: 1px solid blue;
+// }
+// .row{
+//     margin: 0;
+// }
+.breadCrumb_Sort{
+    display: flex;
+    
+}
 .space{
     padding:60px
 }
@@ -22,6 +32,11 @@
 .foodPagination{
     margin-top: 80px;
 }
+.CardListStyle{
+    // padding-top:50px;
+    margin: 0 !important
+    
+}
 @media (max-width:768px) {
 .foodContent{
     display: block;
@@ -31,5 +46,6 @@
         width: 100%;
         display: block;
         flex-wrap: nowrap;
+        
     }
 }
