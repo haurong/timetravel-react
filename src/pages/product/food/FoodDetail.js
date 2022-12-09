@@ -45,7 +45,7 @@ function FoodDetail() {
     add,
     setAdd,
     commentSort,
-    setCommentSort
+    setCommentSort,
   } = useFoodContext();
 
   const foodObj = {
@@ -53,6 +53,8 @@ function FoodDetail() {
     name: foodData.product_name,
     quantity: count,
     price: totalPrice,
+    img: 'http:/localhost:3001/uploads/F116-1.jpg',
+    rate: 4.3,
   };
   const toggleLike = () => setLike(!like);
   const toggleAdd = () => setAdd(!add);
@@ -146,9 +148,7 @@ function FoodDetail() {
             <div className="Heart_Calendar_icon">
               <button className="HeartBtn" onClick={toggleLike}>
                 <img
-                  src={
-                    foodData.product_sid === foodData.sid ? PinkHeart : Heart
-                  }
+                  src={like ? PinkHeart : Heart}
                   className="Heart_icon"
                   alt=""
                 />

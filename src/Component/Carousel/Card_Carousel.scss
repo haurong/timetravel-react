@@ -2,7 +2,23 @@
     width: 100%;
     
 }
- 
+// .cardMySwiper .mySwiper .swiper-button-prev {
+//     top:40%;
+//     left:-4px;
+//     right:auto;
+    
+// }
+.cardMySwiper{
+   .swiper-button-prev {
+        top:40% !important;
+        left: -4px !important;
+        right: auto !important;
+    }
+    .swiper-button-next{
+        top:40% !important;
+        right:-4px !important;
+    }
+}
 .swiper{
 
     position: relative;
@@ -10,6 +26,7 @@
     .cardSlide{
         height:500px !important
     }
+   
     .Card .card{
         margin:10px;
         padding:0;
@@ -18,6 +35,10 @@
         box-shadow: 0 0 18px 0 rgba(0,0,0,0.1);
         overflow: hidden;
      }
+    //  .swiper-button-next{
+    //     position: relative;
+    
+    //  }
     .Card_Title{
         font-size: 21px;
         color:#4D4D4D;   
@@ -80,7 +101,7 @@
             background-image: url('http://localhost:3001/uploads/F125-1.jpg');
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: center center;
+            background-position: top 25% center;
         }
         .foodCardData3Img{
             object-fit: cover;  

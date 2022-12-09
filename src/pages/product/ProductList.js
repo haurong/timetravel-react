@@ -35,14 +35,18 @@ function ProductList() {
   const { hotelSort } = useHotelContext();
   //看是否取得資料
   // const [haveData, setHaveData] = useState(false);
+
   //分頁
   //當前分頁最小為1,最大看資料計算最大頁數
   const [pageNow, setPageNow] = useState(1);
+
   //每頁多少筆資料
   const [perPage, setPerPage] = useState(12);
+
   //總共多少頁。在資料進入後(didMount)後需要計算出後才決定
   const [pageTotal, setPageTotal] = useState(0);
-  const [collect, setCollect] = useState('');
+  const [collect, setCollect] = useState([]);
+
   async function getData() {
     const response = await axios.get(PRODUCT_LIST);
     setProductData(response.data);
@@ -50,13 +54,22 @@ function ProductList() {
     setProductDisplay(pageList);
     setPageTotal(pageList.length);
     // setProductDisplay(response.data);
-    setCollect(pageList.collect);
-    console.log(response.data);
+
+    const responseCollect = await axios.get(
+      `http://localhost:3001/productAll/checkCollect/${
+        JSON.parse(localStorage.getItem('auth')).sid
+      }`
+    );
+
+    setCollect(responseCollect.data);
+
+    console.log(responseCollect.data);
   }
 
   //componentdidmount先拿到伺服器來的原始資料
   useEffect(() => {
     console.log('觸發getData');
+    //  setSearchWord()
     getData();
   }, []);
 
@@ -354,9 +367,9 @@ function ProductList() {
                 className="MyCard col-3"
                 style={{ width: '20rem' }}
                 key={i}
-                onClick={() => {
-                  // console.log(v.sid);
-                }}
+                // onClick={() => {
+                //   // console.log(v.sid);
+                // }}
               >
                 <div style={{ overflow: 'hidden' }}>
                   <Card.Img
@@ -381,48 +394,70 @@ function ProductList() {
                     <div>
                       <button
                         className="Heart_btn"
-                        onClick={async function handleLike() {
+                        onClick={() => {
                           const member_sid = JSON.parse(
                             localStorage.getItem('auth')
                           ).sid;
                           const product_sid = v.sid;
                           const collect_product_name = v.product_name;
-                          const collect = v.collect;
-                          const { data } = await axios.post(ADD_COLLECT, {
-                            member_sid: member_sid,
-                            product_sid: product_sid,
-                            collect_product_name: collect_product_name,
-                          });
-                          //選告newItem(新的物件)
-                          const newItem = {
-                            ...v,
-
-                            member_sid: member_sid,
-                            collect_product_name: v.product_name
-                              ? null
-                              : collect_product_name,
-                            collect: v.collect ? collect + 1 : collect - 1,
-                          };
-                          console.log('newItem', newItem);
-                          //深拷貝要顯示的資料
-                          const newPagesArray = JSON.parse(
-                            JSON.stringify(productDisplay)
-                          );
-
-                          console.log(newPagesArray[pageNow - 1][i], newItem);
-                          //要知道現在使用者點到的是第幾個，用i當作索引值
-                          newPagesArray[pageNow - 1][i] = newItem;
-                          //再設定回拷貝出來的資料
-                          setProductDisplay(newPagesArray);
-
-                          console.log({ data });
+                          //後端先發送移除收藏
+                          if (collect.includes(v.product_name)) {
+                            axios.post(
+                              'http://localhost:3001/productAll/DelCollect',
+                              {
+                                member_sid: member_sid,
+                                product_sid: product_sid,
+                                collect_product_name: collect_product_name,
+                              }
+                            );
+                            //前端顯示空心
+                            setCollect(
+                              collect.filter((v) => {
+                                return v.product_name !== collect_product_name;
+                              })
+                            );
+                          }
                         }}
+                        // onClick={async function handleLike() {
+                        //   const member_sid = JSON.parse(
+                        //     localStorage.getItem('auth')
+                        //   ).sid;
+                        //   const product_sid = v.sid;
+                        //   const collect_product_name = v.product_name;
+                        //   const collect = v.collect;
+                        //   const { data } = await axios.post(ADD_COLLECT, {
+                        //     member_sid: member_sid,
+                        //     product_sid: product_sid,
+                        //     collect_product_name: collect_product_name,
+                        //   });
+                        //   //選告newItem(新的物件)
+                        //   const newItem = {
+                        //     ...v,
+
+                        //     member_sid: member_sid,
+                        //     collect_product_name: v.product_name
+                        //       ? null
+                        //       : collect_product_name,
+                        //     collect: v.collect ? collect + 1 : collect - 1,
+                        //   };
+                        //   console.log('newItem', newItem);
+                        //   //深拷貝要顯示的資料
+                        //   const newPagesArray = JSON.parse(
+                        //     JSON.stringify(productDisplay)
+                        //   );
+
+                        //   console.log(newPagesArray[pageNow - 1][i], newItem);
+                        //   //要知道現在使用者點到的是第幾個，用i當作索引值
+                        //   newPagesArray[pageNow - 1][i] = newItem;
+                        //   //再設定回拷貝出來的資料
+                        //   setProductDisplay(newPagesArray);
+
+                        //   console.log({ data });
+                        // }
                       >
                         <img
                           src={
-                            v.collect_product_name === v.product_name
-                              ? PinkHeart
-                              : Heart
+                            collect.includes(v.product_name) ? PinkHeart : Heart
                           }
                           style={{ width: '25px', height: '25px' }}
                           alt=""

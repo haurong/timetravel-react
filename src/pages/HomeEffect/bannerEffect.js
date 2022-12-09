@@ -2,23 +2,23 @@ import React from 'react';
 import './bannerEffect.scss';
 import SearchIcon_white from '../../icon/search_white.svg';
 import { useAllContext } from '../AllContext/AllContext';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, NavLink } from 'react-router-dom';
 
 function BannerEffect() {
-  const { searchWord, setSearchWord } = useAllContext();
+  const { pageSearchWord, setPageSearchWord } = useAllContext();
   const navigate = useNavigate();
 
-  const foodCate = {
-    cate1: '特色小吃',
-    cate2: '台式',
-    cate3: '泰式',
-    cate4: '日式',
-    cate5: '飲品',
-    cate6: '火鍋',
-    cate7: '咖啡',
-    cate8: '甜點',
-  };
-//TODO:輸入iuput後要跳轉頁面
+  // const foodCate = {
+  //   cate1: '特色小吃',
+  //   cate2: '台式',
+  //   cate3: '泰式',
+  //   cate4: '日式',
+  //   cate5: '飲品',
+  //   cate6: '火鍋',
+  //   cate7: '咖啡',
+  //   cate8: '甜點',
+  // };
+  //TODO:輸入iuput後要跳轉頁面
   return (
     <>
       <div class="BannerEffect">
@@ -136,27 +136,26 @@ function BannerEffect() {
         </div>
         <div class="food">
           <div className="hover-effect">
-            <form className="d-flex BannerEffect-flex" role="search">
-              <div className="input-group">
-                <span className="icon" id="basic-addon1">
-                  <img src={SearchIcon_white} alt="" />
-                </span>
-                <input
-                  className="form-control search-border me-4"
-                  type="search"
-                  placeholder="搜尋"
-                  aria-label="Search"
-                  value={searchWord}
-                  onChange={(e) => {
-                    setSearchWord(e.target.value);
-                  }}
-                  onSubmit={() => {
-                    navigate('/food');
-             
-                  }}
-                />
-              </div>
-            </form>
+            <NavLink to="/food">
+              <form className="d-flex BannerEffect-flex" role="search">
+                <div className="input-group">
+                  <span className="icon" id="basic-addon1">
+                    <img src={SearchIcon_white} alt="" />
+                  </span>
+                  <input
+                    className="form-control search-border me-4"
+                    type="search"
+                    placeholder="搜尋"
+                    aria-label="Search"
+                    value={pageSearchWord}
+                    onChange={(e) => {
+                      setPageSearchWord(e.target.value);
+                      // navigate('/food');
+                    }}
+                  />
+                </div>
+              </form>
+            </NavLink>
           </div>
           <div class="sun-an">
             <div class="sun sun-1"></div>

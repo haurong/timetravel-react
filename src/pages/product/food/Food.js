@@ -541,19 +541,18 @@ function Food() {
       <div className="space "></div>
 
       <div
-        className="container col-12 d-flex justify-content-space-between;"
+        className="container col-12 d-flex breadCrumb_Sort;"
         style={{ paddingLeft: '14px' }}
       >
-        <div className="d-flex col-12">
-          <div style={{ paddingTop: '10px' }} className="textAlign-center">
-            <BreadCrumbList foodData={foodData} />
-          </div>
+        <div style={{ paddingTop: '10px' }} className="textAlign-center">
+          <BreadCrumbList foodData={foodData} />
+        </div>
 
-          <div className="d-flex col-lg-10 hotelSort">
-            <HotelListSortSelector />
-          </div>
+        <div className="d-flex col-lg-10 hotelSort">
+          <HotelListSortSelector />
         </div>
       </div>
+
       <div className="container col-lg-12 d-flex foodContent">
         <div className="col-lg-3  px-3 " style={{ paddingTop: '20px' }}>
           <Sidebar />
