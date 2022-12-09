@@ -57,7 +57,8 @@ function ItineraryCardList(rows) {
                     className="card-img"
                     variant="top"
                     // src={SITE_IMG + '/' + '0.png'}
-                    src={SITE_IMG + '/' + el.img1.split(',')[0]}
+                    // src={SITE_IMG + '/' + el.img1.split(',')[0]}
+                    src={SITE_IMG + '/' + el.photo}
                     style={{ objectFit: 'cover' }}
                   />
                 </div>
@@ -66,7 +67,11 @@ function ItineraryCardList(rows) {
                     <Link to={'/itinerary/' + el.list_number}>
                       <h2>{el.list_name}</h2>
                     </Link>
-                    <p>{moment(iTData.date).format('YYYY-MM-DD(ddd)')}</p>
+                    <p>
+                      {moment(iTData.date)
+                        .add(1, 'd')
+                        .format('YYYY-MM-DD(ddd)')}
+                    </p>
                     <p>
                       {el.day === 1
                         ? ''

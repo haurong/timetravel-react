@@ -10,32 +10,39 @@ import {
 import { useItineraryContext } from './ItineraryContext';
 
 export default function ITitleBtns() {
-  const { iData, setIData, name, setName, day, setDay, date, setDate } =
-    useItineraryContext();
+  const {
+    iData,
+    setIData,
+    name,
+    setName,
+    day,
+    setDay,
+    date,
+    setDate,
+    iTData,
+    setITData,
+  } = useItineraryContext();
   const location = useLocation();
   const listNumber = location.pathname.split('/')[2];
   const mySubmit = async () => {
-    console.log(name);
-    console.log(day);
-    console.log(date);
-    // const { del } = await axios.delete(ITINERARY_DELITEM + listNumber, {
-    //   list_number: listNumber,
-    // });
-    // console.log({ del });
-    // console.log(iData);
-    // console.log(iData[0]);
-    // for (let i = 0; i < iData.length; i++) {
-    //   const { add } = await axios.post(ITINERARY_ADDITEM, iData[i]);
-    //   // console.log({ add });
-    // }
-    // const { edit } = await axios.put(ITINERARY_EDITLIST + listNumber, {
-    //   list_name: name,
-    //   day: day,
-    //   date: date,
-    // });
+    console.log(iTData);
+    const { del } = await axios.delete(ITINERARY_DELITEM + listNumber, {
+      list_number: listNumber,
+    });
+    console.log({ del });
+    console.log(iData);
+    console.log(iData[0]);
+    for (let i = 0; i < iData.length; i++) {
+      const { add } = await axios.post(ITINERARY_ADDITEM, iData[i]);
+      // console.log({ add });
+    }
+    const { result } = await axios.put(ITINERARY_EDITLIST + listNumber, iTData);
+
     Swal.fire({
       icon: 'success',
       title: '已儲存',
+      confirmButtonText: '確認',
+      confirmButtonColor: '#59d8a1',
     });
   };
   return (
