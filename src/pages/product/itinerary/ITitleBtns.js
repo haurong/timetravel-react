@@ -41,6 +41,8 @@ export default function ITitleBtns() {
     Swal.fire({
       icon: 'success',
       title: '已儲存',
+      confirmButtonText: '確認',
+      confirmButtonColor: '#59d8a1',
     });
   };
   return (

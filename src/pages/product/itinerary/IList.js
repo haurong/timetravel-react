@@ -78,11 +78,12 @@ export default function IList() {
                         >
                           <img
                             className="iItem-img"
-                            src={SITE_IMG + '/' + el.img1.split(',')[0]}
+                            // src={SITE_IMG + '/' + el.img1.split(',')[0]}
+                            src={SITE_IMG + '/' + el.photo}
                             alt=""
                           />
                           <div className="iItemText " {...p.dragHandleProps}>
-                            <h2>{el.name}</h2>
+                            <h2>{el.product_name}</h2>
                             <p>{el.city_name + ' ' + el.area_name}</p>
                           </div>
                           <span
