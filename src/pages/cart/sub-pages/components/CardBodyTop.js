@@ -5,7 +5,7 @@ function CardBodyTop({ productName, rate, img }) {
   return (
     <div className="d-flex align-items-center">
       <div className="pic-wrap">
-        <img alt={img ? img : 'pic'} src={Pic} />
+        <img alt="pic" src={img ? img : Pic} />
       </div>
       <div className="card-body-top-text">
         <p>{productName}</p>
