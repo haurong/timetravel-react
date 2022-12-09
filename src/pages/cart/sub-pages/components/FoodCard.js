@@ -18,7 +18,7 @@ function FoodCard() {
                 deleteFun={() => removeItem(v.id)}
               />
               <div className="d-flex justify-content-between">
-                <CardBodyTop productName={v.name} img={img} />
+                <CardBodyTop productName={v.name} img={v.img} rate={v.rate} />
                 <CountButton
                   quantity={v.quantity}
                   id={v.id}

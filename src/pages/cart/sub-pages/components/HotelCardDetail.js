@@ -13,9 +13,10 @@ function HotelCardDetail({
   rate,
   checkin,
   checkout,
+  img,
 }) {
   let dateLong = (+new Date(checkout) - +new Date(checkin)) / 86400000;
-  const { removeItem, plusOne, minusOne, updateDate, img } = useHotelCart();
+  const { removeItem, plusOne, minusOne, updateDate } = useHotelCart();
   return (
     <div className="pb-5">
       <CardTitle
