@@ -11,6 +11,7 @@ function PaymentCard({
   setPaymentEmail,
   paymentId,
   setPaymentId,
+  setPayMethod,
 }) {
   return (
     <div>
@@ -27,12 +28,24 @@ function PaymentCard({
       />
       <CardHeader text={'選擇付款方式'} />
       <div className="pb-5">
-        <button type="button" className="btn btn-primary" onClick={() => {}}>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => {
+            setPayMethod('LinePay');
+          }}
+        >
           LinePay
         </button>
       </div>
       <div className="pb-5">
-        <button type="button" className="btn btn-primary" onClick={() => {}}>
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={() => {
+            setPayMethod('Credit');
+          }}
+        >
           信用卡一次付清
         </button>
       </div>

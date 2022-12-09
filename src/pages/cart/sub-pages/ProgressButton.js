@@ -15,6 +15,7 @@ function ProgressButton({
   paymentId,
   formData,
   uuid,
+  payMethod,
 }) {
   let payUrl;
   const mySubmit = async (e) => {
@@ -26,6 +27,8 @@ function ProgressButton({
       Swal.fire({
         icon: 'success',
         title: '已成功建立訂單，即將跳往結帳頁面',
+        confirmButtonText: '確認',
+        confirmButtonColor: '#59d8a1',
       });
       await pay();
       window.location = payUrl;
@@ -33,6 +36,8 @@ function ProgressButton({
       Swal.fire({
         icon: 'error',
         title: '訂單成立失敗！',
+        confirmButtonText: '確認',
+        confirmButtonColor: '#59d8a1',
       });
     }
   };
@@ -86,7 +91,17 @@ function ProgressButton({
             type="submit"
             className="btn btn-primary"
             onClick={() => {
-              mySubmit();
+              if (payMethod === 'LinePay') {
+                mySubmit();
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: '請選擇一種支付方式！',
+                  confirmButtonText: '確認',
+                  confirmButtonColor: '#59d8a1',
+                });
+                return;
+              }
             }}
           >
             確認結帳

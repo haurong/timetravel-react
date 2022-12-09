@@ -31,6 +31,7 @@ function HotelCardDetail({
           text={'入住時間'}
           date={checkin}
           id={id}
+          max={checkout}
           updateDate={updateDate}
           dateProps={'checkin'}
         />
@@ -38,6 +39,7 @@ function HotelCardDetail({
           text={'退房時間'}
           date={checkout}
           id={id}
+          min={checkin}
           updateDate={updateDate}
           dateProps={'checkout'}
         />

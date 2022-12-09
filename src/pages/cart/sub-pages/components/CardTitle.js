@@ -20,13 +20,23 @@ function CardTitle({ text, deleteFun }) {
             reverseButtons: true,
           }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire('移除成功', '商品已從購物車內移除', 'success');
+              Swal.fire({
+                icon: 'success',
+                title: '商品已從購物車內移除',
+                confirmButtonText: '確認',
+                confirmButtonColor: '#59d8a1',
+              });
               deleteFun();
             } else if (
               /* Read more about handling dismissals below */
               result.dismiss === Swal.DismissReason.cancel
             ) {
-              Swal.fire('取消', '您的商品並未移除', 'error');
+              Swal.fire({
+                icon: 'error',
+                title: '商品未移除',
+                confirmButtonText: '確認',
+                confirmButtonColor: '59d8a1',
+              });
               return;
             }
           });
