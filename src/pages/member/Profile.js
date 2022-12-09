@@ -74,7 +74,7 @@ function Profile() {
     picForm.append('sid', formData.sid);
     const image = await axios.post(UPLOAD_AVATAR_API, picForm);
     // console.log('picForm',picForm);
-    console.log(image);
+    // console.log(image);
 
     if (formData.username !== '' && formData.telephone !== '') {
       const { data } = await axios.put(PROFILE_API, formData);
@@ -94,9 +94,11 @@ function Profile() {
     }
     if (image) {
       let r = await axios.get(
-        'http://192.168.1.182:3001/Member/api/information/11'
+        `http://localhost:3001/member/api/information/${
+          JSON.parse(localStorage.getItem('auth')).sid
+        }`
       );
-      console.log(r.data[0]);
+      console.log(r.data);
       setMyAuth({ ...myAuth, member_img: r.data[0].member_img });
       alert('儲存成功');
     } else {

@@ -1,47 +1,46 @@
-import './Breadcrumb.scss';
-import { Breadcrumb } from 'antd';
-import React, { useEffect, useState } from 'react';
-import { useHotelContext } from '../Context/HotelContext';
-function BreadcrumbHotel() {
-  const { hotelSort, setBreadCrumbText, breadCrumbText } = useHotelContext();
+import React, { useState, useEffect } from 'react';
+import { useLocation, NavLink } from 'react-router-dom';
+import '../../food/style/BreadCrumb.scss';
 
-  useEffect(() => {
-    switch (hotelSort.cate) {
-      case 'cate_Hotel_1':
-        setBreadCrumbText('旅館');
-        break;
-      case 'cate_Hotel_2':
-        setBreadCrumbText('飯店');
-        break;
-      case 'cate_Hotel_3':
-        setBreadCrumbText('民宿');
-        break;
-      // 指所有的產品都出現
-      case 'cate_Hotel_All':
-        setBreadCrumbText('全部');
-        break;
-      default:
-        break;
+function BreadCrumbList() {
+  const [typeName, setTypeName] = useState('');
+  const location = useLocation();
+  const path = window.location.pathname.split('/');
+  const type = path[1];
+  // const sid = path[2];
+  async function getType() {
+    if (type === 'site') {
+      setTypeName('景點');
     }
-  }, [hotelSort.cate]);
-
-  // console.log(hotelListData);
+    if (type === 'food') {
+      setTypeName('美食');
+    }
+    if (type === 'stays') {
+      setTypeName('住宿');
+    }
+    if (type === 'ticket') {
+      setTypeName('票劵');
+    }
+  }
+  useEffect(() => {
+    getType();
+  }, [location]);
   return (
     <>
-      <Breadcrumb className="TimeTravel_Breadcrumb">
-        <Breadcrumb.Item className="Breadcrumb">
-          {/* TODO:拿到真實路徑 */} <a href="#/">首頁</a>
-        </Breadcrumb.Item>
-        <Breadcrumb.Item className="Breadcrumb">
-          <a href="#/">住宿</a>
-        </Breadcrumb.Item>
-        <Breadcrumb.Item className="Breadcrumb">
-          <a href="#/" className="Breadcrumb_Here">
-            {breadCrumbText}
-          </a>
-        </Breadcrumb.Item>
-      </Breadcrumb>
+      <div aria-label="breadcrumb">
+        <ol id="breadcrumb" className="breadcrumb">
+          <li className="breadcrumb-item">
+            <NavLink id="bcindex" to="/">
+              首頁
+            </NavLink>
+          </li>
+          <li className="breadcrumb-item active" style={{ width: '100px' }}>
+            <p>{typeName}</p>
+          </li>
+        </ol>
+      </div>
     </>
   );
 }
-export default BreadcrumbHotel;
+
+export default BreadCrumbList;

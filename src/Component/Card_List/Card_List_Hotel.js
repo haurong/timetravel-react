@@ -25,6 +25,7 @@ function Card_List() {
     collectItem,
     setCollectItem,
     setPageNow,
+    setBreadCrumbText,
   } = useHotelContext();
   const navigate = useNavigate();
   const [like, setLike] = useState(false);

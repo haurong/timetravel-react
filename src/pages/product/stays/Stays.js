@@ -15,6 +15,8 @@ import { ReactComponent as Sort } from '../../../icon/sort.svg';
 import '../food/style/Food.scss';
 import './Stays.scss';
 import _ from 'lodash';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import Geocode from 'react-geocode';
 
 function Stays() {
   const {
@@ -53,10 +55,6 @@ function Stays() {
   // });
   // console.log(a);
   useEffect(() => {
-    // console.log('BreadCrumb設成全部');
-    setBreadCrumbText('全部');
-  });
-  useEffect(() => {
     getList();
   }, [location]);
   return (
@@ -64,7 +62,7 @@ function Stays() {
       <NavBar />
       <div className="space "></div>
       <div className="container col-12 givePadding ">
-        <BreadCrumb hotelAllData={hotelAllData} />
+        <BreadCrumb />
       </div>
       <div className="container col-lg-12 d-flex foodContent">
         <div className="col-lg-3  px-3 ">

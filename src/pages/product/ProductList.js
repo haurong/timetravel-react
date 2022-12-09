@@ -51,6 +51,7 @@ function ProductList() {
     const response = await axios.get(PRODUCT_LIST);
     setProductData(response.data);
     const pageList = _.chunk(response.data, perPage);
+    console.log(pageList);
     setProductDisplay(pageList);
     setPageTotal(pageList.length);
     // setProductDisplay(response.data);

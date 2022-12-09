@@ -70,7 +70,9 @@ function NavBar() {
                   <div
                     className="userIcon"
                     style={{
-                      background: `url(${userImg}${myAuth.member_img}) no-repeat center center`,
+                      backgroundImage: `url(${userImg}${myAuth.member_img})`,
+                      backgroundPosition:'center center',
+                      backgroundRepeat:'no-repeat',
                       backgroundSize: 'cover',
                     }}
                   ></div>
