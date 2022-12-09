@@ -2,6 +2,7 @@ import React from 'react';
 import PriceDetailCard from './PriceDetailCard';
 import ProgressButton from './ProgressButton';
 import { useHotelCart, useFoodCart, useTicketCart } from './../utils/useCart';
+import './../styles/PriceDetail.scss';
 function PriceDetail({ prev, next, step, maxSteps }) {
   const hotel = useHotelCart();
   const food = useFoodCart();

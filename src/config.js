@@ -56,10 +56,19 @@ export const ORDER_DETAILS_TICKET_API = function (uuid) {
 };
 
 //結帳流程
-//獲取指定訂單編號的資料
+//獲取指定訂單編號的資料-LINE PAY
 export const LINE_PAY_API = function (uuid) {
   return `${MY_HOST}/pay/api/paylist/${uuid}`;
 };
+//確認訂單是否結帳成功
+export const LINE_PAY_CONFIRM_API = `${MY_HOST}/pay/api/paycheck`;
+
+//獲取指定訂單編號的資料-綠界
+export const GREEN_PAY_API = function (uuid) {
+  return `${MY_HOST}/pay/api/paygreen/${uuid}`;
+};
+//更改訂單付款狀態
+export const CHANGE_PAY_API = `${MY_HOST}/pay/api/change-pay`;
 
 //輸入評論路徑
 export const SUBMIT_COMMENT_API = `${MY_HOST}/comment/api/submit-comment-api`;

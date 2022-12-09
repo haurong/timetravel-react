@@ -5,7 +5,7 @@ import CountButton from './CountButton';
 import { useFoodCart } from '../../utils/useCart';
 
 function FoodCard() {
-  const { cart, items, plusOne, minusOne, removeItem } = useFoodCart();
+  const { items, plusOne, minusOne, removeItem, img } = useFoodCart();
   return (
     <>
       {items.map((v, i) => {
@@ -18,7 +18,7 @@ function FoodCard() {
                 deleteFun={() => removeItem(v.id)}
               />
               <div className="d-flex justify-content-between">
-                <CardBodyTop productName={v.name} />
+                <CardBodyTop productName={v.name} img={img} />
                 <CountButton
                   quantity={v.quantity}
                   id={v.id}

@@ -32,7 +32,7 @@ function OrdersAccordion({ createdTime, uuid, totalPrice, memberSid }) {
     getHotelOrders();
     getTicketOrders();
   }, [uuid]);
-
+  console.log(foodOrdersData);
   return (
     <Accordion defaultActiveKey="0">
       <Accordion.Item>
@@ -111,7 +111,7 @@ function OrdersAccordion({ createdTime, uuid, totalPrice, memberSid }) {
                   <AccordionDetail
                     type={'ticket'}
                     name={v.product_name}
-                    price={v.ticket_price}
+                    price={v.product_price}
                     quantity={v.quantity}
                     totalPrice={v.total_price}
                     commented={v.commented}
