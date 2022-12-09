@@ -22,6 +22,8 @@ function BuyButton() {
           Swal.fire({
             icon: 'success',
             title: '已加入購物車！',
+            confirmButtonText: '確認',
+            confirmButtonColor: '#59d8a1',
           });
           addItem(ticketOrder);
         }}
