@@ -31,7 +31,7 @@ import { useLocation } from 'react-router-dom';
 function Ticket() {
   // const dataFrom = '14';
   const dataFrom = window.location.pathname.split('ticket/detail/')[1];
-  console.log("see dataForm:",dataFrom);
+  // console.log("see dataForm:",dataFrom);
   const {
     hotelRoomChoose,
     setHotelRoomChoose,

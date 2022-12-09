@@ -3,9 +3,13 @@ import { Rate } from 'antd';
 import CommentCard from './CommentCard';
 import './Comment.scss';
 import { useHotelContext } from '../../../stays/Context/HotelContext';
+import { useTicketContext } from '../../Context/TicketContext';
 
 function Comment() {
-  const { hotelCommentData, setAllStar, allStar } = useHotelContext();
+  // const { hotelCommentData, setAllStar, allStar } = useHotelContext();
+  const { hotelCommentData } = useHotelContext();
+  const {setAllStar, allStar } = useTicketContext();
+
 
   useEffect(() => {
     if (hotelCommentData !== 0) {

@@ -72,17 +72,453 @@ export default function Card_Carousel() {
 
   return (
     <div className="bannerHotwrap">
-    <Swiper
-      slidesPerView={4}
-      spaceBetween={0}
-      slidesPerGroup={1}
-      loop={true}
-      loopFillGroupWithBlank={true}
-      navigation={true}
-      modules={[Pagination, Navigation]}
-      className="bannerSlider"
-    >
-      <SwiperSlide>
+      <Swiper
+        slidesPerView={4}
+        spaceBetween={0}
+        slidesPerGroup={1}
+        loop={true}
+        loopFillGroupWithBlank={true}
+        navigation={true}
+        modules={[Pagination, Navigation]}
+        className="bannerSlider"
+      >
+        <SwiperSlide>
+          <Card
+            className="MyCard col-3"
+            style={{ width: '20rem' }}
+            // key={el.product_number}
+          >
+            <Card.Img
+              variant="top"
+              className="homeFoodCardImg1"
+              // src={`${TICKET_IMG}/${el.product_cover}`}
+              style={{ cursor: 'pointer' }}
+              onClick={() => {
+                // let sid = Number(el.product_number.split('A')[1]);
+                // let sid = Number(el.sid);
+                // window.location.href = `stays/detail/${sid}`;
+                // navigate(`detail/${sid}`);
+              }}
+            />
+            <button
+              // data-product-number={el.product_number}
+              className="Heart_Btn"
+              onClick={() => {
+                // addLikeListHandler(el.product_number);
+                toggleLike1();
+              }}
+            >
+              <img src={Heart} className="Card_Heart" alt="" />
+            </button>
+            <Card.Body>
+              <Card.Title
+                className="Card_Title"
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  // let sid = Number(el.product_number.split('A')[1]);
+                  // let sid = Number(el.sid);
+                  // window.location.href = `stays/detail/${sid}`;
+                  // navigate(`detail/${sid}`);
+                }}
+              >
+                {'加分'}
+              </Card.Title>
+              <Card.Text className="Card_Text">
+                <Card.Img src={Map} className="Map_icon" />
+                <span className="Card_Score">{'台北市 | 中正區'}</span>
+
+                <div className="d-flex PriceAndCollect">
+                  <div>
+                    <button className="Heart_btn">
+                      <img
+                        src={PinkHeart}
+                        style={{
+                          width: '25px',
+                          height: '25px',
+                        }}
+                        alt=""
+                      />
+                      <span>{500}</span>
+                    </button>
+                  </div>
+                  <div>
+                    <h2 variant="primary" className="Card_Price">
+                      NT$ {399}
+                    </h2>
+                  </div>
+                </div>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <Card
+            className="MyCard col-3"
+            style={{ width: '20rem' }}
+            // key={el.product_number}
+          >
+            <Card.Img
+              variant="top"
+              className="homeStayCardImg1"
+              // src={`${TICKET_IMG}/${el.product_cover}`}
+              style={{ cursor: 'pointer' }}
+              onClick={() => {
+                // let sid = Number(el.product_number.split('A')[1]);
+                // let sid = Number(el.sid);
+                console.log('see the sid:', sid);
+                // window.location.href = `stays/detail/${sid}`;
+                // navigate(`detail/${sid}`);
+              }}
+            />
+            <button
+              // data-product-number={el.product_number}
+              className="Heart_Btn"
+              onClick={() => {
+                // addLikeListHandler(el.product_number);
+                toggleLike1();
+              }}
+            >
+              <img src={Heart} className="Card_Heart" alt="" />
+            </button>
+            <Card.Body>
+              <Card.Title
+                className="Card_Title"
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  // let sid = Number(el.product_number.split('A')[1]);
+                  // let sid = Number(el.sid);
+                  // window.location.href = `stays/detail/${sid}`;
+                  // navigate(`detail/${sid}`);
+                }}
+              >
+                {'泊居二館'}
+              </Card.Title>
+              <Card.Text className="Card_Text">
+                <Card.Img src={Map} className="Map_icon" />
+                <span className="Card_Score">
+                  台北市 | 中山區
+                </span>
+
+                <div className="d-flex PriceAndCollect">
+                  <div>
+                    <button className="Heart_btn">
+                      <img
+                        src={PinkHeart}
+                        style={{
+                          width: '25px',
+                          height: '25px',
+                        }}
+                        alt=""
+                      />
+                      <span>{'497'}</span>
+                    </button>
+                  </div>
+                  <div>
+                    <h2 variant="primary" className="Card_Price">
+                      NT$ {1204}
+                    </h2>
+                  </div>
+                </div>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <Card
+            className="MyCard col-3"
+            style={{ width: '20rem' }}
+            // key={el.product_number}
+          >
+            <Card.Img
+              variant="top"
+              className="homeTicketCardImg1"
+              // src={`${TICKET_IMG}/${el.product_cover}`}
+              style={{ cursor: 'pointer' }}
+              onClick={() => {
+                // let sid = Number(el.product_number.split('A')[1]);
+                // let sid = Number(el.sid);
+                console.log('see the sid:', sid);
+                // window.location.href = `stays/detail/${sid}`;
+                // navigate(`detail/${sid}`);
+              }}
+            />
+            <button
+              // data-product-number={el.product_number}
+              className="Heart_Btn"
+              onClick={() => {
+                // addLikeListHandler(el.product_number);
+                toggleLike1();
+              }}
+            >
+              <img src={Heart} className="Card_Heart" alt="" />
+            </button>
+            <Card.Body>
+              <Card.Title
+                className="Card_Title"
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  // let sid = Number(el.product_number.split('A')[1]);
+                  // let sid = Number(el.sid);
+                  // window.location.href = `stays/detail/${sid}`;
+                  // navigate(`detail/${sid}`);
+                }}
+              >
+                {'金山皇后鎮森林'}
+              </Card.Title>
+              <Card.Text className="Card_Text">
+                <Card.Img src={Map} className="Map_icon" />
+                <span className="Card_Score">
+                  新北市 | 萬里區
+                </span>
+
+                <div className="d-flex PriceAndCollect">
+                  <div>
+                    <button className="Heart_btn">
+                      <img
+                        src={PinkHeart}
+                        style={{
+                          width: '25px',
+                          height: '25px',
+                        }}
+                        alt=""
+                      />
+                      <span>{'499'}</span>
+                    </button>
+                  </div>
+                  <div>
+                    <h2 variant="primary" className="Card_Price">
+                      NT$ {234}
+                    </h2>
+                  </div>
+                </div>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <Card
+            className="MyCard col-3"
+            style={{ width: '20rem' }}
+            // key={el.product_number}
+          >
+            <Card.Img
+              variant="top"
+              className="homeFoodCardImg2"
+              // src={`${TICKET_IMG}/${el.product_cover}`}
+              style={{ cursor: 'pointer' }}
+              onClick={() => {
+                // let sid = Number(el.product_number.split('A')[1]);
+                // let sid = Number(el.sid);
+                console.log('see the sid:', sid);
+                // window.location.href = `stays/detail/${sid}`;
+                // navigate(`detail/${sid}`);
+              }}
+            />
+            <button
+              // data-product-number={el.product_number}
+              className="Heart_Btn"
+              onClick={() => {
+                // addLikeListHandler(el.product_number);
+                toggleLike1();
+              }}
+            >
+              <img src={Heart} className="Card_Heart" alt="" />
+            </button>
+            <Card.Body>
+              <Card.Title
+                className="Card_Title"
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  // let sid = Number(el.product_number.split('A')[1]);
+                  // let sid = Number(el.sid);
+                  // window.location.href = `stays/detail/${sid}`;
+                  // navigate(`detail/${sid}`);
+                }}
+              >
+                {'泰雀'}
+              </Card.Title>
+              <Card.Text className="Card_Text">
+                <Card.Img src={Map} className="Map_icon" />
+                <span className="Card_Score">
+                  新北市 | 永和區
+                </span>
+
+                <div className="d-flex PriceAndCollect">
+                  <div>
+                    <button className="Heart_btn">
+                      <img
+                        src={PinkHeart}
+                        style={{
+                          width: '25px',
+                          height: '25px',
+                        }}
+                        alt=""
+                      />
+                      <span>{'491'}</span>
+                    </button>
+                  </div>
+                  <div>
+                    <h2 variant="primary" className="Card_Price">
+                      NT$ {339}
+                    </h2>
+                  </div>
+                </div>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <Card
+            className="MyCard col-3"
+            style={{ width: '20rem' }}
+            // key={el.product_number}
+          >
+            <Card.Img
+              variant="top"
+              className="homeStayCardImg2"
+              // src={`${TICKET_IMG}/${el.product_cover}`}
+              style={{ cursor: 'pointer' }}
+              onClick={() => {
+                // let sid = Number(el.product_number.split('A')[1]);
+                // let sid = Number(el.sid);
+                console.log('see the sid:', sid);
+                // window.location.href = `stays/detail/${sid}`;
+                // navigate(`detail/${sid}`);
+              }}
+            />
+            <button
+              // data-product-number={el.product_number}
+              className="Heart_Btn"
+              onClick={() => {
+                // addLikeListHandler(el.product_number);
+                toggleLike1();
+              }}
+            >
+              <img src={Heart} className="Card_Heart" alt="" />
+            </button>
+            <Card.Body>
+              <Card.Title
+                className="Card_Title"
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  // let sid = Number(el.product_number.split('A')[1]);
+                  // let sid = Number(el.sid);
+                  // window.location.href = `stays/detail/${sid}`;
+                  // navigate(`detail/${sid}`);
+                }}
+              >
+                {'天閤酒店台北劍潭'}
+              </Card.Title>
+              <Card.Text className="Card_Text">
+                <Card.Img src={Map} className="Map_icon" />
+                <span className="Card_Score">
+                  台北市 | 士林區
+                </span>
+
+                <div className="d-flex PriceAndCollect">
+                  <div>
+                    <button className="Heart_btn">
+                      <img
+                        src={PinkHeart}
+                        style={{
+                          width: '25px',
+                          height: '25px',
+                        }}
+                        alt=""
+                      />
+                      <span>{'495'}</span>
+                    </button>
+                  </div>
+                  <div>
+                    <h2 variant="primary" className="Card_Price">
+                      NT$ {2624}
+                    </h2>
+                  </div>
+                </div>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <Card
+            className="MyCard col-3"
+            style={{ width: '20rem' }}
+            // key={el.product_number}
+          >
+            <Card.Img
+              variant="top"
+              className="homeTicketCardImg2"
+              // src={`${TICKET_IMG}/${el.product_cover}`}
+              style={{ cursor: 'pointer' }}
+              onClick={() => {
+                // let sid = Number(el.product_number.split('A')[1]);
+                // let sid = Number(el.sid);
+                console.log('see the sid:', sid);
+                // window.location.href = `stays/detail/${sid}`;
+                // navigate(`detail/${sid}`);
+              }}
+            />
+            <button
+              // data-product-number={el.product_number}
+              className="Heart_Btn"
+              onClick={() => {
+                // addLikeListHandler(el.product_number);
+                toggleLike1();
+              }}
+            >
+              <img src={Heart} className="Card_Heart" alt="" />
+            </button>
+            <Card.Body>
+              <Card.Title
+                className="Card_Title"
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  // let sid = Number(el.product_number.split('A')[1]);
+                  // let sid = Number(el.sid);
+                  // window.location.href = `stays/detail/${sid}`;
+                  // navigate(`detail/${sid}`);
+                }}
+              >
+                {'九份茶坊 茶文化體驗'}
+              </Card.Title>
+              <Card.Text className="Card_Text">
+                <Card.Img src={Map} className="Map_icon" />
+                <span className="Card_Score">
+                  新北市 | 瑞芳區
+                </span>
+
+                <div className="d-flex PriceAndCollect">
+                  <div>
+                    <button className="Heart_btn">
+                      <img
+                        src={PinkHeart}
+                        style={{
+                          width: '25px',
+                          height: '25px',
+                        }}
+                        alt=""
+                      />
+                      <span>{'498'}</span>
+                    </button>
+                  </div>
+                  <div>
+                    <h2 variant="primary" className="Card_Price">
+                      NT$ {182}
+                    </h2>
+                  </div>
+                </div>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </SwiperSlide>
+
+        {/* 舊card↓↓ */}
+        {/* <SwiperSlide>
         <Card  className="Card " style={{ width: '20rem' }}>
           <Card.Img variant="top" className="foodCardData1Img" />
           <button className="Heart_Btn" onClick={toggleLike1}>
@@ -108,6 +544,7 @@ export default function Card_Carousel() {
           </Card.Body>
         </Card>
       </SwiperSlide>
+
       <SwiperSlide>
         <Card className="Card " style={{ width: '20rem' }}>
           <Card.Img variant="top" className="foodCardData2Img" />
@@ -135,6 +572,7 @@ export default function Card_Carousel() {
           </Card.Body>
         </Card>
       </SwiperSlide>
+
       <SwiperSlide>
         <Card className="Card" style={{ width: '20rem' }}>
           <Card.Img variant="top" className="foodCardData3Img" />
@@ -162,6 +600,7 @@ export default function Card_Carousel() {
           </Card.Body>
         </Card>
       </SwiperSlide>
+
       <SwiperSlide>
         <Card className="Card" style={{ width: '20rem' }}>
           <Card.Img variant="top" className="foodCardData4Img" />
@@ -189,6 +628,7 @@ export default function Card_Carousel() {
           </Card.Body>
         </Card>
       </SwiperSlide>
+
       <SwiperSlide>
         <Card className="Card" style={{ width: '20rem' }}>
           <Card.Img variant="top" className="foodCardData5Img" />
@@ -215,6 +655,7 @@ export default function Card_Carousel() {
           </Card.Body>
         </Card>
       </SwiperSlide>
+
       <SwiperSlide>
         <Card className="Card" style={{ width: '20rem' }}>
           <Card.Img variant="top" className="foodCardData6Img" />
@@ -241,8 +682,8 @@ export default function Card_Carousel() {
             </h2>
           </Card.Body>
         </Card>
-      </SwiperSlide>
-    </Swiper>
+      </SwiperSlide> */}
+      </Swiper>
     </div>
   );
 }

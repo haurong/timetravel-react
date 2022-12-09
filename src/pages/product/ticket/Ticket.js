@@ -141,9 +141,10 @@ function Ticket() {
   return (
     <>
       <NavBar />
+      {/* <div className="space "></div> */}
       <div className="container marginTop">
         <Row>
-          <div className="ticket-Breadcrumb">
+          <div className="container col-12 givePadding">
             <Breadcrumb />
           </div>
           <Col className="col-3">
@@ -153,7 +154,6 @@ function Ticket() {
             <div className="shadow ticket-Sidebar">
               <Sidebar />
             </div>
-            
           </Col>
 
           <Col className="col-9 ticket_card_list">

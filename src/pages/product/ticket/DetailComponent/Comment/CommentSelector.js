@@ -4,10 +4,11 @@ import './Comment.scss';
 import { ReactComponent as Sort } from '../../../../../icon/sort.svg';
 
 import { useTicketContext } from '../../Context/TicketContext';
+import { useHotelContext } from '../../../stays/Context/HotelContext';
 
 function CommentSelector() {
   const [openSelector, setOpenSelector] = useState(false);
-  const { commentSort, setCommentSort } = useTicketContext();
+  const { commentSort, setCommentSort } = useHotelContext();
   const handleChange = (e) => {
     // console.log(`selected ${e}`);
     setCommentSort(e);
