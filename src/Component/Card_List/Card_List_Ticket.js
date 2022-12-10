@@ -6,6 +6,7 @@ import Map from '../../icon/map.svg';
 import Heart from '../../icon/heart_gray.svg';
 import PinkHeart from '../../icon/heart.svg';
 import { Location } from 'react-router-dom';
+import { useAllContext } from '../.././pages/AllContext/AllContext';
 import { useHotelContext } from '../../pages/product/stays/Context/HotelContext';
 import { useTicketContext } from '../../pages/product/ticket/Context/TicketContext';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +15,7 @@ import _ from 'lodash';
 import './Card_List.scss';
 
 function Card_List() {
+  const { pageSearchWord, setPageSearchWord } = useAllContext();
   const {
     ticketSortData,
     displayData,
@@ -39,6 +41,26 @@ function Card_List() {
       return;
     }
   };
+
+
+  const handleSearch = (ticketSortData, searchWord) => {
+    let newTicketProductData = [...ticketSortData];
+    if (searchWord.length < 2) return newTicketProductData;
+    // console.log('newFoodData', newFoodData);
+
+    newTicketProductData = newTicketProductData.filter((item) => {
+      //搜尋商品名稱、縣市地區名、分類名
+      return (
+        item.product_name.includes(searchWord) +
+        item.city_name.includes(searchWord) +
+        item.area_name.includes(searchWord) 
+       
+      );
+    });
+    setPageNow(1);
+    return newTicketProductData;
+  };
+
   //  處理排序（價格、收藏數）
   const handleSortPrice = (hotelSortData, hotelSort) => {
     let newHotelSortData = [...hotelSortData];
@@ -213,14 +235,15 @@ function Card_List() {
     // console.log();
     let newHotelSortData = [];
     setPageNow(1);
-    newHotelSortData = handleSortPrice(ticketSortData, hotelSort.sortBy);
-    newHotelSortData = handleArea(newHotelSortData, hotelSort.area);
+    newHotelSortData = handleSearch(ticketSortData, pageSearchWord);
+    newHotelSortData = handleSortPrice(newHotelSortData, hotelSort.sortBy);
+    // newHotelSortData = handleArea(newHotelSortData, hotelSort.area);
     newHotelSortData = handleCate(newHotelSortData, hotelSort.cate);
     newHotelSortData = handleAddLike(newHotelSortData, hotelSort.like);
 
     setDisplayData(newHotelSortData);
     getFoodListData(newHotelSortData, perPage);
-  }, [hotelSort.area, hotelSort.like, hotelSort.cate, hotelSort.sortBy]);
+  }, [pageSearchWord,hotelSort.area, hotelSort.like, hotelSort.cate, hotelSort.sortBy]);
   //TODO:收藏人數按鈕樣式待定
   return (
     <Row xs={1} lg={4} className="d-flex justify-content-flexstart flex-wrap">
@@ -232,20 +255,22 @@ function Card_List() {
                 style={{ width: '20rem' }}
                 key={el.product_number}
               >
-                <Card.Img
-                  variant="top"
-                  className="foodCardImg1"
-                  src={`${TICKET_IMG}/${el.product_cover}`}
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => {
-                    // let sid = Number(el.product_number.split('A')[1]);
-                    let sid = Number(el.sid);
-                    console.log("see the sid:",sid);
-                    // window.location.href = `stays/detail/${sid}`;
-                    navigate(`detail/${sid}`);
-                  }}
-                />
-                <button
+                <div style={{ overflow: 'hidden' }}>
+                  <Card.Img
+                    variant="top"
+                    className="foodCardImg1"
+                    src={`${TICKET_IMG}/${el.product_cover}`}
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => {
+                      // let sid = Number(el.product_number.split('A')[1]);
+                      let sid = Number(el.sid);
+                      console.log('see the sid:', sid);
+                      // window.location.href = `stays/detail/${sid}`;
+                      navigate(`detail/${sid}`);
+                    }}
+                  />
+                </div>
+                {/* <button
                   data-product-number={el.product_number}
                   className="Heart_Btn"
                   onClick={() => {
@@ -258,7 +283,7 @@ function Card_List() {
                     className="Card_Heart"
                     alt=""
                   />
-                </button>
+                </button> */}
                 <Card.Body>
                   <Card.Title
                     className="Card_Title"

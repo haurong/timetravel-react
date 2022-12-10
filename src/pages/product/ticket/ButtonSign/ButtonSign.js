@@ -1,10 +1,13 @@
 import React from 'react';
 import './ButtonSign.scss';
+import { NavLink } from 'react-router-dom';
 function ButtonSign() {
   return (
     <>
       <button className="Bottom_Sign">
-        <a href="/signIn">立即註冊</a>
+        <NavLink to="/signIn" className="homeSiginLink">
+          立即註冊
+        </NavLink>
       </button>
     </>
   );

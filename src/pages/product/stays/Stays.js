@@ -57,21 +57,28 @@ function Stays() {
   useEffect(() => {
     getList();
   }, [location]);
+ 
   return (
     <>
       <NavBar />
       <div className="space "></div>
-      <div className="container col-12 givePadding ">
-        <BreadCrumb />
+      <div
+        className="container col-12 d-flex breadCrumb_Sort"
+        style={{ paddingLeft: '14px' }}
+      >
+        <div style={{ paddingTop: '10px' }} className="textAlign-center">
+        <BreadCrumb hotelAllData={hotelAllData} />
+        </div>
+
+        <div className="d-flex col-lg-10 hotelSort">
+          <HotelListSortSelector />
+        </div>
       </div>
       <div className="container col-lg-12 d-flex foodContent">
-        <div className="col-lg-3  px-3 ">
+        <div className="col-lg-3  px-3 " style={{ paddingTop: '20px' }}>
           <Sidebar />
         </div>
         <div className="col-lg-9 col-md-12 px-3 mx-0 CardListStyle">
-          <div className="d-flex hotelSort">
-            <HotelListSortSelector />
-          </div>
           <CardList />
         </div>
       </div>

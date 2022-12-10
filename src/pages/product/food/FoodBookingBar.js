@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Minus_icon from '../../../icon/minus.svg';
+import Minus_icon_active from '../../../icon/minusActive.svg';
 import Add_icon from '../../../icon/add.svg';
 import './style/FoodBookingBar.scss';
 import { useFoodContext } from './FoodContext/FoodContext';
@@ -38,7 +39,11 @@ function FoodBookingBar({ foodData }) {
                   }
                 }}
               >
-                <img src={Minus_icon} alt="" className="Minus_icon" />
+               <img
+                src={count > 1 ? Minus_icon_active : Minus_icon}
+                alt=""
+                className="Minus_icon"
+              />
               </button>
               <p>{count}</p>
               <button

@@ -7,6 +7,8 @@ export const AllContextProvider = ({ children }) => {
   const [searchWord, setSearchWord] = useState('');
   const [pageSearchWord, setPageSearchWord] = useState('');
   const [collect, setCollect] = useState([]);
+  //商品列表頁顯示資料
+  const [productData, setProductData] = useState([]);
   return (
     <AllContext.Provider
       value={{
@@ -15,7 +17,9 @@ export const AllContextProvider = ({ children }) => {
         collect,
         setCollect,
         pageSearchWord,
-        setPageSearchWord
+        setPageSearchWord,
+        productData,
+        setProductData,
       }}
     >
       {children}
