@@ -6,7 +6,9 @@ div {
     margin: auto 0px;
     padding: 0px;
   }
-  padding-top: 20px;
+  padding-right: 27px;
+  // padding-top: 20px;
+  // padding-right: 50px;
   justify-content: flex-end;
   align-items: center;
   .hotelSortBtn {
@@ -21,7 +23,7 @@ div {
     }
   }
 }
-.upturn{
+.upturn {
   .icon {
     .hotelSort_icon {
       height: 100%;
@@ -29,4 +31,3 @@ div {
     }
   }
 }
-

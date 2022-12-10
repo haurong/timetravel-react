@@ -22,8 +22,8 @@ export const FOOD_CARD_ITEM3 = `${MY_HOST}/food/item/119`;
 export const FOOD_CARD_ITEM4 = `${MY_HOST}/food/item/120`;
 export const FOOD_CARD_ITEM5 = `${MY_HOST}/food/item/129`;
 export const FOOD_CARD_ITEM6 = `${MY_HOST}/food/item/128`;
-export const FOOD_IMG = `${MY_HOST}/uploads/Food/`;
-export const FOOD_COMMIT = `${MY_HOST}/food/commit`;
+export const FOOD_IMG = `${MY_HOST}/uploads/`;
+export const FOOD_COMMENT = `${MY_HOST}/food/commit`;
 export const FOOD_ORDER_DETAIL = `${MY_HOST}/orders/api/list/foodlist/`;
 
 export const PRODUCT_LIST = `${MY_HOST}/productAll/api`;
@@ -33,7 +33,7 @@ export const PRODUCT_LIST = `${MY_HOST}/productAll/api`;
 
 export const ADD_COLLECT = `${MY_HOST}/productAll/AddCollect`;
 export const DEL_COLLECT = `${MY_HOST}/productAll/DelCollect`;
-
+export const GET_COLLECT = `${MY_HOST}/productAll/checkCollect/:member`;
 //購物車路徑
 export const MakeOrder = `${MY_HOST}/cart/api/makeorder`;
 // export const MakeHotelOrder = `${MY_HOST}/cart/api/makehotelorder`;
@@ -56,10 +56,19 @@ export const ORDER_DETAILS_TICKET_API = function (uuid) {
 };
 
 //結帳流程
-//獲取指定訂單編號的資料
+//獲取指定訂單編號的資料-LINE PAY
 export const LINE_PAY_API = function (uuid) {
   return `${MY_HOST}/pay/api/paylist/${uuid}`;
 };
+//確認訂單是否結帳成功
+export const LINE_PAY_CONFIRM_API = `${MY_HOST}/pay/api/paycheck`;
+
+//獲取指定訂單編號的資料-綠界
+export const GREEN_PAY_API = function (uuid) {
+  return `${MY_HOST}/pay/api/paygreen/${uuid}`;
+};
+//更改訂單付款狀態
+export const CHANGE_PAY_API = `${MY_HOST}/pay/api/change-pay`;
 
 //輸入評論路徑
 export const SUBMIT_COMMENT_API = `${MY_HOST}/comment/api/submit-comment-api`;

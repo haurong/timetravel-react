@@ -1,18 +1,27 @@
 import { React, useState } from 'react';
 import './BuyButton.scss';
+import { useTicketContext } from '../../Context/TicketContext';
 import Swal from 'sweetalert2';
 import { useTicketCart } from '../../../../cart/utils/useCart';
 function BuyButton() {
   const { addItem } = useTicketCart();
-  const [cartData, setcartData] = useState('');
-
+  const {
+    ticketCounts,
+    ticketTypePrice,
+    ticketListData,
+    pickDate,
+    typesChooseName,
+    allStar,
+  } = useTicketContext();
   const ticketOrder = {
-    id: 14,
-    name: '兒童樂園',
-    type: '成人票',
-    quantity: 1,
-    date: '2022-11-30',
-    price: 80,
+    id: ticketListData.sid,
+    name: ticketListData.product_name,
+    type: typesChooseName,
+    quantity: ticketCounts,
+    date: pickDate.startTime,
+    price: ticketTypePrice,
+    rate: allStar,
+    img: 'http://localhost:3001/uploads/ticket/14-1.jpg',
   };
 
   return (
@@ -22,6 +31,8 @@ function BuyButton() {
           Swal.fire({
             icon: 'success',
             title: '已加入購物車！',
+            confirmButtonText: '確認',
+            confirmButtonColor: '#59d8a1',
           });
           addItem(ticketOrder);
         }}

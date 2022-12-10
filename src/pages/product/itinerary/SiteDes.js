@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
 import { SITE_DETAIL } from './site-config';
@@ -8,7 +8,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { SITE_IMG } from './site-config';
 import map1 from './../../../icon/map.svg';
 
-export default function SiteDes({ siteData }) {
+export default function SiteDes({ siteData, allPart }) {
   const [position, setPosition] = useState(null);
   const [img1, setImg1] = useState('');
   const [img2, setImg2] = useState('');
@@ -50,9 +50,17 @@ export default function SiteDes({ siteData }) {
     getPosition();
   }, [location]);
 
+  const Site_part0 = useRef();
+  const Site_part1 = useRef();
+  const Site_part2 = useRef();
+  const Site_part3 = useRef();
+  const Site_part4 = useRef();
+
   return (
-    <div className="siteDesCon">
-      <h2>旅遊攻略</h2>
+    <div className="siteDesCon col-lg-8" style={{ marginRight: 'auto' }}>
+      <h2 ref={Site_part1} id="Site_part1">
+        旅遊攻略
+      </h2>
       <p>{siteData.description}</p>
       <p>
         每年2月至3月的鬱金香展，讓你一秒進入歐洲
@@ -60,7 +68,9 @@ export default function SiteDes({ siteData }) {
         每年11月至12月的菊展為臺北最盛大的花展
         園藝館、新蘭亭、凱歌堂...等值得走訪的特色建築
       </p>
-      <h2>景點介紹</h2>
+      <h2 ref={Site_part2} id="Site_part2">
+        景點介紹
+      </h2>
       <p>
         士林官邸有精緻的庭園造景設計，蟲鳴鳥叫、景色秀麗，是休閒遊憩的絕佳場所。當年因為緊鄰著中山北路，佔據極佳的地理位置，可快速直達總統府，加上後有福山做為倚靠，優越的地勢，所以成為蔣故總統官邸。
       </p>
@@ -89,7 +99,9 @@ export default function SiteDes({ siteData }) {
         每年春節過後的2至3月為士林官邸鬱金香展，種植著11萬株的荷蘭及日本鬱金香花海，並設置異國裝置藝術，讓人彷彿置身於國外。
         士林官邸公園於民國八十五年正式開放民眾參觀，為提供更多更好的服務，也積極加強各項的整理規劃及建設，成為臺北市區中另一處供民眾休憩的景點。
       </p>
-      <h2>如何前往</h2>
+      <h2 ref={Site_part3} id="Site_part3">
+        如何前往
+      </h2>
       <p>地址:{siteData.map}</p>
       <p>
         捷運 淡水信義線士林站(R16)於 2號出口出站後左轉，步行約10分鐘 公車
@@ -128,7 +140,9 @@ export default function SiteDes({ siteData }) {
         </MapContainer>
       </div> */}
       {/* <Map lat={siteData.lat} lng={siteData.lng} /> */}
-      <h2>開放時間</h2>
+      <h2 ref={Site_part4} id="Site_part4">
+        開放時間
+      </h2>
       <p>
         星期日 <br />
         09:30 - 12:00 <br />

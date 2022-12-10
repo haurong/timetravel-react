@@ -61,20 +61,9 @@ function NavBar() {
                 </NavLink>
               </li>
             </ul>
+
             <SearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
-            {/* <form className="d-flex" role="search">
-              <div className="input-group">
-                <span className="icon" id="basic-addon1">
-                  <img src={SearchIcon} alt="" />
-                </span>
-                <input
-                  className="form-control search-border me-4"
-                  type="search"
-                  placeholder="搜尋"
-                  aria-label="Search"
-                />
-              </div>
-            </form> */}
+
             <div>
               {myAuth.authorised ? (
                 <div className="d-flex navbarUserPic">

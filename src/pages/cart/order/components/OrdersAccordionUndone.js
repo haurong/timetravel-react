@@ -6,6 +6,7 @@ import {
   ORDER_DETAILS_FOOD_API,
   ORDER_DETAILS_HOTEL_API,
   ORDER_DETAILS_TICKET_API,
+  LINE_PAY_API,
 } from '../../../../config';
 function OrdersAccordionUndone({ createdTime, uuid, totalPrice }) {
   const [foodOrdersData, setFoodOrdersData] = useState([]);
@@ -23,6 +24,18 @@ function OrdersAccordionUndone({ createdTime, uuid, totalPrice }) {
     const response = await axios.get(ORDER_DETAILS_TICKET_API(uuid));
     setTicketOrdersData(response.data);
   }
+  let payUrl;
+  const myLinePay = async () => {
+    await pay();
+    window.location = payUrl;
+  };
+  async function pay() {
+    const response = await axios.get(LINE_PAY_API(uuid));
+    const url = response.data.payUrl;
+    payUrl = url;
+    console.log(payUrl);
+  }
+
   // console.log(hotelOrdersData);
   useEffect(() => {
     getFoodOrders();
@@ -46,7 +59,13 @@ function OrdersAccordionUndone({ createdTime, uuid, totalPrice }) {
                 <p>{`TWD$${totalPrice}`}</p>
               </li>
               <li className="col-lg-3 text-center">
-                <div type="button" className="btn btn-danger">
+                <div
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={() => {
+                    myLinePay();
+                  }}
+                >
                   尚未付款
                 </div>
               </li>

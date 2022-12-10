@@ -54,13 +54,13 @@ const items2 = [
     [
       getItem('全部', 'cate_Food_All'),
       getItem('特色小吃', 'cate_Food_1'),
-      getItem('飲品', 'cate_Food_2'),
-      getItem('火鍋', 'cate_Food_3'),
-      getItem('台式', 'cate_Food_4'),
-      getItem('日式', 'cate_Food_5'),
-      getItem('甜點', 'cate_Food_6'),
-      getItem('咖啡', 'cate_Food_7'),
-      getItem('泰式', 'cate_Food_8'),
+      getItem('台式料理', 'cate_Food_2'),
+      getItem('泰式料理', 'cate_Food_3'),
+      getItem('日式料理', 'cate_Food_4'),
+      getItem('火鍋', 'cate_Food_5'),
+      getItem('飲品', 'cate_Food_6'),
+      getItem('甜點', 'cate_Food_7'),
+      getItem('咖啡', 'cate_Food_8'),
     ]
   ),
   getItem(

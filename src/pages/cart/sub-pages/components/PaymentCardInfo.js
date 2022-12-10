@@ -14,7 +14,16 @@ function PaymentCardInfo({
     <>
       <div className="d-flex pb-5">
         <div className="me-3">
-          <p>{'訂單聯絡人'}</p>
+          <p
+            onClick={() => {
+              setPaymentRepresent('谷鄉元昭');
+              setPaymentMobile('0966567654');
+              setPaymentEmail('bestgirlyagoo@gmail.com');
+              setPaymentId('A129715143');
+            }}
+          >
+            {'訂單聯絡人'}
+          </p>
           <input
             className="input form-control"
             type={'text'}

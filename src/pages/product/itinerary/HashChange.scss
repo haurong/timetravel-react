@@ -1,0 +1,104 @@
+::-webkit-scrollbar {
+    display: none;
+  }
+  @media (max-width: 992px) {
+    .HashChange {
+      width: 100%;
+      height: 60px;
+      background-color: #f9f9f9;
+      position: fixed;
+      top: 80px;
+      z-index: 100;
+      color: #ffffff;
+      transform: translateY(-60px);
+      overflow: scroll;
+  
+      .hashChange_slider {
+        display: inline-flex;
+        width: auto;
+        height: 100%;
+        div {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          width: 100px;
+          height: 60px;
+          text-align: center;
+          margin: 0px 15px;
+          font-size: 18px;
+        }
+      }
+      hr {
+        opacity: 1;
+        width: 80%;
+        margin: 10px auto 0px;
+        background-color: transparent;
+        border: 1px solid transparent;
+      }
+      .HashChange_active {
+        background-color: #59d8a1 !important;
+        border: 3px solid #59d8a1 !important;
+      }
+      a {
+        align-items: center;
+        color: #8a8a8a;
+        :active {
+          color: #8a8a8a;
+        }
+        :hover {
+          color: #8a8a8a;
+        }
+      }
+    }
+    .hash_slideOut {
+      transform: translateY(0px);
+      transition: 0.3s ease-in-out;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .HashChange {
+      margin-top: 60px;
+      .hashChange_slider {
+        .Computer_HashChange {
+          height: 46px;
+          font-size: 18px;
+          margin: 10px 0px;
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: flex-end;
+          align-items: center;
+        }
+      }
+      hr {
+        opacity: 1;
+        margin: 0px;
+        width: 1px;
+        height: 70%;
+        size: 100;
+        background-color: transparent;
+        border: 5px solid transparent;
+      }
+      .HashChange_active {
+        background-color: #59d8a1 !important;
+        border: 5px solid #59d8a1 !important;
+      }
+      a {
+        font-size: 18px;
+        margin-left: 10px;
+        align-items: center;
+        color: #8a8a8a;
+        :active {
+          color: #8a8a8a;
+        }
+        :hover {
+          color: #8a8a8a;
+        }
+      }
+    }
+    .hash_slideOut {
+      position: sticky;
+      top: 120px;
+    }
+  }
+  

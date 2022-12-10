@@ -9,7 +9,7 @@ import CardList from '../../../Component/Card_List/Card_List_Hotel';
 import Sidebar from '../../../Component/Sidebar1/Sidebar_Hotel';
 import MyPagination from '../../../Component/Pagination/Pagination_Hotel';
 import CommitSelector from '../food/CommentSelect';
-import BreadCrumb from '../stays/Breadcrumb/Breadcrumb';
+import BreadCrumb from './Breadcrumb/Breadcrumb_listPage';
 import HotelListSortSelector from './HotelListSortSelector/HotelListSortSelector.js';
 import { ReactComponent as Sort } from '../../../icon/sort.svg';
 import '../food/style/Food.scss';
@@ -24,6 +24,8 @@ function Stays() {
     setDisplayData,
     perPage,
     setPageTotal,
+    setBreadCrumbText,
+    setCollectItem,
   } = useHotelContext();
   const location = useLocation();
   const usp = new URLSearchParams(location.search);
@@ -36,13 +38,24 @@ function Stays() {
     const pageList = _.chunk(response.data.rowsAll, perPage);
     setDisplayData(pageList);
     setPageTotal(pageList.length);
+
+    //拿到會員的收藏項目
+    const res = await axios.get(
+      `http://localhost:3001/productAll/checkCollect/${
+        JSON.parse(localStorage.getItem('auth')).sid
+      }`
+    );
+    setCollectItem(res.data);
   }
   // console.log(hotelAllData.rowsAll);
   // let a = hotelAllData.rowsAll.filter((v) => {
   //   return v.city_name === '新北市';
   // });
   // console.log(a);
-
+  useEffect(() => {
+    // console.log('BreadCrumb設成全部');
+    setBreadCrumbText('全部');
+  });
   useEffect(() => {
     getList();
   }, [location]);

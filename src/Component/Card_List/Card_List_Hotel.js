@@ -9,6 +9,8 @@ import { Location } from 'react-router-dom';
 import { useHotelContext } from '../../pages/product/stays/Context/HotelContext';
 import { useNavigate } from 'react-router-dom';
 import _ from 'lodash';
+import axios from 'axios';
+import { ADD_COLLECT } from '../../config';
 import './Card_List.scss';
 
 function Card_List() {
@@ -20,6 +22,8 @@ function Card_List() {
     setPageTotal,
     perPage,
     pageNow,
+    collectItem,
+    setCollectItem,
     setPageNow,
   } = useHotelContext();
   const navigate = useNavigate();
@@ -211,7 +215,7 @@ function Card_List() {
   return (
     <Row xs={1} lg={4} className="d-flex justify-content-flexstart flex-wrap">
       {displayData[pageNow - 1]
-        ? displayData[pageNow - 1].map((el) => {
+        ? displayData[pageNow - 1].map((el, i) => {
             return (
               <Card
                 className="MyCard col-3"
@@ -229,7 +233,7 @@ function Card_List() {
                     navigate(`detail/${sid}`);
                   }}
                 />
-                <button
+                {/* <button
                   data-product-number={el.product_number}
                   className="Heart_Btn"
                   onClick={() => {
@@ -242,7 +246,7 @@ function Card_List() {
                     className="Card_Heart"
                     alt=""
                   />
-                </button>
+                </button> */}
                 <Card.Body>
                   <Card.Title
                     className="Card_Title"
@@ -264,21 +268,98 @@ function Card_List() {
 
                     <div className="d-flex PriceAndCollect">
                       <div>
-                        <button className="Heart_btn">
+                        <button
+                          className="Heart_btn"
+                          // onClick={async function handleLike() {
+                          //   const member_sid = JSON.parse(
+                          //     localStorage.getItem('auth')
+                          //   ).sid;
+                          //   const product_sid = el.sid;
+                          //   const { data } = await axios.post(ADD_COLLECT, {
+                          //     member_sid: member_sid,
+                          //     product_sid: product_sid,
+                          //   });
+                          //   //選告newItem(新的物件)
+                          //   const newItem = {
+                          //     ...el,
+                          //     product_sid: el.product_sid ? null : product_sid,
+                          //   };
+                          //   //深拷貝要顯示的資料
+                          //   const newPagesArray = JSON.parse(
+                          //     JSON.stringify(displayData)
+                          //   );
+
+                          //   console.log(newPagesArray[pageNow - 1][i], newItem);
+                          //   //要知道現在使用者點到的是第幾個，用i當作索引值
+                          //   newPagesArray[pageNow - 1][i] = newItem;
+                          //   //再設定回拷貝出來的資料
+                          //   setDisplayData(newPagesArray);
+
+                          //   // console.log(like);
+                          //   console.log({ data });
+
+                          // if (v.product_sid.length.indexOf === -1) {
+                          //   const member_sid = JSON.parse(
+                          //     localStorage.getItem('auth')
+                          //   ).sid;
+                          //   const product_sid = v.sid;
+
+                          //   const {data}=await axios.delete(DEL_COLLECT,{
+                          //     member_sid:member_sid,
+                          //   })
+                          // }
+                          // }}
+                          onClick={() => {
+                            const member_sid = JSON.parse(
+                              localStorage.getItem('auth')
+                            ).sid;
+                            const product_sid = el.sid;
+                            const collect_product_name = el.product_name;
+                            if (collectItem.includes(el.product_name)) {
+                              const res = axios.post(
+                                'http://localhost:3001/productAll/DelCollect',
+                                {
+                                  member_sid: member_sid,
+                                  product_sid: product_sid,
+                                  collect_product_name: collect_product_name,
+                                }
+                              );
+                              // console.log(res);
+                              setCollectItem(
+                                collectItem.filter((v) => {
+                                  return v !== el.product_name;
+                                })
+                              );
+                            } else {
+                              setCollectItem([...collectItem, el.product_name]);
+                              const res = axios.post(ADD_COLLECT, {
+                                member_sid: member_sid,
+                                product_sid: product_sid,
+                                collect_product_name: collect_product_name,
+                              });
+                            }
+                          }}
+                        >
                           <img
-                            src={PinkHeart}
-                            style={{
-                              width: '25px',
-                              height: '25px',
-                            }}
+                            src={
+                              collectItem.includes(el.product_name)
+                                ? PinkHeart
+                                : Heart
+                            }
+                            style={{ width: '25px', height: '25px' }}
                             alt=""
                           />
-                          <span>{el.collect}</span>
+                          <span>
+                            {/* {el.collect} */}
+                            {collectItem.includes(el.product_name)
+                              ? `${Number(el.collect) + 1}`
+                              : `${el.collect}`}
+                          </span>
                         </button>
                       </div>
                       <div>
                         <h2 variant="primary" className="Card_Price">
-                          NT$ {el.room_price}
+                          NT${el.room_price}
                         </h2>
                       </div>
                     </div>

@@ -20,6 +20,8 @@ function BreadCrumbList() {
     }
     if (type === 'ticket') {
       setTypeName('票劵');
+    }if(type === 'productList'){
+      setTypeName('商品列表')
     }
   }
   useEffect(() => {

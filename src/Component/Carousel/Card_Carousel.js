@@ -52,7 +52,7 @@ export default function Card_Carousel() {
     console.log(foodCardItem2.data);
     const foodCardItem3 = await axios.get(FOOD_CARD_ITEM3);
     setFoodCardData3(foodCardItem3.data);
-  console.log(foodCardItem3.data);
+    console.log(foodCardItem3.data);
     const foodCardItem4 = await axios.get(FOOD_CARD_ITEM4);
     setFoodCardData4(foodCardItem4.data);
     //console.log(foodCardData4);
@@ -66,7 +66,7 @@ export default function Card_Carousel() {
 
   useEffect(() => {
     getData();
-  }, [Location,collect]);
+  }, [Location, collect]);
 
   return (
     <Swiper
@@ -74,12 +74,16 @@ export default function Card_Carousel() {
       spaceBetween={0}
       slidesPerGroup={1}
       loop={true}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+      }}
       loopFillGroupWithBlank={true}
       navigation={true}
       modules={[Pagination, Navigation]}
-      className="mySwiper"
+      className="mySwiper cardMySwiper"
     >
-      <SwiperSlide>
+      <SwiperSlide className="cardSlide">
         <Card className="Card " style={{ width: '20rem' }}>
           <div className="foodCardDataOutside">
             <Card.Img variant="top" className="foodCardData1Img" />
@@ -135,7 +139,7 @@ export default function Card_Carousel() {
           </Card.Body>
         </Card>
       </SwiperSlide>
-      <SwiperSlide>
+      <SwiperSlide className="cardSlide">
         <Card className="Card " style={{ width: '20rem' }}>
           <div className="foodCardDataOutside">
             <Card.Img variant="top" className="foodCardData2Img" />
@@ -191,7 +195,7 @@ export default function Card_Carousel() {
           </Card.Body>
         </Card>
       </SwiperSlide>
-      <SwiperSlide>
+      <SwiperSlide className="cardSlide">
         <Card className="Card " style={{ width: '20rem' }}>
           <div className="foodCardDataOutside">
             <Card.Img variant="top" className="foodCardData3Img" />
@@ -223,8 +227,6 @@ export default function Card_Carousel() {
                   }}
                 >
                   <img
-
-                  
                     src={
                       foodCardData3.sid === foodCardData3.product_sid
                         ? PinkHeart
@@ -249,7 +251,7 @@ export default function Card_Carousel() {
           </Card.Body>
         </Card>
       </SwiperSlide>
-      <SwiperSlide>
+      <SwiperSlide className="cardSlide">
         <Card className="Card " style={{ width: '20rem' }}>
           <div className="foodCardDataOutside">
             <Card.Img variant="top" className="foodCardData4Img" />
@@ -305,7 +307,7 @@ export default function Card_Carousel() {
           </Card.Body>
         </Card>
       </SwiperSlide>
-      <SwiperSlide>
+      <SwiperSlide className="cardSlide">
         <Card className="Card " style={{ width: '20rem' }}>
           <div className="foodCardDataOutside">
             <Card.Img variant="top" className="foodCardData5Img" />
@@ -361,7 +363,7 @@ export default function Card_Carousel() {
           </Card.Body>
         </Card>
       </SwiperSlide>
-      <SwiperSlide>
+      <SwiperSlide className="cardSlide">
         <Card className="Card " style={{ width: '20rem' }}>
           <div className="foodCardDataOutside">
             <Card.Img variant="top" className="foodCardData6Img" />
@@ -417,7 +419,6 @@ export default function Card_Carousel() {
           </Card.Body>
         </Card>
       </SwiperSlide>
-    
     </Swiper>
   );
 }

@@ -24,6 +24,7 @@ import HashChange from './HashChange/HashChange';
 import ComputerLikeAdd from './ComputerLikeAdd/ComputerLikeAdd';
 import ComDatePicker from './ComDatePicker/ComDatePicker';
 import BookingBar from './BookingBar/BookingBar';
+import HotelMap from './HotelMap/HotelMap';
 
 function StaysDetail() {
   const dataFrom = window.location.pathname.split('/stays/detail/')[1];
@@ -36,12 +37,14 @@ function StaysDetail() {
     setHotelRoomChoose,
     setHotelRoomPrice,
     setHotelCommentData,
+    setCollectItem,
   } = useHotelContext();
   // const { roomCounts, hotelRoomPrice } = useHotelContext();
 
   async function getHotelDetail() {
     //  拿到飯店所有資料
     const res_hotelListData = await axios.get(HOTEL_DETAIL + dataFrom);
+    // console.log(res_hotelListData);
     setHotelListData(res_hotelListData.data);
 
     //  拿到房型所有資料
@@ -189,7 +192,10 @@ function StaysDetail() {
               ></div>
               <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>商品說明</h2>
               <HotelDetail />
-              <MapButton />
+              {/* <MapButton /> */}
+              <div className="foodmap" style={{ zIndex: '-1' }}>
+                <HotelMap />
+              </div>
               <div
                 className="Hotel_partHidden"
                 id="Hotel_part4"

@@ -22,7 +22,7 @@ function OrdersUndone({ ordersData }) {
         </ul>
         {ordersData.length === 0 ? (
           <div className="d-flex justify-content-center">
-            <h1>您目前未結帳的訂單喔！</h1>
+            <h1>您目前沒有未結帳的訂單喔！</h1>
           </div>
         ) : (
           ordersData.map((v, i) => {

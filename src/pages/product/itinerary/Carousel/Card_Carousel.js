@@ -19,8 +19,8 @@ export default function Card_Carousel() {
   async function getData() {
     const response = await axios.get(SITE_LIST);
     const remove = response.data.rows.splice(6, 6);
-    console.log(remove);
-    console.log(response.data.rows);
+    // console.log(remove);
+    // console.log(response.data.rows);
     setData(remove);
   }
   const location = useLocation();
@@ -43,7 +43,7 @@ export default function Card_Carousel() {
         ? ''
         : data.map((el, i) => {
             return (
-              <SwiperSlide>
+              <SwiperSlide key={i}>
                 <Card className="Card " style={{ width: '20rem' }}>
                   <div className="foodCardDataOutside">
                     <Card.Img
@@ -56,7 +56,7 @@ export default function Card_Carousel() {
                     <Card.Title className="Card_Title">{el.name}</Card.Title>
                     <Card.Text className="Card_Text">
                       <Card.Img src={Map} className="Map_icon" />
-                      <span class="Card_Score">
+                      <span className="Card_Score">
                         {el.city_name} | {el.area_name}
                       </span>
                     </Card.Text>{' '}

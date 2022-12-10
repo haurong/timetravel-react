@@ -1,11 +1,11 @@
 import React from 'react';
 import Pic from './../../../../img/stay_home.jpg';
 import { Rate } from 'antd';
-function CardBodyTop({ productName, rate }) {
+function CardBodyTop({ productName, rate, img }) {
   return (
     <div className="d-flex align-items-center">
       <div className="pic-wrap">
-        <img alt="pic" src={Pic} />
+        <img alt={img ? img : 'pic'} src={Pic} />
       </div>
       <div className="card-body-top-text">
         <p>{productName}</p>

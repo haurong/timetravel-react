@@ -12,7 +12,14 @@ function HotelCardInfo({
         <h2>入住資訊</h2>
         <div className="d-flex align-items-end ">
           <div className="me-3">
-            <p>入住代表人</p>
+            <p
+              onClick={() => {
+                setHotelRepresent('生日哥');
+                setHotelMobile('0922334567');
+              }}
+            >
+              入住代表人
+            </p>
             <input
               className="input form-control"
               type={'text'}

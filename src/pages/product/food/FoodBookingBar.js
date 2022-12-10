@@ -4,9 +4,8 @@ import Add_icon from '../../../icon/add.svg';
 import './style/FoodBookingBar.scss';
 import { useFoodContext } from './FoodContext/FoodContext';
 
-
-function FoodBookingBar({foodData}) {
-  console.log({foodData})
+function FoodBookingBar({ foodData }) {
+  console.log({ foodData });
   const { slideOut, count, setCount, totalPrice, setTotalPrice } =
     useFoodContext();
   // const [count, setCount] = useState(1);
@@ -68,10 +67,18 @@ function FoodBookingBar({foodData}) {
                   ? totalPrice
                   : foodData.p_selling_price}
               </h4>
-              <button type="button" className="btn add_cart">
+              <button
+                type="button"
+                className=" add_cart BottomBar_Buy_Right "
+                style={{ backgroundColor: '#63D2FF' }}
+              >
                 加入購物車
               </button>
-              <button type="button" className="btn buy_now">
+              <button
+                type="button"
+                className="buy_now BottomBar_Buy_Right "
+                style={{ backgroundColor: '#59d8a1' }}
+              >
                 立即購買
               </button>
             </div>

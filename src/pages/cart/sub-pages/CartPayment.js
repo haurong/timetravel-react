@@ -24,7 +24,6 @@ function CartPayment({
   paymentId,
   setPaymentId,
 }) {
-  const { setOrderId } = useCart();
   const [payMethod, setPayMethod] = useState('');
   //取的存在localstorga的會員sid
   const member = JSON.parse(localStorage.getItem('auth'));
@@ -83,16 +82,17 @@ function CartPayment({
           setPaymentEmail={setPaymentEmail}
           paymentId={paymentId}
           setPaymentId={setPaymentId}
+          setPayMethod={setPayMethod}
         />
       </div>
       <div>
-        <button
+        {/* <button
           onClick={() => {
             setPayMethod('linePay');
           }}
         >
           LinePay
-        </button>
+        </button> */}
       </div>
       <div>
         <ProgressButton

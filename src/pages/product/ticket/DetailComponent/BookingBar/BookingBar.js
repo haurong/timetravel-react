@@ -4,6 +4,7 @@ import moment from 'moment/moment';
 import locale from 'antd/es/date-picker/locale/zh_TW';
 import './BookingBar.scss';
 import { useHotelContext } from '../../../stays/Context/HotelContext';
+import { useTicketContext } from '../../Context/TicketContext';
 import { ReactComponent as Sort } from '../../../../../icon/sort.svg';
 import BuyButton from '../BuyButton/BuyButton';
 const { RangePicker } = DatePicker;
@@ -13,10 +14,12 @@ function BookingBar() {
     slideOut,
     bookingBarOpen,
     setBookingBarOpen,
-    roomCounts,
-    hotelRoomPrice,
-    hotelListData
+    // roomCounts,
+    // hotelRoomPrice,
+    hotelListData,
   } = useHotelContext();
+  const { ticketCounts, ticketTypePrice } = useTicketContext();
+
   // const [bookingBarOpen, setBookingBarOpen] = useState(false);
 
   useEffect(() => {
@@ -58,8 +61,7 @@ function BookingBar() {
               }}
             >
               {/* TODO:拿到真實價格 */}
-              
-              TWD${roomCounts * hotelRoomPrice}
+              TWD${ticketCounts * ticketTypePrice}
             </h4>
             <div className="d-flex">
               <BuyButton />

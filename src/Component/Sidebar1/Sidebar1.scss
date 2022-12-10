@@ -5,6 +5,9 @@
     }
   }
 }
+// .ant-menu-root.ant-menu-vertical, .ant-menu-root.ant-menu-vertical-left, .ant-menu-root.ant-menu-vertical-right, .ant-menu-root.ant-menu-inline{
+//   padding-bottom: 20px;
+// }
 
 div{
   // outline: 1px solid red;
@@ -110,5 +113,8 @@ li.ant-menu-submenu-inline {
   padding: 0;
 }
 li.ant-menu-item.ant-menu-item-only-child {
-  padding-left: 24px !important;
+  padding-left: 50px !important;
+}
+.ant-menu-inline.ant-menu-root .ant-menu-item, .ant-menu-inline.ant-menu-root .ant-menu-submenu-title{
+  padding-left: 50px !important;
 }
