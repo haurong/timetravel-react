@@ -10,7 +10,7 @@ function FoodCard() {
     <>
       {items.map((v, i) => {
         return (
-          <div className="card-wrap pb-5">
+          <div key={v.name} className="card-wrap pb-5">
             <div className="card-body">
               <CardTitle
                 text={'美食購買資訊'}

@@ -25,7 +25,7 @@ function TicketCard() {
               <StateButton text={v.type} />
               <div className="d-flex justify-content-between">
                 <DateInput
-                  text={'入住時間'}
+                  text={'使用日期'}
                   date={v.date}
                   id={v.id}
                   updateDate={updateDate}
