@@ -10,37 +10,10 @@ import { Navigate, useNavigate, NavLink } from 'react-router-dom';
 function BannerEffect() {
   const { pageSearchWord, setPageSearchWord } = useAllContext();
   const navigate = useNavigate();
-
-  // const foodCate = {
-  //   cate1: '特色小吃',
-  //   cate2: '台式',
-  //   cate3: '泰式',
-  //   cate4: '日式',
-  //   cate5: '飲品',
-  //   cate6: '火鍋',
-  //   cate7: '咖啡',
-  //   cate8: '甜點',
-  // };
-  //TODO:輸入iuput後要跳轉頁面
   return (
     <>
       <div class="BannerEffect">
         <div class="site">
-          <div className="hover-effect">
-            <form className="d-flex BannerEffect-flex" role="search">
-              <div className="input-group">
-                <span className="icon" id="basic-addon1">
-                  <img src={SiteIcon} alt="" />
-                </span>
-                <input
-                  className="form-control search-border me-4"
-                  type="search"
-                  placeholder="搜尋"
-                  aria-label="Search"
-                />
-              </div>
-            </form>
-          </div>
           <div class="sun-an">
             <div class="sun sun-1"></div>
             <div class="sun sun-2"></div>
@@ -82,21 +55,6 @@ function BannerEffect() {
           </div>
         </div>
         <div class="food">
-          <div className="hover-effect">
-            <form className="d-flex BannerEffect-flex" role="search">
-              <div className="input-group">
-                <span className="icon" id="basic-addon1">
-                  <img src={FoodIcon} alt="" />
-                </span>
-                <input
-                  className="form-control search-border me-4"
-                  type="search"
-                  placeholder="搜尋"
-                  aria-label="Search"
-                />
-              </div>
-            </form>
-          </div>
           <div class="sun-an">
             <div class="sun sun-1"></div>
             <div class="sun sun-2"></div>
@@ -138,28 +96,6 @@ function BannerEffect() {
           </div>
         </div>
         <div class="hotel">
-          <div className="hover-effect">
-            <NavLink to="/food">
-              <form className="d-flex BannerEffect-flex" role="search">
-                <div className="input-group">
-                  <span className="icon" id="basic-addon1">
-                    <img src={StayIcon} alt="" />
-                  </span>
-                  <input
-                    className="form-control search-border me-4"
-                    type="search"
-                    placeholder="搜尋"
-                    aria-label="Search"
-                    value={pageSearchWord}
-                    onChange={(e) => {
-                      setPageSearchWord(e.target.value);
-                      // navigate('/food');
-                    }}
-                  />
-                </div>
-              </form>
-            </NavLink>
-          </div>
           <div class="sun-an">
             <div class="sun sun-1"></div>
             <div class="sun sun-2"></div>
@@ -201,21 +137,6 @@ function BannerEffect() {
           </div>
         </div>
         <div class="ticket">
-          <div className="hover-effect">
-            <form className="d-flex BannerEffect-flex" role="search">
-              <div className="input-group">
-                <span className="icon" id="basic-addon1">
-                  <img src={TicketIcon} alt="" />
-                </span>
-                <input
-                  className="form-control search-border me-4"
-                  type="search"
-                  placeholder="搜尋"
-                  aria-label="Search"
-                />
-              </div>
-            </form>
-          </div>
           <div class="sun-an">
             <div class="sun sun-1"></div>
             <div class="sun sun-2"></div>
