@@ -42,6 +42,8 @@ function ResetPassword() {
       Swal.fire({
         icon: 'success',
         title: '重設密碼成功,請重新登入',
+        confirmButtonText: '確認',
+        confirmButtonColor: '#59d8a1',
       });
       navigate('/');
       e.preventDefault();
@@ -50,6 +52,8 @@ function ResetPassword() {
       Swal.fire({
         icon: 'error',
         title: '重設密碼失敗',
+        confirmButtonText: '確認',
+        confirmButtonColor: '#59d8a1',
       });
     }
   };

@@ -196,12 +196,16 @@ function SignIn() {
         Swal.fire({
           icon: 'success',
           title: '註冊成功,請重新登入',
+          confirmButtonText: '確認',
+          confirmButtonColor: '#59d8a1',
         });
         navigate('/login');
       } else {
         Swal.fire({
           icon: 'error',
           title: '註冊失敗',
+          confirmButtonText: '確認',
+          confirmButtonColor: '#59d8a1',
         });
       }
     }

@@ -88,6 +88,8 @@ function LogIn() {
         Swal.fire({
           icon: 'error',
           title: '帳號密碼錯誤',
+          confirmButtonText: '確認',
+          confirmButtonColor: '#59d8a1',
         });
       }
     }
@@ -104,7 +106,14 @@ function LogIn() {
             <form className="form col-5 m-auto" onSubmit={mySubmit}>
               <h1 className="login-text text-center pb-5">登入</h1>
               <div className="mb-3">
-                <label className="form-label">Email</label>
+                <label
+                  className="form-label"
+                  onClick={() => {
+                    // setFormData('ddd@gmail.com');
+                  }}
+                >
+                  Email
+                </label>
                 <input
                   type="text"
                   className="form-control"

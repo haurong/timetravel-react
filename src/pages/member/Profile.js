@@ -83,12 +83,16 @@ function Profile() {
         Swal.fire({
           icon: 'success',
           title: '儲存成功',
+          confirmButtonText: '確認',
+          confirmButtonColor: '#59d8a1',
         });
         return;
       } else {
         Swal.fire({
           icon: 'error',
           title: '儲存失敗',
+          confirmButtonText: '確認',
+          confirmButtonColor: '#59d8a1',
         });
         return;
       }
@@ -101,9 +105,19 @@ function Profile() {
       );
       // console.log(r.data);
       setMyAuth({ ...myAuth, member_img: r.data[0].member_img });
-      alert('儲存成功');
+      Swal.fire({
+        icon: 'success',
+        title: '儲存成功',
+        confirmButtonText: '確認',
+        confirmButtonColor: '#59d8a1',
+      });
     } else {
-      alert('儲存失敗');
+      Swal.fire({
+        icon: 'error',
+        title: '儲存失敗',
+        confirmButtonText: '確認',
+        confirmButtonColor: '#59d8a1',
+      });
     }
   };
   return (
