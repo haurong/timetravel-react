@@ -1,6 +1,6 @@
 import React from 'react';
 import CardHeader from './CardHeader';
-import CreditCardInput from './CreditCardInput';
+import CreditCard from './CreditCard';
 import PaymentCardInfo from './PaymentCardInfo';
 function PaymentCard({
   paymentRepresent,
@@ -10,6 +10,7 @@ function PaymentCard({
   paymentEmail,
   setPaymentEmail,
   paymentId,
+  payMethod,
   setPaymentId,
   setPayMethod,
 }) {
@@ -49,6 +50,7 @@ function PaymentCard({
           信用卡一次付清
         </button>
       </div>
+      {payMethod === 'Credit' ? <CreditCard /> : ''}
     </div>
   );
 }
