@@ -17,7 +17,7 @@ import { useNavigate } from 'react-router-dom';
 import Sidebar from '../../../Component/Sidebar1/Sidebar_Food';
 // import CommitSelector from './CommentSelect.js';
 import BreadCrumbList from './BreadCrumbList';
-// import Qrcode from '../../../Component/QRcode/Qrcode';
+import Qrcode from '../../../Component/QRcode/Qrcode';
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
 import { useFoodContext } from './FoodContext/FoodContext.js';
 import { useAllContext } from '../../AllContext/AllContext.js';
@@ -516,6 +516,7 @@ function Food() {
       <div className="foodPagination">{paginationBar}</div>
 
       <div className="space"></div>
+      {/* <Qrcode /> */}
       <Footer />
     </>
   );

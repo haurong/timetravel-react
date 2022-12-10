@@ -53,11 +53,8 @@ function Collect() {
       <div className="container">
         <div className="givePadding profile_padding d-flex">
           <SideBar />
-          <div className="col-12" style={{overflow:'hidden'}}>
-            <div
-              className="col-lg-9  CardListStyle"
-              style={{ paddingLeft: '120px'}}
-            >
+          <div className="col-9" style={{ overflow: 'hidden' }}>
+            <div className="col-lg-9  CardListStyle">
               <div className="d-flex mb-4">
                 <h1 className="ps-2 m-0">我的收藏</h1>
                 <p className="m-auto ms-3">{collect.length} 個行程在您的收藏</p>

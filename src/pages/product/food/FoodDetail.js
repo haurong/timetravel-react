@@ -57,7 +57,7 @@ function FoodDetail() {
     collect,
     setCollect,
   } = useFoodContext();
-  const dataFrom = window.location.pathname.split('/food/detail/')[1];
+  // const dataFrom = window.location.pathname.split('/food/detail/')[1];
   const foodObj = {
     id: foodData.sid,
     name: foodData.product_name,
@@ -286,59 +286,77 @@ function FoodDetail() {
               <h1>{foodData.product_name} WANCHUHAO</h1>
             </div>
 
-            <div className="Heart_Calendar_icon">
-              <button
-                className="HeartBtn"
-                onClick={() => {
-                  const member_sid = JSON.parse(
-                    localStorage.getItem('auth')
-                  ).sid;
-                  const product_sid = foodData.sid;
-                  const collect_product_name = foodData.product_name;
+            <div className="Heart_Calendar_icon d-flex">
+              <div style={{paddingRight:'20px'}}>
+                <button
+                  className="HeartBtn"
+                  onClick={() => {
+                    const member_sid = JSON.parse(
+                      localStorage.getItem('auth')
+                    ).sid;
+                    const product_sid = foodData.sid;
+                    const collect_product_name = foodData.product_name;
 
-                  //後端先發送移除收藏
-                  if (collect.includes(foodData.product_name)) {
-                    axios.post('http://localhost:3001/productAll/DelCollect', {
-                      member_sid: member_sid,
-                      product_sid: product_sid,
-                      collect_product_name: collect_product_name,
-                    });
-                    console.log('移除收藏');
-                    //前端顯示空心
-                    setCollect(
-                      collect.filter((el) => {
-                        return el !== foodData.product_name;
-                      })
-                    );
-                  } else {
-                    //前端發送新增收藏
-                    axios.post('http://localhost:3001/productAll/AddCollect', {
-                      member_sid: member_sid,
-                      product_sid: product_sid,
-                      collect_product_name: collect_product_name,
-                    });
-                    console.log('新增收藏');
-                    //解構出原收藏陣列,把新的收藏塞回去
-                    setCollect([...collect, foodData.product_name]);
-                  }
-                }}
-              >
-                <img
-                  src={
-                    collect.includes(foodData.product_name) ? PinkHeart : Heart
-                  }
-                  style={{ width: '25px', height: '25px' }}
-                  alt=""
-                />
-              </button>
-              <button
-                className="CalendarBtn"
-                onClick={() => {
-                  mySubmit();
-                }}
-              >
-                <img src={Calendar} className="Calendar_icon" alt="" />
-              </button>
+                    //後端先發送移除收藏
+                    if (collect.includes(foodData.product_name)) {
+                      axios.post(
+                        'http://localhost:3001/productAll/DelCollect',
+                        {
+                          member_sid: member_sid,
+                          product_sid: product_sid,
+                          collect_product_name: collect_product_name,
+                        }
+                      );
+                      console.log('移除收藏');
+                      //前端顯示空心
+                      setCollect(
+                        collect.filter((el) => {
+                          return el !== foodData.product_name;
+                        })
+                      );
+                    } else {
+                      //前端發送新增收藏
+                      axios.post(
+                        'http://localhost:3001/productAll/AddCollect',
+                        {
+                          member_sid: member_sid,
+                          product_sid: product_sid,
+                          collect_product_name: collect_product_name,
+                        }
+                      );
+                      console.log('新增收藏');
+                      //解構出原收藏陣列,把新的收藏塞回去
+                      setCollect([...collect, foodData.product_name]);
+                    }
+                  }}
+                >
+                  <img
+                    src={
+                      collect.includes(foodData.product_name)
+                        ? PinkHeart
+                        : Heart
+                    }
+                    style={{ width: '40px', height: '40px' }}
+                    alt=""
+                  />
+                </button>
+              </div>
+
+              <div>
+                <button
+                  className="CalendarBtn"
+                  onClick={() => {
+                    mySubmit();
+                  }}
+                >
+                  <img
+                    src={Calendar}
+                    className="Calendar_icon"
+                    alt=""
+                    style={{ width: '40px', height: '40px' }}
+                  />
+                </button>
+              </div>
             </div>
           </div>
           <div className="star_group">
@@ -424,7 +442,8 @@ function FoodDetail() {
           <div className="btnGroup">
             <button
               type="button"
-              className="btn add_cart"
+              className="BottomBar_Buy_Right "
+              style={{ backgroundColor: '#63D2FF', marginRight: '30px' }}
               onClick={() => {
                 Swal.fire({
                   icon: 'success',
@@ -437,7 +456,11 @@ function FoodDetail() {
             >
               加入購物車
             </button>
-            <button type="button" className="btn buy_now">
+            <button
+              type="button"
+              className="BottomBar_Buy_Right"
+              style={{ backgroundColor: '#59d8a1' }}
+            >
               立即購買
             </button>
           </div>

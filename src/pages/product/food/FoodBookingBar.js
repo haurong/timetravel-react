@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import Minus_icon from '../../../icon/minus.svg';
 import Minus_icon_active from '../../../icon/minusActive.svg';
 import Add_icon from '../../../icon/add.svg';
 import './style/FoodBookingBar.scss';
 import { useFoodContext } from './FoodContext/FoodContext';
-
+import { useFoodCart } from '../../cart/utils/useCart';
 function FoodBookingBar({ foodData }) {
   console.log({ foodData });
   const { slideOut, count, setCount, totalPrice, setTotalPrice } =
     useFoodContext();
-  // const [count, setCount] = useState(1);
-  // const [totalPrice, setTotalPrice] = useState(foodData.p_selling_price);
-
-  //console.log(newTotalPrice);
+  const foodObj = {
+    id: foodData.sid,
+    name: foodData.product_name,
+    quantity: count,
+    price: totalPrice,
+    img: 'http://localhost:3001/uploads/F116-1.jpg',
+    rate: 4.3,
+  };
   useEffect(() => {}, [slideOut, totalPrice]);
+  const { addItem } = useFoodCart();
   return (
     <div className="BookingBar d-flex">
       <div className={slideOut ? 'ShowBookingBar' : ''}>
@@ -39,11 +45,11 @@ function FoodBookingBar({ foodData }) {
                   }
                 }}
               >
-               <img
-                src={count > 1 ? Minus_icon_active : Minus_icon}
-                alt=""
-                className="Minus_icon"
-              />
+                <img
+                  src={count > 1 ? Minus_icon_active : Minus_icon}
+                  alt=""
+                  className="Minus_icon"
+                />
               </button>
               <p>{count}</p>
               <button
@@ -76,6 +82,15 @@ function FoodBookingBar({ foodData }) {
                 type="button"
                 className=" add_cart BottomBar_Buy_Right "
                 style={{ backgroundColor: '#63D2FF' }}
+                onClick={() => {
+                  Swal.fire({
+                    icon: 'success',
+                    title: '已加入購物車！',
+                    confirmButtonText: '確認',
+                    confirmButtonColor: '#59d8a1',
+                  });
+                  addItem(foodObj);
+                }}
               >
                 加入購物車
               </button>

@@ -439,7 +439,10 @@ function ProductList() {
           <BreadCrumbList />
         </div>
 
-        <div className="d-flex col-lg-10 hotelSort">
+        <div
+          className="d-flex col-lg-10 hotelSort"
+          style={{ marginLeft: '30px' }}
+        >
           <HotelListSortSelector />
         </div>
       </div>
