@@ -214,7 +214,9 @@ function SiteCardList() {
                     <Card.Img
                       className="card-img"
                       variant="top"
-                      // src={SITE_IMG + '/' + el.img1.split(',')[0]}
+                      src={
+                        el.img1 ? SITE_IMG + '/' + el.img1.split(',')[0] : ''
+                      }
                     />
                     {/* <button className="Heart_Btn">
                   <Card.Img src={''} className="Card_Heart" />

@@ -24,9 +24,9 @@ function ComputerLikeAdd() {
       >
         {/* TODO:點下去變色 加入收藏 */}
         {likeAndCalendar.like ? (
-          <FillHeart className="HotelHeart" />
-        ) : (
           <Heart className="noActiveHotelHeart" />
+        ) : (
+          <FillHeart className="HotelHeart" />
         )}
         {/* <Heart className="noActiveHotelHeart" /> */}
         {/* <FillHeart className="HotelHeart" /> */}
