@@ -13,10 +13,11 @@ import { FOOD_IMG } from '../../../config';
 import Map from '../../../icon/map.svg';
 import Heart from '../../../icon/heart_gray.svg';
 import PinkHeart from '../../../icon/heart.svg';
+import { useNavigate } from 'react-router-dom';
 import Sidebar from '../../../Component/Sidebar1/Sidebar_Food';
 // import CommitSelector from './CommentSelect.js';
 import BreadCrumbList from './BreadCrumbList';
-import Qrcode from '../../../Component/QRcode/Qrcode';
+// import Qrcode from '../../../Component/QRcode/Qrcode';
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
 import { useFoodContext } from './FoodContext/FoodContext.js';
 import { useAllContext } from '../../AllContext/AllContext.js';
@@ -60,7 +61,7 @@ function Food() {
   // useEffect(() => {
   //   getFoodListData(foodProductDisplay, perPage);
   // }, [foodData]);
-
+  const navigate = useNavigate();
   //分頁
   //當前分頁最小為1,最大看資料計算最大頁數
   const [pageNow, setPageNow] = useState(1);
@@ -317,19 +318,18 @@ function Food() {
       {foodProductDisplay[pageNow - 1]
         ? foodProductDisplay[pageNow - 1].map((v, i) => {
             return (
-              <Card
-                className="MyCard col-3"
-                style={{ width: '20rem' }}
-                key={i}
-                onClick={() => {
-                  // console.log(v.sid);
-                }}
-              >
+              <Card className="MyCard col-3" style={{ width: '20rem' }} key={i}>
                 <div style={{ overflow: 'hidden' }}>
                   <Card.Img
                     variant="top"
                     className="foodCardImg1"
                     src={`${FOOD_IMG}${v.product_photo}`}
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => {
+                      let sid = Number(v.product_number.split('F')[1]);
+                      // window.location.href = `stays/detail/${sid}`;
+                      navigate(`detail/${sid}`);
+                    }}
                   />
                 </div>
                 <Card.Body>

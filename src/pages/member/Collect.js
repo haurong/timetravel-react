@@ -8,6 +8,8 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Heart from '../../icon/heart_gray.svg';
 import PinkHeart from '../../icon/heart.svg';
+import Map from '../../icon/map.svg';
+
 import Card1 from '../../Component/Card_List/Card';
 import { MY_HOST, PRODUCT_LIST } from '../../config';
 import { useAllContext } from '../AllContext/AllContext';
@@ -51,12 +53,15 @@ function Collect() {
       <div className="container">
         <div className="givePadding profile_padding d-flex">
           <SideBar />
-          <div className="col-9">
-            <div className="d-flex mb-4">
-              <h1 className="ps-5 m-0">我的收藏</h1>
-              <p className="m-auto ms-3">3 個行程在您的收藏</p>
-            </div>
-            <div className="d-flex container">
+          <div className="col-12" style={{overflow:'hidden'}}>
+            <div
+              className="col-lg-9  CardListStyle"
+              style={{ paddingLeft: '120px'}}
+            >
+              <div className="d-flex mb-4">
+                <h1 className="ps-2 m-0">我的收藏</h1>
+                <p className="m-auto ms-3">{collect.length} 個行程在您的收藏</p>
+              </div>
               <Row
                 xs={1}
                 lg={4}

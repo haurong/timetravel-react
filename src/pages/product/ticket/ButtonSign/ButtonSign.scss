@@ -1,14 +1,10 @@
-.Bottom_Sign {
-	color: #ffffff;
+button.Bottom_Sign {
+	// color: #ffffff;
 	background-color: rgba(255, 255, 255, 0);
-	border: 1px solid #ffffff;
-	width: 130px;
-	height: 45px;
-
-	>a {
-		color: #ffffff;
-	}
-	>a:hover {
-		color: #ffffff;
-	}
+    width: 135px;
+    height: 45px;
+    border: 1px solid #FFF;
+}
+.homeSiginLink{
+	color: #ffffff !important;
 }

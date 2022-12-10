@@ -57,13 +57,13 @@ function FoodDetail() {
     collect,
     setCollect,
   } = useFoodContext();
-
+  const dataFrom = window.location.pathname.split('/food/detail/')[1];
   const foodObj = {
     id: foodData.sid,
     name: foodData.product_name,
     quantity: count,
     price: totalPrice,
-    img: 'http:/localhost:3001/uploads/F116-1.jpg',
+    img: 'http://localhost:3001/uploads/F116-1.jpg',
     rate: 4.3,
   };
 

@@ -31,7 +31,7 @@ function Card_List() {
   const navigate = useNavigate();
   const [like, setLike] = useState(false);
   const [likeList, setLikeList] = useState([]);
-  const toggleLike1 = () => setLike(!like);
+  
   // console.log(fakedata[0].favorite)
   const addLikeListHandler = (id) => {
     if (likeList.includes(id)) {
