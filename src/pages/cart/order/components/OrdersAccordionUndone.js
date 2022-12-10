@@ -7,7 +7,6 @@ import {
   ORDER_DETAILS_FOOD_API,
   ORDER_DETAILS_HOTEL_API,
   ORDER_DETAILS_TICKET_API,
-  LINE_PAY_API,
 } from '../../../../config';
 function OrdersAccordionUndone({ createdTime, uuid, totalPrice }) {
   const [foodOrdersData, setFoodOrdersData] = useState([]);
@@ -26,17 +25,6 @@ function OrdersAccordionUndone({ createdTime, uuid, totalPrice }) {
     setTicketOrdersData(response.data);
   }
   const [rePayShow, setRePayShow] = useState(false);
-  let payUrl;
-  const myLinePay = async () => {
-    await pay();
-    window.location = payUrl;
-  };
-  async function pay() {
-    const response = await axios.get(LINE_PAY_API(uuid));
-    const url = response.data.payUrl;
-    payUrl = url;
-    console.log(payUrl);
-  }
 
   // console.log(hotelOrdersData);
   useEffect(() => {

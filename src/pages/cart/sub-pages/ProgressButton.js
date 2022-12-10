@@ -1,5 +1,5 @@
 import React from 'react';
-import { MakeOrder, LINE_PAY_API, GREEN_PAY_API } from '../../../config';
+import { MakeOrder, LINE_PAY_API } from '../../../config';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 function ProgressButton({
@@ -66,13 +66,13 @@ function ProgressButton({
     payUrl = url;
     // console.log(payUrl);
   }
-  async function greenpay() {
-    const response = await axios.get(GREEN_PAY_API(uuid));
-    document.open();
-    document.write(response.data);
-    document.close();
-    console.log(response);
-  }
+  // async function greenpay() {
+  //   const response = await axios.get(GREEN_PAY_API(uuid));
+  //   document.open();
+  //   document.write(response.data);
+  //   document.close();
+  //   console.log(response);
+  // }
   // console.log(toPayUrl);
   return (
     <div className="d-flex justify-content-evenly mb-5">
