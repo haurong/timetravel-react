@@ -34,11 +34,13 @@ function Card_List({ rowsAll }) {
             style={{ width: '20rem' }}
             key={el.product_number}
           >
-            <Card.Img
-              variant="top"
-              className="foodCardImg1"
-              src={`${FOOD_IMG}${el.product_photo}`}
-            />
+            <div style={{ overflow: 'hidden' }}>
+              <Card.Img
+                variant="top"
+                className="foodCardImg1"
+                src={`${FOOD_IMG}${el.product_photo}`}
+              />
+            </div>
             <Card.Body>
               <Link to="/food/detail">
                 <Card.Title className="Card_Title">

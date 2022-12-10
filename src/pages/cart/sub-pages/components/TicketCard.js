@@ -6,7 +6,7 @@ import DateInput from './DateInput';
 import CountButton from './CountButton';
 import { useTicketCart } from '../../utils/useCart';
 function TicketCard() {
-  const { items, plusOne, minusOne, removeItem, updateDate, img } =
+  const { items, plusOne, minusOne, removeItem, updateDate, img, rate } =
     useTicketCart();
   // console.log(items);
   return (
@@ -21,11 +21,11 @@ function TicketCard() {
                   removeItem(v.id);
                 }}
               />
-              <CardBodyTop productName={v.name} img={img} />
+              <CardBodyTop productName={v.name} img={v.img} rate={v.rate} />
               <StateButton text={v.type} />
               <div className="d-flex justify-content-between">
                 <DateInput
-                  text={'入住時間'}
+                  text={'使用日期'}
                   date={v.date}
                   id={v.id}
                   updateDate={updateDate}

@@ -23,6 +23,7 @@ function HotelCard({
                 rate={v.rate}
                 checkin={v.checkin}
                 checkout={v.checkout}
+                img={v.img}
               />
             </div>
           </div>

@@ -55,7 +55,6 @@ function LogIn() {
       value.errorMsg.password = validatePassword(value);
     return value.errorMsg.email === '' && value.errorMsg.password === '';
   };
-
   const handlerEmailChange = (e) => {
     const id = e.currentTarget.id;
     const val = e.currentTarget.value;

@@ -10,7 +10,7 @@ function FoodCard() {
     <>
       {items.map((v, i) => {
         return (
-          <div className="card-wrap pb-5">
+          <div key={v.name} className="card-wrap pb-5">
             <div className="card-body">
               <CardTitle
                 text={'美食購買資訊'}
@@ -18,7 +18,7 @@ function FoodCard() {
                 deleteFun={() => removeItem(v.id)}
               />
               <div className="d-flex justify-content-between">
-                <CardBodyTop productName={v.name} img={img} />
+                <CardBodyTop productName={v.name} img={v.img} rate={v.rate} />
                 <CountButton
                   quantity={v.quantity}
                   id={v.id}

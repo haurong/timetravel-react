@@ -82,6 +82,9 @@ export const HotelContextProvider = ({ children }) => {
   //收藏項目
   const [collectItem, setCollectItem] = useState([]);
 
+  //地圖座標
+  const [hotelGeocode, setHotelGeocode] = useState([]);
+
   return (
     <HotelContext.Provider
       value={{
@@ -128,6 +131,8 @@ export const HotelContextProvider = ({ children }) => {
         setBreadCrumbText,
         collectItem,
         setCollectItem,
+        hotelGeocode,
+        setHotelGeocode,
       }}
     >
       {children}

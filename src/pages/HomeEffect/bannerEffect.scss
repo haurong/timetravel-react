@@ -6,45 +6,6 @@
     // align-items: center;
     background-color: #f7f7f7;
   }
-  .hover-effect{
-    .BannerEffect-flex{
-      position: absolute;
-      top: 81%;
-      left: 50%;
-      z-index: 5;
-      transform: translate(-50%, 0%);
-      .input-group{
-        border-bottom: 2px solid #FFF;
-        .icon{
-          border:none; 
-        }
-        .search-border{
-          border: none;
-          background-color: #fff0;
-        }
-        input[type=search] {
-          color: white;
-          font-weight: 400;
-        }
-        .form-control::placeholder {
-          color: white;
-          font-weight: 300;
-          letter-spacing: 1px;
-        }
-      }
-    }
-  }
-  // .hover-effect:hover{
-  //   animation: hover 5s ease-in-out infinite alternate;
-  // @keyframes hover {
-  //   0%{
-  //     transform: translateY(800px);
-  //   }
-  //   100%{
-  //     transform: translateY(400px);
-  //   }
-  // }
-  // }
   .site {
     width: 25%;
     height: 100vh;

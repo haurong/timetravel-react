@@ -5,6 +5,7 @@ import '../global.scss';
 import './SideBar.scss';
 import AuthContext from '../pages/member/context/AuthContext';
 import { userImg } from '../config';
+import proSetImg from '../pages/member/prosetImg.png';
 
 function SideBar() {
   const { myAuth } = useContext(AuthContext);
@@ -14,10 +15,22 @@ function SideBar() {
         <div className="sideBar_member">
           <div
             className="sideBar_img"
-            style={{
-              background: `url(${userImg}${myAuth.member_img}) no-repeat center center`,
-              backgroundSize: 'cover',
-            }}
+            style={
+              myAuth.member_img !== null
+                ? {
+                    backgroundImage: `url(${userImg}${myAuth.member_img})`,
+                    backgroundPosition: 'center center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
+                  }
+                : {
+                    //預設照片
+                    backgroundImage: `url(${proSetImg}) `,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'center center',
+                    backgroundSize: 'cover',
+                  }
+            }
           ></div>
           {/* <img className="sideBar_img" src="" /> */}
           <h2 className="sideBar_h2">{myAuth.email}</h2>
