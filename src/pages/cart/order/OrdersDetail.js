@@ -21,6 +21,7 @@ function OrdersDetail({ ordersData, memberSid }) {
       +new Date() - +new Date(v.orders_created_time) >= 2592000000
     );
   });
+  // console.log(historyOrder);
   const [path, setPath] = useState('now');
   // console.log(ordersData);
   return (

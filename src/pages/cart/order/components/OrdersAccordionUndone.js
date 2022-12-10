@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SortIcon from './../../../../icon/sort.svg';
 import axios from 'axios';
 import Accordion from 'react-bootstrap/Accordion';
+import RePay from './RePay';
 import {
   ORDER_DETAILS_FOOD_API,
   ORDER_DETAILS_HOTEL_API,
@@ -24,6 +25,7 @@ function OrdersAccordionUndone({ createdTime, uuid, totalPrice }) {
     const response = await axios.get(ORDER_DETAILS_TICKET_API(uuid));
     setTicketOrdersData(response.data);
   }
+  const [rePayShow, setRePayShow] = useState(false);
   let payUrl;
   const myLinePay = async () => {
     await pay();
@@ -63,7 +65,8 @@ function OrdersAccordionUndone({ createdTime, uuid, totalPrice }) {
                   type="button"
                   className="btn btn-danger"
                   onClick={() => {
-                    myLinePay();
+                    setRePayShow(true);
+                    // myLinePay();
                   }}
                 >
                   尚未付款
@@ -71,6 +74,12 @@ function OrdersAccordionUndone({ createdTime, uuid, totalPrice }) {
               </li>
             </ul>
           </div>
+          <RePay
+            show={rePayShow}
+            onHide={() => setRePayShow(false)}
+            state="editing"
+            uuid={uuid}
+          />
         </Accordion.Header>
         <Accordion.Body>
           <div className="w-100 m-0 ">

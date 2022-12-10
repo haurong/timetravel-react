@@ -48,12 +48,10 @@ function ProgressButton({
         icon: 'success',
         title: '已成功建立訂單，即將跳往結帳頁面',
       });
-      await greenpay();
       localStorage.removeItem('foodcart');
       localStorage.removeItem('ticketcart');
       localStorage.removeItem('hotelcart');
-      // window.location = payUrl;
-      // console.log(data);
+      window.location = 'http://localhost:3000/cart/fail';
     } else {
       Swal.fire({
         icon: 'error',
@@ -103,7 +101,7 @@ function ProgressButton({
               } else {
                 Swal.fire({
                   icon: 'error',
-                  title: '請選擇一種支付方式！',
+                  title: '請先選擇一種支付方式！',
                   confirmButtonText: '確認',
                   confirmButtonColor: '#59d8a1',
                 });
