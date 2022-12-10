@@ -88,18 +88,20 @@ export default function Card_Carousel() {
             style={{ width: '20rem' }}
             // key={el.product_number}
           >
-            <Card.Img
-              variant="top"
-              className="homeFoodCardImg1"
-              // src={`${TICKET_IMG}/${el.product_cover}`}
-              style={{ cursor: 'pointer' }}
-              onClick={() => {
-                // let sid = Number(el.product_number.split('A')[1]);
-                // let sid = Number(el.sid);
-                // window.location.href = `stays/detail/${sid}`;
-                // navigate(`detail/${sid}`);
-              }}
-            />
+            <div style={{ overflow: 'hidden' }}>
+              <Card.Img
+                variant="top"
+                className="homeFoodCardImg1"
+                // src={`${TICKET_IMG}/${el.product_cover}`}
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  // let sid = Number(el.product_number.split('A')[1]);
+                  // let sid = Number(el.sid);
+                  // window.location.href = `stays/detail/${sid}`;
+                  // navigate(`detail/${sid}`);
+                }}
+              />
+            </div>
             <button
               // data-product-number={el.product_number}
               className="Heart_Btn"
@@ -108,7 +110,7 @@ export default function Card_Carousel() {
                 toggleLike1();
               }}
             >
-              <img src={Heart} className="Card_Heart" alt="" />
+              {/* <img src={Heart} className="Card_Heart" alt="" /> */}
             </button>
             <Card.Body>
               <Card.Title
@@ -158,19 +160,15 @@ export default function Card_Carousel() {
             style={{ width: '20rem' }}
             // key={el.product_number}
           >
-            <Card.Img
-              variant="top"
-              className="homeStayCardImg1"
-              // src={`${TICKET_IMG}/${el.product_cover}`}
-              style={{ cursor: 'pointer' }}
-              onClick={() => {
-                // let sid = Number(el.product_number.split('A')[1]);
-                // let sid = Number(el.sid);
-                console.log('see the sid:', sid);
-                // window.location.href = `stays/detail/${sid}`;
-                // navigate(`detail/${sid}`);
-              }}
-            />
+            <div style={{ overflow: 'hidden' }}>
+              <Card.Img
+                variant="top"
+                className="homeStayCardImg1"
+                // src={`${TICKET_IMG}/${el.product_cover}`}
+                style={{ cursor: 'pointer' }}
+                onClick={() => {}}
+              />
+            </div>
             <button
               // data-product-number={el.product_number}
               className="Heart_Btn"
@@ -179,26 +177,19 @@ export default function Card_Carousel() {
                 toggleLike1();
               }}
             >
-              <img src={Heart} className="Card_Heart" alt="" />
+              {/* <img src={Heart} className="Card_Heart" alt="" /> */}
             </button>
             <Card.Body>
               <Card.Title
                 className="Card_Title"
                 style={{ cursor: 'pointer' }}
-                onClick={() => {
-                  // let sid = Number(el.product_number.split('A')[1]);
-                  // let sid = Number(el.sid);
-                  // window.location.href = `stays/detail/${sid}`;
-                  // navigate(`detail/${sid}`);
-                }}
+                onClick={() => {}}
               >
                 {'泊居二館'}
               </Card.Title>
               <Card.Text className="Card_Text">
                 <Card.Img src={Map} className="Map_icon" />
-                <span className="Card_Score">
-                  台北市 | 中山區
-                </span>
+                <span className="Card_Score">台北市 | 中山區</span>
 
                 <div className="d-flex PriceAndCollect">
                   <div>
@@ -231,19 +222,20 @@ export default function Card_Carousel() {
             style={{ width: '20rem' }}
             // key={el.product_number}
           >
-            <Card.Img
-              variant="top"
-              className="homeTicketCardImg1"
-              // src={`${TICKET_IMG}/${el.product_cover}`}
-              style={{ cursor: 'pointer' }}
-              onClick={() => {
-                // let sid = Number(el.product_number.split('A')[1]);
-                // let sid = Number(el.sid);
-                console.log('see the sid:', sid);
-                // window.location.href = `stays/detail/${sid}`;
-                // navigate(`detail/${sid}`);
-              }}
-            />
+            <div style={{ overflow: 'hidden' }}>
+              <Card.Img
+                variant="top"
+                className="homeTicketCardImg1"
+                // src={`${TICKET_IMG}/${el.product_cover}`}
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  // let sid = Number(el.product_number.split('A')[1]);
+                  // let sid = Number(el.sid);
+                  // window.location.href = `stays/detail/${sid}`;
+                  // navigate(`detail/${sid}`);
+                }}
+              />
+            </div>
             <button
               // data-product-number={el.product_number}
               className="Heart_Btn"
@@ -252,7 +244,7 @@ export default function Card_Carousel() {
                 toggleLike1();
               }}
             >
-              <img src={Heart} className="Card_Heart" alt="" />
+              {/* <img src={Heart} className="Card_Heart" alt="" /> */}
             </button>
             <Card.Body>
               <Card.Title
@@ -269,9 +261,7 @@ export default function Card_Carousel() {
               </Card.Title>
               <Card.Text className="Card_Text">
                 <Card.Img src={Map} className="Map_icon" />
-                <span className="Card_Score">
-                  新北市 | 萬里區
-                </span>
+                <span className="Card_Score">新北市 | 萬里區</span>
 
                 <div className="d-flex PriceAndCollect">
                   <div>
@@ -304,19 +294,20 @@ export default function Card_Carousel() {
             style={{ width: '20rem' }}
             // key={el.product_number}
           >
-            <Card.Img
-              variant="top"
-              className="homeFoodCardImg2"
-              // src={`${TICKET_IMG}/${el.product_cover}`}
-              style={{ cursor: 'pointer' }}
-              onClick={() => {
-                // let sid = Number(el.product_number.split('A')[1]);
-                // let sid = Number(el.sid);
-                console.log('see the sid:', sid);
-                // window.location.href = `stays/detail/${sid}`;
-                // navigate(`detail/${sid}`);
-              }}
-            />
+            <div style={{ overflow: 'hidden' }}>
+              <Card.Img
+                variant="top"
+                className="homeFoodCardImg2"
+                // src={`${TICKET_IMG}/${el.product_cover}`}
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  // let sid = Number(el.product_number.split('A')[1]);
+                  // let sid = Number(el.sid);
+                  // window.location.href = `stays/detail/${sid}`;
+                  // navigate(`detail/${sid}`);
+                }}
+              />
+            </div>
             <button
               // data-product-number={el.product_number}
               className="Heart_Btn"
@@ -325,7 +316,7 @@ export default function Card_Carousel() {
                 toggleLike1();
               }}
             >
-              <img src={Heart} className="Card_Heart" alt="" />
+              {/* <img src={Heart} className="Card_Heart" alt="" /> */}
             </button>
             <Card.Body>
               <Card.Title
@@ -342,9 +333,7 @@ export default function Card_Carousel() {
               </Card.Title>
               <Card.Text className="Card_Text">
                 <Card.Img src={Map} className="Map_icon" />
-                <span className="Card_Score">
-                  新北市 | 永和區
-                </span>
+                <span className="Card_Score">新北市 | 永和區</span>
 
                 <div className="d-flex PriceAndCollect">
                   <div>
@@ -377,19 +366,20 @@ export default function Card_Carousel() {
             style={{ width: '20rem' }}
             // key={el.product_number}
           >
-            <Card.Img
-              variant="top"
-              className="homeStayCardImg2"
-              // src={`${TICKET_IMG}/${el.product_cover}`}
-              style={{ cursor: 'pointer' }}
-              onClick={() => {
-                // let sid = Number(el.product_number.split('A')[1]);
-                // let sid = Number(el.sid);
-                console.log('see the sid:', sid);
-                // window.location.href = `stays/detail/${sid}`;
-                // navigate(`detail/${sid}`);
-              }}
-            />
+            <div style={{ overflow: 'hidden' }}>
+              <Card.Img
+                variant="top"
+                className="homeStayCardImg2"
+                // src={`${TICKET_IMG}/${el.product_cover}`}
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  // let sid = Number(el.product_number.split('A')[1]);
+                  // let sid = Number(el.sid);
+                  // window.location.href = `stays/detail/${sid}`;
+                  // navigate(`detail/${sid}`);
+                }}
+              />
+            </div>
             <button
               // data-product-number={el.product_number}
               className="Heart_Btn"
@@ -398,7 +388,7 @@ export default function Card_Carousel() {
                 toggleLike1();
               }}
             >
-              <img src={Heart} className="Card_Heart" alt="" />
+              {/* <img src={Heart} className="Card_Heart" alt="" /> */}
             </button>
             <Card.Body>
               <Card.Title
@@ -415,9 +405,7 @@ export default function Card_Carousel() {
               </Card.Title>
               <Card.Text className="Card_Text">
                 <Card.Img src={Map} className="Map_icon" />
-                <span className="Card_Score">
-                  台北市 | 士林區
-                </span>
+                <span className="Card_Score">台北市 | 士林區</span>
 
                 <div className="d-flex PriceAndCollect">
                   <div>
@@ -450,19 +438,20 @@ export default function Card_Carousel() {
             style={{ width: '20rem' }}
             // key={el.product_number}
           >
-            <Card.Img
-              variant="top"
-              className="homeTicketCardImg2"
-              // src={`${TICKET_IMG}/${el.product_cover}`}
-              style={{ cursor: 'pointer' }}
-              onClick={() => {
-                // let sid = Number(el.product_number.split('A')[1]);
-                // let sid = Number(el.sid);
-                console.log('see the sid:', sid);
-                // window.location.href = `stays/detail/${sid}`;
-                // navigate(`detail/${sid}`);
-              }}
-            />
+            <div style={{ overflow: 'hidden' }}>
+              <Card.Img
+                variant="top"
+                className="homeTicketCardImg2"
+                // src={`${TICKET_IMG}/${el.product_cover}`}
+                style={{ cursor: 'pointer' }}
+                onClick={() => {
+                  // let sid = Number(el.product_number.split('A')[1]);
+                  // let sid = Number(el.sid);
+                  // window.location.href = `stays/detail/${sid}`;
+                  // navigate(`detail/${sid}`);
+                }}
+              />
+            </div>
             <button
               // data-product-number={el.product_number}
               className="Heart_Btn"
@@ -471,7 +460,7 @@ export default function Card_Carousel() {
                 toggleLike1();
               }}
             >
-              <img src={Heart} className="Card_Heart" alt="" />
+              {/* <img src={Heart} className="Card_Heart" alt="" /> */}
             </button>
             <Card.Body>
               <Card.Title
@@ -488,9 +477,7 @@ export default function Card_Carousel() {
               </Card.Title>
               <Card.Text className="Card_Text">
                 <Card.Img src={Map} className="Map_icon" />
-                <span className="Card_Score">
-                  新北市 | 瑞芳區
-                </span>
+                <span className="Card_Score">新北市 | 瑞芳區</span>
 
                 <div className="d-flex PriceAndCollect">
                   <div>
