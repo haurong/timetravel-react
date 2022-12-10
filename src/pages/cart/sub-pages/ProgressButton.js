@@ -49,6 +49,9 @@ function ProgressButton({
         title: '已成功建立訂單，即將跳往結帳頁面',
       });
       await greenpay();
+      localStorage.removeItem('foodcart');
+      localStorage.removeItem('ticketcart');
+      localStorage.removeItem('hotelcart');
       // window.location = payUrl;
       // console.log(data);
     } else {
@@ -67,7 +70,9 @@ function ProgressButton({
   }
   async function greenpay() {
     const response = await axios.get(GREEN_PAY_API(uuid));
-
+    document.open();
+    document.write(response.data);
+    document.close();
     console.log(response);
   }
   // console.log(toPayUrl);
@@ -93,6 +98,8 @@ function ProgressButton({
             onClick={() => {
               if (payMethod === 'LinePay') {
                 mySubmit();
+              } else if (payMethod === 'Credit') {
+                mySubmit2();
               } else {
                 Swal.fire({
                   icon: 'error',

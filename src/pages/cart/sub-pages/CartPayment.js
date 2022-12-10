@@ -81,6 +81,7 @@ function CartPayment({
           paymentEmail={paymentEmail}
           setPaymentEmail={setPaymentEmail}
           paymentId={paymentId}
+          payMethod={payMethod}
           setPaymentId={setPaymentId}
           setPayMethod={setPayMethod}
         />

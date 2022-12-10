@@ -13,9 +13,10 @@ function HotelCardDetail({
   rate,
   checkin,
   checkout,
+  img,
 }) {
   let dateLong = (+new Date(checkout) - +new Date(checkin)) / 86400000;
-  const { removeItem, plusOne, minusOne, updateDate, img } = useHotelCart();
+  const { removeItem, plusOne, minusOne, updateDate } = useHotelCart();
   return (
     <div className="pb-5">
       <CardTitle
@@ -28,7 +29,7 @@ function HotelCardDetail({
       <StateButton text={type} />
       <div className="d-flex">
         <DateInput
-          text={'入住時間'}
+          text={'入住日期'}
           date={checkin}
           id={id}
           max={checkout}
@@ -36,7 +37,7 @@ function HotelCardDetail({
           dateProps={'checkin'}
         />
         <DateInput
-          text={'退房時間'}
+          text={'退房日期'}
           date={checkout}
           id={id}
           min={checkin}
