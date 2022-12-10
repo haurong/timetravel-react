@@ -13,6 +13,7 @@ import AuthContext from '../pages/member/context/AuthContext';
 import Dropdown from 'react-bootstrap/Dropdown';
 import SearchBar from '../pages/product/food/SearchBar';
 import CartIcon from './CartIcon';
+import proSetImg from '../pages/member/prosetImg.png';
 
 import { useAllContext } from '../pages/AllContext/AllContext';
 function NavBar() {
@@ -69,12 +70,22 @@ function NavBar() {
                 <div className="d-flex navbarUserPic">
                   <div
                     className="userIcon"
-                    style={{
-                      backgroundImage: `url(${userImg}${myAuth.member_img})`,
-                      backgroundPosition:'center center',
-                      backgroundRepeat:'no-repeat',
-                      backgroundSize: 'cover',
-                    }}
+                    style={
+                      myAuth.member_img !== null
+                        ? {
+                            backgroundImage: `url(${userImg}${myAuth.member_img})`,
+                            backgroundPosition: 'center center',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundSize: 'cover',
+                          }
+                        : {
+                            //預設照片
+                            backgroundImage: `url(${proSetImg}) `,
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center center',
+                            backgroundSize: 'cover',
+                          }
+                    }
                   ></div>
                   <Dropdown>
                     <Dropdown.Toggle

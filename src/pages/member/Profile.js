@@ -11,6 +11,7 @@ import { PROFILE_API, MY_HOST } from '../../config';
 import { UPLOAD_AVATAR_API, userImg } from '../../config';
 import AuthContext from '../member/context/AuthContext';
 import { pick } from 'lodash';
+import proSetImg from './prosetImg.png';
 
 function Profile() {
   const [formData, setFormData] = useState({
@@ -45,7 +46,7 @@ function Profile() {
     }
 
     const objectUrl = URL.createObjectURL(selectPic);
-    console.log(objectUrl);
+    // console.log(objectUrl);
     setPreview(objectUrl);
 
     // 當元件unmounted時清除記憶體
@@ -98,7 +99,7 @@ function Profile() {
           JSON.parse(localStorage.getItem('auth')).sid
         }`
       );
-      console.log(r.data);
+      // console.log(r.data);
       setMyAuth({ ...myAuth, member_img: r.data[0].member_img });
       alert('儲存成功');
     } else {
@@ -118,7 +119,21 @@ function Profile() {
               <div
                 className="profile_img"
                 style={
-                  selectPic
+                  myAuth.member_img !== null
+                    ? selectPic
+                      ? {
+                          backgroundImage: `url(${preview})`,
+                          backgroundRepeat: 'no-repeat',
+                          backgroundPosition: 'center center',
+                          backgroundSize: 'cover',
+                        }
+                      : {
+                          backgroundImage: `url(${userImg}${myAuth.member_img}) `,
+                          backgroundRepeat: 'no-repeat',
+                          backgroundPosition: 'center center',
+                          backgroundSize: 'cover',
+                        }
+                    : selectPic
                     ? {
                         backgroundImage: `url(${preview})`,
                         backgroundRepeat: 'no-repeat',
@@ -126,7 +141,8 @@ function Profile() {
                         backgroundSize: 'cover',
                       }
                     : {
-                        backgroundImage: `url(${userImg}${myAuth.member_img}) `,
+                        //  預設照片
+                        backgroundImage: `url(${proSetImg}) `,
                         backgroundRepeat: 'no-repeat',
                         backgroundPosition: 'center center',
                         backgroundSize: 'cover',
