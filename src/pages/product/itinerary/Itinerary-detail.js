@@ -32,6 +32,7 @@ function ItineraryDetail() {
         <IRecSite />
         {/* <IRecFood /> */}
       </div>
+      <div className="spaceItineraryDetail"></div>
       <Footer />
     </>
   );

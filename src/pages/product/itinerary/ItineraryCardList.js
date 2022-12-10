@@ -11,7 +11,7 @@ import {
   ITINERARY_DELLIST,
   ITINERARY_LIST,
   ITINERARY_LISTNEW,
-  SITE_IMG,
+  ALL_IMG,
 } from './site-config';
 import { useItineraryContext } from './ItineraryContext';
 import { useLocation } from 'react-router-dom';
@@ -56,9 +56,9 @@ function ItineraryCardList(rows) {
                   <Card.Img
                     className="card-img"
                     variant="top"
-                    // src={SITE_IMG + '/' + '0.png'}
-                    // src={SITE_IMG + '/' + el.img1.split(',')[0]}
-                    src={SITE_IMG + '/' + el.photo}
+                    // src={ALL_IMG + '/' + '0.png'}
+                    // src={ALL_IMG + '/' + el.img1.split(',')[0]}
+                    src={ALL_IMG + '/' + el.photo}
                     style={{ objectFit: 'cover' }}
                   />
                 </div>

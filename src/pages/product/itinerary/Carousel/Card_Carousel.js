@@ -11,6 +11,7 @@ import 'swiper/scss';
 import 'swiper/scss/pagination';
 import 'swiper/scss/navigation';
 import { Pagination, Navigation } from 'swiper';
+import { height } from '@mui/system';
 
 export default function Card_Carousel() {
   //設定６張卡片狀態
@@ -45,7 +46,14 @@ export default function Card_Carousel() {
             return (
               <SwiperSlide key={i}>
                 <Card className="Card " style={{ width: '20rem' }}>
-                  <div className="foodCardDataOutside">
+                  <div
+                    className="foodCardDataOutside"
+                    style={{
+                      overflow: 'hidden',
+                      width: '280px',
+                      height: '255px',
+                    }}
+                  >
                     <Card.Img
                       variant="top"
                       className="foodCardData1Img"

@@ -66,14 +66,16 @@ function Itinerary() {
     //   status: 1,
     // });
     // setITData(iTData);
-    if (listname.length > 1) {
-      Swal.fire({
-        icon: 'success',
-        title: `新增成功`,
-        confirmButtonText: '確認',
-        confirmButtonColor: '#59d8a1',
-      });
-    }
+
+    // if (listname.length > 1) {
+    //   Swal.fire({
+    //     icon: 'success',
+    //     title: `新增成功`,
+    //     confirmButtonText: '確認',
+    //     confirmButtonColor: '#59d8a1',
+    //   });
+    // }
+
     //   } else {
     //     console.log('error1');
     //   }

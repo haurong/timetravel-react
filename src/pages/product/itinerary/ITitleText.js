@@ -18,6 +18,7 @@ export default function ITitleText() {
     const path = window.location.pathname.split('/');
     const sid = path[2];
     const response = await axios.get(ITINERARY_TITLE + sid);
+    response.data.date = moment(response.data.date).format('YYYY-MM-DD');
     setITData(response.data);
     setName(response.data.list_name);
     setDay(response.data.day);

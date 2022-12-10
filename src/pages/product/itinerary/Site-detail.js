@@ -263,7 +263,9 @@ function SiteDetail() {
   return (
     <>
       <NavBar />
-      <Container className="spaceSite" ref={Site_part0} id="Site_part0">
+      <div style={{ marginTop: '160px' }}></div>
+
+      <Container ref={Site_part0} id="Site_part0" style={{ marginTop: '80px' }}>
         <BreadCrumb siteData={siteData} />
         <SiteCarousel
           img1={img1}
@@ -313,9 +315,9 @@ function SiteDetail() {
               </div>
             </div>
             <div>
-              <button type="button" className="btn btn-secondary">
+              {/* <button type="button" className="btn btn-secondary">
                 查看相關票卷
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
@@ -332,6 +334,7 @@ function SiteDetail() {
               每年11月至12月的菊展為臺北最盛大的花展
               園藝館、新蘭亭、凱歌堂...等值得走訪的特色建築
             </p>
+            <div className="siteDetailSpace"></div>
             <h2 ref={Site_part2} id="Site_part2">
               景點介紹
             </h2>
@@ -363,6 +366,7 @@ function SiteDetail() {
               每年春節過後的2至3月為士林官邸鬱金香展，種植著11萬株的荷蘭及日本鬱金香花海，並設置異國裝置藝術，讓人彷彿置身於國外。
               士林官邸公園於民國八十五年正式開放民眾參觀，為提供更多更好的服務，也積極加強各項的整理規劃及建設，成為臺北市區中另一處供民眾休憩的景點。
             </p>
+            <div className="siteDetailSpace"></div>
             <h2 ref={Site_part3} id="Site_part3">
               如何前往
             </h2>
@@ -408,6 +412,7 @@ function SiteDetail() {
         </MapContainer>
       </div> */}
             {/* <Map lat={siteData.lat} lng={siteData.lng} /> */}
+            <div className="siteDetailSpace"></div>
             <h2 ref={Site_part4} id="Site_part4">
               開放時間
             </h2>
@@ -466,6 +471,7 @@ function SiteDetail() {
           </div> */}
         </div>
       </Container>
+      <div className="siteDetailSpace"></div>
       <Footer />
     </>
   );

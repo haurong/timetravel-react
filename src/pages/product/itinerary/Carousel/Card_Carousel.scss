@@ -1,3 +1,6 @@
+.mySwiper {
+    height: 500px !important;
+}
 .swiper-slide{
     width: 100%;
     
@@ -5,6 +8,9 @@
 .swiper{
     position: relative;
     border: none;
+    .cardSlide{
+        height:500px !important
+    }
     .Card .card{
         margin:10px;
         padding:0;
@@ -130,4 +136,3 @@
     }
     
 }
-

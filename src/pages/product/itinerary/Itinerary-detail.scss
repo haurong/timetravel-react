@@ -21,7 +21,7 @@
         }
     }
     #iTitleBtns{
-        width: 273px;
+        width: 132px;
         display: flex;
         justify-content: space-between;
         button{
@@ -159,4 +159,7 @@
     height: 600px;
     margin: 80px auto 20px;
     justify-content:center;
+}
+.spaceItineraryDetail{
+    height: 120px;
 }
