@@ -67,11 +67,7 @@ function ItineraryCardList(rows) {
                     <Link to={'/itinerary/' + el.list_number}>
                       <h2>{el.list_name}</h2>
                     </Link>
-                    <p>
-                      {moment(iTData.date)
-                        .add(1, 'd')
-                        .format('YYYY-MM-DD(ddd)')}
-                    </p>
+                    <p>{moment(el.date).format('YYYY-MM-DD(ddd)')}</p>
                     <p>
                       {el.day === 1
                         ? ''
