@@ -32,7 +32,7 @@ function Card_List() {
   const navigate = useNavigate();
   const [like, setLike] = useState(false);
   const [likeList, setLikeList] = useState([]);
-  
+
   // console.log(fakedata[0].favorite)
   const addLikeListHandler = (id) => {
     if (likeList.includes(id)) {
@@ -224,6 +224,7 @@ function Card_List() {
     let newHotelSortData = [];
     setPageNow(1);
     newHotelSortData = handleSearch(hotelSortData, pageSearchWord);
+    newHotelSortData = handleArea(newHotelSortData, hotelSort.area);
     newHotelSortData = handleSortPrice(newHotelSortData, hotelSort.sortBy);
     newHotelSortData = handleCate(newHotelSortData, hotelSort.cate);
     newHotelSortData = handleAddLike(newHotelSortData, hotelSort.like);

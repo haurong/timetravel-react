@@ -237,7 +237,7 @@ function Card_List() {
     setPageNow(1);
     newHotelSortData = handleSearch(ticketSortData, pageSearchWord);
     newHotelSortData = handleSortPrice(newHotelSortData, hotelSort.sortBy);
-    // newHotelSortData = handleArea(newHotelSortData, hotelSort.area);
+    newHotelSortData = handleArea(newHotelSortData, hotelSort.area);
     newHotelSortData = handleCate(newHotelSortData, hotelSort.cate);
     newHotelSortData = handleAddLike(newHotelSortData, hotelSort.like);
 

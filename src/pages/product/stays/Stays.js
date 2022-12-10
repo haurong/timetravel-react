@@ -78,7 +78,7 @@ function Stays() {
         <div className="col-lg-3  px-3 " style={{ paddingTop: '20px' }}>
           <Sidebar />
         </div>
-        <div className="col-lg-9 col-md-12 px-3 mx-0 CardListStyle">
+        <div className="col-lg-9 col-md-12 mx-0 CardListStyle">
           <CardList />
         </div>
       </div>
