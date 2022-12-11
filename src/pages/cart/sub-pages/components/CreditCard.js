@@ -22,21 +22,19 @@ export default class CreditCard extends React.Component {
 
   render() {
     return (
-      <div
-        id="PaymentForm"
-        className="d-flex pb-5"
-        onClick={() => {
-          this.setState({
-            cvc: '123',
-            expiry: '0922',
-            name: 'Yagoo Tanigo',
-            number: '5241094510777318',
-          });
-        }}
-      >
+      <div id="PaymentForm" className="d-flex pb-5">
         <form className="col-lg-6">
           <div className="pb-3">
-            <label>
+            <label
+              onClick={() => {
+                this.setState({
+                  cvc: '123',
+                  expiry: '0922',
+                  name: 'Yagoo Tanigo',
+                  number: '5241094510777318',
+                });
+              }}
+            >
               <p>信用卡號碼</p>
             </label>
             <input
