@@ -47,6 +47,8 @@ function ProgressButton({
       Swal.fire({
         icon: 'success',
         title: '已成功建立訂單，即將跳往結帳頁面',
+        confirmButtonText: '確認',
+        confirmButtonColor: '#59d8a1',
       });
       localStorage.removeItem('foodcart');
       localStorage.removeItem('ticketcart');
@@ -90,6 +92,15 @@ function ProgressButton({
         </button>
       ) : (
         <>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={() => {
+              mySubmit2();
+            }}
+          >
+            模擬付款失敗
+          </button>
           <button
             type="submit"
             className="btn btn-primary"
