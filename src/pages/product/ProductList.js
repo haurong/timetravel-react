@@ -69,10 +69,24 @@ function ProductList() {
   //componentdidmount先拿到伺服器來的原始資料
   useEffect(() => {
     console.log('觸發getData');
-    //  setSearchWord()
-    getData();
-  }, [location]);
 
+    getData();
+  }, []);
+
+  // useEffect(() => {
+  //   // if (searchWord.length < 2) return;
+  //   console.log('觸發篩選與搜尋');
+
+  //   let newAllData = [];
+  //   setPageNow(1);
+
+  //   newAllData = handleSearch(productData, searchWord);
+
+  //   // console.log(newAllData);
+  //   setProductDisplay(newAllData);
+  //   //呼叫getAllListData搜尋完的資料再去做一次分頁處理
+  //   getAllListData(newAllData, perPage);
+  // }, []);
   // //處理分頁資料
   function getAllListData(v, perPage) {
     const pageList = _.chunk(v, perPage);
@@ -94,12 +108,12 @@ function ProductList() {
     switch (hotelSort) {
       case 'sortByPriceDESC':
         newHotelSortData = [...newHotelSortData].sort((a, b) => {
-          return b.room_price - a.room_price;
+          return b.price - a.price;
         });
         break;
       case 'sortByPriceASC':
         newHotelSortData = [...newHotelSortData].sort((a, b) => {
-          return a.room_price - b.room_price;
+          return a.price - b.price;
         });
         break;
       case 'sortByCollectDESC':
@@ -215,8 +229,7 @@ function ProductList() {
         item.area_name.includes(searchWord)
       );
     });
-    // console.log('newAllData', newAllData);
-    //更新當前頁數
+
     setPageNow(1);
     return newAllData;
   };
@@ -237,7 +250,7 @@ function ProductList() {
     setProductDisplay(newAllData);
     //呼叫getAllListData搜尋完的資料再去做一次分頁處理
     getAllListData(newAllData, perPage);
-  }, [searchWord, hotelSort.area, hotelSort.like, hotelSort.sortBy]);
+  }, [location, searchWord, hotelSort.area, hotelSort.like, hotelSort.sortBy]);
 
   const paginationBar = (
     <ul className="pagination d-flex">
@@ -293,29 +306,8 @@ function ProductList() {
             </li>
           );
         })}
-      {/* <li className="page-item">
-        <Link
-          className="page-link "
-          to={`?page=${pageNow + 1}`}
-          aria-label="Next"
-          onClick={() => {
-            const newPageNowPlus = pageNow + 1;
-            setPageNow(newPageNowPlus);
-          }}
-        >
-          <MdOutlineChevronRight />
-        </Link>
-      </li> */}
+
       <li className="page-item">
-        {/* <Link
-          className="page-link nextPage"
-          aria-label="Next"
-          onClick={() => {
-            setPageNow(1);
-          }}
-        >
-          <MdOutlineChevronRight />
-        </Link> */}
         <div>
           <button
             className="page-link nextPage"
@@ -333,7 +325,7 @@ function ProductList() {
   );
 
   const display = (
-    <Row xs={1} lg={4} className="d-flex justify-content-flexstart flex-wrap">
+    <Row xs={1} lg={4} className=" d-flex justify-content-flexstart flex-wrap">
       {productDisplay[pageNow - 1]
         ? productDisplay[pageNow - 1].map((v, i) => {
             return (
@@ -415,8 +407,12 @@ function ProductList() {
                       </button>
                     </div>
                     <div>
-                      <h2 variant="primary" className="Card_Price">
-                        {v.price !== 0 ? `NT${v.price}` : null}
+                      <h2
+                        variant="primary"
+                        className="Card_Price"
+                        style={{ color: '#59d8a1', margin: 0 }}
+                      >
+                        {v.price !== 0 ? `NT$` + v.price : null}
                       </h2>
                     </div>
                   </div>
@@ -439,10 +435,7 @@ function ProductList() {
           <BreadCrumbList />
         </div>
 
-        <div
-          className="d-flex col-lg-10 hotelSort"
-          style={{ marginLeft: '30px' }}
-        >
+        <div className="d-flex col-lg-10 hotelSort">
           <HotelListSortSelector />
         </div>
       </div>
@@ -451,11 +444,11 @@ function ProductList() {
         <div className="col-lg-3 px-3">
           <Sidebar1 />
         </div>
-        <div className="col-lg-9 " style={{ margin: 0 }}>
+        <div className="col-lg-9 CardListStyle">
           <div>{display}</div>
         </div>
       </div>
-      <div className="container foodPagination">{paginationBar}</div>
+      <div className=" foodPagination">{paginationBar}</div>
       <div className="space"></div>
       <Footer />
     </>

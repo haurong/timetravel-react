@@ -17,7 +17,7 @@ import { useNavigate } from 'react-router-dom';
 import Sidebar from '../../../Component/Sidebar1/Sidebar_Food';
 // import CommitSelector from './CommentSelect.js';
 import BreadCrumbList from './BreadCrumbList';
-import Qrcode from '../../../Component/QRcode/Qrcode';
+// import Qrcode from '../../../Component/QRcode/Qrcode';
 import { MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
 import { useFoodContext } from './FoodContext/FoodContext.js';
 import { useAllContext } from '../../AllContext/AllContext.js';
@@ -333,7 +333,7 @@ function Food() {
                   />
                 </div>
                 <Card.Body>
-                  <Link to="detail">
+                  <Link to="detail/:sid">
                     <Card.Title className="Card_Title">
                       {v.product_name}
                     </Card.Title>
@@ -403,7 +403,11 @@ function Food() {
                       </button>
                     </div>
                     <div>
-                      <h2 variant="primary" className="Card_Price">
+                      <h2
+                        variant="primary"
+                        className="Card_Price"
+                        style={{ color: '#59d8a1', margin: 0 }}
+                      >
                         NT${v.p_selling_price}
                       </h2>
                     </div>

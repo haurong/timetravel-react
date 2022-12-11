@@ -19,7 +19,7 @@ export default function Qrcode() {
           <div className="circleRight"></div>
         </div>
         <div className="useTime">
-          <p className="useTimeDeadLine">使用期限2022/12/25-2023/01/25</p>
+          <p className="useTimeDeadLine">請向店家出示Qrcode</p>
         </div>
       </div>
       <div className="qrcode d-flex">

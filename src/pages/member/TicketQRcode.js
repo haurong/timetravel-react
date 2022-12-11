@@ -38,9 +38,9 @@ function TicketQRcode() {
           <SideBar />
 
           <div className="col-9 d-block CardListStyle ">
-            <h1 className="ps-3 mb-4">我的票券</h1>
-            <div className="d-flex">
-              <div className="px-3">
+            <h1 className="ps-3 mb-4">我的票夾</h1>
+            <div className="d-flex flex-wrap">
+              <div className="p-3">
                 <Card
                   className="col-3"
                   style={{
@@ -68,7 +68,7 @@ function TicketQRcode() {
                       <div className="useTime">
                         <p className="useTimeDeadLine">
                           使用期限 <br />
-                          2022/12/25 - 2023/01/25
+                          2022/12/25 - 2022/12/26
                         </p>
                       </div>
                     </Card.Text>
@@ -100,7 +100,7 @@ function TicketQRcode() {
                   </Modal>
                 </div>
               </div>
-              <div className="px-3">
+              <div className="p-3">
                 <Card
                   className="col-3"
                   style={{
@@ -160,7 +160,7 @@ function TicketQRcode() {
                   </Modal>
                 </div>
               </div>
-              <div className="px-3">
+              <div className="p-3">
                 <Card
                   className="col-3"
                   style={{
@@ -188,7 +188,7 @@ function TicketQRcode() {
                       <div className="useTime">
                         <p className="useTimeDeadLine">
                           使用期限 <br />
-                          2022/12/25 - 2023/01/25
+                          2022/12/25
                         </p>
                       </div>
                     </Card.Text>
@@ -224,6 +224,7 @@ function TicketQRcode() {
           </div>
         </div>
       </div>
+    
       <Footer />
     </>
   );

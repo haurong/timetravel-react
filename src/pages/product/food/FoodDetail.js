@@ -19,7 +19,6 @@ import HashChange from './HashChange';
 import Heart from '../../../icon/heart_gray.svg';
 import PinkHeart from '../../../icon/heart.svg';
 import Calendar from '../../../icon/calendar+add.svg';
-// import ActiveCalendar from '../../../icon/calendar+greenadd.svg';
 import Map_icon from '../../../icon/map_blue.svg';
 import Food_icon from '../../../icon/food_blue.svg';
 import Phone_icon from '../../../icon/iphone.svg';
@@ -48,12 +47,6 @@ function FoodDetail() {
     setTotalPrice,
     commentData,
     setCommentData,
-    like,
-    setLike,
-    add,
-    setAdd,
-    commentSort,
-    setCommentSort,
     collect,
     setCollect,
   } = useFoodContext();
@@ -287,7 +280,7 @@ function FoodDetail() {
             </div>
 
             <div className="Heart_Calendar_icon d-flex">
-              <div style={{paddingRight:'20px'}}>
+              <div style={{ paddingRight: '20px' }}>
                 <button
                   className="HeartBtn"
                   onClick={() => {
@@ -369,7 +362,12 @@ function FoodDetail() {
           <div className="container location d-flex ">
             <div className="map_cate d-flex ">
               <div className="map d-flex">
-                <img src={Map_icon} alt="" className="Map_icon" />
+                <img
+                  src={Map_icon}
+                  alt=""
+                  className="detailMap_icon"
+                  style={{ width: '40px', height: '40px' }}
+                />
                 <p>
                   {foodData.city_name} | {foodData.area_name}
                 </p>
@@ -493,7 +491,7 @@ function FoodDetail() {
             <div className="use_title_img d-flex align-items-center">
               <img
                 src={Phone_icon}
-                style={{ width: '30px', height: '30px' }}
+                style={{ width: '40px', height: '40px' }}
                 alt=""
               />
               <h2>如何使用</h2>
@@ -512,7 +510,7 @@ function FoodDetail() {
             <div className="store_title_img d-flex align-items-center">
               <img
                 src={House_icon}
-                style={{ width: '30px', height: '30px' }}
+                style={{ width: '40px', height: '40px' }}
                 alt=""
               />
               <h2>適用店家</h2>

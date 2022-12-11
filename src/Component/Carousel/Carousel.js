@@ -4,18 +4,19 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/scss';
 import 'swiper/scss/pagination';
 import 'swiper/scss/navigation';
-import './Carousel.scss';
+
 import 'swiper/scss/effect-fade';
 import { Pagination, Navigation } from 'swiper';
 
 export default function Carousel() {
+
   return (
     <Swiper
       slidesPerView={1}
       spaceBetween={10}
       slidesPerGroup={1}
       loop={true}
-      loopFillGroupWithBlank={true}
+      // loopFillGroupWithBlank={true}
       navigation={true}
       modules={[Pagination, Navigation]}
       className="mySwiper"

@@ -45,7 +45,12 @@ function HashChange(props) {
   });
 
   window.onhashchange = function () {
-    window.history.pushState(0, 0, window.location.origin + '/food');
+    window.history.pushState(
+      0,
+      0,
+      window.location.origin + window.location.pathname
+    );
+    // console.log(window.location);
   };
   return (
     <>

@@ -12,6 +12,7 @@ function SearchBar() {
         role="search"
         onSubmit={(e) => {
           e.preventDefault();
+
           navigate('/productList');
         }}
       >

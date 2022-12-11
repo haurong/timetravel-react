@@ -62,10 +62,6 @@ export default function Card_Carousel() {
       spaceBetween={0}
       slidesPerGroup={1}
       loop={true}
-      autoplay={{
-        delay: 2500,
-        disableOnInteraction: false,
-      }}
       loopFillGroupWithBlank={true}
       navigation={true}
       modules={[Pagination, Navigation]}
