@@ -63,11 +63,11 @@ function FoodDetail() {
 
   const location = useLocation();
   // const path = window.location.pathname.split('/');
-  // const sid = path[2];
+  const sid = 116;
 
   async function getData() {
     //拿到資料設定回foodData
-    const response = await axios.get(FOOD_ITEM + 116);
+    const response = await axios.get(FOOD_ITEM + sid);
     setFoodData(response.data);
     setTotalPrice(response.data.p_selling_price);
   }
@@ -568,7 +568,7 @@ function FoodDetail() {
         <h2 className="cardCarouselTitle">更多美食推薦</h2>
         <Card_Carousel className="cardCarousel" />
       </div>
-
+{/* <div className="space"></div> */}
       <Footer />
     </>
   );

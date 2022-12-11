@@ -327,13 +327,12 @@ function Food() {
                     style={{ cursor: 'pointer' }}
                     onClick={() => {
                       let sid = Number(v.product_number.split('F')[1]);
-                      // window.location.href = `stays/detail/${sid}`;
-                      navigate(`detail/${sid}`);
+                        navigate(`detail/${sid}`);
                     }}
                   />
                 </div>
                 <Card.Body>
-                  <Link to="detail/:sid">
+                  <Link to="detail">
                     <Card.Title className="Card_Title">
                       {v.product_name}
                     </Card.Title>

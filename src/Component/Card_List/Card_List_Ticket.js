@@ -11,7 +11,7 @@ import { useHotelContext } from '../../pages/product/stays/Context/HotelContext'
 import { useTicketContext } from '../../pages/product/ticket/Context/TicketContext';
 import { useNavigate } from 'react-router-dom';
 import _ from 'lodash';
-
+import axios from 'axios';
 import './Card_List.scss';
 
 function Card_List() {
@@ -24,6 +24,8 @@ function Card_List() {
     perPage,
     pageNow,
     setPageNow,
+    collectItem,
+    setCollectItem,
   } = useTicketContext();
 
   const { hotelSort } = useHotelContext();
@@ -31,17 +33,6 @@ function Card_List() {
   const navigate = useNavigate();
   const [like, setLike] = useState(false);
   const [likeList, setLikeList] = useState([]);
-  const toggleLike1 = () => setLike(!like);
-  // console.log(fakedata[0].favorite)
-  const addLikeListHandler = (id) => {
-    if (likeList.includes(id)) {
-      return;
-    } else {
-      setLikeList([...likeList, id]);
-      return;
-    }
-  };
-
 
   const handleSearch = (ticketSortData, searchWord) => {
     let newTicketProductData = [...ticketSortData];
@@ -53,8 +44,7 @@ function Card_List() {
       return (
         item.product_name.includes(searchWord) +
         item.city_name.includes(searchWord) +
-        item.area_name.includes(searchWord) 
-       
+        item.area_name.includes(searchWord)
       );
     });
     setPageNow(1);
@@ -243,7 +233,13 @@ function Card_List() {
 
     setDisplayData(newHotelSortData);
     getFoodListData(newHotelSortData, perPage);
-  }, [pageSearchWord,hotelSort.area, hotelSort.like, hotelSort.cate, hotelSort.sortBy]);
+  }, [
+    pageSearchWord,
+    hotelSort.area,
+    hotelSort.like,
+    hotelSort.cate,
+    hotelSort.sortBy,
+  ]);
   //TODO:收藏人數按鈕樣式待定
   return (
     <Row xs={1} lg={4} className="d-flex justify-content-flexstart flex-wrap">
@@ -270,20 +266,7 @@ function Card_List() {
                     }}
                   />
                 </div>
-                {/* <button
-                  data-product-number={el.product_number}
-                  className="Heart_Btn"
-                  onClick={() => {
-                    addLikeListHandler(el.product_number);
-                    toggleLike1();
-                  }}
-                >
-                  <img
-                    src={like ? PinkHeart : Heart}
-                    className="Card_Heart"
-                    alt=""
-                  />
-                </button> */}
+
                 <Card.Body>
                   <Card.Title
                     className="Card_Title"
@@ -306,16 +289,62 @@ function Card_List() {
 
                     <div className="d-flex PriceAndCollect">
                       <div>
-                        <button className="Heart_btn">
+                        <button
+                          className="Heart_btn"
+                          onClick={() => {
+                            const member_sid = JSON.parse(
+                              localStorage.getItem('auth')
+                            ).sid;
+                            const product_sid = el.sid;
+                            const collect_product_name = el.product_name;
+
+                            //後端先發送移除收藏
+                            if (collectItem.includes(el.product_name)) {
+                              axios.post(
+                                'http://localhost:3001/productAll/DelCollect',
+                                {
+                                  member_sid: member_sid,
+                                  product_sid: product_sid,
+                                  collect_product_name: collect_product_name,
+                                }
+                              );
+                              console.log('移除收藏');
+                              //前端顯示空心
+                              setCollectItem(
+                                collectItem.filter((el) => {
+                                  return el !== el.product_name;
+                                })
+                              );
+                            } else {
+                              //前端發送新增收藏
+                              axios.post(
+                                'http://localhost:3001/productAll/AddCollect',
+                                {
+                                  member_sid: member_sid,
+                                  product_sid: product_sid,
+                                  collect_product_name: collect_product_name,
+                                }
+                              );
+                              console.log('新增收藏');
+                              //解構出原收藏陣列,把新的收藏塞回去
+                              setCollectItem([...collectItem, el.product_name]);
+                            }
+                          }}
+                        >
                           <img
-                            src={PinkHeart}
-                            style={{
-                              width: '25px',
-                              height: '25px',
-                            }}
+                            src={
+                              collectItem.includes(el.product_name)
+                                ? PinkHeart
+                                : Heart
+                            }
+                            style={{ width: '25px', height: '25px' }}
                             alt=""
                           />
-                          <span>{el.collect}</span>
+                          <span>
+                            {collectItem.includes(el.product_name)
+                              ? Number(el.collect) + 1
+                              : el.collect}
+                          </span>
                         </button>
                       </div>
                       <div>

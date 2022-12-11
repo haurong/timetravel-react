@@ -13,7 +13,7 @@ export default function Carousel() {
     <Swiper
       slidesPerView={3}
       spaceBetween={0}
-      slidesPerGroup={3}
+      slidesPerGroup={1}
       loop={true}
       loopFillGroupWithBlank={true}
       navigation={true}
@@ -21,41 +21,41 @@ export default function Carousel() {
       className="bannerSwiper"
     >
       <div className="bannerWrap">
-        <SwiperSlide className="SwiperSlideBannerNewest">
+        <SwiperSlide className="SwiperSlideBannerNewest" >
           <div
             className="bannerNewest1 "
-            style={{ height: '141px', width: '500px' }}
+            // style={{ height: '141px', width: '500px' }}
           ></div>
         </SwiperSlide>
       </div>
       <SwiperSlide className="SwiperSlideBannerNewest">
         <div
           className="bannerNewest2"
-          style={{ height: '141px ', width: '500px' }}
+          // style={{ height: '141px ', width: '500px' }}
         ></div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlideBannerNewest">
         <div
           className="bannerNewest3"
-          style={{ height: '141px ', width: '500px' }}
+          // style={{ height: '141px ', width: '500px' }}
         ></div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlideBannerNewest">
         <div
           className="bannerNewest4"
-          style={{ height: '141px ', width: '500px' }}
+          // style={{ height: '141px ', width: '500px' }}
         ></div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlideBannerNewest">
         <div
           className="bannerNewest5"
-          style={{ height: '141px ', width: '500px' }}
+          // style={{ height: '141px ', width: '500px' }}
         ></div>
       </SwiperSlide>
       <SwiperSlide className="SwiperSlideBannerNewest">
         <div
           className="bannerNewest6"
-          style={{ height: '141px ', width: '500px' }}
+          // style={{ height: '141px ', width: '500px' }}
         ></div>
       </SwiperSlide>
     </Swiper>

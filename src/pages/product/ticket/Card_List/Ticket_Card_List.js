@@ -13,11 +13,12 @@ function Ticket_Card_List({ rows }) {
           <Col key={i}>
             <div className=""></div>
             <Card className="Card">
-              <Card.Img className="card-img" variant="top" src={`${TICKET_IMG}${el.product_cover}`} />
-              {/* <button className="Heart_Btn">
-                <Card.Img src={''} className="Card_Heart" />
-              </button> */}
-              
+              <Card.Img
+                className="card-img"
+                variant="top"
+                src={`${TICKET_IMG}${el.product_cover}`}
+              />
+
               <Card.Body className="card-margin0">
                 <Card.Title>{el.product_name}</Card.Title>
                 <Card.Text></Card.Text>

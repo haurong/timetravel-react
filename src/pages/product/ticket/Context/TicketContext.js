@@ -57,6 +57,8 @@ export const TicketContextProvider = ({ children }) => {
     rowsAll: [],
   });
 
+  //收藏項目
+  const [collectItem, setCollectItem] = useState([]);
   //  住宿列表資料篩選條件
   const [hotelSort, setHotelSort] = useState({
     area: 'area_All',
@@ -119,6 +121,8 @@ export const TicketContextProvider = ({ children }) => {
         pageTotal,
         setPageTotal,
         perPage,
+        collectItem,
+        setCollectItem
       }}
     >
       {children}
