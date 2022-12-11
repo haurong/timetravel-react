@@ -333,7 +333,7 @@ function Food() {
                   />
                 </div>
                 <Card.Body>
-                  <Link to="detail/:sid">
+                  <Link to="detail">
                     <Card.Title className="Card_Title">
                       {v.product_name}
                     </Card.Title>

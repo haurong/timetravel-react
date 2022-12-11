@@ -156,7 +156,7 @@ export default function Card_Carousel() {
 
         <SwiperSlide>
           <Card
-            className="MyCard col-3"
+            className="MyCard cardSlide col-3"
             style={{ width: '20rem' }}
             // key={el.product_number}
           >
@@ -290,7 +290,7 @@ export default function Card_Carousel() {
 
         <SwiperSlide>
           <Card
-            className="MyCard col-3"
+            className="MyCard col-3 cardSlide"
             style={{ width: '20rem' }}
             // key={el.product_number}
           >
@@ -434,7 +434,7 @@ export default function Card_Carousel() {
 
         <SwiperSlide>
           <Card
-            className="MyCard col-3"
+            className="MyCard col-3 cardSlide"
             style={{ width: '20rem' }}
             // key={el.product_number}
           >
