@@ -34,11 +34,8 @@ function Ticket() {
   // const dataFrom = '14';
   const dataFrom = window.location.pathname.split('ticket/detail/')[1];
   // console.log("see dataForm:",dataFrom);
-  const {
-    hotelRoomChoose,
-    setHotelRoomChoose,
-    setHotelCommentData,
-  } = useHotelContext();
+  const { hotelRoomChoose, setHotelRoomChoose, setHotelCommentData } =
+    useHotelContext();
   const {
     ticketCounts,
     ticketTypePrice,
@@ -51,10 +48,10 @@ function Ticket() {
     add,
     setAdd,
   } = useTicketContext();
- 
+
   // const toggleLike = () => setLike(!like);
   // const toggleAdd = () => setAdd(!add);
- 
+
   async function getHotelDetail() {
     //  拿到票券大表
     const res_ticketListData = await axios.get(TICKET_DETAIL + dataFrom);
@@ -133,6 +130,7 @@ function Ticket() {
       <div style={{ width: '100%', height: '79px' }}></div>
       <BottomBar />
       <div ref={Ticket_part0} id="Ticket_part0"></div>
+      <div style={{ height: '50px' }}></div>
       <div className="MobileHidden container">
         <BreadCrumb ticketData={ticketListData} />
       </div>
