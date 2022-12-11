@@ -133,7 +133,7 @@ function OrdersAccordionUndone({ createdTime, uuid, totalPrice }) {
                       <p>{v.product_name}</p>
                     </li>
                     <li className="col text-center">
-                      <p>{v.ticket_price}</p>
+                      <p>{v.product_price}</p>
                     </li>
                     <li className="col text-center">
                       <p>{v.quantity}</p>
