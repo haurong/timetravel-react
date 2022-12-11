@@ -44,7 +44,7 @@ export default function Card_Carousel() {
         ? ''
         : data.map((el, i) => {
             return (
-              <SwiperSlide key={i}>
+              <SwiperSlide key={i} style={{ height: '500px' }}>
                 <Card className="Card " style={{ width: '20rem' }}>
                   <div
                     className="foodCardDataOutside"

@@ -63,7 +63,7 @@ function ItineraryCardList(rows) {
                   boxShadow: '0 0 18px 0 rgba(0,0,0,0.1)',
                 }}
               >
-                <div style={{ overflow: 'hidden' }}>
+                <div style={{ overflow: 'hidden', height: '185px' }}>
                   <Card.Img
                     variant="top"
                     className="foodCardImg1"
@@ -77,22 +77,27 @@ function ItineraryCardList(rows) {
 
                   <Card.Text className="Card_Text">
                     <div className="useTime">
-                      <p>{moment(el.date).format('YYYY-MM-DD(ddd)')}</p>
-                      <p>
-                        {el.day === 1
-                          ? ''
-                          : '~' +
-                            moment(el.date)
-                              .add(el.day - 1, 'd')
-                              .format('YYYY-MM-DD(ddd)')}
-                      </p>
+                      <span className="d-flex">
+                        <p style={{ margin: '0' }}>
+                          {moment(el.date).format('YYYY-MM-DD(ddd)')}
+                        </p>
+                        <p style={{ margin: '0' }}>
+                          {el.day === 1
+                            ? ''
+                            : '~' +
+                              moment(el.date)
+                                .add(el.day - 1, 'd')
+                                .format('YYYY-MM-DD(ddd)')}
+                        </p>
+                      </span>
+
                       <p>一共{el.day}天</p>
                     </div>
                   </Card.Text>
                   <span className="d-flex align-top">
                     <span className="icon">
                       <Link
-                        className="icon"
+                        className="iicon"
                         to={'/itinerary/' + el.list_number}
                       >
                         <img src={Edit} alt="" />
@@ -100,7 +105,7 @@ function ItineraryCardList(rows) {
                     </span>
 
                     <span
-                      className="icon"
+                      className="iicon"
                       onClick={async () => {
                         //資料庫刪除
                         const listNumber = el.list_number;
