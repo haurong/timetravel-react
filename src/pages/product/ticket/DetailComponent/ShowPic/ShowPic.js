@@ -1,16 +1,11 @@
 import React from 'react';
 import './ShowPic.scss';
-import { HOTEL_IMG } from '../../ticket-config';
 
 import pic1 from '../pic/14-3.jpg';
 import pic2 from '../pic/14-4.jpg';
 import pic3 from '../pic/14-5.jpg';
 
-import { useHotelContext } from '../../../stays/Context/HotelContext';
-
 function ShowPic() {
-  const { hotelRoomChoose } = useHotelContext();
-  // console.log(hotelRoomChoose);
   return (
     <>
       <div className="Hotel_showPic">

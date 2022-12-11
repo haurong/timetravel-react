@@ -27,6 +27,7 @@ import ComputerLikeAdd from './DetailComponent/ComputerLikeAdd/ComputerLikeAdd';
 import ComDatePicker from '../../product/ticket/DetailComponent/ComDatePicker/ComDatePicker';
 import BookingBar from '../../product/ticket/DetailComponent/BookingBar/BookingBar';
 import { useLocation } from 'react-router-dom';
+import TKDetailMap from './DetailComponent/TKDetailMap/TKDetailMap';
 
 function Ticket() {
   // const dataFrom = '14';
@@ -202,7 +203,7 @@ function Ticket() {
               ></div>
               <h2 style={{ color: '#4D4D4D', margin: '40px 0px' }}>體驗地點</h2>
               <HotelDetail />
-              <MapButton />
+              <TKDetailMap />
               <div
                 className="Hotel_partHidden"
                 id="Ticket_part4"
