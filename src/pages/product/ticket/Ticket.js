@@ -63,11 +63,6 @@ function Ticket() {
     setPageTotal(pageList.length);
   }
 
-
-
-
-
-  
   const paginationBar = (
     <ul className="pagination d-flex">
       <li className="page-item ">
@@ -173,29 +168,6 @@ function Ticket() {
       </div>
       <div className="container foodPagination">{paginationBar}</div>
       <div className="space"></div>
-      {/* <div className="container marginTop">
-        <Row>
-          <div className="container col-12 givePadding">
-            <Breadcrumb />
-          </div>
-          <Col className="col-3"> */}
-      {/* <div className="shadow ticket-CitySelection">
-              <CitySelection />
-            </div> */}
-      {/* <div className="shadow ticket-Sidebar">
-              <Sidebar />
-            </div>
-          </Col>
-
-          <Col className="col-9 ticket_card_list">
-            <div className="d-flex hotelSort">
-              <HotelListSortSelector />
-            </div>
-            <CardList />
-          </Col>
-        </Row>
-      </div> */}
-      {/* <div className="foodPagination">{paginationBar}</div> */}
 
       <Footer />
     </>

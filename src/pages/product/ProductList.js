@@ -250,7 +250,7 @@ function ProductList() {
     setProductDisplay(newAllData);
     //呼叫getAllListData搜尋完的資料再去做一次分頁處理
     getAllListData(newAllData, perPage);
-  }, [location, searchWord, hotelSort.area, hotelSort.like, hotelSort.sortBy]);
+  }, [location, searchWord, hotelSort.area, hotelSort.like, hotelSort.sortBy,productData]);
 
   const paginationBar = (
     <ul className="pagination d-flex">

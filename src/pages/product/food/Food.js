@@ -327,8 +327,7 @@ function Food() {
                     style={{ cursor: 'pointer' }}
                     onClick={() => {
                       let sid = Number(v.product_number.split('F')[1]);
-                      // window.location.href = `stays/detail/${sid}`;
-                      navigate(`detail/${sid}`);
+                        navigate(`detail/${sid}`);
                     }}
                   />
                 </div>

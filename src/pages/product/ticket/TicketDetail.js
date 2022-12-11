@@ -23,6 +23,7 @@ import CommentSelector from '../ticket/DetailComponent/Comment/CommentSelector';
 import BottomBar from '../stays/BottomBar/BottomBar';
 import MobileFooter from '../stays/MobileFooter/MobileFooter';
 import HashChange from './DetailComponent/HashChange/HashChange';
+// import ComputerLikeAdd from '../../product/stays/ComputerLikeAdd/ComputerLikeAdd';
 import ComputerLikeAdd from './DetailComponent/ComputerLikeAdd/ComputerLikeAdd';
 import ComDatePicker from '../../product/ticket/DetailComponent/ComDatePicker/ComDatePicker';
 import BookingBar from '../../product/ticket/DetailComponent/BookingBar/BookingBar';

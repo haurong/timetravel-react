@@ -1,62 +1,68 @@
 import React, { useState } from 'react';
-import { BsHeart, BsHeartFill } from 'react-icons/bs';
-import Heart from '../../../../../icon/heart_gray.svg';
-import { ReactComponent as PinkHeart } from '../../../../../icon/heart.svg';
-import CalendarAdd from '../../../../../icon/calendar+add.svg';
-import { FaCalendarAlt, FaLeaf } from 'react-icons/fa';
-import './ComputerLikeAdd.scss';
+import axios from 'axios';
 
+import { ReactComponent as Heart } from '../../../../../icon/heart_gray.svg';
+import { ReactComponent as FillHeart } from '../../../../../icon/heart.svg';
+import { ADD_COLLECT } from '../../../../../config';
+import CalendarAdd from '../../../../../icon/calendar+add.svg';
+import './ComputerLikeAdd.scss';
+import { useTicketContext } from '../../Context/TicketContext';
 function ComputerLikeAdd() {
   const [likeAndCalendar, setLikeAndCalendar] = useState({
-    like: true,
-    calendar: true,
+    like: false,
+    calendar: false,
   });
+  const { ticketListData, collectItem, setCollectItem } = useTicketContext();
   return (
     <>
-      <div className="Heart_Calendar_icon">
-        <button
-          className="HeartBtn"
-          onClick={() => {
-            const member_sid = JSON.parse(localStorage.getItem('auth')).sid;
-            // const product_sid = foodData.sid;
-            // const collect_product_name = foodData.product_name;
+      <div
+        className="LikeAddOnCom icon ComputerLikeAdd_canTouch"
+        onClick={() => {
+          const member_sid = JSON.parse(localStorage.getItem('auth')).sid;
+          const product_sid = ticketListData.sid;
+          const collect_product_name = ticketListData.product_name;
 
-            //後端先發送移除收藏
-            // if (collect.includes(foodData.product_name)) {
-            //   axios.post('http://localhost:3001/productAll/DelCollect', {
-            //     member_sid: member_sid,
-            //     product_sid: product_sid,
-            //     collect_product_name: collect_product_name,
-            //   });
-            //   console.log('移除收藏');
-            //   //前端顯示空心
-            //   setCollect(
-            //     collect.filter((el) => {
-            //       return el !== foodData.product_name;
-            //     })
-            //   );
-            // } else {
-            //   //前端發送新增收藏
-            //   axios.post('http://localhost:3001/productAll/AddCollect', {
-            //     member_sid: member_sid,
-            //     product_sid: product_sid,
-            //     collect_product_name: collect_product_name,
-            //   });
-            //   console.log('新增收藏');
-            //   //解構出原收藏陣列,把新的收藏塞回去
-            //   setCollect([...collect, foodData.product_name]);
-            // }
-          }}
-        >
-          <img
-            src={
-              // collect.includes(foodData.product_name) ? PinkHeart : Heart
-              Heart
-            }
-            style={{ width: '25px', height: '25px' }}
-            alt=""
-          />
-        </button>
+          if (collectItem.includes(ticketListData.product_name)) {
+            const res = axios.post(
+              'http://localhost:3001/productAll/DelCollect',
+              {
+                member_sid: member_sid,
+                product_sid: product_sid,
+                collect_product_name: collect_product_name,
+              }
+            );
+            // console.log(res);
+            setCollectItem(
+              collectItem.filter((v) => {
+                return v !== ticketListData.product_name;
+              })
+            );
+          } else {
+            setCollectItem([...collectItem, ticketListData.product_name]);
+            const res = axios.post(ADD_COLLECT, {
+              member_sid: member_sid,
+              product_sid: product_sid,
+              collect_product_name: collect_product_name,
+            });
+          }
+        }}
+      >
+        {/* TODO:點下去變色 加入收藏 */}
+        {collectItem.includes(ticketListData.product_name) ? (
+          <FillHeart className="HotelHeart" />
+        ) : (
+          <Heart className="noActiveHotelHeart" />
+        )}
+      </div>
+      <div
+        className="icon ComputerLikeAdd_canTouch "
+        onClick={() => {
+          setLikeAndCalendar({
+            like: likeAndCalendar.like,
+            calendar: !likeAndCalendar.calendar,
+          });
+        }}
+      >
         <button
           className="CalendarBtn"
           onClick={() => {
