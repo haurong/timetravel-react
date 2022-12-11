@@ -98,6 +98,10 @@ function FoodBookingBar({ foodData }) {
                 type="button"
                 className="buy_now BottomBar_Buy_Right "
                 style={{ backgroundColor: '#59d8a1' }}
+                onClick={() => {
+                  addItem(foodObj);
+                  window.location = 'http://localhost:3000/cart';
+                }}
               >
                 立即購買
               </button>

@@ -54,6 +54,10 @@ function BuyButton() {
         <button
           className="BottomBar_Buy_Right "
           style={{ backgroundColor: '#59d8a1' }}
+          onClick={() => {
+            addItem(ticketOrder);
+            window.location = 'http://localhost:3000/cart';
+          }}
         >
           立即訂購
         </button>

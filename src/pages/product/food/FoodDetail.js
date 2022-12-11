@@ -465,6 +465,10 @@ function FoodDetail() {
               type="button"
               className="BottomBar_Buy_Right"
               style={{ backgroundColor: '#59d8a1' }}
+              onClick={() => {
+                addItem(foodObj);
+                window.location = 'http://localhost:3000/cart';
+              }}
             >
               立即購買
             </button>
