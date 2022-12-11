@@ -44,40 +44,51 @@ function ItineraryCardList(rows) {
   }, [location]);
 
   return (
-    <Row xs={1} md={2} lg={3} className="g-4">
+    // <Row xs={1} md={2} lg={3} className="g-4">
+    <>
       {iTData[0] === undefined ? (
         <h2 style={{ width: '100%' }}>您目前沒有規劃行程，請加入新行程</h2>
       ) : (
-        iTData.map((el, i) => {
-          return (
-            <div className="CardList" key={el.sid}>
-              <Card className="Card">
-                <div style={{ overflow: 'hidden', height: '50%' }}>
+        <div className="d-flex">
+          {/* <div className="px-3 d-flex"> */}
+          {iTData.map((el, i) => {
+            return (
+              <Card
+                key={el.sid}
+                className="col-3"
+                style={{
+                  width: '300px',
+                  height: '400px',
+                  margin: '0 14px',
+                  boxShadow: '0 0 18px 0 rgba(0,0,0,0.1)',
+                }}
+              >
+                <div style={{ overflow: 'hidden' }}>
                   <Card.Img
-                    className="card-img"
                     variant="top"
-                    // src={ALL_IMG + '/' + '0.png'}
-                    // src={ALL_IMG + '/' + el.img1.split(',')[0]}
+                    className="foodCardImg1"
                     src={ALL_IMG + '/' + el.photo}
-                    style={{ objectFit: 'cover' }}
                   />
                 </div>
-                <Card.Body className="d-flex flex-column justify-content-between">
-                  <div className=" card-margin0">
-                    <Link to={'/itinerary/' + el.list_number}>
-                      <h2>{el.list_name}</h2>
-                    </Link>
-                    <p>{moment(el.date).format('YYYY-MM-DD(ddd)')}</p>
-                    <p>
-                      {el.day === 1
-                        ? ''
-                        : '~' +
-                          moment(el.date)
-                            .add(el.day - 1, 'd')
-                            .format('YYYY-MM-DD(ddd)')}
-                    </p>
-                    <p>一共{el.day}天</p>
-                  </div>
+                <Card.Body>
+                  <Card.Title className="Card_Title" style={{ paddingLeft: 0 }}>
+                    {el.list_name}
+                  </Card.Title>
+
+                  <Card.Text className="Card_Text">
+                    <div className="useTime">
+                      <p>{moment(el.date).format('YYYY-MM-DD(ddd)')}</p>
+                      <p>
+                        {el.day === 1
+                          ? ''
+                          : '~' +
+                            moment(el.date)
+                              .add(el.day - 1, 'd')
+                              .format('YYYY-MM-DD(ddd)')}
+                      </p>
+                      <p>一共{el.day}天</p>
+                    </div>
+                  </Card.Text>
                   <span className="d-flex align-top">
                     <span className="icon">
                       <Link
@@ -109,11 +120,11 @@ function ItineraryCardList(rows) {
                   </span>
                 </Card.Body>
               </Card>
-            </div>
-          );
-        })
+            );
+          })}
+        </div>
       )}
-    </Row>
+    </>
   );
 }
 
