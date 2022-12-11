@@ -1,5 +1,5 @@
 import React from 'react';
-import { MakeOrder, LINE_PAY_API, GREEN_PAY_API } from '../../../config';
+import { MakeOrder, LINE_PAY_API } from '../../../config';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 function ProgressButton({
@@ -47,13 +47,13 @@ function ProgressButton({
       Swal.fire({
         icon: 'success',
         title: '已成功建立訂單，即將跳往結帳頁面',
+        confirmButtonText: '確認',
+        confirmButtonColor: '#59d8a1',
       });
-      await greenpay();
       localStorage.removeItem('foodcart');
       localStorage.removeItem('ticketcart');
       localStorage.removeItem('hotelcart');
-      // window.location = payUrl;
-      // console.log(data);
+      window.location = 'http://localhost:3000/cart/fail';
     } else {
       Swal.fire({
         icon: 'error',
@@ -68,13 +68,13 @@ function ProgressButton({
     payUrl = url;
     // console.log(payUrl);
   }
-  async function greenpay() {
-    const response = await axios.get(GREEN_PAY_API(uuid));
-    document.open();
-    document.write(response.data);
-    document.close();
-    console.log(response);
-  }
+  // async function greenpay() {
+  //   const response = await axios.get(GREEN_PAY_API(uuid));
+  //   document.open();
+  //   document.write(response.data);
+  //   document.close();
+  //   console.log(response);
+  // }
   // console.log(toPayUrl);
   return (
     <div className="d-flex justify-content-evenly mb-5">
@@ -96,6 +96,15 @@ function ProgressButton({
             type="submit"
             className="btn btn-primary"
             onClick={() => {
+              mySubmit2();
+            }}
+          >
+            模擬付款失敗
+          </button>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            onClick={() => {
               if (payMethod === 'LinePay') {
                 mySubmit();
               } else if (payMethod === 'Credit') {
@@ -103,7 +112,7 @@ function ProgressButton({
               } else {
                 Swal.fire({
                   icon: 'error',
-                  title: '請選擇一種支付方式！',
+                  title: '請先選擇一種支付方式！',
                   confirmButtonText: '確認',
                   confirmButtonColor: '#59d8a1',
                 });

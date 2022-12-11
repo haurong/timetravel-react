@@ -39,10 +39,22 @@ function Comment({
     const { data } = await axios.post(SUBMIT_COMMENT_API, formData);
     await axios.put(CHANGE_COMMENTED_API, formData);
     if (data.success) {
-      Swal.fire('評論成功', '感謝您的評論', 'success');
+      Swal.fire({
+        icon: 'success',
+        title: '評論成功',
+        text: '感謝您的評論！',
+        confirmButtonText: '確認',
+        confirmButtonColor: '#59d8a1',
+      });
       setCommentButton(1);
     } else {
-      Swal.fire('喔喔，可能有哪裡出錯了！', '您的評論並未成功送出', 'error');
+      Swal.fire({
+        icon: 'error',
+        title: '喔喔，可能有哪裡出錯了',
+        text: '您的評論並未送出',
+        confirmButtonText: '確認',
+        confirmButtonColor: '#59d8a1',
+      });
     }
   };
 

@@ -6,8 +6,7 @@ import DateInput from './DateInput';
 import CountButton from './CountButton';
 import { useTicketCart } from '../../utils/useCart';
 function TicketCard() {
-  const { items, plusOne, minusOne, removeItem, updateDate, img, rate } =
-    useTicketCart();
+  const { items, plusOne, minusOne, removeItem, updateDate } = useTicketCart();
   // console.log(items);
   return (
     <>

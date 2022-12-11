@@ -8,7 +8,7 @@ function PriceDetailCard({ title, items, total }) {
           <h2>價格明細</h2>
         </div>
         <div className="card-body pt-0 pb-3 px-5">
-          <p>{title}</p>
+          <p className="p-d-c-p">{title}</p>
         </div>
         {items.length === 0 ? (
           <div className="empty-cart">
@@ -43,7 +43,7 @@ function PriceDetailCard({ title, items, total }) {
       </div>
       <div className="card-wrap">
         <div className="card-body pt-1 pb-5 d-flex justify-content-between">
-          <p>小記</p>
+          <p className="p-d-c-c-p">小記</p>
           <p className="total">{total}</p>
         </div>
       </div>

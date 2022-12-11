@@ -25,7 +25,16 @@ export default class CreditCard extends React.Component {
       <div id="PaymentForm" className="d-flex pb-5">
         <form className="col-lg-6">
           <div className="pb-3">
-            <label>
+            <label
+              onClick={() => {
+                this.setState({
+                  cvc: '123',
+                  expiry: '0922',
+                  name: 'Yagoo Tanigo',
+                  number: '5241094510777318',
+                });
+              }}
+            >
               <p>信用卡號碼</p>
             </label>
             <input
@@ -33,6 +42,7 @@ export default class CreditCard extends React.Component {
               type="tel"
               name="number"
               placeholder="信用卡號碼"
+              value={this.state.number}
               onChange={this.handleInputChange}
               onFocus={this.handleInputFocus}
             />
@@ -44,6 +54,7 @@ export default class CreditCard extends React.Component {
                 className="input form-control"
                 type="tel"
                 name="expiry"
+                value={this.state.expiry}
                 placeholder="有效日期"
                 onChange={this.handleInputChange}
                 onFocus={this.handleInputFocus}
@@ -55,6 +66,7 @@ export default class CreditCard extends React.Component {
                 className="input form-control"
                 type="tel"
                 name="cvc"
+                value={this.state.cvc}
                 placeholder="CVC"
                 onChange={this.handleInputChange}
                 onFocus={this.handleInputFocus}
@@ -68,6 +80,7 @@ export default class CreditCard extends React.Component {
               className="input form-control pb-3"
               type="tel"
               name="name"
+              value={this.state.name}
               placeholder="持卡人姓名"
               onChange={this.handleInputChange}
               onFocus={this.handleInputFocus}

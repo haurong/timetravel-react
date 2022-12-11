@@ -7,10 +7,9 @@ function HotelDetail() {
 	const { ticketListData } = useTicketContext();
 	return (
 		<>
-			<h5 className="hotel_detail">
+			<h5 className="tkDetail_address">
 				<ul>
 					<li>
-						<BsFillDiamondFill className="hotel_detail_BsFillDiamondFill" />
 						地址：{ticketListData.address}
 					</li>
 					{/* <li>
