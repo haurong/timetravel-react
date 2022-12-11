@@ -44,14 +44,17 @@ export default function Card_Carousel() {
         ? ''
         : data.map((el, i) => {
             return (
-              <SwiperSlide key={i}  className="cardSlide " >
-                <Card style={{ width: '20rem' }}>
+              <SwiperSlide key={i} style={{ height: '500px' }}>
+                <Card
+                  className="cardSlide1 "
+                  style={{ width: '20rem', height: '420px' }}
+                >
                   <div
                     className="foodCardDataOutside"
                     style={{
                       overflow: 'hidden',
                       width: '280px',
-                      height: '255px',
+                      height: '225px',
                     }}
                   >
                     <Card.Img
