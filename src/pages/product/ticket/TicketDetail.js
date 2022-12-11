@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import 'antd/dist/antd.css';
 import NavBar from '../../../layout/NavBar';
 import Footer from '../../../layout/Footer';
-import '../stays/TimeTravel_Hotel.scss';
+import './TicketDetail.scss';
 
 import axios from 'axios';
 import { useHotelContext } from '../stays/Context/HotelContext';
@@ -74,11 +74,11 @@ function Ticket() {
     setHotelCommentData(res_ticketCommentData.data);
     // console.log(res_ticketCommentData.data);
   }
-  const Hotel_part0 = useRef();
+  const Ticket_part0 = useRef();
   const Hotel_part1 = useRef();
   const Hotel_part2 = useRef();
   const Hotel_part3 = useRef();
-  const Hotel_part4 = useRef();
+  const Ticket_part4 = useRef();
   const Hotel_part5 = useRef();
   const [allPart, setAllPart] = useState({});
   const [isScroll, setIsScroll] = useState(false);
@@ -91,11 +91,11 @@ function Ticket() {
     getHotelDetail();
 
     if (isScroll) {
-      let part0 = Hotel_part0.current.offsetTop;
+      let part0 = Ticket_part0.current.offsetTop;
       let part1 = Hotel_part1.current.offsetTop;
       let part2 = Hotel_part2.current.offsetTop;
       let part3 = Hotel_part3.current.offsetTop;
-      let part4 = Hotel_part4.current.offsetTop;
+      let part4 = Ticket_part4.current.offsetTop;
       let part5 = Hotel_part5.current.offsetTop;
       // console.log(part0, part1, part2, part3, part4);
       setAllPart({
@@ -130,7 +130,7 @@ function Ticket() {
       </div>
       <div style={{ width: '100%', height: '79px' }}></div>
       <BottomBar />
-      <div ref={Hotel_part0} id="Hotel_part0"></div>
+      <div ref={Ticket_part0} id="Ticket_part0"></div>
       <div className="MobileHidden container">
         <BreadCrumb ticketData={ticketListData} />
       </div>
@@ -144,16 +144,17 @@ function Ticket() {
       <div className="container">
         <div className="">
           <div className="d-flex">
-            <div className="Hotel_part0 Hotel_partHidden"></div>
+            <div className="Ticket_part0 Hotel_partHidden"></div>
             <div className="Hotel_part0_left">
               <div className="ComputerHidden"></div>
 
-              <h2 style={{ color: '#4D4D4D', marginBottom: '20px' }}>
+              <h1 style={{ color: '#4D4D4D', marginBottom: '20px' }}>
                 {ticketListData.product_name}
-              </h2>
+              </h1>
               <Rate />
               <IconBar
                 ticketListDataArea={ticketListData.area_name}
+                ticketListDataCity={ticketListData.city_name}
                 ticketListDataCategories={ticketListData.classname}
               />
               <h4
@@ -204,8 +205,8 @@ function Ticket() {
               <MapButton />
               <div
                 className="Hotel_partHidden"
-                id="Hotel_part4"
-                ref={Hotel_part4}
+                id="Ticket_part4"
+                ref={Ticket_part4}
               ></div>
               <div className="d-flex" style={{ alignItems: 'center' }}>
                 <h2

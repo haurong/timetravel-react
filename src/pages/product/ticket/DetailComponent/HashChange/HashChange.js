@@ -50,7 +50,7 @@ function HashChange(props) {
   //   window.history.pushState(0, 0, window.location.origin + '/stays');
   // });
   window.onhashchange = function () {
-    window.history.pushState(0, 0, window.location.origin + '/stays');
+    window.history.pushState(0, 0, window.location.origin + '/ticket/detail/14');
   };
   return (
     <>
@@ -61,8 +61,8 @@ function HashChange(props) {
       >
         <div className="hashChange_slider">
           {hash_title.map((v, i) => {
-            let backToTop = '#Hotel_part0';
-            let str = `#Hotel_part${i + 1}`;
+            let backToTop = '#Ticket_part0';
+            let str = `#Ticket_part${i + 1}`;
             return (
               <div key={i} className="Computer_HashChange">
                 <a href={v === '回到頂部' ? backToTop : str}>{v}</a>

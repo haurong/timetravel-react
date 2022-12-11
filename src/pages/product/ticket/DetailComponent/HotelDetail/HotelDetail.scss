@@ -1,15 +1,17 @@
 /* HotelDetail */
-.hotel_detail {
-	ul {
+.tkDetail_address {
+	>ul {
 		list-style-type: none;
 		padding-left: 0px;
-		li {
+		>li {
+			font-size: 15.4px;
+			font-weight: 300;
 			margin: 30px 0px;
 			color: #8a8a8a;
-			.hotel_detail_BsFillDiamondFill {
-				margin: 0px 8px;
-				font-size: 16px;
-			}
+			// .hotel_detail_BsFillDiamondFill {
+			// 	margin: 0px 8px;
+			// 	font-size: 16px;
+			// }
 		}
 	}
 }

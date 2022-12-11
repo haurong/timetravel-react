@@ -1,28 +1,14 @@
-.LikeAddOnCom {
-  @media (min-width: 992px) {
-    margin-right: 20px;
+.Heart_Calendar_icon{
+  .HeartBtn,.CalendarBtn{
+      width: 40px;
+      height: 40px;
+      border: none;
+        background-color:rgba(255, 255, 255, 0.004);
   }
 }
-.noActiveHotelHeart {
-  .st0 {
-    fill: #8a8a8a;
+  .Heart_icon,.Calendar_icon{
+      width: 100%;
+      height: 100%;
+      background-color: none; 
+      z-index: 100;
   }
-}
-.HotelHeart {
-  .st0 {
-    fill: #ea8a8a;
-  }
-}
-.HotelCalendarAdd {
-  .st0 {
-    fill: #59d8a1;
-  }
-}
-.noActiveHotelCalendarAdd {
-  .st0 {
-    fill: #8a8a8a;
-  }
-}
-.ComputerLikeAdd_canTouch {
-  cursor: pointer;
-}
