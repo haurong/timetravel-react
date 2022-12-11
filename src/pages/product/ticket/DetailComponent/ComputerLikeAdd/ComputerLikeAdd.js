@@ -63,14 +63,14 @@ function ComputerLikeAdd() {
           });
         }}
       >
-        <button
+        {/* <button
           className="CalendarBtn"
           onClick={() => {
             // mySubmit();
           }}
         >
           <img src={CalendarAdd} className="Calendar_icon" alt="" />
-        </button>
+        </button> */}
       </div>
     </>
   );
