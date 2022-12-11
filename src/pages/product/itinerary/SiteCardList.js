@@ -234,7 +234,7 @@ function SiteCardList() {
                   />
                 </div>
                 <Card.Body>
-                  <Link to={el.sid}>
+                  <Link to={'./' + el.sid}>
                     <Card.Title className="Card_Title">{el.name}</Card.Title>
                   </Link>
                   <Card.Text className="Card_Text">
