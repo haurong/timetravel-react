@@ -1,12 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Rate } from 'antd';
 import './Comment.scss';
 import moment from 'moment/moment';
 import { useHotelContext } from '../Context/HotelContext';
+import proSetImg from '../../../member/prosetImg.png';
+import { userImg } from '../../../../config';
+import AuthContext from '../../../member/context/AuthContext';
 
 function CommentCard() {
   const { hotelCommentData, commentSort, setHotelCommentData } =
     useHotelContext();
+  const { myAuth } = useContext(AuthContext);
   // console.log(Date.parse(hotelCommentData[0].create_time));
   // console.log(hotelCommentData);
 
@@ -50,7 +54,24 @@ function CommentCard() {
           <div className="Comment_Bottom" key={i}>
             <div>
               <div className="d-flex Comment_Card">
-                <div className="Comment_userPic"></div>
+                <div
+                  className="Comment_userPic"
+                  style={
+                    v.username === myAuth.username
+                      ? {
+                          backgroundImage: `url(${userImg}${myAuth.member_img})`,
+                          backgroundRepeat: 'no-repeat',
+                          backgroundPosition: 'center center',
+                          backgroundSize: 'cover',
+                        }
+                      : {
+                          backgroundImage: `url(${proSetImg}) `,
+                          backgroundRepeat: 'no-repeat',
+                          backgroundPosition: 'center center',
+                          backgroundSize: 'cover',
+                        }
+                  }
+                ></div>
                 <div className="Comment_userName">
                   <h2>{v.username}</h2>
                   <Rate
