@@ -62,7 +62,7 @@ function NavBar() {
                 </NavLink>
               </li>
             </ul>
-
+    
             <SearchBar searchWord={searchWord} setSearchWord={setSearchWord} />
 
             <div>

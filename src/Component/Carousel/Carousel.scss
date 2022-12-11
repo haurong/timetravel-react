@@ -1,7 +1,7 @@
 
 .mySwiper {
   width: 100%;
-  max-height: 650px;
+  height: 650px;
 
   overflow: hidden;
 
@@ -29,7 +29,7 @@
   .SwiperSlide {
       margin-bottom: 20px;
       width: 100%;
-      height: 100%;
+      // height: 100%;
       display: -webkit-box;
       display: -ms-flexbox;
       display: -webkit-flex;
@@ -96,55 +96,14 @@
 
 @media (max-width:992px) {
   .mySwiper .swiper-slide .swiper-wrapper{
-    aspect-ratio: 4/3;
-    overflow: hidden;
-  // .SwiperSlide{
-  //   width: 100%;
-  //   max-height: 650px;
-  // }
+    width: 100%;
+    height:calc(width/4*3)
+
+  
 }}
-// .Food_Img1{
-//   object-fit: cover;  
-//   width: 100%;
-//   height: 100%;
-//   background-image: url('http://localhost:3001/uploads/F116-1.jpg');
-//   background-size: cover;
-//   background-repeat: no-repeat;
-//   background-position: center center;
-//  }
-// .Food_Img2{
-//   object-fit: cover;  
-//   width: 100%;
-//   height: 100%;
-//   background-image: url('http://localhost:3001/uploads/F116-2.jpg');
-//   background-size: cover;
-//   background-repeat: no-repeat;
-//   background-position: center center;
-//  }
-// .Food_Img3{
-//   object-fit: cover;  
-//   width: 100%;
-//   height: 100%;
-//   background-image: url('http://localhost:3001/uploads/F116-3.jpg');
-//   background-size: cover;
-//   background-repeat: no-repeat;
-//   background-position: center center;
-//  }
-// .Food_Img4{
-//   object-fit: cover;  
-//   width: 100%;
-//   height: 100%;
-//   background-image: url('http://localhost:3001/uploads/F116-4.jpg');
-//   background-size: cover;
-//   background-repeat: no-repeat;
-//   background-position: center center;
-//  }
-// .Food_Img5{
-//   object-fit:cover;  
-//   width: 100%;
-//   height: 100%;
-//   background-image: url('http://localhost:3001/uploads/F116-5.jpg');
-//   background-size: cover;
-//   background-repeat: no-repeat;
-//   background-position:  bottom 20% center;
-//  }
+@media (max-width:768px) {
+ .mySwiper{
+  width: 100%;
+  max-height:500px
+ } 
+}

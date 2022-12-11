@@ -50,7 +50,12 @@ function HashChange(props) {
   //   window.history.pushState(0, 0, window.location.origin + '/stays');
   // });
   window.onhashchange = function () {
-    window.history.pushState(0, 0, window.location.origin + '/stays');
+    window.history.pushState(
+      0,
+      0,
+      window.location.origin + window.location.pathname
+    );
+    // console.log(window.location);
   };
   return (
     <>

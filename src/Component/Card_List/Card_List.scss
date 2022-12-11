@@ -64,6 +64,11 @@
   justify-content: space-between;
   color: #59d8a1;
   margin: 0;
+  .Card_Price{
+    text-align: end;
+    color: #59D8A1 !important;
+    margin: 0;
+}
   .Heart_btn {
     background-color: rgba(255, 255, 255, 0.004);
     border: none;
@@ -77,8 +82,8 @@
     }
   }
 }
-@media (max-width: 768px) {
-  .MyCard {
-    // width:40rem;
-  }
-}
+// @media (max-width: 768px) {
+//   .MyCard {
+//     // width:40rem;
+//   }
+// }

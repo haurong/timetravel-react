@@ -333,7 +333,7 @@ function Food() {
                   />
                 </div>
                 <Card.Body>
-                  <Link to="detail">
+                  <Link to="detail/:sid">
                     <Card.Title className="Card_Title">
                       {v.product_name}
                     </Card.Title>
@@ -403,7 +403,11 @@ function Food() {
                       </button>
                     </div>
                     <div>
-                      <h2 variant="primary" className="Card_Price">
+                      <h2
+                        variant="primary"
+                        className="Card_Price"
+                        style={{ color: '#59d8a1', margin: 0 }}
+                      >
                         NT${v.p_selling_price}
                       </h2>
                     </div>
@@ -516,6 +520,7 @@ function Food() {
       <div className="foodPagination">{paginationBar}</div>
 
       <div className="space"></div>
+      {/* <Qrcode /> */}
       <Footer />
     </>
   );
