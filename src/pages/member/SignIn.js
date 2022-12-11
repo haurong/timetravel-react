@@ -196,12 +196,16 @@ function SignIn() {
         Swal.fire({
           icon: 'success',
           title: '註冊成功,請重新登入',
+          confirmButtonText: '確認',
+          confirmButtonColor: '#59d8a1',
         });
         navigate('/login');
       } else {
         Swal.fire({
           icon: 'error',
           title: '註冊失敗',
+          confirmButtonText: '確認',
+          confirmButtonColor: '#59d8a1',
         });
       }
     }
@@ -270,14 +274,26 @@ function SignIn() {
               <h1 className="login-text text-center">創建帳戶</h1>
               <p className="text-center">使用email註冊</p>
               <div className="mb-3">
-                <label className="form-label">姓名</label>
+                <label
+                  className="form-label"
+                  onClick={() => {
+                    setFormData({
+                      username: '我是使用者',
+                      email: 'user@gmail.com',
+                      password: 'Aa123456',
+                      againPassword: 'Aa123456',
+                    });
+                  }}
+                >
+                  姓名
+                </label>
                 <input
                   type="text"
                   className="form-control"
                   id="username"
                   placeholder="王小明"
                   onChange={handlerUsernameChange}
-                  value={formData.name}
+                  value={formData.username}
                 />
                 <p className="errorMsg">{errorMsg.username}</p>
               </div>

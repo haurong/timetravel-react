@@ -17,8 +17,7 @@ function CommentDetail({ rows }) {
     <>
       {newRows[0] === undefined ? (
         <div>
-          <h2>目前還沒有評論</h2>
-          <h2>趕快去新增評論吧</h2>
+          <h2 className="comment-no-h2">目前還沒有評論</h2>
         </div>
       ) : (
         newRows.map((el) => {
