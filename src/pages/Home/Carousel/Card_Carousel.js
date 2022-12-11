@@ -19,9 +19,9 @@ import 'swiper/scss';
 import 'swiper/scss/pagination';
 import 'swiper/scss/navigation';
 import { Pagination, Navigation } from 'swiper';
+import Swal from 'sweetalert2';
 
 export default function Card_Carousel() {
- 
   //設定６張卡片狀態
   const [foodCardData1, setFoodCardData1] = useState({});
   const [foodCardData2, setFoodCardData2] = useState({});
@@ -95,7 +95,6 @@ export default function Card_Carousel() {
               className="Heart_Btn"
               onClick={() => {
                 // addLikeListHandler(el.product_number);
-            
               }}
             >
               {/* <img src={Heart} className="Card_Heart" alt="" /> */}
@@ -118,10 +117,19 @@ export default function Card_Carousel() {
                 <span className="Card_Score">{'台北市 | 中正區'}</span>
 
                 <div className="d-flex PriceAndCollect">
-                  <div>
+                  <div
+                    onClick={() => {
+                      Swal.fire({
+                        // icon: 'success',
+                        title: '請先登入會員！',
+                        confirmButtonText: '確認',
+                        confirmButtonColor: '#59d8a1',
+                      });
+                    }}
+                  >
                     <button className="Heart_btn">
                       <img
-                        src={PinkHeart}
+                        src={Heart}
                         style={{
                           width: '25px',
                           height: '25px',
@@ -162,7 +170,6 @@ export default function Card_Carousel() {
               className="Heart_Btn"
               onClick={() => {
                 // addLikeListHandler(el.product_number);
-            
               }}
             >
               {/* <img src={Heart} className="Card_Heart" alt="" /> */}
@@ -173,17 +180,26 @@ export default function Card_Carousel() {
                 style={{ cursor: 'pointer' }}
                 onClick={() => {}}
               >
-                {'泊居二館'}
+                {'北投老爺酒店'}
               </Card.Title>
               <Card.Text className="Card_Text">
                 <Card.Img src={Map} className="Map_icon" />
-                <span className="Card_Score">台北市 | 中山區</span>
+                <span className="Card_Score">台北市 | 北投區</span>
 
                 <div className="d-flex PriceAndCollect">
-                  <div>
+                  <div
+                    onClick={() => {
+                      Swal.fire({
+                        // icon: 'success',
+                        title: '請先登入會員！',
+                        confirmButtonText: '確認',
+                        confirmButtonColor: '#59d8a1',
+                      });
+                    }}
+                  >
                     <button className="Heart_btn">
                       <img
-                        src={PinkHeart}
+                        src={Heart}
                         style={{
                           width: '25px',
                           height: '25px',
@@ -195,7 +211,7 @@ export default function Card_Carousel() {
                   </div>
                   <div>
                     <h2 variant="primary" className="Card_Price">
-                      NT$ {1204}
+                      NT$ {10716}
                     </h2>
                   </div>
                 </div>
@@ -229,7 +245,6 @@ export default function Card_Carousel() {
               className="Heart_Btn"
               onClick={() => {
                 // addLikeListHandler(el.product_number);
-            
               }}
             >
               {/* <img src={Heart} className="Card_Heart" alt="" /> */}
@@ -252,10 +267,19 @@ export default function Card_Carousel() {
                 <span className="Card_Score">新北市 | 萬里區</span>
 
                 <div className="d-flex PriceAndCollect">
-                  <div>
+                  <div
+                    onClick={() => {
+                      Swal.fire({
+                        // icon: 'success',
+                        title: '請先登入會員！',
+                        confirmButtonText: '確認',
+                        confirmButtonColor: '#59d8a1',
+                      });
+                    }}
+                  >
                     <button className="Heart_btn">
                       <img
-                        src={PinkHeart}
+                        src={Heart}
                         style={{
                           width: '25px',
                           height: '25px',
@@ -301,7 +325,6 @@ export default function Card_Carousel() {
               className="Heart_Btn"
               onClick={() => {
                 // addLikeListHandler(el.product_number);
-            
               }}
             >
               {/* <img src={Heart} className="Card_Heart" alt="" /> */}
@@ -324,10 +347,19 @@ export default function Card_Carousel() {
                 <span className="Card_Score">新北市 | 永和區</span>
 
                 <div className="d-flex PriceAndCollect">
-                  <div>
+                  <div
+                    onClick={() => {
+                      Swal.fire({
+                        // icon: 'success',
+                        title: '請先登入會員！',
+                        confirmButtonText: '確認',
+                        confirmButtonColor: '#59d8a1',
+                      });
+                    }}
+                  >
                     <button className="Heart_btn">
                       <img
-                        src={PinkHeart}
+                        src={Heart}
                         style={{
                           width: '25px',
                           height: '25px',
@@ -373,7 +405,6 @@ export default function Card_Carousel() {
               className="Heart_Btn"
               onClick={() => {
                 // addLikeListHandler(el.product_number);
-            
               }}
             >
               {/* <img src={Heart} className="Card_Heart" alt="" /> */}
@@ -396,10 +427,19 @@ export default function Card_Carousel() {
                 <span className="Card_Score">台北市 | 士林區</span>
 
                 <div className="d-flex PriceAndCollect">
-                  <div>
+                  <div
+                    onClick={() => {
+                      Swal.fire({
+                        // icon: 'success',
+                        title: '請先登入會員！',
+                        confirmButtonText: '確認',
+                        confirmButtonColor: '#59d8a1',
+                      });
+                    }}
+                  >
                     <button className="Heart_btn">
                       <img
-                        src={PinkHeart}
+                        src={Heart}
                         style={{
                           width: '25px',
                           height: '25px',
@@ -445,7 +485,6 @@ export default function Card_Carousel() {
               className="Heart_Btn"
               onClick={() => {
                 // addLikeListHandler(el.product_number);
-            
               }}
             >
               {/* <img src={Heart} className="Card_Heart" alt="" /> */}
@@ -468,10 +507,19 @@ export default function Card_Carousel() {
                 <span className="Card_Score">新北市 | 瑞芳區</span>
 
                 <div className="d-flex PriceAndCollect">
-                  <div>
+                  <div
+                    onClick={() => {
+                      Swal.fire({
+                        // icon: 'success',
+                        title: '請先登入會員！',
+                        confirmButtonText: '確認',
+                        confirmButtonColor: '#59d8a1',
+                      });
+                    }}
+                  >
                     <button className="Heart_btn">
                       <img
-                        src={PinkHeart}
+                        src={Heart}
                         style={{
                           width: '25px',
                           height: '25px',
