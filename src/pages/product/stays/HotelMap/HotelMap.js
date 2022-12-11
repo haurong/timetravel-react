@@ -7,7 +7,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 export default function HotelMap() {
   const { hotelListData, setHotelGeocode, hotelGeocode } = useHotelContext();
-  console.log(hotelListData.address);
+  // console.log(hotelListData.address);
   // useEffect(() => {
   //   Geocode.setApiKey('AIzaSyDrMC7nsflI8Pel7Q3oOTw5lK__PMSF4Dk');
   //   Geocode.setLanguage('zh-TW');
