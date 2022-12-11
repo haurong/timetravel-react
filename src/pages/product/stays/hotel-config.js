@@ -17,4 +17,4 @@ export const HOTEL_LIST = `${MY_HOST}/hotel/api`;
 export const HOTEL_DETAIL = `${MY_HOST}/hotel/item/`;
 // export const ITINERARY_LIST = `${MY_HOST}/itinerary/api`;
 // export const ITINERARY_DETAIL = `${MY_HOST}/itinerary/item/:sid`;
-export const HOTEL_IMG = `${MY_HOST}/uploads/hotel`;
+export const HOTEL_IMG = `${MY_HOST}/uploads/`;
