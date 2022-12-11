@@ -7,18 +7,18 @@ import { useTicketContext } from '../../Context/TicketContext';
 
 function Comment() {
   // const { hotelCommentData, setAllStar, allStar } = useHotelContext();
-  const { hotelCommentData } = useHotelContext();
-  const {setAllStar, allStar } = useTicketContext();
+  // const { ticketCommentData } = useHotelContext();
+  const {ticketCommentData,setAllStar, allStar } = useTicketContext();
 
 
   useEffect(() => {
-    if (hotelCommentData !== 0) {
+    if (ticketCommentData !== 0) {
       let sum = 0;
-      hotelCommentData.map((v, i) => {
+      ticketCommentData.map((v, i) => {
         sum = sum + v.score;
       });
       let totalStar = (
-        Math.round((sum / hotelCommentData.length) * 10) / 10
+        Math.round((sum / ticketCommentData.length) * 10) / 10
       ).toString();
       setAllStar(totalStar);
     }
@@ -37,7 +37,7 @@ function Comment() {
             style={{ zIndex: -1 }}
           />
           <p>
-            {hotelCommentData.length}
+            {ticketCommentData.length}
             則評論
           </p>
         </div>
