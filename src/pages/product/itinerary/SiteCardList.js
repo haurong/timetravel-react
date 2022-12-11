@@ -1,16 +1,21 @@
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import { Link } from 'react-router-dom';
+import Map from '../../../icon/map.svg';
+import { Link, useNavigate } from 'react-router-dom';
 import { SITE_IMG } from './site-config';
 import { useHotelContext } from '../stays/Context/HotelContext';
 import { useEffect, useState } from 'react';
 import _ from 'lodash';
-// import { imgUrl } from '../../config';
-// import Star from '../../icon/star.svg';
-// import Heart from '../../icon/heart_white.svg';
+import { useFoodContext } from '../food/FoodContext/FoodContext.js';
+import axios from 'axios';
+import Heart from '../../../icon/heart_gray.svg';
+import PinkHeart from '../../../icon/heart.svg';
 
 function SiteCardList() {
+  const navigate = useNavigate();
+  const { collect, setCollect } = useFoodContext();
+
   const {
     hotelSort,
     hotelSortData,
@@ -204,35 +209,104 @@ function SiteCardList() {
     getFoodListData(newHotelSortData, perPage);
   }, [hotelSort.area, hotelSort.like, hotelSort.cate, hotelSort.sortBy]);
   return (
-    <Row xs={1} md={2} lg={3} className="g-4">
+    <Row
+      xs={1}
+      md={2}
+      lg={4}
+      className="d-flex justify-content-flexstart flex-wrap"
+    >
       {displayData[pageNow - 1]
         ? displayData[pageNow - 1].map((el, i) => {
             return (
-              <Col key={i}>
-                <Link to={'/site/' + el.sid}>
-                  <Card className="Card">
-                    <Card.Img
-                      className="card-img"
-                      variant="top"
-                      src={
-                        el.img1 ? SITE_IMG + '/' + el.img1.split(',')[0] : ''
-                      }
-                    />
-                    {/* <button className="Heart_Btn">
-                  <Card.Img src={''} className="Card_Heart" />
-                </button> */}
-                    <Card.Body className="card-margin0">
-                      <Card.Title>{el.name}</Card.Title>
-                      <Card.Text></Card.Text>
-                      <p>{el.site_category_name}</p>
-                      <p className="card-text">
-                        {el.city_name}
-                        {el.area_name}
-                      </p>
-                    </Card.Body>
-                  </Card>
-                </Link>
-              </Col>
+              <Card className="MyCard col-3" style={{ width: '20rem' }} key={i}>
+                <div style={{ overflow: 'hidden' }}>
+                  <Card.Img
+                    // className="card-img"
+                    className="foodCardImg1"
+                    variant="top"
+                    src={el.img1 ? SITE_IMG + '/' + el.img1.split(',')[0] : ''}
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => {
+                      let sid = Number(el.sid);
+                      // window.location.href = `stays/detail/${sid}`;
+                      navigate(`${sid}`);
+                    }}
+                  />
+                </div>
+                <Card.Body>
+                  <Link to={el.sid}>
+                    <Card.Title className="Card_Title">{el.name}</Card.Title>
+                  </Link>
+                  <Card.Text className="Card_Text">
+                    <Card.Img src={Map} className="Map_icon" />
+                    <span className="Card_Score">
+                      {el.city_name} | {el.area_name}
+                    </span>
+                  </Card.Text>
+                  <div className="d-flex PriceAndCollect">
+                    <div>
+                      <button
+                        className="Heart_btn"
+                        onClick={() => {
+                          const member_sid = JSON.parse(
+                            localStorage.getItem('auth')
+                          ).sid;
+                          const product_sid = el.sid;
+                          const collect_product_name = el.name;
+
+                          //後端先發送移除收藏
+                          if (collect.includes(el.name)) {
+                            axios.post(
+                              'http://localhost:3001/productAll/DelCollect',
+                              {
+                                member_sid: member_sid,
+                                product_sid: product_sid,
+                                collect_product_name: collect_product_name,
+                              }
+                            );
+                            console.log('移除收藏');
+                            //前端顯示空心
+                            setCollect(
+                              collect.filter((el2) => {
+                                return el2 !== el.name;
+                              })
+                            );
+                          } else {
+                            //前端發送新增收藏
+                            axios.post(
+                              'http://localhost:3001/productAll/AddCollect',
+                              {
+                                member_sid: member_sid,
+                                product_sid: product_sid,
+                                collect_product_name: collect_product_name,
+                              }
+                            );
+                            console.log('新增收藏');
+                            //解構出原收藏陣列,把新的收藏塞回去
+                            setCollect([...collect, el.name]);
+                          }
+                        }}
+                      >
+                        <img
+                          src={collect.includes(el.name) ? PinkHeart : Heart}
+                          style={{ width: '25px', height: '25px' }}
+                          alt=""
+                        />
+                        <span>
+                          {collect.includes(el.name)
+                            ? Number(el.collect) + 1
+                            : el.collect}
+                        </span>
+                      </button>
+                    </div>
+                    <div>
+                      <h2 variant="primary" className="Card_Price">
+                        {/* NT${v.p_selling_price} */}
+                      </h2>
+                    </div>
+                  </div>
+                </Card.Body>
+              </Card>
             );
           })
         : ''}

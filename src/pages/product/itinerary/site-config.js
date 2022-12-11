@@ -4,7 +4,8 @@ export const MY_HOST = 'http://localhost:3001';
 
 export const SITE_LIST = `${MY_HOST}/site/api/list`;
 export const SITE_DETAIL = `${MY_HOST}/site/item/`;
-export const SITE_IMG = `${MY_HOST}/imgs/site`;
+export const SITE_IMG = `${MY_HOST}/uploads`;
+export const ALL_IMG = `${MY_HOST}/uploads/`;
 
 export const ITINERARY_ADDLIST = `${MY_HOST}/itinerary/api/addlist`;
 export const ITINERARY_LIST = `${MY_HOST}/itinerary/api/lists`;

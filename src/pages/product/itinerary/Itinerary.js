@@ -66,14 +66,16 @@ function Itinerary() {
     //   status: 1,
     // });
     // setITData(iTData);
-    if (listname.length > 1) {
-      Swal.fire({
-        icon: 'success',
-        title: `新增成功`,
-        confirmButtonText: '確認',
-        confirmButtonColor: '#59d8a1',
-      });
-    }
+
+    // if (listname.length > 1) {
+    //   Swal.fire({
+    //     icon: 'success',
+    //     title: `新增成功`,
+    //     confirmButtonText: '確認',
+    //     confirmButtonColor: '#59d8a1',
+    //   });
+    // }
+
     //   } else {
     //     console.log('error1');
     //   }
@@ -87,10 +89,11 @@ function Itinerary() {
         <div className="container">
           <div className="givePadding profile_padding d-flex">
             <SideBar />
-            <div className="profile col-9">
+            {/* <div className="profile col-9"> */}
+            <div className=" col-9 CardListStyle">
               <div className="d-flex justify-content-between">
                 <div className="ititlerow">
-                  <h1 className="titlespace-x">我的行程規劃 </h1>
+                  <h1 className="titlespace-x ps-3 ">我的行程規劃 </h1>
                   {iTData.length === 0 ? '' : <p>{iTData.length}個規劃</p>}
                 </div>
                 <button

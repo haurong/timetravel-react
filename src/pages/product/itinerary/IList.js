@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Trash from './../../../icon/Trash.svg';
-import { ITINERARY_ITEM, SITE_IMG } from './site-config';
+import { ITINERARY_ITEM, ALL_IMG } from './site-config';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { useLocation } from 'react-router-dom';
 import { useItineraryContext } from './ItineraryContext';
@@ -78,8 +78,8 @@ export default function IList() {
                         >
                           <img
                             className="iItem-img"
-                            // src={SITE_IMG + '/' + el.img1.split(',')[0]}
-                            src={SITE_IMG + '/' + el.photo}
+                            // src={ALL_IMG + '/' + el.img1.split(',')[0]}
+                            src={ALL_IMG + '/' + el.photo}
                             alt=""
                           />
                           <div className="iItemText " {...p.dragHandleProps}>

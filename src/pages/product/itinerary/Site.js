@@ -51,33 +51,51 @@ function Site() {
       <Footer /> */}
 
       <NavBar />
-      <Container className="spaceSite">
-        <BreadCrumbList />
+      <div className="space "></div>
+      <div
+        className="container col-12 d-flex breadCrumb_Sort"
+        style={{ paddingLeft: '14px' }}
+      >
+        <div style={{ paddingTop: '10px' }} className="textAlign-center">
+          <BreadCrumbList />
+        </div>
+
+        <div className="d-flex col-lg-10 hotelSort">
+          <HotelListSortSelector />
+        </div>
+      </div>
+
+      <div className="container col-lg-12 d-flex foodContent">
+        <div className="col-lg-3  px-3 " style={{ paddingTop: '20px' }}>
+          <Sidebar1 />
+        </div>
+        <div className="col-lg-9 col-md-12 CardListStyle">
+          <SiteCardList />
+        </div>
+      </div>
+      {/* <div className="foodPagination">{paginationBar}</div> */}
+      <div className="foodPagination">
+        <MyPagination />
+      </div>
+      <div className="space"></div>
+      <Footer />
+
+      {/* <Container>
         <Row className="container d-flex">
           <Col className="Accordion col-3 g-4">
             <Card style={{ width: '18rem' }}>
-              {/* <p>sidebar</p> */}
               <Sidebar1 />
-              {/* <Accordions className="col-2 " /> */}
             </Card>
           </Col>
           <Col className="col-9">
-            <div className="d-flex hotelSort">
-              <HotelListSortSelector />
-            </div>
-            {/* <SiteCardList rows={siteData.rows} /> */}
             <SiteCardList />
           </Col>
         </Row>
         <div className="Food_pagination givePadding ">
-          {/* <BasicPagination
-            page={siteData.page}
-            totalPages={siteData.totalPages}
-          /> */}
           <MyPagination />
         </div>
       </Container>
-      <Footer />
+      <Footer /> */}
     </>
   );
 }

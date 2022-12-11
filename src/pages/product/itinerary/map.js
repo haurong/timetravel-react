@@ -74,8 +74,8 @@ export default function Map() {
                 key={i}
               >
                 <Popup>
-                  {el.name}
-                  <br /> {el.map}
+                  {el.product_name}
+                  {/* <br /> {el.map} //資料庫沒地址*/}
                 </Popup>
               </Marker>
             );
