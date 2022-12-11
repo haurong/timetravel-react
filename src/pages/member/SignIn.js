@@ -280,8 +280,8 @@ function SignIn() {
                     setFormData({
                       username: 'ddddd',
                       email: 'yydd@gmail.com',
-                      password: 'Aa1234567',
-                      againPassword: 'Aa1234567',
+                      password: 'Aa123456',
+                      againPassword: 'Aa123456',
                     });
                   }}
                 >
