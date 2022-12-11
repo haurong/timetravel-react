@@ -107,7 +107,7 @@ function Comment({
                 reverseButtons: true,
               }).then((result) => {
                 if (result.isConfirmed) {
-                  console.log(formData);
+                  // console.log(formData);
                   mySubmit();
                 } else if (
                   /* Read more about handling dismissals below */
