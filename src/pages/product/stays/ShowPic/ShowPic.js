@@ -16,7 +16,7 @@ function ShowPic() {
               src={`${HOTEL_IMG}/${v.room_picture}`}
               alt={`pic${i + 1}`}
             ></img>
-            <h5>{v.room_type}</h5>
+            <p>{v.room_type}</p>
           </div>
         );
       })}

@@ -13,6 +13,7 @@ import SiteCarousel from './Carousel/SiteCarousel';
 import BreadCrumb from '../../../Component/BreadCrumb/BreadCrumb';
 import SiteDes from './SiteDes';
 import HashChange from './HashChange';
+import { ReactComponent as CalendarAdd } from '../../../icon/calendar+add.svg';
 import './Site-detail.scss';
 // import './Carousel/SiteCarousel.scss';
 import {
@@ -288,14 +289,22 @@ function SiteDetail() {
                   alt=""
                 />
               </button>
-              <button
+              <div className="icon">
+                <CalendarAdd
+                  className="noActiveHotelCalendarAdd"
+                  onClick={() => {
+                    mySubmit();
+                  }}
+                />
+              </div>
+              {/* <button
                 className="CalendarBtn"
                 onClick={() => {
                   mySubmit();
                 }}
               >
                 <img src={Calendar} className="Calendar_icon" alt="" />
-              </button>
+              </button> */}
             </div>
           </div>
           <div

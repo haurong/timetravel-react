@@ -27,6 +27,7 @@ import Minus_icon from '../../../icon/minus.svg';
 import Minus_icon_active from '../../../icon/minusActive.svg';
 import Add_icon from '../../../icon/add.svg';
 import House_icon from '../../../icon/house.svg';
+import { ReactComponent as CalendarAdd } from '../../../icon/calendar+add.svg';
 
 import {
   ITINERARY_ADDITEM,
@@ -335,8 +336,8 @@ function FoodDetail() {
                 </button>
               </div>
 
-              <div>
-                <button
+              <div className="icon">
+                {/* <button
                   className="CalendarBtn"
                   onClick={() => {
                     mySubmit();
@@ -348,7 +349,13 @@ function FoodDetail() {
                     alt=""
                     style={{ width: '40px', height: '40px' }}
                   />
-                </button>
+                </button> */}
+                <CalendarAdd
+                  className="noActiveHotelCalendarAdd"
+                  onClick={() => {
+                    mySubmit();
+                  }}
+                />
               </div>
             </div>
           </div>

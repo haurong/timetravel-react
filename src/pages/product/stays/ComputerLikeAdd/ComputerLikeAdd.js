@@ -232,22 +232,23 @@ function ComputerLikeAdd() {
       >
         {/* TODO:點下去變色 加入行成 */}
 
-        {/* {likeAndCalendar.calendar ? (
-          <CalendarAdd className="HotelCalendarAdd" />
-        ) : (
-          <CalendarAdd className="noActiveHotelCalendarAdd" />
-        )} */}
+        <CalendarAdd
+          className="noActiveHotelCalendarAdd"
+          onClick={() => {
+            mySubmit();
+          }}
+        />
 
         {/* <CalendarAdd className="noActiveHotelCalendarAdd" /> */}
         {/* <CalendarAdd className="HotelCalendarAdd" /> */}
-        <button
+        {/* <button
           className="CalendarBtn"
           onClick={() => {
             mySubmit();
           }}
         >
           <img src={Calendar} className="Calendar_icon" alt="" />
-        </button>
+        </button> */}
       </div>
     </>
   );
