@@ -179,14 +179,25 @@ function Profile() {
                 </div>
               </div>
               <div className="mb-3 profile-input">
-                <label className="form-label ">姓名</label>
+                <label
+                  className="form-label"
+                  onClick={() => {
+                    setFormData({
+                      username: '我是編輯後',
+                      telephone: '0980400300',
+                      sid: JSON.parse(localStorage.getItem('auth')).sid,
+                    });
+                  }}
+                >
+                  姓名
+                </label>
                 <input
                   type="text"
                   className="form-control"
                   id="username"
                   placeholder={placeHolderValue.name}
                   onChange={handler}
-                  value={formData.name}
+                  value={formData.username}
                 />
               </div>
               {/*  */}
