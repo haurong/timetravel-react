@@ -16,9 +16,9 @@ function BookingBar() {
     setBookingBarOpen,
     // roomCounts,
     // hotelRoomPrice,
-    hotelListData,
+    // hotelListData,
   } = useHotelContext();
-  const { ticketCounts, ticketTypePrice } = useTicketContext();
+  const { ticketListData, ticketCounts, ticketTypePrice } = useTicketContext();
 
   // const [bookingBarOpen, setBookingBarOpen] = useState(false);
 
@@ -39,7 +39,7 @@ function BookingBar() {
           >
             <h2 style={{ color: '#4D4D4D' }}>
               {/* TODO:拿到真實名稱 */}
-              {hotelListData.product_name}
+              {ticketListData.product_name}
             </h2>
             {/* <div className="icon d-flex align-items-center">
               <Sort />

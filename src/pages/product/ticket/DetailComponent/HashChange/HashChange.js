@@ -66,8 +66,8 @@ function HashChange(props) {
       >
         <div className="hashChange_slider">
           {hash_title.map((v, i) => {
-            let backToTop = '#Hotel_part0';
-            let str = `#Hotel_part${i + 1}`;
+            let backToTop = '#Ticket_part0';
+            let str = `#Ticket_part${i + 1}`;
             return (
               <div key={i} className="Computer_HashChange">
                 <a href={v === '回到頂部' ? backToTop : str}>{v}</a>
