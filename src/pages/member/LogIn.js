@@ -1,5 +1,5 @@
 import React from 'react';
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import '../member/style/LogIn.scss';
 import '../../global.scss';
 import Swal from 'sweetalert2';
@@ -18,10 +18,10 @@ function LogIn() {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    errorMsg: {
-      password: '',
-      email: '',
-    },
+  });
+  const [errorMsg, setErrorMsg] = useState({
+    email: '',
+    password: '',
   });
   const [passwordFieldType, setPasswordFieldType] = useState('password');
 
@@ -50,18 +50,25 @@ function LogIn() {
     return errorMsg;
   };
   const validate = (value) => {
-    if (value.email !== '') value.errorMsg.email = validateEmail(value);
-    if (value.password !== '')
-      value.errorMsg.password = validatePassword(value);
-    return value.errorMsg.email === '' && value.errorMsg.password === '';
+    // if (value.email !== '') value.errorMsg.email = validateEmail(value);
+    // if (value.password !== '')
+    //   value.errorMsg.password = validatePassword(value);
+    // return value.errorMsg.email === '' && value.errorMsg.password === '';
+    if (value.email !== '') {
+      return false;
+    } else if (value.password !== '') {
+      return false;
+    } else {
+      return true;
+    }
   };
   const handlerEmailChange = (e) => {
     const id = e.currentTarget.id;
     const val = e.currentTarget.value;
     // console.log({id, val});
     setFormData({ ...formData, [id]: val });
-    if (formData.email !== '')
-      formData.errorMsg.email = validateEmail(formData);
+    // if (formData.email !== '')
+    //   formData.errorMsg.email = validateEmail(formData);
   };
 
   const handlerPasswordChange = (e) => {
@@ -69,13 +76,20 @@ function LogIn() {
     const val = e.currentTarget.value;
     // console.log({id, val});
     setFormData({ ...formData, [id]: val });
-    if (formData.password !== '')
-      formData.errorMsg.password = validatePassword(formData);
+    // if (formData.password !== '')
+    //   formData.errorMsg.password = validatePassword(formData);
   };
 
   const mySubmit = async (e) => {
     e.preventDefault();
-    if (validate(formData)) {
+    if (formData.email.length === 0 || formData.password.length === 0) {
+      setErrorMsg({
+        email: validateEmail(formData),
+        password: validatePassword(formData),
+      });
+      return;
+    }
+    if (validate(errorMsg)) {
       const { data } = await axios.post(LOGIN_API, formData);
       //console.log(data);
       if (data.success) {
@@ -95,6 +109,26 @@ function LogIn() {
     }
   };
 
+  useEffect(() => {
+    if (formData.email !== '') {
+      let emailErrorMsg = validateEmail(formData);
+      setErrorMsg({
+        email: emailErrorMsg,
+        password: errorMsg.password,
+      });
+    }
+  }, [formData.email]);
+
+  useEffect(() => {
+    if (formData.password !== '') {
+      let passwordErrorMsg = validatePassword(formData);
+      setErrorMsg({
+        email: errorMsg.email,
+        password: passwordErrorMsg,
+      });
+    }
+  }, [formData.password]);
+
   return (
     <>
       <div className="container">
@@ -109,7 +143,10 @@ function LogIn() {
                 <label
                   className="form-label"
                   onClick={() => {
-                    // setFormData('ddd@gmail.com');
+                    setFormData({
+                      email: 'ccc@gmail.com',
+                      password: 'Aa123456',
+                    });
                   }}
                 >
                   Email
@@ -122,7 +159,7 @@ function LogIn() {
                   onChange={handlerEmailChange}
                   value={formData.email}
                 />
-                <p className="errorMsg">{formData.errorMsg.email}</p>
+                <p className="errorMsg">{errorMsg.email}</p>
               </div>
               <div className="mb-3">
                 <label className="form-label">密碼</label>
@@ -135,7 +172,7 @@ function LogIn() {
                     onChange={handlerPasswordChange}
                     value={formData.password}
                   />
-                  <p className="errorMsg">{formData.errorMsg.password}</p>
+                  <p className="errorMsg">{errorMsg.password}</p>
                   <button
                     className="icon login-eye-btn"
                     type="button"

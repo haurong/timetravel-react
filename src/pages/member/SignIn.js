@@ -274,14 +274,26 @@ function SignIn() {
               <h1 className="login-text text-center">創建帳戶</h1>
               <p className="text-center">使用email註冊</p>
               <div className="mb-3">
-                <label className="form-label">姓名</label>
+                <label
+                  className="form-label"
+                  onClick={() => {
+                    setFormData({
+                      username: 'ddddd',
+                      email: 'yydd@gmail.com',
+                      password: 'Aa1234567',
+                      againPassword: 'Aa1234567',
+                    });
+                  }}
+                >
+                  姓名
+                </label>
                 <input
                   type="text"
                   className="form-control"
                   id="username"
                   placeholder="王小明"
                   onChange={handlerUsernameChange}
-                  value={formData.name}
+                  value={formData.username}
                 />
                 <p className="errorMsg">{errorMsg.username}</p>
               </div>
