@@ -56,7 +56,7 @@ function Collect() {
           <div className="col-9 CardListStyle">
             <div className="d-flex mb-4">
               <h1 className="ps-2 m-0">我的收藏</h1>
-              <p className="m-auto ms-3">{collect.length} 個行程在您的收藏</p>
+              <p className="m-auto ms-3">{collect.length} 個項目在您的收藏</p>
             </div>
 
             <Row

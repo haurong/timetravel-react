@@ -325,10 +325,7 @@ function Food() {
                     className="foodCardImg1"
                     src={`${FOOD_IMG}${v.product_photo}`}
                     style={{ cursor: 'pointer' }}
-                    onClick={() => {
-                      let sid = Number(v.product_number.split('F')[1]);
-                        navigate(`detail/${sid}`);
-                    }}
+                   
                   />
                 </div>
                 <Card.Body>

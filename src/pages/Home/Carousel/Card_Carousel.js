@@ -21,7 +21,6 @@ import 'swiper/scss/navigation';
 import { Pagination, Navigation } from 'swiper';
 
 export default function Card_Carousel() {
- 
   //設定６張卡片狀態
   const [foodCardData1, setFoodCardData1] = useState({});
   const [foodCardData2, setFoodCardData2] = useState({});
@@ -95,7 +94,6 @@ export default function Card_Carousel() {
               className="Heart_Btn"
               onClick={() => {
                 // addLikeListHandler(el.product_number);
-            
               }}
             >
               {/* <img src={Heart} className="Card_Heart" alt="" /> */}
@@ -144,7 +142,7 @@ export default function Card_Carousel() {
 
         <SwiperSlide>
           <Card
-            className="MyCard cardSlide col-3"
+            className="MyCard col-3"
             style={{ width: '20rem' }}
             // key={el.product_number}
           >
@@ -162,7 +160,6 @@ export default function Card_Carousel() {
               className="Heart_Btn"
               onClick={() => {
                 // addLikeListHandler(el.product_number);
-            
               }}
             >
               {/* <img src={Heart} className="Card_Heart" alt="" /> */}
@@ -229,7 +226,6 @@ export default function Card_Carousel() {
               className="Heart_Btn"
               onClick={() => {
                 // addLikeListHandler(el.product_number);
-            
               }}
             >
               {/* <img src={Heart} className="Card_Heart" alt="" /> */}
@@ -278,7 +274,7 @@ export default function Card_Carousel() {
 
         <SwiperSlide>
           <Card
-            className="MyCard col-3 cardSlide"
+            className="MyCard col-3 "
             style={{ width: '20rem' }}
             // key={el.product_number}
           >
@@ -301,7 +297,6 @@ export default function Card_Carousel() {
               className="Heart_Btn"
               onClick={() => {
                 // addLikeListHandler(el.product_number);
-            
               }}
             >
               {/* <img src={Heart} className="Card_Heart" alt="" /> */}
@@ -373,7 +368,6 @@ export default function Card_Carousel() {
               className="Heart_Btn"
               onClick={() => {
                 // addLikeListHandler(el.product_number);
-            
               }}
             >
               {/* <img src={Heart} className="Card_Heart" alt="" /> */}
@@ -422,7 +416,7 @@ export default function Card_Carousel() {
 
         <SwiperSlide>
           <Card
-            className="MyCard col-3 cardSlide"
+            className="MyCard col-3 "
             style={{ width: '20rem' }}
             // key={el.product_number}
           >
@@ -445,7 +439,6 @@ export default function Card_Carousel() {
               className="Heart_Btn"
               onClick={() => {
                 // addLikeListHandler(el.product_number);
-            
               }}
             >
               {/* <img src={Heart} className="Card_Heart" alt="" /> */}
