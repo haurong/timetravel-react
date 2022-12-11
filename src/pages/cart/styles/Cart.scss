@@ -1,4 +1,12 @@
 .cart-total-wrap {
+  .cart-d-wrap {
+    input {
+      margin-top: 10px;
+    }
+    h2 {
+      font-weight: 500 !important;
+    }
+  }
   .canClick {
     cursor: pointer;
     .Counts_SVG {
@@ -100,7 +108,7 @@
       border: none;
       .card-body {
         padding: 0px;
-        border-top: 1px solid black;
+        border-top: 1px solid #d9d9d9;
         margin: 0px 50px;
       }
     }

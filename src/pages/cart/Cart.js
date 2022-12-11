@@ -40,24 +40,26 @@ function Cart() {
         <NavBar />
         <div className="space"></div>
         <ProgressBar step={step} maxSteps={maxSteps} pageNames={pageNames} />
-        <BlockComponent
-          prev={prev}
-          next={next}
-          step={step}
-          maxSteps={maxSteps}
-          hotelRepresent={hotelRepresent}
-          setHotelRepresent={setHotelRepresent}
-          hotelMobile={hotelMobile}
-          setHotelMobile={setHotelMobile}
-          paymentRepresent={paymentRepresent}
-          setPaymentRepresent={setPaymentRepresent}
-          paymentMobile={paymentMobile}
-          setPaymentMobile={setPaymentMobile}
-          paymentEmail={paymentEmail}
-          setPaymentEmail={setPaymentEmail}
-          paymentId={paymentId}
-          setPaymentId={setPaymentId}
-        />
+        <div className="cart-d-wrap">
+          <BlockComponent
+            prev={prev}
+            next={next}
+            step={step}
+            maxSteps={maxSteps}
+            hotelRepresent={hotelRepresent}
+            setHotelRepresent={setHotelRepresent}
+            hotelMobile={hotelMobile}
+            setHotelMobile={setHotelMobile}
+            paymentRepresent={paymentRepresent}
+            setPaymentRepresent={setPaymentRepresent}
+            paymentMobile={paymentMobile}
+            setPaymentMobile={setPaymentMobile}
+            paymentEmail={paymentEmail}
+            setPaymentEmail={setPaymentEmail}
+            paymentId={paymentId}
+            setPaymentId={setPaymentId}
+          />
+        </div>
         <Footer />
       </div>
     </>

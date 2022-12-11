@@ -5,7 +5,7 @@ import CountButton from './CountButton';
 import { useFoodCart } from '../../utils/useCart';
 
 function FoodCard() {
-  const { items, plusOne, minusOne, removeItem, img } = useFoodCart();
+  const { items, plusOne, minusOne, removeItem } = useFoodCart();
   return (
     <>
       {items.map((v, i) => {

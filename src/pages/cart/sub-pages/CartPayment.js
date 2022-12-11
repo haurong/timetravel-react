@@ -1,12 +1,6 @@
 import PaymentCard from './components/PaymentCard';
 import ProgressButton from './ProgressButton';
-import {
-  useFoodCart,
-  useHotelCart,
-  useTicketCart,
-  useCart,
-} from '../utils/useCart';
-import { useNavigate } from 'react-router-dom';
+import { useFoodCart, useHotelCart, useTicketCart } from '../utils/useCart';
 import { useState } from 'react';
 function CartPayment({
   prev,

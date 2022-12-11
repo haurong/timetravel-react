@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './BuyButton.scss';
 import { useHotelContext } from '../Context/HotelContext';
 import { useHotelCart } from './../../../cart/utils/useCart';

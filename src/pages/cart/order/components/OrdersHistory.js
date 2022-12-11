@@ -1,8 +1,7 @@
 import React from 'react';
 import OrdersAccordion from './OrdersAccordion';
 import moment from 'moment';
-function OrdersHistory() {
-  const ordersData = [];
+function OrdersHistory({ ordersData, memberSid }) {
   return (
     <>
       <div className="orders-details-wrap row">

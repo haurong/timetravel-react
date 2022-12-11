@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React from 'react';
 import './BuyButton.scss';
 import { useTicketContext } from '../../Context/TicketContext';
 import Swal from 'sweetalert2';
