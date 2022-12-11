@@ -11,7 +11,7 @@ import Footer from '../../../layout/Footer';
 import { Container } from 'react-bootstrap';
 import SiteCarousel from './Carousel/SiteCarousel';
 import BreadCrumb from '../../../Component/BreadCrumb/BreadCrumb';
-import SiteDes from './SiteDes';
+// import SiteDes from './SiteDes';
 import HashChange from './HashChange';
 import { ReactComponent as CalendarAdd } from '../../../icon/calendar+add.svg';
 import './Site-detail.scss';
@@ -33,8 +33,10 @@ import Food_icon from '../../../icon/food_blue.svg';
 import Site_icon from '../../../icon/itinerary_blue.svg';
 import Phone_icon from '../../../icon/iphone.svg';
 import Star_icon from '../../../icon/star.svg';
+import { useFoodContext } from '../food/FoodContext/FoodContext.js';
 
 function SiteDetail() {
+  const { collect, setCollect } = useFoodContext();
   const [siteData, setSiteData] = useState('');
   const [img1, setImg1] = useState('');
   const [img2, setImg2] = useState('');
@@ -281,14 +283,64 @@ function SiteDetail() {
               <h1>{siteData.name}</h1>
             </div>
 
-            <div className="Heart_Calendar_icon">
-              <button className="HeartBtn" onClick={toggleLike}>
+            <div className="Heart_Calendar_icon d-flex">
+              {/* <button className="HeartBtn" onClick={toggleLike}>
                 <img
                   src={like ? PinkHeart : Heart}
                   className="Heart_icon"
                   alt=""
                 />
-              </button>
+              </button> */}
+              <div style={{ paddingRight: '20px' }}>
+                <button
+                  className="HeartBtn"
+                  onClick={() => {
+                    const member_sid = JSON.parse(
+                      localStorage.getItem('auth')
+                    ).sid;
+                    const product_sid = siteData.sid;
+                    const collect_product_name = siteData.name;
+
+                    //後端先發送移除收藏
+                    if (collect.includes(siteData.name)) {
+                      axios.post(
+                        'http://localhost:3001/productAll/DelCollect',
+                        {
+                          member_sid: member_sid,
+                          product_sid: product_sid,
+                          collect_product_name: collect_product_name,
+                        }
+                      );
+                      console.log('移除收藏');
+                      //前端顯示空心
+                      setCollect(
+                        collect.filter((el) => {
+                          return el !== siteData.name;
+                        })
+                      );
+                    } else {
+                      //前端發送新增收藏
+                      axios.post(
+                        'http://localhost:3001/productAll/AddCollect',
+                        {
+                          member_sid: member_sid,
+                          product_sid: product_sid,
+                          collect_product_name: collect_product_name,
+                        }
+                      );
+                      console.log('新增收藏');
+                      //解構出原收藏陣列,把新的收藏塞回去
+                      setCollect([...collect, siteData.name]);
+                    }
+                  }}
+                >
+                  <img
+                    src={collect.includes(siteData.name) ? PinkHeart : Heart}
+                    style={{ width: '40px', height: '40px' }}
+                    alt=""
+                  />
+                </button>
+              </div>
               <div className="icon">
                 <CalendarAdd
                   className="noActiveHotelCalendarAdd"

@@ -49,7 +49,7 @@ function ItineraryCardList(rows) {
       {iTData[0] === undefined ? (
         <h2 style={{ width: '100%' }}>您目前沒有規劃行程，請加入新行程</h2>
       ) : (
-        <div className="d-flex">
+        <div className="d-flex" style={{ paddingTop: '14px' }}>
           {/* <div className="px-3 d-flex"> */}
           {iTData.map((el, i) => {
             return (
@@ -71,10 +71,14 @@ function ItineraryCardList(rows) {
                   />
                 </div>
                 <Card.Body>
-                  <Card.Title className="Card_Title" style={{ paddingLeft: 0 }}>
-                    {el.list_name}
-                  </Card.Title>
-
+                  <Link to={'./' + el.list_number}>
+                    <Card.Title
+                      className="Card_Title"
+                      style={{ paddingLeft: 0 }}
+                    >
+                      {el.list_name}
+                    </Card.Title>
+                  </Link>
                   <Card.Text className="Card_Text">
                     <div className="useTime">
                       <span className="d-flex">
