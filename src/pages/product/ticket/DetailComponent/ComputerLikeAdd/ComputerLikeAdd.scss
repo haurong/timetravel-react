@@ -12,3 +12,14 @@
       background-color: none; 
       z-index: 100;
   }
+  .noActiveHotelCalendarAdd {
+    // border: none;
+    .st0 {
+      fill: #aeaeae;
+    }
+  }
+  .noActiveHotelCalendarAdd:hover{
+    .st0 {
+      fill: #59d8a1;
+    }
+  }
