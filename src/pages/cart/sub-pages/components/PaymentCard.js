@@ -29,26 +29,24 @@ function PaymentCard({
       />
       <CardHeader text={'選擇付款方式'} />
       <div className="pb-5">
-        <button
-          type="button"
-          className="btn btn-primary"
+        <label
           onClick={() => {
             setPayMethod('LinePay');
           }}
         >
-          LinePay
-        </button>
+          <input type={'radio'} name={'paytype'} />
+          <span className="btn btn-primary mx-2">LinePay</span>
+        </label>
       </div>
       <div className="pb-5">
-        <button
-          type="button"
-          className="btn btn-primary"
+        <label
           onClick={() => {
             setPayMethod('Credit');
           }}
         >
-          信用卡一次付清
-        </button>
+          <input type={'radio'} name={'paytype'} />
+          <span className="btn btn-primary mx-2">信用卡一次付清</span>
+        </label>
       </div>
       {payMethod === 'Credit' ? <CreditCard /> : ''}
     </div>
