@@ -50,7 +50,7 @@ function ComputerLikeAdd() {
     day: 1,
     sequence: 10,
     category: 3,
-    category_id: 223 + +sid,
+    category_id: 288 + +sid,
     time: null,
   });
 
@@ -120,7 +120,7 @@ function ComputerLikeAdd() {
           day: 1,
           sequence: 10,
           category: 3,
-          category_id: 223 + +sid,
+          category_id: 288 + +sid,
           time: null,
         });
         if (data.success) {
@@ -140,7 +140,7 @@ function ComputerLikeAdd() {
         day: 1,
         sequence: 10,
         category: 3,
-        category_id: 223 + +sid,
+        category_id: 288 + +sid,
         time: null,
       });
       const { data } = await axios.post(ITINERARY_ADDITEM, {
@@ -148,7 +148,7 @@ function ComputerLikeAdd() {
         day: 1,
         sequence: 10,
         category: 3,
-        category_id: 223 + +sid,
+        category_id: 288 + +sid,
         time: null,
       });
       if (data.success) {

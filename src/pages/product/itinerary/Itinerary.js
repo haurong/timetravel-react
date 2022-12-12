@@ -100,6 +100,7 @@ function Itinerary() {
                   type="button"
                   className="btn btn-primary btnstyle"
                   onClick={() => newItinerary()}
+                  style={{ marginRight: '20px' }}
                 >
                   新增規劃
                 </button>
