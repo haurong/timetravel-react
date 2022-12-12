@@ -32,7 +32,7 @@ function ProductList() {
   const location = useLocation();
 
   //篩選排序
-  const { hotelSort,setHotelSort } = useHotelContext();
+  const { hotelSort, setHotelSort } = useHotelContext();
 
   //分頁
   //當前分頁最小為1,最大看資料計算最大頁數
@@ -257,7 +257,14 @@ function ProductList() {
     setProductDisplay(newAllData);
     //呼叫getAllListData搜尋完的資料再去做一次分頁處理
     getAllListData(newAllData, perPage);
-  }, [location, searchWord, hotelSort.area, hotelSort.like, hotelSort.sortBy, productData]);
+  }, [
+    location,
+    searchWord,
+    hotelSort.area,
+    hotelSort.like,
+    hotelSort.sortBy,
+    productData,
+  ]);
 
   const paginationBar = (
     <ul className="pagination d-flex">

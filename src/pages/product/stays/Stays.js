@@ -17,6 +17,7 @@ import './Stays.scss';
 import _ from 'lodash';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Geocode from 'react-geocode';
+import { useAllContext } from '../../AllContext/AllContext';
 
 function Stays() {
   const {
@@ -30,6 +31,8 @@ function Stays() {
     setCollectItem,
     setHotelSort,
   } = useHotelContext();
+
+  const { setSearchWord } = useAllContext();
   const location = useLocation();
   const usp = new URLSearchParams(location.search);
   const path = window.location.pathname.split('/');
@@ -48,6 +51,7 @@ function Stays() {
       like: 'likeAll',
       sortBy: '',
     });
+    setSearchWord('');
     //拿到會員的收藏項目
     const res = await axios.get(
       `http://localhost:3001/productAll/checkCollect/${
