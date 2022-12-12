@@ -14,7 +14,7 @@ function FoodBookingBar({ foodData }) {
     id: foodData.sid,
     name: foodData.product_name,
     quantity: count,
-    price: totalPrice,
+    price: foodData.p_selling_price,
     img: 'http://localhost:3001/uploads/F116-1.jpg',
     rate: 4.3,
   };
