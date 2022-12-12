@@ -72,7 +72,15 @@ function Comment({
         </Modal.Header>
         <Modal.Body>
           <div className="d-flex justify-content-center">
-            <h1>{name}</h1>
+            <h1
+              onClick={() => {
+                setTextInput(
+                  '這真是太棒了，我沒買過這麼值得的東西！感謝TimeTravel幫我規畫出如此適合的行程！'
+                );
+              }}
+            >
+              {name}
+            </h1>
           </div>
           <div className="d-flex justify-content-center pb-3">
             <Rate
