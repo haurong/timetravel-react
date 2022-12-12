@@ -26,8 +26,13 @@ function Site() {
     page: 1,
     rows: [],
   });
-  const { setHotelSortData, perPage, setDisplayData, setPageTotal } =
-    useHotelContext();
+  const {
+    setHotelSortData,
+    perPage,
+    setDisplayData,
+    setPageTotal,
+    setHotelSort,
+  } = useHotelContext();
   const location = useLocation();
   const usp = new URLSearchParams(location.search);
 
@@ -38,6 +43,13 @@ function Site() {
     const pageList = _.chunk(response.data.rowsAll, perPage);
     setDisplayData(pageList);
     setPageTotal(pageList.length);
+    //  hotelSort預設值
+    setHotelSort({
+      area: 'area_All',
+      cate: 'cate_Ticket_All',
+      like: 'likeAll',
+      sortBy: '',
+    });
   }
 
   useEffect(() => {

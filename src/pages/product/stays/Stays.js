@@ -17,6 +17,7 @@ import './Stays.scss';
 import _ from 'lodash';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import Geocode from 'react-geocode';
+import { useAllContext } from '../../AllContext/AllContext';
 
 function Stays() {
   const {
@@ -28,7 +29,10 @@ function Stays() {
     setPageTotal,
     setBreadCrumbText,
     setCollectItem,
+    setHotelSort,
   } = useHotelContext();
+
+  const { setSearchWord } = useAllContext();
   const location = useLocation();
   const usp = new URLSearchParams(location.search);
   const path = window.location.pathname.split('/');
@@ -40,7 +44,14 @@ function Stays() {
     const pageList = _.chunk(response.data.rowsAll, perPage);
     setDisplayData(pageList);
     setPageTotal(pageList.length);
-
+    // HotelSort預設值
+    setHotelSort({
+      area: 'area_All',
+      cate: 'cate_Hotel_All',
+      like: 'likeAll',
+      sortBy: '',
+    });
+    setSearchWord('');
     //拿到會員的收藏項目
     const res = await axios.get(
       `http://localhost:3001/productAll/checkCollect/${
@@ -57,7 +68,7 @@ function Stays() {
   useEffect(() => {
     getList();
   }, [location]);
- 
+
   return (
     <>
       <NavBar />
@@ -67,7 +78,7 @@ function Stays() {
         style={{ paddingLeft: '14px' }}
       >
         <div style={{ paddingTop: '10px' }} className="textAlign-center">
-        <BreadCrumb hotelAllData={hotelAllData} />
+          <BreadCrumb hotelAllData={hotelAllData} />
         </div>
 
         <div className="d-flex col-lg-10 hotelSort">

@@ -34,7 +34,7 @@ function Food() {
   //呈現顯示資料用
   const [foodProductDisplay, setFoodProductDisplay] = useState([]);
 
-  const { hotelSort } = useHotelContext();
+  const { hotelSort,setHotelSort } = useHotelContext();
 
   async function getList() {
     const response = await axios.get(FOOD_LIST);
@@ -42,6 +42,13 @@ function Food() {
     const pageList = _.chunk(response.data, perPage);
     setFoodProductDisplay(pageList);
     setPageTotal(pageList.length);
+    // HotelSort預設值
+    setHotelSort({
+      area: 'area_All',
+      cate: 'cate_Food_All',
+      like: 'likeAll',
+      sortBy: '',
+    });
 
     const responseCollect = await axios.get(
       `http://localhost:3001/productAll/checkCollect/${
