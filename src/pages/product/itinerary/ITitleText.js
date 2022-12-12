@@ -54,6 +54,9 @@ export default function ITitleText() {
           setName(a);
           setITData(arr);
         }}
+        onDoubleClick={(e) => {
+          e.target.value = '假日出遊';
+        }}
         style={{
           width: '200px',
           border: 'none',

@@ -111,7 +111,7 @@ function SiteDetail() {
     day: 1,
     sequence: 10,
     category: 1,
-    category_id: 174 + +sid,
+    category_id: 239 + +sid,
     time: null,
   });
 
@@ -186,7 +186,7 @@ function SiteDetail() {
           day: 1,
           sequence: 10,
           category: 1,
-          category_id: 174 + +sid,
+          category_id: 239 + +sid,
           time: null,
         });
         if (data.success) {
@@ -206,7 +206,7 @@ function SiteDetail() {
         day: 1,
         sequence: 10,
         category: 1,
-        category_id: 174 + +sid,
+        category_id: 239 + +sid,
         time: null,
       });
       const { data } = await axios.post(ITINERARY_ADDITEM, {
@@ -214,7 +214,7 @@ function SiteDetail() {
         day: 1,
         sequence: 10,
         category: 1,
-        category_id: 174 + +sid,
+        category_id: 239 + +sid,
         time: null,
       });
       if (data.success) {

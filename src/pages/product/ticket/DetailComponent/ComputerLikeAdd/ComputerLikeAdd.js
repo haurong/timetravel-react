@@ -4,7 +4,7 @@ import axios from 'axios';
 import { ReactComponent as Heart } from '../../../../../icon/heart_gray.svg';
 import { ReactComponent as FillHeart } from '../../../../../icon/heart.svg';
 import { ADD_COLLECT } from '../../../../../config';
-import CalendarAdd from '../../../../../icon/calendar+add.svg';
+import { ReactComponent as CalendarAdd } from '../../../../../icon/calendar+add.svg';
 import './ComputerLikeAdd.scss';
 import { useTicketContext } from '../../Context/TicketContext';
 function ComputerLikeAdd() {
@@ -47,7 +47,7 @@ function ComputerLikeAdd() {
           }
         }}
       >
-        {/* TODO:點下去變色 加入收藏 */}
+        {/* 喜愛+景點收藏 */}
         {collectItem.includes(ticketListData.product_name) ? (
           <FillHeart className="HotelHeart" />
         ) : (
@@ -63,14 +63,12 @@ function ComputerLikeAdd() {
           });
         }}
       >
-        {/* <button
-          className="CalendarBtn"
+        <CalendarAdd
+          className="noActiveHotelCalendarAdd"
           onClick={() => {
             // mySubmit();
           }}
-        >
-          <img src={CalendarAdd} className="Calendar_icon" alt="" />
-        </button> */}
+        />
       </div>
     </>
   );

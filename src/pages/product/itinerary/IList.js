@@ -49,9 +49,9 @@ export default function IList() {
         iData.splice(destination.index, 0, remove);
 
         for (let i = 0; i < iData.length; i++) {
-          if (i < 3) {
+          if (i < 4) {
             iData[i].day = 1;
-          } else if (i < 6) {
+          } else if (i < 7) {
             iData[i].day = 2;
           } else {
             iData[i].day = 3;

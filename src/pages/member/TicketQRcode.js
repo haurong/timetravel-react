@@ -53,7 +53,7 @@ function TicketQRcode() {
                     <Card.Img
                       variant="top"
                       className="foodCardImg1"
-                      src={MY_HOST + `/uploads/1-1.jpg`}
+                      src={MY_HOST + `/uploads/A001.jpg`}
                     />
                   </div>
                   <Card.Body>
@@ -173,7 +173,7 @@ function TicketQRcode() {
                     <Card.Img
                       variant="top"
                       className="foodCardImg1"
-                      src={MY_HOST + `/uploads/9-1.jpg`}
+                      src={MY_HOST + `/uploads/14-1.jpg`}
                     />
                   </div>
                   <Card.Body>
