@@ -45,6 +45,7 @@ function Ticket() {
     pageNow,
     pageTotal,
     setPageNow,
+    setHotelSort,
   } = useTicketContext();
 
   const location = useLocation();
@@ -61,6 +62,13 @@ function Ticket() {
     const pageList = _.chunk(response.data.rowsAll, perPage);
     setDisplayData(pageList);
     setPageTotal(pageList.length);
+    //  hotelSort預設值
+    setHotelSort({
+      area: 'area_All',
+      cate: 'cate_Ticket_All',
+      like: 'likeAll',
+      sortBy: '',
+    });
   }
 
   const paginationBar = (

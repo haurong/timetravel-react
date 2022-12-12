@@ -113,13 +113,14 @@ function StaysDetail() {
 
   return (
     <>
+      <div ref={Hotel_part0} id="Hotel_part0"></div>
       <NavBar />
       <div className="MobileHidden">
         <BookingBar />
       </div>
       <div style={{ width: '100%', height: '79px' }}></div>
       <BottomBar />
-      <div ref={Hotel_part0} id="Hotel_part0"></div>
+      <div className="MobileHidden" style={{ height: '50px' }}></div>
       <div className="MobileHidden container">
         <Breadcrumb />
       </div>
