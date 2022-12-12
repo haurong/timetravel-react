@@ -16,10 +16,10 @@ $input-padding-y: 0.8rem;
 $input-padding-x: 0.8rem;
 $input-border-color: #d9d9d9;
 //dropdown
-$dropdown-link-hover-bg: #FFF;
-$dropdown-link-active-bg: #FFF;
+$dropdown-link-hover-bg: #fff;
+$dropdown-link-active-bg: #fff;
 //pagination
-$pagination-focus-box-shadow:#fff;
+$pagination-focus-box-shadow: #fff;
 //container
 $container-max-widths: (
   sm: 540px,
@@ -89,6 +89,7 @@ body {
 .btn:disabled {
   color: #fff !important;
   background-color: #4d4d4d !important;
+  border-color: #4d4d4d !important;
 }
 .btn-secondary {
   color: #fff;

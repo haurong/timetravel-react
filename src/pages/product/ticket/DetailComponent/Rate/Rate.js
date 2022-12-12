@@ -4,7 +4,6 @@ import React from 'react';
 // import { useHotelContext } from '../../../stays/Context/HotelContext';
 import { useTicketContext } from '../../Context/TicketContext';
 function RateHotel() {
-  // const { allStar } = useHotelContext();
   const { allStar } = useTicketContext();
 
   return (

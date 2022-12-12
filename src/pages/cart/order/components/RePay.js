@@ -34,26 +34,24 @@ function RePay({ onHide, show, type, uuid }) {
             <h1>請選擇付款方式</h1>
           </div>
           <div className="d-flex justify-content-center pb-3">
-            <button
-              type="button"
-              className="btn btn-primary"
+            <label
               onClick={() => {
                 setPayMethod('LinePay');
               }}
             >
-              LinePay
-            </button>
+              <input type={'radio'} name={'paytype'} />
+              <span className="btn btn-primary mx-2">LinePay</span>
+            </label>
           </div>
           <div className="d-flex justify-content-center pb-3">
-            <button
-              type="button"
-              className="btn btn-primary"
+            <label
               onClick={() => {
                 setPayMethod('Credit');
               }}
             >
-              信用卡一次付清
-            </button>
+              <input type={'radio'} name={'paytype'} />
+              <span className="btn btn-primary mx-2">信用卡一次付清</span>
+            </label>
           </div>
         </Modal.Body>
         <Modal.Footer>

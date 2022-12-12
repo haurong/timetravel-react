@@ -5,9 +5,11 @@ import StateButton from './StateButton';
 import DateInput from './DateInput';
 import CountButton from './CountButton';
 import { useTicketCart } from '../../utils/useCart';
+import moment from 'moment';
 function TicketCard() {
   const { items, plusOne, minusOne, removeItem, updateDate } = useTicketCart();
   // console.log(items);
+  const toDay = moment(new Date()).format('YYYY-MM-DD');
   return (
     <>
       {items.map((v, i) => {
@@ -25,6 +27,7 @@ function TicketCard() {
               <div className="d-flex justify-content-between">
                 <DateInput
                   text={'使用日期'}
+                  min={toDay}
                   date={v.date}
                   id={v.id}
                   updateDate={updateDate}
