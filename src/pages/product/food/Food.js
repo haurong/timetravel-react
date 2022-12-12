@@ -325,7 +325,6 @@ function Food() {
                     className="foodCardImg1"
                     src={`${FOOD_IMG}${v.product_photo}`}
                     style={{ cursor: 'pointer' }}
-                   
                   />
                 </div>
                 <Card.Body>

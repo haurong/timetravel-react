@@ -18,7 +18,6 @@ import Card_Carousel from '../../../Component/Carousel/Card_Carousel';
 import HashChange from './HashChange';
 import Heart from '../../../icon/heart_gray.svg';
 import PinkHeart from '../../../icon/heart.svg';
-import Calendar from '../../../icon/calendar+add.svg';
 import Map_icon from '../../../icon/map_blue.svg';
 import Food_icon from '../../../icon/food_blue.svg';
 import Phone_icon from '../../../icon/iphone.svg';
@@ -56,7 +55,7 @@ function FoodDetail() {
     id: foodData.sid,
     name: foodData.product_name,
     quantity: count,
-    price: totalPrice,
+    price: foodData.p_selling_price,
     img: 'http://localhost:3001/uploads/F116-1.jpg',
     rate: 4.3,
   };
@@ -337,19 +336,6 @@ function FoodDetail() {
               </div>
 
               <div className="icon">
-                {/* <button
-                  className="CalendarBtn"
-                  onClick={() => {
-                    mySubmit();
-                  }}
-                >
-                  <img
-                    src={Calendar}
-                    className="Calendar_icon"
-                    alt=""
-                    style={{ width: '40px', height: '40px' }}
-                  />
-                </button> */}
                 <CalendarAdd
                   className="noActiveHotelCalendarAdd"
                   onClick={() => {
@@ -568,7 +554,7 @@ function FoodDetail() {
         <h2 className="cardCarouselTitle">更多美食推薦</h2>
         <Card_Carousel className="cardCarousel" />
       </div>
-{/* <div className="space"></div> */}
+      {/* <div className="space"></div> */}
       <Footer />
     </>
   );

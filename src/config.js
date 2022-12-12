@@ -28,8 +28,7 @@ export const FOOD_ORDER_DETAIL = `${MY_HOST}/orders/api/list/foodlist/`;
 
 export const PRODUCT_LIST = `${MY_HOST}/productAll/api`;
 
-//新增member24得收藏資料
-//移除member24得收藏資料
+
 
 export const ADD_COLLECT = `${MY_HOST}/productAll/AddCollect`;
 export const DEL_COLLECT = `${MY_HOST}/productAll/DelCollect`;
@@ -84,8 +83,6 @@ export const appConfig = {
   prodUrl: 'https://www.timetravel.com',
 };
 
-export const ALLPRODUCT_LIST = `${MY_HOST}/productAll/api`;
-export const ADD_FOOD_COLLECT = `${MY_HOST}/productAll/api/addCollect-api`;
 // //從node抓照片資料
 // export const appConfig = {
 //   debug: true,
