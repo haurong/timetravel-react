@@ -86,6 +86,18 @@ function Profile() {
           confirmButtonText: '確認',
           confirmButtonColor: '#59d8a1',
         });
+        let r = await axios.get(
+          `http://localhost:3001/member/api/information/${
+            JSON.parse(localStorage.getItem('auth')).sid
+          }`
+        );
+        console.log(r.data, myAuth);
+        setMyAuth({
+          ...myAuth,
+          member_img: r.data[0].member_img,
+          username: r.data[0].username,
+          telephone: r.data[0].telephone,
+        });
         return;
       } else {
         Swal.fire({
