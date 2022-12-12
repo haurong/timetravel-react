@@ -70,7 +70,7 @@ function Ticket() {
     const res_ticketCommentData = await axios.get(
       TICKET_DETAIL + dataFrom + '/ticketComment'
     );
-    setHotelCommentData(res_ticketCommentData.data);
+    setTicketCommentData(res_ticketCommentData.data);
     // console.log(res_ticketCommentData.data);
   }
   const Ticket_part0 = useRef();
