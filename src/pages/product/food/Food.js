@@ -26,7 +26,7 @@ import { useHotelContext } from '../stays/Context/HotelContext.js';
 import './style/Food.scss';
 
 function Food() {
-  const { pageSearchWord, setPageSearchWord } = useAllContext();
+  const { pageSearchWord, setPageSearchWord,setSearchWord } = useAllContext();
   const { collect, setCollect } = useFoodContext();
   //從伺服器來的資料
   const [foodData, setFoodData] = useState([]);
@@ -35,6 +35,8 @@ function Food() {
   const [foodProductDisplay, setFoodProductDisplay] = useState([]);
 
   const { hotelSort,setHotelSort } = useHotelContext();
+
+
 
   async function getList() {
     const response = await axios.get(FOOD_LIST);
@@ -49,6 +51,7 @@ function Food() {
       like: 'likeAll',
       sortBy: '',
     });
+    setSearchWord('');
 
     const responseCollect = await axios.get(
       `http://localhost:3001/productAll/checkCollect/${
