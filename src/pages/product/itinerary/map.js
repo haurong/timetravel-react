@@ -48,11 +48,14 @@ export default function Map() {
     getList();
   }, [location]);
 
+  const mockData = [25.1571, 121.405];
+
   return (
     <div id="map">
       {iData[0] ? (
         <MapContainer
-          center={[iData[0].lat, iData[0].lng]}
+          // center={[iData[0].lat, iData[0].lng]}
+          center={mockData}
           zoom={14}
           scrollWheelZoom={true}
         >
@@ -63,7 +66,7 @@ export default function Map() {
           {iData.map((el, i) => {
             return (
               <Marker
-                position={[el.lat, el.lng]}
+                position={mockData}
                 icon={
                   el.day === 1
                     ? customMarker1

@@ -141,7 +141,7 @@ function Profile() {
           <div className="profile col-5">
             <h1>修改個人資訊</h1>
 
-            <form className="form" onSubmit={mySubmit}>
+            <form className='form' onSubmit={mySubmit}>
               <div
                 className="profile_img"
                 style={

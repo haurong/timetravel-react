@@ -26,7 +26,7 @@ import { useHotelContext } from '../stays/Context/HotelContext.js';
 import './style/Food.scss';
 
 function Food() {
-  const { pageSearchWord, setPageSearchWord,setSearchWord } = useAllContext();
+  const { pageSearchWord, setPageSearchWord, setSearchWord } = useAllContext();
   const { collect, setCollect } = useFoodContext();
   //從伺服器來的資料
   const [foodData, setFoodData] = useState([]);
@@ -34,9 +34,7 @@ function Food() {
   //呈現顯示資料用
   const [foodProductDisplay, setFoodProductDisplay] = useState([]);
 
-  const { hotelSort,setHotelSort } = useHotelContext();
-
-
+  const { hotelSort, setHotelSort } = useHotelContext();
 
   async function getList() {
     const response = await axios.get(FOOD_LIST);

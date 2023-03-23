@@ -138,7 +138,7 @@ function SiteCardList() {
   const handleAddLike = (hotelSortData, hotelSort) => {
     let newHotelSortData = [...hotelSortData];
     // console.log(newHotelSortData);
-
+    console.log(hotelSort);
     // 處理目的地
     switch (hotelSort) {
       case 'like<100':
@@ -200,11 +200,12 @@ function SiteCardList() {
     // console.log();
     let newHotelSortData = [];
     setPageNow(1);
-    newHotelSortData = handleSortPrice(hotelSortData, hotelSort.sortBy);
-    newHotelSortData = handleArea(newHotelSortData, hotelSort.area);
+    newHotelSortData = handleArea(hotelSortData, hotelSort.area);
+    console.log('area', newHotelSortData);
     newHotelSortData = handleCate(newHotelSortData, hotelSort.cate);
+    console.log('cate', newHotelSortData);
     newHotelSortData = handleAddLike(newHotelSortData, hotelSort.like);
-
+    console.log('like', newHotelSortData);
     setDisplayData(newHotelSortData);
     getFoodListData(newHotelSortData, perPage);
   }, [hotelSort.area, hotelSort.like, hotelSort.cate, hotelSort.sortBy]);

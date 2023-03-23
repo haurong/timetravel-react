@@ -81,7 +81,10 @@ function RePay({ onHide, show, type, uuid }) {
                     if (payMethod === 'LinePay') {
                       myLinePay();
                     } else if (payMethod === 'Credit') {
-                      return;
+                      localStorage.removeItem('foodcart');
+                      localStorage.removeItem('ticketcart');
+                      localStorage.removeItem('hotelcart');
+                      window.location = 'http://localhost:3000/cart/success';
                     }
                   } else if (
                     /* Read more about handling dismissals below */

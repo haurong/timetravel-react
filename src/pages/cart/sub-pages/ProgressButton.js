@@ -43,6 +43,7 @@ function ProgressButton({
   };
   const mySubmit2 = async (e) => {
     const { data } = await axios.post(MakeOrder, formData);
+    console.log(data);
     if (data.success) {
       Swal.fire({
         icon: 'success',
@@ -53,7 +54,6 @@ function ProgressButton({
       localStorage.removeItem('foodcart');
       localStorage.removeItem('ticketcart');
       localStorage.removeItem('hotelcart');
-      window.location = 'http://localhost:3000/cart/fail';
     } else {
       Swal.fire({
         icon: 'error',
@@ -97,6 +97,10 @@ function ProgressButton({
             className="btn btn-primary"
             onClick={() => {
               mySubmit2();
+              localStorage.removeItem('foodcart');
+              localStorage.removeItem('ticketcart');
+              localStorage.removeItem('hotelcart');
+              window.location = 'http://localhost:3000/cart/fail';
             }}
           >
             模擬付款失敗
@@ -109,6 +113,10 @@ function ProgressButton({
                 mySubmit();
               } else if (payMethod === 'Credit') {
                 mySubmit2();
+                localStorage.removeItem('foodcart');
+                localStorage.removeItem('ticketcart');
+                localStorage.removeItem('hotelcart');
+                window.location = 'http://localhost:3000/cart/success';
               } else {
                 Swal.fire({
                   icon: 'error',

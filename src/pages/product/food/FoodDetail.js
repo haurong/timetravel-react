@@ -56,7 +56,7 @@ function FoodDetail() {
     name: foodData.product_name,
     quantity: count,
     price: foodData.p_selling_price,
-    img: 'http://localhost:3001/uploads/F116-1.jpg',
+    img: 'http://49.159.22.9:3001/uploads/F116-1.jpg',
     rate: 4.3,
   };
 

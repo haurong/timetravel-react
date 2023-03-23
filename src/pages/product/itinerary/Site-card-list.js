@@ -1,5 +1,4 @@
 export default function SiteCardList({ rows }) {
-  // console.log({ rows });
   return (
     <>
       <div className="container" style={{ marginTop: '100px' }}>

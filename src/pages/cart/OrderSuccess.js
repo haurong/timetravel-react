@@ -15,7 +15,6 @@ function OrderSuccess() {
   const query = queryString.parse(location.search);
   async function checkPayment() {
     const response = await axios.post(LINE_PAY_CONFIRM_API, query);
-    console.log(response.data.payResult);
     const payCheckResult = response.data.payResult;
     if (payCheckResult === '0000') {
       await changePay();

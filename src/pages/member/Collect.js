@@ -20,7 +20,7 @@ function Collect() {
     setProductData(response.data);
     console.log(response.data);
     const responseCollect = await axios.get(
-      `http://localhost:3001/productAll/checkCollect/${
+      `http://49.159.22.9:3001/productAll/checkCollect/${
         JSON.parse(localStorage.getItem('auth')).sid
       }`
     );

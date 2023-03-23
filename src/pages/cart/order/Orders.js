@@ -13,6 +13,7 @@ function Orders() {
 
   async function getOrders() {
     const response = await axios.get(ORDERS_API(member_sid));
+    console.log('ORDERS_API', response.data);
     setOrdersData(response.data);
   }
   useEffect(() => {

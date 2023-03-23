@@ -21,7 +21,7 @@ function BuyButton() {
     date: pickDate.startTime,
     price: ticketTypePrice,
     rate: allStar,
-    img: 'http://localhost:3001/uploads/ticket/14-1.jpg',
+    img: 'http://49.159.22.9:3001/uploads/14-1.jpg',
   };
 
   return (
