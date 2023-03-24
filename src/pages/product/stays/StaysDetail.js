@@ -38,6 +38,7 @@ function StaysDetail() {
     setHotelRoomPrice,
     setHotelCommentData,
     setCollectItem,
+    setRoomsChooseName,
   } = useHotelContext();
   // const { roomCounts, hotelRoomPrice } = useHotelContext();
 
@@ -52,9 +53,11 @@ function StaysDetail() {
       HOTEL_DETAIL + dataFrom + '/room'
     );
     const toArray = res_hotelRoomData.data;
+    console.log(toArray);
     setHotelRoomChoose(toArray);
     //  設定最便宜的價格
     setHotelRoomPrice(toArray[0].room_price);
+    setRoomsChooseName(toArray[0].room_type);
     //  拿到所有評論的資料
     const res_hotelCommentData = await axios.get(
       HOTEL_DETAIL + dataFrom + '/hotelComment'

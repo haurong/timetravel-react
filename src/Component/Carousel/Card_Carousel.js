@@ -101,7 +101,7 @@ export default function Card_Carousel() {
                     //後端先發送移除收藏
                     if (collect.includes(foodCardData1.product_name)) {
                       axios.post(
-                        'http://localhost:3001/productAll/DelCollect',
+                        'http://49.159.22.9:3001/productAll/DelCollect',
                         {
                           member_sid: member_sid,
                           product_sid: product_sid,
@@ -118,7 +118,7 @@ export default function Card_Carousel() {
                     } else {
                       //前端發送新增收藏
                       axios.post(
-                        'http://localhost:3001/productAll/AddCollect',
+                        'http://49.159.22.9:3001/productAll/AddCollect',
                         {
                           member_sid: member_sid,
                           product_sid: product_sid,
@@ -189,7 +189,7 @@ export default function Card_Carousel() {
                     //後端先發送移除收藏
                     if (collect.includes(foodCardData2.product_name)) {
                       axios.post(
-                        'http://localhost:3001/productAll/DelCollect',
+                        'http://49.159.22.9:3001/productAll/DelCollect',
                         {
                           member_sid: member_sid,
                           product_sid: product_sid,
@@ -206,7 +206,7 @@ export default function Card_Carousel() {
                     } else {
                       //前端發送新增收藏
                       axios.post(
-                        'http://localhost:3001/productAll/AddCollect',
+                        'http://49.159.22.9:3001/productAll/AddCollect',
                         {
                           member_sid: member_sid,
                           product_sid: product_sid,
@@ -277,7 +277,7 @@ export default function Card_Carousel() {
                     //後端先發送移除收藏
                     if (collect.includes(foodCardData3.product_name)) {
                       axios.post(
-                        'http://localhost:3001/productAll/DelCollect',
+                        'http://49.159.22.9:3001/productAll/DelCollect',
                         {
                           member_sid: member_sid,
                           product_sid: product_sid,
@@ -294,7 +294,7 @@ export default function Card_Carousel() {
                     } else {
                       //前端發送新增收藏
                       axios.post(
-                        'http://localhost:3001/productAll/AddCollect',
+                        'http://49.159.22.9:3001/productAll/AddCollect',
                         {
                           member_sid: member_sid,
                           product_sid: product_sid,
@@ -365,7 +365,7 @@ export default function Card_Carousel() {
                     //後端先發送移除收藏
                     if (collect.includes(foodCardData4.product_name)) {
                       axios.post(
-                        'http://localhost:3001/productAll/DelCollect',
+                        'http://49.159.22.9:3001/productAll/DelCollect',
                         {
                           member_sid: member_sid,
                           product_sid: product_sid,
@@ -382,7 +382,7 @@ export default function Card_Carousel() {
                     } else {
                       //前端發送新增收藏
                       axios.post(
-                        'http://localhost:3001/productAll/AddCollect',
+                        'http://49.159.22.9:3001/productAll/AddCollect',
                         {
                           member_sid: member_sid,
                           product_sid: product_sid,
@@ -453,7 +453,7 @@ export default function Card_Carousel() {
                     //後端先發送移除收藏
                     if (collect.includes(foodCardData5.product_name)) {
                       axios.post(
-                        'http://localhost:3001/productAll/DelCollect',
+                        'http://49.159.22.9:3001/productAll/DelCollect',
                         {
                           member_sid: member_sid,
                           product_sid: product_sid,
@@ -470,7 +470,7 @@ export default function Card_Carousel() {
                     } else {
                       //前端發送新增收藏
                       axios.post(
-                        'http://localhost:3001/productAll/AddCollect',
+                        'http://49.159.22.9:3001/productAll/AddCollect',
                         {
                           member_sid: member_sid,
                           product_sid: product_sid,
@@ -541,7 +541,7 @@ export default function Card_Carousel() {
                     //後端先發送移除收藏
                     if (collect.includes(foodCardData6.product_name)) {
                       axios.post(
-                        'http://localhost:3001/productAll/DelCollect',
+                        'http://49.159.22.9:3001/productAll/DelCollect',
                         {
                           member_sid: member_sid,
                           product_sid: product_sid,
@@ -558,7 +558,7 @@ export default function Card_Carousel() {
                     } else {
                       //前端發送新增收藏
                       axios.post(
-                        'http://localhost:3001/productAll/AddCollect',
+                        'http://49.159.22.9:3001/productAll/AddCollect',
                         {
                           member_sid: member_sid,
                           product_sid: product_sid,

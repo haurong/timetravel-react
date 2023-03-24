@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../../global.scss';
 import NavBar from '../../layout/NavBar';
@@ -14,6 +14,7 @@ import { MY_HOST, PRODUCT_LIST } from '../../config';
 import { useAllContext } from '../AllContext/AllContext';
 function Collect() {
   const { collect, setCollect, productData, setProductData } = useAllContext();
+  const [displayColletData, setDisplayCollectData] = useState([]);
 
   async function getMemberCollect() {
     const response = await axios.get(PRODUCT_LIST);
@@ -38,7 +39,7 @@ function Collect() {
     let newProduct = productData.filter((item) => {
       return collect.includes(item.product_name) === true;
     });
-    setProductData(newProduct);
+    setDisplayCollectData(newProduct);
     console.log('newProduct', newProduct);
   };
 
@@ -64,100 +65,104 @@ function Collect() {
               lg={4}
               className="d-flex justify-content-flexstart flex-wrap "
             >
-              {productData?.map((v, i) => {
-                return (
-                  <Card
-                    className="MyCard col-3"
-                    style={{ width: '20rem' }}
-                    key={i}
-                  >
-                    <div style={{ overflow: 'hidden' }}>
-                      <Card.Img
-                        variant="top"
-                        className="foodCardImg1"
-                        src={MY_HOST + `/uploads/` + v.photo}
-                      />
-                    </div>
-                    <Card.Body>
-                      <Card.Title className="Card_Title">
-                        {v.product_name}
-                      </Card.Title>
+              {displayColletData
+                ? displayColletData.map((v, i) => {
+                    return (
+                      <Card
+                        className="MyCard col-3"
+                        style={{ width: '20rem' }}
+                        key={i}
+                      >
+                        <div style={{ overflow: 'hidden' }}>
+                          <Card.Img
+                            variant="top"
+                            className="foodCardImg1"
+                            src={MY_HOST + `/uploads/` + v.photo}
+                          />
+                        </div>
+                        <Card.Body>
+                          <Card.Title className="Card_Title">
+                            {v.product_name}
+                          </Card.Title>
 
-                      <Card.Text className="Card_Text">
-                        <Card.Img src={Map} className="Map_icon" />
-                        <span className="Card_Score">
-                          {v.city_name} | {v.area_name}
-                        </span>
-                      </Card.Text>
-                      <div className="d-flex PriceAndCollect">
-                        <div>
-                          <button
-                            className="Heart_btn"
-                            onClick={() => {
-                              const member_sid = JSON.parse(
-                                localStorage.getItem('auth')
-                              ).sid;
-                              const product_sid = v.sid;
-                              const collect_product_name = v.product_name;
-
-                              //後端先發送移除收藏
-                              if (collect.includes(v.product_name)) {
-                                axios.post(
-                                  'http://localhost:3001/productAll/DelCollect',
-                                  {
-                                    member_sid: member_sid,
-                                    product_sid: product_sid,
-                                    collect_product_name: collect_product_name,
-                                  }
-                                );
-                                console.log(1111);
-                                //前端顯示空心
-                                setCollect(
-                                  collect.filter((el) => {
-                                    return el !== v.product_name;
-                                  })
-                                );
-                              } else {
-                                //前端發送新增收藏
-                                axios.post(
-                                  'http://localhost:3001/productAll/AddCollect',
-                                  {
-                                    member_sid: member_sid,
-                                    product_sid: product_sid,
-                                    collect_product_name: collect_product_name,
-                                  }
-                                );
-                                //解構出原收藏陣列,把新的收藏塞回去
-                                setCollect([...collect, v.product_name]);
-                              }
-                            }}
-                          >
-                            <img
-                              src={
-                                collect.includes(v.product_name)
-                                  ? PinkHeart
-                                  : Heart
-                              }
-                              style={{ width: '25px', height: '25px' }}
-                              alt=""
-                            />
-                            <span>
-                              {collect.includes(v.product_name)
-                                ? Number(v.collect) + 1
-                                : v.collect}
+                          <Card.Text className="Card_Text">
+                            <Card.Img src={Map} className="Map_icon" />
+                            <span className="Card_Score">
+                              {v.city_name} | {v.area_name}
                             </span>
-                          </button>
-                        </div>
-                        <div>
-                          <h2 variant="primary" className="Card_Price">
-                            {v.price !== 0 ? `NT${v.price}` : null}
-                          </h2>
-                        </div>
-                      </div>
-                    </Card.Body>
-                  </Card>
-                );
-              })}
+                          </Card.Text>
+                          <div className="d-flex PriceAndCollect">
+                            <div>
+                              <button
+                                className="Heart_btn"
+                                onClick={() => {
+                                  const member_sid = JSON.parse(
+                                    localStorage.getItem('auth')
+                                  ).sid;
+                                  const product_sid = v.sid;
+                                  const collect_product_name = v.product_name;
+
+                                  //後端先發送移除收藏
+                                  if (collect.includes(v.product_name)) {
+                                    axios.post(
+                                      'http://49.159.22.9:3001/productAll/DelCollect',
+                                      {
+                                        member_sid: member_sid,
+                                        product_sid: product_sid,
+                                        collect_product_name:
+                                          collect_product_name,
+                                      }
+                                    );
+                                    console.log(1111);
+                                    //前端顯示空心
+                                    setCollect(
+                                      collect.filter((el) => {
+                                        return el !== v.product_name;
+                                      })
+                                    );
+                                  } else {
+                                    //前端發送新增收藏
+                                    axios.post(
+                                      'http://49.159.22.9:3001/productAll/AddCollect',
+                                      {
+                                        member_sid: member_sid,
+                                        product_sid: product_sid,
+                                        collect_product_name:
+                                          collect_product_name,
+                                      }
+                                    );
+                                    //解構出原收藏陣列,把新的收藏塞回去
+                                    setCollect([...collect, v.product_name]);
+                                  }
+                                }}
+                              >
+                                <img
+                                  src={
+                                    collect.includes(v.product_name)
+                                      ? PinkHeart
+                                      : Heart
+                                  }
+                                  style={{ width: '25px', height: '25px' }}
+                                  alt=""
+                                />
+                                <span>
+                                  {collect.includes(v.product_name)
+                                    ? Number(v.collect) + 1
+                                    : v.collect}
+                                </span>
+                              </button>
+                            </div>
+                            <div>
+                              <h2 variant="primary" className="Card_Price">
+                                {v.price !== 0 ? `NT${v.price}` : null}
+                              </h2>
+                            </div>
+                          </div>
+                        </Card.Body>
+                      </Card>
+                    );
+                  })
+                : ''}
             </Row>
           </div>
         </div>

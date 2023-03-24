@@ -24,7 +24,7 @@ export default function Qrcode() {
       </div>
       <div className="qrcode d-flex">
         <QRCodeSVG
-          value={'http://localhost:3001/uploads/1(1).jpg'}
+          value={'http://49.159.22.9:3001/uploads/1(1).jpg'}
           size="216"
           level="M"
           style={{ padding: '10px' }}

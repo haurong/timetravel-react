@@ -144,7 +144,7 @@ function LogIn() {
                   className="form-label"
                   onClick={() => {
                     setFormData({
-                      email: 'user@gmail.com',
+                      email: 'e25254@gmail.com',
                       password: 'Aa123456',
                     });
                   }}

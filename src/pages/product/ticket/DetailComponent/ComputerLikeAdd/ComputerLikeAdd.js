@@ -24,7 +24,7 @@ function ComputerLikeAdd() {
 
           if (collectItem.includes(ticketListData.product_name)) {
             const res = axios.post(
-              'http://localhost:3001/productAll/DelCollect',
+              'http://49.159.22.9:3001/productAll/DelCollect',
               {
                 member_sid: member_sid,
                 product_sid: product_sid,

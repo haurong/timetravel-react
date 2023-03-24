@@ -87,7 +87,7 @@ function Profile() {
           confirmButtonColor: '#59d8a1',
         });
         let r = await axios.get(
-          `http://localhost:3001/member/api/information/${
+          `http://49.159.22.9:3001/member/api/information/${
             JSON.parse(localStorage.getItem('auth')).sid
           }`
         );
@@ -111,7 +111,7 @@ function Profile() {
     }
     if (image) {
       let r = await axios.get(
-        `http://localhost:3001/member/api/information/${
+        `http://49.159.22.9:3001/member/api/information/${
           JSON.parse(localStorage.getItem('auth')).sid
         }`
       );

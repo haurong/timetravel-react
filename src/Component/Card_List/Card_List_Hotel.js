@@ -346,7 +346,7 @@ function Card_List() {
                             const collect_product_name = el.product_name;
                             if (collectItem.includes(el.product_name)) {
                               const res = axios.post(
-                                'http://localhost:3001/productAll/DelCollect',
+                                'http://49.159.22.9:3001/productAll/DelCollect',
                                 {
                                   member_sid: member_sid,
                                   product_sid: product_sid,

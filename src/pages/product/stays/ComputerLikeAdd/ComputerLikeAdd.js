@@ -23,7 +23,7 @@ function ComputerLikeAdd() {
   const { hotelListData, collectItem, setCollectItem } = useHotelContext();
   // async function testList() {
   //   const res = await axios.get(
-  //     `http://localhost:3001/productAll/checkCollect/36`
+  //     `http://49.159.22.9:3001/productAll/checkCollect/36`
   //   );
   //   console.log(res.data);
   //   setCollectItem(res.data);
@@ -189,7 +189,7 @@ function ComputerLikeAdd() {
           // });
           if (collectItem.includes(hotelListData.product_name)) {
             const res = axios.post(
-              'http://localhost:3001/productAll/DelCollect',
+              'http://49.159.22.9:3001/productAll/DelCollect',
               {
                 member_sid: member_sid,
                 product_sid: product_sid,

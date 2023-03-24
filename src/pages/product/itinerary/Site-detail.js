@@ -304,7 +304,7 @@ function SiteDetail() {
                     //後端先發送移除收藏
                     if (collect.includes(siteData.name)) {
                       axios.post(
-                        'http://localhost:3001/productAll/DelCollect',
+                        'http://49.159.22.9:3001/productAll/DelCollect',
                         {
                           member_sid: member_sid,
                           product_sid: product_sid,
@@ -321,7 +321,7 @@ function SiteDetail() {
                     } else {
                       //前端發送新增收藏
                       axios.post(
-                        'http://localhost:3001/productAll/AddCollect',
+                        'http://49.159.22.9:3001/productAll/AddCollect',
                         {
                           member_sid: member_sid,
                           product_sid: product_sid,

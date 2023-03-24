@@ -1,6 +1,6 @@
 // import { Key } from './Key';
 
-// export const MY_HOST = 'http://localhost:3001';
+// export const MY_HOST = 'http://49.159.22.9:3001';
 // export const MY_HOST = 'http://192.168.0.11:3001';
 export const MY_HOST = 'http://49.159.22.9:3001';
 

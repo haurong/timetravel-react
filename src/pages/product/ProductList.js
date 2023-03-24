@@ -63,7 +63,7 @@ function ProductList() {
     });
 
     const responseCollect = await axios.get(
-      `http://localhost:3001/productAll/checkCollect/${
+      `http://49.159.22.9:3001/productAll/checkCollect/${
         JSON.parse(localStorage.getItem('auth')).sid
       }`
     );
@@ -377,7 +377,7 @@ function ProductList() {
                           //後端先發送移除收藏
                           if (collect.includes(v.product_name)) {
                             axios.post(
-                              'http://localhost:3001/productAll/DelCollect',
+                              'http://49.159.22.9:3001/productAll/DelCollect',
                               {
                                 member_sid: member_sid,
                                 product_sid: product_sid,
@@ -394,7 +394,7 @@ function ProductList() {
                           } else {
                             //前端發送新增收藏
                             axios.post(
-                              'http://localhost:3001/productAll/AddCollect',
+                              'http://49.159.22.9:3001/productAll/AddCollect',
                               {
                                 member_sid: member_sid,
                                 product_sid: product_sid,

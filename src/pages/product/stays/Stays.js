@@ -54,7 +54,7 @@ function Stays() {
     setSearchWord('');
     //拿到會員的收藏項目
     const res = await axios.get(
-      `http://localhost:3001/productAll/checkCollect/${
+      `http://49.159.22.9:3001/productAll/checkCollect/${
         JSON.parse(localStorage.getItem('auth')).sid
       }`
     );
