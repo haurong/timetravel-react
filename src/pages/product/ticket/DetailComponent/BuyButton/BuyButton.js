@@ -3,6 +3,7 @@ import './BuyButton.scss';
 import { useTicketContext } from '../../Context/TicketContext';
 import Swal from 'sweetalert2';
 import { useTicketCart } from '../../../../cart/utils/useCart';
+import { useHotelContext } from '../../../stays/Context/HotelContext';
 function BuyButton() {
   const { addItem } = useTicketCart();
   const {
@@ -23,6 +24,8 @@ function BuyButton() {
     rate: allStar,
     img: 'http://49.159.22.9:3001/uploads/14-1.jpg',
   };
+
+  console.log('typesChooseName',typesChooseName);
 
   return (
     <>

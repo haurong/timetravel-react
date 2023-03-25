@@ -53,7 +53,6 @@ function StaysDetail() {
       HOTEL_DETAIL + dataFrom + '/room'
     );
     const toArray = res_hotelRoomData.data;
-    console.log(toArray);
     setHotelRoomChoose(toArray);
     //  設定最便宜的價格
     setHotelRoomPrice(toArray[0].room_price);

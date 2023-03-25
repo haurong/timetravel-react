@@ -47,6 +47,7 @@ function Ticket() {
     setLike,
     add,
     setAdd,
+    SetTypesChooseName,
   } = useTicketContext();
 
   // const toggleLike = () => setLike(!like);
@@ -61,6 +62,7 @@ function Ticket() {
     // 拿票種&價錢
     const res_ticketType = await axios.get(TICKET_DETAIL + dataFrom + '/types');
     const myArray = res_ticketType.data;
+    SetTypesChooseName(myArray[0].tickets_types);
     setHotelRoomChoose(myArray);
     // console.log(res_ticketType);
     //  設定預設價格

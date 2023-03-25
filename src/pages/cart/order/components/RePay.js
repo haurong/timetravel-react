@@ -2,9 +2,16 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { LINE_PAY_API } from './../../../../config';
+import queryString from 'query-string';
+import { useLocation } from 'react-router-dom';
+import {
+  LINE_PAY_CONFIRM_API,
+  CHANGE_PAY_API,
+  LINE_PAY_API,
+} from './../../../../config';
 
 function RePay({ onHide, show, type, uuid }) {
+  const location = useLocation();
   const [payMethod, setPayMethod] = useState('');
   let payUrl;
   const myLinePay = async () => {
@@ -16,6 +23,11 @@ function RePay({ onHide, show, type, uuid }) {
     const url = response.data.payUrl;
     payUrl = url;
     console.log(payUrl);
+  }
+  const query = queryString.parse(location.search);
+  async function changePay() {
+    const response = await axios.put(CHANGE_PAY_API, { orderId: uuid });
+    console.log(response);
   }
   return (
     <Modal
@@ -81,6 +93,7 @@ function RePay({ onHide, show, type, uuid }) {
                     if (payMethod === 'LinePay') {
                       myLinePay();
                     } else if (payMethod === 'Credit') {
+                      changePay();
                       localStorage.removeItem('foodcart');
                       localStorage.removeItem('ticketcart');
                       localStorage.removeItem('hotelcart');

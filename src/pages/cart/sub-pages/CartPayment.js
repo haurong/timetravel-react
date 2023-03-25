@@ -2,6 +2,9 @@ import PaymentCard from './components/PaymentCard';
 import ProgressButton from './ProgressButton';
 import { useFoodCart, useHotelCart, useTicketCart } from '../utils/useCart';
 import { useState } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import { MakeOrder, LINE_PAY_API } from '../../../config';
 function CartPayment({
   prev,
   next,
@@ -19,6 +22,7 @@ function CartPayment({
   setPaymentId,
 }) {
   const [payMethod, setPayMethod] = useState('');
+  const [ordersStatusSid, setOrdersStatusSid] = useState(1);
   //取的存在localstorga的會員sid
   const member = JSON.parse(localStorage.getItem('auth'));
   // console.log(member.sid);
@@ -45,17 +49,39 @@ function CartPayment({
   const newTicket = ticketItems.map((v, i) => {
     return { ...v, uuid };
   });
-  const order = {
-    member_sid: member.sid,
-    uuid: uuid,
-    orders_total_price: totalPrice,
-  };
   // setOrderId(order.uuid);
-  const formData = {
-    order: order,
-    food: newFood,
-    hotel: newHotel,
-    ticket: newTicket,
+  const formData = (statusSid) => {
+    return {
+      order: {
+        member_sid: member.sid,
+        uuid: uuid,
+        orders_total_price: totalPrice,
+        orders_status_sid: statusSid,
+      },
+      food: newFood,
+      hotel: newHotel,
+      ticket: newTicket,
+    };
+  };
+  const mySubmit2 = async (statusSid) => {
+    Swal.fire({
+      icon: 'success',
+      title: '已成功建立訂單，即將跳往結帳頁面',
+      confirmButtonText: '確認',
+      confirmButtonColor: '#59d8a1',
+    });
+    localStorage.removeItem('foodcart');
+    localStorage.removeItem('ticketcart');
+    localStorage.removeItem('hotelcart');
+    const { data } = await axios.post(MakeOrder, formData(statusSid));
+    if (data.success && statusSid === 1) {
+      window.location = 'http://localhost:3000/cart/success';
+    } else if (data.success && statusSid === 2) {
+      localStorage.removeItem('foodcart');
+      localStorage.removeItem('ticketcart');
+      localStorage.removeItem('hotelcart');
+      window.location = 'http://localhost:3000/cart/fail';
+    }
   };
 
   // console.log(newFood);
@@ -101,9 +127,9 @@ function CartPayment({
           paymentId={paymentId}
           hotelRepresent={hotelRepresent}
           hotelMobile={hotelMobile}
-          formData={formData}
           payMethod={payMethod}
           uuid={uuid}
+          mySubmit2={mySubmit2}
         />
       </div>
     </div>

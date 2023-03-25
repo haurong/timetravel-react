@@ -13,20 +13,17 @@ function OrderSuccess() {
   // const queryString = data[1];
   // const query = queryString.split('&');
   const query = queryString.parse(location.search);
-  async function checkPayment() {
-    const response = await axios.post(LINE_PAY_CONFIRM_API, query);
-    const payCheckResult = response.data.payResult;
-    if (payCheckResult === '0000') {
-      await changePay();
-    }
-  }
-  async function changePay() {
-    const response = await axios.put(CHANGE_PAY_API, query);
-    console.log(response);
-  }
-  useEffect(() => {
-    checkPayment();
-  }, []);
+  // async function checkPayment() {
+  //   const response = await axios.post(LINE_PAY_CONFIRM_API, query);
+  //   const payCheckResult = response.data.payResult;
+  //   if (payCheckResult === '0000') {
+  //     await changePay();
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   checkPayment();
+  // }, []);
   return (
     <>
       <NavBar />

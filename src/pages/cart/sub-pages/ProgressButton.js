@@ -16,58 +16,42 @@ function ProgressButton({
   formData,
   uuid,
   payMethod,
+  setOrdersStatusSid,
+  ordersStatusSid,
+  mySubmit2,
 }) {
-  let payUrl;
-  const mySubmit = async (e) => {
-    const { data } = await axios.post(MakeOrder, formData);
-    if (data.success) {
-      localStorage.removeItem('foodcart');
-      localStorage.removeItem('ticketcart');
-      localStorage.removeItem('hotelcart');
-      Swal.fire({
-        icon: 'success',
-        title: '已成功建立訂單，即將跳往結帳頁面',
-        confirmButtonText: '確認',
-        confirmButtonColor: '#59d8a1',
-      });
-      await pay();
-      window.location = payUrl;
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: '訂單成立失敗！',
-        confirmButtonText: '確認',
-        confirmButtonColor: '#59d8a1',
-      });
-    }
-  };
-  const mySubmit2 = async (e) => {
-    const { data } = await axios.post(MakeOrder, formData);
-    console.log(data);
-    if (data.success) {
-      Swal.fire({
-        icon: 'success',
-        title: '已成功建立訂單，即將跳往結帳頁面',
-        confirmButtonText: '確認',
-        confirmButtonColor: '#59d8a1',
-      });
-      localStorage.removeItem('foodcart');
-      localStorage.removeItem('ticketcart');
-      localStorage.removeItem('hotelcart');
-    } else {
-      Swal.fire({
-        icon: 'error',
-        title: '訂單成立失敗！',
-      });
-    }
-  };
+  // let payUrl;
+  // const mySubmit = async (e) => {
+  //   const { data } = await axios.post(MakeOrder, formData);
+  //   if (data.success) {
+  //     localStorage.removeItem('foodcart');
+  //     localStorage.removeItem('ticketcart');
+  //     localStorage.removeItem('hotelcart');
+  //     Swal.fire({
+  //       icon: 'success',
+  //       title: '已成功建立訂單，即將跳往結帳頁面',
+  //       confirmButtonText: '確認',
+  //       confirmButtonColor: '#59d8a1',
+  //     });
+  //     console.log('觸發pay()');
+  //     await pay();
+  //     window.location = payUrl;
+  //   } else {
+  //     Swal.fire({
+  //       icon: 'error',
+  //       title: '訂單成立失敗！',
+  //       confirmButtonText: '確認',
+  //       confirmButtonColor: '#59d8a1',
+  //     });
+  //   }
+  // };
   // const uuid = 1670387472990;
-  async function pay() {
-    const response = await axios.get(LINE_PAY_API(uuid));
-    const url = response.data.payUrl;
-    payUrl = url;
-    // console.log(payUrl);
-  }
+  // async function pay() {
+  //   const response = await axios.get(LINE_PAY_API(uuid));
+  //   const url = response.data.payUrl;
+  //   payUrl = url;
+  //   // console.log(payUrl);
+  // }
   // async function greenpay() {
   //   const response = await axios.get(GREEN_PAY_API(uuid));
   //   document.open();
@@ -96,11 +80,10 @@ function ProgressButton({
             type="submit"
             className="btn btn-primary"
             onClick={() => {
-              mySubmit2();
+              mySubmit2(2);
               localStorage.removeItem('foodcart');
               localStorage.removeItem('ticketcart');
               localStorage.removeItem('hotelcart');
-              window.location = 'http://localhost:3000/cart/fail';
             }}
           >
             模擬付款失敗
@@ -110,13 +93,8 @@ function ProgressButton({
             className="btn btn-primary"
             onClick={() => {
               if (payMethod === 'LinePay') {
-                mySubmit();
               } else if (payMethod === 'Credit') {
-                mySubmit2();
-                localStorage.removeItem('foodcart');
-                localStorage.removeItem('ticketcart');
-                localStorage.removeItem('hotelcart');
-                window.location = 'http://localhost:3000/cart/success';
+                mySubmit2(1);
               } else {
                 Swal.fire({
                   icon: 'error',
