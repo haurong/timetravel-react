@@ -69,15 +69,16 @@ function Profile() {
   // console.log(handleOnClickUpload);
 
   const mySubmit = async (e) => {
+    console.log('mySubmit');
     e.preventDefault();
     const picForm = new FormData();
     picForm.append('avatar', selectPic);
     picForm.append('sid', formData.sid);
     const image = await axios.post(UPLOAD_AVATAR_API, picForm);
-    // console.log('picForm',picForm);
-    // console.log(image);
-
+    console.log('userName', formData.username);
+    console.log('telephone', formData.telephone);
     if (formData.username !== '' && formData.telephone !== '') {
+      console.log('有觸發');
       const { data } = await axios.put(PROFILE_API, formData);
       if (data.success) {
         Swal.fire({
@@ -91,7 +92,15 @@ function Profile() {
             JSON.parse(localStorage.getItem('auth')).sid
           }`
         );
-        console.log(r.data, myAuth);
+        localStorage.setItem(
+          'auth',
+          JSON.stringify({
+            ...myAuth,
+            member_img: r.data[0].member_img,
+            username: r.data[0].username,
+            telephone: r.data[0].telephone,
+          })
+        );
         setMyAuth({
           ...myAuth,
           member_img: r.data[0].member_img,
@@ -116,6 +125,13 @@ function Profile() {
         }`
       );
       // console.log(r.data);
+      localStorage.setItem(
+        'auth',
+        JSON.stringify({
+          ...myAuth,
+          member_img: r.data[0].member_img,
+        })
+      );
       setMyAuth({ ...myAuth, member_img: r.data[0].member_img });
       Swal.fire({
         icon: 'success',
@@ -141,7 +157,7 @@ function Profile() {
           <div className="profile col-5">
             <h1>修改個人資訊</h1>
 
-            <form className='form' onSubmit={mySubmit}>
+            <form className="form" onSubmit={mySubmit}>
               <div
                 className="profile_img"
                 style={
