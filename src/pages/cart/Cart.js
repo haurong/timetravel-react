@@ -17,9 +17,11 @@ function Cart() {
   const [step, setStep] = useState(1);
   const next = () => {
     // 沒錯誤才會到下一步
+    window.scrollTo(0, 0);
     if (step < maxSteps) setStep(step + 1);
   };
   const prev = () => {
+    window.scrollTo(0, 0);
     if (step > 1) setStep(step - 1);
   };
   const pageNames = ['住宿', '美食', '票券', '結帳'];

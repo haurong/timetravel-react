@@ -75,8 +75,6 @@ function Profile() {
     picForm.append('avatar', selectPic);
     picForm.append('sid', formData.sid);
     const image = await axios.post(UPLOAD_AVATAR_API, picForm);
-    console.log('userName', formData.username);
-    console.log('telephone', formData.telephone);
     if (formData.username !== '' && formData.telephone !== '') {
       console.log('有觸發');
       const { data } = await axios.put(PROFILE_API, formData);
